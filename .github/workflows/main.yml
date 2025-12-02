@@ -1,0 +1,47 @@
+name: Dummy commit after others merge
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  dummy-commit:
+    runs-on: ubuntu-latest
+
+    # Nur laufen wenn:
+    # 1. Commit NICHT von github-actions[bot] kommt
+    # 2. Commit NICHT von DIR kommt (ersetze DEIN_USERNAME)
+    if: >
+      github.actor != 'github-actions[bot]' &&
+      github.actor != 'ausdre'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Setup Git config
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Create dummy change
+        run: |
+          # Timestamp + SHA des letzten Commits als eindeutige Änderung
+          echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC') - $(git rev-parse --short HEAD)" > .keepalive.txt
+
+      - name: Commit & push dummy
+        run: |
+          git add .keepalive.txt
+          
+          if git diff --cached --quiet; then
+            echo "No changes detected, skipping commit"
+            exit 0
+          fi
+          
+          git commit -m "🤖 chore: keepalive after ${{ github.actor }} merge [skip ci]"
+          git push origin main
