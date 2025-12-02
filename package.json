@@ -6,8 +6,22 @@
     "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify && cp index.html dist/index.html"
   },
   "devDependencies": {
-    "autoprefixer": "^10.0.0",
-    "postcss": "^8.0.0",
-    "tailwindcss": "^3.0.0"
-  }
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.18"
+  },
+  "description": "",
+  "main": "postcss.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ausdre/vornac.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ausdre/vornac/issues"
+  },
+  "homepage": "https://github.com/ausdre/vornac#readme"
 }
