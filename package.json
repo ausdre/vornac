@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
-    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify && cp index.html dist/index.html"
+    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify && cp *.html dist/"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.22",
