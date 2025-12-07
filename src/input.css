@@ -1,3 +1,132 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer utilities {
+    /* ----------------------------------------
+     *  Global orbit lights (goldene Radials)
+     * -------------------------------------- */
+    .bg-orbit-lights {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: -10;
+        overflow: hidden;
+        }
+
+    .orbit-blob {
+        filter: blur(72px);
+        }
+
+    .animate-orbit-slow {
+        animation: orbit-slow 26s ease-in-out infinite alternate;
+        }
+
+    .animate-orbit-medium {
+        animation: orbit-medium 32s ease-in-out infinite alternate-reverse;
+        }
+
+    .animate-orbit-fast {
+        animation: orbit-fast 18s ease-in-out infinite alternate;
+        }
+
+    /* ----------------------------------------
+     *  Light-edge glow (Panels / Cards)
+     * -------------------------------------- */
+    .glow-edge {
+        box-shadow: 0 0 42px rgba(250, 204, 21, 0.24);
+        border-color: rgba(250, 204, 21, 0.45);
+        }
+
+    .glow-edge-soft {
+        box-shadow: 0 0 28px rgba(250, 204, 21, 0.18);
+        }
+
+    .border-gradient-gold {
+        border-style: solid;
+        border-width: 1px;
+        border-image: linear-gradient(
+                              130deg,
+                              rgba(250, 204, 21, 0.85),
+                              rgba(148, 163, 184, 0.55)
+                      )
+                      1;
+        }
+
+    /* ----------------------------------------
+     *  Motion-based highlight (CSS-only)
+     * -------------------------------------- */
+    .highlight-pulse {
+        animation: highlight-pulse 7s ease-in-out infinite;
+        }
+
+    .highlight-pulse-soft {
+        animation: highlight-pulse-soft 10s ease-in-out infinite;
+        }
+
+    /* ----------------------------------------
+     *  Adaptive blend overlays
+     * -------------------------------------- */
+    .overlay-soft-light {
+        mix-blend-mode: soft-light;
+        }
+
+    .overlay-screen {
+        mix-blend-mode: screen;
+        }
+    }
+
+@keyframes orbit-slow {
+    0% {
+        transform: translate3d(-30px, 0, 0) scale(1);
+        opacity: 0.75;
+        }
+    100% {
+        transform: translate3d(40px, -50px, 0) scale(1.1);
+        opacity: 1;
+        }
+    }
+
+@keyframes orbit-medium {
+    0% {
+        transform: translate3d(10px, 20px, 0) scale(0.95);
+        opacity: 0.6;
+        }
+    100% {
+        transform: translate3d(-40px, -30px, 0) scale(1.05);
+        opacity: 0.95;
+        }
+    }
+
+@keyframes orbit-fast {
+    0% {
+        transform: translate3d(0, 20px, 0) scale(0.9);
+        opacity: 0.5;
+        }
+    100% {
+        transform: translate3d(30px, -10px, 0) scale(1.05);
+        opacity: 0.9;
+        }
+    }
+
+@keyframes highlight-pulse {
+    0%,
+    100% {
+        box-shadow: 0 0 0 rgba(250, 204, 21, 0);
+        }
+    40% {
+        box-shadow: 0 0 50px rgba(250, 204, 21, 0.35);
+        }
+    60% {
+        box-shadow: 0 0 32px rgba(250, 204, 21, 0.18);
+        }
+    }
+
+@keyframes highlight-pulse-soft {
+    0%,
+    100% {
+        box-shadow: 0 0 0 rgba(250, 204, 21, 0);
+        }
+    50% {
+        box-shadow: 0 0 32px rgba(250, 204, 21, 0.22);
+        }
+    }
