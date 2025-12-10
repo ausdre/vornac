@@ -827,49 +827,69 @@
                     real execution and report.
                 </p>
 
-                <form class="space-y-4 text-left">
+                <form
+                        id="contact-form"
+                        action="https://formspree.io/f/meoyrzog"
+                        method="POST"
+                        class="space-y-4 text-left"
+                >
+                    <!-- Honeypot (Spam protection) -->
+                    <input type="text" name="_gotcha" class="hidden" autocomplete="off" />
+
                     <div class="grid gap-4 md:grid-cols-2">
+                        <!-- Name -->
                         <div class="space-y-1">
                             <label class="text-xs text-vornac-grey-light">Name</label>
                             <input
                                     type="text"
+                                    name="name"
+                                    required
                                     class="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm text-white outline-none focus:border-vornac-gold"
                             />
                         </div>
+
+                        <!-- Email -->
                         <div class="space-y-1">
-                            <label class="text-xs text-vornac-grey-light"
-                            >Work email</label
-                            >
+                            <label class="text-xs text-vornac-grey-light">Work email</label>
                             <input
                                     type="email"
+                                    name="email"
+                                    required
                                     class="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm text-white outline-none focus:border-vornac-gold"
                             />
                         </div>
                     </div>
 
+                    <!-- Company -->
                     <div class="space-y-1">
                         <label class="text-xs text-vornac-grey-light">Company</label>
                         <input
                                 type="text"
+                                name="company"
                                 class="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm text-white outline-none focus:border-vornac-gold"
                         />
                     </div>
 
+                    <!-- Message -->
                     <div class="space-y-1">
-                        <label class="text-xs text-vornac-grey-light"
-                        >Briefly describe your pentest requirements</label
-                        >
+                        <label class="text-xs text-vornac-grey-light">
+                            Briefly describe your pentest requirements
+                        </label>
                         <textarea
+                                name="message"
                                 rows="4"
+                                required
                                 class="w-full resize-none rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm text-white outline-none focus:border-vornac-gold"
                         ></textarea>
                     </div>
 
+                    <!-- Submit -->
                     <button
                             type="submit"
-                            class="mt-2 inline-flex w-full items-center justify-center rounded-lg bg-vornac-gold px-4 py-2.5 text-sm font-semibold text-vornac-black hover:brightness-110 glow-edge-soft"
+                            data-submit-button
+                            class="mt-2 inline-flex w-full items-center justify-center rounded-lg bg-vornac-gold px-4 py-2.5 text-sm font-semibold text-vornac-black hover:brightness-110"
                     >
-                        Request a demo
+                        <span data-submit-text>Request a demo</span>
                     </button>
 
                     <p class="text-center text-[11px] text-vornac-grey-light">
@@ -877,9 +897,113 @@
                         <span class="text-white">hello@vornac.com</span>
                     </p>
                 </form>
+                <!-- Thank You Overlay -->
+                <div
+                        id="thankyou-overlay"
+                        class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/70 backdrop-blur-sm"
+                >
+                    <div
+                            class="mx-4 max-w-md rounded-2xl border border-white/10 bg-vornac-grey-dark/95 p-6 text-center shadow-soft"
+                    >
+                        <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-vornac-gold/15">
+                            <span class="text-2xl text-vornac-gold">✓</span>
+                        </div>
+                        <h3 class="mb-2 font-heading text-lg">Thank you.</h3>
+                        <p class="mb-5 text-sm text-vornac-grey-light">
+                            Your request has been received. We will get back to you shortly
+                            regarding your autonomous pentest demo.
+                        </p>
+                        <button
+                                id="thankyou-close"
+                                type="button"
+                                class="inline-flex items-center justify-center rounded-lg border border-white/20 px-4 py-2 text-sm font-semibold text-white hover:border-vornac-gold hover:text-vornac-gold"
+                        >
+                            Close
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("contact-form");
+        if (!form) return;
+
+        const overlay = document.getElementById("thankyou-overlay");
+        const closeBtn = document.getElementById("thankyou-close");
+        const submitBtn = form.querySelector("[data-submit-button]");
+        const submitText = submitBtn ? submitBtn.querySelector("[data-submit-text]") : null;
+
+        function showOverlay() {
+          if (!overlay) return;
+          overlay.classList.remove("hidden");
+        }
+
+        function hideOverlay() {
+          if (!overlay) return;
+          overlay.classList.add("hidden");
+        }
+
+        if (closeBtn) {
+          closeBtn.addEventListener("click", hideOverlay);
+        }
+
+        if (overlay) {
+          overlay.addEventListener("click", function (e) {
+            if (e.target === overlay) hideOverlay();
+          });
+        }
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") hideOverlay();
+        });
+
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          if (!form.reportValidity()) {
+            return;
+          }
+
+          const originalText = submitText ? submitText.textContent : "";
+          if (submitBtn) {
+            submitBtn.disabled = true;
+          }
+          if (submitText) {
+            submitText.textContent = "Sending...";
+          }
+
+          const formData = new FormData(form);
+
+          try {
+            const response = await fetch(form.action, {
+              method: form.method,
+              headers: { "Accept": "application/json" },
+              body: formData,
+            });
+
+            if (response.ok) {
+              form.reset();
+              showOverlay();
+            } else {
+              console.error("Formspree error", response.status);
+              alert("Something went wrong. Please try again.");
+            }
+          } catch (err) {
+            console.error("Network error", err);
+            alert("Network error. Please try again.");
+          } finally {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+            }
+            if (submitText) {
+              submitText.textContent = originalText;
+            }
+          }
+        });
+      });
+    </script>
 </main>
 
 <footer class="bg-vornac-black py-6">
