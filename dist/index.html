@@ -1,1036 +1,817 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8"/>
     <title>VORNAC – Autonomous Pentesting Agent</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="VORNAC Autonomous Pentesting Agent with audit-proof reports for NIS2, DORA, VAIT, BAIT and KRITIS."/>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20236%20208%22%20width%3D%22236%22%20height%3D%22208%22%20shape-rendering%3D%22geometricPrecision%22%20text-rendering%3D%22geometricPrecision%22%3E%3Cdefs%3E%3ClinearGradient%20gradientUnits%3D%22userSpaceOnUse%22%20x1%3D%22339.35%22%20y1%3D%22894.62%22%20x2%3D%22339.35%22%20y2%3D%221102.62%22%20id%3D%22gradient-0%22%20gradientTransform%3D%22matrix%280.48429%20-0.87489%201.06616%200.90262%20-1217.88049%20-510.57703%29%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22black%22%2F%3E%3Cstop%20offset%3D%220.26%22%20stop-color%3D%22black%22%2F%3E%3Cstop%20offset%3D%220.52%22%20stop-color%3D%22black%22%2F%3E%3Cstop%20offset%3D%220.7%22%20stop-color%3D%22black%22%20stop-opacity%3D%220.04%22%2F%3E%3Cstop%20offset%3D%220.88%22%20stop-color%3D%22black%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%220.88%22%20stop-color%3D%22black%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22black%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath%20d%3D%22M%200%200%20L%2050%200%20L%20117%20126%20L%20187%200%20L%20236%200%20L%20114%20208%20L%200%200%20Z%22%20fill%3D%22url%28%23gradient-0%29%22%20clip-rule%3D%22evenodd%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E"/>
     <!-- Tailwind CSS build -->
-    <!-- <link rel="stylesheet" href="/dist/output.css" /> -->
-    <link rel="stylesheet" href="/output.css" />
-  </head>
-  <body class="bg-vornac-black text-white font-body antialiased">
-    <!-- NAVBAR -->
-    <header
-      class="sticky top-0 z-40 border-b border-white/5 bg-vornac-black/80 backdrop-blur"
-    >
-      <nav class="mx-auto flex max-w-content items-center justify-between px-4 py-4 lg:px-6">
-        <a href="#top" class="flex items-center gap-2">
-          <div
-            class="flex h-9 w-9 items-center justify-center rounded-full bg-vornac-gold text-xs font-black text-vornac-black"
-          >
-            V
-          </div>
-          <div class="flex flex-col leading-tight">
-            <span class="font-heading text-lg tracking-[0.2em] uppercase">
-              VORNAC
-            </span>
-            <span class="text-[11px] uppercase tracking-[0.22em] text-vornac-grey-light">
-              Autonomous Pentesting Agent
-            </span>
-          </div>
+    <link rel="stylesheet" href="output.css"/>
+</head>
+
+<body class="bg-vornac-black text-white font-body antialiased">
+<!-- Global golden orbit lights -->
+<div class="bg-orbit-lights">
+    <!-- oben links -->
+    <div class="orbit-blob absolute -left-40 top-0 h-80 w-80 rounded-full bg-vornac-gold/25 overlay-soft-light animate-orbit-slow"></div>
+    <!-- rechts Mitte -->
+    <div class="orbit-blob absolute -right-[8rem] top-1/3 h-96 w-96 rounded-full bg-vornac-gold/15 overlay-screen animate-orbit-medium"></div>
+    <!-- unten Mitte -->
+    <div class="orbit-blob absolute left-1/3 -bottom-[9rem] h-72 w-72 rounded-full bg-vornac-gold/20 overlay-soft-light animate-orbit-fast"></div>
+</div>
+
+<!-- Icons -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <!-- AUTONOMOUS -->
+    <symbol id="icon-autonomous" viewBox="0 0 64 64">
+        <defs>
+            <linearGradient id="autonomousGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="var(--vornac-gold-2)"/>
+                <stop offset="1" stop-color="var(--vornac-gold-1)"/>
+            </linearGradient>
+        </defs>
+        <circle cx="32" cy="32" r="20" fill="none" stroke="#262a36" stroke-width="1.5"/>
+        <path d="M14 30 C20 15 44 15 50 30 C44 45 20 45 14 30 Z" fill="none" stroke="url(#autonomousGrad)" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M20 40 L26 37 L29 39 L23 42 Z" fill="#050816" stroke="#2e3440" stroke-width="1.2"/>
+        <path d="M26 34 C30 30 38 30 43 31 C46 32 48 34 48 37" fill="none" stroke="#3c4350" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M34 31 L42 29" fill="none" stroke="url(#autonomousGrad)" stroke-width="1.7" stroke-linecap="round"/>
+        <circle cx="48" cy="28" r="2.3" fill="var(--vornac-gold-1)"/>
+    </symbol>
+
+    <!-- SCALABLE -->
+    <symbol id="icon-scalable" viewBox="0 0 64 64">
+        <defs>
+            <linearGradient id="scalableGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="var(--vornac-gold-2)"/>
+                <stop offset="1" stop-color="var(--vornac-gold-1)"/>
+            </linearGradient>
+        </defs>
+        <rect x="10" y="38" width="44" height="4" rx="2" fill="#050816" stroke="#262a36" stroke-width="1"/>
+        <rect x="16" y="30" width="32" height="4" rx="2" fill="#050816" stroke="#2e3440" stroke-width="1"/>
+        <rect x="22" y="22" width="20" height="4" rx="2" fill="#050816" stroke="#373f4e" stroke-width="1"/>
+        <rect x="28" y="18" width="8" height="28" rx="2" fill="url(#scalableGrad)"/>
+        <circle cx="12" cy="40" r="2" fill="#262a36"/>
+        <circle cx="52" cy="40" r="2" fill="#262a36"/>
+        <circle cx="18" cy="32" r="2" fill="#2e3440"/>
+        <circle cx="46" cy="32" r="2" fill="#2e3440"/>
+        <circle cx="24" cy="24" r="2" fill="#373f4e"/>
+        <circle cx="44" cy="24" r="2" fill="#373f4e"/>
+    </symbol>
+
+    <!-- REPORTING -->
+    <symbol id="icon-reporting" viewBox="0 0 64 64">
+        <defs>
+            <linearGradient id="reportGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="var(--vornac-gold-2)"/>
+                <stop offset="1" stop-color="var(--vornac-gold-1)"/>
+            </linearGradient>
+        </defs>
+        <rect x="16" y="14" width="32" height="38" rx="4" fill="#050816" stroke="#262a36" stroke-width="1.5"/>
+        <rect x="20" y="18" width="18" height="3" rx="1.5" fill="#262a36"/>
+        <rect x="20" y="23" width="12" height="3" rx="1.5" fill="#262a36"/>
+        <rect x="22" y="34" width="4" height="10" rx="1" fill="#262a36"/>
+        <rect x="30" y="30" width="4" height="14" rx="1" fill="#343a46"/>
+        <rect x="38" y="26" width="4" height="18" rx="1" fill="url(#reportGrad)"/>
+        <circle cx="42" cy="20" r="3" fill="var(--vornac-gold-1)"/>
+        <circle cx="42" cy="20" r="6" fill="none" stroke="var(--vornac-gold-2)" stroke-width="1" opacity="0.6"/>
+    </symbol>
+</svg>
+
+<!-- NAVBAR -->
+<header id="site-header" class="relative sticky top-0 z-40 border-b border-white/5  backdrop-blur">
+    <nav class="mx-auto flex max-w-content items-center justify-between px-4 py-4 lg:px-6">
+        <a href="#top" class="flex items-center gap-3" aria-label="VORNAC home">
+            <!-- SVG LOGO -->
+
+
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 class="nav-logo h-12 w-auto sm:h-14"
+                 viewBox="0 0 1448 208"
+                 shape-rendering="geometricPrecision"
+                 text-rendering="geometricPrecision">
+                <style>
+                    @keyframes vornacFlyInHoldOut {
+                        0%   { transform: translateX(-360px); opacity: 0; }
+                        25%  { transform: translateX(0);      opacity: 1; }
+                        75%  { transform: translateX(0);      opacity: 1; }
+                        100% { transform: translateX(-360px); opacity: 0; }
+                        }
+                    #o, #r, #n, #a, #c {
+                        animation: vornacFlyInHoldOut 4s cubic-bezier(0.86,0,0.07,1) both 1;
+                        transform-origin: 0 0;
+                        will-change: transform, opacity;
+                        }
+                    #v { }
+                    #o { animation-delay: 0.00s; }
+                    #r { animation-delay: 0.06s; }
+                    #n { animation-delay: 0.12s; }
+                    #a { animation-delay: 0.24s; }
+                    #c { animation-delay: 0.36s; }
+                </style>
+
+                <defs>
+                    <linearGradient gradientUnits="userSpaceOnUse"
+                                    x1="339.35" y1="894.62" x2="339.35" y2="1102.62"
+                                    id="gradient-0"
+                                    gradientTransform="matrix(0.48429,-0.87489,1.06616,0.90262,-1217.88049,-510.57703)">
+                        <stop offset="0" stop-color="#ffffff"/>
+                        <stop offset="0.26" stop-color="#ffffff"/>
+                        <stop offset="0.52" stop-color="#ffffff"/>
+                        <stop offset="0.7" stop-color="#ffffff" stop-opacity="0.04"/>
+                        <stop offset="0.88" stop-color="#ffffff" stop-opacity="0"/>
+                        <stop offset="0.88" stop-color="#ffffff"/>
+                        <stop offset="1" stop-color="#ffffff"/>
+                    </linearGradient>
+                </defs>
+                <path id="v"
+                      d="M 0 0 L 50.1 0 L 117.1 126 L 187.09 0 L 236.09 0 L 114.06 207.74 L 0 0 Z"
+                      fill="url(#gradient-0)"
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                      opacity="1"/>
+                <path id="o"
+                      d="M 297.22 43.48 L 422.22 43.48 L 422.11 164.82 L 297.22 164.82 L 297.22 43.48 Z M 296.22 0.03 L 251.23 43.48 L 251.4 164.82 L 296.22 207.74 L 421.22 207.74 L 465.91 164.82 L 466.09 43.48 L 421.22 0.03 L 296.22 0.03 Z"
+                      fill="#ffffff"
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                      opacity="1"/>
+
+                <path id="r"
+                      d="M 509.21 0.03 L 670.06 0 L 711.06 42 L 711.06 100 L 682.06 127 L 673.06 134 L 665.06 134 L 720.93 207.74 L 669.2 207.74 L 574.2 92.03 L 664.2 92.03 L 664.2 44.03 L 554.21 43.03 L 554.21 207.74 L 509.21 207.74 L 509.21 0.03 Z"
+                      fill="#ffffff"
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                      opacity="1"/>
+
+                <path id="n"
+                      d="M 754.05 0 L 904.04 122.03 L 904 0 L 945.1 0 L 945.04 208.03 L 797.05 86.03 L 797.05 207.74 L 754.05 207.74 L 754.05 0 Z"
+                      fill="#ffffff"
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                      opacity="1"/>
+
+                <path id="a"
+                      d="M 1094.85 0 L 1222.19 207.74 L 1056.03 207.74 L 1079.03 165 L 1148.03 165 L 1096.03 76 L 1018.77 207.74 L 968.04 207.74 L 1094.85 0 Z"
+                      fill="#ffffff"
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                      opacity="1"/>
+
+                <path id="c"
+                      d="M 1273.02 0 L 1448 0 L 1407.01 43 L 1271.02 43.48 L 1271.02 162 L 1275.02 164.82 L 1406.01 164.82 L 1448 207.74 L 1272.02 207.74 L 1227.49 164.82 L 1226.89 43.48 L 1273.02 0 Z"
+                      fill="#ffffff"
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                      opacity="1"/>
+            </svg>
         </a>
 
-        <div class="hidden items-center gap-8 text-sm text-vornac-grey-light md:flex">
-          <a href="#how" class="hover:text-white">How it works</a>
-          <a href="#pricing" class="hover:text-white">Pricing</a>
-          <a href="#compliance" class="hover:text-white">Compliance</a>
-          <a href="#team" class="hover:text-white">Team</a>
-          <a href="#contact" class="hover:text-white">Contact</a>
+        <div class="hidden items-center gap-8 text-sm md:flex">
+            <a href="#how" class="nav-link text-vornac-grey-light hover:text-white">How it works</a>
+            <a href="#pricing" class="nav-link text-vornac-grey-light hover:text-white">Pricing</a>
+            <a href="#compliance" class="nav-link text-vornac-grey-light hover:text-white">Compliance</a>
+            <a href="#about" class="nav-link text-vornac-grey-light hover:text-white">About</a>
+            <a href="#contact" class="nav-link text-vornac-grey-light hover:text-white">Contact</a>
         </div>
 
         <div class="hidden md:block">
-          <a
-            href="#contact"
-            class="rounded-lg bg-vornac-gold px-4 py-2 text-sm font-semibold text-vornac-black shadow-soft hover:brightness-110"
-          >
-            Schedule a demo
-          </a>
+            <a href="#contact" class="rounded-lg bg-vornac-gold px-4 py-2 text-sm font-semibold text-vornac-black shadow-soft glow-edge-soft hover:brightness-110 hover-lift">
+                Get Access_
+            </a>
         </div>
 
-        <!-- simple mobile menu trigger (no JS; wire later as needed) -->
+        <!-- Mobile menu trigger -->
         <button
-          class="inline-flex h-9 w-9 items-center justify-center rounded-md border border-white/10 md:hidden"
-          aria-label="Open navigation"
+                id="nav-toggle"
+                class="inline-flex h-9 w-9 items-center justify-center rounded-md border border-white/10 md:hidden"
+                aria-label="Open navigation"
+                aria-controls="mobile-menu"
+                aria-expanded="false"
+                type="button"
         >
-          <span class="h-[2px] w-4 bg-white"></span>
+      <span class="flex flex-col gap-1.5">
+        <span class="block h-[2px] w-4 bg-white"></span>
+        <span class="block h-[2px] w-4 bg-white"></span>
+        <span class="block h-[2px] w-4 bg-white"></span>
+      </span>
         </button>
-      </nav>
-    </header>
+    </nav>
 
-    <main id="top">
-      <!-- HERO -->
-      <section
-        class="relative overflow-hidden border-b border-white/5 bg-gradient-to-b from-vornac-black to-black/95"
-      >
-        <div
-          class="mx-auto flex max-w-content flex-col gap-12 px-4 pb-16 pt-20 lg:flex-row lg:items-center lg:px-6 lg:py-24"
-        >
-          <!-- left -->
-          <div class="flex-1 space-y-8">
-            <div
-              class="inline-flex items-center gap-2 rounded-full border border-vornac-gold/40 bg-vornac-gold/10 px-3 py-1 text-[11px] uppercase tracking-[0.22em] text-vornac-grey-light"
-            >
-              <span class="h-1.5 w-1.5 rounded-full bg-vornac-gold"></span>
-              Fully autonomous pentesting agent
-            </div>
+    <!-- Backdrop -->
+    <div id="mobile-backdrop" class="fixed inset-0 z-30 hidden bg-black/60 backdrop-blur-sm md:hidden"></div>
 
-            <div class="space-y-4">
-              <h1
-                class="font-heading text-4xl leading-tight tracking-tight sm:text-5xl lg:text-[3.25rem]"
-              >
-                Autonomous
-                <span class="text-vornac-gold">Pentesting</span> for everybody.
-              </h1>
-              <p class="max-w-xl text-base text-vornac-grey-light sm:text-lg">
-                VORNAC executes penetration tests end-to-end via AI inference:
-                from target definition to exploit chaining and
-                <span class="text-vornac-gold"
-                  >compliance-ready reporting</span
-                >
-                – no human tester required.
-              </p>
-            </div>
+    <!-- Mobile menu -->
+    <div
+            id="mobile-menu"
+            class="mobile-menu-panel absolute left-0 right-0 top-full z-40 hidden border-b border-white/5 bg-vornac-black/95 backdrop-blur md:hidden"
+    >
+        <div class="mx-auto max-w-content space-y-3 px-4 pb-5 pt-4">
+            <a href="#how" class="nav-link block text-sm text-vornac-grey-light hover:text-white">How it works</a>
+            <a href="#pricing" class="nav-link block text-sm text-vornac-grey-light hover:text-white">Pricing</a>
+            <a href="#compliance" class="nav-link block text-sm text-vornac-grey-light hover:text-white">Compliance</a>
+            <a href="#about" class="nav-link block text-sm text-vornac-grey-light hover:text-white">About</a>
+            <a href="#contact" class="nav-link block text-sm text-vornac-grey-light hover:text-white">Contact</a>
 
-            <div class="flex flex-wrap items-center gap-4">
-              <a
-                href="#contact"
-                class="rounded-lg bg-vornac-gold px-6 py-3 text-sm font-semibold text-vornac-black shadow-soft hover:brightness-110"
-              >
-                Start a demo
-              </a>
-              <a
-                href="#how"
-                class="rounded-lg border border-white/20 px-6 py-3 text-sm font-semibold text-white hover:border-vornac-gold hover:text-vornac-gold"
-              >
-                How it works
-              </a>
-            </div>
+            <a href="#contact" class="mt-2 inline-flex w-full items-center justify-center rounded-lg bg-vornac-gold px-4 py-2.5 text-sm font-semibold text-vornac-black glow-edge-soft hover:brightness-110 hover-lift">
+                Get Access_
+            </a>
+        </div>
+    </div>
+</header>
 
-            <div class="space-y-2">
-              <p class="text-xs font-medium uppercase tracking-[0.2em] text-vornac-grey-light">
-                Built for compliance
-              </p>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-vornac-grey-light"
-                >
-                  NIS2
-                </span>
-                <span
-                  class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-vornac-grey-light"
-                >
-                  DORA
-                </span>
-                <span
-                  class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-vornac-grey-light"
-                >
-                  VAIT
-                </span>
-                <span
-                  class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-vornac-grey-light"
-                >
-                  BAIT
-                </span>
-                <span
-                  class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-vornac-grey-light"
-                >
-                  KRITIS
-                </span>
-              </div>
-            </div>
-          </div>
+<main id="top">
+    <!-- HERO MIT VIDEO-BACKGROUND FULL WIDTH STACKED -->
+    <section class="relative min-h-screen overflow-hidden border-b border-white/5 bg-black">
+        <!-- Background video -->
+        <video class="pointer-events-none absolute inset-0 h-full w-full object-cover scale-[1.1] object-center" src="infinte.MP4" autoplay muted loop playsinline></video>
+        <!-- Overlay -->
+        <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/35 via-black/35 to-black/60"></div>
 
-          <!-- right visual -->
-          <div class="relative flex-1">
-            <div
-              class="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-vornac-gold/10 blur-3xl"
-            ></div>
-            <div
-              class="relative mx-auto h-80 max-w-md rounded-2xl bg-gradient-to-br from-vornac-grey-top to-vornac-grey-dark p-[1px] shadow-soft lg:h-96 lg:max-w-full"
-            >
-              <div
-                class="flex h-full flex-col justify-between rounded-2xl bg-gradient-to-b from-black/80 to-vornac-grey-dark/80 p-5"
-              >
-                <div class="flex items-center justify-between">
-                  <div class="space-y-1">
-                    <p class="text-xs uppercase tracking-[0.22em] text-vornac-grey-light">
-                      Autonomous test
-                    </p>
-                    <p class="text-sm text-vornac-gold">
-                      critical-webapp.company.com
-                    </p>
-                  </div>
-                  <span
-                    class="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-1 text-[11px] font-medium text-emerald-300"
-                  >
-                    <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400"></span>
-                    running
-                  </span>
+        <!-- Container -->
+        <div class="relative z-10 flex min-h-screen flex-col items-center justify-center gap-14 px-4 py-20 lg:px-8">
+            <!-- TEXT -->
+            <div class="w-full max-w-full space-y-8 text-center">
+                <div class="inline-flex items-center gap-2 rounded-full border border-vornac-gold/40 bg-vornac-gold/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.22em] text-vornac-grey-light glow-edge-soft highlight-pulse-soft">
+                    <span class="h-1.5 w-1.5 rounded-full bg-vornac-gold"></span>
+                    STATUS OPERATIONAL
                 </div>
 
-                <div class="mt-6 space-y-4 text-xs text-vornac-grey-light">
-                  <div>
-                    <p class="mb-1 font-medium text-white">Scope</p>
-                    <div class="flex flex-wrap gap-2">
-                      <span
-                        class="rounded-full bg-white/5 px-3 py-1 text-[11px]"
-                        >Web</span
-                      >
-                      <span
-                        class="rounded-full bg-white/5 px-3 py-1 text-[11px]"
-                        >API</span
-                      >
-                      <span
-                        class="rounded-full bg-white/5 px-3 py-1 text-[11px]"
-                        >Infra</span
-                      >
+                <h1 class="font-heading text-4xl leading-tight sm:text-6xl lg:text-[3.7rem]">
+                    Autonomous <span class="text-vornac-gold">Pentesting</span> for everybody.
+                </h1>
+
+                <p class="mx-auto w-full max-w-3xl text-base text-vornac-grey-light sm:text-lg">
+                    VORNAC performs penetration tests end-to-end without any human intervention—from target definition to
+                    <span class="text-vornac-gold">audit-proof reporting</span>.
+                </p>
+
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#contact" class="rounded-lg bg-vornac-gold px-8 py-3 text-sm font-semibold text-vornac-black shadow-soft hover:brightness-110 hover-lift glow-edge-soft">
+                        Start a demo
+                    </a>
+                    <a href="#how" class="rounded-lg border border-white/20 px-8 py-3 text-sm font-semibold text-white hover:border-vornac-gold hover:text-vornac-gold hover-lift">
+                        How it works
+                    </a>
+                </div>
+
+                <div class="space-y-2">
+                    <p class="text-xs font-medium uppercase tracking-[0.2em] text-vornac-grey-light">Built for compliance</p>
+                    <div class="flex flex-wrap justify-center gap-2">
+                        <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-widest text-vornac-grey-light hover-lift">NIS2</span>
+                        <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-widest text-vornac-grey-light hover-lift">DORA</span>
+                        <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-widest text-vornac-grey-light hover-lift">VAIT</span>
+                        <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-widest text-vornac-grey-light hover-lift">BAIT</span>
+                        <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-widest text-vornac-grey-light hover-lift">KRITIS</span>
                     </div>
-                  </div>
-
-                  <div>
-                    <p class="mb-1 font-medium text-white">
-                      Current attack phase
-                    </p>
-                    <div class="space-y-2">
-                      <div class="flex items-center justify-between">
-                        <span>Enumeration</span>
-                        <span>78%</span>
-                      </div>
-                      <div class="h-1.5 rounded-full bg-white/5">
-                        <div
-                          class="h-1.5 w-[78%] rounded-full bg-vornac-gold"
-                        ></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="grid grid-cols-3 gap-3 text-[11px]">
-                    <div
-                      class="rounded-lg border border-white/10 bg-black/40 p-2"
-                    >
-                      <p class="text-vornac-grey-light">Findings</p>
-                      <p class="text-lg font-semibold text-white">7</p>
-                    </div>
-                    <div
-                      class="rounded-lg border border-white/10 bg-black/40 p-2"
-                    >
-                      <p class="text-vornac-grey-light">Critical</p>
-                      <p class="text-lg font-semibold text-vornac-red">2</p>
-                    </div>
-                    <div
-                      class="rounded-lg border border-white/10 bg-black/40 p-2"
-                    >
-                      <p class="text-vornac-grey-light">ETA</p>
-                      <p class="text-lg font-semibold text-white">18m</p>
-                    </div>
-                  </div>
                 </div>
-
-                <div class="mt-4 flex items-center justify-between text-xs">
-                  <div class="space-y-1">
-                    <p class="text-vornac-grey-light">Next step</p>
-                    <p class="text-white">
-                      Exploit chain validation &amp; reporting
-                    </p>
-                  </div>
-                  <button
-                    class="rounded-md border border-white/20 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-vornac-grey-light hover:border-vornac-gold hover:text-vornac-gold"
-                  >
-                    View audit trail
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- PROBLEM -->
-      <section class="border-b border-white/5 bg-vornac-black">
-        <div
-          class="mx-auto grid max-w-content gap-12 px-4 py-16 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:px-6 lg:py-20"
-        >
-          <div class="space-y-6">
-            <h2 class="font-heading text-3xl tracking-tight lg:text-[2rem]">
-              Pentesting is too slow, expensive and impossible to scale.
-            </h2>
-            <p class="text-sm text-vornac-grey-light">
-              Manual engagements are constrained by human availability, cost and
-              variance in execution quality.
-            </p>
-            <ul class="space-y-3 text-sm text-vornac-grey-light">
-              <li class="flex gap-3">
-                <span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-vornac-gold">
-                </span>
-                <span>&gt;90% of companies struggle to hire qualified pentesters.</span>
-              </li>
-              <li class="flex gap-3">
-                <span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-vornac-gold">
-                </span>
-                <span>Typical engagements cost €25k–€120k per test.</span>
-              </li>
-              <li class="flex gap-3">
-                <span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-vornac-gold">
-                </span>
-                <span>Lead times often range from 6–12 weeks.</span>
-              </li>
-              <li class="flex gap-3">
-                <span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-vornac-gold">
-                </span>
-                <span>Results differ between testers and providers.</span>
-              </li>
-              <li class="flex gap-3">
-                <span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-vornac-gold">
-                </span>
-                <span>Reports are rarely structured for audits and regulators.</span>
-              </li>
-            </ul>
-          </div>
-
-          <div
-            class="space-y-4 rounded-2xl bg-vornac-grey-dark/60 p-6 shadow-soft"
-          >
-            <h3 class="font-heading text-sm uppercase tracking-[0.2em] text-vornac-grey-light">
-              Market signal
-            </h3>
-            <div class="space-y-4 text-sm">
-              <div class="flex items-end justify-between">
-                <div>
-                  <p class="text-xs text-vornac-grey-light">
-                    Regulated companies by 2026
-                  </p>
-                  <p class="text-3xl font-semibold text-vornac-gold">
-                    45,000+
-                  </p>
-                </div>
-              </div>
-
-              <div class="border-t border-white/10 pt-4">
-                <p class="text-xs text-vornac-grey-light">
-                  Annual cybercrime damage
-                </p>
-                <p class="text-2xl font-semibold text-white">
-                  €203<span class="text-base align-top">bn</span>
-                </p>
-              </div>
-
-              <p class="text-xs text-vornac-grey-light">
-                Regulations like NIS2, DORA, VAIT, BAIT and KRITIS enforce
-                regular, provable penetration testing. Manual models cannot keep
-                up.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SOLUTION -->
-      <section class="border-b border-white/5 bg-vornac-grey-dark" id="solution">
-        <div class="mx-auto max-w-content px-4 py-16 lg:px-6 lg:py-20">
-          <div class="mx-auto max-w-2xl text-center space-y-4">
-            <h2 class="font-heading text-3xl tracking-tight lg:text-[2rem]">
-              VORNAC is the world’s first fully autonomous Pentesting Agent.
-            </h2>
-            <p class="text-sm text-vornac-grey-light">
-              An inference-driven system that plans, executes and documents
-              penetration tests end-to-end – aligned with EU regulatory
-              frameworks.
-            </p>
-          </div>
-
-          <div class="mt-10 grid gap-6 md:grid-cols-3">
-            <div
-              class="flex flex-col gap-3 rounded-2xl bg-black/40 p-5 ring-1 ring-white/5"
-            >
-              <div
-                class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-vornac-gold/20 text-vornac-gold"
-              >
-                <!-- icon placeholder -->
-                <span class="text-lg font-semibold">⟲</span>
-              </div>
-              <h3 class="font-heading text-base">Autonomous execution</h3>
-              <p class="text-sm text-vornac-grey-light">
-                The agent orchestrates enumeration, exploit attempts and attack
-                path chaining without human intervention.
-              </p>
             </div>
 
-            <div
-              class="flex flex-col gap-3 rounded-2xl bg-black/40 p-5 ring-1 ring-white/5"
-            >
-              <div
-                class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-vornac-gold/20 text-vornac-gold"
-              >
-                <span class="text-lg font-semibold">✔</span>
-              </div>
-              <h3 class="font-heading text-base">
-                Compliance-ready reporting
-              </h3>
-              <p class="text-sm text-vornac-grey-light">
-                Output is structured for NIS2, DORA, VAIT, BAIT and KRITIS
-                audits, including CVSS, PoC and reproducible steps.
-              </p>
-            </div>
-
-            <div
-              class="flex flex-col gap-3 rounded-2xl bg-black/40 p-5 ring-1 ring-white/5"
-            >
-              <div
-                class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-vornac-gold/20 text-vornac-gold"
-              >
-                <span class="text-lg font-semibold">☰</span>
-              </div>
-              <h3 class="font-heading text-base">
-                Scalable attack surface coverage
-              </h3>
-              <p class="text-sm text-vornac-grey-light">
-                On-demand tests across web, API and infrastructure scopes,
-                delivered as SaaS or on-prem inference.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- HOW IT WORKS -->
-      <section id="how" class="border-b border-white/5 bg-vornac-black">
-        <div class="mx-auto max-w-content px-4 py-16 lg:px-6 lg:py-20">
-          <div class="mx-auto max-w-2xl text-center space-y-4">
-            <h2 class="font-heading text-3xl tracking-tight lg:text-[2rem]">
-              How VORNAC works
-            </h2>
-            <p class="text-sm text-vornac-grey-light">
-              From defining scope to downloading the final report – in three
-              steps.
-            </p>
-          </div>
-
-          <div
-            class="mt-10 grid gap-6 md:grid-cols-3 md:items-start"
-          >
-            <!-- step 1 -->
-            <div
-              class="flex flex-col gap-3 rounded-2xl bg-vornac-grey-dark/70 p-5 ring-1 ring-white/5"
-            >
-              <div
-                class="flex h-10 w-10 items-center justify-center rounded-full bg-vornac-gold text-sm font-bold text-vornac-black"
-              >
-                01
-              </div>
-              <h3 class="font-heading text-base">Define target &amp; scope</h3>
-              <p class="text-sm text-vornac-grey-light">
-                Specify domains, IP ranges, endpoints and explicit scope
-                boundaries. Attach regulatory context and test objectives.
-              </p>
-            </div>
-
-            <!-- step 2 -->
-            <div
-              class="flex flex-col gap-3 rounded-2xl bg-vornac-grey-dark/70 p-5 ring-1 ring-white/5"
-            >
-              <div
-                class="flex h-10 w-10 items-center justify-center rounded-full bg-vornac-gold text-sm font-bold text-vornac-black"
-              >
-                02
-              </div>
-              <h3 class="font-heading text-base">
-                Autonomous execution in an isolated VM
-              </h3>
-              <p class="text-sm text-vornac-grey-light">
-                VORNAC spins up a dedicated machine, runs enumeration and
-                exploitation strategies and continuously logs an audit trail.
-              </p>
-            </div>
-
-            <!-- step 3 -->
-            <div
-              class="flex flex-col gap-3 rounded-2xl bg-vornac-grey-dark/70 p-5 ring-1 ring-white/5"
-            >
-              <div
-                class="flex h-10 w-10 items-center justify-center rounded-full bg-vornac-gold text-sm font-bold text-vornac-black"
-              >
-                03
-              </div>
-              <h3 class="font-heading text-base">Report &amp; audit trail</h3>
-              <p class="text-sm text-vornac-grey-light">
-                Retrieve PDF and machine-readable JSON via the web interface,
-                including CVSS, PoC details and segregated audit trail.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- INTERFACE PREVIEW -->
-      <section class="border-b border-white/5 bg-vornac-black">
-        <div
-          class="mx-auto grid max-w-content gap-10 px-4 py-16 lg:grid-cols-2 lg:px-6 lg:py-20"
-        >
-          <div class="space-y-5">
-            <h2 class="font-heading text-3xl tracking-tight lg:text-[2rem]">
-              Your autonomous pentest command center.
-            </h2>
-            <p class="text-sm text-vornac-grey-light">
-              A minimal web interface to plan tests, monitor status and download
-              reports – while the heavy lifting runs inside a dedicated VM.
-            </p>
-            <ul class="space-y-3 text-sm text-vornac-grey-light">
-              <li class="flex gap-3">
-                <span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-vornac-gold">
-                </span>
-                <span>On-demand test scheduling per target or environment.</span>
-              </li>
-              <li class="flex gap-3">
-                <span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-vornac-gold">
-                </span>
-                <span>Status overview: running, completed, failed, queued.</span>
-              </li>
-              <li class="flex gap-3">
-                <span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-vornac-gold">
-                </span>
-                <span>Report archive with versioned exports.</span>
-              </li>
-              <li class="flex gap-3">
-                <span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-vornac-gold">
-                </span>
-                <span>Audit trail viewer per test execution.</span>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <div
-              class="rounded-2xl bg-vornac-grey-dark/80 p-4 shadow-soft ring-1 ring-white/5"
-            >
-              <div
-                class="mb-4 flex items-center justify-between border-b border-white/10 pb-3"
-              >
-                <div>
-                  <p class="text-xs text-vornac-grey-light">
-                    Autonomously scheduled tests
-                  </p>
-                  <p class="text-sm font-medium">Execution overview</p>
-                </div>
-                <span
-                  class="rounded-full bg-vornac-gold/10 px-3 py-1 text-[11px] font-medium text-vornac-gold"
-                  >VM: dedicated</span
-                >
-              </div>
-
-              <div class="space-y-3 text-xs">
-                <!-- row -->
-                <div
-                  class="grid grid-cols-[1.2fr_0.8fr_0.6fr_0.8fr] items-center gap-3 rounded-lg bg-black/40 px-3 py-2"
-                >
-                  <div>
-                    <p class="truncate text-white">
-                      critical-webapp.company.com
-                    </p>
-                    <p class="text-[11px] text-vornac-grey-light">
-                      Scope: Web + API
-                    </p>
-                  </div>
-                  <p class="text-vornac-grey-light">CI pipeline</p>
-                  <span
-                    class="inline-flex items-center justify-center rounded-full bg-emerald-500/10 px-2 py-1 text-[11px] text-emerald-300"
-                  >
-                    running
-                  </span>
-                  <p class="text-right text-vornac-grey-light">ETA 16m</p>
-                </div>
-
-                <!-- row -->
-                <div
-                  class="grid grid-cols-[1.2fr_0.8fr_0.6fr_0.8fr] items-center gap-3 rounded-lg bg-black/25 px-3 py-2"
-                >
-                  <div>
-                    <p class="truncate text-white">vpn-gateway.bank.net</p>
-                    <p class="text-[11px] text-vornac-grey-light">
-                      Scope: Infra
-                    </p>
-                  </div>
-                  <p class="text-vornac-grey-light">Quarterly</p>
-                  <span
-                    class="inline-flex items-center justify-center rounded-full bg-white/5 px-2 py-1 text-[11px] text-vornac-grey-light"
-                  >
-                    completed
-                  </span>
-                  <p class="text-right text-vornac-grey-light">Report v3</p>
-                </div>
-
-                <!-- row -->
-                <div
-                  class="grid grid-cols-[1.2fr_0.8fr_0.6fr_0.8fr] items-center gap-3 rounded-lg bg-black/25 px-3 py-2"
-                >
-                  <div>
-                    <p class="truncate text-white">
-                      patient-api.healthcare.io
-                    </p>
-                    <p class="text-[11px] text-vornac-grey-light">
-                      Scope: API only
-                    </p>
-                  </div>
-                  <p class="text-vornac-grey-light">PoC</p>
-                  <span
-                    class="inline-flex items-center justify-center rounded-full bg-vornac-red/10 px-2 py-1 text-[11px] text-vornac-red"
-                  >
-                    failed
-                  </span>
-                  <p class="text-right text-vornac-grey-light">Scope error</p>
-                </div>
-              </div>
-
-              <div class="mt-4 flex justify-between text-[11px]">
-                <p class="text-vornac-grey-light">
-                  All executions are fully logged and replayable.
-                </p>
-                <button
-                  class="rounded-md border border-white/15 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-vornac-grey-light hover:border-vornac-gold hover:text-vornac-gold"
-                >
-                  Open dashboard
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- PRICING -->
-      <section id="pricing" class="border-b border-white/5 bg-vornac-grey-dark">
-        <div class="mx-auto max-w-content px-4 py-16 lg:px-6 lg:py-20">
-          <div class="mx-auto max-w-2xl text-center space-y-4">
-            <h2 class="font-heading text-3xl tracking-tight lg:text-[2rem]">
-              Simple pricing for autonomous pentests.
-            </h2>
-            <p class="text-sm text-vornac-grey-light">
-              VORNAC is your way to worry-free pentesting.
-            </p>
-          </div>
-
-          <div class="mt-10 grid gap-6 md:grid-cols-2">
-            <!-- Starter -->
-      <!--      <article
-              class="flex flex-col justify-between rounded-2xl bg-black/40 p-6 ring-1 ring-white/10"
-            >
-              <div class="space-y-4">
-                <div class="space-y-1">
-                  <p
-                    class="text-xs font-semibold uppercase tracking-[0.22em] text-vornac-grey-light"
-                  >
-                    Starter
-                  </p>
-                  <p class="flex items-baseline gap-1">
-                    <span class="text-3xl font-semibold text-vornac-gold"
-                      >€999</span
-                    >
-                    <span class="text-xs text-vornac-grey-light">/ month</span>
-                  </p>
-                </div>
-                <p class="text-sm text-vornac-grey-light">
-                  For teams that want to introduce autonomous testing on a
-                  single critical surface.
-                </p>
-                <ul class="space-y-2 text-sm text-vornac-grey-light">
-                  <li>2 autonomous tests per month</li>
-                  <li>Shared inference cluster</li>
-                  <li>Standard compliance reports</li>
-                  <li>Email support</li>
-                </ul>
-              </div>
-              <div class="mt-6">
-                <a
-                  href="#contact"
-                  class="inline-flex w-full items-center justify-center rounded-lg border border-white/20 px-4 py-2.5 text-sm font-semibold text-white hover:border-vornac-gold hover:text-vornac-gold"
-                >
-                  Talk to sales
-                </a>
-              </div>
-            </article>
-          -->
-            <!-- Professional -->
-            <article
-              class="flex flex-col justify-between rounded-2xl bg-black/40 p-6 ring-1 ring-white/10"
-            >
-              <div class="space-y-4">
-                <div class="space-y-1">
-                  <p
-                    class="text-xs font-semibold uppercase tracking-[0.22em] text-vornac-grey-light"
-                  >
-                    Professional
-                  </p>
-                  <p class="flex items-baseline gap-1">
-                    <span class="text-3xl font-semibold text-vornac-gold"
-                      >€ 999</span
-                    >
-                    <span class="text-xs text-vornac-grey-light">per test</span>
-                  </p>
-                  <p class="flex items-baseline gap-1">
-                    <span class="text-xl font-semibold text-vornac-grey-light"
-                      >€ 4999</span
-                    >
-                    <span class="text-xs text-vornac-grey-light">per year for your workspace</span>
-                  </p>
-                </div>
-                <p class="text-sm text-vornac-grey-light">
-                  For companies that rely on recurring pentests across
-                  several targets.
-                </p>
-                <ul class="space-y-2 text-sm text-vornac-grey-light">
-                  <li>Dedicated workspace</li>
-                  <li>Pentesting on-demand</li>
-                  <li>Advanced reporting configuration</li>
-                  <li>Extended audit trail retention</li>
-                </ul>
-              </div>
-              <div class="mt-6">
-                <a
-                  href="#contact"
-                  class="inline-flex w-full items-center justify-center rounded-lg bg-vornac-gold px-4 py-2.5 text-sm font-semibold text-vornac-black hover:brightness-110"
-                >
-                  For small and medium sized businesses
-                </a>
-              </div>
-            </article>
-
-            <!-- Enterprise -->
-            <article
-              class="flex flex-col justify-between rounded-2xl bg-black/40 p-6 ring-1 ring-white/10"
-            >
-              <div class="space-y-4">
-                <div class="space-y-1">
-                  <p
-                    class="text-xs font-semibold uppercase tracking-[0.22em] text-vornac-grey-light"
-                  >
-                    Enterprise
-                  </p>
-                  <p class="flex items-baseline gap-1">
-                    <span class="text-3xl font-semibold text-vornac-gold"
-                      >Pricing upon request
-                      </span
-                    >
-                  </p>
-                </div>
-                <p class="text-sm text-vornac-grey-light">
-                  For organizations that require unlimited testing and freedom. 
-                </p>
-                <ul class="space-y-2 text-sm text-vornac-grey-light">
-                  <li>Unlimited autonomous tests</li>
-                  <li>API access &amp; integration support</li>
-                  <li>Optional: custom report templates</li>
-                  <li>Optional: on-premise hosting</li>
-                </ul>
-              </div>
-              <div class="mt-6">
-                <a
-                  href="#contact"
-                 class="inline-flex w-full items-center justify-center rounded-lg bg-vornac-gold px-4 py-2.5 text-sm font-semibold text-vornac-black hover:brightness-110"
-                >
-                  For large enterprises
-                </a>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- COMPLIANCE -->
-      <section
-        id="compliance"
-        class="border-b border-white/5 bg-vornac-black"
-      >
-        <div class="mx-auto max-w-content px-4 py-16 lg:px-6 lg:py-20">
-          <div class="mx-auto max-w-2xl text-center space-y-4">
-            <h2 class="font-heading text-3xl tracking-tight lg:text-[2rem]">
-              Built around regulatory frameworks.
-            </h2>
-            <p class="text-sm text-vornac-grey-light">
-              VORNAC is designed for environments governed by NIS2, DORA, VAIT,
-              BAIT and KRITIS – with reports structured to satisfy audits.
-            </p>
-          </div>
-
-          <div class="mt-10 grid gap-4 md:grid-cols-3">
-            <div
-              class="flex flex-col items-center gap-2 rounded-2xl bg-vornac-grey-dark/70 p-4 ring-1 ring-white/10"
-            >
-              <span
-                class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-vornac-gold/15 text-xs font-semibold text-vornac-gold"
-              >
-                EU
+            <!-- CARD -->
+            <div class="w-full max-w-full flex justify-center">
+                <div class="w-full max-w-3xl rounded-2xl bg-gradient-to-br from-vornac-grey-top/80 to-vornac-grey-dark p-[1px] shadow-soft glow-edge highlight-pulse">
+                    <div class="rounded-2xl bg-gradient-to-b from-black/80 to-vornac-grey-dark/80 p-6">
+                        <div class="flex items-center justify-between">
+                            <div class="space-y-1">
+                                <p class="text-xs uppercase tracking-[0.22em] text-vornac-grey-light">Autonomous test</p>
+                                <p class="text-sm text-vornac-gold">critical-webapp.company.com</p>
+                            </div>
+                            <span class="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-1 text-[11px] font-medium text-emerald-300">
+                <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400"></span>
+                running
               </span>
-              <p class="font-heading text-sm">NIS2</p>
-              <p class="text-xs text-vornac-grey-light text-center">
-                Continuous and provable security posture via regular, documented
-                pentests.
-              </p>
-            </div>
-            <div
-              class="flex flex-col items-center gap-2 rounded-2xl bg-vornac-grey-dark/70 p-4 ring-1 ring-white/10"
-            >
-              <span
-                class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-vornac-gold/15 text-xs font-semibold text-vornac-gold"
-              >
-                EU
-              </span>
-              <p class="font-heading text-sm">DORA</p>
-              <p class="text-xs text-vornac-grey-light text-center">
-                Cyber resilience testing for financial services, aligned with
-                operational resilience demands.
-              </p>
-            </div>
-            <div
-              class="flex flex-col items-center gap-2 rounded-2xl bg-vornac-grey-dark/70 p-4 ring-1 ring-white/10"
-            >
-              <span
-                class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-vornac-gold/15 text-xs font-semibold text-vornac-gold"
-              >
-                DE
-              </span>
-              <p class="font-heading text-sm">VAIT / BAIT / KRITIS</p>
-              <p class="text-xs text-vornac-grey-light text-center">
-                Structured output for German financial and critical
-                infrastructure regulations.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+                        </div>
 
-      <!-- TRACTION & ROADMAP (kurz gehalten) - keine Roadmap auf der Website -->
-       <!--
-      <section class="border-b border-white/5 bg-vornac-grey-dark">
-        <div
-          class="mx-auto grid max-w-content gap-10 px-4 py-16 lg:grid-cols-2 lg:px-6 lg:py-20"
-        >
-          <div class="space-y-5">
-            <h2 class="font-heading text-3xl tracking-tight lg:text-[2rem]">
-              Traction
-            </h2>
-            <ul class="space-y-3 text-sm text-vornac-grey-light">
-              <li>
-                &gt;250 autonomous test executions across web, API and infra
-              </li>
-              <li>7 design partners in regulated sectors</li>
-              <li>3 PoCs with measurable improvements in re-test speed</li>
-              <li>~40% cost reduction vs manual pentests</li>
-            </ul>
-          </div>
+                        <div class="mt-6 space-y-4 text-xs text-vornac-grey-light">
+                            <div>
+                                <p class="mb-1 font-medium text-white">Scope</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="rounded-full bg-white/5 px-3 py-1 text-[11px]">Web</span>
+                                    <span class="rounded-full bg-white/5 px-3 py-1 text-[11px]">API</span>
+                                    <span class="rounded-full bg-white/5 px-3 py-1 text-[11px]">Infra</span>
+                                </div>
+                            </div>
 
-          <div class="space-y-5">
-            <h2 class="font-heading text-3xl tracking-tight lg:text-[2rem]">
-              Roadmap
-            </h2>
-            <div class="space-y-4 text-sm text-vornac-grey-light">
-              <div class="flex gap-4">
-                <div
-                  class="mt-1 flex h-9 w-9 items-center justify-center rounded-full bg-vornac-gold text-xs font-bold text-vornac-black"
-                >
-                  Q1
+                            <div>
+                                <p class="mb-1 font-medium text-white">Current attack phase</p>
+                                <div class="space-y-2">
+                                    <div class="flex items-center justify-between"><span>Enumeration</span><span>78%</span></div>
+                                    <div class="h-1.5 rounded-full bg-white/5">
+                                        <div class="h-1.5 w-[78%] rounded-full bg-vornac-gold"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-3 text-[11px]">
+                                <div class="rounded-lg border border-white/10 bg-black/40 p-2">
+                                    <p class="text-vornac-grey-light">Findings</p>
+                                    <p class="text-lg font-semibold text-white">7</p>
+                                </div>
+                                <div class="rounded-lg border border-white/10 bg-black/40 p-2">
+                                    <p class="text-vornac-grey-light">Critical</p>
+                                    <p class="text-lg font-semibold text-vornac-red">2</p>
+                                </div>
+                                <div class="rounded-lg border border-white/10 bg-black/40 p-2">
+                                    <p class="text-vornac-grey-light">ETA</p>
+                                    <p class="text-lg font-semibold text-white">18m</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 flex items-center justify-between text-xs">
+                                <div class="space-y-1">
+                                    <p class="text-vornac-grey-light">Next step</p>
+                                    <p class="text-white">Exploit chain validation + reporting</p>
+                                </div>
+                                <button class="rounded-md border border-white/20 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-vornac-grey-light hover:border-vornac-gold hover:text-vornac-gold hover-lift" type="button">
+                                    View audit trail
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                  <p class="font-medium text-white">
-                    AI core &amp; base model
-                  </p>
-                  <p>
-                    Enumerator RL, exploit inference v1, first compliance
-                    templates for finance and KRITIS.
-                  </p>
-                </div>
-              </div>
-              <div class="flex gap-4">
-                <div
-                  class="mt-1 flex h-9 w-9 items-center justify-center rounded-full bg-vornac-gold text-xs font-bold text-vornac-black"
-                >
-                  Q2
-                </div>
-                <div>
-                  <p class="font-medium text-white">
-                    Design partners &amp; data engine
-                  </p>
-                  <p>
-                    Proof-of-concepts with real-world data and training data
-                    ingestion pipelines.
-                  </p>
-                </div>
-              </div>
-              <div class="flex gap-4">
-                <div
-                  class="mt-1 flex h-9 w-9 items-center justify-center rounded-full bg-vornac-gold text-xs font-bold text-vornac-black"
-                >
-                  Q3/Q4
-                </div>
-                <div>
-                  <p class="font-medium text-white">Platform launch</p>
-                  <p>
-                    Multivector coverage, hybrid models, API access and
-                    governance &amp; audit framework around the agent.
-                  </p>
-                </div>
-              </div>
             </div>
-          </div>
+
         </div>
-      </section>
--->
-      <!-- ABOUT US -->
-      <section id="aboutus" class="border-b border-white/5 bg-vornac-black">
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="border-b border-white/5 bg-vornac-black">
+        <div class="mx-auto grid max-w-content gap-12 px-4 py-16 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:px-6 lg:py-20">
+            <div class="space-y-6">
+                <h2 class="font-heading text-3xl tracking-tight lg:text-[2.5rem]">
+                    Security tests are slow, expensive and impossible to scale
+                </h2>
+                <p class="text-sm text-vornac-grey-light">
+                    Manual engagements are constrained by human availability, cost and variance in execution quality.
+                </p>
+                <ul class="space-y-3 text-sm text-vornac-grey-light">
+                    <li class="flex gap-3"><span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-vornac-gold"></span><span>&gt;90% of companies struggle to find qualified pentesters.</span></li>
+                    <li class="flex gap-3"><span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-vornac-gold"></span><span>Typical engagements cost 10k–25k per test.</span></li>
+                    <li class="flex gap-3"><span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-vornac-gold"></span><span>Lead times often range from 6–12 weeks.</span></li>
+                    <li class="flex gap-3"><span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-vornac-gold"></span><span>Results differ between testers and providers.</span></li>
+                    <li class="flex gap-3"><span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-vornac-gold"></span><span>Reports are rarely structured for audits and regulators.</span></li>
+                </ul>
+            </div>
+
+            <div class="space-y-4 rounded-2xl bg-vornac-grey-dark/60 p-6 shadow-soft ring-1 ring-white/10 glow-edge-soft hover-lift">
+                <h3 class="font-heading text-sm uppercase tracking-[0.2em] text-vornac-grey-light">Market signal</h3>
+                <div class="space-y-4 text-sm">
+                    <div class="flex items-end justify-between">
+                        <div>
+                            <p class="text-xs text-vornac-grey-light">Regulated companies by 2026</p>
+                            <p class="text-3xl font-semibold text-vornac-gold">45.000+</p>
+                        </div>
+                    </div>
+                    <div class="border-t border-white/10 pt-4">
+                        <p class="text-xs text-vornac-grey-light">Annual cybercrime damage</p>
+                        <p class="text-2xl font-semibold text-white">203<span class="text-base align-top">bn</span></p>
+                    </div>
+                    <p class="text-xs text-vornac-grey-light">
+                        Regulations like NIS2, DORA, VAIT, BAIT and KRITIS enforce regular, provable penetration testing. Manual models cannot keep up.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUTION -->
+    <section class="border-b border-white/5 bg-vornac-grey-dark" id="solution">
         <div class="mx-auto max-w-content px-4 py-16 lg:px-6 lg:py-20">
-          <div class="mx-auto max-w-2xl text-center space-y-4">
-            <h2 class="font-heading text-3xl tracking-tight lg:text-[2rem]">
-              About VORNAC.
-            </h2>
-            <p class="text-sm text-vornac-grey-light">
-              We are re-engineering cybersecurity for the autonomous age. Headquartered in Heidelberg, 
-              Germany, Vornac was founded to solve the industry’s biggest dilemma: 
-              the widening gap between strict regulatory compliance (NIS2) and the critical shortage of skilled security experts.
-
-              We don’t just offer tools; we provide a paradigm shift. 
-              Our patent-pending AI technology replaces the "human middleware"
-              in penetration testing, allowing companies to test their infrastructure continuously, 
-              24/7, and without manual intervention. We turn cybersecurity from a yearly bottleneck into an always-on advantage
-            </p>
-          </div>
-        </section>
-        
-
-        
-          <!-- Team card placeholder -->
-<!--
-          <div class="mt-10 grid gap-6 md:grid-cols-3">
-            
-            <div
-              class="flex flex-col items-center gap-3 rounded-2xl bg-vornac-grey-dark/70 p-5 ring-1 ring-white/10"
-            >
-              <div
-                class="flex h-16 w-16 items-center justify-center rounded-full bg-vornac-gold/20 text-sm font-semibold text-vornac-gold"
-              >
-                R&amp;D
-              </div>
-              <div class="text-center space-y-1">
-                <p class="text-sm font-semibold">Founder – Research &amp; Dev</p>
-                <p class="text-xs text-vornac-grey-light">
-                  Security research, exploit development, AI systems.
+            <div class="mx-auto max-w-2xl space-y-4 text-center">
+                <h2 class="font-heading text-3xl tracking-tight lg:text-[2.5rem]">
+                    The world’s <span class="text-vornac-gold">first</span> autonomous pentesting agent
+                </h2>
+                <p class="text-sm text-vornac-grey-light">
+                    A system that plans, executes and documents penetration tests end-to-end aligned with EU regulatory frameworks.
                 </p>
-              </div>
             </div>
 
-            <div
-              class="flex flex-col items-center gap-3 rounded-2xl bg-vornac-grey-dark/70 p-5 ring-1 ring-white/10"
-            >
-              <div
-                class="flex h-16 w-16 items-center justify-center rounded-full bg-vornac-gold/20 text-sm font-semibold text-vornac-gold"
-              >
-                Ops
-              </div>
-              <div class="text-center space-y-1">
-                <p class="text-sm font-semibold">
-                  Founder – Operations &amp; Marketing
-                </p>
-                <p class="text-xs text-vornac-grey-light">
-                  GTM strategy, branding, customer success.
-                </p>
-              </div>
-            </div>
+            <div class="mt-10 grid gap-6 md:grid-cols-3">
+                <div class="flex flex-col gap-3 rounded-2xl bg-black/40 p-5 ring-1 ring-white/5 glow-edge-soft highlight-pulse-soft hover-lift">
+                    <div class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-vornac-gold/20 text-vornac-gold">
+                        <svg class="vornac-icon h-6 w-6"><use href="#icon-autonomous"></use></svg>
+                    </div>
+                    <h3 class="font-heading text-base">Autonomous</h3>
+                    <p class="text-sm text-vornac-grey-light">VORNAC orchestrates enumeration, exploit attempts and attack path chaining without human intervention.</p>
+                </div>
 
-            <div
-              class="flex flex-col items-center gap-3 rounded-2xl bg-vornac-grey-dark/70 p-5 ring-1 ring-white/10"
-            >
-              <div
-                class="flex h-16 w-16 items-center justify-center rounded-full bg-vornac-gold/20 text-sm font-semibold text-vornac-gold"
-              >
-                Fin
-              </div>
-              <div class="text-center space-y-1">
-                <p class="text-sm font-semibold">
-                  Founder – Finance &amp; Sales
-                </p>
-                <p class="text-xs text-vornac-grey-light">
-                  Enterprise sales, fundraising, financial steering.
-                </p>
-              </div>
+                <div class="flex flex-col gap-3 rounded-2xl bg-black/40 p-5 ring-1 ring-white/5 glow-edge-soft highlight-pulse-soft hover-lift">
+                    <div class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-vornac-gold/20 text-vornac-gold">
+                        <svg class="vornac-icon h-6 w-6"><use href="#icon-reporting"></use></svg>
+                    </div>
+                    <h3 class="font-heading text-base">Compliance-ready reporting</h3>
+                    <p class="text-sm text-vornac-grey-light">Output is structured for NIS2, DORA, VAIT, BAIT and KRITIS audits, including CVSS, PoC and reproducible steps.</p>
+                </div>
+
+                <div class="flex flex-col gap-3 rounded-2xl bg-black/40 p-5 ring-1 ring-white/5 glow-edge-soft highlight-pulse-soft hover-lift">
+                    <div class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-vornac-gold/20 text-vornac-gold">
+                        <svg class="vornac-icon h-6 w-6"><use href="#icon-scalable"></use></svg>
+                    </div>
+                    <h3 class="font-heading text-base">Scalable attack surface coverage</h3>
+                    <p class="text-sm text-vornac-grey-light">On-demand tests across web, API and infrastructure scopes, delivered as SaaS or on-prem inference.</p>
+                </div>
             </div>
-          </div>
         </div>
-      </section>
--->
-      <!-- CONTACT / FINAL CTA -->
-      <section
-        id="contact"
-        class="border-b border-white/5 bg-vornac-grey-dark"
-      >
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="border-b border-white/5 bg-vornac-black">
         <div class="mx-auto max-w-content px-4 py-16 lg:px-6 lg:py-20">
-          <div class="mx-auto max-w-xl space-y-6 text-center">
-            <h2 class="font-heading text-3xl tracking-tight lg:text-[2rem]">
-              Ready to see an autonomous pentest in action?
-            </h2>
-            <p class="text-sm text-vornac-grey-light">
-              Schedule a live session with the founding team and walk through a
-              real execution and report.
-            </p>
+            <div class="mx-auto max-w-2xl space-y-4 text-center">
+                <h2 class="font-heading text-3xl tracking-tight lg:text-[2.5rem]">How VORNAC works</h2>
+                <p class="text-sm text-vornac-grey-light">From defining scope to downloading the final report in three steps.</p>
+            </div>
 
-            <form class="space-y-4 text-left">
-              <div class="grid gap-4 md:grid-cols-2">
-                <div class="space-y-1">
-                  <label class="text-xs text-vornac-grey-light">Name</label>
-                  <input
-                    type="text"
-                    class="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm text-white outline-none focus:border-vornac-gold"
-                  />
+            <div class="mt-10 grid gap-6 md:grid-cols-3 md:items-start">
+                <div class="flex flex-col gap-3 rounded-2xl bg-vornac-grey-dark/70 p-5 ring-1 ring-white/5 glow-edge-soft hover-lift">
+                    <div class="flex h-10 w-10 items-center justify-center rounded-full bg-vornac-gold text-sm font-bold text-vornac-black">01</div>
+                    <h3 class="font-heading text-base">Define target &amp; scope</h3>
+                    <p class="text-sm text-vornac-grey-light">Specify domains, IP ranges, endpoints and explicit scope boundaries. Attach regulatory context and test objectives.</p>
                 </div>
-                <div class="space-y-1">
-                  <label class="text-xs text-vornac-grey-light">Work email</label>
-                  <input
-                    type="email"
-                    class="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm text-white outline-none focus:border-vornac-gold"
-                  />
+
+                <div class="flex flex-col gap-3 rounded-2xl bg-vornac-grey-dark/70 p-5 ring-1 ring-white/5 glow-edge-soft hover-lift">
+                    <div class="flex h-10 w-10 items-center justify-center rounded-full bg-vornac-gold text-sm font-bold text-vornac-black">02</div>
+                    <h3 class="font-heading text-base">Autonomous execution</h3>
+                    <p class="text-sm text-vornac-grey-light">VORNAC runs enumeration, composes exploitation strategies and continuously logs an audit trail.</p>
                 </div>
-              </div>
 
-              <div class="space-y-1">
-                <label class="text-xs text-vornac-grey-light">Company</label>
-                <input
-                  type="text"
-                  class="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm text-white outline-none focus:border-vornac-gold"
-                />
-              </div>
-
-              <div class="space-y-1">
-                <label class="text-xs text-vornac-grey-light"
-                  >Briefly describe your pentest requirements</label
-                >
-                <textarea
-                  rows="4"
-                  class="w-full resize-none rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm text-white outline-none focus:border-vornac-gold"
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                class="mt-2 inline-flex w-full items-center justify-center rounded-lg bg-vornac-gold px-4 py-2.5 text-sm font-semibold text-vornac-black hover:brightness-110"
-              >
-                Request a demo
-              </button>
-
-              <p class="text-center text-[11px] text-vornac-grey-light">
-                Or reach out directly: <span class="text-white">contact@vornac.ai</span>
-              </p>
-            </form>
-          </div>
+                <div class="flex flex-col gap-3 rounded-2xl bg-vornac-grey-dark/70 p-5 ring-1 ring-white/5 glow-edge-soft hover-lift">
+                    <div class="flex h-10 w-10 items-center justify-center rounded-full bg-vornac-gold text-sm font-bold text-vornac-black">03</div>
+                    <h3 class="font-heading text-base">Report &amp; audit trail</h3>
+                    <p class="text-sm text-vornac-grey-light">Retrieve PDF and machine-readable JSON via the web interface, including CVSS, PoC details and segregated audit trail.</p>
+                </div>
+            </div>
         </div>
-      </section>
-    </main>
+    </section>
 
-    <footer class="bg-vornac-black py-6">
-      <div
-        class="mx-auto flex max-w-content flex-col items-center justify-between gap-3 px-4 text-[11px] text-vornac-grey-light sm:flex-row lg:px-6"
-      >
-        <p>© VORNAC – Autonomous Pentesting Agent</p>
+    <!-- INTERFACE PREVIEW -->
+    <section class="border-b border-white/5 bg-vornac-black">
+        <div class="mx-auto grid max-w-content gap-10 px-4 py-16 lg:grid-cols-2 lg:px-6 lg:py-20">
+            <div class="space-y-5">
+                <h2 class="font-heading text-3xl tracking-tight lg:text-[2.5rem]">Your pentest command-center</h2>
+                <p class="text-sm text-vornac-grey-light">A web interface to plan tests, monitor status and download reports while the heavy lifting runs in the background.</p>
+                <ul class="space-y-3 text-sm text-vornac-grey-light">
+                    <li class="flex gap-3"><span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-vornac-gold"></span><span>On-demand test scheduling per target.</span></li>
+                    <li class="flex gap-3"><span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-vornac-gold"></span><span>Status overview: running, completed, failed, queued.</span></li>
+                    <li class="flex gap-3"><span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-vornac-gold"></span><span>Report archive with versioned, signed and tamper-proof exports.</span></li>
+                    <li class="flex gap-3"><span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-vornac-gold"></span><span>Audit trail viewer per test execution.</span></li>
+                </ul>
+            </div>
+
+            <div class="rounded-2xl bg-vornac-grey-dark/80 p-4 shadow-soft ring-1 ring-white/5 glow-edge hover-lift">
+                <div class="mb-4 flex items-center justify-between border-b border-white/10 pb-3">
+                    <div>
+                        <p class="text-xs text-vornac-grey-light">Scheduled tests</p>
+                        <p class="text-sm font-medium">Execution overview</p>
+                    </div>
+                    <span class="rounded-full bg-vornac-gold/10 px-3 py-1 text-[11px] font-medium text-vornac-gold">STATUS: OPERATIONAL</span>
+                </div>
+
+                <div class="space-y-3 text-xs">
+                    <div class="grid grid-cols-[1.2fr_0.8fr_0.6fr_0.8fr] items-center gap-3 rounded-lg bg-black/40 px-3 py-2">
+                        <p class="truncate text-white">critical-webapp.company.com</p>
+                        <p class="text-[11px] text-vornac-grey-light">Scope Web+API</p>
+                        <p class="text-vornac-grey-light">CI pipeline</p>
+                        <p class="text-right font-semibold text-vornac-grey-light">ETA 16m</p>
+                    </div>
+
+                    <div class="grid grid-cols-[1.2fr_0.8fr_0.6fr_0.8fr] items-center gap-3 rounded-lg bg-black/25 px-3 py-2">
+                        <p class="truncate text-white">vpn-gateway.bank.net</p>
+                        <p class="text-[11px] text-vornac-grey-light">Scope Infra</p>
+                        <p class="text-vornac-grey-light">Quarterly</p>
+                        <p class="text-right text-emerald-300 font-semibold">Completed</p>
+                    </div>
+
+                    <div class="grid grid-cols-[1.2fr_0.8fr_0.6fr_0.8fr] items-center gap-3 rounded-lg bg-black/25 px-3 py-2">
+                        <p class="truncate text-white">patient-api.healthcare.io</p>
+                        <p class="text-[11px] text-vornac-grey-light">Scope API</p>
+                        <p class="text-vornac-grey-light">On-Demand</p>
+                        <p class="text-right font-semibold text-emerald-300">Completed</p>
+                    </div>
+
+                    <div class="mt-4 flex justify-between text-[11px]">
+                        <p class="text-vornac-grey-light">All executions are fully logged and replayable.</p>
+                        <button class="rounded-md border border-white/15 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-vornac-grey-light hover:border-vornac-gold hover:text-vornac-gold hover-lift" type="button">
+                            Open dashboard
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="border-b border-white/5 bg-vornac-grey-dark">
+        <div class="mx-auto max-w-content px-4 py-16 lg:px-6 lg:py-20">
+            <div class="mx-auto max-w-2xl space-y-4 text-center">
+                <h2 class="font-heading text-3xl tracking-tight lg:text-[2.5rem]">Simple pricing for autonomous pentests.</h2>
+                <p class="text-sm text-vornac-grey-light">VORNAC turns pentesting into a predictable, compliance-ready process.</p>
+            </div>
+
+            <div class="mt-10 grid gap-6 md:grid-cols-1">
+                <article class="flex flex-col justify-between rounded-2xl bg-black/40 p-6 ring-1 ring-white/10 glow-edge highlight-pulse-soft hover-lift">
+                    <div class="space-y-4">
+                        <div class="space-y-1">
+                            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-vornac-grey-light">Enterprise</p>
+                            <p class="flex items-baseline gap-1">Yearly fee. <span class="text-3xl font-semibold text-vornac-gold">UNLIMITED USAGE</span></p>
+                        </div>
+                        <p class="text-sm text-vornac-grey-light">
+                            For organizations that require unlimited testing and maximum flexibility in regulated environments.
+                        </p>
+                        <ul class="space-y-2 text-sm text-vornac-grey-light">
+                            <li>Unlimited autonomous tests</li>
+                            <li>API access &amp; integration support</li>
+                            <li>Optional: custom report templates</li>
+                            <li>Optional: on-premise hosting</li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-6">
+                        <a href="#contact" class="inline-flex w-full items-center justify-center rounded-lg bg-vornac-gold px-4 py-2.5 text-sm font-semibold text-vornac-black hover:brightness-110 hover-lift glow-edge-soft">
+                            Contact
+                        </a>
+                        <p class="mt-3 text-center text-[11px] text-vornac-grey-light">Start saving money</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPLIANCE -->
+    <section id="compliance" class="border-b border-white/5 bg-vornac-black">
+        <div class="mx-auto max-w-content px-4 py-16 lg:px-6 lg:py-20">
+            <div class="mx-auto max-w-2xl space-y-4 text-center">
+                <h2 class="font-heading text-3xl tracking-tight lg:text-[2.5rem]">Built around regulatory frameworks.</h2>
+                <p class="text-sm text-vornac-grey-light">
+                    VORNAC is designed for environments governed by NIS2, DORA, VAIT, BAIT and KRITIS with reports structured to satisfy audits.
+                </p>
+            </div>
+
+            <div class="mt-10 grid gap-8 md:grid-cols-3">
+                <div class="flex flex-col items-center gap-2 rounded-2xl bg-vornac-grey-dark/70 p-4 ring-1 ring-white/10 glow-edge-soft hover-lift">
+                    <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-vornac-gold/15 text-xs font-semibold text-vornac-gold">EU</span>
+                    <p class="font-heading text-sm">NIS2</p>
+                    <p class="text-center text-xs text-vornac-grey-light">Continuous and provable security posture via regular, documented pentests.</p>
+                </div>
+
+                <div class="flex flex-col items-center gap-2 rounded-2xl bg-vornac-grey-dark/70 p-4 ring-1 ring-white/10 glow-edge-soft hover-lift">
+                    <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-vornac-gold/15 text-xs font-semibold text-vornac-gold">EU</span>
+                    <p class="font-heading text-sm">DORA</p>
+                    <p class="text-center text-xs text-vornac-grey-light">Cyber resilience testing for financial services, aligned with operational resilience demands.</p>
+                </div>
+
+                <div class="flex flex-col items-center gap-2 rounded-2xl bg-vornac-grey-dark/70 p-4 ring-1 ring-white/10 glow-edge-soft hover-lift">
+                    <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-vornac-gold/15 text-xs font-semibold text-vornac-gold">DE</span>
+                    <p class="font-heading text-sm">VAIT · BAIT · KRITIS</p>
+                    <p class="text-center text-xs text-vornac-grey-light">Structured output for German financial and critical infrastructure regulations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT US -->
+    <section id="about" class="border-b border-white/5 bg-vornac-black">
+        <div class="mx-auto max-w-content px-4 py-16 lg:px-6 lg:py-20">
+            <div class="mx-auto max-w-2xl space-y-6 text-center">
+                <h2 class="font-heading text-3xl tracking-tight lg:text-[2.5rem]">About VORNAC.</h2>
+                <p class="text-m text-vornac-grey-light">
+                    We are <span class="text-vornac-gold font-semibold">re-</span>engineering cybersecurity for the autonomous age. Headquartered in Heidelberg, Germany, VORNAC was founded to solve the industry’s <span class="text-vornac-gold font-semibold">biggest</span> dilemma:
+                    the widening gap between strict regulatory compliance and the critical shortage of <span class="text-vornac-gold font-semibold">skilled</span> security experts.
+                </p>
+                <p class="text-m text-vornac-grey-light">
+                    We do not just offer another tool, we provide a <span class="text-vornac-gold font-semibold">paradigm shift</span>. VORNAC replaces the human middleware in penetration testing, allowing companies to test their infrastructure continuously, 24/7 and without manual intervention.
+                    We turn cybersecurity from a yearly bottleneck into an <span class="text-vornac-gold font-semibold">always-on</span> advantage.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT FINAL CTA -->
+    <section id="contact" class="border-b border-white/5 bg-vornac-grey-dark">
+        <div class="mx-auto max-w-content px-4 py-16 lg:px-6 lg:py-20">
+            <div class="mx-auto max-w-xl space-y-6 text-center">
+                <h2 class="font-heading text-3xl tracking-tight lg:text-[2.5rem]">Ready to see a truly autonomous pentest in action?</h2>
+                <p class="text-sm text-vornac-grey-light">Schedule a live session with the founding team and walk through a real execution and report.</p>
+
+                <form id="contact-form" action="https://formspree.io/f/meoyrzog" method="POST" class="space-y-4 text-left">
+                    <!-- Honeypot Spam protection -->
+                    <input type="text" name="gotcha" class="hidden" autocomplete="off"/>
+
+                    <div class="grid gap-4 md:grid-cols-2">
+                        <div class="space-y-1">
+                            <label class="text-xs text-vornac-grey-light">Name</label>
+                            <input type="text" name="name" required class="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm text-white outline-none focus:border-vornac-gold"/>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs text-vornac-grey-light">Work email</label>
+                            <input type="email" name="email" required class="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm text-white outline-none focus:border-vornac-gold"/>
+                        </div>
+
+                        <div class="space-y-1 md:col-span-2">
+                            <label class="text-xs text-vornac-grey-light">Company</label>
+                            <input type="text" name="company" class="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm text-white outline-none focus:border-vornac-gold"/>
+                        </div>
+
+                        <div class="space-y-1 md:col-span-2">
+                            <label class="text-xs text-vornac-grey-light">Briefly describe your pentest requirements</label>
+                            <textarea name="message" rows="4" required class="w-full resize-none rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm text-white outline-none focus:border-vornac-gold"></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" data-submit-button class="mt-2 inline-flex w-full items-center justify-center rounded-lg bg-vornac-gold px-4 py-2.5 text-sm font-semibold text-vornac-black hover:brightness-110 hover-lift glow-edge-soft">
+                        <span data-submit-text>Request a demo</span>
+                    </button>
+
+                    <p class="text-center text-[11px] text-vornac-grey-light">
+                        Or reach out directly <span class="text-white">hello@vornac.com</span>
+                    </p>
+                </form>
+
+                <!-- Thank You Overlay -->
+                <div id="thankyou-overlay" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/70 backdrop-blur-sm">
+                    <div class="mx-4 max-w-md rounded-2xl border border-white/10 bg-vornac-grey-dark/95 p-6 text-center shadow-soft">
+                        <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-vornac-gold/15">
+                            <span class="text-2xl text-vornac-gold">✓</span>
+                        </div>
+                        <h3 class="mb-2 font-heading text-lg">Thank you.</h3>
+                        <p class="mb-5 text-sm text-vornac-grey-light">
+                            Your request has been received. We will get back to you shortly regarding your autonomous pentest demo.
+                        </p>
+                        <button id="thankyou-close" type="button" class="inline-flex items-center justify-center rounded-lg border border-white/20 px-4 py-2 text-sm font-semibold text-white hover:border-vornac-gold hover:text-vornac-gold hover-lift">
+                            Close
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Loader -->
+    <div class="vornac-loader-overlay" id="vornac-loader">
+        <div class="vornac-loader">
+            <div class="vornac-loader-scan"></div>
+        </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Hide loader
+        const el = document.getElementById("vornac-loader");
+        if (el) el.style.display = "none";
+
+        // --- Mobile nav + scroll header ---
+        const header = document.getElementById('site-header');
+
+        function updateHeader() {
+          if (!header) return;
+          header.classList.toggle('is-scrolled', window.scrollY > 10);
+        }
+
+        window.addEventListener('scroll', updateHeader, { passive: true });
+        updateHeader();
+
+        const toggleBtn = document.getElementById('nav-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const backdrop = document.getElementById('mobile-backdrop');
+        const mq = window.matchMedia('(min-width: 768px)');
+
+        function openMenu() {
+          if (!mobileMenu || !backdrop || !toggleBtn) return;
+          mobileMenu.classList.remove('hidden');
+          backdrop.classList.remove('hidden');
+          document.body.classList.add('nav-open');
+          toggleBtn.setAttribute('aria-expanded', 'true');
+          requestAnimationFrame(function() {
+            mobileMenu.classList.add('is-open');
+          });
+        }
+
+        function closeMenu() {
+          if (!mobileMenu || !backdrop || !toggleBtn) return;
+          mobileMenu.classList.remove('is-open');
+          backdrop.classList.add('hidden');
+          document.body.classList.remove('nav-open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+          window.setTimeout(function() {
+            mobileMenu.classList.add('hidden');
+          }, 180);
+        }
+
+        if (toggleBtn) {
+          toggleBtn.addEventListener('click', function() {
+            const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+            if (expanded) closeMenu(); else openMenu();
+          });
+        }
+
+        if (backdrop) {
+          backdrop.addEventListener('click', closeMenu);
+        }
+
+        if (mobileMenu) {
+          mobileMenu.querySelectorAll('a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', closeMenu);
+          });
+        }
+
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') closeMenu();
+        });
+
+        if (mq) {
+          mq.addEventListener('change', function(e) {
+            if (e.matches) closeMenu();
+          });
+        }
+
+        // --- Contact form ---
+        const form = document.getElementById('contact-form');
+        if (!form) return;
+
+        const overlay = document.getElementById('thankyou-overlay');
+        const closeBtn = document.getElementById('thankyou-close');
+        const submitBtn = form.querySelector('[data-submit-button]');
+        const submitText = submitBtn ? submitBtn.querySelector('[data-submit-text]') : null;
+
+        function showOverlay() {
+          if (!overlay) return;
+          overlay.classList.remove('hidden');
+        }
+
+        function hideOverlay() {
+          if (!overlay) return;
+          overlay.classList.add('hidden');
+        }
+
+        if (closeBtn) {
+          closeBtn.addEventListener('click', hideOverlay);
+        }
+
+        if (overlay) {
+          overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) hideOverlay();
+          });
+        }
+
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') hideOverlay();
+        });
+
+        form.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          if (!form.reportValidity()) return;
+
+          const originalText = submitText ? submitText.textContent : '';
+          if (submitBtn) submitBtn.disabled = true;
+          if (submitText) submitText.textContent = 'Sending...';
+
+          const formData = new FormData(form);
+
+          try {
+            const response = await fetch(form.action, {
+              method: form.method,
+              headers: {'Accept': 'application/json'},
+              body: formData,
+            });
+
+            if (response.ok) {
+              form.reset();
+              showOverlay();
+            } else {
+              console.error('Formspree error', response.status);
+              alert('Something went wrong. Please try again.');
+            }
+          } catch (err) {
+            console.error('Network error', err);
+            alert('Network error. Please try again.');
+          } finally {
+            if (submitBtn) submitBtn.disabled = false;
+            if (submitText) submitText.textContent = originalText;
+          }
+        });
+      });
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HD3WMEC4EP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HD3WMEC4EP');
+    </script>
+</main>
+
+<footer class="bg-vornac-black py-6">
+    <div class="mx-auto flex max-w-content flex-col items-center justify-between gap-3 px-4 text-[11px] text-vornac-grey-light sm:flex-row lg:px-6">
+        <p>VORNAC Autonomous Pentesting Agent</p>
         <div class="flex gap-4">
-          <a href="#" class="hover:text-white">Imprint</a>
-          <a href="#" class="hover:text-white">Privacy</a>
+            <a href="imprint.html" class="nav-link hover:text-white">Imprint</a>
+            <a href="privacy.html" class="nav-link hover:text-white">Privacy</a>
         </div>
-      </div>
-    </footer>
-  </body>
+    </div>
+</footer>
+
+</body>
 </html>
