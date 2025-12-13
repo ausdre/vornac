@@ -25,11 +25,11 @@
      * Light-edge glow (Panels / Cards)
      * -------------------------------------- */
     .glow-edge {
-        box-shadow: 0 0 42px rgba(250, 204, 21, 0.24);
+        box-shadow: 0 0 28px rgba(250, 204, 21, 0.24);
         border-color: rgba(250, 204, 21, 0.45);
         }
 
-    .glow-edge-soft { box-shadow: 0 0 28px rgba(250, 204, 21, 0.18); }
+    .glow-edge-soft { box-shadow: 0 0 20px rgba(250, 204, 21, 0.18); }
 
     .border-gradient-gold {
         border-style: solid;
@@ -60,7 +60,7 @@
         transition: transform 180ms ease, filter 180ms ease, box-shadow 180ms ease;
         will-change: transform;
         }
-    .hover-lift:hover { transform: translateY(-2px); }
+    .hover-lift:hover { transform: translateY(-3px); }
 
     /* ----------------------------------------
      * No-scroll when mobile nav open
@@ -84,13 +84,13 @@
 
     @keyframes highlight-pulse {
         0%, 100% { box-shadow: 0 0 0 rgba(250, 204, 21, 0); }
-        40% { box-shadow: 0 0 50px rgba(250, 204, 21, 0.35); }
-        60% { box-shadow: 0 0 32px rgba(250, 204, 21, 0.18); }
+        40% { box-shadow: 0 0 30px rgba(250, 204, 21, 0.35); }
+        60% { box-shadow: 0 0 16px rgba(250, 204, 21, 0.18); }
         }
 
     @keyframes highlight-pulse-soft {
         0%, 100% { box-shadow: 0 0 0 rgba(250, 204, 21, 0); }
-        50% { box-shadow: 0 0 32px rgba(250, 204, 21, 0.22); }
+        50% { box-shadow: 0 0 22px rgba(250, 204, 21, 0.22); }
         }
 
     :root {
@@ -204,4 +204,160 @@
         opacity: 1;
         transform: translateY(0);
         }
+    }
+/* Adaptive Hero-Overlay – ohne HTML-Änderung
+   Ziel: Lesbarkeit bleibt stabil, Overlay passt sich automatisch an Viewport/Device an.
+   Greift auf deine bestehende Hero-Overlay-DIV:
+   <div class="... bg-gradient-to-b from-black/35 via-black/35 to-black/60"></div>
+*/
+
+:root{
+    /* Default (Desktop) */
+    --hero-top: 0.30;
+    --hero-mid: 0.30;
+    --hero-bot: 0.55;
+    --hero-vig: 0.38;
+    }
+
+/* Mobile: stärker */
+@media (max-width: 640px){
+    :root{
+        --hero-top: 0.58;
+        --hero-mid: 0.50;
+        --hero-bot: 0.78;
+        --hero-vig: 0.62;
+        }
+    }
+
+/* Tablet: mittel */
+@media (min-width: 641px) and (max-width: 1024px){
+    :root{
+        --hero-top: 0.42;
+        --hero-mid: 0.38;
+        --hero-bot: 0.66;
+        --hero-vig: 0.48;
+        }
+    }
+
+/* sehr große Screens: etwas weniger */
+@media (min-width: 1536px){
+    :root{
+        --hero-top: 0.26;
+        --hero-mid: 0.26;
+        --hero-bot: 0.50;
+        --hero-vig: 0.34;
+        }
+    }
+
+/* iOS/Safari: wenn der Inhalt "heller" wirkt, minimal verstärken */
+@supports (-webkit-touch-callout: none){
+    :root{
+        --hero-top: calc(var(--hero-top) + 0.04);
+        --hero-mid: calc(var(--hero-mid) + 0.04);
+        --hero-bot: calc(var(--hero-bot) + 0.04);
+        --hero-vig: calc(var(--hero-vig) + 0.04);
+        }
+    }
+
+/* Überschreibt gezielt dein bestehendes Tailwind-Overlay anhand der eindeutigen Klassenkombi */
+.pointer-events-none.absolute.inset-0.bg-gradient-to-b.from-black\/35.via-black\/35.to-black\/60{
+    background-image:
+        /* Top-Scrim */
+                      linear-gradient(
+                              to bottom,
+                              rgba(0,0,0,var(--hero-top)) 0%,
+                              rgba(0,0,0,var(--hero-mid)) 48%,
+                              rgba(0,0,0,0) 72%
+                      ),
+                          /* Bottom-Scrim */
+                      linear-gradient(
+                              to top,
+                              rgba(0,0,0,var(--hero-bot)) 0%,
+                              rgba(0,0,0,0.22) 48%,
+                              rgba(0,0,0,0) 72%
+                      ),
+                          /* Vignette */
+                      radial-gradient(
+                              ellipse at center,
+                              rgba(0,0,0,0) 36%,
+                              rgba(0,0,0,var(--hero-vig)) 78%,
+                              rgba(0,0,0,0.92) 100%
+                      ) !important;
+
+    background-color: transparent !important;
+    }
+
+/* Optional: falls du später auf contain+blur umbaust – sorgt dennoch für Lesbarkeit */
+@media (prefers-reduced-transparency: reduce){
+    .pointer-events-none.absolute.inset-0.bg-gradient-to-b.from-black\/35.via-black\/35.to-black\/60{
+        background-image: linear-gradient(
+                                  to bottom,
+                                  rgba(0,0,0,0.72),
+                                  rgba(0,0,0,0.72)
+                          ) !important;
+        }
+    }
+
+/* leichte Text-Depth (nicht plakativ) */
+.vornac-hero-text-shadow h1,
+.vornac-hero-text-shadow p {
+    backdrop-filter: blur(1px);
+    text-shadow: 0 3px 1px rgba(0,0,0,0.94), 0 2px 7px rgba(0,0,0,0.74);
+    }
+.vornac-hero-text-shadow span {
+    backdrop-filter: blur(1px);
+    text-shadow: 0 2px 3px rgba(255, 255, 255, 0.1), 0 3px 2px rgba(250, 250, 250, 0.1)
+    }
+
+/* Hero media system for VORNAC */
+
+.hero-media { background: #000; }
+
+/* BG: füllt alles, verhindert „Video-Rand“-Gefühl */
+.hero-media__bg{
+    object-fit: cover;
+    transform: scale(1.06);
+    filter: blur(22px) saturate(1.05) brightness(0.82);
+    opacity: 0.55;
+    }
+
+/* FG: garantiert vollständige Anzeige auf Smartphones */
+.hero-media__fg{
+    object-fit: contain;
+    opacity: 0.98;
+
+    /* weiche Kanten, damit contain nicht wie ein „eingebettetes Video“ wirkt */
+    -webkit-mask-image: radial-gradient(ellipse at center,
+    rgba(0,0,0,1) 62%,
+    rgba(0,0,0,0.65) 80%,
+    rgba(0,0,0,0) 100%);
+    mask-image: radial-gradient(ellipse at center,
+    rgba(0,0,0,1) 62%,
+    rgba(0,0,0,0.65) 80%,
+    rgba(0,0,0,0) 100%);
+
+    filter: drop-shadow(0 0 26px rgba(0,0,0,0.72));
+    }
+
+/* Overlay: Text immer lesbar (Top+Bottom Scrim + Vignette) */
+.hero-media__overlay{
+    pointer-events: none;
+    background:
+                    linear-gradient(to bottom,
+                    rgba(0,0,0,0.78) 0%,
+                    rgba(0,0,0,0.32) 45%,
+                    rgba(0,0,0,0.00) 72%),
+                    linear-gradient(to top,
+                    rgba(0,0,0,0.92) 0%,
+                    rgba(0,0,0,0.30) 48%,
+                    rgba(0,0,0,0.00) 72%),
+                    radial-gradient(ellipse at center,
+                    rgba(0,0,0,0.00) 35%,
+                    rgba(0,0,0,0.55) 78%,
+                    rgba(0,0,0,0.92) 100%);
+    }
+
+/* iOS: 100vh Bug vermeiden – du nutzt min-h-screen, aber für Safari besser */
+@supports (height: 100svh) {
+    .min-h-screen { min-height: 100svh; }
     }

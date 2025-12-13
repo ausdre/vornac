@@ -11,15 +11,12 @@
 </head>
 
 <body class="bg-vornac-black text-white font-body antialiased">
-<!-- Global golden orbit lights -->
+<!-- Global golden orbit lights
 <div class="bg-orbit-lights">
-    <!-- oben links -->
     <div class="orbit-blob absolute -left-40 top-0 h-80 w-80 rounded-full bg-vornac-gold/25 overlay-soft-light animate-orbit-slow"></div>
-    <!-- rechts Mitte -->
     <div class="orbit-blob absolute -right-[8rem] top-1/3 h-96 w-96 rounded-full bg-vornac-gold/15 overlay-screen animate-orbit-medium"></div>
-    <!-- unten Mitte -->
     <div class="orbit-blob absolute left-1/3 -bottom-[9rem] h-72 w-72 rounded-full bg-vornac-gold/20 overlay-soft-light animate-orbit-fast"></div>
-</div>
+</div>-->
 
 <!-- Icons -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
@@ -98,7 +95,7 @@
                         100% { transform: translateX(-360px); opacity: 0; }
                         }
                     #o, #r, #n, #a, #c {
-                        animation: vornacFlyInHoldOut 4s cubic-bezier(0.86,0,0.07,1) both 1;
+                        animation: vornacFlyInHoldOut 3s cubic-bezier(0.86,0,0.07,1) both 1;
                         transform-origin: 0 0;
                         will-change: transform, opacity;
                         }
@@ -106,8 +103,8 @@
                     #o { animation-delay: 0.00s; }
                     #r { animation-delay: 0.06s; }
                     #n { animation-delay: 0.12s; }
-                    #a { animation-delay: 0.24s; }
-                    #c { animation-delay: 0.36s; }
+                    #a { animation-delay: 0.20s; }
+                    #c { animation-delay: 0.26s; }
                 </style>
 
                 <defs>
@@ -177,7 +174,7 @@
 
         <div class="hidden md:block">
             <a href="#contact" class="rounded-lg bg-vornac-gold px-4 py-2 text-sm font-semibold text-vornac-black shadow-soft glow-edge-soft hover:brightness-110 hover-lift">
-                Get Access_
+                Get Access
             </a>
         </div>
 
@@ -214,7 +211,7 @@
             <a href="#contact" class="nav-link block text-sm text-vornac-grey-light hover:text-white">Contact</a>
 
             <a href="#contact" class="mt-2 inline-flex w-full items-center justify-center rounded-lg bg-vornac-gold px-4 py-2.5 text-sm font-semibold text-vornac-black glow-edge-soft hover:brightness-110 hover-lift">
-                Get Access_
+                Get Access
             </a>
         </div>
     </div>
@@ -223,25 +220,34 @@
 <main id="top">
     <!-- HERO MIT VIDEO-BACKGROUND FULL WIDTH STACKED -->
     <section class="relative min-h-screen overflow-hidden border-b border-white/5 bg-black">
-        <!-- Background video -->
-        <video class="pointer-events-none absolute inset-0 h-full w-full object-cover scale-[1.1] object-center" src="infinte.MP4" autoplay muted loop playsinline></video>
-        <!-- Overlay -->
-        <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/35 via-black/35 to-black/60"></div>
+        <!-- Hero Media (BG-Fill + FG-Contain + Overlay) -->
+        <div class="hero-media pointer-events-none absolute inset-0">
+            <!-- BG: cover + blur (füllt Screen, kaschiert Letterboxing) -->
+            <video class="hero-media__bg absolute inset-0 h-full w-full object-center"
+                   src="infinte.MP4" autoplay muted loop playsinline preload="metadata"></video>
+
+            <!-- FG: contain (immer vollständig sichtbar) -->
+            <video class="hero-media__fg absolute inset-0 h-full w-full object-center"
+                   src="infinte.MP4" autoplay muted loop playsinline preload="metadata"></video>
+
+            <!-- Overlay: immer lesbar + vignette -->
+            <div class="hero-media__overlay absolute inset-0"></div>
+        </div>
 
         <!-- Container -->
         <div class="relative z-10 flex min-h-screen flex-col items-center justify-center gap-14 px-4 py-20 lg:px-8">
             <!-- TEXT -->
-            <div class="w-full max-w-full space-y-8 text-center">
+            <div class="w-full max-w-full space-y-8 text-center vornac-hero-text-shadow">
                 <div class="inline-flex items-center gap-2 rounded-full border border-vornac-gold/40 bg-vornac-gold/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.22em] text-vornac-grey-light glow-edge-soft highlight-pulse-soft">
-                    <span class="h-1.5 w-1.5 rounded-full bg-vornac-gold"></span>
-                    STATUS OPERATIONAL
+                    <span class="h-1.5 w-1.5 rounded-full animate-pulse bg-vornac-gold"></span>
+                    OPERATIONAL
                 </div>
 
-                <h1 class="font-heading text-4xl leading-tight sm:text-6xl lg:text-[3.7rem]">
+                <h1 class="font-heading text-4xl leading-tight sm:text-6xl lg:text-[3.7rem] vornac-hero-text-shadow">
                     Autonomous <span class="text-vornac-gold">Pentesting</span> for everybody.
                 </h1>
 
-                <p class="mx-auto w-full max-w-3xl text-base text-vornac-grey-light sm:text-lg">
+                <p class="mx-auto w-full max-w-3xl text-base text-vornac-grey-light sm:text-lg vornac-hero-text-shadow">
                     VORNAC performs penetration tests end-to-end without any human intervention—from target definition to
                     <span class="text-vornac-gold">audit-proof reporting</span>.
                 </p>
@@ -256,7 +262,7 @@
                 </div>
 
                 <div class="space-y-2">
-                    <p class="text-xs font-medium uppercase tracking-[0.2em] text-vornac-grey-light">Built for compliance</p>
+                    <p class="text-xs font-medium uppercase tracking-[0.2em] text-vornac-grey-light vornac-hero-text-shadow">Built for compliance</p>
                     <div class="flex flex-wrap justify-center gap-2">
                         <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-widest text-vornac-grey-light hover-lift">NIS2</span>
                         <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-widest text-vornac-grey-light hover-lift">DORA</span>
@@ -464,7 +470,7 @@
                         <p class="text-xs text-vornac-grey-light">Scheduled tests</p>
                         <p class="text-sm font-medium">Execution overview</p>
                     </div>
-                    <span class="rounded-full bg-vornac-gold/10 px-3 py-1 text-[11px] font-medium text-vornac-gold">STATUS: OPERATIONAL</span>
+                    <span class="rounded-full bg-vornac-gold/10 px-3 py-1 text-[11px] font-medium text-vornac-gold">OPERATIONAL</span>
                 </div>
 
                 <div class="space-y-3 text-xs">
@@ -504,7 +510,7 @@
     <section id="pricing" class="border-b border-white/5 bg-vornac-grey-dark">
         <div class="mx-auto max-w-content px-4 py-16 lg:px-6 lg:py-20">
             <div class="mx-auto max-w-2xl space-y-4 text-center">
-                <h2 class="font-heading text-3xl tracking-tight lg:text-[2.5rem]">Simple pricing for autonomous pentests.</h2>
+                <h2 class="font-heading text-3xl tracking-tight lg:text-[2.5rem]">Simple pricing for autonomous pentests</h2>
                 <p class="text-sm text-vornac-grey-light">VORNAC turns pentesting into a predictable, compliance-ready process.</p>
             </div>
 
@@ -657,10 +663,11 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        // Hide loader
-        const el = document.getElementById("vornac-loader");
-        if (el) el.style.display = "none";
-
+        setTimeout(function() {
+          // Hide loader
+          const el = document.getElementById("vornac-loader");
+          if (el) el.style.display = "none";
+        },1000)
         // --- Mobile nav + scroll header ---
         const header = document.getElementById('site-header');
 
