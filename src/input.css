@@ -136,6 +136,21 @@
         box-shadow: 0 0 12px rgba(245, 201, 106, 0.8);
         animation: vornac-scan-line 1s ease-in-out infinite;
         }
+    /* ----------------------------------------
+ * VORNAC Dashboard Layout
+ * -------------------------------------- */
+    .vornac-dashboard {
+        display: grid;
+        grid-template-columns: 220px minmax(0, 1fr);
+        gap: 1rem;
+        }
+
+    @media (min-width: 768px) {
+        .vornac-dashboard {
+            grid-template-columns: 240px minmax(0, 1fr);
+            }
+        }
+
     }
 
 @layer components {

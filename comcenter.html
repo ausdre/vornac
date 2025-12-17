@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8"/>
+  <title>VORNAC – Command Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="VORNAC C2 Command Center"/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20236%20208%22%20width%3D%22236%22%20height%3D%22208%22%20shape-rendering%3D%22geometricPrecision%22%20text-rendering%3D%22geometricPrecision%22%3E%3Cdefs%3E%3ClinearGradient%20gradientUnits%3D%22userSpaceOnUse%22%20x1%3D%22339.35%22%20y1%3D%22894.62%22%20x2%3D%22339.35%22%20y2%3D%221102.62%22%20id%3D%22gradient-0%22%20gradientTransform%3D%22matrix%280.48429%20-0.87489%201.06616%200.90262%20-1217.88049%20-510.57703%29%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22black%22%2F%3E%3Cstop%20offset%3D%220.26%22%20stop-color%3D%22black%22%2F%3E%3Cstop%20offset%3D%220.52%22%20stop-color%3D%22black%22%2F%3E%3Cstop%20offset%3D%220.7%22%20stop-color%3D%22black%22%20stop-opacity%3D%220.04%22%2F%3E%3Cstop%20offset%3D%220.88%22%20stop-color%3D%22black%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%220.88%22%20stop-color%3D%22black%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22black%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath%20d%3D%22M%200%200%20L%2050%200%20L%20117%20126%20L%20187%200%20L%20236%200%20L%20114%20208%20L%200%200%20Z%22%20fill%3D%22url%28%23gradient-0%29%22%20clip-rule%3D%22evenodd%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E"/>
+  <link rel="stylesheet" href="output.css"/>
+</head>
+<body class="bg-vornac-black text-white font-body antialiased">
+
+<!-- TOP NAV -->
+<header id="site-header" class="relative sticky top-0 z-40 border-b border-white/5 backdrop-blur">
+  <nav class="mx-auto flex max-w-[1440px] items-center justify-between px-6 py-4">
+    <a href="index.html#top" class="flex items-center gap-3" aria-label="VORNAC home">
+      <!-- VORNAC LOGO -->
+      <svg xmlns="http://www.w3.org/2000/svg"
+           class="nav-logo h-10 w-auto"
+           viewBox="0 0 1448 208"
+           shape-rendering="geometricPrecision"
+           text-rendering="geometricPrecision">
+        <style>
+          @keyframes vornacFlyInHoldOut {
+            0%   { transform: translateX(-360px); opacity: 0; }
+            25%  { transform: translateX(0);      opacity: 1; }
+            75%  { transform: translateX(0);      opacity: 1; }
+            100% { transform: translateX(-360px); opacity: 0; }
+          }
+          #o, #r, #n, #a, #c {
+            animation: vornacFlyInHoldOut 3s cubic-bezier(0.86,0,0.07,1) both 1;
+            transform-origin: 0 0;
+            will-change: transform, opacity;
+          }
+          #v {}
+          #o { animation-delay: 0.00s; }
+          #r { animation-delay: 0.06s; }
+          #n { animation-delay: 0.12s; }
+          #a { animation-delay: 0.20s; }
+          #c { animation-delay: 0.26s; }
+        </style>
+        <defs>
+          <linearGradient gradientUnits="userSpaceOnUse"
+                          x1="339.35" y1="894.62" x2="339.35" y2="1102.62"
+                          id="gradient-0"
+                          gradientTransform="matrix(0.48429,-0.87489,1.06616,0.90262,-1217.88049,-510.57703)">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset="0.26" stop-color="#ffffff"/>
+            <stop offset="0.52" stop-color="#ffffff"/>
+            <stop offset="0.7" stop-color="#ffffff" stop-opacity="0.04"/>
+            <stop offset="0.88" stop-color="#ffffff" stop-opacity="0"/>
+            <stop offset="0.88" stop-color="#ffffff"/>
+            <stop offset="1" stop-color="#ffffff"/>
+          </linearGradient>
+        </defs>
+        <path id="v"
+              d="M 0 0 L 50.1 0 L 117.1 126 L 187.09 0 L 236.09 0 L 114.06 207.74 L 0 0 Z"
+              fill="url(#gradient-0)"/>
+        <path id="o"
+              d="M 297.22 43.48 L 422.22 43.48 L 422.11 164.82 L 297.22 164.82 L 297.22 43.48 Z M 296.22 0.03 L 251.23 43.48 L 251.4 164.82 L 296.22 207.74 L 421.22 207.74 L 465.91 164.82 L 466.09 43.48 L 421.22 0.03 L 296.22 0.03 Z"
+              fill="#ffffff"/>
+        <path id="r"
+              d="M 509.21 0.03 L 670.06 0 L 711.06 42 L 711.06 100 L 682.06 127 L 673.06 134 L 665.06 134 L 720.93 207.74 L 669.2 207.74 L 574.2 92.03 L 664.2 92.03 L 664.2 44.03 L 554.21 43.03 L 554.21 207.74 L 509.21 207.74 L 509.21 0.03 Z"
+              fill="#ffffff"/>
+        <path id="n"
+              d="M 754.05 0 L 904.04 122.03 L 904 0 L 945.1 0 L 945.04 208.03 L 797.05 86.03 L 797.05 207.74 L 754.05 207.74 L 754.05 0 Z"
+              fill="#ffffff"/>
+        <path id="a"
+              d="M 1094.85 0 L 1222.19 207.74 L 1056.03 207.74 L 1079.03 165 L 1148.03 165 L 1096.03 76 L 1018.77 207.74 L 968.04 207.74 L 1094.85 0 Z"
+              fill="#ffffff"/>
+        <path id="c"
+              d="M 1273.02 0 L 1448 0 L 1407.01 43 L 1271.02 43.48 L 1271.02 162 L 1275.02 164.82 L 1406.01 164.82 L 1448 207.74 L 1272.02 207.74 L 1227.49 164.82 L 1226.89 43.48 L 1273.02 0 Z"
+              fill="#ffffff"/>
+      </svg>
+    </a>
+
+    <div class="flex items-center gap-6 text-xs">
+      <span class="hidden lg:inline font-mono tracking-[0.22em] text-vornac-grey-light">
+        C2 COMMAND CENTER
+      </span>
+      <a href="index.html#contact"
+         class="rounded-lg bg-vornac-gold px-4 py-2 text-xs font-semibold text-vornac-black shadow-soft glow-edge-soft hover:brightness-110 hover-lift">
+        Get support
+      </a>
+    </div>
+  </nav>
+</header>
+
+<!-- SESSION BAR -->
+<section class="border-b border-white/5 bg-black/80 backdrop-blur">
+  <div class="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-6 py-3">
+    <div class="flex items-center gap-3">
+      <span class="h-2 w-2 animate-pulse rounded-full bg-vornac-gold shadow-[0_0_10px_rgba(234,179,8,0.8)]"></span>
+      <div class="font-mono text-[11px] uppercase tracking-[0.22em] text-vornac-grey-light">
+        ACTIVE AUTONOMOUS PENTEST SESSION
+      </div>
+    </div>
+    <div class="flex items-center gap-6 font-mono text-[11px] text-vornac-grey-light">
+      <div>ORG: <span class="text-white">VORNAC DEMO</span></div>
+      <div>MODE: <span class="text-vornac-gold">CONTINUOUS</span></div>
+      <div>LAST RUN: <span class="text-white">23m ago</span></div>
+    </div>
+  </div>
+</section>
+
+<main class="min-h-screen bg-vornac-black">
+  <div class="mx-auto max-w-[1440px] px-6 py-6">
+    <div class="vornac-dashboard">
+
+      <!-- SIDEBAR -->
+      <aside class="flex h-[calc(100vh-120px)] min-w-[260px] max-w-[260px] flex-col rounded-2xl border border-white/10 bg-black/90 p-4">
+        <div class="mb-4 font-mono text-[10px] uppercase tracking-[0.16em] text-vornac-grey-light">
+          Views
+        </div>
+        <button data-view-target="overview" class="view-btn mb-1 w-full rounded-lg bg-white/10 px-3 py-2 text-left text-[12px] text-white">
+          Overview
+        </button>
+        <button data-view-target="live" class="view-btn mb-1 w-full rounded-lg px-3 py-2 text-left text-[12px] text-vornac-grey-light hover:bg-white/5">
+          Live session
+        </button>
+        <button data-view-target="queue" class="view-btn mb-1 w-full rounded-lg px-3 py-2 text-left text-[12px] text-vornac-grey-light hover:bg-white/5">
+          Queue
+        </button>
+        <button data-view-target="history" class="view-btn mb-1 w-full rounded-lg px-3 py-2 text-left text-[12px] text-vornac-grey-light hover:bg-white/5">
+          History
+        </button>
+        <button data-view-target="reports" class="view-btn mb-1 w-full rounded-lg px-3 py-2 text-left text-[12px] text-vornac-grey-light hover:bg-white/5">
+          Reports
+        </button>
+        <button data-view-target="settings" class="view-btn mb-1 w-full rounded-lg px-3 py-2 text-left text-[12px] text-vornac-grey-light hover:bg-white/5">
+          Settings
+        </button>
+        <button data-view-target="demo" class="view-btn mt-3 w-full rounded-lg border border-vornac-gold/40 bg-vornac-gold/10 px-3 py-2 text-left text-[12px] text-vornac-gold hover:bg-vornac-gold hover:text-vornac-black">
+          Demo telemetry
+        </button>
+      </aside>
+
+      <!-- VIEWS -->
+      <section id="views" class="ml-4 flex-1 space-y-6">
+
+        <!-- OVERVIEW VIEW -->
+        <section data-view="overview" class="space-y-4">
+          <!-- Welcome + Disclaimer -->
+          <article class="flex items-start justify-between gap-6 rounded-xl border border-red-500/40 bg-red-900/20 px-6 py-4">
+            <div>
+              <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-red-300">
+                STOP! READ BEFORE PROCEEDING
+              </div>
+              <h1 class="mt-1 text-lg uppercase font-semibold">VORNAC IS A CONTROLLED CYBER OPERATIONS CAPABILITY</h1>
+              <p class="mt-2 max-w-3xl text-[12px] text-red-100/90">
+                USE IS AUTHORIZED ONLY AGAINST INFRASTRUCTURE, APPLICATIONS, AND DATA YOU OWN OR WHERE YOU HOLD EXPLICIT WRITTEN PERMISSION TO TEST. ANY ACTION AGAINST THIRD-PARTY SYSTEMS WITHOUT WRITTEN AUTHORIZATION IS ILLEGAL. YOU ARE FULLY AND PERSONALLY LIABLE FOR EVERYTHING INITIATED THROUGH ORNAC, INCLUDING AUTOMATED AGENTS, INTEGRATIONS, SCHEDULED TASKS, AND API CALLS. THIS PLATFORM IS MONITORED; ACTIVITY IS LOGGED, ATTRIBUTABLE, AND MAY BE RETAINED OR DISCLOSED WHERE REQUIRED. OPERATE STRICTLY WITHIN THE APPROVED SCOPE, TIME WINDOW, AND RULES OF ENGAGEMENT, AND ABORT IMMEDIATELY IF BEHAVIOR DEVIATES FROM PLAN. BY CONTINUING, YOU CONFIRM YOU HAVE WRITTEN AUTHORIZATION FOR ALL TARGETS AND ACCEPT FULL LEGAL RESPONSIBILITY FOR ALL OUTCOMES.
+              </p>
+            </div>
+          </article>
+
+          <!-- KPI row: Queue + Completed + Active status -->
+          <div class="grid grid-cols-3 gap-4">
+            <article class="rounded-xl border border-white/10 bg-black/80 px-4 py-3">
+              <div class="font-mono text-[10px] uppercase tracking-[0.16em] text-vornac-grey-light">
+                Queue
+              </div>
+              <div class="mt-2 text-2xl font-semibold">4</div>
+              <div class="text-[11px] text-vornac-grey-light">pending pentest campaigns</div>
+            </article>
+            <article class="rounded-xl border border-white/10 bg-black/80 px-4 py-3">
+              <div class="font-mono text-[10px] uppercase tracking-[0.16em] text-vornac-grey-light">
+                Pentests completed
+              </div>
+              <div class="mt-2 text-2xl font-semibold text-vornac-gold">27</div>
+              <div class="text-[11px] text-vornac-grey-light">last 30 days</div>
+            </article>
+            <article class="rounded-xl border border-white/10 bg-black/80 px-4 py-3">
+              <div class="font-mono text-[10px] uppercase tracking-[0.16em] text-vornac-grey-light">
+                Live status
+              </div>
+              <div class="mt-2 flex items-center gap-2 text-[13px] font-semibold text-emerald-400">
+                <span class="h-2 w-2 animate-pulse rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.9)]"></span>
+                <span>ACTIVE PENTEST RUNNING</span>
+              </div>
+              <div class="mt-1 text-[11px] text-vornac-grey-light">AUTH-SERVER-04 · external perimeter · ETA 04:12</div>
+            </article>
+          </div>
+        </section>
+
+        <!-- LIVE VIEW (active pentest session, prominent) -->
+        <section data-view="live" class="hidden space-y-4">
+          <div class="flex items-center justify-between">
+            <h2 class="font-mono text-[11px] uppercase tracking-[0.14em] text-vornac-grey-light">
+              Live pentest session
+            </h2>
+          </div>
+          <div class="grid grid-cols-[1.4fr_1fr] gap-4">
+            <article class="rounded-xl border border-white/10 bg-black/80 p-4">
+              <header class="mb-3 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.14em] text-vornac-grey-light">
+                <span>Current campaign</span>
+                <span class="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] text-emerald-400">running</span>
+              </header>
+              <div class="space-y-2 text-[12px]">
+                <div class="flex items-center justify-between">
+                  <span class="text-vornac-grey-light">Name</span>
+                  <span class="font-mono">External perimeter scan</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-vornac-grey-light">Target</span>
+                  <span class="font-mono">AUTH-SERVER-04 (eu-west)</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-vornac-grey-light">Mode</span>
+                  <span class="font-mono text-vornac-gold">Autonomous · non-destructive</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-vornac-grey-light">Progress</span>
+                  <span class="font-mono">52% · ETA 04:12</span>
+                </div>
+              </div>
+              <div class="mt-4 h-2 w-full rounded-full bg-white/10">
+                <div class="h-2 w-1/2 rounded-full bg-emerald-400"></div>
+              </div>
+            </article>
+            <article class="rounded-xl border border-white/10 bg-black/80 p-4">
+              <header class="mb-3 font-mono text-[11px] uppercase tracking-[0.14em] text-vornac-grey-light">
+                Safety guardrails
+              </header>
+              <ul class="space-y-1 text-[11px] text-vornac-grey-light">
+                <li>• Non-destructive mode enforced for this session.</li>
+                <li>• Out-of-scope domains hard-blocked by policy.</li>
+                <li>• All actions are logged and time-stamped.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <!-- QUEUE VIEW (was Findings / Operations logic) -->
+        <section data-view="queue" class="hidden space-y-4">
+          <div class="flex items-center justify-between">
+            <h2 class="font-mono text-[11px] uppercase tracking-[0.14em] text-vornac-grey-light">
+              Queue
+            </h2>
+            <button id="open-operation-modal"
+                    class="rounded-lg bg-vornac-gold px-4 py-2 text-[11px] font-mono font-semibold text-vornac-black hover:brightness-110">
+              New operation
+            </button>
+          </div>
+          <div class="h-[420px] rounded-xl border border-white/10 bg-black/80 p-4">
+            <div class="mb-3 flex items-center justify-between text-[11px] font-mono text-vornac-grey-light">
+              <div class="flex gap-3">
+                <button class="rounded-full bg-white/10 px-3 py-1 text-xs text-white">All</button>
+                <button class="rounded-full px-3 py-1 text-xs hover:bg-white/5">Queued</button>
+                <button class="rounded-full px-3 py-1 text-xs hover:bg-white/5">Running</button>
+                <button class="rounded-full px-3 py-1 text-xs hover:bg-white/5">Paused</button>
+              </div>
+            </div>
+            <div class="h-[340px] overflow-y-auto overflow-x-hidden">
+              <table class="min-w-full border-collapse text-left text-[11px] font-mono">
+                <thead class="border-b border-white/10 text-vornac-grey-light">
+                <tr>
+                  <th class="py-2 pr-4">Name</th>
+                  <th class="py-2 pr-4">Target</th>
+                  <th class="py-2 pr-4">Mode</th>
+                  <th class="py-2 pr-4">Status</th>
+                  <th class="py-2 pr-4">Scheduled</th>
+                </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5">
+                <tr>
+                  <td class="py-2 pr-4">External perimeter scan</td>
+                  <td class="py-2 pr-4">*.example.com</td>
+                  <td class="py-2 pr-4 text-vornac-gold">Autonomous</td>
+                  <td class="py-2 pr-4 text-emerald-400">Running</td>
+                  <td class="py-2 pr-4">now</td>
+                </tr>
+                <tr>
+                  <td class="py-2 pr-4">API abuse simulation</td>
+                  <td class="py-2 pr-4">api.example.com</td>
+                  <td class="py-2 pr-4">Red team</td>
+                  <td class="py-2 pr-4 text-slate-300">Queued</td>
+                  <td class="py-2 pr-4">tonight 02:00</td>
+                </tr>
+                <tr>
+                  <td class="py-2 pr-4">Internal lateral movement</td>
+                  <td class="py-2 pr-4">10.0.0.0/16</td>
+                  <td class="py-2 pr-4">APT simulation</td>
+                  <td class="py-2 pr-4 text-slate-300">Queued</td>
+                  <td class="py-2 pr-4">after exterior complete</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- HISTORY VIEW (was Assets) -->
+        <section data-view="history" class="hidden space-y-4">
+          <h2 class="font-mono text-[11px] uppercase tracking-[0.14em] text-vornac-grey-light">
+            History
+          </h2>
+          <div class="h-[460px] rounded-xl border border-white/10 bg-black/80 p-4">
+            <div class="h-full overflow-y-auto overflow-x-hidden">
+              <table class="min-w-full border-collapse text-left text-[11px] font-mono">
+                <thead class="border-b border-white/10 text-vornac-grey-light">
+                <tr>
+                  <th class="py-2 pr-4">Name</th>
+                  <th class="py-2 pr-4">Scope</th>
+                  <th class="py-2 pr-4">Finished</th>
+                  <th class="py-2 pr-4">Findings</th>
+                  <th class="py-2 pr-4">Status</th>
+                </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5">
+                <tr>
+                  <td class="py-2 pr-4">External perimeter scan</td>
+                  <td class="py-2 pr-4">internet-facing</td>
+                  <td class="py-2 pr-4">2025-12-14 03:22</td>
+                  <td class="py-2 pr-4">3 critical / 12 high</td>
+                  <td class="py-2 pr-4 text-emerald-400">Completed</td>
+                </tr>
+                <tr>
+                  <td class="py-2 pr-4">Internal lateral movement</td>
+                  <td class="py-2 pr-4">10.0.0.0/16</td>
+                  <td class="py-2 pr-4">2025-12-10 01:11</td>
+                  <td class="py-2 pr-4">5 high / 9 medium</td>
+                  <td class="py-2 pr-4 text-emerald-400">Completed</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- REPORTS VIEW (was Compliance) -->
+        <section data-view="reports" class="hidden space-y-4">
+          <h2 class="font-mono text-[11px] uppercase tracking-[0.14em] text-vornac-grey-light">
+            Reports
+          </h2>
+          <div class="grid grid-cols-3 gap-4">
+            <article class="rounded-xl border border-white/10 bg-black/80 px-4 py-3">
+              <div class="text-xs text-vornac-grey-light">Latest technical report</div>
+              <div class="mt-1 text-sm font-semibold text-vornac-gold">External perimeter · PDF</div>
+              <div class="mt-2 text-[11px] text-vornac-grey-light">Generated 2025-12-14</div>
+            </article>
+            <article class="rounded-xl border border-white/10 bg-black/80 px-4 py-3">
+              <div class="text-xs text-vornac-grey-light">Management summary</div>
+              <div class="mt-1 text-sm font-semibold text-vornac-gold">Executive overview</div>
+              <div class="mt-2 text-[11px] text-vornac-grey-light">Generated 2025-12-13</div>
+            </article>
+            <article class="rounded-xl border border-white/10 bg-black/80 px-4 py-3">
+              <div class="text-xs text-vornac-grey-light">Compliance mapping</div>
+              <div class="mt-1 text-sm font-semibold text-vornac-gold">NIS2 · DORA · VAIT</div>
+              <div class="mt-2 text-[11px] text-vornac-grey-light">Ready for export</div>
+            </article>
+          </div>
+          <div class="rounded-xl border border-white/10 bg-black/80 p-4 text-[11px] font-mono text-vornac-grey-light">
+            <div class="mb-3 flex items-center justify-between">
+              <span>Export report (demo)</span>
+              <button class="rounded-lg border border-white/20 px-3 py-1 text-[11px] text-vornac-grey-light opacity-60">
+                Export PDF (disabled)
+              </button>
+            </div>
+            <p>In der produktiven Version können vollständige technische Reports und Management Summaries exportiert werden.</p>
+          </div>
+        </section>
+
+        <!-- SETTINGS VIEW -->
+        <section data-view="settings" class="hidden space-y-4">
+          <h2 class="font-mono text-[11px] uppercase tracking-[0.14em] text-vornac-grey-light">
+            Settings
+          </h2>
+          <div class="grid grid-cols-2 gap-4">
+            <article class="rounded-xl border border-white/10 bg-black/80 p-4">
+              <header class="mb-3 font-mono text-[11px] uppercase tracking-[0.14em] text-vornac-grey-light">
+                Schedules
+              </header>
+              <ul class="space-y-1 text-[11px] text-vornac-grey-light">
+                <li>• Nightly external scan: 01:00–04:00 (enabled)</li>
+                <li>• Weekly internal campaign: Sunday 02:00 (enabled)</li>
+                <li>• Ad-hoc red team: manual approval required</li>
+              </ul>
+            </article>
+            <article class="rounded-xl border border-white/10 bg-black/80 p-4">
+              <header class="mb-3 font-mono text-[11px] uppercase tracking-[0.14em] text-vornac-grey-light">
+                Scope configuration
+              </header>
+              <ul class="space-y-1 text-[11px] text-vornac-grey-light">
+                <li>• In-scope: *.example.com, 10.0.0.0/16</li>
+                <li>• Out-of-scope: payment provider, third-party SaaS</li>
+                <li>• Safe-mode: non-destructive (default)</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <!-- DEMO VIEW (unchanged) -->
+        <section data-view="demo" class="hidden grid grid-cols-[1.2fr_1fr] gap-4">
+          <article class="flex flex-col rounded-xl border border-white/10 bg-black/80 p-4">
+            <header class="mb-3 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.14em] text-vornac-grey-light">
+              <span>Demo telemetry · traffic</span>
+              <span class="rounded-full bg-vornac-gold/10 px-2 py-0.5 text-[10px] text-vornac-gold">simulated</span>
+            </header>
+            <div class="relative h-[260px] w-full">
+              <canvas id="trafficChart"></canvas>
+            </div>
+          </article>
+
+          <article class="flex flex-col rounded-xl border border-white/10 bg-black p-4">
+            <header class="mb-3 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.14em] text-vornac-grey-light">
+              <span>Demo telemetry · system log</span>
+              <span class="text-[10px] text-vornac-grey-light">read-only</span>
+            </header>
+            <div id="terminal" class="h-[260px] space-y-1 overflow-y-auto font-mono text-[11px] text-slate-300"></div>
+          </article>
+        </section>
+
+      </section>
+    </div>
+  </div>
+</main>
+
+<!-- Operation Modal (Demo) -->
+<div id="operation-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 backdrop-blur">
+  <div class="w-full max-w-md rounded-xl border border-vornac-gold/40 bg-black p-6">
+    <h3 class="mb-4 font-mono text-[11px] uppercase tracking-[0.14em] text-vornac-gold">
+      New operation (demo)
+    </h3>
+    <div class="space-y-3 text-[11px] font-mono text-vornac-grey-light">
+      <div>
+        <label class="mb-1 block">Target (URL/IP)</label>
+        <input class="w-full rounded-lg border border-white/20 bg-black px-3 py-2 text-[11px] text-white" placeholder="https://target-system.com"/>
+      </div>
+      <div>
+        <label class="mb-1 block">Profile</label>
+        <select class="w-full rounded-lg border border-white/20 bg-black px-3 py-2 text-[11px] text-white">
+          <option>NIS2 compliance audit (non-destructive)</option>
+          <option>Red team assault (full scope)</option>
+          <option>APT simulation</option>
+        </select>
+      </div>
+    </div>
+    <div class="mt-5 flex gap-2">
+      <button class="flex-1 rounded-lg bg-vornac-gold px-3 py-2 text-[11px] font-mono font-semibold text-vornac-black opacity-60">
+        Start (disabled in demo)
+      </button>
+      <button id="close-operation-modal" class="flex-1 rounded-lg border border-white/20 px-3 py-2 text-[11px] font-mono text-vornac-grey-light hover:bg-white/5">
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+<script>
+  // View switching
+  const viewButtons = document.querySelectorAll('.view-btn');
+  const views = document.querySelectorAll('[data-view]');
+  function setView(name) {
+    views.forEach(v => v.classList.toggle('hidden', v.dataset.view !== name));
+    viewButtons.forEach(btn => {
+      const active = btn.dataset.viewTarget === name;
+      btn.classList.toggle('bg-white/10', active);
+      btn.classList.toggle('text-white', active);
+      if (!active) {
+        btn.classList.remove('bg-white/10', 'text-white');
+      }
+    });
+  }
+  viewButtons.forEach(btn => {
+    btn.addEventListener('click', () => setView(btn.dataset.viewTarget));
+  });
+  setView('overview');
+
+  // Operation modal (demo)
+  const openModal = document.getElementById('open-operation-modal');
+  const closeModal = document.getElementById('close-operation-modal');
+  const modal = document.getElementById('operation-modal');
+  if (openModal && closeModal && modal) {
+    openModal.addEventListener('click', () => modal.classList.remove('hidden'));
+    closeModal.addEventListener('click', () => modal.classList.add('hidden'));
+  }
+
+  // Demo log
+  const terminal = document.getElementById('terminal');
+  const logs = [
+    { type: 'sys', msg: 'Scanning port 443 on 192.168.4.1...' },
+    { type: 'warn', msg: 'WAF detected at edge perimeter.' },
+    { type: 'sys', msg: 'Rotated proxy chain (42ms RTT).' },
+    { type: 'crit', msg: 'VULNERABILITY: SQL injection in /login.' },
+    { type: 'sys', msg: 'Indexing directory structure for reporting.' }
+  ];
+  function addLog() {
+    if (!terminal) return;
+    const log = logs[Math.floor(Math.random() * logs.length)];
+    const row = document.createElement('div');
+    row.className = 'flex gap-2 text-[11px]';
+    const time = new Date().toLocaleTimeString('de-DE', { hour12: false });
+    const typeClass =
+      log.type === 'crit' ? 'text-red-400 font-semibold' :
+      log.type === 'warn' ? 'text-orange-400' :
+      'text-vornac-gold';
+    row.innerHTML =
+      `<span class="text-slate-500">[${time}]</span>` +
+      `<span class="${typeClass}">${log.type.toUpperCase()}</span>` +
+      `<span class="text-slate-300">${log.msg}</span>`;
+    terminal.appendChild(row);
+    terminal.scrollTop = terminal.scrollHeight;
+  }
+  setInterval(addLog, 2500);
+
+  // Demo traffic chart
+  const ctx = document.getElementById('trafficChart')?.getContext('2d');
+  if (ctx) {
+    const gradient = ctx.createLinearGradient(0, 0, 0, 160);
+    gradient.addColorStop(0, 'rgba(255, 154, 77, 0.45)');
+    gradient.addColorStop(1, 'rgba(255, 154, 77, 0)');
+    const chart = new Chart(ctx, {
+      type: 'line',data:
+       {
+        labels: Array(30).fill(''),
+        datasets: [{ data:
+           Array(30).fill(0).map(() => Math.random() * 80 + 20),
+          borderColor: '#FF9A4D',
+          borderWidth: 2,
+          backgroundColor: gradient,
+          fill: true,
+          tension: 0.35,
+          pointRadius: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { display: false },
+          y: {
+            display: true,
+            border: { display: false },
+            grid: { color: 'rgba(148,163,184,0.16)' },
+            ticks: {
+              color: '#9ca3af',
+              font: { family: 'JetBrains Mono', size: 10 }
+            }
+          }
+        },
+        animation: false
+      }
+    });
+    setInterval(() => {
+      const data = chart.data.datasets[0].data;
+      data.shift();
+      data.push(Math.random() * 80 + 20);
+      chart.update();
+    }, 1000);
+  }
+</script>
+</body>
+</html>
