@@ -11,6 +11,18 @@
         /* Effekt für das Video-Ende */
         #hero-video { transition: filter 2.5s ease; will-change: filter; }
         .video-ended #hero-video { filter: blur(6px) brightness(0.5); }
+
+        .step-card {
+        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform, opacity;
+        }
+        .opacity-0 { opacity: 0; }
+        .translate-y-10 { transform: translateY(2.5rem); }
+        /* Diese Klassen werden vom JS vergeben */
+        .reveal-active {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+    }
     </style>
 </head>
 
@@ -376,43 +388,6 @@
 
 </section>
 
-<script>
-    const startCounters = () => {
-        const counters = document.querySelectorAll('[data-target]');
-        const speed = 200; // Je niedriger, desto schneller
-
-        counters.forEach(counter => {
-            const updateCount = () => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                const inc = target / speed;
-
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(updateCount, 15);
-                } else {
-                    counter.innerText = target;
-                }
-            };
-            updateCount();
-        });
-    };
-
-    // Observer, um die Animation erst beim Scrollen zu starten
-    const observerOptions = { threshold: 0.5 };
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                startCounters();
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    const evolutionSection = document.getElementById('evolution');
-    if (evolutionSection) observer.observe(evolutionSection);
-</script>
-
 <!-- END THE SHIFT-->
 
 <!-- HOW IT WORKS-->
@@ -478,37 +453,6 @@
     </div>
 </section>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const section = document.querySelector('#how-it-works');
-        const cards = document.querySelectorAll('.step-card');
-        const fillLine = document.querySelector('#step-line-fill');
-
-        const observerOptions = {
-            threshold: 0.05
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Start line animation
-                    if(fillLine) fillLine.style.width = '100%';
-
-                    // Reveal cards one by one
-                    cards.forEach(card => {
-                        card.classList.remove('opacity-0', 'translate-y-10');
-                        card.classList.add('opacity-100', 'translate-y-0');
-                    });
-
-                    // Stop observing after animation is triggered
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        if(section) observer.observe(section);
-    });
-</script>
 <!-- END HOW  IT WORKS-->
 
     <section class="border-b border-white/5 bg-vornac-black">
@@ -773,96 +717,7 @@
     </div>
 </footer>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // --- LOADER ---
-        const el = document.getElementById("vornac-loader");
-        if (el) el.style.display = "none";
 
-        // --- VIDEO & HERO LOGIC ---
-        const heroVideo = document.getElementById('hero-video');
-        const heroSection = document.getElementById('hero-section');
-        const heroOverlay = document.getElementById('hero-overlay');
-
-        if (heroVideo) {
-            const startPlay = () => {
-                heroVideo.play().catch(() => {
-                    document.addEventListener('click', () => heroVideo.play(), { once: true });
-                });
-            };
-            startPlay();
-            heroVideo.addEventListener('ended', function() {
-                heroVideo.pause();
-                if (heroSection) heroSection.classList.add('video-ended');
-                if (heroOverlay) {
-                    heroOverlay.classList.replace('via-black/45', 'via-black/60');
-                    heroOverlay.classList.replace('to-black/90', 'to-black/95');
-                }
-                // Starte Dashboard-Animation am Ende des Videos
-                startDashboardAnimation();
-            });
-        }
-
-        // --- DASHBOARD ANIMATION LOGIC ---
-        function startDashboardAnimation() {
-            animateValue("stat-percent", 0, 78, 1500);
-            animateValue("stat-findings", 0, 7, 2000);
-            animateValue("stat-critical", 0, 2, 2000);
-            animateValue("stat-eta", 0, 18, 1000);
-            document.getElementById("stat-bar").style.width = "78%";
-        }
-
-        function animateValue(id, start, end, duration) {
-            const obj = document.getElementById(id);
-            if (!obj) return;
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                obj.innerHTML = Math.floor(progress * (end - start) + start);
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                }
-            };
-            window.requestAnimationFrame(step);
-        }
-
-        // --- NAVIGATION & FORM LOGIC (BLEIBT GLEICH) ---
-        const header = document.getElementById('site-header');
-        window.addEventListener('scroll', () => { if (header) header.classList.toggle('is-scrolled', window.scrollY > 10); }, { passive: true });
-
-        const toggleBtn = document.getElementById('nav-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const backdrop = document.getElementById('mobile-backdrop');
-
-        function openMenu() {
-            if (!mobileMenu || !backdrop) return;
-            mobileMenu.classList.remove('hidden'); backdrop.classList.remove('hidden');
-            document.body.classList.add('nav-open');
-            requestAnimationFrame(() => mobileMenu.classList.add('is-open'));
-        }
-        function closeMenu() {
-            if (!mobileMenu || !backdrop) return;
-            mobileMenu.classList.remove('is-open'); backdrop.classList.add('hidden');
-            document.body.classList.remove('nav-open');
-            setTimeout(() => mobileMenu.classList.add('hidden'), 180);
-        }
-
-        if (toggleBtn) toggleBtn.addEventListener('click', () => { if (mobileMenu.classList.contains('hidden')) openMenu(); else closeMenu(); });
-        if (backdrop) backdrop.addEventListener('click', closeMenu);
-
-        const form = document.getElementById('contact-form');
-        if (form) {
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
-                if (res.ok) { form.reset(); document.getElementById('thankyou-overlay').classList.remove('hidden'); }
-            });
-        }
-        const closeThanks = document.getElementById('thankyou-close');
-        if (closeThanks) closeThanks.addEventListener('click', () => document.getElementById('thankyou-overlay').classList.add('hidden'));
-    });
-</script>
 
 <style>
     .step-card {
@@ -875,6 +730,134 @@
     .-translate-x-10 { transform: translateX(-2.5rem); }
     .translate-x-0 { transform: translateX(0) !important; }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. LOADER & VIDEO
+    const loader = document.getElementById("vornac-loader");
+    if (loader) loader.style.display = "none";
+
+    const heroVideo = document.getElementById('hero-video');
+    if (heroVideo) {
+        heroVideo.play().catch(() => {
+            document.addEventListener('click', () => heroVideo.play(), { once: true });
+        });
+        heroVideo.addEventListener('ended', function() {
+            document.getElementById('hero-section')?.classList.add('video-ended');
+            // Dashboard Stats im Hero starten
+            animateValue("stat-percent", 0, 78, 1500);
+            animateValue("stat-findings", 0, 7, 2000);
+            animateValue("stat-critical", 0, 2, 2000);
+            animateValue("stat-eta", 0, 18, 1000);
+            document.getElementById("stat-bar").style.width = "78%";
+        });
+    }
+
+    // 2. UNIVERSELLER REVEAL OBSERVER (Für Karten, Formular und Counter)
+    const revealCallback = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                el.classList.add('reveal-active');
+                
+                // Workflow Linie füllen
+                const line = document.querySelector('#step-line-fill');
+                if (line && el.closest('#how-it-works')) line.style.width = '100%';
+
+                // Counter in dieser Sektion starten
+                const counters = el.querySelectorAll('[data-target]');
+                counters.forEach(counter => startCounter(counter));
+
+                observer.unobserve(el);
+            }
+        });
+    };
+
+    const revealObserver = new IntersectionObserver(revealCallback, {
+        threshold: 0.1, // Startet schon bei 10% Sichtbarkeit (sehr zuverlässig)
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    document.querySelectorAll('.step-card, #contact, #evolution, #how-it-works').forEach(el => {
+        revealObserver.observe(el);
+    });
+
+    // 3. COUNTER LOGIK
+    function startCounter(el) {
+        if (el.dataset.animated === "true") return;
+        el.dataset.animated = "true";
+        
+        const target = +el.getAttribute('data-target');
+        const duration = 2000;
+        const start = 0;
+        let startTimestamp = null;
+
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            const easeOutQuad = t => t * (2 - t);
+            el.innerHTML = Math.floor(easeOutQuad(progress) * (target - start) + start);
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            } else {
+                el.innerHTML = target;
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+
+    // 4. HERO DASHBOARD ANIMATION HELPER
+    function animateValue(id, start, end, duration) {
+        const obj = document.getElementById(id);
+        if (!obj) return;
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            obj.innerHTML = Math.floor(progress * (end - start) + start);
+            if (progress < 1) window.requestAnimationFrame(step);
+        };
+        window.requestAnimationFrame(step);
+    }
+
+    // 5. NAVIGATION & FORMSPREE
+    const toggleBtn = document.getElementById('nav-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const backdrop = document.getElementById('mobile-backdrop');
+
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            mobileMenu?.classList.toggle('hidden');
+            backdrop?.classList.toggle('hidden');
+        });
+    }
+
+    const form = document.getElementById('contact-form');
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('[data-submit-button]');
+            if (btn) btn.disabled = true;
+            
+            const res = await fetch(form.action, { 
+                method: 'POST', 
+                body: new FormData(form), 
+                headers: { 'Accept': 'application/json' } 
+            });
+            
+            if (res.ok) { 
+                form.reset(); 
+                document.getElementById('thankyou-overlay')?.classList.remove('hidden'); 
+            }
+            if (btn) btn.disabled = false;
+        });
+    }
+    
+    document.getElementById('thankyou-close')?.addEventListener('click', () => {
+        document.getElementById('thankyou-overlay')?.classList.add('hidden');
+    });
+});
+</script>
 
 </body>
 </html>
