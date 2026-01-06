@@ -1,2 +1,13 @@
-<?xml version='1.0' encoding='utf-8'?>
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='311 920 236 208' width='236px' height='208px'><defs><linearGradient gradientUnits='userSpaceOnUse' x1='429' y1='920' x2='429' y2='1128' id='gradient-0' gradientTransform='matrix(0.47087, -0.88219, 0.72089, 0.53957, -537.6485, 802.0551)'><stop offset='0' style='stop-color: rgb(100% 100% 100%)'/><stop offset='0.29' style='stop-color: rgb(255, 255, 255);'/><stop offset='0.64' style='stop-color: rgb(255, 255, 255); stop-opacity: 0.22;'/><stop offset='0.8' style='stop-color: rgb(255, 255, 255); stop-opacity: 0;'/><stop offset='0.8' style='stop-color: rgb(255, 255, 255);'/><stop offset='0.8' style='stop-color: rgb(255, 255, 255);'/><stop offset='1' style='stop-color: rgb(255, 255, 255);'/></linearGradient></defs><path d='M 311 920 L 361 920 L 428 1046 L 498 920 L 547 920 L 426 1128 L 311 920 Z' style='filter: none; fill: url(&quot;#gradient-0&quot;);' id='object-0'/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 236 208" width="236px" height="208px" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
+<defs>
+	<lineargradient gradientunits="userSpaceOnUse" x1="339.35" y1="894.62" x2="339.35" y2="1102.62" id="gradient-0" gradienttransform="matrix(0.48429, -0.87489, 1.06616, 0.90262, -1217.88049, -510.57703)">
+		<stop offset="0" stop-color="#ffffff"></stop>
+		<stop offset="0.26" stop-color="#ffffff"></stop>
+		<stop offset="0.52" stop-color="#ffffff"></stop>
+		<stop offset="0.7" stop-color="#ffffff" stop-opacity="0.04"></stop>
+		<stop offset="0.88" stop-color="#ffffff" stop-opacity="0"></stop>
+		<stop offset="0.88" stop-color="#ffffff"></stop>
+		<stop offset="1" stop-color="#ffffff"></stop>
+	</lineargradient>
+</defs>
+<path d="M 0 0 L 50 0 L 117 126 L 187 0 L 236 0 L 114 208 L 0 0 Z" fill="url(#gradient-0)" clip-rule="evenodd" fill-rule="evenodd" opacity="1" id="v"></path></svg>
