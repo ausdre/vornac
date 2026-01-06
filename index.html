@@ -84,8 +84,9 @@
     </symbol>
 </svg>
 
-<header id="site-header" class="relative sticky top-0 z-40 border-b border-white/5  backdrop-blur">
+<header id="site-header" class="relative sticky top-0 z-40 border-b border-white/5 backdrop-blur">
     <nav class="mx-auto flex max-w-content items-center justify-between px-4 py-4 lg:px-6">
+        
         <a href="#top" class="flex items-center gap-3" aria-label="VORNAC home">
             <svg xmlns="http://www.w3.org/2000/svg" class="nav-logo h-12 w-auto sm:h-14" viewBox="0 0 1448 208" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
                 <style>
@@ -95,7 +96,11 @@
                         75%  { transform: translateX(0);      opacity: 1; }
                         100% { transform: translateX(-360px); opacity: 0; }
                     }
-                    #o, #r, #n, #a, #c { animation: vornacFlyInHoldOut 4s cubic-bezier(0.86,0,0.07,1) both 1; transform-origin: 0 0; will-change: transform, opacity; }
+                    #o, #r, #n, #a, #c { 
+                        animation: vornacFlyInHoldOut 4s cubic-bezier(0.86,0,0.07,1) both 1; 
+                        transform-origin: 0 0; 
+                        will-change: transform, opacity; 
+                    }
                     #o { animation-delay: 0.00s; }
                     #r { animation-delay: 0.06s; }
                     #n { animation-delay: 0.12s; }
@@ -110,24 +115,30 @@
                 <path id="c" d="M 1273.02 0 L 1448 0 L 1407.01 43 L 1271.02 43.48 L 1271.02 162 L 1275.02 164.82 L 1406.01 164.82 L 1448 207.74 L 1272.02 207.74 L 1227.49 164.82 L 1226.89 43.48 L 1273.02 0 Z" fill="#ffffff"/>
             </svg>
         </a>
+
         <div class="hidden items-center gap-8 text-sm md:flex">
-            <a href="#how" class="nav-link text-vornac-grey-light hover:text-white">How it works</a>
-            <a href="#pricing" class="nav-link text-vornac-grey-light hover:text-white">Pricing</a>
-            <a href="#compliance" class="nav-link text-vornac-grey-light hover:text-white">Compliance</a>
-            <a href="#about" class="nav-link text-vornac-grey-light hover:text-white">About</a>
-            <a href="#contact" class="nav-link text-vornac-grey-light hover:text-white">Contact</a>
+            <a href="#evolution" class="nav-link text-vornac-grey-light hover:text-white transition-colors">The Shift</a>
+            <a href="#how-it-works" class="nav-link text-vornac-grey-light hover:text-white transition-colors">How it works</a>
+            <a href="#pricing" class="nav-link text-vornac-grey-light hover:text-white transition-colors">Pricing</a>
+            <a href="#compliance" class="nav-link text-vornac-grey-light hover:text-white transition-colors">Compliance</a>
+            <a href="#about" class="nav-link text-vornac-grey-light hover:text-white transition-colors">About</a>
+            <a href="#contact" class="nav-link text-vornac-grey-light hover:text-white transition-colors">Contact</a>
         </div>
+
         <div class="hidden md:block">
             <a href="#contact" class="rounded-lg bg-vornac-gold px-4 py-2 text-sm font-semibold text-vornac-black shadow-soft glow-edge-soft hover:brightness-110 hover-lift">Get Access_</a>
         </div>
+
         <button id="nav-toggle" class="inline-flex h-9 w-9 items-center justify-center rounded-md border border-white/10 md:hidden" aria-label="Open navigation" type="button">
             <span class="flex flex-col gap-1.5"><span class="block h-[2px] w-4 bg-white"></span><span class="block h-[2px] w-4 bg-white"></span><span class="block h-[2px] w-4 bg-white"></span></span>
         </button>
     </nav>
+
     <div id="mobile-backdrop" class="fixed inset-0 z-30 hidden bg-black/60 backdrop-blur-sm md:hidden"></div>
     <div id="mobile-menu" class="mobile-menu-panel absolute left-0 right-0 top-full z-40 hidden border-b border-white/5 bg-vornac-black/95 backdrop-blur md:hidden">
         <div class="mx-auto max-w-content space-y-3 px-4 pb-5 pt-4">
-            <a href="#how" class="nav-link block text-sm text-vornac-grey-light hover:text-white">How it works</a>
+            <a href="#evolution" class="nav-link block text-sm text-vornac-grey-light hover:text-white">The Shift</a>
+            <a href="#how-it-works" class="nav-link block text-sm text-vornac-grey-light hover:text-white">How it works</a>
             <a href="#pricing" class="nav-link block text-sm text-vornac-grey-light hover:text-white">Pricing</a>
             <a href="#compliance" class="nav-link block text-sm text-vornac-grey-light hover:text-white">Compliance</a>
             <a href="#about" class="nav-link block text-sm text-vornac-grey-light hover:text-white">About</a>
@@ -157,8 +168,8 @@
                     <span class="text-vornac-gold">audit-proof reporting</span>.
                 </p>
                 <div class="flex flex-wrap justify-center gap-4">
-                    <a href="#contact" class="rounded-lg bg-vornac-gold px-8 py-3 text-sm font-semibold text-vornac-black shadow-soft hover:brightness-110 hover-lift glow-edge-soft">Start a demo</a>
-                    <a href="#how" class="rounded-lg border border-white/20 px-8 py-3 text-sm font-semibold text-white hover:border-vornac-gold hover:text-vornac-gold hover-lift">How it works</a>
+                <a href="#contact" class="rounded-lg bg-vornac-gold px-8 py-3 text-sm font-semibold text-vornac-black ...">Start a demo</a>
+                <a href="#how-it-works" class="rounded-lg border border-white/20 px-8 py-3 text-sm font-semibold text-white ...">How it works</a>
                 </div>
                 <div class="space-y-2">
                     <p class="text-xs font-medium uppercase tracking-[0.2em] text-vornac-grey-light">Built for compliance</p>
@@ -670,7 +681,7 @@
     <div class="vornac-loader-overlay" id="vornac-loader"><div class="vornac-loader"><div class="vornac-loader-scan"></div></div></div>
 </main>
 
-<footer class="bg-vornac-black border-t border-white/5 pt-20 pb-10 px-4">
+<footer class="bg-vornac-black border-t border-white/5 pt-20 pb-10 px-4 relative z-10">
     <div class="max-w-content mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             
@@ -679,16 +690,23 @@
                     VORNAC<span class="text-vornac-gold">.</span>
                 </div>
                 <p class="text-vornac-grey-light text-sm max-w-sm leading-relaxed">
-                    The autonomous standard for enterprise security testing. Shifting the industry from manual bottlenecks to scalable intelligence.
+                    The autonomous standard for enterprise security testing. Shifting the industry from manual bottlenecks to scalable intelligence and continuous compliance.
                 </p>
+                <div class="flex items-center gap-4 pt-2">
+                    <div class="h-[1px] w-8 bg-vornac-gold/30"></div>
+                    <span class="text-[9px] uppercase tracking-[0.3em] text-vornac-gold font-bold">Heidelberg, Germany</span>
+                </div>
             </div>
 
             <div>
                 <h4 class="text-white font-bold text-xs uppercase tracking-[0.2em] mb-6">Navigation</h4>
                 <ul class="space-y-4 text-vornac-grey-light text-xs font-medium uppercase tracking-widest">
-                    <li><a href="#" class="hover:text-vornac-gold transition-colors">Home</a></li>
-                    <li><a href="#how-it-works" class="hover:text-vornac-gold transition-colors">How it works</a></li>
+                    <li><a href="#top" class="hover:text-vornac-gold transition-colors">Home</a></li>
                     <li><a href="#evolution" class="hover:text-vornac-gold transition-colors">The Shift</a></li>
+                    <li><a href="#how-it-works" class="hover:text-vornac-gold transition-colors">How it works</a></li>
+                    <li><a href="#pricing" class="hover:text-vornac-gold transition-colors">Pricing</a></li>
+                    <li><a href="#compliance" class="hover:text-vornac-gold transition-colors">Compliance</a></li>
+                    <li><a href="#about" class="hover:text-vornac-gold transition-colors">About</a></li>
                     <li><a href="#contact" class="hover:text-vornac-gold transition-colors">Contact</a></li>
                 </ul>
             </div>
@@ -699,24 +717,9 @@
                     <li><a href="#" class="hover:text-vornac-gold transition-colors">Privacy Policy</a></li>
                     <li><a href="#" class="hover:text-vornac-gold transition-colors">Imprint</a></li>
                     <li><a href="#" class="hover:text-vornac-gold transition-colors">Terms of Service</a></li>
+                    <li><a href="#" class="hover:text-vornac-gold transition-colors">Cookie Settings</a></li>
                 </ul>
             </div>
-        </div>
-
-        <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-            <p class="text-[10px] text-vornac-grey-light/30 uppercase tracking-[0.3em]">
-                &copy; 2026 VORNAC Technologies. All rights reserved.
-            </p>
-            <div class="flex items-center gap-6">
-                <a href="#" class="text-vornac-grey-light/30 hover:text-vornac-gold transition-colors">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                </a>
-                <span class="text-[10px] text-vornac-grey-light/30 uppercase tracking-[0.3em]">Made with precision in Germany</span>
-            </div>
-        </div>
-    </div>
-</footer>
-
 
 
 <style>
