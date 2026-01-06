@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+    <script type="text/plain" class="cm-script" data-type="statistics" async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script type="text/plain" class="cm-script" data-type="statistics">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9LJGWDQ2CR', { 'anonymize_ip': true });
+    </script>
     <meta charset="UTF-8"/>
     <title>VORNAC – Autonomous Pentesting Agent</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -714,15 +721,15 @@
             <div>
                 <h4 class="text-white font-bold text-xs uppercase tracking-[0.2em] mb-6">Legal</h4>
                 <ul class="space-y-4 text-vornac-grey-light text-xs font-medium uppercase tracking-widest">
-                    <li><a href="privacy.html" class="hover:text-vornac-gold transition-colors">Privacy Policy</a></li>
-                    <li><a href="imprint.html" class="hover:text-vornac-gold transition-colors">Imprint</a></li>
+                    <li><a href="legal.html" class="hover:text-vornac-gold transition-colors">Privacy Policy</a></li>
+                    <li><a href="legal.html" class="hover:text-vornac-gold transition-colors">Imprint</a></li>
                 </ul>
             </div>
         </div>
 
         <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
             <p class="text-[10px] text-vornac-grey-light/30 uppercase tracking-[0.3em]">
-                &copy; 2026 VORNAC Technologies. All rights reserved.
+                &copy; 2026 MAEA Holding UG. All rights reserved.
             </p>
 
             <div class="flex items-center gap-8">
@@ -753,8 +760,75 @@
     .translate-x-0 { transform: translateX(0) !important; }
 </style>
 
+<div id="cookie-banner" class="fixed bottom-6 left-6 right-6 md:left-auto md:max-w-sm z-[200] hidden">
+    <div class="bg-vornac-grey-dark/95 border border-vornac-gold/30 backdrop-blur-xl rounded-3xl p-6 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+        <div class="flex items-center gap-3 mb-4">
+            <div class="w-2 h-2 rounded-full bg-vornac-gold animate-pulse"></div>
+            <span class="text-[10px] font-black uppercase tracking-[0.3em] text-white">Privacy Preference</span>
+        </div>
+        <p class="text-vornac-grey-light text-[11px] leading-relaxed mb-6">
+            We use <span class="text-white font-bold">Google Analytics</span> to measure our impact in the autonomous security space. No personal data is stored without your consent.
+        </p>
+        <div class="flex gap-3">
+            <button id="accept-cookies" class="flex-1 bg-vornac-gold text-vornac-black text-[10px] font-black uppercase tracking-widest py-3 rounded-xl hover:bg-white transition-all">
+                Accept_
+            </button>
+            <button id="decline-cookies" class="flex-1 bg-white/5 border border-white/10 text-white text-[10px] font-black uppercase tracking-widest py-3 rounded-xl hover:bg-vornac-red/20 hover:border-vornac-red/40 transition-all">
+                Decline
+            </button>
+        </div>
+        <div class="mt-4 text-center">
+            <a href="privacy.html" class="text-[9px] text-vornac-grey-light/40 uppercase tracking-widest hover:text-vornac-gold transition-colors">Read Privacy Policy</a>
+        </div>
+    </div>
+</div>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+
+    // 0. COOKIE
+
+        // --- CONSENT MANAGEMENT LOGIC ---
+    const banner = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('accept-cookies');
+    const declineBtn = document.getElementById('decline-cookies');
+    const consentKey = 'vornac_consent_given';
+
+    const activateAnalytics = () => {
+        const scripts = document.querySelectorAll('.cm-script');
+        scripts.forEach(oldScript => {
+            const newScript = document.createElement('script');
+            Array.from(oldScript.attributes).forEach(attr => {
+                newScript.setAttribute(attr.name, attr.value);
+            });
+            newScript.type = 'text/javascript'; // Skript aktivieren
+            newScript.innerHTML = oldScript.innerHTML;
+            oldScript.parentNode.replaceChild(newScript, oldScript);
+        });
+    };
+
+    // Check if user already decided
+    if (!localStorage.getItem(consentKey)) {
+        setTimeout(() => {
+            banner.classList.remove('hidden');
+            banner.classList.add('animate-fade-in-up'); 
+        }, 2000); // Erscheint nach 2 Sekunden
+    } else if (localStorage.getItem(consentKey) === 'true') {
+        activateAnalytics();
+    }
+
+    acceptBtn?.addEventListener('click', () => {
+        localStorage.setItem(consentKey, 'true');
+        banner.classList.add('hidden');
+        activateAnalytics();
+    });
+
+    declineBtn?.addEventListener('click', () => {
+        localStorage.setItem(consentKey, 'false');
+        banner.classList.add('hidden');
+    });
+
+
     // 1. LOADER & VIDEO
     const loader = document.getElementById("vornac-loader");
     if (loader) loader.style.display = "none";
@@ -875,9 +949,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    
+
     document.getElementById('thankyou-close')?.addEventListener('click', () => {
         document.getElementById('thankyou-overlay')?.classList.add('hidden');
+
     });
+
+
 });
 </script>
 
