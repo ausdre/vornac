@@ -136,6 +136,18 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+            const activateAnalytics = () => {
+            // Google Consent Mode auf 'granted' setzen
+            gtag('consent', 'update', {
+                'ad_storage': 'granted',
+                'ad_user_data': 'granted',
+                'ad_personalization': 'granted',
+                'analytics_storage': 'granted'
+            });
+            
+            console.log("Google Ads & Analytics activated.");
+        };
+
         const consentKey = 'vornac_consent_given';
         if (localStorage.getItem(consentKey) === 'true') {
             const scripts = document.querySelectorAll('.cm-script');

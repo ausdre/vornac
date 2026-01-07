@@ -692,11 +692,12 @@
     </div>
 </section>
 
-
 <!--  END CONTACT -->
 
     <div class="vornac-loader-overlay" id="vornac-loader"><div class="vornac-loader"><div class="vornac-loader-scan"></div></div></div>
 </main>
+
+
 
 <footer class="bg-vornac-black border-t border-white/5 pt-20 pb-10 px-4 relative z-10">
     <div class="max-w-content mx-auto">
@@ -755,17 +756,6 @@
             </div>
         </div>
     </div>
-    const activateAnalytics = () => {
-    // Google Consent Mode auf 'granted' setzen
-    gtag('consent', 'update', {
-        'ad_storage': 'granted',
-        'ad_user_data': 'granted',
-        'ad_personalization': 'granted',
-        'analytics_storage': 'granted'
-    });
-    
-    console.log("Google Ads & Analytics activated.");
-};
 </footer>
 
 
@@ -805,6 +795,7 @@
 </div>
 
 <script>
+
 document.addEventListener('DOMContentLoaded', function() {
 
     // 0. COOKIE
@@ -815,18 +806,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const declineBtn = document.getElementById('decline-cookies');
     const consentKey = 'vornac_consent_given';
 
-    const activateAnalytics = () => {
-        const scripts = document.querySelectorAll('.cm-script');
-        scripts.forEach(oldScript => {
-            const newScript = document.createElement('script');
-            Array.from(oldScript.attributes).forEach(attr => {
-                newScript.setAttribute(attr.name, attr.value);
-            });
-            newScript.type = 'text/javascript'; // Skript aktivieren
-            newScript.innerHTML = oldScript.innerHTML;
-            oldScript.parentNode.replaceChild(newScript, oldScript);
-        });
+        const activateAnalytics = () => {
+    // Google Consent Mode auf 'granted' setzen
+    gtag('consent', 'update', {
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted',
+        'analytics_storage': 'granted'
+    });
+    
+    console.log("Google Ads & Analytics activated.");
     };
+
 
     // Check if user already decided
     if (!localStorage.getItem(consentKey)) {
