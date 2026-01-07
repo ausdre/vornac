@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <script type="text/plain" class="cm-script" data-type="statistics" async src="https://www.googletagmanager.com/gtag/js?id=G-9LJGWDQ2CR"></script>
-    <script type="text/plain" class="cm-script" data-type="statistics">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LJGWDQ2CR"></script>
+    <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-9LJGWDQ2CR', { 'anonymize_ip': true });
-    </script>
+
+    // 1. Standard-Status: Alles abgelehnt (DSGVO-konform)
+    gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'wait_for_update': 500
+    });
+
+  gtag('js', new Date());
+  gtag('config', 'G-9LJGWDQ2CR', { 'anonymize_ip': true });
+</script>
     <meta charset="UTF-8"/>
     <title>VORNAC – Autonomous Pentesting Agent</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -745,6 +755,17 @@
             </div>
         </div>
     </div>
+    const activateAnalytics = () => {
+    // Google Consent Mode auf 'granted' setzen
+    gtag('consent', 'update', {
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted',
+        'analytics_storage': 'granted'
+    });
+    
+    console.log("Google Ads & Analytics activated.");
+};
 </footer>
 
 
@@ -942,9 +963,16 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             
             if (res.ok) { 
+                // Google Ads Conversion Trigger
+                gtag('event', 'conversion', {
+                    'send_to': 'G-9LJGWDQ2CR',
+                    'event_category': 'contact_form',
+                    'event_label': 'demo_request'
+                });
+                
                 form.reset(); 
-                document.getElementById('thankyou-overlay')?.classList.remove('hidden'); 
-            }
+    document.getElementById('thankyou-overlay')?.classList.remove('hidden'); 
+}
             if (btn) btn.disabled = false;
         });
     }
