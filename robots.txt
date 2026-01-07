@@ -1,0 +1,17 @@
+# VORNAC ROBOTS PROTOCOL - 2026
+User-agent: *
+Allow: /
+
+# Block sensitive directories (falls du später welche hast)
+Disallow: /private/
+Disallow: /config/
+
+# AI Scrapers - Allow them to index for AI-Search (Perplexity/SGE)
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Link to the Sitemap
+Sitemap: https://vornac.com/sitemap.xml
