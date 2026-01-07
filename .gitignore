@@ -1,3 +1,34 @@
-/node_modules/
-/dist/**
+# Dependency directories
+node_modules/
+
+# Build outputs
+dist/
+output/
+output.css
+
+# IDE - JetBrains
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# IDE - VS Code
+.vscode/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS Files
 .DS_Store
+Thumbs.db
+
+# Project Specific
+.ihatevercel
+pentest-report.html
+.dummy
+
+# Environment files (always good practice even if not present yet)
+.env
+*.local
