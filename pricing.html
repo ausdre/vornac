@@ -40,6 +40,23 @@
             opacity: 1 !important;
             transform: translateY(0) !important;
         }
+        /* Animation für das Mobile Menü */
+        #mobile-menu:not(.hidden) {
+            display: block;
+            animation: slideDown 0.3s ease-out forwards;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        #mobile-backdrop:not(.hidden) {
+            display: block;
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
     </style>
 </head>
 <body class="bg-vornac-black text-white font-body antialiased">
@@ -67,12 +84,34 @@
         </a>
 
         <div class="hidden items-center gap-8 text-sm md:flex">
+            <a href="index.html" class="nav-link text-vornac-grey-light hover:text-white transition-colors">Home</a>
             <a href="howitworks.html" class="nav-link text-vornac-grey-light hover:text-white transition-colors">How it works</a>
             <a href="pricing.html" class="nav-link text-white border-b-2 border-vornac-gold">Pricing</a>
             <a href="about.html" class="nav-link text-vornac-grey-light hover:text-white transition-colors">About</a>
             <a href="index.html#contact" class="nav-link text-vornac-grey-light hover:text-white transition-colors">Contact</a>
         </div>
+
+        <button id="nav-toggle" class="relative z-[110] inline-flex h-10 w-10 items-center justify-center rounded-md border border-white/10 md:hidden">
+            <span class="flex flex-col gap-1.5">
+                <span class="block h-[2px] w-5 bg-white"></span>
+                <span class="block h-[2px] w-5 bg-white"></span>
+                <span class="block h-[2px] w-5 bg-white"></span>
+            </span>
+        </button>
     </nav>
+
+    <div id="mobile-backdrop" class="fixed inset-0 z-[90] hidden bg-black/80 backdrop-blur-sm md:hidden"></div>
+
+    <div id="mobile-menu" class="fixed left-0 right-0 top-[72px] z-[100] hidden border-b border-white/10 bg-[#050816] shadow-2xl md:hidden">
+        <div class="flex flex-col space-y-6 px-8 py-10 text-center">
+            <a href="index.html" class="mobile-link text-lg font-medium text-vornac-grey-light">Home</a>
+            <a href="howitworks.html" class="mobile-link text-lg font-medium text-vornac-grey-light">How it works</a>
+            <a href="pricing.html" class="mobile-link text-lg font-medium text-vornac-gold">Pricing</a>
+            <a href="about.html" class="mobile-link text-lg font-medium text-vornac-grey-light">About</a>
+            <a href="index.html#contact" class="mobile-link text-lg font-medium text-vornac-grey-light">Contact</a>
+            <a href="index.html#contact" class="mobile-link mt-4 flex h-14 items-center justify-center rounded-xl bg-vornac-gold font-bold text-vornac-black shadow-glow-gold transition-transform active:scale-95">Get Access_</a>
+        </div>
+    </div>
 </header>
 
 <main class="relative z-10">
@@ -219,6 +258,27 @@
         document.querySelectorAll('.step-card').forEach(el => {
             revealObserver.observe(el);
         });
+
+        // Mobile Menu Logic
+        const toggleBtn = document.getElementById('nav-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const backdrop = document.getElementById('mobile-backdrop');
+
+        if (toggleBtn && mobileMenu && backdrop) {
+            const closeMenu = () => {
+                mobileMenu.classList.add('hidden');
+                backdrop.classList.add('hidden');
+                document.body.style.overflow = ''; 
+            };
+            const openMenu = () => {
+                mobileMenu.classList.remove('hidden');
+                backdrop.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; 
+            };
+            toggleBtn.addEventListener('click', (e) => { e.stopPropagation(); mobileMenu.classList.contains('hidden') ? openMenu() : closeMenu(); });
+            backdrop.addEventListener('click', closeMenu);
+            mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+        }
     });
 </script>
 </body>
