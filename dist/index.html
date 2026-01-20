@@ -135,7 +135,7 @@
             <a href="howitworks.html" class="nav-link text-vornac-grey-light hover:text-white transition-colors">How it works</a>
             <a href="pricing.html" class="nav-link text-vornac-grey-light hover:text-white transition-colors">Pricing</a>
             <a href="about.html" class="nav-link text-vornac-grey-light hover:text-white transition-colors">About</a>
-            <a href="#contact" class="nav-link text-vornac-grey-light hover:text-white transition-colors">Contact</a>
+            <a href="#contact" class="rounded-lg bg-vornac-gold px-5 py-2.5 text-xs font-bold text-vornac-black uppercase tracking-widest hover:bg-white transition-colors shadow-glow-gold hover:scale-105 transform duration-200">Book Demo</a>
         </div>
 
         <button id="nav-toggle" class="relative z-[110] inline-flex h-10 w-10 items-center justify-center rounded-md border border-white/10 md:hidden">
@@ -216,9 +216,9 @@
                         <div class="absolute inset-0 rounded-2xl bg-white opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     </a>
                     
-                    <a href="howitworks.html" class="h-20 flex items-center justify-center rounded-2xl border-2 border-white/10 bg-vornac-black/40 backdrop-blur-md px-14 font-black uppercase tracking-[0.2em] text-xs text-white transition-all hover:border-vornac-gold hover:bg-vornac-gold/5 w-full sm:w-auto">
-                        Verify Methodology
-                    </a>
+                    <button onclick="document.getElementById('report-modal').classList.remove('hidden')" class="h-20 flex items-center justify-center rounded-2xl border-2 border-white/10 bg-vornac-black/40 backdrop-blur-md px-14 font-black uppercase tracking-[0.2em] text-xs text-white transition-all hover:border-vornac-gold hover:bg-vornac-gold/5 w-full sm:w-auto cursor-pointer">
+                        View Sample Report
+                    </button>
                 </div>
 
                 <div class="flex flex-col items-center space-y-3 opacity-80">
@@ -357,6 +357,17 @@
                     Schedule a live session with our founding team. Walk through a real-world execution and see the depth of an autonomous report.
                 </p>
                 
+                <!-- NEW: Direct Booking Hook -->
+                <a href="https://calendly.com/arthur-vornac/30min" target="_blank" class="inline-flex items-center gap-4 bg-white/5 border border-white/10 rounded-2xl p-4 mb-8 hover:bg-white/10 hover:border-vornac-gold/50 transition-all group w-full sm:w-auto cursor-pointer">
+                    <div class="h-12 w-12 rounded-xl bg-vornac-gold/10 flex items-center justify-center text-vornac-gold group-hover:scale-110 transition-transform flex-shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <div class="text-left">
+                        <span class="block text-[10px] uppercase tracking-widest text-vornac-grey-light/60 font-bold">Fast Track</span>
+                        <span class="block text-sm font-bold text-white group-hover:text-vornac-gold transition-colors">Book 30min Intro Call &rarr;</span>
+                    </div>
+                </a>
+
                 <div class="flex items-center gap-4 text-vornac-grey-light/40">
                     <div class="h-[1px] w-12 bg-white/10"></div>
                     <span class="text-[10px] uppercase tracking-[0.2em]">Or email us at hello@vornac.com</span>
@@ -396,6 +407,11 @@
                     <button type="submit" data-submit-button class="w-full bg-vornac-gold text-vornac-black font-black uppercase tracking-[0.3em] text-[11px] py-4 rounded-xl hover:bg-white transition-all shadow-glow-gold hover:shadow-white/20 active:scale-[0.98]">
                         <span data-submit-text>Request a Demo_</span>
                     </button>
+
+                    <div class="mt-5 flex items-center justify-center gap-6 text-[9px] uppercase tracking-widest text-vornac-grey-light/40 font-mono">
+                        <span class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_5px_#10b981]"></span> Avg. Response: &lt;2h</span>
+                        <span class="flex items-center gap-2"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg> SSL Encrypted</span>
+                    </div>
                 </form>
             </div>
         </div>
@@ -418,6 +434,16 @@
     <div class="vornac-loader-overlay" id="vornac-loader"><div class="vornac-loader"><div class="vornac-loader-scan"></div></div></div>
 </main>
 
+<!-- Floating CTA Hook -->
+<div id="floating-cta" class="fixed bottom-8 right-8 z-40 translate-y-32 opacity-0 transition-all duration-700 pointer-events-none">
+    <a href="#contact" class="pointer-events-auto flex items-center gap-3 bg-vornac-gold text-vornac-black px-6 py-3 rounded-full font-black uppercase tracking-widest text-[10px] shadow-[0_0_20px_rgba(255,163,38,0.4)] hover:shadow-[0_0_30px_rgba(255,163,38,0.6)] hover:scale-105 transition-all hover:-translate-y-1">
+        <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
+        </span>
+        <span>Book Demo</span>
+    </a>
+</div>
 
 
 <footer class="bg-vornac-black border-t border-white/5 pt-16 pb-10 px-4 relative z-10">
@@ -509,6 +535,75 @@
         </div>
         <div class="mt-4 text-center">
             <a href="privacy.html" class="text-[9px] text-vornac-grey-light/40 uppercase tracking-widest hover:text-vornac-gold transition-colors">Read Privacy Policy</a>
+        </div>
+    </div>
+</div>
+
+<!-- Exit Intent Popup -->
+<div id="exit-popup" class="fixed inset-0 z-[200] hidden flex items-center justify-center bg-black/80 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+    <div class="relative mx-4 max-w-md w-full rounded-3xl border border-vornac-gold/30 bg-[#050816] p-8 shadow-[0_0_50px_rgba(255,163,38,0.15)] transform scale-95 transition-transform duration-300">
+        <button id="exit-popup-close" class="absolute top-4 right-4 text-vornac-grey-light hover:text-white transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        
+        <div class="text-center">
+            <div class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-vornac-gold/10 border border-vornac-gold/20 mb-6">
+                <span class="text-3xl">👋</span>
+            </div>
+            <h3 class="font-heading text-2xl font-bold text-white uppercase italic tracking-tight mb-2">Before you go...</h3>
+            <p class="text-vornac-grey-light text-sm mb-8 leading-relaxed">
+                Don't leave your infrastructure exposed. Secure your 30-minute strategy session with our founders.
+            </p>
+            
+            <a href="https://calendly.com/arthur-vornac/30min" target="_blank" class="block w-full bg-vornac-gold text-vornac-black font-black uppercase tracking-[0.2em] text-xs py-4 rounded-xl hover:bg-white transition-all shadow-glow-gold hover:shadow-white/20 mb-4">
+                Book Personal Demo_
+            </a>
+            
+            <button id="exit-popup-dismiss" class="text-[10px] uppercase tracking-widest text-vornac-grey-light/40 hover:text-white transition-colors">
+                No thanks, I'll risk it
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Sample Report Modal -->
+<div id="report-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center bg-black/90 backdrop-blur-md p-4 opacity-0 transition-opacity duration-300">
+    <div class="relative w-full max-w-lg rounded-3xl border border-white/10 bg-[#050816] p-8 shadow-2xl transform scale-95 transition-transform duration-300">
+        <button onclick="closeReportModal()" class="absolute top-4 right-4 text-vornac-grey-light hover:text-white transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        
+        <div class="text-center mb-8">
+            <span class="text-vornac-gold text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Preview Output</span>
+            <h3 class="font-heading text-2xl font-bold text-white uppercase italic tracking-tight">Download Sample Report</h3>
+            <p class="text-vornac-grey-light text-sm mt-4 leading-relaxed">
+                See exactly what your auditors will see. Includes executive summary, technical vulnerability chain, and remediation steps.
+            </p>
+        </div>
+
+        <!-- Simple form to capture lead for report -->
+        <form id="report-form" class="space-y-4">
+            <div class="space-y-3">
+                <input type="text" name="name" required placeholder="Full Name" 
+                    class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-white/20 focus:outline-none focus:border-vornac-gold focus:ring-1 focus:ring-vornac-gold transition-all text-sm">
+                <input type="text" name="company" required placeholder="Company" 
+                    class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-white/20 focus:outline-none focus:border-vornac-gold focus:ring-1 focus:ring-vornac-gold transition-all text-sm">
+                <input type="email" name="email" required placeholder="Work Email" 
+                    class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-white/20 focus:outline-none focus:border-vornac-gold focus:ring-1 focus:ring-vornac-gold transition-all text-sm">
+            </div>
+            <button type="submit" class="w-full bg-white text-vornac-black font-black uppercase tracking-[0.2em] text-xs py-4 rounded-xl hover:bg-vornac-gold transition-all shadow-lg">
+                Get PDF Report_
+            </button>
+            <p class="text-[9px] text-center text-vornac-grey-light/30 uppercase tracking-widest">Instant Download Link via Email</p>
+        </form>
+
+        <!-- Success State -->
+        <div id="report-success" class="hidden text-center py-8">
+            <div class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-4 text-emerald-500">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <h3 class="text-white font-bold text-lg mb-2">Report Sent!</h3>
+            <p class="text-vornac-grey-light text-sm">Check your inbox. The sample report is on its way.</p>
         </div>
     </div>
 </div>
@@ -726,6 +821,94 @@ if (toggleBtn && mobileMenu && backdrop) {
 
     });
 
+    // Exit Intent Logic
+    const exitPopup = document.getElementById('exit-popup');
+    const exitPopupClose = document.getElementById('exit-popup-close');
+    const exitPopupDismiss = document.getElementById('exit-popup-dismiss');
+    const exitKey = 'vornac_exit_session';
+
+    const showExitPopup = () => {
+        if (!sessionStorage.getItem(exitKey) && exitPopup) {
+            exitPopup.classList.remove('hidden');
+            setTimeout(() => {
+                exitPopup.classList.remove('opacity-0');
+                exitPopup.querySelector('div').classList.remove('scale-95');
+                exitPopup.querySelector('div').classList.add('scale-100');
+            }, 10);
+            sessionStorage.setItem(exitKey, 'true');
+        }
+    };
+
+    const closeExitPopup = () => {
+        if (!exitPopup) return;
+        exitPopup.classList.add('opacity-0');
+        exitPopup.querySelector('div').classList.remove('scale-100');
+        exitPopup.querySelector('div').classList.add('scale-95');
+        setTimeout(() => {
+            exitPopup.classList.add('hidden');
+        }, 300);
+    };
+
+    document.addEventListener('mouseleave', (e) => {
+        if (e.clientY <= 20) {
+            showExitPopup();
+        }
+    });
+
+    if (exitPopupClose) exitPopupClose.addEventListener('click', closeExitPopup);
+    if (exitPopupDismiss) exitPopupDismiss.addEventListener('click', closeExitPopup);
+    if (exitPopup) exitPopup.addEventListener('click', (e) => {
+        if (e.target === exitPopup) closeExitPopup();
+    });
+
+    // Report Modal Logic
+    window.closeReportModal = function() {
+        const modal = document.getElementById('report-modal');
+        if (!modal) return;
+        modal.classList.add('opacity-0');
+        modal.querySelector('div').classList.remove('scale-100');
+        modal.querySelector('div').classList.add('scale-95');
+        setTimeout(() => modal.classList.add('hidden'), 300);
+    }
+
+    // Helper to open modal with animation (used by onclick in HTML)
+    const reportModal = document.getElementById('report-modal');
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.target.classList.contains('hidden') === false) {
+                setTimeout(() => { mutation.target.classList.remove('opacity-0'); mutation.target.querySelector('div').classList.add('scale-100'); }, 10);
+            }
+        });
+    });
+    if(reportModal) observer.observe(reportModal, { attributes: true, attributeFilter: ['class'] });
+
+    // Handle Report Form Submit via Google Script
+    const reportForm = document.getElementById('report-form');
+    if (reportForm) {
+        reportForm.addEventListener('submit', e => {
+            e.preventDefault();
+            const btn = reportForm.querySelector('button');
+            const originalText = btn.innerText;
+            
+            btn.disabled = true;
+            btn.innerText = "Sending...";
+
+            // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbw3EmtXC7LfthLrPksPn6fBcOdyCi8URxUgKURhX9PUKe5UaPo2xUAPcCIwMDb90040/exec';
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(reportForm), mode: 'no-cors' })
+                .then(response => {
+                    reportForm.classList.add('hidden');
+                    document.getElementById('report-success').classList.remove('hidden');
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                    alert("Error sending request. Please try again.");
+                });
+        });
+    }
 
 });
 </script>
