@@ -4,6 +4,11 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LJGWDQ2CR"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
+    // Capture language switch preference
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('lang') === 'en') {
+        localStorage.setItem('vornac_lang', 'en');
+    }
     function gtag(){dataLayer.push(arguments);}
     gtag('consent', 'default', {
         'ad_storage': 'denied', 'ad_user_data': 'denied', 'ad_personalization': 'denied', 'analytics_storage': 'denied', 'wait_for_update': 500
@@ -88,6 +93,10 @@
             <a href="howitworks.html" class="nav-link text-vornac-grey-light hover:text-white transition-colors">How it works</a>
             <a href="pricing.html" class="nav-link text-white border-b-2 border-vornac-gold">Pricing</a>
             <a href="about.html" class="nav-link text-vornac-grey-light hover:text-white transition-colors">About</a>
+            <div class="flex items-center gap-2 border-l border-white/10 pl-6">
+                <a href="pricing_de.html" onclick="localStorage.setItem('vornac_lang', 'de')" class="lang-switch hover-lift">DE</a>
+                <span class="lang-switch is-active">EN</span>
+            </div>
             <a href="index.html#contact" class="nav-link text-vornac-grey-light hover:text-white transition-colors">Contact</a>
         </div>
 
@@ -108,6 +117,10 @@
             <a href="howitworks.html" class="mobile-link text-lg font-medium text-vornac-grey-light">How it works</a>
             <a href="pricing.html" class="mobile-link text-lg font-medium text-vornac-gold">Pricing</a>
             <a href="about.html" class="mobile-link text-lg font-medium text-vornac-grey-light">About</a>
+            <div class="flex items-center justify-center gap-6 py-2">
+                <a href="pricing_de.html" onclick="localStorage.setItem('vornac_lang', 'de')" class="text-lg font-medium text-vornac-grey-light hover:text-white transition-colors">DE</a>
+                <span class="text-lg font-bold text-vornac-gold">EN</span>
+            </div>
             <a href="index.html#contact" class="mobile-link text-lg font-medium text-vornac-grey-light">Contact</a>
             <a href="index.html#contact" class="mobile-link mt-4 flex h-14 items-center justify-center rounded-xl bg-vornac-gold font-bold text-vornac-black shadow-glow-gold transition-transform active:scale-95">Get Access_</a>
         </div>
@@ -123,7 +136,7 @@
             <div class="text-center mb-16 lg:mb-24">
                 <span class="text-vornac-gold text-[10px] font-black uppercase tracking-[0.5em] block mb-6">Subscription Model</span>
                 <h2 class="font-heading text-5xl lg:text-8xl font-bold uppercase italic text-white tracking-tighter leading-none">
-                    UNLIMITED <br><span class="text-vornac-gold">AUTONOMY.</span>
+                    <span>UNLIMITED <br><span class="text-vornac-gold">AUTONOMY.</span></span>
                 </h2>
                 <p class="text-vornac-grey-light text-lg mt-8 max-w-xl mx-auto italic font-medium">
                     One yearly fee. Unlimited pentests. Total peace of mind.
@@ -134,8 +147,9 @@
                 <div class="relative bg-vornac-grey-dark/30 border border-vornac-gold/30 rounded-[48px] p-8 lg:p-16 shadow-2xl backdrop-blur-xl group hover:border-vornac-gold transition-all duration-500">
                     
                     <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-vornac-gold text-vornac-black px-6 md:px-8 py-2 rounded-full text-[11px] font-black uppercase tracking-widest italic shadow-glow-gold whitespace-nowrap">
-
+                        <span>
                         Enterprise Standard
+                        </span>
                     </div>
     
                     <div class="flex flex-col items-center text-center">

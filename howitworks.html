@@ -4,6 +4,11 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LJGWDQ2CR"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
+    // Capture language switch preference
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('lang') === 'en') {
+        localStorage.setItem('vornac_lang', 'en');
+    }
     function gtag(){dataLayer.push(arguments);}
     gtag('consent', 'default', {
         'ad_storage': 'denied', 'ad_user_data': 'denied', 'ad_personalization': 'denied', 'analytics_storage': 'denied', 'wait_for_update': 500
@@ -172,6 +177,10 @@
             <a href="howitworks.html" class="nav-link text-white border-b-2 border-vornac-gold">How it works</a>
             <a href="pricing.html" class="nav-link text-vornac-grey-light hover:text-white transition-colors">Pricing</a>
             <a href="about.html" class="nav-link text-vornac-grey-light hover:text-white transition-colors">About</a>
+            <div class="flex items-center gap-2 border-l border-white/10 pl-6">
+                <a href="howitworks_de.html" onclick="localStorage.setItem('vornac_lang', 'de')" class="lang-switch hover-lift">DE</a>
+                <span class="lang-switch is-active">EN</span>
+            </div>
             <a href="index.html#contact" class="nav-link text-vornac-grey-light hover:text-white transition-colors">Contact</a>
         </div>
 
@@ -192,6 +201,10 @@
             <a href="howitworks.html" class="mobile-link text-lg font-medium text-vornac-gold">How it works</a>
             <a href="pricing.html" class="mobile-link text-lg font-medium text-vornac-grey-light">Pricing</a>
             <a href="about.html" class="mobile-link text-lg font-medium text-vornac-grey-light">About</a>
+            <div class="flex items-center justify-center gap-6 py-2">
+                <a href="howitworks_de.html" onclick="localStorage.setItem('vornac_lang', 'de')" class="text-lg font-medium text-vornac-grey-light hover:text-white transition-colors">DE</a>
+                <span class="text-lg font-bold text-vornac-gold">EN</span>
+            </div>
             <a href="index.html#contact" class="mobile-link text-lg font-medium text-vornac-grey-light">Contact</a>
             <a href="index.html#contact" class="mobile-link mt-4 flex h-14 items-center justify-center rounded-xl bg-vornac-gold font-bold text-vornac-black shadow-glow-gold transition-transform active:scale-95">Get Access_</a>
         </div>
@@ -211,13 +224,11 @@
             </div>
 
             <h1 class="font-heading text-5xl md:text-8xl lg:text-[7.5rem] font-black italic uppercase leading-[0.8] tracking-tighter text-white mb-10">
-                Tactical Autonomy. <br>
-                <span class="stroke-text">Architected.</span>
+                <span>Tactical Autonomy. <br><span class="stroke-text">Architected.</span></span>
             </h1>
 
            <p class="max-w-2xl text-lg md:text-xl text-vornac-grey-light font-medium leading-relaxed mb-16">
-    Visualizing the transition from static vulnerability scanning <br class="hidden md:block"> 
-    to autonomous machine reasoning.
+    Visualizing the transition from static vulnerability scanning <br class="hidden md:block"> to autonomous machine reasoning.
 </p>
 <!--COMMAND CENTER-->
             <div class="w-full max-w-3xl relative text-left">

@@ -4,6 +4,35 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LJGWDQ2CR"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
+    
+    // Language Detection & Redirect
+    (function() {
+        // 1. Check for manual switch via URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('lang') === 'en') {
+            localStorage.setItem('vornac_lang', 'en');
+            return;
+        } 
+
+        // 2. Check stored preference
+        const savedLang = localStorage.getItem('vornac_lang');
+        if (savedLang === 'en') return;
+
+        // 3. Fallback: Check referrer (if coming from German page, assume English intent if landing here)
+        if (document.referrer && document.referrer.indexOf('_de.html') !== -1) {
+            localStorage.setItem('vornac_lang', 'en');
+            return;
+        }
+
+        // 4. Browser Language Check (Default to German if no preference set)
+        const userLang = navigator.language || navigator.userLanguage;
+
+        if (savedLang === 'de' || (!savedLang && userLang.startsWith('de'))) {
+            localStorage.setItem('vornac_lang', 'de');
+            window.location.replace('index_de.html');
+        }
+    })();
+
     function gtag(){dataLayer.push(arguments);}
 
     // 1. Standard-Status: Alles abgelehnt (DSGVO-konform)
@@ -135,6 +164,10 @@
             <a href="howitworks.html" class="nav-link text-vornac-grey-light hover:text-white transition-colors">How it works</a>
             <a href="pricing.html" class="nav-link text-vornac-grey-light hover:text-white transition-colors">Pricing</a>
             <a href="about.html" class="nav-link text-vornac-grey-light hover:text-white transition-colors">About</a>
+            <div class="flex items-center gap-2 border-l border-white/10 pl-6">
+                <a href="index_de.html" onclick="localStorage.setItem('vornac_lang', 'de')" class="lang-switch hover-lift">DE</a>
+                <span class="lang-switch is-active">EN</span>
+            </div>
             <a href="#contact" class="rounded-lg bg-vornac-gold px-5 py-2.5 text-xs font-bold text-vornac-black uppercase tracking-widest hover:bg-white transition-colors shadow-glow-gold hover:scale-105 transform duration-200">Book Demo</a>
         </div>
 
@@ -151,11 +184,14 @@
 
     <div id="mobile-menu" class="fixed left-0 right-0 top-[72px] z-[100] hidden border-b border-white/10 bg-[#050816] shadow-2xl md:hidden">
         <div class="flex flex-col space-y-6 px-8 py-10 text-center">
-            <a href="index.html" class="mobile-link text-lg font-medium text-vornac-gold">Home</a>
             <a href="howitworks.html" class="mobile-link text-lg font-medium text-vornac-grey-light">How it works</a>
             <a href="pricing.html" class="mobile-link text-lg font-medium text-vornac-grey-light" aria-label="pricing">Pricing</a>
             <a href="about.html" class="mobile-link text-lg font-medium text-vornac-grey-light">About</a>
             <a href="#contact" class="mobile-link text-lg font-medium text-vornac-grey-light">Contact</a>
+            <div class="flex items-center justify-center gap-6 py-2">
+                <a href="index_de.html" onclick="localStorage.setItem('vornac_lang', 'de')" class="text-lg font-medium text-vornac-grey-light hover:text-white transition-colors">DE</a>
+                <span class="text-lg font-bold text-vornac-gold">EN</span>
+            </div>
             <a href="#contact" class="mobile-link mt-4 flex h-14 items-center justify-center rounded-xl bg-vornac-gold font-bold text-vornac-black shadow-glow-gold transition-transform active:scale-95">Get Access_</a>
         </div>
     </div>
@@ -187,7 +223,7 @@
             </div>
 
             <h1 class="font-heading text-5xl md:text-8xl lg:text-[7.5rem] font-black italic uppercase leading-[0.8] tracking-tighter text-white mb-10">
-                Pentesting <br>
+                <span>Pentesting</span> <br>
                 <span class="text-transparent" style="-webkit-text-stroke: 1.5px rgba(255,163,38,0.8);">Redefined.</span>
             </h1>
 
@@ -252,10 +288,6 @@
 </script>
 
 <!--END HERO SECTION-->
-
-<!-- TRUST BAR-->
-
-<!-- END TRUST BAR-->
 
 <!-- FLOW-->
 <section id="flow" class="relative py-20 bg-[#02040a] overflow-hidden border-t border-white/5">
