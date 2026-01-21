@@ -221,6 +221,22 @@
         opacity: 1;
         transform: translateY(0);
         }
+
+    /* ----------------------------------------
+     * Language Switcher
+     * -------------------------------------- */
+    .lang-switch {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 0.875rem;
+        color: rgba(255, 255, 255, 0.5);
+        transition: color 0.2s ease, text-shadow 0.2s ease;
+        }
+
+    .lang-switch:hover,
+    .lang-switch.is-active {
+        color: var(--vornac-gold-1);
+        text-shadow: 0 0 8px rgba(245, 201, 106, 0.6);
+        }
     }
 /* Adaptive Hero-Overlay – ohne HTML-Änderung
    Ziel: Lesbarkeit bleibt stabil, Overlay passt sich automatisch an Viewport/Device an.
