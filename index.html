@@ -92,17 +92,6 @@
         #hero-video { transition: filter 2.5s ease; will-change: filter; }
         .video-ended #hero-video { filter: blur(6px) brightness(0.5); }
 
-        .step-card {
-        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        will-change: transform, opacity;
-        }
-        .opacity-0 { opacity: 0; }
-        .translate-y-10 { transform: translateY(2.5rem); }
-        /* Diese Klassen werden vom JS vergeben */
-        .reveal-active {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-    }
     </style>
 </head>
 <body class="bg-vornac-black text-white font-body antialiased">
@@ -117,37 +106,6 @@
         
         <a href="#top" class="flex items-center gap-3" aria-label="VORNAC home">
             <svg xmlns="http://www.w3.org/2000/svg" class="nav-logo h-12 w-auto sm:h-14" viewBox="0 0 1448 208" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
-                <style>
-                    /* Animation für  Trust Bar */
-                    @keyframes scan-slow {
-                        0% { transform: translateY(-100%); }
-                        100% { transform: translateY(500%); }
-                    }
-                    .animate-scan-slow {
-                        animation: scan-slow 8s linear infinite;
-}
-                    /* Animation: Fly in, Hold, then Fly out to leave only the 'V' */
-                    @keyframes vornacFlyInHoldOut {
-                        0%   { transform: translateX(-360px); opacity: 0; }
-                        15%  { transform: translateX(0);      opacity: 1; }
-                        85%  { transform: translateX(0);      opacity: 1; }
-                        100% { transform: translateX(-360px); opacity: 0; }
-                    }
-                    
-                    /* Target letters o, r, n, a, c */
-                    #o, #r, #n, #a, #c { 
-                        animation: vornacFlyInHoldOut 5s cubic-bezier(0.86,0,0.07,1) both 1; 
-                        transform-origin: 0 0; 
-                        will-change: transform, opacity; 
-                    }
-                    
-                    /* Staggered entry for the 'Accordion' effect */
-                    #o { animation-delay: 0.00s; }
-                    #r { animation-delay: 0.05s; }
-                    #n { animation-delay: 0.10s; }
-                    #a { animation-delay: 0.15s; }
-                    #c { animation-delay: 0.20s; }
-                </style>
                 
                 <path id="v" d="M 0 0 L 50.1 0 L 117.1 126 L 187.09 0 L 236.09 0 L 114.06 207.74 L 0 0 Z" fill="#ffffff" />
                 
@@ -401,7 +359,7 @@
     <div class="max-w-content mx-auto relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             
-            <div class="step-card opacity-0 -translate-x-10 transition-all duration-700">
+            <div>
                 <span class="text-vornac-gold text-[10px] font-black uppercase tracking-[0.4em] block mb-6">Live Demo</span>
                 <h2 class="font-heading text-4xl lg:text-6xl font-bold uppercase italic text-white tracking-tighter mb-8 leading-[0.9]">
                     Ready to see <span class="text-vornac-gold">VORNAC</span> in action?
@@ -427,7 +385,7 @@
                 </div>
             </div>
 
-            <div class="step-card opacity-0 translate-y-10 transition-all duration-700 delay-100">
+            <div>
                 <form id="contact-form" action="https://formspree.io/f/meoyrzog" method="POST" class="bg-vornac-grey-dark/40 border border-white/10 rounded-3xl p-8 lg:p-10 shadow-2xl backdrop-blur-md relative">
                     
                     <input type="text" name="gotcha" class="hidden" autocomplete="off"/>
@@ -729,35 +687,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById("stat-bar").style.width = "78%";
         });
     }
-
-    // 2. UNIVERSELLER REVEAL OBSERVER (Für Karten, Formular und Counter)
-    const revealCallback = (entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const el = entry.target;
-                el.classList.add('reveal-active');
-                
-                // Workflow Linie füllen
-                const line = document.querySelector('#step-line-fill');
-                if (line && el.closest('#how-it-works')) line.style.width = '100%';
-
-                // Counter in dieser Sektion starten
-                const counters = el.querySelectorAll('[data-target]');
-                counters.forEach(counter => startCounter(counter));
-
-                observer.unobserve(el);
-            }
-        });
-    };
-
-    const revealObserver = new IntersectionObserver(revealCallback, {
-        threshold: 0.1, // Startet schon bei 10% Sichtbarkeit (sehr zuverlässig)
-        rootMargin: '0px 0px -50px 0px'
-    });
-
-    document.querySelectorAll('.step-card, #contact, #evolution, #how-it-works').forEach(el => {
-        revealObserver.observe(el);
-    });
 
     // 3. COUNTER LOGIK
     function startCounter(el) {
