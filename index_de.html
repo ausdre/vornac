@@ -94,7 +94,7 @@
             <h1 class="font-heading text-5xl md:text-8xl lg:text-[7.5rem] font-black italic uppercase leading-[0.8] tracking-tighter text-white mb-10">
                 Pentesting. <br><span class="text-transparent" style="-webkit-text-stroke: 1.5px rgba(255,163,38,0.8);">Neu gedacht.</span>
             </h1>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mb-8">
                 <div class="flex flex-col items-center md:items-end md:border-r border-white/10 md:pr-10">
                     <p class="text-[10px] uppercase tracking-[0.4em] text-vornac-grey-light mb-2">Manuelle Vorlaufzeit</p>
                     <p class="text-2xl font-black italic text-vornac-grey-light/40 uppercase line-through">6-8 Wochen</p>
@@ -104,6 +104,18 @@
                     <p class="text-4xl font-black italic text-vornac-gold uppercase drop-shadow-[0_0_15px_rgba(255,163,38,0.4)]">Sofort.</p>
                 </div>
             </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mb-12">
+                <div class="flex flex-col items-center md:items-end md:border-r border-white/10 md:pr-10">
+                    <p class="text-[10px] uppercase tracking-[0.4em] text-vornac-grey-light mb-2">Klassisches Preismodell</p>
+                    <p class="text-2xl font-black italic text-vornac-grey-light/40 uppercase line-through">Pro Pentest zahlen</p>
+                </div>
+                <div class="flex flex-col items-center md:items-start md:pl-10">
+                    <p class="text-[10px] uppercase tracking-[0.4em] text-vornac-gold mb-2">VORNAC Modell</p>
+                    <p class="text-4xl font-black italic text-vornac-gold uppercase drop-shadow-[0_0_15px_rgba(255,163,38,0.4)]">Unbegrenzt.</p>
+                </div>
+            </div>
+
             <p class="max-w-2xl text-lg md:text-xl text-vornac-grey-light font-medium leading-relaxed mb-8">
                 Verabschieden Sie sich von Wartezeiten. VORNAC liefert <span class="text-white">kontinuierliche Penetrationstests</span> auf Knopfdruck – für lückenlose Compliance und maximale Sicherheit.
             </p>
@@ -114,7 +126,7 @@
                         <div class="absolute inset-0 rounded-2xl bg-white opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     </a>
                     <button onclick="document.getElementById('report-modal').classList.remove('hidden')" class="h-20 flex items-center justify-center rounded-2xl border-2 border-white/10 bg-vornac-black/40 backdrop-blur-md px-14 font-black uppercase tracking-[0.2em] text-xs text-white transition-all hover:border-vornac-gold hover:bg-vornac-gold/5 w-full sm:w-auto cursor-pointer">
-                        Muster-Bericht anfordern
+                        Kostenloser Muster-Bericht
                     </button>
                 </div>
                 <div class="flex flex-col items-center space-y-3 opacity-80">
@@ -362,8 +374,8 @@
     <div class="relative w-full max-w-lg rounded-3xl border border-white/10 bg-[#050816] p-8 shadow-2xl transform scale-95 transition-transform duration-300">
         <button onclick="closeReportModal()" class="absolute top-4 right-4 text-vornac-grey-light hover:text-white transition-colors"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg></button>
         <div class="text-center mb-8">
-            <span class="text-vornac-gold text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Output Vorschau</span>
-            <h3 class="font-heading text-2xl font-bold text-white uppercase italic tracking-tight">Beispiel-Report Laden</h3>
+            <span class="text-vornac-gold text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Kostenlose Vorschau</span>
+            <h3 class="font-heading text-2xl font-bold text-white uppercase italic tracking-tight">Kostenlosen Beispiel-Report Laden</h3>
             <p class="text-vornac-grey-light text-sm mt-4 leading-relaxed">Sehen Sie, was Ihre Auditoren sehen. Inklusive Management Summary, technischer Verwundbarkeitskette und Remediation-Schritten.</p>
         </div>
         <form id="report-form" class="space-y-4">
@@ -372,7 +384,7 @@
                 <input type="text" name="company" required placeholder="Firma" class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-white/20 focus:outline-none focus:border-vornac-gold focus:ring-1 focus:ring-vornac-gold transition-all text-sm">
                 <input type="email" name="email" required placeholder="Geschäftliche E-Mail" class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-white/20 focus:outline-none focus:border-vornac-gold focus:ring-1 focus:ring-vornac-gold transition-all text-sm">
             </div>
-            <button type="submit" class="w-full bg-white text-vornac-black font-black uppercase tracking-[0.2em] text-xs py-4 rounded-xl hover:bg-vornac-gold transition-all shadow-lg">PDF Report Anfordern_</button>
+            <button type="submit" class="w-full bg-white text-vornac-black font-black uppercase tracking-[0.2em] text-xs py-4 rounded-xl hover:bg-vornac-gold transition-all shadow-lg">Kostenlosen Report Anfordern_</button>
             <p class="text-[9px] text-center text-vornac-grey-light/30 uppercase tracking-widest">Sofortiger Download-Link per E-Mail</p>
         </form>
         <div id="report-success" class="hidden text-center py-8">
