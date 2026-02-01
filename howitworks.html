@@ -37,18 +37,6 @@
 
         .stroke-text { -webkit-text-stroke: 1.5px #d4a012; color: transparent; }
 
-        /* LOGO ANIMATION (1:1 aus deiner Index) */
-        @keyframes vornacFlyInHoldOut {
-            0%   { transform: translateX(-360px); opacity: 0; }
-            15%  { transform: translateX(0);      opacity: 1; }
-            85%  { transform: translateX(0);      opacity: 1; }
-            100% { transform: translateX(-360px); opacity: 0; }
-        }
-        #o, #r, #n, #a, #c {
-            animation: vornacFlyInHoldOut 5s cubic-bezier(0.86,0,0.07,1) both infinite;
-            will-change: transform, opacity;
-        }
-
         /* HARD FIX: STOPPT DAS SPRINGEN DURCH FESTE BREITE */
         .fixed-logo-box {
             width: 280px; /* Mobile Breite */
@@ -130,28 +118,6 @@
 
         <a href="index.html" class="flex items-center gap-3 w-[220px] sm:w-[360px] flex-shrink-0" aria-label="VORNAC home">
             <svg xmlns="http://www.w3.org/2000/svg" class="nav-logo h-12 w-auto sm:h-14" viewBox="0 0 1448 208" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
-                <style>
-                    @keyframes vornacFlyInHoldOut {
-                        0%   { transform: translateX(-360px); opacity: 0; }
-                        15%  { transform: translateX(0);      opacity: 1; }
-                        85%  { transform: translateX(0);      opacity: 1; }
-                        100% { transform: translateX(-360px); opacity: 0; }
-                    }
-
-                    #o, #r, #n, #a, #c {
-                        /* Hier steht jetzt die 1, damit es wie in der Index nur einmal fliegt */
-                        animation: vornacFlyInHoldOut 5s cubic-bezier(0.86,0,0.07,1) both 1;
-                        transform-origin: 0 0;
-                        will-change: transform, opacity;
-                    }
-
-                    #o { animation-delay: 0.00s; }
-                    #r { animation-delay: 0.05s; }
-                    #n { animation-delay: 0.10s; }
-                    #a { animation-delay: 0.15s; }
-                    #c { animation-delay: 0.20s; }
-                </style>
-
                 <path id="v" d="M 0 0 L 50.1 0 L 117.1 126 L 187.09 0 L 236.09 0 L 114.06 207.74 L 0 0 Z" fill="#d4a012" />
                 <path id="o" d="M 297.22 43.48 L 422.22 43.48 L 422.11 164.82 L 297.22 164.82 L 297.22 43.48 Z M 296.22 0.03 L 251.23 43.48 L 251.4 164.82 L 296.22 207.74 L 421.22 207.74 L 465.91 164.82 L 466.09 43.48 L 421.22 0.03 L 296.22 0.03 Z" fill="#0f172a"/>
                 <path id="r" d="M 509.21 0.03 L 670.06 0 L 711.06 42 L 711.06 100 L 682.06 127 L 673.06 134 L 665.06 134 L 720.93 207.74 L 669.2 207.74 L 574.2 92.03 L 664.2 92.03 L 664.2 44.03 L 554.21 43.03 L 554.21 207.74 L 509.21 207.74 L 509.21 0.03 Z" fill="#0f172a"/>
