@@ -97,34 +97,54 @@
             <h1 class="font-heading text-5xl md:text-8xl lg:text-[7.5rem] font-black italic uppercase leading-[0.8] tracking-tighter text-stone-900 mb-10">
                 Pentesting. <br><span class="text-transparent" style="-webkit-text-stroke: 2px #d4a012;">Neu gedacht.</span>
             </h1>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mb-8">
-                <div class="flex flex-col items-center md:items-end md:border-r-2 border-stone-300 md:pr-10">
+            <!-- Mobile: Kompakte Zeilen -->
+            <div class="flex flex-col gap-4 w-full max-w-md mb-10 md:hidden">
+                <div class="flex items-center justify-center gap-3">
+                    <span class="text-lg font-black italic text-stone-400 line-through">6-8 Wochen</span>
+                    <span class="text-amber-500">→</span>
+                    <span class="text-2xl font-black italic text-amber-600">Stunden</span>
+                </div>
+                <div class="flex items-center justify-center gap-3">
+                    <span class="text-lg font-black italic text-stone-400 line-through">Pro Pentest</span>
+                    <span class="text-amber-500">→</span>
+                    <span class="text-2xl font-black italic text-amber-600">Unbegrenzt</span>
+                </div>
+                <div class="flex items-center justify-center gap-3">
+                    <span class="text-lg font-black italic text-stone-400 line-through">1x pro Jahr</span>
+                    <span class="text-amber-500">→</span>
+                    <span class="text-2xl font-black italic text-amber-600">Täglich</span>
+                </div>
+            </div>
+
+            <!-- Desktop: Volle Darstellung -->
+            <div class="hidden md:grid grid-cols-2 gap-8 w-full max-w-4xl mb-8">
+                <div class="flex flex-col items-end border-r-2 border-stone-300 pr-10">
                     <p class="text-[10px] uppercase tracking-[0.4em] text-stone-500 mb-2">Traditionelle Vorlaufzeit</p>
                     <p class="text-2xl font-black italic text-stone-400 uppercase line-through">6-8 Wochen</p>
                 </div>
-                <div class="flex flex-col items-center md:items-start md:pl-10">
+                <div class="flex flex-col items-start pl-10">
                     <p class="text-[10px] uppercase tracking-[0.4em] text-amber-600 mb-2">VORNAC Ausführung</p>
                     <p class="text-4xl font-black italic text-amber-600 uppercase drop-shadow-[0_0_15px_rgba(212,160,18,0.3)]">Stunden.</p>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mb-8">
-                <div class="flex flex-col items-center md:items-end md:border-r-2 border-stone-300 md:pr-10">
+            <div class="hidden md:grid grid-cols-2 gap-8 w-full max-w-4xl mb-8">
+                <div class="flex flex-col items-end border-r-2 border-stone-300 pr-10">
                     <p class="text-[10px] uppercase tracking-[0.4em] text-stone-500 mb-2">Klassisches Preismodell</p>
                     <p class="text-2xl font-black italic text-stone-400 uppercase line-through">Pro Pentest zahlen</p>
                 </div>
-                <div class="flex flex-col items-center md:items-start md:pl-10">
+                <div class="flex flex-col items-start pl-10">
                     <p class="text-[10px] uppercase tracking-[0.4em] text-amber-600 mb-2">VORNAC Modell</p>
                     <p class="text-4xl font-black italic text-amber-600 uppercase drop-shadow-[0_0_15px_rgba(212,160,18,0.3)]">Unbegrenzt.</p>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mb-12">
-                <div class="flex flex-col items-center md:items-end md:border-r-2 border-stone-300 md:pr-10">
+            <div class="hidden md:grid grid-cols-2 gap-8 w-full max-w-4xl mb-12">
+                <div class="flex flex-col items-end border-r-2 border-stone-300 pr-10">
                     <p class="text-[10px] uppercase tracking-[0.4em] text-stone-500 mb-2">Traditionelle Frequenz</p>
                     <p class="text-2xl font-black italic text-stone-400 uppercase line-through">1x pro Jahr</p>
                 </div>
-                <div class="flex flex-col items-center md:items-start md:pl-10">
+                <div class="flex flex-col items-start pl-10">
                     <p class="text-[10px] uppercase tracking-[0.4em] text-amber-600 mb-2">VORNAC Frequenz</p>
                     <p class="text-4xl font-black italic text-amber-600 uppercase drop-shadow-[0_0_15px_rgba(212,160,18,0.3)]">Täglich.</p>
                 </div>
