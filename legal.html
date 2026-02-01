@@ -49,7 +49,18 @@
 <link rel="alternate icon" href="favicon.ico">
 <link rel="stylesheet" href="output.css"/>
 <style>
-        .bg-blueprint-grid { background-size: 100px 100px; background-image: linear-gradient(to right, rgba(255, 163, 38, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 163, 38, 0.03) 1px, transparent 1px); }
+        :root {
+            --color-bg: #f5f2ed;
+            --color-bg-soft: #efe9e3;
+            --color-bg-muted: #e5dfda;
+            --color-accent: #d4a012;
+            --color-accent-dark: #b8860b;
+            --color-text: #1c1917;
+            --color-text-muted: #57534e;
+        }
+        .bg-warm { background-color: #f5f2ed; }
+        .bg-warm-soft { background-color: #efe9e3; }
+        .bg-warm-muted { background-color: #e5dfda; }
         #mobile-menu:not(.hidden) {
             display: block;
             animation: slideDown 0.3s ease-out forwards;
@@ -68,65 +79,56 @@
             to { opacity: 1; }
         }
         .prose { max-width: 80ch; }
-        .prose h1, .prose h2, .prose h3 { color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 900; font-style: italic; }
-        .prose p, .prose li { color: #9ca3af; }
-        .prose a { color: #FFA326; text-decoration: none; }
+        .prose h1, .prose h2, .prose h3 { color: #1c1917; font-family: 'Montserrat', sans-serif; font-weight: 900; font-style: italic; }
+        .prose p, .prose li { color: #57534e; }
+        .prose a { color: #d4a012; text-decoration: none; }
         .prose a:hover { text-decoration: underline; }
-        .prose hr { border-color: rgba(255,255,255,0.1); }
+        .prose hr { border-color: #d6d3d1; }
     </style>
 </head>
-<body class="bg-vornac-black text-white font-body antialiased">
-<div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-    <div class="absolute inset-0 bg-blueprint-grid"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-vornac-black via-transparent to-vornac-black"></div>
-</div>
-<div class="bg-orbit-lights pointer-events-none">
-    <div class="orbit-blob absolute -left-40 top-0 h-80 w-80 rounded-full bg-vornac-gold/25 overlay-soft-light animate-orbit-slow"></div>
-    <div class="orbit-blob absolute -right-[8rem] top-1/3 h-96 w-96 rounded-full bg-vornac-gold/15 overlay-screen animate-orbit-medium"></div>
-    <div class="orbit-blob absolute left-1/3 -bottom-[9rem] h-72 w-72 rounded-full bg-vornac-gold/20 overlay-soft-light animate-orbit-fast"></div>
-</div>
+<body class="bg-warm text-stone-900 font-body antialiased">
 
-<header id="site-header" class="sticky top-0 z-50 border-b border-white/5 backdrop-blur-md bg-vornac-black/60">
+<header id="site-header" class="sticky top-0 z-50 border-b-2 border-stone-300 backdrop-blur-md" style="background-color: rgba(245, 242, 237, 0.97);">
     <nav class="mx-auto flex max-w-content items-center justify-between px-4 py-4 lg:px-6">
 
         <a href="index.html" class="flex items-center gap-3 w-[220px] sm:w-[360px] flex-shrink-0" aria-label="VORNAC home">
             <svg xmlns="http://www.w3.org/2000/svg" class="nav-logo h-12 w-auto sm:h-14" viewBox="0 0 1448 208" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
 
-                <path id="v" d="M 0 0 L 50.1 0 L 117.1 126 L 187.09 0 L 236.09 0 L 114.06 207.74 L 0 0 Z" fill="#ffffff" />
+                <path id="v" d="M 0 0 L 50.1 0 L 117.1 126 L 187.09 0 L 236.09 0 L 114.06 207.74 L 0 0 Z" fill="#d4a012" />
 
-                <path id="o" d="M 297.22 43.48 L 422.22 43.48 L 422.11 164.82 L 297.22 164.82 L 297.22 43.48 Z M 296.22 0.03 L 251.23 43.48 L 251.4 164.82 L 296.22 207.74 L 421.22 207.74 L 465.91 164.82 L 466.09 43.48 L 421.22 0.03 L 296.22 0.03 Z" fill="#ffffff"/>
-                <path id="r" d="M 509.21 0.03 L 670.06 0 L 711.06 42 L 711.06 100 L 682.06 127 L 673.06 134 L 665.06 134 L 720.93 207.74 L 669.2 207.74 L 574.2 92.03 L 664.2 92.03 L 664.2 44.03 L 554.21 43.03 L 554.21 207.74 L 509.21 207.74 L 509.21 0.03 Z" fill="#ffffff"/>
-                <path id="n" d="M 754.05 0 L 904.04 122.03 L 904 0 L 945.1 0 L 945.04 208.03 L 797.05 86.03 L 797.05 207.74 L 754.05 207.74 L 754.05 0 Z" fill="#ffffff"/>
-                <path id="a" d="M 1094.85 0 L 1222.19 207.74 L 1056.03 207.74 L 1079.03 165 L 1148.03 165 L 1096.03 76 L 1018.77 207.74 L 968.04 207.74 L 1094.85 0 Z" fill="#ffffff"/>
-                <path id="c" d="M 1273.02 0 L 1448 0 L 1407.01 43 L 1271.02 43.48 L 1271.02 162 L 1275.02 164.82 L 1406.01 164.82 L 1448 207.74 L 1272.02 207.74 L 1227.49 164.82 L 1226.89 43.48 L 1273.02 0 Z" fill="#ffffff"/>
+                <path id="o" d="M 297.22 43.48 L 422.22 43.48 L 422.11 164.82 L 297.22 164.82 L 297.22 43.48 Z M 296.22 0.03 L 251.23 43.48 L 251.4 164.82 L 296.22 207.74 L 421.22 207.74 L 465.91 164.82 L 466.09 43.48 L 421.22 0.03 L 296.22 0.03 Z" fill="#0f172a"/>
+                <path id="r" d="M 509.21 0.03 L 670.06 0 L 711.06 42 L 711.06 100 L 682.06 127 L 673.06 134 L 665.06 134 L 720.93 207.74 L 669.2 207.74 L 574.2 92.03 L 664.2 92.03 L 664.2 44.03 L 554.21 43.03 L 554.21 207.74 L 509.21 207.74 L 509.21 0.03 Z" fill="#0f172a"/>
+                <path id="n" d="M 754.05 0 L 904.04 122.03 L 904 0 L 945.1 0 L 945.04 208.03 L 797.05 86.03 L 797.05 207.74 L 754.05 207.74 L 754.05 0 Z" fill="#0f172a"/>
+                <path id="a" d="M 1094.85 0 L 1222.19 207.74 L 1056.03 207.74 L 1079.03 165 L 1148.03 165 L 1096.03 76 L 1018.77 207.74 L 968.04 207.74 L 1094.85 0 Z" fill="#0f172a"/>
+                <path id="c" d="M 1273.02 0 L 1448 0 L 1407.01 43 L 1271.02 43.48 L 1271.02 162 L 1275.02 164.82 L 1406.01 164.82 L 1448 207.74 L 1272.02 207.74 L 1227.49 164.82 L 1226.89 43.48 L 1273.02 0 Z" fill="#0f172a"/>
             </svg>
         </a>
 
         <div class="hidden items-center gap-8 text-sm md:flex">
-            <a href="index.html" class="nav-link text-vornac-grey-light hover:text-white transition-colors">Home</a>
-            <a href="howitworks.html" class="nav-link text-vornac-grey-light hover:text-white transition-colors">How it works</a>
-            <a href="pricing.html" class="nav-link text-vornac-grey-light hover:text-white transition-colors">Pricing</a>
-            <a href="about.html" class="nav-link text-vornac-grey-light hover:text-white transition-colors">About</a>
+            <a href="index.html" class="nav-link text-stone-500 hover:text-stone-900 transition-colors">Home</a>
+            <a href="howitworks.html" class="nav-link text-stone-500 hover:text-stone-900 transition-colors">How it works</a>
+            <a href="pricing.html" class="nav-link text-stone-500 hover:text-stone-900 transition-colors">Pricing</a>
+            <a href="about.html" class="nav-link text-stone-500 hover:text-stone-900 transition-colors">About</a>
         </div>
 
-        <button id="nav-toggle" class="relative z-[110] inline-flex h-10 w-10 items-center justify-center rounded-md border border-white/10 md:hidden">
+        <button id="nav-toggle" class="relative z-[110] inline-flex h-10 w-10 items-center justify-center rounded-md border border-stone-300 md:hidden">
             <span class="flex flex-col gap-1.5">
-                <span class="block h-[2px] w-5 bg-white"></span>
-                <span class="block h-[2px] w-5 bg-white"></span>
-                <span class="block h-[2px] w-5 bg-white"></span>
+                <span class="block h-[2px] w-5 bg-stone-700"></span>
+                <span class="block h-[2px] w-5 bg-stone-700"></span>
+                <span class="block h-[2px] w-5 bg-stone-700"></span>
             </span>
         </button>
     </nav>
 
-    <div id="mobile-backdrop" class="fixed inset-0 z-[90] hidden bg-black/80 backdrop-blur-sm md:hidden"></div>
+    <div id="mobile-backdrop" class="fixed inset-0 z-[90] hidden bg-black/50 backdrop-blur-sm md:hidden"></div>
 
-    <div id="mobile-menu" class="fixed left-0 right-0 top-[72px] z-[100] hidden border-b border-white/10 bg-[#050816] shadow-2xl md:hidden">
+    <div id="mobile-menu" class="fixed left-0 right-0 top-[72px] z-[100] hidden border-b border-stone-300 bg-warm shadow-2xl md:hidden">
         <div class="flex flex-col space-y-6 px-8 py-10 text-center">
-            <a href="index.html" class="mobile-link text-lg font-medium text-vornac-grey-light">Home</a>
-            <a href="howitworks.html" class="mobile-link text-lg font-medium text-vornac-grey-light">How it works</a>
-            <a href="pricing.html" class="mobile-link text-lg font-medium text-vornac-grey-light">Pricing</a>
-            <a href="about.html" class="mobile-link text-lg font-medium text-vornac-grey-light">About</a>
-            <a href="index.html#contact" class="mobile-link mt-4 flex h-14 items-center justify-center rounded-xl bg-vornac-gold font-bold text-vornac-black shadow-glow-gold transition-transform active:scale-95">Get Access_</a>
+            <a href="index.html" class="mobile-link text-lg font-medium text-stone-600">Home</a>
+            <a href="howitworks.html" class="mobile-link text-lg font-medium text-stone-600">How it works</a>
+            <a href="pricing.html" class="mobile-link text-lg font-medium text-stone-600">Pricing</a>
+            <a href="about.html" class="mobile-link text-lg font-medium text-stone-600">About</a>
+            <a href="index.html#contact" class="mobile-link mt-4 flex h-14 items-center justify-center rounded-xl bg-amber-500 text-white font-bold shadow-lg transition-transform active:scale-95">Get Access_</a>
         </div>
     </div>
 </header>
@@ -135,7 +137,7 @@
     <div class="mx-auto max-w-3xl px-4 prose">
 
         <h1 id="imprint" class="text-4xl lg:text-5xl">Imprint</h1>
-        <p class="text-lg text-vornac-grey-light">Information pursuant to § 5 TMG</p>
+        <p class="text-lg text-stone-500">Information pursuant to § 5 TMG</p>
 
         <div class="mt-8 space-y-4">
             <p>
@@ -192,7 +194,7 @@
 
             <h2 class="text-2xl lg:text-3xl">3. Analysis Tools</h2>
             <h3>Google Analytics</h3>
-            <p>This website uses features of the web analytics service Google Analytics. The provider is Google Ireland Limited (“Google”), Gordon House, Barrow Street, Dublin 4, Ireland. Google Analytics uses cookies that allow an analysis of your use of the website. The information generated by the cookie about your use of this website is usually transmitted to a Google server in the USA and stored there.</p>
+            <p>This website uses features of the web analytics service Google Analytics. The provider is Google Ireland Limited ("Google"), Gordon House, Barrow Street, Dublin 4, Ireland. Google Analytics uses cookies that allow an analysis of your use of the website. The information generated by the cookie about your use of this website is usually transmitted to a Google server in the USA and stored there.</p>
             <p>We have activated IP anonymization on this website. As a result, your IP address will be truncated by Google within member states of the European Union or in other signatory states to the Agreement on the European Economic Area before being transmitted to the USA. The storage of Google Analytics cookies and the use of this analysis tool are based on your consent pursuant to Art. 6(1)(a) GDPR, which you provide via the cookie banner.</p>
 
             <h2 class="text-2xl lg:text-3xl">4. Plugins and Tools</h2>
@@ -210,7 +212,7 @@
             <p>Within the framework of the applicable legal provisions, you have the right at any time to free information about your stored personal data, its origin and recipients and the purpose of the data processing and, if applicable, a right to correction, blocking or deletion of this data. For this purpose, as well as for further questions on the subject of personal data, you can contact us at any time at the address given in the imprint.</p>
 
             <hr class="my-8">
-            <p class="text-sm text-vornac-grey-light/70"><em>Disclaimer: This is not legal advice. The legal texts provided are for informational purposes only and should be reviewed by a qualified legal professional.</em></p>
+            <p class="text-sm text-stone-400"><em>Disclaimer: This is not legal advice. The legal texts provided are for informational purposes only and should be reviewed by a qualified legal professional.</em></p>
         </div>
 
     </div>
@@ -218,58 +220,58 @@
 
 
 
-<footer class="bg-vornac-black border-t border-white/5 pt-16 pb-10 px-4 relative z-10">
+<footer class="bg-stone-900 border-t border-stone-700 pt-16 pb-10 px-4 relative z-10">
     <div class="max-w-content mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-            
+
             <div class="md:col-span-2 space-y-6">
                 <div class="font-heading text-2xl font-black text-white italic tracking-tighter">
-                    VORNAC<span class="text-vornac-gold">.</span>
+                    VORNAC<span class="text-amber-500">.</span>
                 </div>
-                <p class="text-vornac-grey-light text-sm max-w-sm leading-relaxed">
+                <p class="text-stone-400 text-sm max-w-sm leading-relaxed">
                     The new standard for enterprise security testing. Shifting the industry from bottlenecks to scalable intelligence and continuous compliance.
                 </p>
                 <div class="flex items-center gap-4 pt-2">
-                    <div class="h-[1px] w-8 bg-vornac-gold/30"></div>
-                    <span class="text-[9px] uppercase tracking-[0.3em] text-vornac-gold font-bold">Heidelberg, Germany</span>
+                    <div class="h-[1px] w-8 bg-amber-500/30"></div>
+                    <span class="text-[9px] uppercase tracking-[0.3em] text-amber-500 font-bold">Heidelberg, Germany</span>
                 </div>
             </div>
 
             <div>
                 <h4 class="text-white font-bold text-xs uppercase tracking-[0.2em] mb-6">Navigation</h4>
-                <ul class="space-y-4 text-vornac-grey-light text-xs font-medium uppercase tracking-widest">
-                    <li><a href="index.html" class="hover:text-vornac-gold transition-colors">Home</a></li>
-                    <li><a href="howitworks.html" class="hover:text-vornac-gold transition-colors">How it works</a></li>
-                    <li><a href="pricing.html" class="hover:text-vornac-gold transition-colors">Pricing</a></li>
-                    <li><a href="about.html" class="hover:text-vornac-gold transition-colors">About</a></li>
+                <ul class="space-y-4 text-stone-400 text-xs font-medium uppercase tracking-widest">
+                    <li><a href="index.html" class="hover:text-amber-500 transition-colors">Home</a></li>
+                    <li><a href="howitworks.html" class="hover:text-amber-500 transition-colors">How it works</a></li>
+                    <li><a href="pricing.html" class="hover:text-amber-500 transition-colors">Pricing</a></li>
+                    <li><a href="about.html" class="hover:text-amber-500 transition-colors">About</a></li>
                 </ul>
             </div>
 
             <div>
                 <h4 class="text-white font-bold text-xs uppercase tracking-[0.2em] mb-6">Legal</h4>
-                <ul class="space-y-4 text-vornac-grey-light text-xs font-medium uppercase tracking-widest">
-                    <li><a href="legal.html#privacy" class="hover:text-vornac-gold transition-colors">Privacy Policy</a></li>
-                    <li><a href="legal.html#imprint" class="hover:text-vornac-gold transition-colors">Imprint</a></li>
+                <ul class="space-y-4 text-stone-400 text-xs font-medium uppercase tracking-widest">
+                    <li><a href="legal.html#privacy" class="hover:text-amber-500 transition-colors">Privacy Policy</a></li>
+                    <li><a href="legal.html#imprint" class="hover:text-amber-500 transition-colors">Imprint</a></li>
                 </ul>
             </div>
         </div>
 
-        <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-            <p class="text-[10px] text-vornac-grey-light/30 uppercase tracking-[0.3em]">
+        <div class="pt-8 border-t border-stone-700 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-[10px] text-stone-500 uppercase tracking-[0.3em]">
                 &copy; 2026 MAEA Holding UG (haftungsbeschränkt). All rights reserved.
             </p>
 
             <div class="flex items-center gap-8">
-                <a href="https://www.linkedin.com/company/vornac" target="_blank" class="text-vornac-grey-light/30 hover:text-vornac-gold transition-colors flex items-center gap-2">
+                <a href="https://www.linkedin.com/company/vornac" target="_blank" class="text-stone-500 hover:text-amber-500 transition-colors flex items-center gap-2">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                     </svg>
                     <span class="text-[10px] uppercase tracking-[0.2em] font-bold">LinkedIn</span>
                 </a>
-                <div class="flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em] text-vornac-grey-light/30">
-                    <a href="legal_de.html" onclick="localStorage.setItem('vornac_lang', 'de')" class="hover:text-vornac-gold transition-colors">DE</a>
-                    <span class="text-vornac-grey-light/10">|</span>
-                    <span class="text-vornac-gold">EN</span>
+                <div class="flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em] text-stone-500">
+                    <a href="legal_de.html" onclick="localStorage.setItem('vornac_lang', 'de')" class="hover:text-amber-500 transition-colors">DE</a>
+                    <span class="text-stone-600">|</span>
+                    <span class="text-amber-500">EN</span>
                 </div>
             </div>
         </div>
@@ -288,13 +290,13 @@ if (toggleBtn && mobileMenu && backdrop) {
     const closeMenu = () => {
         mobileMenu.classList.add('hidden');
         backdrop.classList.add('hidden');
-        document.body.style.overflow = ''; 
+        document.body.style.overflow = '';
     };
 
     const openMenu = () => {
         mobileMenu.classList.remove('hidden');
         backdrop.classList.remove('hidden');
-        document.body.style.overflow = 'hidden'; 
+        document.body.style.overflow = 'hidden';
     };
 
     toggleBtn.addEventListener('click', (e) => {
@@ -315,9 +317,9 @@ if (toggleBtn && mobileMenu && backdrop) {
     document.addEventListener('click', (e) => {
         const isClickInsideMenu = mobileMenu.contains(e.target);
         const isClickOnButton = toggleBtn.contains(e.target);
-        
+
         if (!mobileMenu.classList.contains('hidden') && !isClickInsideMenu && !isClickOnButton) {
-            closeMenu(); 
+            closeMenu();
         }
     });
 }
