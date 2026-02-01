@@ -175,34 +175,54 @@
                 <span class="text-transparent" style="-webkit-text-stroke: 2px #d4a012;">Redefined.</span>
             </h1>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mb-8">
-                <div class="flex flex-col items-center md:items-end md:border-r-2 border-stone-300 md:pr-10">
+            <!-- Mobile: Compact rows -->
+            <div class="flex flex-col gap-4 w-full max-w-md mb-10 md:hidden">
+                <div class="flex items-center justify-center gap-3">
+                    <span class="text-lg font-black italic text-stone-400 line-through">6-8 Weeks</span>
+                    <span class="text-amber-500">→</span>
+                    <span class="text-2xl font-black italic text-amber-600">Hours</span>
+                </div>
+                <div class="flex items-center justify-center gap-3">
+                    <span class="text-lg font-black italic text-stone-400 line-through">Per Pentest</span>
+                    <span class="text-amber-500">→</span>
+                    <span class="text-2xl font-black italic text-amber-600">Unlimited</span>
+                </div>
+                <div class="flex items-center justify-center gap-3">
+                    <span class="text-lg font-black italic text-stone-400 line-through">Once a Year</span>
+                    <span class="text-amber-500">→</span>
+                    <span class="text-2xl font-black italic text-amber-600">Daily</span>
+                </div>
+            </div>
+
+            <!-- Desktop: Full display -->
+            <div class="hidden md:grid grid-cols-2 gap-8 w-full max-w-4xl mb-8">
+                <div class="flex flex-col items-end border-r-2 border-stone-300 pr-10">
                     <p class="text-[10px] uppercase tracking-[0.4em] text-stone-500 mb-2">Traditional Lead Time</p>
                     <p class="text-2xl font-black italic text-stone-400 uppercase line-through">6-8 Weeks</p>
                 </div>
-                <div class="flex flex-col items-center md:items-start md:pl-10">
+                <div class="flex flex-col items-start pl-10">
                     <p class="text-[10px] uppercase tracking-[0.4em] text-amber-600 mb-2">Vornac Execution</p>
                     <p class="text-4xl font-black italic text-amber-600 uppercase drop-shadow-[0_0_15px_rgba(212,160,18,0.3)]">Hours.</p>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mb-8">
-                <div class="flex flex-col items-center md:items-end md:border-r-2 border-stone-300 md:pr-10">
+            <div class="hidden md:grid grid-cols-2 gap-8 w-full max-w-4xl mb-8">
+                <div class="flex flex-col items-end border-r-2 border-stone-300 pr-10">
                     <p class="text-[10px] uppercase tracking-[0.4em] text-stone-500 mb-2">Traditional Pricing</p>
                     <p class="text-2xl font-black italic text-stone-400 uppercase line-through">Pay per Pentest</p>
                 </div>
-                <div class="flex flex-col items-center md:items-start md:pl-10">
+                <div class="flex flex-col items-start pl-10">
                     <p class="text-[10px] uppercase tracking-[0.4em] text-amber-600 mb-2">Vornac Model</p>
                     <p class="text-4xl font-black italic text-amber-600 uppercase drop-shadow-[0_0_15px_rgba(212,160,18,0.3)]">Unlimited.</p>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mb-12">
-                <div class="flex flex-col items-center md:items-end md:border-r-2 border-stone-300 md:pr-10">
+            <div class="hidden md:grid grid-cols-2 gap-8 w-full max-w-4xl mb-12">
+                <div class="flex flex-col items-end border-r-2 border-stone-300 pr-10">
                     <p class="text-[10px] uppercase tracking-[0.4em] text-stone-500 mb-2">Traditional Frequency</p>
                     <p class="text-2xl font-black italic text-stone-400 uppercase line-through">Once a Year</p>
                 </div>
-                <div class="flex flex-col items-center md:items-start md:pl-10">
+                <div class="flex flex-col items-start pl-10">
                     <p class="text-[10px] uppercase tracking-[0.4em] text-amber-600 mb-2">Vornac Frequency</p>
                     <p class="text-4xl font-black italic text-amber-600 uppercase drop-shadow-[0_0_15px_rgba(212,160,18,0.3)]">Daily.</p>
                 </div>
