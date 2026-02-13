@@ -170,36 +170,119 @@
     <div class="relative z-10 w-full max-w-7xl px-6 py-20 text-center">
         <div class="flex flex-col items-center">
 
-            <h1 class="font-heading text-5xl md:text-8xl lg:text-[7.5rem] font-black italic uppercase leading-[0.8] tracking-tighter text-stone-900 mb-10">
+            <h1 class="font-heading text-5xl md:text-8xl lg:text-[7.5rem] font-black italic uppercase leading-[0.8] tracking-tighter text-stone-900 mb-8">
                 <span>Pentesting</span> <br>
                 <span class="text-transparent" style="-webkit-text-stroke: 2px #d4a012;">Redefined.</span>
             </h1>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mb-8">
-                <div class="flex flex-col items-center md:items-end md:border-r-2 border-stone-300 md:pr-10">
-                    <p class="text-[10px] uppercase tracking-[0.4em] text-stone-500 mb-2">Traditional Lead Time</p>
-                    <p class="text-2xl font-black italic text-stone-400 uppercase line-through">6-8 Weeks</p>
-                </div>
-                <div class="flex flex-col items-center md:items-start md:pl-10">
-                    <p class="text-[10px] uppercase tracking-[0.4em] text-amber-600 mb-2">Vornac Execution</p>
-                    <p class="text-4xl font-black italic text-amber-600 uppercase drop-shadow-[0_0_15px_rgba(212,160,18,0.3)]">Instant.</p>
+            <!-- Trust Indicators -->
+            <div class="mb-12 w-full max-w-5xl px-4">
+                <div class="flex items-center justify-center gap-4 md:gap-6 flex-wrap">
+                    <div class="relative flex items-center gap-3 bg-gradient-to-br from-white via-white to-amber-50/30 border-2 border-stone-200/60 rounded-xl px-5 py-3.5 hover:border-amber-400 hover:shadow-[0_8px_30px_rgb(212,160,18,0.25)] hover:scale-105 transition-all duration-300 group backdrop-blur-sm">
+                        <div class="absolute inset-0 bg-gradient-to-r from-amber-400/0 via-amber-400/5 to-amber-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+                        <svg class="w-6 h-6 text-amber-600 group-hover:text-amber-500 transition-colors relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                        <span class="text-stone-800 font-bold text-xs uppercase tracking-wider relative z-10">Built on ISO 27001</span>
+                    </div>
+                    <div class="relative flex items-center gap-3 bg-gradient-to-br from-white via-white to-amber-50/30 border-2 border-stone-200/60 rounded-xl px-5 py-3.5 hover:border-amber-400 hover:shadow-[0_8px_30px_rgb(212,160,18,0.25)] hover:scale-105 transition-all duration-300 group backdrop-blur-sm">
+                        <div class="absolute inset-0 bg-gradient-to-r from-amber-400/0 via-amber-400/5 to-amber-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+                        <svg class="w-6 h-6 text-amber-600 group-hover:text-amber-500 transition-colors relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                        <span class="text-stone-800 font-bold text-xs uppercase tracking-wider relative z-10">GDPR Compliant</span>
+                    </div>
+                    <div class="relative flex items-center gap-3 bg-gradient-to-br from-white via-white to-amber-50/30 border-2 border-stone-200/60 rounded-xl px-5 py-3.5 hover:border-amber-400 hover:shadow-[0_8px_30px_rgb(212,160,18,0.25)] hover:scale-105 transition-all duration-300 group backdrop-blur-sm">
+                        <div class="absolute inset-0 bg-gradient-to-r from-amber-400/0 via-amber-400/5 to-amber-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+                        <svg class="w-6 h-6 text-amber-600 group-hover:text-amber-500 transition-colors relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        <span class="text-stone-800 font-bold text-xs uppercase tracking-wider relative z-10">BSI Aligned</span>
+                    </div>
+                    <div class="relative flex items-center gap-3 bg-gradient-to-br from-white via-white to-amber-50/30 border-2 border-stone-200/60 rounded-xl px-5 py-3.5 hover:border-amber-400 hover:shadow-[0_8px_30px_rgb(212,160,18,0.25)] hover:scale-105 transition-all duration-300 group backdrop-blur-sm">
+                        <div class="absolute inset-0 bg-gradient-to-r from-amber-400/0 via-amber-400/5 to-amber-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+                        <svg class="w-6 h-6 text-amber-600 group-hover:text-amber-500 transition-colors relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                        <span class="text-stone-800 font-bold text-xs uppercase tracking-wider relative z-10">CISSP Certified</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mb-12">
-                <div class="flex flex-col items-center md:items-end md:border-r-2 border-stone-300 md:pr-10">
+            <!-- Mobile: Compact rows with context -->
+            <div class="flex flex-col gap-5 w-full max-w-sm mb-10 md:hidden">
+                <div class="flex flex-col items-center">
+                    <span class="text-[10px] uppercase tracking-[0.3em] text-stone-500 mb-1">Lead Time</span>
+                    <div class="flex items-center gap-3">
+                        <span class="text-lg font-black italic text-stone-400 line-through">6-8 Weeks</span>
+                        <span class="text-amber-500">→</span>
+                        <span class="text-2xl font-black italic text-amber-600">Hours</span>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span class="text-[10px] uppercase tracking-[0.3em] text-stone-500 mb-1">Pricing Model</span>
+                    <div class="flex items-center gap-3">
+                        <span class="text-lg font-black italic text-stone-400 line-through">Per Pentest</span>
+                        <span class="text-amber-500">→</span>
+                        <span class="text-2xl font-black italic text-amber-600">Unlimited</span>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span class="text-[10px] uppercase tracking-[0.3em] text-stone-500 mb-1">Frequency</span>
+                    <div class="flex items-center gap-3">
+                        <span class="text-lg font-black italic text-stone-400 line-through">Once a Year</span>
+                        <span class="text-amber-500">→</span>
+                        <span class="text-2xl font-black italic text-amber-600">Daily</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desktop: Full display -->
+            <div class="hidden md:grid grid-cols-2 gap-8 w-full max-w-4xl mb-8">
+                <div class="flex flex-col items-end border-r-2 border-stone-300 pr-10">
+                    <p class="text-[10px] uppercase tracking-[0.4em] text-stone-500 mb-2">Traditional Lead Time</p>
+                    <p class="text-2xl font-black italic text-stone-400 uppercase line-through">6-8 Weeks</p>
+                </div>
+                <div class="flex flex-col items-start pl-10">
+                    <p class="text-[10px] uppercase tracking-[0.4em] text-amber-600 mb-2">Vornac Execution</p>
+                    <p class="text-4xl font-black italic text-amber-600 uppercase drop-shadow-[0_0_15px_rgba(212,160,18,0.3)]">Hours.</p>
+                </div>
+            </div>
+
+            <div class="hidden md:grid grid-cols-2 gap-8 w-full max-w-4xl mb-8">
+                <div class="flex flex-col items-end border-r-2 border-stone-300 pr-10">
                     <p class="text-[10px] uppercase tracking-[0.4em] text-stone-500 mb-2">Traditional Pricing</p>
                     <p class="text-2xl font-black italic text-stone-400 uppercase line-through">Pay per Pentest</p>
                 </div>
-                <div class="flex flex-col items-center md:items-start md:pl-10">
+                <div class="flex flex-col items-start pl-10">
                     <p class="text-[10px] uppercase tracking-[0.4em] text-amber-600 mb-2">Vornac Model</p>
                     <p class="text-4xl font-black italic text-amber-600 uppercase drop-shadow-[0_0_15px_rgba(212,160,18,0.3)]">Unlimited.</p>
                 </div>
             </div>
 
-            <p class="max-w-2xl text-lg md:text-xl text-stone-600 font-medium leading-relaxed mb-10">
-                The era of waiting for security is over. <span class="text-stone-900">Continuous, instantly available</span> penetration testing for the compliant enterprise.
-            </p>
+            <div class="hidden md:grid grid-cols-2 gap-8 w-full max-w-4xl mb-12">
+                <div class="flex flex-col items-end border-r-2 border-stone-300 pr-10">
+                    <p class="text-[10px] uppercase tracking-[0.4em] text-stone-500 mb-2">Traditional Frequency</p>
+                    <p class="text-2xl font-black italic text-stone-400 uppercase line-through">Once a Year</p>
+                </div>
+                <div class="flex flex-col items-start pl-10">
+                    <p class="text-[10px] uppercase tracking-[0.4em] text-amber-600 mb-2">Vornac Frequency</p>
+                    <p class="text-4xl font-black italic text-amber-600 uppercase drop-shadow-[0_0_15px_rgba(212,160,18,0.3)]">Daily.</p>
+                </div>
+            </div>
+
+            <div class="mb-10 max-w-2xl border-x-4 border-amber-500 px-6">
+                <p class="text-2xl md:text-3xl font-heading font-bold italic text-stone-800 leading-snug">
+                    Pentesting once a year means<br><span class="text-amber-600">flying blind for 364 days.</span>
+                </p>
+            </div>
+
+            <!-- Client Logos -->
+            <div class="mb-12 w-full max-w-3xl">
+                <p class="text-[10px] uppercase tracking-[0.4em] text-stone-400 mb-6 text-center">Trusted by leading companies</p>
+                <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+                    <!-- Logo 1 -->
+                    <img src="client-1.png" alt="Client 1" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <!-- Logo 2 -->
+                    <img src="client-2.png" alt="Client 2" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <!-- Logo 3 -->
+                    <img src="client-3.png" alt="Client 3" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <!-- Logo 5 -->
+                    <img src="client-5.png" alt="Client 5" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                </div>
+            </div>
 
             <div class="flex flex-col items-center space-y-8 w-full">
                 <div class="flex flex-col items-center gap-4 w-full">
@@ -209,13 +292,6 @@
                     <button onclick="document.getElementById('report-modal').classList.remove('hidden')" class="text-sm text-stone-500 hover:text-amber-600 transition-colors cursor-pointer underline underline-offset-4">
                         Request Free Sample Report
                     </button>
-                </div>
-
-                <div class="flex flex-col items-center space-y-3">
-                    <div class="h-[2px] w-20 bg-amber-500/60"></div>
-                    <p class="text-[11px] font-bold uppercase tracking-[0.3em] text-stone-500">
-                        Subscribe today. <span class="text-amber-600">Start your first scan tomorrow.</span>
-                    </p>
                 </div>
             </div>
 
@@ -235,35 +311,6 @@
                 <div class="h-full w-1/3 bg-yellow-400"></div>
             </div>
             <span class="text-base md:text-xl font-black uppercase tracking-[0.2em] text-white">Made & Hosted in Germany</span>
-        </div>
-    </div>
-</div>
-
-<!-- TRUST BAR -->
-<div class="bg-amber-500 py-5 relative z-30 shadow-lg">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 items-center justify-center text-center">
-
-            <div class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3 group">
-                <svg class="w-5 h-5 md:w-6 md:h-6 text-stone-900 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                <span class="text-stone-900 font-bold uppercase tracking-wider text-[10px] md:text-xs">Built on ISO 27001</span>
-            </div>
-
-            <div class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3 group">
-                <svg class="w-5 h-5 md:w-6 md:h-6 text-stone-900 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                <span class="text-stone-900 font-bold uppercase tracking-wider text-[10px] md:text-xs">GDPR Compliant</span>
-            </div>
-
-            <div class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3 group">
-                <svg class="w-5 h-5 md:w-6 md:h-6 text-stone-900 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-                <span class="text-stone-900 font-bold uppercase tracking-wider text-[10px] md:text-xs">BSI Aligned</span>
-            </div>
-
-            <div class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3 group">
-                <svg class="w-5 h-5 md:w-6 md:h-6 text-stone-900 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-                <span class="text-stone-900 font-bold uppercase tracking-wider text-[10px] md:text-xs">CISSP Certified</span>
-            </div>
-
         </div>
     </div>
 </div>
@@ -354,13 +401,13 @@
                 Ready to see <span class="text-amber-600">VORNAC</span> in action?
             </h2>
             <p class="text-stone-600 text-lg mb-10 max-w-xl mx-auto">
-                Schedule a live session with our founding team. Walk through a real-world execution and see the depth of our reports.
+                Schedule a live session with our team. Walk through a real-world execution and see the depth of our reports.
             </p>
             <a href="https://calendly.com/arthur-vornac/30min" target="_blank" class="group relative inline-flex h-20 items-center justify-center rounded-2xl bg-stone-900 px-16 font-bold uppercase tracking-[0.2em] text-sm text-white transition-all hover:bg-amber-600 hover:scale-105 active:scale-95 shadow-2xl shadow-stone-900/40 hover:shadow-amber-500/50">
                 <svg class="w-6 h-6 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                 Book Demo
             </a>
-            <p class="text-sm text-stone-500 mt-4">30 minute intro call with the founding team</p>
+            <p class="text-sm text-stone-500 mt-4">30 minute intro call with our team</p>
         </div>
 
         <div class="flex items-center gap-4 justify-center mb-10">
