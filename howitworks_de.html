@@ -85,147 +85,124 @@
             <h1 class="font-heading text-5xl md:text-8xl lg:text-[7.5rem] font-black italic uppercase leading-[0.8] tracking-tighter text-stone-900 mb-6">Souverän<br><span class="stroke-text">und Autonom.</span></h1>
             <p class="max-w-2xl text-lg md:text-xl text-stone-600 font-medium leading-relaxed mb-16">Unser Agent operiert vollständig eigenständig – ohne externe Abhängigkeiten, ohne Datentransfer ins Ausland.</p>
 
-            <!-- Architecture Diagram: Full-width split -->
-            <div class="w-full max-w-6xl mb-16">
-                <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-0 rounded-3xl overflow-hidden shadow-2xl shadow-stone-900/10 border border-stone-200">
+            <!-- Comparison Table -->
+            <div class="w-full max-w-5xl mb-16">
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-stone-200">
 
-                    <!-- LEFT: Others -->
-                    <div class="bg-stone-50 p-10 lg:p-14 flex flex-col gap-8">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xl font-black uppercase tracking-[0.2em] text-stone-400">Andere Anbieter</span>
-                            <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                    <!-- Header -->
+                    <div class="grid grid-cols-2 bg-stone-900">
+                        <div class="p-8 border-r border-stone-700 flex items-center justify-center">
+                            <h3 class="font-heading text-2xl md:text-3xl font-black italic uppercase text-stone-400">Andere Anbieter</h3>
                         </div>
-
-                        <!-- Node: Company -->
-                        <div class="flex items-center gap-5 bg-white rounded-2xl px-6 py-5 border border-stone-200 shadow-sm">
-                            <div class="w-14 h-14 rounded-2xl bg-stone-100 flex items-center justify-center flex-shrink-0">
-                                <svg class="w-7 h-7 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-                            </div>
-                            <div>
-                                <p class="font-black text-base uppercase tracking-widest text-stone-800">Ihr Unternehmen</p>
-                                <p class="text-sm text-stone-400 mt-0.5">Sensible Sicherheitsdaten</p>
-                            </div>
-                        </div>
-
-                        <!-- Arrow + Warning -->
-                        <div class="flex flex-col items-center gap-2">
-                            <div class="flex items-center gap-2 bg-red-50 border border-red-200 rounded-full px-4 py-2">
-                                <svg class="w-4 h-4 text-red-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
-                                <span class="text-xs font-bold text-red-600 uppercase tracking-wider">Daten verlassen Deutschland</span>
-                            </div>
-                            <svg class="w-6 h-6 text-red-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
-                        </div>
-
-                        <!-- Node: External Cloud -->
-                        <div class="flex items-center gap-5 bg-red-50 rounded-2xl px-6 py-5 border border-red-200 shadow-sm">
-                            <div class="w-14 h-14 rounded-2xl bg-red-100 flex items-center justify-center flex-shrink-0">
-                                <svg class="w-7 h-7 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
-                            </div>
-                            <div>
-                                <p class="font-black text-base uppercase tracking-widest text-red-500">Externes Modell</p>
-                                <p class="text-sm text-stone-400 mt-0.5">OpenAI · Anthropic · Google</p>
-                            </div>
-                        </div>
-
-                        <div class="mt-auto pt-6 border-t border-stone-200">
-                            <p class="text-sm font-bold text-red-400 uppercase tracking-widest">Kontrollverlust über sensible Daten</p>
-                        </div>
-                    </div>
-
-                    <!-- DIVIDER: VS -->
-                    <div class="hidden md:flex flex-col items-center justify-center bg-stone-100 px-6 gap-3 py-10">
-                        <div class="w-px flex-1 bg-stone-300"></div>
-                        <span class="font-black text-lg text-stone-400 uppercase tracking-widest rotate-0">VS</span>
-                        <div class="w-px flex-1 bg-stone-300"></div>
-                    </div>
-
-                    <!-- RIGHT: VORNAC -->
-                    <div class="bg-white p-10 lg:p-14 flex flex-col gap-8">
-                        <div class="flex items-center justify-between">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-auto" viewBox="0 0 1448 208" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
-                                <path d="M 0 0 L 50.1 0 L 117.1 126 L 187.09 0 L 236.09 0 L 114.06 207.74 L 0 0 Z" fill="#d4a012" />
-                                <path d="M 297.22 43.48 L 422.22 43.48 L 422.11 164.82 L 297.22 164.82 L 297.22 43.48 Z M 296.22 0.03 L 251.23 43.48 L 251.4 164.82 L 296.22 207.74 L 421.22 207.74 L 465.91 164.82 L 466.09 43.48 L 421.22 0.03 L 296.22 0.03 Z" fill="#0f172a"/>
-                                <path d="M 509.21 0.03 L 670.06 0 L 711.06 42 L 711.06 100 L 682.06 127 L 673.06 134 L 665.06 134 L 720.93 207.74 L 669.2 207.74 L 574.2 92.03 L 664.2 92.03 L 664.2 44.03 L 554.21 43.03 L 554.21 207.74 L 509.21 207.74 L 509.21 0.03 Z" fill="#0f172a"/>
-                                <path d="M 754.05 0 L 904.04 122.03 L 904 0 L 945.1 0 L 945.04 208.03 L 797.05 86.03 L 797.05 207.74 L 754.05 207.74 L 754.05 0 Z" fill="#0f172a"/>
-                                <path d="M 1094.85 0 L 1222.19 207.74 L 1056.03 207.74 L 1079.03 165 L 1148.03 165 L 1096.03 76 L 1018.77 207.74 L 968.04 207.74 L 1094.85 0 Z" fill="#0f172a"/>
-                                <path d="M 1273.02 0 L 1448 0 L 1407.01 43 L 1271.02 43.48 L 1271.02 162 L 1275.02 164.82 L 1406.01 164.82 L 1448 207.74 L 1272.02 207.74 L 1227.49 164.82 L 1226.89 43.48 L 1273.02 0 Z" fill="#0f172a"/>
+                        <div class="p-8 bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-auto" viewBox="0 0 1448 208">
+                                <path d="M 0 0 L 50.1 0 L 117.1 126 L 187.09 0 L 236.09 0 L 114.06 207.74 L 0 0 Z" fill="#1c1917" />
+                                <path d="M 297.22 43.48 L 422.22 43.48 L 422.11 164.82 L 297.22 164.82 L 297.22 43.48 Z M 296.22 0.03 L 251.23 43.48 L 251.4 164.82 L 296.22 207.74 L 421.22 207.74 L 465.91 164.82 L 466.09 43.48 L 421.22 0.03 L 296.22 0.03 Z" fill="#1c1917"/>
+                                <path d="M 509.21 0.03 L 670.06 0 L 711.06 42 L 711.06 100 L 682.06 127 L 673.06 134 L 665.06 134 L 720.93 207.74 L 669.2 207.74 L 574.2 92.03 L 664.2 92.03 L 664.2 44.03 L 554.21 43.03 L 554.21 207.74 L 509.21 207.74 L 509.21 0.03 Z" fill="#1c1917"/>
+                                <path d="M 754.05 0 L 904.04 122.03 L 904 0 L 945.1 0 L 945.04 208.03 L 797.05 86.03 L 797.05 207.74 L 754.05 207.74 L 754.05 0 Z" fill="#1c1917"/>
+                                <path d="M 1094.85 0 L 1222.19 207.74 L 1056.03 207.74 L 1079.03 165 L 1148.03 165 L 1096.03 76 L 1018.77 207.74 L 968.04 207.74 L 1094.85 0 Z" fill="#1c1917"/>
+                                <path d="M 1273.02 0 L 1448 0 L 1407.01 43 L 1271.02 43.48 L 1271.02 162 L 1275.02 164.82 L 1406.01 164.82 L 1448 207.74 L 1272.02 207.74 L 1227.49 164.82 L 1226.89 43.48 L 1273.02 0 Z" fill="#1c1917"/>
                             </svg>
-                            <span class="w-3 h-3 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)] animate-pulse"></span>
-                        </div>
-
-                        <!-- Germany boundary -->
-                        <div class="border-2 border-dashed border-amber-400/50 rounded-2xl p-6 flex flex-col gap-6 relative">
-                            <div class="absolute -top-4 left-6 bg-white px-3 py-1 flex items-center gap-2 border border-stone-200 rounded-full shadow-sm">
-                                <div class="flex h-3.5 w-6 overflow-hidden rounded-sm flex-shrink-0">
-                                    <div class="h-full w-1/3 bg-black"></div>
-                                    <div class="h-full w-1/3 bg-red-600"></div>
-                                    <div class="h-full w-1/3 bg-yellow-400"></div>
-                                </div>
-                                <span class="text-[10px] font-black uppercase tracking-widest text-stone-600">Deutschland</span>
-                            </div>
-
-                            <!-- Node: Company -->
-                            <div class="flex items-center gap-5 bg-stone-50 rounded-2xl px-6 py-5 border border-stone-200 shadow-sm">
-                                <div class="w-14 h-14 rounded-2xl bg-stone-100 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-7 h-7 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-                                </div>
-                                <div>
-                                    <p class="font-black text-base uppercase tracking-widest text-stone-800">Ihr Unternehmen</p>
-                                    <p class="text-sm text-stone-400 mt-0.5">Sensible Sicherheitsdaten</p>
-                                </div>
-                            </div>
-
-                            <!-- Arrow + OK -->
-                            <div class="flex flex-col items-center gap-2">
-                                <div class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 rounded-full px-4 py-2">
-                                    <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                                    <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Daten bleiben in Deutschland</span>
-                                </div>
-                                <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
-                            </div>
-
-                            <!-- Node: VORNAC Agent -->
-                            <div class="flex items-center gap-5 bg-amber-50 rounded-2xl px-6 py-5 border border-amber-200 shadow-sm">
-                                <div class="w-14 h-14 rounded-2xl bg-amber-100 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-7 h-7 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                                </div>
-                                <div>
-                                    <p class="font-black text-base uppercase tracking-widest text-amber-600">VORNAC Agent</p>
-                                    <p class="text-sm text-stone-400 mt-0.5">Proprietäres Modell · Von uns selbst gehostet</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-auto pt-6 border-t border-amber-100">
-                            <p class="text-sm font-bold text-emerald-600 uppercase tracking-widest">Vollständige Datenkontrolle. Jederzeit.</p>
                         </div>
                     </div>
+
+                    <!-- Row 1: Datenstandort -->
+                    <div class="grid grid-cols-2 border-b border-stone-200">
+                        <div class="p-6 border-r border-stone-200 bg-red-50 flex items-center gap-4">
+                            <svg class="w-6 h-6 text-red-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-sm md:text-base font-medium text-stone-700">Daten in USA, UK, Frankreich</span>
+                        </div>
+                        <div class="p-6 bg-amber-50 flex items-center gap-4">
+                            <svg class="w-6 h-6 text-amber-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-sm md:text-base font-bold text-stone-900">100% in Deutschland</span>
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Abhängigkeit -->
+                    <div class="grid grid-cols-2 border-b border-stone-200">
+                        <div class="p-6 border-r border-stone-200 bg-red-50 flex items-center gap-4">
+                            <svg class="w-6 h-6 text-red-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-sm md:text-base font-medium text-stone-700">Externe KI-Modelle (OpenAI, Anthropic)</span>
+                        </div>
+                        <div class="p-6 bg-amber-50 flex items-center gap-4">
+                            <svg class="w-6 h-6 text-amber-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-sm md:text-base font-bold text-stone-900">Proprietäres Modell</span>
+                        </div>
+                    </div>
+
+                    <!-- Row 3: DSGVO -->
+                    <div class="grid grid-cols-2 border-b border-stone-200">
+                        <div class="p-6 border-r border-stone-200 bg-red-50 flex items-center gap-4">
+                            <svg class="w-6 h-6 text-red-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-sm md:text-base font-medium text-stone-700">DSGVO-Risiko bei Datentransfer</span>
+                        </div>
+                        <div class="p-6 bg-amber-50 flex items-center gap-4">
+                            <svg class="w-6 h-6 text-amber-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-sm md:text-base font-bold text-stone-900">Volle DSGVO-Compliance</span>
+                        </div>
+                    </div>
+
+                    <!-- Row 4: Datenkontrolle -->
+                    <div class="grid grid-cols-2">
+                        <div class="p-6 border-r border-stone-200 bg-red-50 flex items-center gap-4">
+                            <svg class="w-6 h-6 text-red-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-sm md:text-base font-medium text-stone-700">Daten verlassen das Land</span>
+                        </div>
+                        <div class="p-6 bg-amber-50 flex items-center gap-4">
+                            <svg class="w-6 h-6 text-amber-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-sm md:text-base font-bold text-stone-900">Kein Byte verlässt das Land</span>
+                        </div>
+                    </div>
+
+                    <!-- Footer Badge -->
+                    <div class="bg-gradient-to-r from-amber-500 to-amber-600 p-4 flex items-center justify-center gap-3">
+                        <div class="flex h-5 w-7 overflow-hidden rounded-sm shadow-sm">
+                            <div class="h-full w-1/3 bg-black"></div>
+                            <div class="h-full w-1/3 bg-red-600"></div>
+                            <div class="h-full w-1/3 bg-yellow-400"></div>
+                        </div>
+                        <span class="text-xs md:text-sm font-black uppercase tracking-[0.2em] text-stone-900">100% Datensouveränität</span>
+                    </div>
+
                 </div>
             </div>
 
-            <!-- Three key facts -->
-            <div class="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-5">
-                <div class="bg-white border-2 border-stone-200 rounded-2xl p-7 text-left hover:border-amber-400 hover:shadow-lg transition-all group">
-                    <div class="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center mb-5">
-                        <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>
+            <!-- Reasoning Chains - Big Statement -->
+            <div class="w-full max-w-5xl text-center mb-16">
+                <div class="mb-6">
+                    <div class="flex items-center justify-center gap-4 md:gap-6 mb-4">
+                        <div class="text-center">
+                            <p class="font-heading text-5xl md:text-7xl lg:text-8xl font-black italic text-amber-500 leading-none">2.500</p>
+                            <p class="text-xs md:text-sm font-black uppercase tracking-[0.3em] text-amber-600/70 mt-2">Reasoning-Chains</p>
+                        </div>
+                        <div class="h-16 w-px bg-stone-300"></div>
+                        <div class="text-center">
+                            <p class="font-heading text-5xl md:text-7xl lg:text-8xl font-black italic text-amber-500 leading-none">25.000</p>
+                            <p class="text-xs md:text-sm font-black uppercase tracking-[0.3em] text-amber-600/70 mt-2">Entscheidungsschritte</p>
+                        </div>
                     </div>
-                    <p class="text-sm font-black uppercase tracking-widest text-stone-900 mb-2">Kein externes Modell</p>
-                    <p class="text-sm text-stone-500 leading-relaxed">Keine Abhängigkeit von OpenAI, Anthropic oder anderen Cloud-Anbietern.</p>
                 </div>
-                <div class="bg-white border-2 border-stone-200 rounded-2xl p-7 text-left hover:border-amber-400 hover:shadow-lg transition-all group">
-                    <div class="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center mb-5">
-                        <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"/></svg>
-                    </div>
-                    <p class="text-sm font-black uppercase tracking-widest text-stone-900 mb-2">Daten bleiben in Deutschland</p>
-                    <p class="text-sm text-stone-500 leading-relaxed">Alle Daten werden ausschließlich auf deutschen Servern verarbeitet und gespeichert.</p>
-                </div>
-                <div class="bg-white border-2 border-stone-200 rounded-2xl p-7 text-left hover:border-amber-400 hover:shadow-lg transition-all group">
-                    <div class="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center mb-5">
-                        <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-                    </div>
-                    <p class="text-sm font-black uppercase tracking-widest text-stone-900 mb-2">2.500 Reasoning-Chains</p>
-                    <p class="text-sm text-stone-500 leading-relaxed">25.000 eigenständige Entscheidungsschritte.</p>
-                </div>
+
+                <p class="text-2xl md:text-4xl lg:text-5xl text-stone-900 font-black max-w-3xl mx-auto leading-tight">
+                    Die qualitativ hochwertigsten<br>
+                    <span class="text-amber-600">Pentests auf dem Markt.</span>
+                </p>
             </div>
         </div>
     </section>
@@ -264,7 +241,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
                 <div class="flex items-center gap-10 bg-white border-2 border-stone-300 rounded-2xl p-8 hover:border-amber-500/30 transition-all group shadow-lg shadow-stone-900/15">
                     <div class="flex flex-col text-left"><span class="text-[10px] text-amber-600 uppercase font-black tracking-[0.2em] mb-1 opacity-70">Bis zu</span><span class="font-heading text-6xl lg:text-7xl font-black text-amber-600 italic leading-none whitespace-nowrap"><span id="count-cost" data-target="90">0</span>%</span></div>
-                    <div class="space-y-1 border-l border-stone-200 pl-8 text-left"><h4 class="text-stone-900 font-bold text-sm uppercase tracking-widest">Kostenreduzierung</h4></div>
+                    <div class="space-y-1 border-l border-stone-200 pl-8 text-left"><h4 class="text-stone-900 font-bold text-sm uppercase tracking-widest">Weniger Koordinationsaufwand</h4></div>
                 </div>
                 <div class="flex items-center gap-10 bg-white border-2 border-stone-300 rounded-2xl p-8 hover:border-amber-500/30 transition-all group shadow-lg shadow-stone-900/15">
                     <div class="flex flex-col text-left"><span class="text-[10px] text-amber-600 uppercase font-black tracking-[0.2em] mb-1 opacity-70">Bis zu</span><span class="font-heading text-6xl lg:text-7xl font-black text-amber-600 italic leading-none whitespace-nowrap"><span id="count-time" data-target="100">0</span>%</span></div>
@@ -276,43 +253,6 @@
             <h4 class="text-stone-900 text-lg font-bold mb-8 uppercase tracking-widest">Bereit für die <span class="text-amber-600">Zukunft</span>?</h4>
             <a href="index_de.html#contact" class="inline-block bg-amber-500 text-white px-10 py-4 rounded-full font-black uppercase tracking-[0.2em] text-xs hover:bg-amber-600 transition-all shadow-lg transform hover:-translate-y-1">Ersten Scan starten_</a>
             <p class="mt-6 text-stone-400 text-[10px] uppercase tracking-[0.3em]">Keine Wartezeit. Volle Compliance. Sofortige Fakten.</p>
-        </div>
-    </section>
-    <section id="how-it-works" class="bg-warm py-16 lg:py-24 px-4 relative overflow-hidden">
-        <div class="max-w-content mx-auto relative z-10">
-            <div class="text-center mb-24 lg:mb-32">
-                <span class="text-amber-600 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Der Prozess</span>
-                <h2 class="font-heading text-4xl lg:text-7xl font-bold uppercase italic text-stone-900 tracking-tighter">Operatives <span class="text-amber-600">Protokoll</span></h2>
-            </div>
-            <div class="relative">
-                <div class="hidden md:block absolute top-10 left-0 w-full h-[1px] bg-stone-200 z-0"><div id="step-line-fill" class="h-full bg-gradient-to-r from-amber-500 to-amber-500 shadow-[0_0_15px_rgba(212,160,18,0.5)] w-0 transition-all duration-[1500ms] ease-in-out"></div></div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-24 relative z-10">
-                    <div class="step-card opacity-0 translate-y-10 transition-all duration-700 ease-out flex flex-col items-center text-center" style="transition-delay: 100ms;">
-                        <div class="w-20 h-20 rounded-full bg-white border-2 border-stone-300 flex items-center justify-center mb-8 shadow-lg relative group hover:border-amber-500 transition-colors">
-                            <div class="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-amber-500 text-white font-black text-xs flex items-center justify-center italic shadow-lg">01</div>
-                            <svg class="w-10 h-10 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
-                        </div>
-                        <h3 class="font-heading text-xl font-bold text-stone-900 mb-4 uppercase tracking-widest">Setup & Ausführung</h3>
-                        <p class="text-stone-600 text-sm leading-relaxed max-w-[280px]">Integration in Minuten. VORNAC führt eine kontinuierliche Aufklärung durch und identifiziert Angriffsvektoren.</p>
-                    </div>
-                    <div class="step-card opacity-0 translate-y-10 transition-all duration-700 ease-out flex flex-col items-center text-center" style="transition-delay: 200ms;">
-                        <div class="w-20 h-20 rounded-full bg-white border-2 border-stone-300 flex items-center justify-center mb-8 shadow-lg relative group hover:border-amber-500 transition-colors">
-                            <div class="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-amber-500 text-white font-black text-xs flex items-center justify-center italic shadow-lg">02</div>
-                            <svg class="w-10 h-10 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                        </div>
-                        <h3 class="font-heading text-xl font-bold text-stone-900 mb-4 uppercase tracking-widest">Aktive Infiltration</h3>
-                        <p class="text-stone-600 text-sm leading-relaxed max-w-[280px]">Der Agent emuliert reale Angreifer: Er entdeckt, verkettet und validiert Schwachstellen durch kontrollierte Exploits.</p>
-                    </div>
-                    <div class="step-card opacity-0 translate-y-10 transition-all duration-700 ease-out flex flex-col items-center text-center" style="transition-delay: 300ms;">
-                        <div class="w-20 h-20 rounded-full bg-white border-2 border-stone-300 flex items-center justify-center mb-8 shadow-lg relative group hover:border-amber-500 transition-colors">
-                            <div class="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-amber-500 text-white font-black text-xs flex items-center justify-center italic shadow-lg">03</div>
-                            <svg class="w-10 h-10 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 17v-2m3 2v-4m3 2v-6m10 10V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2z" /></svg>
-                        </div>
-                        <h3 class="font-heading text-xl font-bold text-stone-900 mb-4 uppercase tracking-widest">Revisionssichere Berichte</h3>
-                        <p class="text-stone-600 text-sm leading-relaxed max-w-[280px]">Keine False-Positives. Sie erhalten verifizierte Reports mit präzisen Handlungsempfehlungen für Auditoren und IT-Teams.</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
     <section class="border-b border-stone-200 bg-warm">
