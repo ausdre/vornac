@@ -86,7 +86,8 @@
     .logo-scroll {
         display: flex;
         gap: 3rem;
-        animation: scroll-logos 20s linear infinite;
+        animation: scroll-logos 15s linear infinite;
+        will-change: transform;
     }
 
     .logo-scroll:hover {
@@ -94,10 +95,10 @@
     }
 
     @keyframes scroll-logos {
-        0% {
+        from {
             transform: translateX(0);
         }
-        100% {
+        to {
             transform: translateX(-50%);
         }
     }
