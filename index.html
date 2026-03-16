@@ -919,6 +919,57 @@ if (toggleBtn && mobileMenu && backdrop) {
 
 });
 </script>
+<script>
+// Infinite logo scroll
+document.addEventListener('DOMContentLoaded', function() {
+    const scrollContainer = document.querySelector('.logo-scroll');
+    if (!scrollContainer) return;
+
+    let scrollPosition = 0;
+    const scrollSpeed = 0.5; // pixels per frame
+    let animationId;
+    let isPaused = false;
+
+    // Calculate the width of one set of logos
+    const firstChild = scrollContainer.children[0];
+    const totalChildren = scrollContainer.children.length;
+    const halfChildren = totalChildren / 2;
+
+    function scroll() {
+        if (isPaused) {
+            animationId = requestAnimationFrame(scroll);
+            return;
+        }
+
+        scrollPosition += scrollSpeed;
+
+        // Get the width of the first half (one complete set)
+        let resetPoint = 0;
+        for (let i = 0; i < halfChildren; i++) {
+            resetPoint += scrollContainer.children[i].offsetWidth;
+            if (i < halfChildren - 1) {
+                resetPoint += 48; // gap-12 = 3rem = 48px
+            }
+        }
+        resetPoint += 48; // final gap after last item of first set
+
+        // Reset when first set is completely scrolled out
+        if (scrollPosition >= resetPoint) {
+            scrollPosition = 0;
+        }
+
+        scrollContainer.style.transform = `translateX(-${scrollPosition}px)`;
+        animationId = requestAnimationFrame(scroll);
+    }
+
+    // Pause on hover
+    scrollContainer.addEventListener('mouseenter', () => isPaused = true);
+    scrollContainer.addEventListener('mouseleave', () => isPaused = false);
+
+    // Start animation
+    scroll();
+});
+</script>
 <script type="text/javascript">
 _linkedin_partner_id = "8795970";
 window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];

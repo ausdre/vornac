@@ -86,21 +86,7 @@
     .logo-scroll {
         display: flex;
         gap: 3rem;
-        animation: scroll-logos 15s linear infinite;
         will-change: transform;
-    }
-
-    .logo-scroll:hover {
-        animation-play-state: paused;
-    }
-
-    @keyframes scroll-logos {
-        from {
-            transform: translateX(0);
-        }
-        to {
-            transform: translateX(-50%);
-        }
     }
 
     @keyframes orbit-slow {
