@@ -143,41 +143,34 @@
             </h2>
         </div>
 
-        <div class="space-y-8">
-            <div class="flex flex-col md:flex-row gap-6 items-start bg-white p-8 rounded-2xl border-2 border-purple-200 shadow-lg">
-                <div class="flex-shrink-0">
-                    <div class="w-16 h-16 rounded-2xl bg-purple-900 text-white flex items-center justify-center text-2xl font-black">01</div>
+        <div class="relative grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4">
+            <div class="hidden md:block absolute top-12 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-purple-500/30 to-transparent z-0"></div>
+
+            <div class="relative z-10 flex flex-col items-center group">
+                <div class="w-24 h-24 bg-white border-2 border-stone-300 flex items-center justify-center mb-8 transition-all group-hover:border-purple-900 group-hover:shadow-2xl group-hover:shadow-purple-900/30 shadow-lg shadow-stone-900/15">
+                    <svg class="w-10 h-10 text-purple-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-purple-900 text-white flex items-center justify-center text-[10px] font-black">01</div>
                 </div>
-                <div>
-                    <h3 class="text-2xl font-black text-stone-900 mb-3">Intercept</h3>
-                    <p class="text-lg text-stone-600 leading-relaxed">
-                        All prompts from your employees to LLM providers are intercepted in real-time – transparently and without workflow interruption.
-                    </p>
-                </div>
+                <h3 class="text-stone-900 font-black italic uppercase tracking-tight text-xl mb-3">Intercept</h3>
+                <p class="text-sm text-stone-500 text-center px-4">All prompts intercepted in real-time – transparent without workflow interruption.</p>
             </div>
 
-            <div class="flex flex-col md:flex-row gap-6 items-start bg-white p-8 rounded-2xl border-2 border-purple-200 shadow-lg">
-                <div class="flex-shrink-0">
-                    <div class="w-16 h-16 rounded-2xl bg-purple-900 text-white flex items-center justify-center text-2xl font-black">02</div>
+            <div class="relative z-10 flex flex-col items-center group">
+                <div class="w-24 h-24 bg-white border-2 border-stone-300 flex items-center justify-center mb-8 transition-all group-hover:border-purple-900 group-hover:shadow-2xl group-hover:shadow-purple-900/30 shadow-lg shadow-stone-900/15">
+                    <svg class="w-10 h-10 text-purple-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-purple-900 text-white flex items-center justify-center text-[10px] font-black">02</div>
                 </div>
-                <div>
-                    <h3 class="text-2xl font-black text-stone-900 mb-3">Verify</h3>
-                    <p class="text-lg text-stone-600 leading-relaxed">
-                        The agent analyzes each prompt for compliance violations: sensitive data, personal information, trade secrets, industry-specific requirements.
-                    </p>
-                </div>
+                <h3 class="text-stone-900 font-black italic uppercase tracking-tight text-xl mb-3">Verify</h3>
+                <p class="text-sm text-stone-500 text-center px-4">Analysis for compliance violations: data, information, secrets.</p>
             </div>
 
-            <div class="flex flex-col md:flex-row gap-6 items-start bg-white p-8 rounded-2xl border-2 border-purple-200 shadow-lg">
-                <div class="flex-shrink-0">
-                    <div class="w-16 h-16 rounded-2xl bg-purple-900 text-white flex items-center justify-center text-2xl font-black">03</div>
+            <div class="relative z-10 flex flex-col items-center group">
+                <div class="w-24 h-24 bg-white border-2 border-stone-300 flex items-center justify-center mb-8 transition-all group-hover:border-purple-900 group-hover:shadow-2xl group-hover:shadow-purple-900/30 shadow-lg shadow-stone-900/15">
+                    <svg class="w-10 h-10 text-purple-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-purple-900 text-white flex items-center justify-center text-[10px] font-black">03</div>
                 </div>
-                <div>
-                    <h3 class="text-2xl font-black text-stone-900 mb-3">Protect</h3>
-                    <p class="text-lg text-stone-600 leading-relaxed">
-                        Critical prompts are blocked or anonymized. All events are logged in the metrics dashboard for complete transparency and audit trails.
-                    </p>
-                </div>
+                <h3 class="text-stone-900 font-black italic uppercase tracking-tight text-xl mb-3">Protect</h3>
+                <p class="text-sm text-stone-500 text-center px-4">Block or anonymize. Dashboard logging for transparency.</p>
             </div>
         </div>
     </div>
