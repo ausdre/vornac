@@ -69,7 +69,8 @@
         </a>
         <div class="hidden items-center gap-8 text-sm md:flex">
             <a href="index_de.html" class="nav-link text-stone-900 font-semibold border-b-2 border-amber-500">Home</a>
-            <a href="pentesting_de.html" class="nav-link text-stone-500 hover:text-stone-900 transition-colors">Produkt</a>
+            <a href="pentesting_de.html" class="nav-link text-stone-500 hover:text-stone-900 transition-colors">Pentesting</a>
+            <a href="preventive_de.html" class="nav-link text-stone-500 hover:text-stone-900 transition-colors">Preventive AI</a>
             <a href="pricing_de.html" class="nav-link text-stone-500 hover:text-stone-900 transition-colors">Preise</a>
             <a href="about_de.html" class="nav-link text-stone-500 hover:text-stone-900 transition-colors">Über uns</a>
             <a href="#contact" class="rounded-lg bg-stone-900 px-5 py-2.5 text-xs font-bold text-white uppercase tracking-widest hover:bg-amber-600 transition-colors shadow-lg hover:shadow-amber-500/25 hover:scale-105 transform duration-200">Demo Buchen</a>
@@ -82,11 +83,12 @@
     <div id="mobile-menu" class="fixed left-0 right-0 top-[72px] z-[100] hidden border-b-2 border-stone-300 bg-white shadow-2xl md:hidden">
         <div class="flex flex-col space-y-6 px-8 py-10 text-center">
             <a href="index_de.html" class="mobile-link text-lg font-medium text-amber-600">Home</a>
-            <a href="pentesting_de.html" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900">Produkt</a>
+            <a href="pentesting_de.html" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900">Pentesting</a>
+            <a href="preventive_de.html" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900">Preventive AI</a>
             <a href="pricing_de.html" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900">Preise</a>
             <a href="about_de.html" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900">Über uns</a>
             <a href="#contact" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900">Kontakt</a>
-            <a href="#contact" class="mobile-link mt-4 flex h-14 items-center justify-center rounded-xl bg-stone-900 font-bold text-white shadow-lg transition-transform active:scale-95 hover:bg-amber-600">Zugang erhalten_</a>
+            <a href="#contact" class="mobile-link mt-4 flex h-14 items-center justify-center rounded-xl bg-stone-900 font-bold text-white shadow-lg transition-transform active:scale-95 hover:bg-amber-600">Demo Buchen</a>
         </div>
     </div>
 </header>
@@ -147,9 +149,6 @@
                     <a href="https://calendly.com/arthur-vornac/30min" target="_blank" class="group relative flex h-16 items-center justify-center rounded-xl bg-stone-900 px-12 font-bold uppercase tracking-[0.15em] text-xs text-white transition-all hover:bg-amber-600 hover:scale-105 active:scale-95 w-full sm:w-auto shadow-xl shadow-stone-900/30 hover:shadow-amber-500/40">
                         Demo buchen
                     </a>
-                    <button onclick="document.getElementById('report-modal').classList.remove('hidden')" class="text-sm text-stone-500 hover:text-amber-600 transition-colors cursor-pointer underline underline-offset-4">
-                        Kostenlosen Muster-Bericht anfordern
-                    </button>
                 </div>
 
                 <!-- MADE IN GERMANY STAMP -->
@@ -617,30 +616,6 @@
     </div>
 </div>
 
-<div id="report-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center bg-black/50 backdrop-blur-md p-4 opacity-0 transition-opacity duration-300">
-    <div class="relative w-full max-w-lg rounded-2xl border-2 border-stone-300 bg-white p-8 shadow-2xl transform scale-95 transition-transform duration-300">
-        <button onclick="closeReportModal()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-900 transition-colors"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg></button>
-        <div class="text-center mb-8">
-            <span class="text-amber-600 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Kostenlose Vorschau</span>
-            <h3 class="font-heading text-2xl font-bold text-stone-900 uppercase italic tracking-tight">Kostenlosen Beispiel-Report Laden</h3>
-            <p class="text-stone-600 text-sm mt-4 leading-relaxed">Sehen Sie, was Ihre Auditoren sehen. Inklusive Management Summary, technischer Verwundbarkeitskette und Remediation-Schritten.</p>
-        </div>
-        <form id="report-form" class="space-y-4">
-            <div class="space-y-3">
-                <input type="text" name="name" required placeholder="Vollständiger Name" class="w-full bg-white border-2 border-stone-300 rounded-lg px-4 py-3 text-stone-900 placeholder:text-stone-300 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all text-sm">
-                <input type="text" name="company" required placeholder="Firma" class="w-full bg-white border-2 border-stone-300 rounded-lg px-4 py-3 text-stone-900 placeholder:text-stone-300 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all text-sm">
-                <input type="email" name="email" required placeholder="Geschäftliche E-Mail" class="w-full bg-white border-2 border-stone-300 rounded-lg px-4 py-3 text-stone-900 placeholder:text-stone-300 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all text-sm">
-            </div>
-            <button type="submit" class="w-full bg-stone-900 text-white font-bold uppercase tracking-[0.2em] text-xs py-4 rounded-lg hover:bg-amber-600 transition-all shadow-lg">Kostenlosen Report Anfordern</button>
-            <p class="text-[9px] text-center text-stone-400 uppercase tracking-widest">Sofortiger Download-Link per E-Mail</p>
-        </form>
-        <div id="report-success" class="hidden text-center py-8">
-            <div class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 border-2 border-emerald-500 mb-4 text-emerald-600"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path></svg></div>
-            <h3 class="text-stone-900 font-bold text-lg mb-2">Report Gesendet!</h3>
-            <p class="text-stone-600 text-sm">Prüfen Sie Ihren Posteingang. Der Report ist unterwegs.</p>
-        </div>
-    </div>
-</div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -698,19 +673,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('mouseleave', (e) => { if (e.clientY <= 20) { showExitPopup(); } });
     if (exitPopupClose) exitPopupClose.addEventListener('click', closeExitPopup); if (exitPopupDismiss) exitPopupDismiss.addEventListener('click', closeExitPopup); if (exitPopup) exitPopup.addEventListener('click', (e) => { if (e.target === exitPopup) closeExitPopup(); });
 
-    window.closeReportModal = function() { const modal = document.getElementById('report-modal'); if (!modal) return; modal.classList.add('opacity-0'); modal.querySelector('div').classList.remove('scale-100'); modal.querySelector('div').classList.add('scale-95'); setTimeout(() => modal.classList.add('hidden'), 300); }
-    const reportModal = document.getElementById('report-modal'); const observer = new MutationObserver((mutations) => { mutations.forEach((mutation) => { if (mutation.target.classList.contains('hidden') === false) { setTimeout(() => { mutation.target.classList.remove('opacity-0'); mutation.target.querySelector('div').classList.add('scale-100'); }, 10); } }); }); if(reportModal) observer.observe(reportModal, { attributes: true, attributeFilter: ['class'] });
-
-    const reportForm = document.getElementById('report-form');
-    if (reportForm) {
-        reportForm.addEventListener('submit', e => {
-            e.preventDefault(); const btn = reportForm.querySelector('button'); const originalText = btn.innerText; btn.disabled = true; btn.innerText = "Sendet...";
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbw3EmtXC7LfthLrPksPn6fBcOdyCi8URxUgKURhX9PUKe5UaPo2xUAPcCIwMDb90040/exec';
-            fetch(scriptURL, { method: 'POST', body: new FormData(reportForm), mode: 'no-cors' })
-                .then(response => { reportForm.classList.add('hidden'); document.getElementById('report-success').classList.remove('hidden'); })
-                .catch(error => { console.error('Error!', error.message); btn.innerText = originalText; btn.disabled = false; alert("Fehler beim Senden. Bitte versuchen Sie es erneut."); });
-        });
-    }
 });
 </script>
 <script>
