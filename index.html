@@ -230,75 +230,7 @@
                 </div>
             </div>
 
-            <!-- Mobile: Compact rows with context -->
-            <div class="flex flex-col gap-5 w-full max-w-sm mb-10 md:hidden">
-                <div class="flex flex-col items-center">
-                    <span class="text-[10px] uppercase tracking-[0.3em] text-stone-500 mb-1">Lead Time</span>
-                    <div class="flex items-center gap-3">
-                        <span class="text-lg font-black italic text-stone-400 line-through">6-8 Weeks</span>
-                        <span class="text-amber-500">→</span>
-                        <span class="text-2xl font-black italic text-amber-600">Hours</span>
-                    </div>
-                </div>
-                <div class="flex flex-col items-center">
-                    <span class="text-[10px] uppercase tracking-[0.3em] text-stone-500 mb-1">Pricing Model</span>
-                    <div class="flex items-center gap-3">
-                        <span class="text-lg font-black italic text-stone-400 line-through">Per Pentest</span>
-                        <span class="text-amber-500">→</span>
-                        <span class="text-2xl font-black italic text-amber-600">Unlimited</span>
-                    </div>
-                </div>
-                <div class="flex flex-col items-center">
-                    <span class="text-[10px] uppercase tracking-[0.3em] text-stone-500 mb-1">Frequency</span>
-                    <div class="flex items-center gap-3">
-                        <span class="text-lg font-black italic text-stone-400 line-through">Once a Year</span>
-                        <span class="text-amber-500">→</span>
-                        <span class="text-2xl font-black italic text-amber-600">Daily</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Desktop: Full display -->
-            <div class="hidden md:grid grid-cols-2 gap-8 w-full max-w-4xl mb-8">
-                <div class="flex flex-col items-end border-r-2 border-stone-300 pr-10">
-                    <p class="text-[10px] uppercase tracking-[0.4em] text-stone-500 mb-2">Traditional Lead Time</p>
-                    <p class="text-2xl font-black italic text-stone-400 uppercase line-through">6-8 Weeks</p>
-                </div>
-                <div class="flex flex-col items-start pl-10">
-                    <p class="text-[10px] uppercase tracking-[0.4em] text-amber-600 mb-2">Vornac Execution</p>
-                    <p class="text-4xl font-black italic text-amber-600 uppercase drop-shadow-[0_0_15px_rgba(212,160,18,0.3)]">Hours.</p>
-                </div>
-            </div>
-
-            <div class="hidden md:grid grid-cols-2 gap-8 w-full max-w-4xl mb-8">
-                <div class="flex flex-col items-end border-r-2 border-stone-300 pr-10">
-                    <p class="text-[10px] uppercase tracking-[0.4em] text-stone-500 mb-2">Traditional Pricing</p>
-                    <p class="text-2xl font-black italic text-stone-400 uppercase line-through">Pay per Pentest</p>
-                </div>
-                <div class="flex flex-col items-start pl-10">
-                    <p class="text-[10px] uppercase tracking-[0.4em] text-amber-600 mb-2">Vornac Model</p>
-                    <p class="text-4xl font-black italic text-amber-600 uppercase drop-shadow-[0_0_15px_rgba(212,160,18,0.3)]">Unlimited.</p>
-                </div>
-            </div>
-
-            <div class="hidden md:grid grid-cols-2 gap-8 w-full max-w-4xl mb-12">
-                <div class="flex flex-col items-end border-r-2 border-stone-300 pr-10">
-                    <p class="text-[10px] uppercase tracking-[0.4em] text-stone-500 mb-2">Traditional Frequency</p>
-                    <p class="text-2xl font-black italic text-stone-400 uppercase line-through">Once a Year</p>
-                </div>
-                <div class="flex flex-col items-start pl-10">
-                    <p class="text-[10px] uppercase tracking-[0.4em] text-amber-600 mb-2">Vornac Frequency</p>
-                    <p class="text-4xl font-black italic text-amber-600 uppercase drop-shadow-[0_0_15px_rgba(212,160,18,0.3)]">Daily.</p>
-                </div>
-            </div>
-
-            <div class="mb-10 max-w-2xl border-x-4 border-amber-500 px-6">
-                <p class="text-2xl md:text-3xl font-heading font-bold italic text-stone-800 leading-snug">
-                    Pentesting once a year means<br><span class="text-amber-600">flying blind for 364 days.</span>
-                </p>
-            </div>
-
-            <div class="flex flex-col items-center space-y-8 w-full">
+            <div class="flex flex-col items-center space-y-8 w-full mt-8">
                 <div class="flex flex-col items-center gap-4 w-full">
                     <a href="https://calendly.com/arthur-vornac/30min" target="_blank" class="group relative flex h-16 items-center justify-center rounded-xl bg-stone-900 px-12 font-bold uppercase tracking-[0.15em] text-xs text-white transition-all hover:bg-amber-600 hover:scale-105 active:scale-95 w-full sm:w-auto shadow-xl shadow-stone-900/30 hover:shadow-amber-500/40">
                         Book Demo
@@ -351,18 +283,89 @@
 
         <!-- VORNAC Pentesting -->
         <div class="mb-16 bg-gradient-to-br from-amber-50 to-white border-2 border-amber-200 rounded-2xl p-8 md:p-12 hover:border-amber-400 hover:shadow-2xl hover:shadow-amber-500/20 transition-all duration-300">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-                <div class="flex-1">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-12 h-12 rounded-xl bg-amber-500 flex items-center justify-center">
-                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-12 h-12 rounded-xl bg-amber-500 flex items-center justify-center">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                </div>
+                <h3 class="font-heading text-3xl md:text-4xl font-black italic text-stone-900">VORNAC Pentesting</h3>
+            </div>
+
+            <p class="text-lg text-stone-600 mb-8 leading-relaxed">
+                Automated penetration testing with audit-proof reports. NIS2, DORA, VAIT & KRITIS compliant.
+            </p>
+
+            <!-- Comparison Grid -->
+            <div class="mb-8">
+                <!-- Mobile Version -->
+                <div class="flex flex-col gap-6 md:hidden">
+                    <div class="bg-white rounded-xl p-4 border border-amber-200">
+                        <div class="text-[9px] uppercase tracking-[0.3em] text-stone-500 mb-2 text-center">Traditional Lead Time</div>
+                        <div class="flex items-center justify-center gap-3 mb-3">
+                            <span class="text-lg font-black italic text-stone-400 line-through">6-8 Weeks</span>
+                            <span class="text-amber-500">→</span>
+                            <span class="text-2xl font-black italic text-amber-600">Hours</span>
                         </div>
-                        <h3 class="font-heading text-3xl md:text-4xl font-black italic text-stone-900">VORNAC Pentesting</h3>
+                        <div class="text-[9px] uppercase tracking-[0.3em] text-amber-600 text-center">VORNAC Execution</div>
                     </div>
-                    <p class="text-lg text-stone-600 mb-6 leading-relaxed">
-                        Automated penetration testing with audit-proof reports. From 6-8 weeks to just hours. Unlimited tests instead of once annually. NIS2, DORA, VAIT & KRITIS compliant.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
+
+                    <div class="bg-white rounded-xl p-4 border border-amber-200">
+                        <div class="text-[9px] uppercase tracking-[0.3em] text-stone-500 mb-2 text-center">Classic Pricing Model</div>
+                        <div class="flex items-center justify-center gap-3 mb-3">
+                            <span class="text-lg font-black italic text-stone-400 line-through">Per Test</span>
+                            <span class="text-amber-500">→</span>
+                            <span class="text-2xl font-black italic text-amber-600">Unlimited</span>
+                        </div>
+                        <div class="text-[9px] uppercase tracking-[0.3em] text-amber-600 text-center">VORNAC Model</div>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-4 border border-amber-200">
+                        <div class="text-[9px] uppercase tracking-[0.3em] text-stone-500 mb-2 text-center">Traditional Frequency</div>
+                        <div class="flex items-center justify-center gap-3 mb-3">
+                            <span class="text-lg font-black italic text-stone-400 line-through">Once/Year</span>
+                            <span class="text-amber-500">→</span>
+                            <span class="text-2xl font-black italic text-amber-600">Daily</span>
+                        </div>
+                        <div class="text-[9px] uppercase tracking-[0.3em] text-amber-600 text-center">VORNAC Frequency</div>
+                    </div>
+                </div>
+
+                <!-- Desktop Version -->
+                <div class="hidden md:grid grid-cols-2 gap-6">
+                    <!-- Row 1 -->
+                    <div class="flex flex-col items-end pr-6 border-r-2 border-amber-300">
+                        <p class="text-[10px] uppercase tracking-[0.4em] text-stone-500 mb-2">Traditional Lead Time</p>
+                        <p class="text-2xl font-black italic text-stone-400 uppercase line-through">6-8 Weeks</p>
+                    </div>
+                    <div class="flex flex-col items-start pl-6">
+                        <p class="text-[10px] uppercase tracking-[0.4em] text-amber-600 mb-2">VORNAC Execution</p>
+                        <p class="text-4xl font-black italic text-amber-600 uppercase drop-shadow-[0_0_15px_rgba(212,160,18,0.3)]">Hours.</p>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="flex flex-col items-end pr-6 border-r-2 border-amber-300">
+                        <p class="text-[10px] uppercase tracking-[0.4em] text-stone-500 mb-2">Classic Pricing Model</p>
+                        <p class="text-2xl font-black italic text-stone-400 uppercase line-through">Pay per Test</p>
+                    </div>
+                    <div class="flex flex-col items-start pl-6">
+                        <p class="text-[10px] uppercase tracking-[0.4em] text-amber-600 mb-2">VORNAC Model</p>
+                        <p class="text-4xl font-black italic text-amber-600 uppercase drop-shadow-[0_0_15px_rgba(212,160,18,0.3)]">Unlimited.</p>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="flex flex-col items-end pr-6 border-r-2 border-amber-300">
+                        <p class="text-[10px] uppercase tracking-[0.4em] text-stone-500 mb-2">Traditional Frequency</p>
+                        <p class="text-2xl font-black italic text-stone-400 uppercase line-through">Once per Year</p>
+                    </div>
+                    <div class="flex flex-col items-start pl-6">
+                        <p class="text-[10px] uppercase tracking-[0.4em] text-amber-600 mb-2">VORNAC Frequency</p>
+                        <p class="text-4xl font-black italic text-amber-600 uppercase drop-shadow-[0_0_15px_rgba(212,160,18,0.3)]">Daily.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <div class="flex-1">
+                    <div class="flex flex-wrap gap-2">
                         <span class="px-3 py-1 bg-white border border-amber-300 rounded-lg text-xs font-bold text-amber-700">Instant Availability</span>
                         <span class="px-3 py-1 bg-white border border-amber-300 rounded-lg text-xs font-bold text-amber-700">Unlimited Tests</span>
                         <span class="px-3 py-1 bg-white border border-amber-300 rounded-lg text-xs font-bold text-amber-700">Audit-Proof</span>

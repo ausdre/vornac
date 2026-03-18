@@ -153,75 +153,7 @@
                 </div>
             </div>
 
-            <!-- Mobile: Kompakte Zeilen mit Kontext -->
-            <div class="flex flex-col gap-5 w-full max-w-sm mb-10 md:hidden">
-                <div class="flex flex-col items-center">
-                    <span class="text-[10px] uppercase tracking-[0.3em] text-stone-500 mb-1">Vorlaufzeit</span>
-                    <div class="flex items-center gap-3">
-                        <span class="text-lg font-black italic text-stone-400 line-through">6-8 Wochen</span>
-                        <span class="text-amber-500">→</span>
-                        <span class="text-2xl font-black italic text-amber-600">Stunden</span>
-                    </div>
-                </div>
-                <div class="flex flex-col items-center">
-                    <span class="text-[10px] uppercase tracking-[0.3em] text-stone-500 mb-1">Preismodell</span>
-                    <div class="flex items-center gap-3">
-                        <span class="text-lg font-black italic text-stone-400 line-through">Pro Pentest</span>
-                        <span class="text-amber-500">→</span>
-                        <span class="text-2xl font-black italic text-amber-600">Unbegrenzt</span>
-                    </div>
-                </div>
-                <div class="flex flex-col items-center">
-                    <span class="text-[10px] uppercase tracking-[0.3em] text-stone-500 mb-1">Frequenz</span>
-                    <div class="flex items-center gap-3">
-                        <span class="text-lg font-black italic text-stone-400 line-through">1x pro Jahr</span>
-                        <span class="text-amber-500">→</span>
-                        <span class="text-2xl font-black italic text-amber-600">Täglich</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Desktop: Volle Darstellung -->
-            <div class="hidden md:grid grid-cols-2 gap-8 w-full max-w-4xl mb-8">
-                <div class="flex flex-col items-end border-r-2 border-stone-300 pr-10">
-                    <p class="text-[10px] uppercase tracking-[0.4em] text-stone-500 mb-2">Traditionelle Vorlaufzeit</p>
-                    <p class="text-2xl font-black italic text-stone-400 uppercase line-through">6-8 Wochen</p>
-                </div>
-                <div class="flex flex-col items-start pl-10">
-                    <p class="text-[10px] uppercase tracking-[0.4em] text-amber-600 mb-2">VORNAC Ausführung</p>
-                    <p class="text-4xl font-black italic text-amber-600 uppercase drop-shadow-[0_0_15px_rgba(212,160,18,0.3)]">Stunden.</p>
-                </div>
-            </div>
-
-            <div class="hidden md:grid grid-cols-2 gap-8 w-full max-w-4xl mb-8">
-                <div class="flex flex-col items-end border-r-2 border-stone-300 pr-10">
-                    <p class="text-[10px] uppercase tracking-[0.4em] text-stone-500 mb-2">Klassisches Preismodell</p>
-                    <p class="text-2xl font-black italic text-stone-400 uppercase line-through">Pro Pentest zahlen</p>
-                </div>
-                <div class="flex flex-col items-start pl-10">
-                    <p class="text-[10px] uppercase tracking-[0.4em] text-amber-600 mb-2">VORNAC Modell</p>
-                    <p class="text-4xl font-black italic text-amber-600 uppercase drop-shadow-[0_0_15px_rgba(212,160,18,0.3)]">Unbegrenzt.</p>
-                </div>
-            </div>
-
-            <div class="hidden md:grid grid-cols-2 gap-8 w-full max-w-4xl mb-12">
-                <div class="flex flex-col items-end border-r-2 border-stone-300 pr-10">
-                    <p class="text-[10px] uppercase tracking-[0.4em] text-stone-500 mb-2">Traditionelle Frequenz</p>
-                    <p class="text-2xl font-black italic text-stone-400 uppercase line-through">1x pro Jahr</p>
-                </div>
-                <div class="flex flex-col items-start pl-10">
-                    <p class="text-[10px] uppercase tracking-[0.4em] text-amber-600 mb-2">VORNAC Frequenz</p>
-                    <p class="text-4xl font-black italic text-amber-600 uppercase drop-shadow-[0_0_15px_rgba(212,160,18,0.3)]">Täglich.</p>
-                </div>
-            </div>
-
-            <div class="mb-10 max-w-2xl border-x-4 border-amber-500 px-6">
-                <p class="text-2xl md:text-3xl font-heading font-bold italic text-stone-800 leading-snug">
-                    Einmal im Jahr pentesten bedeutet<br><span class="text-amber-600">364 Tage blind fliegen.</span>
-                </p>
-            </div>
-
-            <div class="flex flex-col items-center space-y-8 w-full">
+            <div class="flex flex-col items-center space-y-8 w-full mt-8">
                 <div class="flex flex-col items-center gap-4 w-full">
                     <a href="https://calendly.com/arthur-vornac/30min" target="_blank" class="group relative flex h-16 items-center justify-center rounded-xl bg-stone-900 px-12 font-bold uppercase tracking-[0.15em] text-xs text-white transition-all hover:bg-amber-600 hover:scale-105 active:scale-95 w-full sm:w-auto shadow-xl shadow-stone-900/30 hover:shadow-amber-500/40">
                         Demo buchen
@@ -271,18 +203,89 @@
 
         <!-- VORNAC Pentesting -->
         <div class="mb-16 bg-gradient-to-br from-amber-50 to-white border-2 border-amber-200 rounded-2xl p-8 md:p-12 hover:border-amber-400 hover:shadow-2xl hover:shadow-amber-500/20 transition-all duration-300">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-                <div class="flex-1">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-12 h-12 rounded-xl bg-amber-500 flex items-center justify-center">
-                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-12 h-12 rounded-xl bg-amber-500 flex items-center justify-center">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                </div>
+                <h3 class="font-heading text-3xl md:text-4xl font-black italic text-stone-900">VORNAC Pentesting</h3>
+            </div>
+
+            <p class="text-lg text-stone-600 mb-8 leading-relaxed">
+                Automatisierte Penetrationstests mit auditsicheren Berichten. NIS2, DORA, VAIT & KRITIS konform.
+            </p>
+
+            <!-- Comparison Grid -->
+            <div class="mb-8">
+                <!-- Mobile Version -->
+                <div class="flex flex-col gap-6 md:hidden">
+                    <div class="bg-white rounded-xl p-4 border border-amber-200">
+                        <div class="text-[9px] uppercase tracking-[0.3em] text-stone-500 mb-2 text-center">Traditionelle Vorlaufzeit</div>
+                        <div class="flex items-center justify-center gap-3 mb-3">
+                            <span class="text-lg font-black italic text-stone-400 line-through">6-8 Wochen</span>
+                            <span class="text-amber-500">→</span>
+                            <span class="text-2xl font-black italic text-amber-600">Stunden</span>
                         </div>
-                        <h3 class="font-heading text-3xl md:text-4xl font-black italic text-stone-900">VORNAC Pentesting</h3>
+                        <div class="text-[9px] uppercase tracking-[0.3em] text-amber-600 text-center">VORNAC Ausführung</div>
                     </div>
-                    <p class="text-lg text-stone-600 mb-6 leading-relaxed">
-                        Automatisierte Penetrationstests mit auditsicheren Berichten. Von 6-8 Wochen auf wenige Stunden. Unbegrenzte Tests statt einmal jährlich. NIS2, DORA, VAIT & KRITIS konform.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
+
+                    <div class="bg-white rounded-xl p-4 border border-amber-200">
+                        <div class="text-[9px] uppercase tracking-[0.3em] text-stone-500 mb-2 text-center">Klassisches Preismodell</div>
+                        <div class="flex items-center justify-center gap-3 mb-3">
+                            <span class="text-lg font-black italic text-stone-400 line-through">Pro Pentest</span>
+                            <span class="text-amber-500">→</span>
+                            <span class="text-2xl font-black italic text-amber-600">Unbegrenzt</span>
+                        </div>
+                        <div class="text-[9px] uppercase tracking-[0.3em] text-amber-600 text-center">VORNAC Modell</div>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-4 border border-amber-200">
+                        <div class="text-[9px] uppercase tracking-[0.3em] text-stone-500 mb-2 text-center">Traditionelle Frequenz</div>
+                        <div class="flex items-center justify-center gap-3 mb-3">
+                            <span class="text-lg font-black italic text-stone-400 line-through">1x pro Jahr</span>
+                            <span class="text-amber-500">→</span>
+                            <span class="text-2xl font-black italic text-amber-600">Täglich</span>
+                        </div>
+                        <div class="text-[9px] uppercase tracking-[0.3em] text-amber-600 text-center">VORNAC Frequenz</div>
+                    </div>
+                </div>
+
+                <!-- Desktop Version -->
+                <div class="hidden md:grid grid-cols-2 gap-6">
+                    <!-- Row 1 -->
+                    <div class="flex flex-col items-end pr-6 border-r-2 border-amber-300">
+                        <p class="text-[10px] uppercase tracking-[0.4em] text-stone-500 mb-2">Traditionelle Vorlaufzeit</p>
+                        <p class="text-2xl font-black italic text-stone-400 uppercase line-through">6-8 Wochen</p>
+                    </div>
+                    <div class="flex flex-col items-start pl-6">
+                        <p class="text-[10px] uppercase tracking-[0.4em] text-amber-600 mb-2">VORNAC Ausführung</p>
+                        <p class="text-4xl font-black italic text-amber-600 uppercase drop-shadow-[0_0_15px_rgba(212,160,18,0.3)]">Stunden.</p>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="flex flex-col items-end pr-6 border-r-2 border-amber-300">
+                        <p class="text-[10px] uppercase tracking-[0.4em] text-stone-500 mb-2">Klassisches Preismodell</p>
+                        <p class="text-2xl font-black italic text-stone-400 uppercase line-through">Pro Pentest zahlen</p>
+                    </div>
+                    <div class="flex flex-col items-start pl-6">
+                        <p class="text-[10px] uppercase tracking-[0.4em] text-amber-600 mb-2">VORNAC Modell</p>
+                        <p class="text-4xl font-black italic text-amber-600 uppercase drop-shadow-[0_0_15px_rgba(212,160,18,0.3)]">Unbegrenzt.</p>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="flex flex-col items-end pr-6 border-r-2 border-amber-300">
+                        <p class="text-[10px] uppercase tracking-[0.4em] text-stone-500 mb-2">Traditionelle Frequenz</p>
+                        <p class="text-2xl font-black italic text-stone-400 uppercase line-through">1x pro Jahr</p>
+                    </div>
+                    <div class="flex flex-col items-start pl-6">
+                        <p class="text-[10px] uppercase tracking-[0.4em] text-amber-600 mb-2">VORNAC Frequenz</p>
+                        <p class="text-4xl font-black italic text-amber-600 uppercase drop-shadow-[0_0_15px_rgba(212,160,18,0.3)]">Täglich.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <div class="flex-1">
+                    <div class="flex flex-wrap gap-2">
                         <span class="px-3 py-1 bg-white border border-amber-300 rounded-lg text-xs font-bold text-amber-700">Sofortige Verfügbarkeit</span>
                         <span class="px-3 py-1 bg-white border border-amber-300 rounded-lg text-xs font-bold text-amber-700">Unbegrenzte Tests</span>
                         <span class="px-3 py-1 bg-white border border-amber-300 rounded-lg text-xs font-bold text-amber-700">Audit-sicher</span>
