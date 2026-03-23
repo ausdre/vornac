@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="de" class="scroll-smooth">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LJGWDQ2CR"></script>
+    <!-- Privacy-friendly analytics by Plausible -->
+    <script async src="https://plausible.io/js/pa-OqjHdWkljhzM3AXJtXHXl.js"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
+    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+    plausible.init();
     // Set language preference to DE when visiting this page
     if (localStorage.getItem('vornac_lang') !== 'de') {
         localStorage.setItem('vornac_lang', 'de');
     }
+    // Keep gtag function for Google Ads conversion tracking
+    window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('consent', 'default', {
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'analytics_storage': 'denied',
-        'wait_for_update': 500
-    });
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LJGWDQ2CR"></script>
+    <script>
     gtag('js', new Date());
     gtag('config', 'G-9LJGWDQ2CR', { 'anonymize_ip': true });
     </script>
@@ -310,7 +310,7 @@
         <!-- VORNAC Preventive AI -->
         <div class="bg-white border-4 border-stone-900 p-0 overflow-hidden">
             <div class="bg-purple-600 px-8 py-6 border-b-4 border-stone-900 flex items-center justify-center">
-                <img src="V_PreventiveAI_w.svg" alt="VORNAC Preventive AI" class="h-12 md:h-16 w-auto">
+                <img src="V_PreventiveAI_w.svg" alt="VORNAC Preventive AI" class="h-11 md:h-14 w-auto">
             </div>
             <div class="p-8 md:p-12">
                 <p class="text-base text-stone-700 mb-8 leading-relaxed font-medium">

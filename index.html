@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LJGWDQ2CR"></script>
+    <!-- Privacy-friendly analytics by Plausible -->
+    <script async src="https://plausible.io/js/pa-OqjHdWkljhzM3AXJtXHXl.js"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    
+    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+    plausible.init();
+
     // Language Detection & Redirect
     (function() {
         // 1. Check for manual switch via URL parameter
@@ -12,7 +14,7 @@
         if (urlParams.get('lang') === 'en') {
             localStorage.setItem('vornac_lang', 'en');
             return;
-        } 
+        }
 
         // 2. Check stored preference
         const savedLang = localStorage.getItem('vornac_lang');
@@ -33,19 +35,14 @@
         }
     })();
 
+    // Keep gtag function for Google Ads conversion tracking
+    window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-
-    // 1. Standard-Status: Alles abgelehnt (DSGVO-konform)
-    gtag('consent', 'default', {
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'analytics_storage': 'denied',
-        'wait_for_update': 500
-    });
-
-  gtag('js', new Date());
-  gtag('config', 'G-9LJGWDQ2CR', { 'anonymize_ip': true });
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LJGWDQ2CR"></script>
+    <script>
+    gtag('js', new Date());
+    gtag('config', 'G-9LJGWDQ2CR', { 'anonymize_ip': true });
 </script>
     <script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('DzLR5a5AnPWaBoQ2'); </script>
     <meta charset="UTF-8"/>
@@ -390,7 +387,7 @@
         <!-- VORNAC Preventive AI -->
         <div class="bg-white border-4 border-stone-900 p-0 overflow-hidden">
             <div class="bg-purple-600 px-8 py-6 border-b-4 border-stone-900 flex items-center justify-center">
-                <img src="V_PreventiveAI_w.svg" alt="VORNAC Preventive AI" class="h-12 md:h-16 w-auto">
+                <img src="V_PreventiveAI_w.svg" alt="VORNAC Preventive AI" class="h-11 md:h-14 w-auto">
             </div>
             <div class="p-8 md:p-12">
                 <p class="text-base text-stone-700 mb-8 leading-relaxed font-medium">
