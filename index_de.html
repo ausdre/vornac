@@ -603,7 +603,7 @@
             <span class="text-[10px] font-black uppercase tracking-[0.3em] text-stone-900">Datenschutz-Einstellungen</span>
         </div>
         <p class="text-stone-600 text-[11px] leading-relaxed mb-6">
-            Wir nutzen <span class="text-stone-900 font-bold">Google Analytics</span>, um unseren Einfluss im Bereich der Sicherheit zu messen. Ohne Ihre Zustimmung werden keine persönlichen Daten gespeichert.
+            Wir nutzen <span class="text-stone-900 font-bold">Plausible Analytics</span> (datenschutzfreundlich, ohne Cookies) und <span class="text-stone-900 font-bold">Google Ads Conversion Tracking</span>. Ihre Zustimmung ist nur für Google Ads erforderlich.
         </p>
         <div class="flex gap-3">
             <button id="accept-cookies" class="flex-1 bg-stone-900 text-white text-[10px] font-bold uppercase tracking-widest py-3 rounded-lg hover:bg-amber-600 transition-all">Akzeptieren</button>
@@ -633,9 +633,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const acceptBtn = document.getElementById('accept-cookies');
     const declineBtn = document.getElementById('decline-cookies');
     const consentKey = 'vornac_consent_given';
-    const activateAnalytics = () => { gtag('consent', 'update', { 'ad_storage': 'granted', 'ad_user_data': 'granted', 'ad_personalization': 'granted', 'analytics_storage': 'granted' }); };
-    if (!localStorage.getItem(consentKey)) { setTimeout(() => { banner.classList.remove('hidden'); banner.classList.add('animate-fade-in-up'); }, 2000); } else if (localStorage.getItem(consentKey) === 'true') { activateAnalytics(); }
-    acceptBtn?.addEventListener('click', () => { localStorage.setItem(consentKey, 'true'); banner.classList.add('hidden'); activateAnalytics(); });
+    const activateAds = () => { gtag('consent', 'update', { 'ad_storage': 'granted', 'ad_user_data': 'granted', 'ad_personalization': 'granted' }); };
+    if (!localStorage.getItem(consentKey)) { setTimeout(() => { banner.classList.remove('hidden'); banner.classList.add('animate-fade-in-up'); }, 2000); } else if (localStorage.getItem(consentKey) === 'true') { activateAds(); }
+    acceptBtn?.addEventListener('click', () => { localStorage.setItem(consentKey, 'true'); banner.classList.add('hidden'); activateAds(); });
     declineBtn?.addEventListener('click', () => { localStorage.setItem(consentKey, 'false'); banner.classList.add('hidden'); });
 
     const loader = document.getElementById("vornac-loader"); if (loader) loader.style.display = "none";
