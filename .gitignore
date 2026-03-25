@@ -1,8 +1,9 @@
 # Dependency directories
 node_modules/
 
-# Build outputs
-dist/
+# Build outputs (track OG preview image for deploy)
+dist/*
+!dist/vornac_black_static_full.png
 output/
 output.css
 
