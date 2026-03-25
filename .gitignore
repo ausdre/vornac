@@ -4,6 +4,7 @@ node_modules/
 # Build outputs (track OG preview image for deploy)
 dist/*
 !dist/vornac_black_static_full.png
+!dist/VORNAC Banner.png
 output/
 output.css
 
