@@ -157,8 +157,13 @@
                         <label class="block font-black text-stone-900 mb-3 uppercase text-base tracking-wider">
                             Resume (PDF) *
                         </label>
-                        <input type="file" name="cv" accept=".pdf" required
-                               class="w-full px-5 py-4 border-4 border-stone-900 bg-white text-stone-900 text-base file:mr-5 file:py-3 file:px-6 file:border-0 file:bg-stone-900 file:text-white file:font-bold file:uppercase file:text-sm file:cursor-pointer hover:file:bg-amber-600 file:transition-colors" />
+                        <div class="relative">
+                            <input type="file" name="cv" id="cv-upload" accept=".pdf" required class="hidden" />
+                            <label for="cv-upload" class="flex items-center justify-between w-full px-5 py-4 border-4 border-stone-900 bg-white text-stone-700 cursor-pointer hover:border-amber-500 transition-all">
+                                <span id="cv-filename" class="text-base">No file chosen</span>
+                                <span class="bg-stone-900 text-white px-6 py-2 font-bold uppercase text-sm hover:bg-amber-600 transition-colors">Choose File</span>
+                            </label>
+                        </div>
                         <p class="text-sm text-stone-500 mt-2 font-mono">Maximum 10 MB</p>
                     </div>
 
@@ -227,6 +232,22 @@ if (position) {
     if (select && options[position]) {
         select.value = options[position];
     }
+}
+
+// File upload filename display
+const fileInput = document.getElementById('cv-upload');
+const filenameDisplay = document.getElementById('cv-filename');
+if (fileInput && filenameDisplay) {
+    fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            filenameDisplay.textContent = file.name;
+            filenameDisplay.classList.add('font-mono', 'text-stone-900');
+        } else {
+            filenameDisplay.textContent = 'No file chosen';
+            filenameDisplay.classList.remove('font-mono', 'text-stone-900');
+        }
+    });
 }
 </script>
 
