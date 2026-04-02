@@ -76,7 +76,18 @@
             <a href="index_de.html" class="nav-link text-stone-500 hover:text-stone-900 transition-colors">Home</a>
             <a href="pentesting_de.html" class="nav-link text-stone-500 hover:text-stone-900 transition-colors">Pentesting</a>
             <a href="preventive_de.html" class="nav-link text-stone-500 hover:text-stone-900 transition-colors">Preventive AI</a>
-            <a href="about_de.html" class="nav-link text-stone-900 border-b-2 border-amber-500">Über uns</a>
+            <div class="relative group">
+                <button class="nav-link text-stone-900 border-b-2 border-amber-500 flex items-center gap-1">
+                    Über uns
+                    <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div class="absolute left-0 mt-2 w-48 bg-white border-2 border-stone-300 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <a href="about_de.html#unternehmen" class="block px-4 py-3 text-stone-700 hover:bg-amber-50 hover:text-stone-900 transition-colors">Unternehmen</a>
+                    <a href="about_de.html#karriere" class="block px-4 py-3 text-stone-700 hover:bg-amber-50 hover:text-stone-900 transition-colors border-t border-stone-200">Karriere</a>
+                </div>
+            </div>
             <a href="index_de.html#contact" class="rounded-lg bg-stone-900 px-5 py-2.5 text-xs font-bold text-white uppercase tracking-widest hover:bg-amber-600 transition-colors shadow-lg hover:shadow-amber-500/25 hover:scale-105 transform duration-200">Demo Buchen</a>
         </div>
 
@@ -96,7 +107,18 @@
             <a href="index_de.html" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900">Home</a>
             <a href="pentesting_de.html" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900">Pentesting</a>
             <a href="preventive_de.html" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900">Preventive AI</a>
-            <a href="about_de.html" class="mobile-link text-lg font-medium text-amber-600">Über uns</a>
+            <div class="flex flex-col">
+                <button onclick="this.nextElementSibling.classList.toggle('hidden')" class="mobile-link text-lg font-medium text-amber-600 flex items-center justify-center gap-2">
+                    Über uns
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div class="hidden flex flex-col space-y-3 mt-3 px-4">
+                    <a href="about_de.html#unternehmen" class="text-base text-stone-500 hover:text-stone-900">→ Unternehmen</a>
+                    <a href="about_de.html#karriere" class="text-base text-stone-500 hover:text-stone-900">→ Karriere</a>
+                </div>
+            </div>
             <a href="index_de.html#contact" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900">Kontakt</a>
             <a href="index_de.html#contact" class="mobile-link mt-4 flex h-14 items-center justify-center rounded-xl bg-stone-900 font-bold text-white shadow-lg transition-transform active:scale-95 hover:bg-amber-600">Demo Buchen</a>
         </div>
@@ -104,7 +126,7 @@
 </header>
 
 <main class="relative z-10">
-    <section id="about" class="border-b-2 border-stone-200 bg-warm relative overflow-hidden py-16 lg:py-24">
+    <section id="unternehmen" class="border-b-2 border-stone-200 bg-warm relative overflow-hidden py-16 lg:py-24">
         <div class="mx-auto max-w-4xl px-4 relative z-10">
 
             <div class="rounded-[40px] bg-white border-2 border-stone-300 p-[1px] shadow-lg shadow-stone-900/15">
@@ -158,6 +180,157 @@
         </div>
     </section>
 </main>
+
+<!-- Karriere Section -->
+<section id="karriere" class="relative py-20 bg-stone-900">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="font-heading text-4xl md:text-6xl font-black italic uppercase text-white mb-6 tracking-tight">
+                Werde Teil von VORNAC
+            </h2>
+            <p class="text-xl text-stone-300 mb-4 leading-relaxed max-w-3xl mx-auto">
+                Du willst deutsche Datensouveränität nicht nur predigen, sondern bauen?
+            </p>
+            <p class="text-lg text-stone-400">
+                Wir suchen Talente, die mit uns die Zukunft der Cybersecurity gestalten.
+            </p>
+        </div>
+
+        <!-- Job Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+
+            <!-- Job 1: Head of Sales -->
+            <div class="relative bg-white border-4 border-amber-500 p-8 shadow-[12px_12px_0px_0px_rgba(245,158,11,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(245,158,11,1)] transition-all">
+                <div class="mb-6">
+                    <h3 class="font-heading text-2xl md:text-3xl font-black italic uppercase text-stone-900 mb-2 tracking-tight">
+                        Head of Sales - Cybersecurity Solutions (m/w/d)
+                    </h3>
+                    <div class="flex flex-wrap gap-2 text-sm text-stone-600">
+                        <span class="bg-amber-100 px-3 py-1 font-mono">Heidelberg/Remote</span>
+                        <span class="bg-amber-100 px-3 py-1 font-mono">Vollzeit</span>
+                    </div>
+                </div>
+
+                <div class="space-y-4 mb-6">
+                    <div>
+                        <h4 class="font-bold text-stone-900 mb-2 uppercase text-sm tracking-wide">Deine Mission:</h4>
+                        <ul class="space-y-2 text-stone-700 text-sm">
+                            <li class="flex items-start gap-2">
+                                <span class="text-amber-600 font-bold">→</span>
+                                <span>Verantwortung für die gesamte Sales-Pipeline</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-amber-600 font-bold">→</span>
+                                <span>Enterprise-Vertrieb an CISOs, CIOs & Security-Entscheider</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-amber-600 font-bold">→</span>
+                                <span>Sales-Team aufbauen und führen</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-stone-900 mb-2 uppercase text-sm tracking-wide">Du bringst mit:</h4>
+                        <ul class="space-y-2 text-stone-700 text-sm">
+                            <li class="flex items-start gap-2">
+                                <span class="text-amber-600 font-bold">✓</span>
+                                <span>5+ Jahre B2B SaaS Sales (Cybersecurity bevorzugt)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-amber-600 font-bold">✓</span>
+                                <span>Nachweisbare Enterprise-Deal-Erfolge</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-amber-600 font-bold">✓</span>
+                                <span>Starkes Netzwerk im DACH-Raum</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-amber-600 font-bold">✓</span>
+                                <span>Fließend Deutsch und Englisch</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <a href="apply_de.html?position=head-of-sales"
+                   class="block w-full bg-stone-900 text-white text-center py-4 font-bold uppercase tracking-wider hover:bg-amber-600 transition-colors border-2 border-stone-900">
+                    Jetzt bewerben →
+                </a>
+            </div>
+
+            <!-- Job 2: Pentester CSM -->
+            <div class="relative bg-white border-4 border-purple-900 p-8 shadow-[12px_12px_0px_0px_rgba(59,28,117,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(59,28,117,1)] transition-all">
+                <div class="mb-6">
+                    <h3 class="font-heading text-2xl md:text-3xl font-black italic uppercase text-stone-900 mb-2 tracking-tight">
+                        Pentester als Customer Success Manager (m/w/d)
+                    </h3>
+                    <div class="flex flex-wrap gap-2 text-sm text-stone-600">
+                        <span class="bg-purple-100 px-3 py-1 font-mono">Heidelberg/Remote</span>
+                        <span class="bg-purple-100 px-3 py-1 font-mono">Vollzeit</span>
+                    </div>
+                </div>
+
+                <div class="space-y-4 mb-6">
+                    <div>
+                        <h4 class="font-bold text-stone-900 mb-2 uppercase text-sm tracking-wide">Deine Mission:</h4>
+                        <ul class="space-y-2 text-stone-700 text-sm">
+                            <li class="flex items-start gap-2">
+                                <span class="text-purple-900 font-bold">→</span>
+                                <span>Kunden bei Pentesting-Ergebnissen beratend unterstützen</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-purple-900 font-bold">→</span>
+                                <span>Mit deinem Pentesting-Wissen Kunden zum Erfolg führen</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-purple-900 font-bold">→</span>
+                                <span>Technische Beratung & Remediation-Support</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-stone-900 mb-2 uppercase text-sm tracking-wide">Du bringst mit:</h4>
+                        <ul class="space-y-2 text-stone-700 text-sm">
+                            <li class="flex items-start gap-2">
+                                <span class="text-purple-900 font-bold">✓</span>
+                                <span><strong>BSI Kompetenzanerkennung</strong> oder gleichwertig</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-purple-900 font-bold">✓</span>
+                                <span>Praxiserfahrung im Penetration Testing</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-purple-900 font-bold">✓</span>
+                                <span>Kundenorientierung & Kommunikationsstärke</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-purple-900 font-bold">✓</span>
+                                <span>Fließend Deutsch und Englisch</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <a href="apply_de.html?position=pentester-csm"
+                   class="block w-full bg-stone-900 text-white text-center py-4 font-bold uppercase tracking-wider hover:bg-purple-900 transition-colors border-2 border-stone-900">
+                    Jetzt bewerben →
+                </a>
+            </div>
+
+        </div>
+
+        <!-- General Contact -->
+        <div class="text-center">
+            <p class="text-stone-400 mb-4">Keine passende Stelle gefunden?</p>
+            <a href="mailto:hello@vornac.com"
+               class="inline-block bg-amber-500 text-stone-900 px-8 py-3 font-bold uppercase tracking-wider border-4 border-white shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all">
+                Initiativbewerbung →
+            </a>
+        </div>
+    </div>
+</section>
 
 <section id="contact" class="bg-warm py-20 px-6 relative overflow-hidden">
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-100/50 rounded-full blur-[100px] pointer-events-none"></div>
