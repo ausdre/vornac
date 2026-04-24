@@ -14,4 +14,4 @@ User-agent: PerplexityBot
 Allow: /
 
 # Link to the Sitemap
-Sitemap: https://vornac.com/sitemap.xml
+Sitemap: https://www.vornac.com/sitemap.xml
