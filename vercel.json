@@ -4,6 +4,15 @@
       "source": "/index.html",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/index_de.html",
+      "destination": "/de",
+      "permanent": true
     }
+  ],
+  "rewrites": [
+    { "source": "/de", "destination": "/index_de.html" },
+    { "source": "/de/", "destination": "/index_de.html" }
   ]
 }

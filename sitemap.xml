@@ -8,7 +8,7 @@
     <lastmod>2026-04-24</lastmod>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/index_de.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/de" />
   </url>
 
   <url>
@@ -59,10 +59,10 @@
 
   <!-- German Pages -->
   <url>
-    <loc>https://www.vornac.com/index_de.html</loc>
+    <loc>https://www.vornac.com/de</loc>
     <lastmod>2026-04-24</lastmod>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/index_de.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/de" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/" />
   </url>
 
