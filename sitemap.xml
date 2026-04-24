@@ -5,7 +5,7 @@
   <!-- English Pages -->
   <url>
     <loc>https://www.vornac.com/</loc>
-    <lastmod>2026-04-15</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/index_de.html" />
@@ -13,7 +13,7 @@
 
   <url>
     <loc>https://www.vornac.com/pentesting.html</loc>
-    <lastmod>2026-04-15</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/pentesting.html" />
     <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/pentesting_de.html" />
@@ -21,7 +21,7 @@
 
   <url>
     <loc>https://www.vornac.com/preventive.html</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/preventive.html" />
     <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/preventive_de.html" />
@@ -29,7 +29,7 @@
 
   <url>
     <loc>https://www.vornac.com/about.html</loc>
-    <lastmod>2026-04-15</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/about.html" />
     <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/about_de.html" />
@@ -37,7 +37,7 @@
 
   <url>
     <loc>https://www.vornac.com/apply.html</loc>
-    <lastmod>2026-04-15</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/apply.html" />
     <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/apply_de.html" />
@@ -45,13 +45,13 @@
 
   <url>
     <loc>https://www.vornac.com/comcenter.html</loc>
-    <lastmod>2026-02-01</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://www.vornac.com/legal.html</loc>
-    <lastmod>2026-04-15</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/legal.html" />
     <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/legal_de.html" />
@@ -60,7 +60,7 @@
   <!-- German Pages -->
   <url>
     <loc>https://www.vornac.com/index_de.html</loc>
-    <lastmod>2026-04-15</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/index_de.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/" />
@@ -68,7 +68,7 @@
 
   <url>
     <loc>https://www.vornac.com/pentesting_de.html</loc>
-    <lastmod>2026-04-15</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/pentesting_de.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/pentesting.html" />
@@ -76,7 +76,7 @@
 
   <url>
     <loc>https://www.vornac.com/preventive_de.html</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/preventive_de.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/preventive.html" />
@@ -84,7 +84,7 @@
 
   <url>
     <loc>https://www.vornac.com/about_de.html</loc>
-    <lastmod>2026-04-15</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/about_de.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/about.html" />
@@ -92,7 +92,7 @@
 
   <url>
     <loc>https://www.vornac.com/apply_de.html</loc>
-    <lastmod>2026-04-15</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/apply_de.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/apply.html" />
@@ -100,7 +100,7 @@
 
   <url>
     <loc>https://www.vornac.com/legal_de.html</loc>
-    <lastmod>2026-04-15</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/legal_de.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/legal.html" />
