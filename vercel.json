@@ -29,6 +29,6 @@
     }
   ],
   "rewrites": [
-    { "source": "/de", "destination": "/index_de.html" }
+    { "source": "/de", "destination": "/index_de" }
   ]
 }
