@@ -24,7 +24,7 @@
         if (savedLang === 'en') return;
 
         // 3. Fallback: Check referrer (if coming from German page, assume English intent if landing here)
-        if (document.referrer && document.referrer.indexOf('_de.html') !== -1) {
+        if (document.referrer && /\/(?:de\b|.*_de\b)/.test(document.referrer)) {
             localStorage.setItem('vornac_lang', 'en');
             return;
         }
@@ -149,7 +149,7 @@
 
         <div class="hidden items-center gap-8 text-sm md:flex">
             <a href="/" class="nav-link text-stone-900 font-semibold border-b-2 border-amber-500">Home</a>
-            <a href="pentesting.html" class="nav-link text-stone-500 hover:text-stone-900 transition-colors">Pentesting</a>
+            <a href="/pentesting" class="nav-link text-stone-500 hover:text-stone-900 transition-colors">Pentesting</a>
             <div class="relative group">
                 <button class="nav-link text-stone-500 hover:text-stone-900 transition-colors flex items-center gap-1">
                     About
@@ -158,8 +158,8 @@
                     </svg>
                 </button>
                 <div class="absolute left-0 mt-2 w-48 bg-white border-2 border-stone-300 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                    <a href="about.html#company" class="block px-4 py-3 text-stone-700 hover:bg-amber-50 hover:text-stone-900 transition-colors">Company</a>
-                    <a href="about.html#careers" class="block px-4 py-3 text-stone-700 hover:bg-amber-50 hover:text-stone-900 transition-colors border-t border-stone-200">Careers</a>
+                    <a href="/about#company" class="block px-4 py-3 text-stone-700 hover:bg-amber-50 hover:text-stone-900 transition-colors">Company</a>
+                    <a href="/about#careers" class="block px-4 py-3 text-stone-700 hover:bg-amber-50 hover:text-stone-900 transition-colors border-t border-stone-200">Careers</a>
                 </div>
             </div>
             <a href="https://zeeg.me/hello3950/your-vornac-meeting" class="rounded-lg bg-stone-900 px-5 py-2.5 text-xs font-bold text-white uppercase tracking-widest hover:bg-amber-600 transition-colors shadow-lg hover:shadow-amber-500/25 hover:scale-105 transform duration-200">Book Demo</a>
@@ -178,7 +178,7 @@
 
     <div id="mobile-menu" class="fixed left-0 right-0 top-[72px] z-[100] hidden border-b-2 border-stone-300 bg-white shadow-2xl md:hidden">
         <div class="flex flex-col space-y-6 px-8 py-10 text-center">
-            <a href="pentesting.html" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900">Pentesting</a>
+            <a href="/pentesting" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900">Pentesting</a>
             <div class="flex flex-col">
                 <button onclick="this.nextElementSibling.classList.toggle('hidden')" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900 flex items-center justify-center gap-2">
                     About
@@ -187,8 +187,8 @@
                     </svg>
                 </button>
                 <div class="hidden flex flex-col space-y-3 mt-3 px-4">
-                    <a href="about.html#company" class="text-base text-stone-500 hover:text-stone-900">→ Company</a>
-                    <a href="about.html#careers" class="text-base text-stone-500 hover:text-stone-900">→ Careers</a>
+                    <a href="/about#company" class="text-base text-stone-500 hover:text-stone-900">→ Company</a>
+                    <a href="/about#careers" class="text-base text-stone-500 hover:text-stone-900">→ Careers</a>
                 </div>
             </div>
             <a href="#contact" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900">Contact</a>
@@ -426,7 +426,7 @@
                         </div>
                     </div>
                     <div class="flex flex-col md:flex-row gap-3">
-                        <a href="pentesting.html" class="inline-flex items-center justify-center h-14 px-8 bg-stone-900 text-amber-500 font-black uppercase tracking-wider text-sm hover:bg-amber-500 hover:text-stone-900 transition-colors">
+                        <a href="/pentesting" class="inline-flex items-center justify-center h-14 px-8 bg-stone-900 text-amber-500 font-black uppercase tracking-wider text-sm hover:bg-amber-500 hover:text-stone-900 transition-colors">
                             Learn More
                         </a>
                         <a href="https://zeeg.me/hello3950/your-vornac-meeting" class="inline-flex items-center justify-center h-14 px-8 bg-white border-4 border-stone-900 text-stone-900 font-black uppercase tracking-wider text-sm hover:bg-stone-900 hover:text-white transition-colors">
@@ -612,8 +612,8 @@
             </div>
 
             <div class="flex items-center gap-8 text-sm text-stone-400">
-                <a href="legal.html" class="hover:text-white transition-colors">Privacy</a>
-                <a href="legal.html" class="hover:text-white transition-colors">Imprint</a>
+                <a href="/legal" class="hover:text-white transition-colors">Privacy</a>
+                <a href="/legal" class="hover:text-white transition-colors">Imprint</a>
                 <a href="https://www.linkedin.com/company/vornac" target="_blank" class="hover:text-amber-500 transition-colors">LinkedIn</a>
             </div>
 
@@ -663,7 +663,7 @@
             </button>
         </div>
         <div class="mt-4 text-center">
-            <a href="legal.html#privacy" class="text-[9px] text-stone-400 uppercase tracking-widest hover:text-amber-600 transition-colors">Read Privacy Policy</a>
+            <a href="/legal#privacy" class="text-[9px] text-stone-400 uppercase tracking-widest hover:text-amber-600 transition-colors">Read Privacy Policy</a>
         </div>
     </div>
 </div>
