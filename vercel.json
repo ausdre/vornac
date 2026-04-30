@@ -1,4 +1,6 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
   "redirects": [
     {
       "source": "/index.html",
@@ -6,13 +8,27 @@
       "permanent": true
     },
     {
+      "source": "/index",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/index_de.html",
+      "destination": "/de",
+      "permanent": true
+    },
+    {
+      "source": "/index_de",
+      "destination": "/de",
+      "permanent": true
+    },
+    {
+      "source": "/de/",
       "destination": "/de",
       "permanent": true
     }
   ],
   "rewrites": [
-    { "source": "/de", "destination": "/index_de.html" },
-    { "source": "/de/", "destination": "/index_de.html" }
+    { "source": "/de", "destination": "/index_de.html" }
   ]
 }
