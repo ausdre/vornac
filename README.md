@@ -3,7 +3,7 @@
 This repository contains the official frontend for VORNAC. 
 The website is engineered to reflect the precision and technical sophistication of the VORNAC engine, utilizing a "Dark Operations" design language.
 
-![VORNAC Logo](V.svg)
+![VORNAC Logo](logo-vornac-black.svg)
 
 ## 🎨 Design Philosophy
 

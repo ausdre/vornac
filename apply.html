@@ -214,31 +214,41 @@
 </main>
 
 <!-- Footer -->
-<footer class="bg-stone-900 text-white py-16 px-6">
-    <div class="max-w-6xl mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-
+<footer class="bg-stone-900 border-t border-stone-800 pt-14 pb-10 px-4 sm:px-6">
+    <div class="max-w-content mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_auto_auto] gap-10 items-start">
+            <div class="space-y-4">
+                <img src="logo-vornac-white.svg" alt="VORNAC" class="h-9 w-auto md:h-10">
+                <p class="max-w-md text-sm leading-relaxed text-stone-400">
+                    Enterprise-grade autonomous security testing for continuous assurance and compliance.
+                </p>
+            </div>
             <div>
-                <img src="logo-vornac-white.svg" alt="VORNAC" class="h-12 w-auto">
+                <h4 class="text-white text-[11px] font-bold uppercase tracking-[0.18em] mb-4">Navigation</h4>
+                <ul class="space-y-3 text-sm text-stone-400">
+                    <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+                    <li><a href="/pentesting" class="hover:text-white transition-colors">Pentesting</a></li>
+                    <li><a href="/preventive" class="hover:text-white transition-colors">Preventive AI</a></li>
+                    <li><a href="/about" class="hover:text-white transition-colors">About</a></li>
+                    <li><a href="/#contact" class="hover:text-white transition-colors">Contact</a></li>
+                </ul>
             </div>
-
-            <div class="flex items-center gap-8 text-sm text-stone-400">
-                <a href="/legal#privacy" class="hover:text-white transition-colors">Privacy</a>
-                <a href="/legal#imprint" class="hover:text-white transition-colors">Imprint</a>
-                <a href="https://www.linkedin.com/company/vornac" target="_blank" class="hover:text-amber-500 transition-colors">LinkedIn</a>
+            <div>
+                <h4 class="text-white text-[11px] font-bold uppercase tracking-[0.18em] mb-4">Legal</h4>
+                <ul class="space-y-3 text-sm text-stone-400">
+                    <li><a href="/legal" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                    <li><a href="/legal" class="hover:text-white transition-colors">Imprint</a></li>
+                    <li><a href="https://www.linkedin.com/company/vornac" target="_blank" class="hover:text-white transition-colors">LinkedIn</a></li>
+                </ul>
             </div>
-
-            <div class="flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em] text-stone-500">
-                <a href="/apply_de" class="hover:text-amber-500 transition-colors">DE</a>
-                <span class="text-stone-700">|</span>
-                <span class="text-amber-500">EN</span>
-            </div>
-
         </div>
-        <div class="mt-8 pt-8 border-t border-stone-800 text-center">
-            <p class="text-xs text-stone-500">
-                &copy; 2026 VORNAC GmbH. All rights reserved.
-            </p>
+        <div class="mt-10 pt-6 border-t border-stone-800 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <p class="text-xs uppercase tracking-[0.16em] text-stone-500">&copy; 2026 VORNAC GmbH. All rights reserved.</p>
+            <div class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-stone-500">
+                <a href="/apply_de" onclick="localStorage.setItem('vornac_lang', 'de')" class="hover:text-white transition-colors">DE</a>
+                <span class="text-stone-700">|</span>
+                <span class="text-white">EN</span>
+            </div>
         </div>
     </div>
 </footer>
