@@ -26,6 +26,26 @@
       "source": "/de/",
       "destination": "/de",
       "permanent": true
+    },
+    {
+      "source": "/privacy.html",
+      "destination": "/legal.html",
+      "permanent": true
+    },
+    {
+      "source": "/privacy_de.html",
+      "destination": "/legal_de.html",
+      "permanent": true
+    },
+    {
+      "source": "/preventive.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/preventive_de.html",
+      "destination": "/de",
+      "permanent": true
     }
   ],
   "rewrites": [
