@@ -5,6 +5,21 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ----------------------------------------
+ * Global mobile safety net
+ * Prevents accidental horizontal scroll from
+ * oversized images or italic headlines.
+ * -------------------------------------- */
+html, body { overflow-x: hidden; max-width: 100%; }
+
+/* Reserve scrollbar space so toggling overflow (mobile nav) does not shift layout */
+html { scrollbar-gutter: stable; }
+
+@media (prefers-reduced-motion: reduce) {
+    html.scroll-smooth { scroll-behavior: auto; }
+    }
+img, video { max-width: 100%; }
+
 @layer utilities {
     /* ----------------------------------------
      * Global orbit lights (goldene Radials)
@@ -86,8 +101,7 @@
     .logo-scroll {
         display: flex;
         gap: 3rem;
-        will-change: transform;
-    }
+        }
 
     @keyframes orbit-slow {
         0% { transform: translate3d(-30px, 0, 0) scale(1); opacity: 0.75; }
@@ -415,4 +429,12 @@
 /* iOS: 100vh Bug vermeiden – du nutzt min-h-screen, aber für Safari besser */
 @supports (height: 100svh) {
     .min-h-screen { min-height: 100svh; }
+    }
+
+/* Narrow viewports: strong backdrop-blur on sticky chrome is a common Safari jank source */
+@media (max-width: 768px) {
+    #site-header {
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        }
     }

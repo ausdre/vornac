@@ -34,7 +34,11 @@
 
         if (savedLang === 'de' || (!savedLang && userLang.startsWith('de'))) {
             localStorage.setItem('vornac_lang', 'de');
-            window.location.replace('/de');
+            var isLocal =
+                location.hostname === 'localhost' ||
+                location.hostname === '127.0.0.1' ||
+                location.hostname === '[::1]';
+            window.location.replace(isLocal ? '/index_de.html' : '/de');
         }
     })();
 
@@ -115,7 +119,7 @@
         }
 
         /* Effekt für das Video-Ende */
-        #hero-video { transition: filter 2.5s ease; will-change: filter; }
+        #hero-video { transition: filter 2.5s ease; }
         .video-ended #hero-video { filter: blur(6px) brightness(0.5); }
 
     </style>
@@ -123,7 +127,7 @@
 <body class="bg-warm text-stone-900 font-body antialiased">
 <!-- Orbit Blobs (angepasst für hell) -->
 <div class="fixed inset-0 pointer-events-none overflow-hidden">
-    <div class="absolute -left-40 top-0 h-80 w-80 rounded-full bg-amber-300/30 blur-[80px] animate-pulse"></div>
+    <div class="absolute -left-40 top-0 h-80 w-80 rounded-full bg-amber-300/30 blur-[80px] animate-pulse max-md:animate-none"></div>
     <div class="absolute -right-32 top-1/3 h-96 w-96 rounded-full bg-amber-200/20 blur-[80px]"></div>
     <div class="absolute left-1/3 -bottom-36 h-72 w-72 rounded-full bg-amber-300/25 blur-[80px]"></div>
 </div>
@@ -191,17 +195,17 @@
     <div class="relative z-10 w-full max-w-7xl px-6 py-20 text-center">
         <div class="flex flex-col items-center">
 
-            <h1 class="font-heading text-5xl md:text-8xl lg:text-[7.5rem] font-black italic uppercase leading-[0.8] tracking-tighter text-stone-900 mb-8">
+            <h1 class="font-heading text-4xl sm:text-5xl md:text-8xl lg:text-[7.5rem] font-black italic uppercase leading-[0.8] tracking-tighter text-stone-900 mb-8">
                 Ahead of <br>
                 <span class="text-transparent" style="-webkit-text-stroke: 2px #d4a012;">the Threat.</span>
             </h1>
 
             <!-- Client & Partner Logos -->
             <div class="mb-16 w-full max-w-5xl">
-                <h2 class="font-heading text-2xl md:text-4xl font-black italic uppercase text-stone-900 mb-8 text-center">
+                <h2 class="font-heading text-xl sm:text-2xl md:text-4xl font-black italic uppercase text-stone-900 mb-8 text-center">
                     Our Partners <span class="text-amber-600">&</span> Customers
                 </h2>
-                <div class="flex items-center overflow-hidden bg-white/80 backdrop-blur-sm border-2 border-stone-200 rounded-2xl px-8 py-6 shadow-xl shadow-stone-900/10">
+                <div class="flex items-center w-full overflow-hidden bg-white/80 backdrop-blur-sm border-2 border-stone-200 rounded-2xl px-8 py-6 shadow-xl shadow-stone-900/10">
                     <div class="logo-scroll">
                         <!-- First set of logos -->
                         <img src="client-1.png" alt="Client 1" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex-shrink-0">
@@ -235,7 +239,7 @@
 
             <!-- Featured In / Press -->
             <div class="mb-16 w-auto">
-                <h2 class="font-heading text-2xl md:text-4xl font-black italic uppercase text-stone-900 mb-8 text-center">
+                <h2 class="font-heading text-xl sm:text-2xl md:text-4xl font-black italic uppercase text-stone-900 mb-8 text-center">
                     As Seen In
                 </h2>
                 <div class="flex items-center justify-center gap-8 md:gap-12 bg-white/60 backdrop-blur-sm border-2 border-stone-200 rounded-2xl px-8 py-5 shadow-lg shadow-stone-900/5">
@@ -248,13 +252,13 @@
 
             <!-- Hero Content -->
             <div class="max-w-3xl mx-auto mb-8 px-4">
-                <p class="text-xl md:text-3xl text-stone-700 font-medium leading-relaxed text-center mb-6">
+                <p class="text-base sm:text-xl md:text-3xl text-stone-700 font-medium leading-relaxed text-center mb-6">
                     No longer <span class="text-stone-400 line-through">reactive</span>. But <span class="text-amber-600 font-bold">proactive</span>.
                 </p>
-                <p class="text-xl md:text-3xl text-stone-700 font-medium leading-relaxed text-center mb-8">
+                <p class="text-base sm:text-xl md:text-3xl text-stone-700 font-medium leading-relaxed text-center mb-8">
                     No longer <span class="text-stone-400 line-through">hoping it won't happen</span>. <span class="text-amber-600 font-bold">Having control over it</span>.
                 </p>
-                <p class="text-2xl md:text-4xl font-heading font-black italic text-stone-900 text-center">
+                <p class="text-xl sm:text-2xl md:text-4xl font-heading font-black italic text-stone-900 text-center">
                     That's VORNAC.
                 </p>
             </div>
@@ -266,17 +270,16 @@
                     </a>
                 </div>
 
-                <!-- MADE IN GERMANY STAMP -->
-                <div class="mt-12 md:mt-16 flex justify-center">
-                    <div class="relative group">
-                        <div class="relative flex flex-col items-center justify-center px-10 py-7 md:px-12 md:py-8 bg-white rounded-sm shadow-[0_2px_15px_rgba(0,0,0,0.15),0_10px_40px_rgba(0,0,0,0.1)] group-hover:shadow-[0_4px_20px_rgba(0,0,0,0.2),0_15px_50px_rgba(0,0,0,0.15)] transition-all duration-300">
-                            <!-- German Flag -->
+                <!-- Trust tiles: Germany · TeleTrusT · IT Security made in Germany seal -->
+                <div class="mt-12 md:mt-16 mx-auto grid w-full max-w-6xl grid-cols-1 items-stretch justify-center gap-8 px-4 md:grid-cols-3 md:gap-6 lg:gap-10">
+                    <!-- 1: Made & hosted in Germany -->
+                    <div class="relative group mx-auto w-full max-w-[280px] md:mx-0 md:max-w-none">
+                        <div class="relative flex h-full min-h-[220px] flex-col items-center justify-center px-10 py-7 md:px-8 md:py-8 bg-white rounded-sm shadow-[0_2px_15px_rgba(0,0,0,0.15),0_10px_40px_rgba(0,0,0,0.1)] group-hover:shadow-[0_4px_20px_rgba(0,0,0,0.2),0_15px_50px_rgba(0,0,0,0.15)] transition-all duration-300">
                             <div class="flex h-2 w-20 md:w-24 overflow-hidden mb-4 opacity-90 shadow-sm">
                                 <div class="h-full w-1/3 bg-black"></div>
                                 <div class="h-full w-1/3 bg-red-600"></div>
                                 <div class="h-full w-1/3 bg-yellow-400"></div>
                             </div>
-                            <!-- Text content -->
                             <div class="flex flex-col items-center text-center">
                                 <span class="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.35em] text-stone-600 mb-2">Made & Hosted in</span>
                                 <span class="text-2xl md:text-3xl font-black uppercase tracking-tight text-stone-900 mb-3">Germany</span>
@@ -284,9 +287,24 @@
                                 <span class="text-[9px] md:text-[10px] font-semibold uppercase tracking-[0.25em] text-stone-700">Digital Sovereignty</span>
                             </div>
                         </div>
-                        <!-- Shadow layers for depth -->
                         <div class="absolute inset-0 bg-stone-900/5 rounded-sm translate-x-1 translate-y-1 -z-10"></div>
                         <div class="absolute inset-0 bg-stone-900/5 rounded-sm translate-x-2 translate-y-2 -z-20"></div>
+                    </div>
+                    <!-- 2: TeleTrusT (logo only) -->
+                    <div class="relative group mx-auto w-full max-w-[280px] md:mx-0 md:max-w-none">
+                        <a href="https://www.teletrust.de/" target="_blank" rel="noopener noreferrer" class="relative flex h-full min-h-[220px] items-center justify-center px-8 py-10 md:px-6 md:py-12 bg-white rounded-sm shadow-[0_2px_15px_rgba(0,0,0,0.15),0_10px_40px_rgba(0,0,0,0.1)] transition-all duration-300 hover:shadow-[0_4px_20px_rgba(0,0,0,0.2),0_15px_50px_rgba(0,0,0,0.15)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">
+                            <img src="TeleTrusT-Mitgliedslogo.jpg" alt="TeleTrusT – Member of the IT Security Association Germany" class="w-full max-w-[260px] h-auto object-contain" width="280" height="120" loading="lazy">
+                        </a>
+                        <div class="absolute inset-0 bg-stone-900/5 rounded-sm translate-x-1 translate-y-1 -z-10 pointer-events-none"></div>
+                        <div class="absolute inset-0 bg-stone-900/5 rounded-sm translate-x-2 translate-y-2 -z-20 pointer-events-none"></div>
+                    </div>
+                    <!-- 3: IT Security made in Germany (TeleTrusT seal, graphic only) -->
+                    <div class="relative group mx-auto w-full max-w-[280px] md:mx-0 md:max-w-none">
+                        <div class="relative flex h-full min-h-[220px] items-center justify-center px-8 py-10 md:px-6 md:py-12 bg-white rounded-sm shadow-[0_2px_15px_rgba(0,0,0,0.15),0_10px_40px_rgba(0,0,0,0.1)] group-hover:shadow-[0_4px_20px_rgba(0,0,0,0.2),0_15px_50px_rgba(0,0,0,0.15)] transition-all duration-300">
+                            <img src="it-security-made-in-germany-teletrust-seal.png" alt="IT Security made in Germany – TeleTrusT" class="w-full max-w-[min(100%,280px)] h-auto object-contain" width="2257" height="1294" loading="lazy" decoding="async">
+                        </div>
+                        <div class="absolute inset-0 bg-stone-900/5 rounded-sm translate-x-1 translate-y-1 -z-10 pointer-events-none"></div>
+                        <div class="absolute inset-0 bg-stone-900/5 rounded-sm translate-x-2 translate-y-2 -z-20 pointer-events-none"></div>
                     </div>
                 </div>
             </div>
@@ -809,13 +827,13 @@ if (toggleBtn && mobileMenu && backdrop) {
     const closeMenu = () => {
         mobileMenu.classList.add('hidden');
         backdrop.classList.add('hidden');
-        document.body.style.overflow = ''; 
+        document.body.classList.remove('nav-open');
     };
 
     const openMenu = () => {
         mobileMenu.classList.remove('hidden');
         backdrop.classList.remove('hidden');
-        document.body.style.overflow = 'hidden'; 
+        document.body.classList.add('nav-open');
     };
 
     toggleBtn.addEventListener('click', (e) => {
@@ -922,54 +940,58 @@ if (toggleBtn && mobileMenu && backdrop) {
 });
 </script>
 <script>
-// Infinite logo scroll
+// Infinite logo scroll (measure widths on resize/load only — avoids layout thrashing per frame)
 document.addEventListener('DOMContentLoaded', function() {
     const scrollContainer = document.querySelector('.logo-scroll');
     if (!scrollContainer) return;
 
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+    }
+
     let scrollPosition = 0;
-    const scrollSpeed = 0.5; // pixels per frame
+    const scrollSpeed = 0.5;
+    const gapPx = 48;
+    const halfChildren = scrollContainer.children.length / 2;
+    let resetPoint = 0;
     let animationId;
     let isPaused = false;
 
-    // Calculate the width of one set of logos
-    const firstChild = scrollContainer.children[0];
-    const totalChildren = scrollContainer.children.length;
-    const halfChildren = totalChildren / 2;
+    function measureResetPoint() {
+        let acc = 0;
+        for (let i = 0; i < halfChildren; i++) {
+            acc += scrollContainer.children[i].offsetWidth;
+            if (i < halfChildren - 1) acc += gapPx;
+        }
+        acc += gapPx;
+        resetPoint = acc;
+        if (resetPoint > 0 && scrollPosition >= resetPoint) scrollPosition = 0;
+    }
 
     function scroll() {
         if (isPaused) {
             animationId = requestAnimationFrame(scroll);
             return;
         }
-
         scrollPosition += scrollSpeed;
-
-        // Get the width of the first half (one complete set)
-        let resetPoint = 0;
-        for (let i = 0; i < halfChildren; i++) {
-            resetPoint += scrollContainer.children[i].offsetWidth;
-            if (i < halfChildren - 1) {
-                resetPoint += 48; // gap-12 = 3rem = 48px
-            }
-        }
-        resetPoint += 48; // final gap after last item of first set
-
-        // Reset when first set is completely scrolled out
-        if (scrollPosition >= resetPoint) {
-            scrollPosition = 0;
-        }
-
-        scrollContainer.style.transform = `translateX(-${scrollPosition}px)`;
+        if (resetPoint > 0 && scrollPosition >= resetPoint) scrollPosition = 0;
+        scrollContainer.style.transform = `translate3d(-${scrollPosition}px, 0, 0)`;
         animationId = requestAnimationFrame(scroll);
     }
 
-    // Pause on hover
-    scrollContainer.addEventListener('mouseenter', () => isPaused = true);
-    scrollContainer.addEventListener('mouseleave', () => isPaused = false);
+    measureResetPoint();
+    window.addEventListener('load', measureResetPoint, { once: true });
 
-    // Start animation
-    scroll();
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(measureResetPoint, 150);
+    });
+
+    scrollContainer.addEventListener('mouseenter', () => { isPaused = true; });
+    scrollContainer.addEventListener('mouseleave', () => { isPaused = false; });
+
+    animationId = requestAnimationFrame(scroll);
 });
 </script>
 <script type="text/javascript">

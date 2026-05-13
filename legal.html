@@ -163,8 +163,8 @@
         <div class="mt-8 space-y-4">
             <p>
                 VORNAC GmbH<br>
-                Am Paradeplatz 20<br>
-                69126 Heidelberg<br>
+                Carl-Friedrich-Gauß-Ring 5<br>
+                69124 Heidelberg<br>
                 Germany
             </p>
             <p>
@@ -187,8 +187,8 @@
                 <strong>Responsible for content according to § 55 Abs. 2 RStV:</strong><br>
                 André Feigenbutz<br>
                 Arthur Raess<br>
-                Am Paradeplatz 20<br>
-                69126 Heidelberg
+                Carl-Friedrich-Gauß-Ring 5<br>
+                69124 Heidelberg
             </p>
         </div>
 
@@ -202,8 +202,8 @@
                 VORNAC GmbH<br>
                 André Feigenbutz<br>
                 Arthur Raess<br>
-                Am Paradeplatz 20<br>
-                69126 Heidelberg, Germany<br>
+                Carl-Friedrich-Gauß-Ring 5<br>
+                69124 Heidelberg, Germany<br>
                 Phone: +49 6221 7358329<br>
                 Email: hello@vornac.com
             </p>
@@ -301,13 +301,13 @@ if (toggleBtn && mobileMenu && backdrop) {
     const closeMenu = () => {
         mobileMenu.classList.add('hidden');
         backdrop.classList.add('hidden');
-        document.body.style.overflow = '';
+        document.body.classList.remove('nav-open');
     };
 
     const openMenu = () => {
         mobileMenu.classList.remove('hidden');
         backdrop.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
+        document.body.classList.add('nav-open');
     };
 
     toggleBtn.addEventListener('click', (e) => {
