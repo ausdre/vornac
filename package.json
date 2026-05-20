@@ -2,7 +2,8 @@
   "name": "vornac-landing",
   "version": "1.0.0",
   "scripts": {
-    "dev": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "dev": "tailwindcss -i ./src/input.css -o ./output.css --watch",
+    "build:css": "tailwindcss -i ./src/input.css -o ./output.css",
     "start": "python3 serve_local.py",
     "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify && cp *.html dist/ && cp *.MP4 dist/ && cp *.svg dist/ && cp *.xml dist/ && cp *.png dist/ && cp *.jpg dist/"
   },
