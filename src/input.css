@@ -438,3 +438,27 @@ img, video { max-width: 100%; }
         -webkit-backdrop-filter: blur(8px);
         }
     }
+
+/* ----------------------------------------
+ * Enterprise footer (all pages via output.css)
+ * -------------------------------------- */
+:root {
+    --v-bg-dark:   #0E1116;
+    --v-line-dark: #2A2F39;
+    --v-amber:     #E89615;
+    --v-sans:      'Manrope', system-ui, -apple-system, sans-serif;
+}
+
+.v-footer {
+    background-color: var(--v-bg-dark);
+    border-top: 1px solid var(--v-line-dark);
+    font-family: var(--v-sans);
+}
+
+.v-footer-bar {
+    border-top: 1px solid var(--v-line-dark);
+}
+
+.v-footer a:hover {
+    color: var(--v-amber) !important;
+}

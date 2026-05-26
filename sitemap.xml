@@ -13,10 +13,53 @@
 
   <url>
     <loc>https://www.vornac.com/pentesting</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-05-22</lastmod>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/pentesting" />
     <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/pentesting_de" />
+  </url>
+
+  <url>
+    <loc>https://www.vornac.com/industries</loc>
+    <lastmod>2026-05-22</lastmod>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/industries" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/industries_de" />
+  </url>
+  <url>
+    <loc>https://www.vornac.com/industries-insurance</loc>
+    <lastmod>2026-05-22</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/industries-insurance" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/industries-insurance_de" />
+  </url>
+  <url>
+    <loc>https://www.vornac.com/industries-financial-services</loc>
+    <lastmod>2026-05-22</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/industries-financial-services" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/industries-financial-services_de" />
+  </url>
+  <url>
+    <loc>https://www.vornac.com/industries-critical-infrastructure</loc>
+    <lastmod>2026-05-22</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/industries-critical-infrastructure" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/industries-critical-infrastructure_de" />
+  </url>
+  <url>
+    <loc>https://www.vornac.com/industries-automotive</loc>
+    <lastmod>2026-05-22</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/industries-automotive" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/industries-automotive_de" />
+  </url>
+  <url>
+    <loc>https://www.vornac.com/industries-enterprise</loc>
+    <lastmod>2026-05-22</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/industries-enterprise" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/industries-enterprise_de" />
   </url>
 
   <url>
@@ -68,10 +111,53 @@
 
   <url>
     <loc>https://www.vornac.com/pentesting_de</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-05-22</lastmod>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/pentesting_de" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/pentesting" />
+  </url>
+
+  <url>
+    <loc>https://www.vornac.com/industries_de</loc>
+    <lastmod>2026-05-22</lastmod>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/industries_de" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/industries" />
+  </url>
+  <url>
+    <loc>https://www.vornac.com/industries-insurance_de</loc>
+    <lastmod>2026-05-22</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/industries-insurance_de" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/industries-insurance" />
+  </url>
+  <url>
+    <loc>https://www.vornac.com/industries-financial-services_de</loc>
+    <lastmod>2026-05-22</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/industries-financial-services_de" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/industries-financial-services" />
+  </url>
+  <url>
+    <loc>https://www.vornac.com/industries-critical-infrastructure_de</loc>
+    <lastmod>2026-05-22</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/industries-critical-infrastructure_de" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/industries-critical-infrastructure" />
+  </url>
+  <url>
+    <loc>https://www.vornac.com/industries-automotive_de</loc>
+    <lastmod>2026-05-22</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/industries-automotive_de" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/industries-automotive" />
+  </url>
+  <url>
+    <loc>https://www.vornac.com/industries-enterprise_de</loc>
+    <lastmod>2026-05-22</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.vornac.com/industries-enterprise_de" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vornac.com/industries-enterprise" />
   </url>
 
   <url>

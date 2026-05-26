@@ -10,7 +10,6 @@
     <!-- etracker Analytics - Made in Germany -->
     <script id="etracker" type="text/javascript" src="//code.etracker.com/code/e.js" data-secure-code="LVKB09" data-block-cookies="true" data-respect-dnt="true" async></script>
     <script>
-    // Keep gtag function for Google Ads conversion tracking
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     </script>
@@ -32,27 +31,19 @@
     <meta property="og:url" content="https://www.vornac.com/about_de" />
     <meta property="og:title" content="Über Uns – VORNAC" />
     <meta property="og:description" content="Über VORNAC: Team, Mission und Karriere bei kontinuierlichem Pentesting und KI-Sicherheit – mit Fokus auf deutsche Datenresidenz." />
-    <meta property="og:image" content="https://www.vornac.com/VORNAC%20Banner.png" />
+    <meta property="og:image" content="https://www.vornac.com/vornacpentesting43.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Über Uns – VORNAC" />
     <meta name="twitter:description" content="Über VORNAC: Team, Mission und Karriere bei kontinuierlichem Pentesting und KI-Sicherheit – mit Fokus auf deutsche Datenresidenz." />
-    <meta name="twitter:image" content="https://www.vornac.com/VORNAC%20Banner.png" />
+    <meta name="twitter:image" content="https://www.vornac.com/vornacpentesting43.png" />
     <link rel="icon" type="image/svg+xml" href="/V_BLACK.svg">
     <link rel="stylesheet" href="output.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="about.css"/>
     <style>
-        :root {
-            --color-bg: #f5f2ed;
-            --color-bg-soft: #efe9e3;
-            --color-bg-muted: #e5dfda;
-            --color-accent: #d4a012;
-            --color-accent-dark: #b8860b;
-            --color-text: #1c1917;
-            --color-text-muted: #57534e;
-        }
         .bg-warm { background-color: #f5f2ed; }
-        .bg-warm-soft { background-color: #efe9e3; }
-        .bg-warm-muted { background-color: #e5dfda; }
-        .stroke-text { -webkit-text-stroke: 1.5px #d4a012; color: transparent; }
         #mobile-menu:not(.hidden) {
             display: block;
             animation: slideDown 0.3s ease-out forwards;
@@ -71,20 +62,28 @@
         }
     </style>
 </head>
-<body class="bg-warm text-stone-900 font-body antialiased">
+<body class="bg-warm text-stone-900 font-body antialiased about-page">
 
-<header id="site-header" class="sticky top-0 z-50 border-b-2 border-stone-300 backdrop-blur-md shadow-md" style="background-color: rgba(245, 242, 237, 0.97);">
+<div class="v-announcement">
+    <div class="v-announcement-inner">
+        <span class="v-announcement-tag">Neu</span>
+        Das Whitepaper zur kontinuierlichen Sicherheitsvalidierung 2026 ist verfügbar.
+        <a href="/CaseStudy_VORNAC_0526.pdf" target="_blank" rel="noopener">Whitepaper lesen →</a>
+    </div>
+</div>
+
+<header id="site-header" class="sticky top-0 z-[100] border-b-2 border-stone-300 backdrop-blur-md shadow-md" style="background-color: rgba(245, 242, 237, 0.97);">
     <nav class="mx-auto flex max-w-content items-center justify-between px-4 py-4 lg:px-6">
-        
-        <a href="/de" class="flex items-center gap-3" aria-label="VORNAC home">
+        <a href="/de" class="flex items-center gap-3" aria-label="VORNAC Startseite">
             <img src="logo-vornac-black.svg" class="nav-logo h-12 w-auto sm:h-14" alt="VORNAC"/>
         </a>
-
         <div class="hidden items-center gap-8 text-sm md:flex">
             <a href="/de" class="nav-link text-stone-500 hover:text-stone-900 transition-colors">Home</a>
             <a href="/pentesting_de" class="nav-link text-stone-500 hover:text-stone-900 transition-colors">Pentesting</a>
+            <a href="/industries_de" class="nav-link text-stone-500 hover:text-stone-900 transition-colors">Industrien</a>
+            <a href="/customers_de" class="nav-link text-stone-500 hover:text-stone-900 transition-colors">Kunden</a>
             <div class="relative group">
-                <button class="nav-link text-stone-900 border-b-2 border-amber-500 flex items-center gap-1">
+                <button class="nav-link text-stone-900 font-semibold border-b-2 border-amber-500 flex items-center gap-1">
                     Über uns
                     <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -95,10 +94,9 @@
                     <a href="/about_de#karriere" class="block px-4 py-3 text-stone-700 hover:bg-amber-50 hover:text-stone-900 transition-colors border-t border-stone-200">Karriere</a>
                 </div>
             </div>
-            <a href="https://zeeg.me/hello3950/your-vornac-meeting" class="rounded-lg bg-stone-900 px-5 py-2.5 text-xs font-bold text-white uppercase tracking-widest hover:bg-amber-600 transition-colors shadow-lg hover:shadow-amber-500/25 hover:scale-105 transform duration-200">Demo Buchen</a>
+            <a href="https://zeeg.me/hello3950/your-vornac-meeting" class="rounded-lg bg-stone-900 px-5 py-2.5 text-xs font-bold text-white uppercase tracking-widest hover:bg-amber-600 transition-colors shadow-lg hover:shadow-amber-500/25 hover:scale-105 transform duration-200">Demo buchen</a>
         </div>
-
-        <button id="nav-toggle" class="relative z-[110] inline-flex h-10 w-10 items-center justify-center rounded-md border border-stone-300 md:hidden">
+        <button id="nav-toggle" class="relative z-[110] inline-flex h-10 w-10 items-center justify-center rounded-md border border-stone-300 md:hidden" aria-label="Menü öffnen">
             <span class="flex flex-col gap-1.5">
                 <span class="block h-[2px] w-5 bg-stone-900"></span>
                 <span class="block h-[2px] w-5 bg-stone-900"></span>
@@ -106,306 +104,173 @@
             </span>
         </button>
     </nav>
-
     <div id="mobile-backdrop" class="fixed inset-0 z-[90] hidden bg-black/50 backdrop-blur-sm md:hidden"></div>
-
     <div id="mobile-menu" class="fixed left-0 right-0 top-[72px] z-[100] hidden border-b-2 border-stone-300 bg-white shadow-2xl md:hidden">
         <div class="flex flex-col space-y-6 px-8 py-10 text-center">
             <a href="/de" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900">Home</a>
             <a href="/pentesting_de" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900">Pentesting</a>
+            <a href="/industries_de" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900">Industrien</a>
+            <a href="/customers_de" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900">Kunden</a>
             <div class="flex flex-col">
-                <button onclick="this.nextElementSibling.classList.toggle('hidden')" class="mobile-link text-lg font-medium text-amber-600 flex items-center justify-center gap-2">
+                <button type="button" onclick="this.nextElementSibling.classList.toggle('hidden')" class="mobile-link text-lg font-medium text-amber-600 flex items-center justify-center gap-2">
                     Über uns
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div class="hidden flex flex-col space-y-3 mt-3 px-4">
                     <a href="/about_de#unternehmen" class="text-base text-stone-500 hover:text-stone-900">→ Unternehmen</a>
                     <a href="/about_de#karriere" class="text-base text-stone-500 hover:text-stone-900">→ Karriere</a>
                 </div>
             </div>
-            <a href="/de#contact" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900">Kontakt</a>
-            <a href="https://zeeg.me/hello3950/your-vornac-meeting" class="mobile-link mt-4 flex h-14 items-center justify-center rounded-xl bg-stone-900 font-bold text-white shadow-lg transition-transform active:scale-95 hover:bg-amber-600">Demo Buchen</a>
+            <a href="#contact" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900">Kontakt</a>
+            <a href="https://zeeg.me/hello3950/your-vornac-meeting" class="mobile-link mt-4 flex h-14 items-center justify-center rounded-xl bg-stone-900 font-bold text-white shadow-lg transition-transform active:scale-95 hover:bg-amber-600">Demo buchen</a>
         </div>
     </div>
 </header>
 
-<main class="relative z-10">
-    <section id="unternehmen" class="border-b-2 border-stone-200 bg-warm relative overflow-hidden py-16 lg:py-24">
-        <div class="mx-auto max-w-4xl px-4 relative z-10">
-
-            <div class="rounded-[40px] bg-white border-2 border-stone-300 p-[1px] shadow-lg shadow-stone-900/15">
-
-                <div class="rounded-[40px] bg-white p-5 sm:p-8 lg:p-12 relative overflow-hidden">
-
-                    <div class="relative z-10 flex items-center justify-between border-b-2 border-stone-200 pb-6 mb-10 text-[10px] uppercase tracking-[0.2em] font-mono text-stone-500">
-                        <div class="flex items-center gap-3">
-                            <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
-                            <span>MISSIONSPROTOKOLL // VORNAC_CORE</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse"></span>
-                            <span class="text-amber-600">STATUS: AKTIV</span>
-                        </div>
-                    </div>
-
-                    <div class="relative z-10 text-center max-w-2xl mx-auto">
-
-                        <div class="space-y-8 mb-12">
-                            <h2 class="font-heading text-3xl lg:text-5xl font-bold uppercase italic text-stone-900 tracking-tighter leading-none">
-                                Sicherheit <br><span class="text-amber-600">Neu Gedacht.</span>
-                            </h2>
-                            <p class="text-base lg:text-lg text-stone-600 leading-relaxed italic">
-                                VORNAC aus Heidelberg denkt proaktive Sicherheit neu. Wir denken verschiedenste Geschäftsprozesse neu und halten uns dabei an das momentan wichtigste Gut: die deutsche Datensouveränität.
-                                Wir schließen die Lücke zwischen technischer Notwendigkeit, strenger Compliance und dem gestiegenen Sicherheitsbedarf unserer Zeit.
-                            </p>
-                        </div>
-
-                        <div class="group max-w-md mx-auto relative">
-                            <div class="bg-stone-100 border-2 border-stone-300 rounded-[24px] p-1.5 shadow-lg transition-all duration-700 group-hover:border-amber-400 group-hover:shadow-xl overflow-hidden relative mb-4">
-                                <img src="founders-group.png"
-                                    alt="André Feigenbutz | Arthur Raess"
-                                    class="w-full h-auto rounded-[18px] object-cover grayscale contrast-110 group-hover:grayscale-0 transition-all duration-1000 ease-in-out">
-                            </div>
-
-                            <p class="text-[9px] font-mono uppercase tracking-[0.3em] text-stone-400 group-hover:text-amber-600 transition-colors duration-500">
-                                Team: André Feigenbutz | Arthur Raess
-                            </p>
-                        </div>
-
-                    </div>
-
-                    <div class="relative z-10 flex items-center justify-between border-t-2 border-stone-200 pt-6 mt-12 text-[9px] uppercase tracking-[0.3em] font-mono text-stone-400">
-                        <div>ID: VORNAC</div>
-                        <div>AUTH: FOUNDERS_KEY</div>
-                    </div>
-
-                </div>
+<main>
+    <section id="unternehmen" class="about-company">
+        <div class="about-company-inner">
+            <div class="about-company-copy">
+                <h1 class="about-company-headline">Cybersicherheit <em>neu gedacht.</em></h1>
+                <p class="about-company-text">
+                    VORNAC aus Heidelberg verbindet proaktive Sicherheit mit strenger Compliance — im Zentrum steht deutsche Datensouveränität.
+                </p>
+                <p class="about-company-text">
+                    Wir schließen die Lücke zwischen technischer Notwendigkeit, Regulatorik und dem Sicherheitsniveau, das Unternehmen heute brauchen.
+                </p>
+                <p class="about-company-meta">Heidelberg, Deutschland</p>
             </div>
+            <div class="about-founders">
+                <div class="about-founders-frame">
+                    <img src="founders-group.png" alt="André Feigenbutz und Arthur Raess, Gründer von VORNAC" width="640" height="480">
+                </div>
+                <p class="about-founders-caption">André Feigenbutz · Arthur Raess</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="karriere" class="about-careers">
+        <div class="about-careers-inner">
+            <div class="about-careers-head">
+                <h2 class="about-careers-headline">Werde Teil von VORNAC</h2>
+                <p class="about-careers-lead">Du willst deutsche Datensouveränität nicht nur predigen, sondern bauen?</p>
+                <p class="about-careers-sub">Wir suchen Talente, die mit uns die Zukunft der IT-Sicherheit gestalten.</p>
+            </div>
+
+            <div class="about-jobs">
+                <article class="about-job">
+                    <h3 class="about-job-title">Head of Sales — Cybersecurity Solutions (m/w/d)</h3>
+                    <div class="about-job-tags">
+                        <span class="about-job-tag">Heidelberg / Remote</span>
+                        <span class="about-job-tag">Vollzeit</span>
+                    </div>
+                    <h4 class="about-job-block-title">Deine Mission</h4>
+                    <ul class="about-job-list">
+                        <li>Verantwortung für die gesamte Sales-Pipeline</li>
+                        <li>Enterprise-Vertrieb an CISOs, CIOs &amp; Security-Entscheider</li>
+                        <li>Sales-Team aufbauen und führen</li>
+                    </ul>
+                    <h4 class="about-job-block-title">Du bringst mit</h4>
+                    <ul class="about-job-list">
+                        <li>5+ Jahre B2B-SaaS-Vertrieb (Cybersecurity bevorzugt)</li>
+                        <li>Nachweisbare Enterprise-Deal-Erfolge</li>
+                        <li>Starkes Netzwerk im DACH-Raum</li>
+                        <li>Fließend Deutsch und Englisch</li>
+                    </ul>
+                    <a href="/apply_de?position=head-of-sales" class="about-job-cta">Jetzt bewerben</a>
+                </article>
+
+                <article class="about-job about-job--alt">
+                    <h3 class="about-job-title">Pentester als Customer Success Manager (m/w/d)</h3>
+                    <div class="about-job-tags">
+                        <span class="about-job-tag">Heidelberg / Remote</span>
+                        <span class="about-job-tag">Vollzeit</span>
+                    </div>
+                    <h4 class="about-job-block-title">Deine Mission</h4>
+                    <ul class="about-job-list">
+                        <li>Kunden bei Pentesting-Ergebnissen beratend unterstützen</li>
+                        <li>Mit deinem Pentesting-Wissen Kunden zum Erfolg führen</li>
+                        <li>Technische Beratung &amp; Remediation-Support</li>
+                    </ul>
+                    <h4 class="about-job-block-title">Du bringst mit</h4>
+                    <ul class="about-job-list">
+                        <li><strong>BSI Kompetenzanerkennung</strong> oder gleichwertig</li>
+                        <li>Praxiserfahrung im Penetration Testing</li>
+                        <li>Kundenorientierung &amp; Kommunikationsstärke</li>
+                        <li>Fließend Deutsch und Englisch</li>
+                    </ul>
+                    <a href="/apply_de?position=pentester-csm" class="about-job-cta">Jetzt bewerben</a>
+                </article>
+            </div>
+
+            <div class="about-careers-open">
+                <p>Keine passende Stelle gefunden?</p>
+                <a href="/apply_de?position=initiativbewerbung">Initiativbewerbung →</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="about-contact">
+        <div class="about-contact-inner">
+            <div class="about-contact-head">
+                <h2 class="about-contact-headline">Bereit für <em>VORNAC</em> im Einsatz?</h2>
+                <p class="about-contact-sub">Vereinbaren Sie eine Session mit unserem Team — wir zeigen Ihnen, wie Sie in wenigen Stunden zu kontinuierlicher, nachweisbarer Sicherheit kommen.</p>
+                <a href="https://zeeg.me/hello3950/your-vornac-meeting" target="_blank" rel="noopener" class="about-contact-book">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    Demo buchen
+                </a>
+                <p class="about-contact-book-note">30 Minuten Intro-Call mit unserem Team</p>
+            </div>
+
+            <div class="about-contact-divider">
+                <span class="about-contact-divider-line"></span>
+                <span class="about-contact-divider-text">Oder schreiben Sie uns</span>
+                <span class="about-contact-divider-line"></span>
+            </div>
+
+            <form id="contact-form" class="about-contact-form" action="https://formspree.io/f/meoyrzog" method="POST">
+                <input type="text" name="gotcha" class="hidden" autocomplete="off" tabindex="-1">
+                <div class="about-contact-field-row">
+                    <div class="about-contact-field">
+                        <label class="about-contact-label" for="contact-name">Name</label>
+                        <input class="about-contact-input" type="text" id="contact-name" name="name" required placeholder="Vollständiger Name">
+                    </div>
+                    <div class="about-contact-field">
+                        <label class="about-contact-label" for="contact-email">Geschäftliche E-Mail</label>
+                        <input class="about-contact-input" type="email" id="contact-email" name="email" required placeholder="name@firma.com">
+                    </div>
+                </div>
+                <div class="about-contact-field">
+                    <label class="about-contact-label" for="contact-company">Firma</label>
+                    <input class="about-contact-input" type="text" id="contact-company" name="company" placeholder="Organisation">
+                </div>
+                <div class="about-contact-field">
+                    <label class="about-contact-label" for="contact-message">Nachricht</label>
+                    <textarea class="about-contact-textarea" id="contact-message" name="message" rows="4" required placeholder="Ihre Nachricht…"></textarea>
+                </div>
+                <button type="submit" data-submit-button class="about-contact-submit">
+                    <span data-submit-text>Nachricht senden</span>
+                </button>
+            </form>
         </div>
     </section>
 </main>
 
-<!-- Karriere Section -->
-<section id="karriere" class="relative py-20 bg-stone-900">
-    <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="font-heading text-2xl sm:text-4xl md:text-6xl font-black italic uppercase text-white mb-6 tracking-tight">
-                Werde Teil von VORNAC
-            </h2>
-            <p class="text-xl text-stone-300 mb-4 leading-relaxed max-w-3xl mx-auto">
-                Du willst deutsche Datensouveränität nicht nur predigen, sondern bauen?
-            </p>
-            <p class="text-lg text-stone-400">
-                Wir suchen Talente, die mit uns die Zukunft der Cybersecurity gestalten.
-            </p>
-        </div>
-
-        <!-- Job Cards Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-
-            <!-- Job 1: Head of Sales -->
-            <div class="relative bg-white border-4 border-amber-500 p-8 shadow-[12px_12px_0px_0px_rgba(245,158,11,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(245,158,11,1)] transition-all">
-                <div class="mb-6">
-                    <h3 class="font-heading text-xl sm:text-2xl md:text-3xl font-black italic uppercase text-stone-900 mb-2 tracking-tight">
-                        Head of Sales - Cybersecurity Solutions (m/w/d)
-                    </h3>
-                    <div class="flex flex-wrap gap-2 text-sm text-stone-600">
-                        <span class="bg-amber-100 px-3 py-1 font-mono">Heidelberg/Remote</span>
-                        <span class="bg-amber-100 px-3 py-1 font-mono">Vollzeit</span>
-                    </div>
-                </div>
-
-                <div class="space-y-4 mb-6">
-                    <div>
-                        <h4 class="font-bold text-stone-900 mb-2 uppercase text-sm tracking-wide">Deine Mission:</h4>
-                        <ul class="space-y-2 text-stone-700 text-sm">
-                            <li class="flex items-start gap-2">
-                                <span class="text-amber-600 font-bold">→</span>
-                                <span>Verantwortung für die gesamte Sales-Pipeline</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="text-amber-600 font-bold">→</span>
-                                <span>Enterprise-Vertrieb an CISOs, CIOs & Security-Entscheider</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="text-amber-600 font-bold">→</span>
-                                <span>Sales-Team aufbauen und führen</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h4 class="font-bold text-stone-900 mb-2 uppercase text-sm tracking-wide">Du bringst mit:</h4>
-                        <ul class="space-y-2 text-stone-700 text-sm">
-                            <li class="flex items-start gap-2">
-                                <span class="text-amber-600 font-bold">✓</span>
-                                <span>5+ Jahre B2B SaaS Sales (Cybersecurity bevorzugt)</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="text-amber-600 font-bold">✓</span>
-                                <span>Nachweisbare Enterprise-Deal-Erfolge</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="text-amber-600 font-bold">✓</span>
-                                <span>Starkes Netzwerk im DACH-Raum</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="text-amber-600 font-bold">✓</span>
-                                <span>Fließend Deutsch und Englisch</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <a href="/apply_de?position=head-of-sales"
-                   class="block w-full bg-stone-900 text-white text-center py-4 font-bold uppercase tracking-wider hover:bg-amber-600 transition-colors border-2 border-stone-900">
-                    Jetzt bewerben →
-                </a>
-            </div>
-
-            <!-- Job 2: Pentester CSM -->
-            <div class="relative bg-white border-4 border-purple-900 p-8 shadow-[12px_12px_0px_0px_rgba(59,28,117,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(59,28,117,1)] transition-all">
-                <div class="mb-6">
-                    <h3 class="font-heading text-xl sm:text-2xl md:text-3xl font-black italic uppercase text-stone-900 mb-2 tracking-tight">
-                        Pentester als Customer Success Manager (m/w/d)
-                    </h3>
-                    <div class="flex flex-wrap gap-2 text-sm text-stone-600">
-                        <span class="bg-purple-100 px-3 py-1 font-mono">Heidelberg/Remote</span>
-                        <span class="bg-purple-100 px-3 py-1 font-mono">Vollzeit</span>
-                    </div>
-                </div>
-
-                <div class="space-y-4 mb-6">
-                    <div>
-                        <h4 class="font-bold text-stone-900 mb-2 uppercase text-sm tracking-wide">Deine Mission:</h4>
-                        <ul class="space-y-2 text-stone-700 text-sm">
-                            <li class="flex items-start gap-2">
-                                <span class="text-purple-900 font-bold">→</span>
-                                <span>Kunden bei Pentesting-Ergebnissen beratend unterstützen</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="text-purple-900 font-bold">→</span>
-                                <span>Mit deinem Pentesting-Wissen Kunden zum Erfolg führen</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="text-purple-900 font-bold">→</span>
-                                <span>Technische Beratung & Remediation-Support</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h4 class="font-bold text-stone-900 mb-2 uppercase text-sm tracking-wide">Du bringst mit:</h4>
-                        <ul class="space-y-2 text-stone-700 text-sm">
-                            <li class="flex items-start gap-2">
-                                <span class="text-purple-900 font-bold">✓</span>
-                                <span><strong>BSI Kompetenzanerkennung</strong> oder gleichwertig</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="text-purple-900 font-bold">✓</span>
-                                <span>Praxiserfahrung im Penetration Testing</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="text-purple-900 font-bold">✓</span>
-                                <span>Kundenorientierung & Kommunikationsstärke</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="text-purple-900 font-bold">✓</span>
-                                <span>Fließend Deutsch und Englisch</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <a href="/apply_de?position=pentester-csm"
-                   class="block w-full bg-stone-900 text-white text-center py-4 font-bold uppercase tracking-wider hover:bg-purple-900 transition-colors border-2 border-stone-900">
-                    Jetzt bewerben →
-                </a>
-            </div>
-
-        </div>
-
-        <!-- General Contact -->
-        <div class="text-center">
-            <p class="text-stone-400 mb-4">Keine passende Stelle gefunden?</p>
-            <a href="/apply_de?position=initiativbewerbung"
-               class="inline-block bg-amber-500 text-stone-900 px-8 py-3 font-bold uppercase tracking-wider border-4 border-white shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all">
-                Initiativbewerbung →
-            </a>
-        </div>
+<div id="thankyou-overlay" class="about-thankyou-overlay" role="dialog" aria-modal="true" aria-labelledby="thankyou-title">
+    <div class="about-thankyou-modal">
+        <h3 id="thankyou-title" class="about-thankyou-title">Anfrage gesendet</h3>
+        <p class="about-thankyou-text">Danke. Ihre Anfrage ist eingegangen. Unser Team meldet sich innerhalb von 24 Stunden bei Ihnen.</p>
+        <button id="thankyou-close" type="button" class="about-thankyou-close">Schließen</button>
     </div>
-</section>
+</div>
 
-<section id="contact" class="bg-warm py-20 px-6 relative overflow-hidden">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-100/50 rounded-full blur-[100px] pointer-events-none"></div>
-    <div class="max-w-3xl mx-auto relative z-10">
-        <div class="text-center mb-12">
-            <span class="text-amber-600 text-[10px] font-black uppercase tracking-[0.4em] block mb-6">Live Demo</span>
-            <h2 class="font-heading text-3xl sm:text-4xl lg:text-6xl font-bold uppercase italic text-stone-900 tracking-tight mb-8 leading-tight">
-                Bereit für <span class="text-amber-600">VORNAC</span> im Einsatz?
-            </h2>
-            <p class="text-stone-600 text-lg mb-10 max-w-xl mx-auto">
-                Vereinbaren Sie eine Session mit unserem Team. Wir zeigen Ihnen, wie Sie innerhalb von Stunden den Weg zur proaktiven Sicherheit beschreiten können.
-            </p>
-            <a href="/de#contact" target="_blank" class="group relative inline-flex h-20 items-center justify-center rounded-2xl bg-stone-900 px-16 font-bold uppercase tracking-[0.2em] text-sm text-white transition-all hover:bg-amber-600 hover:scale-105 active:scale-95 shadow-2xl shadow-stone-900/40 hover:shadow-amber-500/50">
-                <svg class="w-6 h-6 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                Demo buchen
-            </a>
-            <p class="text-sm text-stone-500 mt-4">30 Minuten Intro-Call mit unserem Team</p>
-        </div>
-
-        <div class="flex items-center gap-4 justify-center mb-10">
-            <div class="h-[1px] w-16 bg-stone-300"></div>
-            <span class="text-xs uppercase tracking-widest text-stone-400 font-bold">Oder schreiben Sie uns</span>
-            <div class="h-[1px] w-16 bg-stone-300"></div>
-        </div>
-
-        <form id="contact-form" action="https://formspree.io/f/meoyrzog" method="POST" class="bg-white border-2 border-stone-200 rounded-2xl p-8 shadow-lg shadow-stone-900/10">
-            <input type="text" name="gotcha" class="hidden" autocomplete="off"/>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div>
-                    <label class="text-xs uppercase tracking-widest text-stone-500 font-bold mb-2 block">Name</label>
-                    <input type="text" name="name" required placeholder="Vollständiger Name" class="w-full bg-white border-2 border-stone-300 rounded-lg px-4 py-3 text-stone-900 placeholder:text-stone-300 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all text-sm">
-                </div>
-                <div>
-                    <label class="text-xs uppercase tracking-widest text-stone-500 font-bold mb-2 block">Geschäftliche E-Mail</label>
-                    <input type="email" name="email" required placeholder="name@firma.com" class="w-full bg-white border-2 border-stone-300 rounded-lg px-4 py-3 text-stone-900 placeholder:text-stone-300 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all text-sm">
-                </div>
-            </div>
-            <div class="mb-4">
-                <label class="text-xs uppercase tracking-widest text-stone-500 font-bold mb-2 block">Firma</label>
-                <input type="text" name="company" placeholder="Organisation" class="w-full bg-white border-2 border-stone-300 rounded-lg px-4 py-3 text-stone-900 placeholder:text-stone-300 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all text-sm">
-            </div>
-            <div class="mb-6">
-                <label class="text-xs uppercase tracking-widest text-stone-500 font-bold mb-2 block">Nachricht</label>
-                <textarea name="message" rows="3" required placeholder="Ihre Nachricht..." class="w-full bg-white border-2 border-stone-300 rounded-lg px-4 py-3 text-stone-900 placeholder:text-stone-300 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all text-sm resize-none"></textarea>
-            </div>
-            <button type="submit" data-submit-button class="w-full bg-stone-700 text-white font-bold uppercase tracking-widest text-xs py-4 rounded-lg hover:bg-stone-800 transition-all">
-                <span data-submit-text>Nachricht senden</span>
-            </button>
-        </form>
-    </div>
-    <div id="thankyou-overlay" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/50 backdrop-blur-md">
-        <div class="mx-4 max-w-md w-full rounded-2xl border-2 border-stone-300 bg-white p-10 text-center shadow-2xl">
-            <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-amber-100 border-2 border-amber-500">
-                <span class="text-3xl text-amber-600 font-black">✓</span>
-            </div>
-            <h3 class="mb-3 font-heading text-2xl text-stone-900 uppercase italic">Anfrage Gesendet.</h3>
-            <p class="mb-8 text-sm text-stone-600 leading-relaxed">Danke. Ihre Anfrage ist eingegangen. Unser Team meldet sich innerhalb von 24 Stunden bei Ihnen.</p>
-            <button id="thankyou-close" type="button" class="w-full rounded-lg border-2 border-stone-300 bg-white px-6 py-3 text-xs font-bold uppercase tracking-widest text-stone-700 hover:bg-amber-500 hover:border-amber-500 hover:text-white transition-all">Schließen</button>
-        </div>
-    </div>
-</section>
-
-<footer class="bg-stone-900 border-t border-stone-800 pt-14 pb-10 px-4 sm:px-6">
+<footer class="v-footer pt-14 pb-10 px-4 sm:px-6">
     <div class="max-w-content mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_auto_auto] gap-10 items-start">
             <div class="space-y-4">
                 <img src="logo-vornac-white.svg" alt="VORNAC" class="h-9 w-auto md:h-10">
                 <p class="max-w-md text-sm leading-relaxed text-stone-400">
-                    Enterprise-Grade autonome Security-Tests für kontinuierliche Sicherheit und Compliance.
+                    Enterprise-grade autonomous security testing for continuous assurance and compliance.
                 </p>
             </div>
             <div>
@@ -413,57 +278,142 @@
                 <ul class="space-y-3 text-sm text-stone-400">
                     <li><a href="/de" class="hover:text-white transition-colors">Home</a></li>
                     <li><a href="/pentesting_de" class="hover:text-white transition-colors">Pentesting</a></li>
+                    <li><a href="/industries_de" class="hover:text-white transition-colors">Industrien</a></li>
+                    <li><a href="/customers_de" class="hover:text-white transition-colors">Kunden</a></li>
                     <li><a href="/about_de" class="hover:text-white transition-colors">Über uns</a></li>
-                    <li><a href="/de#contact" class="hover:text-white transition-colors">Kontakt</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="text-white text-[11px] font-bold uppercase tracking-[0.18em] mb-4">Rechtliches</h4>
+                <h4 class="text-white text-[11px] font-bold uppercase tracking-[0.18em] mb-4">Legal</h4>
                 <ul class="space-y-3 text-sm text-stone-400">
                     <li><a href="/legal_de" class="hover:text-white transition-colors">Datenschutz</a></li>
                     <li><a href="/legal_de" class="hover:text-white transition-colors">Impressum</a></li>
-                    <li><a href="https://www.linkedin.com/company/vornac" target="_blank" class="hover:text-white transition-colors">LinkedIn</a></li>
+                    <li><a href="https://www.linkedin.com/company/vornac" target="_blank" rel="noopener" class="hover:text-white transition-colors">LinkedIn</a></li>
                 </ul>
             </div>
         </div>
-        <div class="mt-10 pt-6 border-t border-stone-800 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div class="mt-10 pt-6 border-t v-footer-bar flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <p class="text-xs uppercase tracking-[0.16em] text-stone-500">&copy; 2026 VORNAC GmbH. Alle Rechte vorbehalten.</p>
-            <div class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-stone-500">
-                <span class="text-white">DE</span>
-                <span class="text-stone-700">|</span>
-                <a href="/about?lang=en" onclick="localStorage.setItem('vornac_lang', 'en')" class="hover:text-white transition-colors">EN</a>
+            <div class="v-lang-switch flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-stone-500" role="navigation" aria-label="Sprache">
+                <span class="text-white" aria-current="true">DE</span>
+                <span class="text-stone-700" aria-hidden="true">|</span>
+                <a href="/about?lang=en" hreflang="en" onclick="localStorage.setItem('vornac_lang', 'en')" class="hover:text-white transition-colors">EN</a>
             </div>
         </div>
     </div>
 </footer>
 
+<div id="cookie-banner" class="fixed bottom-6 left-6 right-6 md:left-auto md:max-w-sm z-[200] hidden">
+    <div class="bg-white border border-stone-300 rounded-lg p-6 shadow-xl shadow-stone-900/20" style="font-family: var(--v-sans, 'Manrope', sans-serif);">
+        <div class="mb-4">
+            <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-stone-900">Datenschutz-Einstellung</span>
+        </div>
+        <p class="text-stone-600 text-[12px] leading-relaxed mb-6">
+            Wir nutzen <span class="text-stone-900 font-semibold">Plausible Analytics</span> (datenschutzfreundlich, ohne Cookies) und <span class="text-stone-900 font-semibold">Google Ads Conversion Tracking</span>. Ihre Einwilligung ist nur für Google Ads erforderlich.
+        </p>
+        <div class="flex gap-3">
+            <button id="accept-cookies" type="button" class="flex-1 bg-stone-900 text-white text-[11px] font-semibold uppercase tracking-widest py-2.5 rounded-md hover:bg-amber-600 transition-all">Akzeptieren</button>
+            <button id="decline-cookies" type="button" class="flex-1 bg-white border border-stone-300 text-stone-700 text-[11px] font-semibold uppercase tracking-widest py-2.5 rounded-md hover:bg-stone-50 transition-all">Ablehnen</button>
+        </div>
+        <div class="mt-4 text-center">
+            <a href="/legal#privacy" class="text-[9px] text-stone-400 uppercase tracking-widest hover:text-amber-600 transition-colors">Datenschutzerklärung</a>
+        </div>
+    </div>
+</div>
+
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
+    const consentKey = 'vornac_consent_given';
+    const banner = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('accept-cookies');
+    const declineBtn = document.getElementById('decline-cookies');
 
-        const toggleBtn = document.getElementById('nav-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const backdrop = document.getElementById('mobile-backdrop');
-        if (toggleBtn && mobileMenu && backdrop) {
-            const closeMenu = () => { mobileMenu.classList.add('hidden'); backdrop.classList.add('hidden'); document.body.classList.remove('nav-open'); };
-            const openMenu = () => { mobileMenu.classList.remove('hidden'); backdrop.classList.remove('hidden'); document.body.classList.add('nav-open'); };
-            toggleBtn.addEventListener('click', (e) => { e.stopPropagation(); mobileMenu.classList.contains('hidden') ? openMenu() : closeMenu(); });
-            backdrop.addEventListener('click', closeMenu);
-            mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-        }
+    const activateAds = () => {
+        gtag('consent', 'update', {
+            'ad_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted'
+        });
+    };
 
-        const form = document.getElementById('contact-form');
-        if (form) {
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const btn = form.querySelector('[data-submit-button]');
-                if (btn) btn.disabled = true;
-                const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
-                if (res.ok) { form.reset(); document.getElementById('thankyou-overlay')?.classList.remove('hidden'); }
-                if (btn) btn.disabled = false;
-            });
-        }
-        document.getElementById('thankyou-close')?.addEventListener('click', () => { document.getElementById('thankyou-overlay')?.classList.add('hidden'); });
+    if (!localStorage.getItem(consentKey)) {
+        setTimeout(() => banner?.classList.remove('hidden'), 2000);
+    } else if (localStorage.getItem(consentKey) === 'true') {
+        activateAds();
+    }
+
+    acceptBtn?.addEventListener('click', () => {
+        localStorage.setItem(consentKey, 'true');
+        banner?.classList.add('hidden');
+        activateAds();
     });
+    declineBtn?.addEventListener('click', () => {
+        localStorage.setItem(consentKey, 'false');
+        banner?.classList.add('hidden');
+    });
+
+    const toggleBtn = document.getElementById('nav-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const backdrop = document.getElementById('mobile-backdrop');
+
+    if (toggleBtn && mobileMenu && backdrop) {
+        const closeMenu = () => {
+            mobileMenu.classList.add('hidden');
+            backdrop.classList.add('hidden');
+            document.body.classList.remove('nav-open');
+        };
+        const openMenu = () => {
+            mobileMenu.classList.remove('hidden');
+            backdrop.classList.remove('hidden');
+            document.body.classList.add('nav-open');
+        };
+        toggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenu.classList.contains('hidden') ? openMenu() : closeMenu();
+        });
+        backdrop.addEventListener('click', closeMenu);
+        mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    }
+
+    const form = document.getElementById('contact-form');
+    const thankyouOverlay = document.getElementById('thankyou-overlay');
+    const thankyouClose = document.getElementById('thankyou-close');
+
+    const closeThankyou = () => thankyouOverlay?.classList.remove('is-open');
+    thankyouClose?.addEventListener('click', closeThankyou);
+    thankyouOverlay?.addEventListener('click', (e) => {
+        if (e.target === thankyouOverlay) closeThankyou();
+    });
+
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('[data-submit-button]');
+            const gotcha = form.querySelector('[name="gotcha"]');
+            if (gotcha && gotcha.value) return;
+            if (btn) btn.disabled = true;
+
+            const res = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { Accept: 'application/json' }
+            });
+
+            if (res.ok) {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'conversion', {
+                        send_to: 'G-9LJGWDQ2CR',
+                        event_category: 'contact_form',
+                        event_label: 'demo_request'
+                    });
+                }
+                form.reset();
+                thankyouOverlay?.classList.add('is-open');
+            }
+            if (btn) btn.disabled = false;
+        });
+    }
+});
 </script>
 </body>
 </html>

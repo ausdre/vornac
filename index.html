@@ -12,24 +12,20 @@
     <script>
     // Language Detection & Redirect
     (function() {
-        // 1. Check for manual switch via URL parameter
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('lang') === 'en') {
             localStorage.setItem('vornac_lang', 'en');
             return;
         }
 
-        // 2. Check stored preference
         const savedLang = localStorage.getItem('vornac_lang');
         if (savedLang === 'en') return;
 
-        // 3. Fallback: Check referrer (if coming from German page, assume English intent if landing here)
         if (document.referrer && /\/(?:de\b|.*_de\b)/.test(document.referrer)) {
             localStorage.setItem('vornac_lang', 'en');
             return;
         }
 
-        // 4. Browser Language Check (Default to German if no preference set)
         const userLang = navigator.language || navigator.userLanguage;
 
         if (savedLang === 'de' || (!savedLang && userLang.startsWith('de'))) {
@@ -42,7 +38,6 @@
         }
     })();
 
-    // Keep gtag function for Google Ads conversion tracking
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     </script>
@@ -53,9 +48,9 @@
 </script>
     <script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('DzLR5a5AnPWaBoQ2'); </script>
     <meta charset="UTF-8"/>
-    <title>VORNAC – Ahead of the Threat</title>
+    <title>84% less cyber risk with VORNAC – continuous pentesting</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content="VORNAC Continuous Pentesting Agent with audit-proof reports for NIS2, DORA, VAIT, BAIT and KRITIS."/>
+    <meta name="description" content="VORNAC validates your live production environment against real adversarial techniques — continuously, on schedule, via API. Every finding is exploitability-proven and mapped to NIS2, DORA, VAIT/BAIT, KRITIS, and TISAX."/>
     <link rel="canonical" href="https://www.vornac.com/" />
     <link rel="alternate" hreflang="en" href="https://www.vornac.com/" />
     <link rel="alternate" hreflang="de" href="https://www.vornac.com/de" />
@@ -63,24 +58,30 @@
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.vornac.com/" />
-    <meta property="og:title" content="VORNAC – Ahead of the Threat" />
-    <meta property="og:description" content="Continuous pentesting and AI security solutions. NIS2, DORA, VAIT/BAIT, and KRITIS compliant." />
-    <meta property="og:image" content="https://www.vornac.com/VORNAC%20Banner.png" />
+    <meta property="og:title" content="84% less cyber risk with VORNAC – continuous pentesting" />
+    <meta property="og:description" content="Continuous adversarial validation for regulated EU industries. Audit-ready by design for NIS2, DORA, VAIT/BAIT, KRITIS, and TISAX." />
+    <meta property="og:image" content="https://www.vornac.com/vornacpentesting43.png" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="VORNAC – Ahead of the Threat" />
-    <meta name="twitter:description" content="Continuous pentesting and AI security solutions. NIS2, DORA, VAIT/BAIT, and KRITIS compliant." />
-    <meta name="twitter:image" content="https://www.vornac.com/VORNAC%20Banner.png" />
+    <meta name="twitter:title" content="84% less cyber risk with VORNAC – continuous pentesting" />
+    <meta name="twitter:description" content="Continuous adversarial validation for regulated EU industries. Audit-ready by design for NIS2, DORA, VAIT/BAIT, KRITIS, and TISAX." />
+    <meta name="twitter:image" content="https://www.vornac.com/vornacpentesting43.png" />
 
     <script type="application/ld+json">
     {"@context":"https://schema.org","@graph":[
-      {"@type":"Organization","@id":"https://www.vornac.com/#organization","name":"VORNAC","url":"https://www.vornac.com/","logo":{"@type":"ImageObject","url":"https://www.vornac.com/VORNAC%20Banner.png"}},
-      {"@type":"WebSite","@id":"https://www.vornac.com/#website","url":"https://www.vornac.com/","name":"VORNAC","description":"Continuous pentesting and AI-native security for regulated organizations.","publisher":{"@id":"https://www.vornac.com/#organization"},"inLanguage":["en","de"]}
+      {"@type":"Organization","@id":"https://www.vornac.com/#organization","name":"VORNAC","url":"https://www.vornac.com/","logo":{"@type":"ImageObject","url":"https://www.vornac.com/vornacpentesting43.png"}},
+      {"@type":"WebSite","@id":"https://www.vornac.com/#website","url":"https://www.vornac.com/","name":"VORNAC","description":"Continuous adversarial validation for regulated EU industries.","publisher":{"@id":"https://www.vornac.com/#organization"},"inLanguage":["en","de"]}
     ]}
     </script>
 
     <link rel="icon" type="image/svg+xml" href="/V_BLACK.svg">
     <link rel="stylesheet" href="output.css"/>
+
+    <!-- Enterprise typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --color-bg: #f5f2ed;
@@ -90,51 +91,961 @@
             --color-accent-dark: #b8860b;
             --color-text: #1c1917;
             --color-text-muted: #57534e;
+
+            /* Enterprise tokens (vornac warm cream + confident amber) */
+            --v-bg:        #f5f2ed;
+            --v-bg-band:   #efe9e3;
+            --v-bg-card:   #FFFFFF;
+            --v-bg-dark:   #0E1116;
+            --v-bg-dark-2: #181C24;
+            --v-ink:       #0E1116;
+            --v-ink-2:     #4B5260;
+            --v-ink-3:     #7A8190;
+            --v-line:      #DCD5C5;
+            --v-line-soft: #E8E1D2;
+            --v-line-dark: #2A2F39;
+            --v-amber:     #E89615;
+            --v-amber-deep:#B4720A;
+            --v-amber-soft:#FEF3D8;
+            --v-sans: 'Manrope', system-ui, -apple-system, sans-serif;
         }
 
-        /* Custom warm background */
         .bg-warm { background-color: #f5f2ed; }
         .bg-warm-soft { background-color: #efe9e3; }
         .bg-warm-muted { background-color: #e5dfda; }
 
-        /* Animation für das Mobile Menü */
+        /* ============================================ */
+        /* Enterprise design language                   */
+        /* ============================================ */
+
+        .v-announcement {
+            background: var(--v-bg-dark);
+            color: #fff;
+            font-family: var(--v-sans);
+            font-size: 13.5px;
+            font-weight: 500;
+            padding: 11px 0;
+            text-align: center;
+            position: relative;
+            z-index: 60;
+            letter-spacing: -0.005em;
+        }
+        .v-announcement-inner {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        .v-announcement-tag {
+            display: inline-block;
+            background: var(--v-amber);
+            color: var(--v-bg-dark);
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            margin-right: 14px;
+            border-radius: 3px;
+            vertical-align: 2px;
+        }
+        .v-announcement a {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255,255,255,0.35);
+            padding-bottom: 1px;
+            margin-left: 8px;
+            transition: border-color 0.15s, color 0.15s;
+            font-weight: 600;
+        }
+        .v-announcement a:hover {
+            border-bottom-color: var(--v-amber);
+            color: var(--v-amber);
+        }
+        @media (max-width: 640px) {
+            .v-announcement { font-size: 12.5px; padding: 10px 0; }
+            .v-announcement-inner { padding: 0 20px; }
+            .v-announcement a { display: inline-block; margin-left: 4px; }
+        }
+
+        .v-hero {
+            background: var(--v-bg);
+            border-bottom: 1px solid var(--v-line);
+            font-family: var(--v-sans);
+            position: relative;
+            z-index: 1;
+        }
+        .v-hero-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 96px 40px 64px;
+        }
+        .v-hero-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--v-amber-deep);
+            margin-bottom: 28px;
+        }
+        .v-hero-kicker::before {
+            content: '';
+            width: 28px;
+            height: 1px;
+            background: var(--v-amber);
+        }
+        .v-hero-headline {
+            font-family: var(--v-sans);
+            font-size: clamp(40px, 5.6vw, 80px);
+            line-height: 1.02;
+            letter-spacing: -0.035em;
+            font-weight: 700;
+            color: var(--v-ink);
+            margin: 0 0 36px;
+            max-width: 22ch;
+        }
+        .v-hero-headline .v-amber-mark {
+            position: relative;
+            white-space: nowrap;
+            display: inline-block;
+        }
+        .v-hero-headline .v-amber-mark::after {
+            content: '';
+            position: absolute;
+            left: -2px;
+            right: -2px;
+            bottom: 0.08em;
+            height: 0.18em;
+            background: var(--v-amber);
+            z-index: -1;
+            border-radius: 1px;
+        }
+        .v-hero-subline {
+            font-family: var(--v-sans);
+            font-size: 19px;
+            line-height: 1.55;
+            color: var(--v-ink-2);
+            max-width: 740px;
+            margin: 0 0 48px;
+            font-weight: 400;
+        }
+        .v-hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            flex-wrap: wrap;
+            margin-bottom: 64px;
+        }
+        .v-btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 28px;
+            background: var(--v-bg-dark);
+            color: #fff;
+            text-decoration: none;
+            font-family: var(--v-sans);
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: background 0.15s, transform 0.15s;
+            letter-spacing: -0.005em;
+        }
+        .v-btn-primary:hover {
+            background: var(--v-amber-deep);
+        }
+        .v-btn-primary svg {
+            transition: transform 0.2s ease;
+        }
+        .v-btn-primary:hover svg {
+            transform: translateX(3px);
+        }
+        .v-btn-ghost {
+            color: var(--v-ink);
+            text-decoration: none;
+            font-family: var(--v-sans);
+            font-size: 15px;
+            font-weight: 600;
+            padding: 6px 0;
+            border-bottom: 2px solid var(--v-ink);
+            transition: color 0.15s, border-color 0.15s;
+            letter-spacing: -0.005em;
+        }
+        .v-btn-ghost:hover {
+            color: var(--v-amber-deep);
+            border-bottom-color: var(--v-amber-deep);
+        }
+        .v-hero-category {
+            font-family: var(--v-sans);
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--v-ink-2);
+            border-left: 3px solid var(--v-amber);
+            padding-left: 18px;
+            max-width: 520px;
+            line-height: 1.5;
+            letter-spacing: -0.003em;
+        }
+        @media (max-width: 768px) {
+            .v-hero-inner { padding: 64px 24px 48px; }
+            .v-hero-actions { gap: 20px; margin-bottom: 48px; }
+            .v-hero-subline { font-size: 17px; margin-bottom: 36px; }
+            .v-hero-kicker { margin-bottom: 22px; font-size: 11px; }
+            .v-hero-headline { margin-bottom: 28px; }
+        }
+
+        /* ============================================ */
+        /* Stats band                                   */
+        /* ============================================ */
+
+        .v-stats {
+            background: var(--v-bg-band);
+            border-top: 1px solid var(--v-line);
+            border-bottom: 1px solid var(--v-line);
+            font-family: var(--v-sans);
+            position: relative;
+            z-index: 1;
+        }
+        .v-stats.is-dark {
+            background: var(--v-bg-dark);
+            border-top: 1px solid var(--v-line-dark);
+            border-bottom: 1px solid var(--v-line-dark);
+        }
+        .v-stats-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 96px 40px 112px;
+        }
+        .v-stats-headline {
+            font-family: var(--v-sans);
+            font-size: clamp(38px, 4.6vw, 64px);
+            line-height: 1.04;
+            letter-spacing: -0.03em;
+            font-weight: 700;
+            color: var(--v-ink);
+            margin: 0 0 64px;
+            max-width: 20ch;
+        }
+        .v-stats.is-dark .v-stats-headline {
+            color: #fff;
+        }
+        .v-stats-divider {
+            height: 1px;
+            background: var(--v-line);
+            margin-bottom: 64px;
+        }
+        .v-stats.is-dark .v-stats-divider {
+            background: var(--v-line-dark);
+        }
+        .v-stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0;
+        }
+        .v-stats-grid.is-four {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+        .v-stat {
+            position: relative;
+            padding: 0 56px;
+        }
+        .v-stats-grid.is-four .v-stat {
+            padding: 0 32px;
+        }
+        .v-stat:first-child { padding-left: 0; }
+        .v-stat:last-child  { padding-right: 0; }
+        .v-stats-grid.is-four .v-stat-number {
+            font-size: clamp(64px, 6.8vw, 108px);
+            margin-bottom: 26px;
+        }
+        .v-stats-grid.is-four .v-stat-rule {
+            width: 64px;
+            margin-bottom: 18px;
+        }
+        .v-stats-grid.is-four .v-stat-label {
+            font-size: 16px;
+            max-width: 20ch;
+        }
+        .v-stats-grid.is-four .v-stat-prefix {
+            font-size: clamp(16px, 1.5vw, 24px);
+        }
+        .v-stats-grid.is-four .v-stat-prefix + .v-stat-num {
+            margin-left: 10px;
+        }
+        .v-stat + .v-stat::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--v-line);
+        }
+        .v-stats.is-dark .v-stat + .v-stat::before {
+            background: var(--v-line-dark);
+        }
+        .v-stat-number {
+            font-family: var(--v-sans);
+            font-weight: 800;
+            font-size: clamp(82px, 9.4vw, 148px);
+            line-height: 0.92;
+            letter-spacing: -0.055em;
+            color: var(--v-ink);
+            display: flex;
+            align-items: baseline;
+            gap: 0;
+            margin-bottom: 30px;
+            white-space: nowrap;
+        }
+        .v-stats.is-dark .v-stat-number {
+            color: #fff;
+        }
+        .v-stat-num {
+            display: inline-block;
+        }
+        .v-stat-prefix + .v-stat-num {
+            margin-left: 14px;
+        }
+        .v-stat-prefix {
+            font-family: var(--v-sans);
+            font-weight: 700;
+            font-size: clamp(20px, 1.9vw, 30px);
+            letter-spacing: -0.01em;
+            color: var(--v-ink-3);
+            line-height: 1;
+            text-transform: lowercase;
+        }
+        .v-stat-range {
+            font-weight: 700;
+            font-size: 0.46em;
+            letter-spacing: -0.02em;
+            color: rgba(0, 0, 0, 0.32);
+            margin-left: 0.02em;
+        }
+        .v-stats.is-dark .v-stat-range {
+            color: rgba(255, 255, 255, 0.40);
+        }
+        .v-stat-unit {
+            font-weight: 800;
+            font-size: 0.62em;
+            margin-left: 0.04em;
+            color: var(--v-amber);
+        }
+        .v-stats.is-dark .v-stat-unit {
+            font-size: 0.5em;
+            margin-left: 0.06em;
+        }
+        .v-stat-rule {
+            width: 84px;
+            height: 4px;
+            background: var(--v-ink);
+            margin-bottom: 22px;
+        }
+        .v-stat-label {
+            font-family: var(--v-sans);
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--v-ink);
+            letter-spacing: -0.005em;
+            max-width: 24ch;
+        }
+        .v-stats.is-dark .v-stat-label {
+            color: #fff;
+        }
+        .v-stat-label .v-stat-label-sub {
+            display: block;
+            font-weight: 400;
+            color: var(--v-ink-2);
+            font-size: 13.5px;
+            margin-top: 18px;
+            letter-spacing: -0.003em;
+            line-height: 1.55;
+            max-width: 32ch;
+        }
+        .v-stats.is-dark .v-stat-label .v-stat-label-sub {
+            color: rgba(255, 255, 255, 0.58);
+        }
+
+        @media (max-width: 1024px) {
+            .v-stats-inner { padding: 72px 32px 88px; }
+            .v-stat { padding: 0 36px; }
+            .v-stats-headline { margin-bottom: 48px; }
+            .v-stats-divider { margin-bottom: 48px; }
+            .v-stats-grid.is-four {
+                grid-template-columns: 1fr 1fr;
+                row-gap: 56px;
+            }
+            .v-stats-grid.is-four .v-stat { padding: 0 32px; }
+            .v-stats-grid.is-four .v-stat:nth-child(2n+1) { padding-left: 0; }
+            .v-stats-grid.is-four .v-stat:nth-child(2n)   { padding-right: 0; }
+            .v-stats-grid.is-four .v-stat:nth-child(2n+1)::before { display: none; }
+            .v-stats-grid.is-four .v-stat-number { font-size: clamp(72px, 10vw, 120px); }
+        }
+        /* ============================================ */
+        /* German Data Sovereignty                      */
+        /* ============================================ */
+
+        .v-sovereignty {
+            background: var(--v-bg);
+            border-top: 1px solid var(--v-line);
+            border-bottom: 1px solid var(--v-line);
+            font-family: var(--v-sans);
+            position: relative;
+            z-index: 1;
+        }
+        .v-sovereignty-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 96px 40px 104px;
+        }
+        .v-sov-head {
+            max-width: 780px;
+            margin-bottom: 64px;
+        }
+        .v-sov-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--v-amber-deep);
+            margin-bottom: 24px;
+        }
+        .v-sov-kicker::before {
+            content: '';
+            width: 28px;
+            height: 1px;
+            background: var(--v-amber);
+        }
+        .v-sov-headline {
+            font-family: var(--v-sans);
+            font-size: clamp(34px, 4vw, 56px);
+            line-height: 1.06;
+            letter-spacing: -0.03em;
+            font-weight: 700;
+            color: var(--v-ink);
+            margin: 0 0 28px;
+        }
+        .v-sov-headline .v-sov-emph {
+            color: var(--v-amber-deep);
+        }
+        .v-sov-subline {
+            font-family: var(--v-sans);
+            font-size: 17px;
+            line-height: 1.6;
+            color: var(--v-ink-2);
+            margin: 0;
+            font-weight: 400;
+            max-width: 680px;
+        }
+        .v-sov-marks {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+        .v-sov-mark {
+            background: var(--v-bg-card);
+            border: 1px solid var(--v-line);
+            padding: 32px 28px;
+            display: flex;
+            flex-direction: column;
+            min-height: 240px;
+            text-decoration: none;
+            transition: border-color 0.18s ease, transform 0.18s ease;
+            color: var(--v-ink);
+        }
+        a.v-sov-mark:hover {
+            border-color: var(--v-ink);
+            transform: translateY(-2px);
+        }
+        .v-sov-mark--flag {
+            justify-content: space-between;
+        }
+        .v-sov-mark-flag {
+            display: flex;
+            height: 6px;
+            width: 60px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        .v-sov-mark-flag span {
+            display: block;
+            height: 100%;
+            width: 33.333%;
+        }
+        .v-sov-mark-flag span:nth-child(1) { background: #000000; }
+        .v-sov-mark-flag span:nth-child(2) { background: #DD0000; }
+        .v-sov-mark-flag span:nth-child(3) { background: #FFCC00; }
+        .v-sov-mark-title {
+            font-family: var(--v-sans);
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1.22;
+            letter-spacing: -0.018em;
+            color: var(--v-ink);
+            margin: 0 0 14px;
+        }
+        .v-sov-mark-sub {
+            font-family: var(--v-sans);
+            font-size: 13.5px;
+            font-weight: 500;
+            color: var(--v-ink-2);
+            line-height: 1.55;
+            margin: 0;
+        }
+        .v-sov-mark--image {
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .v-sov-mark--image img {
+            max-width: 220px;
+            max-height: 120px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            flex: 1;
+            margin-bottom: 18px;
+        }
+        .v-sov-mark-meta {
+            font-family: var(--v-sans);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--v-ink-2);
+            letter-spacing: -0.003em;
+            text-align: center;
+            line-height: 1.45;
+            max-width: 26ch;
+        }
+
+        @media (max-width: 1024px) {
+            .v-sovereignty-inner { padding: 80px 32px 88px; }
+            .v-sov-head { margin-bottom: 48px; }
+            .v-sov-mark { padding: 28px 24px; min-height: 220px; }
+            .v-sov-mark-title { font-size: 20px; }
+        }
+        @media (max-width: 820px) {
+            .v-sovereignty-inner { padding: 64px 24px 72px; }
+            .v-sov-head { margin-bottom: 40px; }
+            .v-sov-marks { grid-template-columns: 1fr; gap: 16px; }
+            .v-sov-mark { min-height: 180px; }
+        }
+
+        /* ============================================ */
+        /* Trust strip (logo marquee)                   */
+        /* ============================================ */
+
+        .v-trust {
+            background: var(--v-bg-band);
+            border-top: 1px solid var(--v-line);
+            border-bottom: 1px solid var(--v-line);
+            font-family: var(--v-sans);
+            padding: 64px 0 72px;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+        .v-trust-label {
+            text-align: center;
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--v-ink-3);
+            margin: 0 0 36px;
+        }
+        .v-trust-marquee {
+            position: relative;
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(
+                to right,
+                transparent 0,
+                black 96px,
+                black calc(100% - 96px),
+                transparent 100%
+            );
+            mask-image: linear-gradient(
+                to right,
+                transparent 0,
+                black 96px,
+                black calc(100% - 96px),
+                transparent 100%
+            );
+        }
+        .v-trust-track {
+            display: flex;
+            align-items: center;
+            gap: 96px;
+            width: max-content;
+            animation: v-marquee 60s linear infinite;
+        }
+        @keyframes v-marquee {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .v-trust:hover .v-trust-track {
+            animation-play-state: paused;
+        }
+        .v-trust-track img {
+            height: 56px;
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: opacity 0.2s ease, filter 0.2s ease;
+            flex-shrink: 0;
+        }
+        .v-trust-track img:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+        }
+        @media (max-width: 768px) {
+            .v-trust { padding: 48px 0 56px; }
+            .v-trust-label { font-size: 10.5px; margin-bottom: 24px; }
+            .v-trust-track { gap: 64px; }
+            .v-trust-track img { height: 40px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .v-trust-track { animation: none; transform: none; }
+        }
+
+        /* ============================================ */
+        /* Comparison table                             */
+        /* ============================================ */
+
+        .v-comp {
+            background: var(--v-bg-dark);
+            border-top: 1px solid var(--v-line-dark);
+            font-family: var(--v-sans);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .v-comp::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: min(55vw, 520px);
+            height: 100%;
+            background: radial-gradient(ellipse at 100% 20%, rgba(232, 150, 21, 0.14) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .v-comp-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 88px 40px 96px;
+            position: relative;
+        }
+        .v-comp-header {
+            max-width: 820px;
+            margin-bottom: 48px;
+        }
+        .v-comp-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--v-amber);
+            margin: 0 0 20px;
+        }
+        .v-comp-eyebrow::before {
+            content: '';
+            width: 32px;
+            height: 2px;
+            background: var(--v-amber);
+        }
+        .v-comp-headline {
+            font-size: clamp(32px, 4vw, 52px);
+            line-height: 1.05;
+            letter-spacing: -0.035em;
+            font-weight: 800;
+            color: #fff;
+            margin: 0 0 20px;
+        }
+        .v-comp-headline em {
+            font-style: normal;
+            color: var(--v-amber);
+        }
+        .v-comp-sub {
+            font-size: 18px;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.62);
+            margin: 0;
+            font-weight: 500;
+        }
+        .v-comp-table-wrap {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow:
+                0 0 0 1px rgba(255, 255, 255, 0.06),
+                0 28px 64px rgba(0, 0, 0, 0.45),
+                0 8px 24px rgba(0, 0, 0, 0.25);
+        }
+        .v-comp-table {
+            width: 100%;
+            min-width: 920px;
+            border-collapse: collapse;
+            font-size: 14.5px;
+            line-height: 1.45;
+        }
+        .v-comp-table caption {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        .v-comp-table thead th {
+            text-align: left;
+            padding: 20px 20px;
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.55);
+            background: #0a0d11;
+            border-bottom: 2px solid var(--v-line-dark);
+        }
+        .v-comp-table thead th:first-child {
+            min-width: 220px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+        .v-comp-col-sub {
+            display: block;
+            font-weight: 600;
+            text-transform: none;
+            letter-spacing: 0;
+            font-size: 10px;
+            opacity: 0.7;
+            margin-top: 5px;
+        }
+        .v-comp-table thead th.v-comp-col-vornac {
+            color: var(--v-bg-dark);
+            background: linear-gradient(135deg, var(--v-amber) 0%, #f5b84a 100%);
+            border-bottom: none;
+            box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.12);
+        }
+        .v-comp-logo {
+            display: block;
+            height: 28px;
+            width: auto;
+            max-width: 140px;
+            margin: 0 0 6px;
+        }
+        .v-comp-brand-sub {
+            display: block;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            color: var(--v-bg-dark);
+            opacity: 0.65;
+            margin-top: 0;
+        }
+        .v-comp-table tbody th {
+            text-align: left;
+            padding: 20px 20px;
+            font-weight: 700;
+            color: var(--v-ink);
+            background: var(--v-bg);
+            border-bottom: 1px solid var(--v-line-soft);
+            vertical-align: top;
+            font-size: 14px;
+            line-height: 1.35;
+            letter-spacing: -0.01em;
+        }
+        .v-comp-table tbody tr:hover th {
+            background: var(--v-bg-soft);
+        }
+        .v-comp-table tbody td {
+            padding: 20px 20px;
+            color: var(--v-ink-2);
+            border-bottom: 1px solid var(--v-line-soft);
+            vertical-align: top;
+            background: #fff;
+        }
+        .v-comp-table tbody tr:hover td:not(.v-comp-col-vornac) {
+            background: #faf9f7;
+        }
+        .v-comp-table tbody tr:last-child th,
+        .v-comp-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .v-comp-table tbody td.v-comp-col-vornac {
+            background: linear-gradient(90deg, var(--v-amber-soft) 0%, #fffaf0 100%);
+            color: var(--v-ink);
+            font-weight: 500;
+            border-left: 4px solid var(--v-amber);
+            box-shadow: inset 0 0 0 1px rgba(232, 150, 21, 0.15);
+        }
+        .v-comp-table tbody tr:hover td.v-comp-col-vornac {
+            background: linear-gradient(90deg, #fdecc8 0%, #fff8eb 100%);
+        }
+        .v-comp-table thead th.v-comp-col-vornac {
+            border-left: 4px solid var(--v-amber-deep);
+        }
+        .v-comp-cell-top {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .v-comp-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 800;
+            font-size: 11px;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            padding: 5px 11px;
+            border-radius: 4px;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        .v-comp-cell-top .v-comp-status {
+            margin-bottom: 0;
+        }
+        .v-comp-status::before {
+            font-size: 12px;
+            font-weight: 900;
+            line-height: 1;
+        }
+        .v-comp-status--yes {
+            color: #14532d;
+            background: #dcfce7;
+        }
+        .v-comp-status--yes::before { content: '✓'; }
+        .v-comp-status--no {
+            color: #7f1d1d;
+            background: #fee2e2;
+        }
+        .v-comp-status--no::before { content: '✕'; }
+        .v-comp-status--partial {
+            color: #78350f;
+            background: #fef3c7;
+        }
+        .v-comp-status--partial::before { content: '~'; }
+        .v-comp-col-vornac .v-comp-status--yes {
+            color: var(--v-bg-dark);
+            background: var(--v-amber);
+            box-shadow: 0 2px 8px rgba(232, 150, 21, 0.35);
+        }
+        .v-comp-col-vornac .v-comp-status--partial,
+        .v-comp-col-vornac .v-comp-status--no {
+            background: #fff;
+            border: 1px solid var(--v-line);
+        }
+        .v-comp-detail {
+            display: block;
+            font-weight: 400;
+            font-size: 13px;
+            color: var(--v-ink-3);
+            text-transform: none;
+            letter-spacing: 0;
+            line-height: 1.5;
+        }
+        .v-comp-col-vornac .v-comp-detail {
+            color: var(--v-ink-2);
+            font-size: 13.5px;
+        }
+        .v-comp-usp {
+            display: inline-flex;
+            align-items: center;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #fff;
+            background: var(--v-bg-dark);
+            padding: 4px 8px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+        @media (max-width: 768px) {
+            .v-comp-inner { padding: 64px 24px 80px; }
+            .v-comp-header { margin-bottom: 32px; }
+            .v-comp-sub { font-size: 16px; }
+            .v-comp-table thead th,
+            .v-comp-table tbody th,
+            .v-comp-table tbody td { padding: 16px 14px; }
+        }
+
+        @media (max-width: 820px) {
+            .v-stats-inner { padding: 64px 24px 80px; }
+            .v-stats-headline { margin-bottom: 40px; max-width: none; }
+            .v-stats-divider { margin-bottom: 40px; }
+            .v-stats-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+            .v-stats-grid.is-four {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+            .v-stat { padding: 0; }
+            .v-stats-grid.is-four .v-stat { padding: 0; }
+            .v-stat + .v-stat::before {
+                left: 0;
+                right: 0;
+                top: -24px;
+                bottom: auto;
+                width: 64px;
+                height: 1px;
+            }
+            .v-stats-grid.is-four .v-stat::before { display: block; }
+            .v-stat-number { font-size: clamp(78px, 18vw, 120px); margin-bottom: 24px; }
+            .v-stats-grid.is-four .v-stat-number { font-size: clamp(78px, 18vw, 120px); }
+        }
+
+        /* Mobile menu animations */
         #mobile-menu:not(.hidden) {
             display: block;
             animation: slideDown 0.3s ease-out forwards;
         }
-
         @keyframes slideDown {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         #mobile-backdrop:not(.hidden) {
             display: block;
             animation: fadeIn 0.3s ease-out forwards;
         }
-
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-
-        /* Effekt für das Video-Ende */
-        #hero-video { transition: filter 2.5s ease; }
-        .video-ended #hero-video { filter: blur(6px) brightness(0.5); }
-
     </style>
 </head>
 <body class="bg-warm text-stone-900 font-body antialiased">
-<!-- Orbit Blobs (angepasst für hell) -->
-<div class="fixed inset-0 pointer-events-none overflow-hidden">
-    <div class="absolute -left-40 top-0 h-80 w-80 rounded-full bg-amber-300/30 blur-[80px] animate-pulse max-md:animate-none"></div>
-    <div class="absolute -right-32 top-1/3 h-96 w-96 rounded-full bg-amber-200/20 blur-[80px]"></div>
-    <div class="absolute left-1/3 -bottom-36 h-72 w-72 rounded-full bg-amber-300/25 blur-[80px]"></div>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="v-announcement">
+    <div class="v-announcement-inner">
+        <span class="v-announcement-tag">New</span>
+        The 2026 Continuous Validation Methodology Paper is now available.
+        <a href="/CaseStudy_VORNAC_0526.pdf" target="_blank" rel="noopener">Read the paper →</a>
+    </div>
 </div>
 
 <header id="site-header" class="sticky top-0 z-50 border-b-2 border-stone-300 backdrop-blur-md shadow-md" style="background-color: rgba(245, 242, 237, 0.97);">
     <nav class="mx-auto flex max-w-content items-center justify-between px-4 py-4 lg:px-6">
-        
+
         <a href="#top" class="flex items-center gap-3" aria-label="VORNAC home">
             <img src="logo-vornac-black.svg" class="nav-logo h-12 w-auto sm:h-14" alt="VORNAC">
         </a>
@@ -142,6 +1053,8 @@
         <div class="hidden items-center gap-8 text-sm md:flex">
             <a href="/" class="nav-link text-stone-900 font-semibold border-b-2 border-amber-500">Home</a>
             <a href="/pentesting" class="nav-link text-stone-500 hover:text-stone-900 transition-colors">Pentesting</a>
+            <a href="/industries" class="nav-link text-stone-500 hover:text-stone-900 transition-colors">Industries</a>
+            <a href="/customers" class="nav-link text-stone-500 hover:text-stone-900 transition-colors">Customers</a>
             <div class="relative group">
                 <button class="nav-link text-stone-500 hover:text-stone-900 transition-colors flex items-center gap-1">
                     About
@@ -172,6 +1085,8 @@
         <div class="flex flex-col space-y-6 px-8 py-10 text-center">
             <a href="/" class="mobile-link text-lg font-medium text-amber-600">Home</a>
             <a href="/pentesting" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900">Pentesting</a>
+            <a href="/industries" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900">Industries</a>
+            <a href="/customers" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900">Customers</a>
             <div class="flex flex-col">
                 <button onclick="this.nextElementSibling.classList.toggle('hidden')" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900 flex items-center justify-center gap-2">
                     About
@@ -184,435 +1099,308 @@
                     <a href="/about#careers" class="text-base text-stone-500 hover:text-stone-900">→ Careers</a>
                 </div>
             </div>
-            <a href="#contact" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900">Contact</a>
             <a href="https://zeeg.me/hello3950/your-vornac-meeting" class="mobile-link mt-4 flex h-14 items-center justify-center rounded-xl bg-stone-900 font-bold text-white shadow-lg transition-transform active:scale-95 hover:bg-amber-600">Book Demo</a>
         </div>
     </div>
 </header>
 
-<!--HERO SECTION-->
-<section id="hero-section" class="relative min-h-screen flex items-center justify-center overflow-hidden" style="background: linear-gradient(to bottom, #f5f2ed, rgba(245, 235, 210, 0.35), #f5f2ed);">
-
-    <div class="relative z-10 w-full max-w-7xl px-6 py-20 text-center">
-        <div class="flex flex-col items-center">
-
-            <h1 class="font-heading text-4xl sm:text-5xl md:text-8xl lg:text-[7.5rem] font-black italic uppercase leading-[0.8] tracking-tighter text-stone-900 mb-8">
-                Ahead of <br>
-                <span class="text-transparent" style="-webkit-text-stroke: 2px #d4a012;">the Threat.</span>
-            </h1>
-
-            <!-- Client & Partner Logos -->
-            <div class="mb-16 w-full max-w-5xl">
-                <h2 class="font-heading text-xl sm:text-2xl md:text-4xl font-black italic uppercase text-stone-900 mb-8 text-center">
-                    Our Partners <span class="text-amber-600">&</span> Customers
-                </h2>
-                <div class="flex items-center w-full overflow-hidden bg-white/80 backdrop-blur-sm border-2 border-stone-200 rounded-2xl px-8 py-6 shadow-xl shadow-stone-900/10">
-                    <div class="logo-scroll">
-                        <!-- First set of logos -->
-                        <img src="client-1.png" alt="Client 1" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex-shrink-0">
-                        <img src="client-2.png" alt="Client 2" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex-shrink-0">
-                        <img src="client-3.png" alt="Client 3" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex-shrink-0">
-                        <img src="client-5.png" alt="Client 5" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex-shrink-0">
-                        <img src="client-refundrebel.png" alt="RefundRebel" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex-shrink-0">
-                        <img src="client-tkom.png" alt="TKOM" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex-shrink-0">
-                        <img src="logo_ipcrew.png" alt="IP Crew" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex-shrink-0">
-                        <img src="client-pfitzenmeier.png" alt="Pfitzenmeier" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex-shrink-0">
-                        <img src="partner-hetzner.png" alt="Hetzner" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex-shrink-0">
-                        <img src="partner-centron.png" alt="Centron" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex-shrink-0">
-                        <img src="partner-owasp.png" alt="OWASP" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex-shrink-0">
-                        <img src="partner-ionos.png" alt="IONOS" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex-shrink-0">
-                        <!-- Duplicate set for seamless loop -->
-                        <img src="client-1.png" alt="Client 1" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex-shrink-0">
-                        <img src="client-2.png" alt="Client 2" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex-shrink-0">
-                        <img src="client-3.png" alt="Client 3" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex-shrink-0">
-                        <img src="client-5.png" alt="Client 5" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex-shrink-0">
-                        <img src="client-refundrebel.png" alt="RefundRebel" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex-shrink-0">
-                        <img src="client-tkom.png" alt="TKOM" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex-shrink-0">
-                        <img src="logo_ipcrew.png" alt="IP Crew" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex-shrink-0">
-                        <img src="client-pfitzenmeier.png" alt="Pfitzenmeier" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex-shrink-0">
-                        <img src="partner-hetzner.png" alt="Hetzner" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex-shrink-0">
-                        <img src="partner-centron.png" alt="Centron" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex-shrink-0">
-                        <img src="partner-owasp.png" alt="OWASP" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex-shrink-0">
-                        <img src="partner-ionos.png" alt="IONOS" class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex-shrink-0">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Featured In / Press -->
-            <div class="mb-16 w-full max-w-full">
-                <h2 class="font-heading text-xl sm:text-2xl md:text-4xl font-black italic uppercase text-stone-900 mb-8 text-center">
-                    As Seen In
-                </h2>
-                <div class="mx-auto grid w-full max-w-full grid-cols-2 place-items-center gap-x-6 gap-y-6 bg-white/60 px-4 py-5 backdrop-blur-sm border-2 border-stone-200 rounded-2xl shadow-lg shadow-stone-900/5 sm:gap-x-10 sm:px-6 md:flex md:max-w-3xl md:flex-nowrap md:items-center md:justify-center md:gap-12 md:px-8">
-                    <img src="logo_cso.png" alt="CSO" class="h-5 w-auto max-h-6 max-w-[min(100%,140px)] object-contain opacity-50 transition-opacity grayscale hover:opacity-100 hover:grayscale-0 sm:h-6 md:h-8 md:max-h-none md:max-w-none">
-                    <img src="logo_rnz.png" alt="RNZ" class="h-5 w-auto max-h-6 max-w-[min(100%,140px)] object-contain opacity-50 transition-opacity grayscale hover:opacity-100 hover:grayscale-0 sm:h-6 md:h-8 md:max-h-none md:max-w-none">
-                    <img src="logo_cw.svg" alt="CW" class="h-5 w-auto max-h-6 max-w-[min(100%,140px)] object-contain opacity-50 transition-opacity grayscale hover:opacity-100 hover:grayscale-0 sm:h-6 md:h-8 md:max-h-none md:max-w-none">
-                    <img src="logo_cio.png" alt="CIO" class="h-5 w-auto max-h-6 max-w-[min(100%,140px)] object-contain opacity-50 transition-opacity grayscale hover:opacity-100 hover:grayscale-0 sm:h-6 md:h-8 md:max-h-none md:max-w-none">
-                </div>
-            </div>
-
-            <!-- Hero Content -->
-            <div class="max-w-3xl mx-auto mb-8 px-4">
-                <p class="text-base sm:text-xl md:text-3xl text-stone-700 font-medium leading-relaxed text-center mb-6">
-                    No longer <span class="text-stone-400 line-through">reactive</span>. But <span class="text-amber-600 font-bold">proactive</span>.
-                </p>
-                <p class="text-base sm:text-xl md:text-3xl text-stone-700 font-medium leading-relaxed text-center mb-8">
-                    No longer <span class="text-stone-400 line-through">hoping it won't happen</span>. <span class="text-amber-600 font-bold">Having control over it</span>.
-                </p>
-                <p class="text-xl sm:text-2xl md:text-4xl font-heading font-black italic text-stone-900 text-center">
-                    That's VORNAC.
-                </p>
-            </div>
-
-            <div class="flex flex-col items-center space-y-8 w-full mt-4">
-                <div class="flex flex-col items-center gap-4 w-full">
-                    <a href="https://zeeg.me/hello3950/your-vornac-meeting" target="_blank" class="group relative flex h-16 items-center justify-center rounded-xl bg-stone-900 px-12 font-bold uppercase tracking-[0.15em] text-xs text-white transition-all hover:bg-amber-600 hover:scale-105 active:scale-95 w-full sm:w-auto shadow-xl shadow-stone-900/30 hover:shadow-amber-500/40">
-                        Book Demo
-                    </a>
-                </div>
-
-                <!-- Trust tiles: Germany · TeleTrusT · IT Security made in Germany seal -->
-                <div class="mt-12 md:mt-16 mx-auto grid w-full max-w-6xl grid-cols-1 items-stretch justify-center gap-8 px-4 md:grid-cols-3 md:gap-6 lg:gap-10">
-                    <!-- 1: Made & hosted in Germany -->
-                    <div class="relative group mx-auto w-full max-w-[280px] md:mx-0 md:max-w-none">
-                        <div class="relative flex h-full min-h-[220px] flex-col items-center justify-center px-10 py-7 md:px-8 md:py-8 bg-white rounded-sm shadow-[0_2px_15px_rgba(0,0,0,0.15),0_10px_40px_rgba(0,0,0,0.1)] group-hover:shadow-[0_4px_20px_rgba(0,0,0,0.2),0_15px_50px_rgba(0,0,0,0.15)] transition-all duration-300">
-                            <div class="flex h-2 w-20 md:w-24 overflow-hidden mb-4 opacity-90 shadow-sm">
-                                <div class="h-full w-1/3 bg-black"></div>
-                                <div class="h-full w-1/3 bg-red-600"></div>
-                                <div class="h-full w-1/3 bg-yellow-400"></div>
-                            </div>
-                            <div class="flex flex-col items-center text-center">
-                                <span class="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.35em] text-stone-600 mb-2">Made & Hosted in</span>
-                                <span class="text-2xl md:text-3xl font-black uppercase tracking-tight text-stone-900 mb-3">Germany</span>
-                                <div class="w-full h-[2px] bg-stone-800 mb-3"></div>
-                                <span class="text-[9px] md:text-[10px] font-semibold uppercase tracking-[0.25em] text-stone-700">Digital Sovereignty</span>
-                            </div>
-                        </div>
-                        <div class="absolute inset-0 bg-stone-900/5 rounded-sm translate-x-1 translate-y-1 -z-10"></div>
-                        <div class="absolute inset-0 bg-stone-900/5 rounded-sm translate-x-2 translate-y-2 -z-20"></div>
-                    </div>
-                    <!-- 2: TeleTrusT (logo only) -->
-                    <div class="relative group mx-auto w-full max-w-[280px] md:mx-0 md:max-w-none">
-                        <a href="https://www.teletrust.de/" target="_blank" rel="noopener noreferrer" class="relative flex h-full min-h-[220px] items-center justify-center px-8 py-10 md:px-6 md:py-12 bg-white rounded-sm shadow-[0_2px_15px_rgba(0,0,0,0.15),0_10px_40px_rgba(0,0,0,0.1)] transition-all duration-300 hover:shadow-[0_4px_20px_rgba(0,0,0,0.2),0_15px_50px_rgba(0,0,0,0.15)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">
-                            <img src="TeleTrusT-Mitgliedslogo.jpg" alt="TeleTrusT – Member of the IT Security Association Germany" class="w-full max-w-[260px] h-auto object-contain" width="280" height="120" loading="lazy">
-                        </a>
-                        <div class="absolute inset-0 bg-stone-900/5 rounded-sm translate-x-1 translate-y-1 -z-10 pointer-events-none"></div>
-                        <div class="absolute inset-0 bg-stone-900/5 rounded-sm translate-x-2 translate-y-2 -z-20 pointer-events-none"></div>
-                    </div>
-                    <!-- 3: IT Security made in Germany (TeleTrusT seal, graphic only) -->
-                    <div class="relative group mx-auto w-full max-w-[280px] md:mx-0 md:max-w-none">
-                        <div class="relative flex h-full min-h-[220px] items-center justify-center px-8 py-10 md:px-6 md:py-12 bg-white rounded-sm shadow-[0_2px_15px_rgba(0,0,0,0.15),0_10px_40px_rgba(0,0,0,0.1)] group-hover:shadow-[0_4px_20px_rgba(0,0,0,0.2),0_15px_50px_rgba(0,0,0,0.15)] transition-all duration-300">
-                            <img src="it-security-made-in-germany-teletrust-seal.png" alt="IT Security made in Germany – TeleTrusT" class="w-full max-w-[min(100%,280px)] h-auto object-contain" width="2257" height="1294" loading="lazy" decoding="async">
-                        </div>
-                        <div class="absolute inset-0 bg-stone-900/5 rounded-sm translate-x-1 translate-y-1 -z-10 pointer-events-none"></div>
-                        <div class="absolute inset-0 bg-stone-900/5 rounded-sm translate-x-2 translate-y-2 -z-20 pointer-events-none"></div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!--END HERO SECTION-->
-
-<!-- Our Products Section -->
-<section class="relative py-24 bg-white overflow-hidden">
-    <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-20">
-            <span class="text-stone-400 text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">Our Vision</span>
-            <h2 class="font-heading text-4xl md:text-6xl font-black italic uppercase tracking-tighter text-stone-900">
-                From Reactive to <span class="text-amber-600">Proactive.</span>
-            </h2>
-        </div>
-
-        <!-- VORNAC Pentesting -->
-        <div class="mb-16 bg-white border-4 border-stone-900 p-0 overflow-hidden">
-            <div class="bg-amber-500 px-8 py-6 border-b-4 border-stone-900 flex items-center justify-center">
-                <img src="V_Pentesting_w.svg" alt="VORNAC Pentesting" class="h-12 md:h-16 w-auto">
-            </div>
-            <div class="p-8 md:p-12">
-
-            <p class="text-lg text-stone-600 mb-8 leading-relaxed">
-                Penetration testing with audit-proof reports. NIS2, DORA, VAIT & KRITIS compliant.
-            </p>
-
-            <!-- Comparison Grid -->
-            <div class="mb-8">
-                <!-- Mobile Version -->
-                <div class="flex flex-col gap-6 md:hidden">
-                    <div class="bg-white rounded-xl p-4 border border-amber-200">
-                        <div class="text-[9px] uppercase tracking-[0.3em] text-stone-500 mb-2 text-center">Traditional Lead Time</div>
-                        <div class="flex items-center justify-center gap-3 mb-3">
-                            <span class="text-lg font-black italic text-stone-400 line-through">6-8 Weeks</span>
-                            <span class="text-amber-500">→</span>
-                            <span class="text-2xl font-black italic text-amber-600">Hours</span>
-                        </div>
-                        <div class="text-[9px] uppercase tracking-[0.3em] text-amber-600 text-center">VORNAC Execution</div>
-                    </div>
-
-                    <div class="bg-white rounded-xl p-4 border border-amber-200">
-                        <div class="text-[9px] uppercase tracking-[0.3em] text-stone-500 mb-2 text-center">Classic Pricing Model</div>
-                        <div class="flex items-center justify-center gap-3 mb-3">
-                            <span class="text-lg font-black italic text-stone-400 line-through">Per Test</span>
-                            <span class="text-amber-500">→</span>
-                            <span class="text-2xl font-black italic text-amber-600">Unlimited</span>
-                        </div>
-                        <div class="text-[9px] uppercase tracking-[0.3em] text-amber-600 text-center">VORNAC Model</div>
-                    </div>
-
-                    <div class="bg-white rounded-xl p-4 border border-amber-200">
-                        <div class="text-[9px] uppercase tracking-[0.3em] text-stone-500 mb-2 text-center">Traditional Frequency</div>
-                        <div class="flex items-center justify-center gap-3 mb-3">
-                            <span class="text-lg font-black italic text-stone-400 line-through">Once/Year</span>
-                            <span class="text-amber-500">→</span>
-                            <span class="text-2xl font-black italic text-amber-600">Daily</span>
-                        </div>
-                        <div class="text-[9px] uppercase tracking-[0.3em] text-amber-600 text-center">VORNAC Frequency</div>
-                    </div>
-                </div>
-
-                <!-- Desktop Version -->
-                <div class="hidden md:grid grid-cols-2 gap-6">
-                    <!-- Row 1 -->
-                    <div class="flex flex-col items-end pr-6 border-r-2 border-amber-300">
-                        <p class="text-[10px] uppercase tracking-[0.4em] text-stone-500 mb-2">Traditional Lead Time</p>
-                        <p class="text-2xl font-black italic text-stone-400 uppercase line-through">6-8 Weeks</p>
-                    </div>
-                    <div class="flex flex-col items-start pl-6">
-                        <p class="text-[10px] uppercase tracking-[0.4em] text-amber-600 mb-2">VORNAC Execution</p>
-                        <p class="text-4xl font-black italic text-amber-600 uppercase drop-shadow-[0_0_15px_rgba(212,160,18,0.3)]">Hours.</p>
-                    </div>
-
-                    <!-- Row 2 -->
-                    <div class="flex flex-col items-end pr-6 border-r-2 border-amber-300">
-                        <p class="text-[10px] uppercase tracking-[0.4em] text-stone-500 mb-2">Classic Pricing Model</p>
-                        <p class="text-2xl font-black italic text-stone-400 uppercase line-through">Pay per Test</p>
-                    </div>
-                    <div class="flex flex-col items-start pl-6">
-                        <p class="text-[10px] uppercase tracking-[0.4em] text-amber-600 mb-2">VORNAC Model</p>
-                        <p class="text-4xl font-black italic text-amber-600 uppercase drop-shadow-[0_0_15px_rgba(212,160,18,0.3)]">Unlimited.</p>
-                    </div>
-
-                    <!-- Row 3 -->
-                    <div class="flex flex-col items-end pr-6 border-r-2 border-amber-300">
-                        <p class="text-[10px] uppercase tracking-[0.4em] text-stone-500 mb-2">Traditional Frequency</p>
-                        <p class="text-2xl font-black italic text-stone-400 uppercase line-through">Once per Year</p>
-                    </div>
-                    <div class="flex flex-col items-start pl-6">
-                        <p class="text-[10px] uppercase tracking-[0.4em] text-amber-600 mb-2">VORNAC Frequency</p>
-                        <p class="text-4xl font-black italic text-amber-600 uppercase drop-shadow-[0_0_15px_rgba(212,160,18,0.3)]">Daily.</p>
-                    </div>
-                </div>
-            </div>
-
-                <!-- Trust Badges -->
-                <div class="flex items-center justify-center gap-3 flex-wrap my-8">
-                    <div class="flex flex-col items-center gap-2 bg-white border-2 border-stone-200 px-4 py-3 hover:border-amber-500 transition-all">
-                        <img src="cert-iso27001.png" alt="ISO 27001" class="h-12 w-auto object-contain">
-                        <span class="text-stone-700 font-bold text-[10px] uppercase tracking-wider text-center">ISO 27001</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-2 bg-white border-2 border-stone-200 px-4 py-3 hover:border-amber-500 transition-all">
-                        <img src="cert-dsgvo.png" alt="GDPR" class="h-12 w-auto object-contain">
-                        <span class="text-stone-700 font-bold text-[10px] uppercase tracking-wider text-center">GDPR</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-2 bg-white border-2 border-stone-200 px-4 py-3 hover:border-amber-500 transition-all">
-                        <img src="cert-bsi.png" alt="BSI" class="h-12 w-auto object-contain">
-                        <span class="text-stone-700 font-bold text-[10px] uppercase tracking-wider text-center">BSI</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-2 bg-white border-2 border-stone-200 px-4 py-3 hover:border-amber-500 transition-all">
-                        <img src="cert-cissp.png" alt="CISSP" class="h-12 w-auto object-contain">
-                        <span class="text-stone-700 font-bold text-[10px] uppercase tracking-wider text-center">CISSP</span>
-                    </div>
-                </div>
-
-                <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pt-6 border-t-4 border-stone-900 mt-8">
-                    <div class="flex-1">
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-4 py-2 bg-stone-900 text-amber-500 text-xs font-black uppercase tracking-wider">Instant</span>
-                            <span class="px-4 py-2 bg-stone-900 text-amber-500 text-xs font-black uppercase tracking-wider">Certified</span>
-                            <span class="px-4 py-2 bg-stone-900 text-amber-500 text-xs font-black uppercase tracking-wider">Audit-Proof</span>
-                        </div>
-                    </div>
-                    <div class="flex flex-col md:flex-row gap-3">
-                        <a href="/pentesting" class="inline-flex items-center justify-center h-14 px-8 bg-stone-900 text-amber-500 font-black uppercase tracking-wider text-sm hover:bg-amber-500 hover:text-stone-900 transition-colors">
-                            Learn More
-                        </a>
-                        <a href="https://zeeg.me/hello3950/your-vornac-meeting" class="inline-flex items-center justify-center h-14 px-8 bg-white border-4 border-stone-900 text-stone-900 font-black uppercase tracking-wider text-sm hover:bg-stone-900 hover:text-white transition-colors">
-                            Demo
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Promise Section -->
-<section class="relative py-24 bg-stone-900 overflow-hidden">
-    <div class="absolute inset-0 opacity-10">
-        <div class="absolute top-0 right-0 w-96 h-96 bg-amber-500 rounded-full blur-[150px]"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-amber-600 rounded-full blur-[150px]"></div>
-    </div>
-
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <div class="text-center mb-20">
-            <span class="text-amber-500 text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">Our Foundation</span>
-            <h2 class="font-heading text-4xl md:text-6xl font-black italic uppercase tracking-tighter text-white mb-6">
-                The VORNAC <span class="text-amber-500">Promise</span>
-            </h2>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-            <!-- Card 1: Data Sovereignty -->
-            <div class="group relative">
-                <div class="bg-white border-4 border-amber-500 rounded-none p-8 shadow-[8px_8px_0px_0px_rgba(212,160,18,1)] hover:shadow-[12px_12px_0px_0px_rgba(212,160,18,1)] transition-all duration-300 hover:-translate-y-1">
-                    <div class="absolute -top-6 -left-6 w-16 h-16 bg-amber-500 border-4 border-stone-900 flex items-center justify-center transform rotate-12 group-hover:rotate-0 transition-transform">
-                        <svg class="w-8 h-8 text-stone-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                        </svg>
-                    </div>
-                    <div class="mt-8">
-                        <h3 class="font-heading text-2xl font-black italic uppercase text-stone-900 mb-4 leading-tight">
-                            100% German<br>Data Sovereignty
-                        </h3>
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="flex h-2 w-16 overflow-hidden">
-                                <div class="h-full w-1/3 bg-black"></div>
-                                <div class="h-full w-1/3 bg-red-600"></div>
-                                <div class="h-full w-1/3 bg-yellow-400"></div>
-                            </div>
-                            <span class="text-[9px] font-black uppercase tracking-widest text-stone-500">Made in Germany</span>
-                        </div>
-                        <p class="text-stone-600 text-sm leading-relaxed">
-                            Your data stays in Germany. No cloud dependencies, no data transfers abroad.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 2: Security & Compliance (Highlighted) -->
-            <div class="group relative md:-mt-8">
-                <div class="bg-amber-500 border-4 border-stone-900 rounded-none p-10 shadow-[12px_12px_0px_0px_rgba(28,25,23,1)] hover:shadow-[16px_16px_0px_0px_rgba(28,25,23,1)] transition-all duration-300 hover:-translate-y-2">
-                    <div class="absolute -top-8 left-1/2 -translate-x-1/2 w-20 h-20 bg-stone-900 border-4 border-amber-500 flex items-center justify-center">
-                        <svg class="w-10 h-10 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                        </svg>
-                    </div>
-                    <div class="mt-8">
-                        <div class="inline-block bg-stone-900 text-amber-400 px-3 py-1 mb-4">
-                            <span class="text-[8px] font-black uppercase tracking-[0.3em]">Core Promise</span>
-                        </div>
-                        <h3 class="font-heading text-3xl font-black italic uppercase text-stone-900 mb-4 leading-tight">
-                            Your Partner for<br>Proactive Security
-                        </h3>
-                        <p class="text-stone-900 text-sm leading-relaxed font-semibold">
-                            Not just a vendor – a strategic partner for continuous security and compliance.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 3: Partnership -->
-            <div class="group relative">
-                <div class="bg-white border-4 border-stone-300 rounded-none p-8 shadow-[8px_8px_0px_0px_rgba(120,113,108,1)] hover:shadow-[12px_12px_0px_0px_rgba(120,113,108,1)] hover:border-amber-500 transition-all duration-300 hover:-translate-y-1">
-                    <div class="absolute -top-6 -right-6 w-16 h-16 bg-stone-700 border-4 border-white flex items-center justify-center transform -rotate-12 group-hover:rotate-0 transition-transform">
-                        <svg class="w-8 h-8 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-                        </svg>
-                    </div>
-                    <div class="mt-8">
-                        <h3 class="font-heading text-2xl font-black italic uppercase text-stone-900 mb-4 leading-tight">
-                            No Customers,<br>Only Partners
-                        </h3>
-                        <div class="w-12 h-1 bg-amber-500 mb-4"></div>
-                        <p class="text-stone-600 text-sm leading-relaxed">
-                            Long-term partnerships instead of short-term transactions. Your success is our success.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Bottom Statement -->
-        <div class="mt-20 text-center">
-            <div class="inline-block border-4 border-amber-500 bg-stone-900 px-8 py-6 shadow-[8px_8px_0px_0px_rgba(212,160,18,1)]">
-                <p class="text-amber-500 font-heading text-xl md:text-2xl font-black italic uppercase tracking-tight">
-                    Reliable. Sovereign. Partnership-Driven.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <!-- CONTACT -->
-<section id="contact" class="bg-warm py-20 px-6 relative overflow-hidden">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-100/50 rounded-full blur-[100px] pointer-events-none"></div>
-
-    <div class="max-w-3xl mx-auto relative z-10">
-        <div class="text-center mb-12">
-            <span class="text-amber-600 text-[10px] font-black uppercase tracking-[0.4em] block mb-6">Live Demo</span>
-            <h2 class="font-heading text-4xl lg:text-6xl font-bold uppercase italic text-stone-900 tracking-tight mb-8 leading-tight">
-                Ready to see <span class="text-amber-600">VORNAC</span> in action?
-            </h2>
-            <p class="text-stone-600 text-lg mb-10 max-w-xl mx-auto">
-                Schedule a live session with our team. Walk through a real-world execution and see the depth of our reports.
-            </p>
-            <a href="https://zeeg.me/hello3950/your-vornac-meeting" target="_blank" class="group relative inline-flex h-20 items-center justify-center rounded-2xl bg-stone-900 px-16 font-bold uppercase tracking-[0.2em] text-sm text-white transition-all hover:bg-amber-600 hover:scale-105 active:scale-95 shadow-2xl shadow-stone-900/40 hover:shadow-amber-500/50">
-                <svg class="w-6 h-6 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                Book Demo
+<!-- HERO -->
+<section class="v-hero">
+    <div class="v-hero-inner">
+        <h1 class="v-hero-headline">
+            Continuous validation.<br>
+            <span class="v-amber-mark">Proven exploitability.</span><br>
+            Audit-ready by design.
+        </h1>
+        <p class="v-hero-subline">
+            VORNAC runs the techniques an attacker would — on your live production environment, continuously, on schedule, via API. Every finding is exploitability-proven. Every report is audit-ready for NIS2, DORA, BaFin VAIT/BAIT, KRITIS, and TISAX.
+        </p>
+        <div class="v-hero-actions">
+            <a href="https://zeeg.me/hello3950/your-vornac-meeting" target="_blank" rel="noopener" class="v-btn-primary">
+                Book a demo
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                </svg>
             </a>
-            <p class="text-sm text-stone-500 mt-4">30 minute intro call with our team</p>
-        </div>
-
-        <div class="flex items-center gap-4 justify-center mb-10">
-            <div class="h-[1px] w-16 bg-stone-300"></div>
-            <span class="text-xs uppercase tracking-widest text-stone-400 font-bold">Or send us a message</span>
-            <div class="h-[1px] w-16 bg-stone-300"></div>
-        </div>
-
-        <form id="contact-form" action="https://formspree.io/f/meoyrzog" method="POST" class="bg-white border-2 border-stone-200 rounded-2xl p-8 shadow-lg shadow-stone-900/10">
-            <input type="text" name="gotcha" class="hidden" autocomplete="off"/>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div>
-                    <label class="text-xs uppercase tracking-widest text-stone-500 font-bold mb-2 block">Name</label>
-                    <input type="text" name="name" required placeholder="Full Name" class="w-full bg-white border-2 border-stone-300 rounded-lg px-4 py-3 text-stone-900 placeholder:text-stone-300 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all text-sm">
-                </div>
-                <div>
-                    <label class="text-xs uppercase tracking-widest text-stone-500 font-bold mb-2 block">Work Email</label>
-                    <input type="email" name="email" required placeholder="name@company.com" class="w-full bg-white border-2 border-stone-300 rounded-lg px-4 py-3 text-stone-900 placeholder:text-stone-300 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all text-sm">
-                </div>
-            </div>
-            <div class="mb-4">
-                <label class="text-xs uppercase tracking-widest text-stone-500 font-bold mb-2 block">Company</label>
-                <input type="text" name="company" placeholder="Organization" class="w-full bg-white border-2 border-stone-300 rounded-lg px-4 py-3 text-stone-900 placeholder:text-stone-300 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all text-sm">
-            </div>
-            <div class="mb-6">
-                <label class="text-xs uppercase tracking-widest text-stone-500 font-bold mb-2 block">Message</label>
-                <textarea name="message" rows="3" required placeholder="Your message..." class="w-full bg-white border-2 border-stone-300 rounded-lg px-4 py-3 text-stone-900 placeholder:text-stone-300 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all text-sm resize-none"></textarea>
-            </div>
-            <button type="submit" data-submit-button class="w-full bg-stone-700 text-white font-bold uppercase tracking-widest text-xs py-4 rounded-lg hover:bg-stone-800 transition-all">
-                <span data-submit-text>Send Message</span>
-            </button>
-        </form>
-    </div>
-
-    <div id="thankyou-overlay" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/50 backdrop-blur-md">
-        <div class="mx-4 max-w-md w-full rounded-2xl border-2 border-stone-300 bg-white p-10 text-center shadow-2xl">
-            <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-amber-100 border-2 border-amber-500">
-                <span class="text-3xl text-amber-600 font-black">✓</span>
-            </div>
-            <h3 class="mb-3 font-heading text-2xl text-stone-900 uppercase italic">Request Sent.</h3>
-            <p class="mb-8 text-sm text-stone-600 leading-relaxed">Thank you. Your request has been received. Our team will get back to you within 24 hours.</p>
-            <button id="thankyou-close" type="button" class="w-full rounded-lg border-2 border-stone-300 bg-white px-6 py-3 text-xs font-bold uppercase tracking-widest text-stone-700 hover:bg-amber-500 hover:border-amber-500 hover:text-white transition-all">Close</button>
+            <a href="/pentesting" class="v-btn-ghost">See the platform overview</a>
         </div>
     </div>
 </section>
+<!-- /HERO -->
 
-<!-- END CONTACT -->
+<!-- OUTCOME STATS (light) -->
+<section class="v-stats">
+    <div class="v-stats-inner">
+        <div class="v-stats-grid">
 
-    <!-- FOOTER -->
-<footer class="bg-stone-900 border-t border-stone-800 pt-14 pb-10 px-4 sm:px-6">
+            <div class="v-stat">
+                <div class="v-stat-number">
+                    <span class="v-stat-num">84<span class="v-stat-unit">%</span></span>
+                </div>
+                <div class="v-stat-rule"></div>
+                <div class="v-stat-label">
+                    Less cyber risk
+                    <span class="v-stat-label-sub">across the validated estate</span>
+                </div>
+            </div>
+
+            <div class="v-stat">
+                <div class="v-stat-number">
+                    <span class="v-stat-prefix">up to</span>
+                    <span class="v-stat-num">75<span class="v-stat-unit">%</span></span>
+                </div>
+                <div class="v-stat-rule"></div>
+                <div class="v-stat-label">
+                    Lower external pentesting costs
+                    <span class="v-stat-label-sub">vs. annual report-only engagements</span>
+                </div>
+            </div>
+
+            <div class="v-stat">
+                <div class="v-stat-number">
+                    <span class="v-stat-prefix">&gt;</span>
+                    <span class="v-stat-num">90<span class="v-stat-unit">%</span></span>
+                </div>
+                <div class="v-stat-rule"></div>
+                <div class="v-stat-label">
+                    Faster mean time to remediation
+                    <span class="v-stat-label-sub">measured across the program (MTTR)</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- /OUTCOME STATS -->
+
+<!-- GERMAN DATA SOVEREIGNTY -->
+<section class="v-sovereignty">
+    <div class="v-sovereignty-inner">
+
+        <div class="v-sov-head">
+            <h2 class="v-sov-headline">
+                German jurisdiction. German hosting. <span class="v-sov-emph">Zero foreign cloud exposure.</span>
+            </h2>
+            <p class="v-sov-subline">
+                VORNAC runs entirely on German-owned infrastructure. No US clouds. No data egress outside the EU. No subprocessors that bypass German jurisdiction. Every byte your team validates is processed under BDSG and GDPR — by default, not by request.
+            </p>
+        </div>
+
+        <div class="v-sov-marks">
+
+            <div class="v-sov-mark v-sov-mark--flag">
+                <div>
+                    <div class="v-sov-mark-flag" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <h3 class="v-sov-mark-title">Made &amp; hosted in Germany</h3>
+                    <p class="v-sov-mark-sub">German jurisdiction by default. Hosted in German data centers operated by German entities.</p>
+                </div>
+            </div>
+
+            <a class="v-sov-mark v-sov-mark--image" href="https://www.teletrust.de/" target="_blank" rel="noopener noreferrer">
+                <img src="TeleTrusT-Mitgliedslogo.jpg" alt="TeleTrusT – Member of the IT Security Association Germany">
+                <div class="v-sov-mark-meta">Member, TeleTrusT — IT Security Association Germany</div>
+            </a>
+
+            <div class="v-sov-mark v-sov-mark--image">
+                <img src="it-security-made-in-germany-teletrust-seal.png" alt="IT Security Made in Germany — TeleTrusT seal">
+                <div class="v-sov-mark-meta">Awarded the “IT Security Made in Germany” seal</div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- /GERMAN DATA SOVEREIGNTY -->
+
+<!-- METHOD STATS (dark) -->
+<section class="v-stats is-dark">
+    <div class="v-stats-inner">
+
+        <h2 class="v-stats-headline">
+            Pentest coverage you can prove. Time-to-result you can plan.
+        </h2>
+        <div class="v-stats-divider"></div>
+
+        <div class="v-stats-grid">
+
+            <div class="v-stat">
+                <div class="v-stat-number">
+                    <span class="v-stat-num">97</span><span class="v-stat-unit">%</span>
+                </div>
+                <div class="v-stat-label">
+                    Of attack surface validated each cycle
+                    <span class="v-stat-label-sub">Across cloud, on-premises, APIs, and behind-VPN systems. Continuous — not annual — coverage from day one of deployment.</span>
+                </div>
+            </div>
+
+            <div class="v-stat">
+                <div class="v-stat-number">
+                    <span class="v-stat-num">2<span class="v-stat-range">–5</span></span><span class="v-stat-unit">h</span>
+                </div>
+                <div class="v-stat-label">
+                    From trigger to actionable finding
+                    <span class="v-stat-label-sub">No multi-week engagement window. UI or API trigger, signed exploitability-proven findings the same day.</span>
+                </div>
+            </div>
+
+            <div class="v-stat">
+                <div class="v-stat-number">
+                    <span class="v-stat-num">100</span><span class="v-stat-unit">%</span>
+                </div>
+                <div class="v-stat-label">
+                    Of reports accepted on first auditor pass
+                    <span class="v-stat-label-sub">Reports are audit-ready for NIS2, DORA, BaFin VAIT/BAIT, KRITIS, TISAX, and ISO/IEC 27001.</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- /METHOD STATS -->
+
+<!-- TRUST STRIP -->
+<section class="v-trust" aria-label="Trusted by">
+    <div class="v-trust-label">Trusted by</div>
+    <div class="v-trust-marquee">
+        <div class="v-trust-track">
+            <img src="client-zeiss.png" alt="Carl Zeiss">
+            <img src="client-1.png" alt="mbits">
+            <img src="client-2.png" alt="Knooing">
+            <img src="client-3.png" alt="Instaffo">
+            <img src="client-5.png" alt="Tilko">
+            <img src="client-refundrebel.png" alt="RefundRebel">
+            <img src="client-tkom.png" alt="TKOM">
+            <img src="logo_ipcrew.png" alt="IP Crew">
+            <img src="client-pfitzenmeier.png" alt="Pfitzenmeier">
+            <img src="partner-hetzner.png" alt="Hetzner">
+            <img src="partner-centron.png" alt="Centron">
+
+            <img src="client-zeiss.png" alt="" aria-hidden="true">
+            <img src="client-1.png" alt="" aria-hidden="true">
+            <img src="client-2.png" alt="" aria-hidden="true">
+            <img src="client-3.png" alt="" aria-hidden="true">
+            <img src="client-5.png" alt="" aria-hidden="true">
+            <img src="client-refundrebel.png" alt="" aria-hidden="true">
+            <img src="client-tkom.png" alt="" aria-hidden="true">
+            <img src="logo_ipcrew.png" alt="" aria-hidden="true">
+            <img src="client-pfitzenmeier.png" alt="" aria-hidden="true">
+            <img src="partner-hetzner.png" alt="" aria-hidden="true">
+            <img src="partner-centron.png" alt="" aria-hidden="true">
+        </div>
+    </div>
+</section>
+<!-- /TRUST STRIP -->
+
+<!-- COMPARISON TABLE -->
+<section class="v-comp" id="compare">
+    <div class="v-comp-inner">
+
+        <header class="v-comp-header">
+            <h2 class="v-comp-headline">Why teams pick <em>VORNAC</em> over scanners and Pentera</h2>
+            <p class="v-comp-sub">Autonomous pentest depth at category-leader level — plus German sovereignty and BSI-certified pentesters as Customer Success Managers. </p>
+        </header>
+
+        <div class="v-comp-table-wrap">
+            <table class="v-comp-table">
+                <caption>Feature comparison: classical VM, BAS, and EASM tools vs. Pentera vs. VORNAC</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Criterion</th>
+                        <th scope="col">Classical tools<span class="v-comp-col-sub">VM · BAS · EASM</span></th>
+                        <th scope="col">Pentera</th>
+                        <th scope="col" class="v-comp-col-vornac">
+                            <img src="logo-vornac-black.svg" alt="VORNAC" class="v-comp-logo" width="132" height="28"
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Autonomous pentest &amp; real-world emulation</th>
+                        <td>
+                            <span class="v-comp-status v-comp-status--no">No</span>
+                            <span class="v-comp-detail">Static scans or predefined playbooks only — not full adversarial emulation.</span>
+                        </td>
+                        <td>
+                            <span class="v-comp-status v-comp-status--yes">Yes</span>
+                            <span class="v-comp-detail">Emulates cognitive attacker workflows end to end.</span>
+                        </td>
+                        <td class="v-comp-col-vornac">
+                            <span class="v-comp-status v-comp-status--yes">Yes</span>
+                            <span class="v-comp-detail">Fully autonomous attacker emulation against your live estate.</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Safe-by-design exploits in production</th>
+                        <td>
+                            <span class="v-comp-status v-comp-status--no">No</span>
+                            <span class="v-comp-detail">Crash risk, theory-only findings, or no exploitation at all.</span>
+                        </td>
+                        <td>
+                            <span class="v-comp-status v-comp-status--yes">Yes</span>
+                            <span class="v-comp-detail">Safe exploits in live environments.</span>
+                        </td>
+                        <td class="v-comp-col-vornac">
+                            <span class="v-comp-status v-comp-status--yes">Yes</span>
+                            <span class="v-comp-detail">Production-safe by design — non-destructive, evidence-backed runs.</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Attack chaining</th>
+                        <td>
+                            <span class="v-comp-status v-comp-status--no">No</span>
+                            <span class="v-comp-detail">Findings treated in isolation — no cross-system paths.</span>
+                        </td>
+                        <td>
+                            <span class="v-comp-status v-comp-status--yes">Yes</span>
+                            <span class="v-comp-detail">Links findings into multi-step attack chains.</span>
+                        </td>
+                        <td class="v-comp-col-vornac">
+                            <span class="v-comp-status v-comp-status--yes">Yes</span>
+                            <span class="v-comp-detail">Automated detection of cross-system attack paths.</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Digital sovereignty &amp; hosting (NIS2 / DORA)</th>
+                        <td>
+                            <span class="v-comp-status v-comp-status--partial">Varies</span>
+                            <span class="v-comp-detail">Often US-hosted SaaS and subprocessors outside EU jurisdiction.</span>
+                        </td>
+                        <td>
+                            <span class="v-comp-status v-comp-status--no">No</span>
+                            <span class="v-comp-detail">Non-EU vendor footprint — limited alignment with German/EU data residency expectations.</span>
+                        </td>
+                        <td class="v-comp-col-vornac">
+                            <div class="v-comp-cell-top"><span class="v-comp-usp">USP</span><span class="v-comp-status v-comp-status--yes">Yes</span></div>
+                            <span class="v-comp-detail">100% made &amp; hosted in Germany, proprietary AI stack, GDPR- and NIS2-aligned operations.</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">BSI-recognized expert consultation</th>
+                        <td>
+                            <span class="v-comp-status v-comp-status--no">No</span>
+                            <span class="v-comp-detail">Scanner noise — high false-positive rates without human triage.</span>
+                        </td>
+                        <td>
+                            <span class="v-comp-status v-comp-status--no">No</span>
+                            <span class="v-comp-detail">Software-only delivery — no dedicated BSI-recognized pentester as your contact.</span>
+                        </td>
+                        <td class="v-comp-col-vornac">
+                            <div class="v-comp-cell-top"><span class="v-comp-usp">USP</span><span class="v-comp-status v-comp-status--yes">Yes</span></div>
+                            <span class="v-comp-detail">Every point of contact is a BSI-qualified penetration tester, not generic support staff.</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</section>
+<!-- /COMPARISON TABLE -->
+
+<!-- FOOTER -->
+<footer class="v-footer pt-14 pb-10 px-4 sm:px-6">
     <div class="max-w-content mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_auto_auto] gap-10 items-start">
             <div class="space-y-4">
@@ -626,8 +1414,9 @@
                 <ul class="space-y-3 text-sm text-stone-400">
                     <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
                     <li><a href="/pentesting" class="hover:text-white transition-colors">Pentesting</a></li>
+                    <li><a href="/industries" class="hover:text-white transition-colors">Industries</a></li>
+                    <li><a href="/customers" class="hover:text-white transition-colors">Customers</a></li>
                     <li><a href="/about" class="hover:text-white transition-colors">About</a></li>
-                    <li><a href="/#contact" class="hover:text-white transition-colors">Contact</a></li>
                 </ul>
             </div>
             <div>
@@ -635,115 +1424,64 @@
                 <ul class="space-y-3 text-sm text-stone-400">
                     <li><a href="/legal" class="hover:text-white transition-colors">Privacy Policy</a></li>
                     <li><a href="/legal" class="hover:text-white transition-colors">Imprint</a></li>
-                    <li><a href="https://www.linkedin.com/company/vornac" target="_blank" class="hover:text-white transition-colors">LinkedIn</a></li>
+                    <li><a href="https://www.linkedin.com/company/vornac" target="_blank" rel="noopener" class="hover:text-white transition-colors">LinkedIn</a></li>
                 </ul>
             </div>
         </div>
-        <div class="mt-10 pt-6 border-t border-stone-800 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div class="mt-10 pt-6 border-t v-footer-bar flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <p class="text-xs uppercase tracking-[0.16em] text-stone-500">&copy; 2026 VORNAC GmbH. All rights reserved.</p>
-            <div class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-stone-500">
-                <a href="/de" onclick="localStorage.setItem('vornac_lang', 'de')" class="hover:text-white transition-colors">DE</a>
-                <span class="text-stone-700">|</span>
-                <span class="text-white">EN</span>
+            <div class="v-lang-switch flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-stone-500" role="navigation" aria-label="Language">
+                <a href="/de" hreflang="de" onclick="localStorage.setItem('vornac_lang', 'de')" class="hover:text-white transition-colors">DE</a>
+                <span class="text-stone-700" aria-hidden="true">|</span>
+                <span class="text-white" aria-current="true">EN</span>
             </div>
         </div>
     </div>
 </footer>
 
-
-<style>
-    .step-card {
-        transition: all 0.8s ease-out;
-    }
-    .opacity-0 { opacity: 0; }
-    .opacity-100 { opacity: 1 !important; }
-    .translate-y-10 { transform: translateY(2.5rem); }
-    .translate-y-0 { transform: translateY(0) !important; }
-    .-translate-x-10 { transform: translateX(-2.5rem); }
-    .translate-x-0 { transform: translateX(0) !important; }
-</style>
-
 <div id="cookie-banner" class="fixed bottom-6 left-6 right-6 md:left-auto md:max-w-sm z-[200] hidden">
-    <div class="bg-white border-2 border-stone-300 backdrop-blur-xl rounded-2xl p-6 shadow-xl shadow-stone-900/20">
-        <div class="flex items-center gap-3 mb-4">
-            <div class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></div>
-            <span class="text-[10px] font-black uppercase tracking-[0.3em] text-stone-900">Privacy Preference</span>
+    <div class="bg-white border border-stone-300 rounded-lg p-6 shadow-xl shadow-stone-900/20">
+        <div class="mb-4">
+            <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-stone-900" style="font-family: var(--v-sans);">Privacy Preference</span>
         </div>
-        <p class="text-stone-600 text-[11px] leading-relaxed mb-6">
-            We use <span class="text-stone-900 font-bold">Plausible Analytics</span> (privacy-friendly, no cookies) and <span class="text-stone-900 font-bold">Google Ads Conversion Tracking</span>. Your consent is only required for Google Ads.
+        <p class="text-stone-600 text-[12px] leading-relaxed mb-6" style="font-family: var(--v-sans);">
+            We use <span class="text-stone-900 font-semibold">Plausible Analytics</span> (privacy-friendly, no cookies) and <span class="text-stone-900 font-semibold">Google Ads Conversion Tracking</span>. Your consent is only required for Google Ads.
         </p>
         <div class="flex gap-3">
-            <button id="accept-cookies" class="flex-1 bg-stone-900 text-white text-[10px] font-bold uppercase tracking-widest py-3 rounded-lg hover:bg-amber-600 transition-all">
+            <button id="accept-cookies" class="flex-1 bg-stone-900 text-white text-[11px] font-semibold uppercase tracking-widest py-2.5 rounded-md hover:bg-amber-600 transition-all" style="font-family: var(--v-sans);">
                 Accept
             </button>
-            <button id="decline-cookies" class="flex-1 bg-white border-2 border-stone-300 text-stone-700 text-[10px] font-bold uppercase tracking-widest py-3 rounded-lg hover:bg-red-50 hover:border-red-300 transition-all">
+            <button id="decline-cookies" class="flex-1 bg-white border border-stone-300 text-stone-700 text-[11px] font-semibold uppercase tracking-widest py-2.5 rounded-md hover:bg-stone-50 transition-all" style="font-family: var(--v-sans);">
                 Decline
             </button>
         </div>
         <div class="mt-4 text-center">
-            <a href="/legal#privacy" class="text-[9px] text-stone-400 uppercase tracking-widest hover:text-amber-600 transition-colors">Read Privacy Policy</a>
+            <a href="/legal#privacy" class="text-[9px] text-stone-400 uppercase tracking-widest hover:text-amber-600 transition-colors" style="font-family: var(--v-sans);">Read Privacy Policy</a>
         </div>
     </div>
 </div>
-
-<!-- Exit Intent Popup -->
-<div id="exit-popup" class="fixed inset-0 z-[200] hidden flex items-center justify-center bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-300">
-    <div class="relative mx-4 max-w-md w-full rounded-2xl border-2 border-stone-300 bg-white p-8 shadow-2xl transform scale-95 transition-transform duration-300">
-        <button id="exit-popup-close" class="absolute top-4 right-4 text-stone-400 hover:text-stone-900 transition-colors">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
-        </button>
-
-        <div class="text-center">
-            <div class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-amber-100 border-2 border-amber-500 mb-6">
-                <span class="text-3xl">👋</span>
-            </div>
-            <h3 class="font-heading text-2xl font-bold text-stone-900 uppercase italic tracking-tight mb-2">Before you go...</h3>
-            <p class="text-stone-600 text-sm mb-8 leading-relaxed">
-                Don't leave your infrastructure exposed. Secure your 30-minute strategy session with our team.
-            </p>
-
-            <a href="https://zeeg.me/hello3950/your-vornac-meeting" target="_blank" class="block w-full bg-stone-900 text-white font-bold uppercase tracking-[0.2em] text-xs py-4 rounded-lg hover:bg-amber-600 transition-all shadow-lg mb-4">
-                Book Personal Demo
-            </a>
-
-            <button id="exit-popup-dismiss" class="text-[10px] uppercase tracking-widest text-stone-400 hover:text-stone-900 transition-colors">
-                No thanks, I'll risk it
-            </button>
-        </div>
-    </div>
-</div>
-
 
 <script>
-
 document.addEventListener('DOMContentLoaded', function() {
 
-    // 0. COOKIE
-
-        // --- CONSENT MANAGEMENT LOGIC ---
+    // Cookie consent
     const banner = document.getElementById('cookie-banner');
     const acceptBtn = document.getElementById('accept-cookies');
     const declineBtn = document.getElementById('decline-cookies');
     const consentKey = 'vornac_consent_given';
 
-        const activateAds = () => {
-    // Google Consent Mode for Ads only
-    gtag('consent', 'update', {
-        'ad_storage': 'granted',
-        'ad_user_data': 'granted',
-        'ad_personalization': 'granted'
-    });
-
-    console.log("Google Ads Conversion Tracking activated.");
+    const activateAds = () => {
+        gtag('consent', 'update', {
+            'ad_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted'
+        });
     };
 
-
-    // Check if user already decided
     if (!localStorage.getItem(consentKey)) {
         setTimeout(() => {
             banner.classList.remove('hidden');
-            banner.classList.add('animate-fade-in-up'); 
-        }, 2000); // Erscheint nach 2 Sekunden
+        }, 2000);
     } else if (localStorage.getItem(consentKey) === 'true') {
         activateAds();
     }
@@ -759,240 +1497,44 @@ document.addEventListener('DOMContentLoaded', function() {
         banner.classList.add('hidden');
     });
 
+    // Mobile menu
+    const toggleBtn = document.getElementById('nav-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const backdrop = document.getElementById('mobile-backdrop');
 
-    // 1. LOADER & VIDEO
-    const loader = document.getElementById("vornac-loader");
-    if (loader) loader.style.display = "none";
+    if (toggleBtn && mobileMenu && backdrop) {
+        const closeMenu = () => {
+            mobileMenu.classList.add('hidden');
+            backdrop.classList.add('hidden');
+            document.body.classList.remove('nav-open');
+        };
 
-    const heroVideo = document.getElementById('hero-video');
-    if (heroVideo) {
-        heroVideo.play().catch(() => {
-            document.addEventListener('click', () => heroVideo.play(), { once: true });
+        const openMenu = () => {
+            mobileMenu.classList.remove('hidden');
+            backdrop.classList.remove('hidden');
+            document.body.classList.add('nav-open');
+        };
+
+        toggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isHidden = mobileMenu.classList.contains('hidden');
+            isHidden ? openMenu() : closeMenu();
         });
-        heroVideo.addEventListener('ended', function() {
-            document.getElementById('hero-section')?.classList.add('video-ended');
-            // Dashboard Stats im Hero starten (Faster)
-            animateValue("stat-percent", 0, 78, 1000);
-            animateValue("stat-findings", 0, 7, 1200);
-            animateValue("stat-critical", 0, 2, 1200);
-            animateValue("stat-eta", 0, 18, 800);
-            document.getElementById("stat-bar").style.width = "78%";
+
+        backdrop.addEventListener('click', closeMenu);
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
         });
-    }
 
-    // 3. COUNTER LOGIK
-    function startCounter(el) {
-        if (el.dataset.animated === "true") return;
-        el.dataset.animated = "true";
-        
-        const target = +el.getAttribute('data-target');
-        const duration = 1200;
-        const start = 0;
-        let startTimestamp = null;
-
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            const easeOutQuad = t => t * (2 - t);
-            el.innerHTML = Math.floor(easeOutQuad(progress) * (target - start) + start);
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            } else {
-                el.innerHTML = target;
+        document.addEventListener('click', (e) => {
+            const isClickInsideMenu = mobileMenu.contains(e.target);
+            const isClickOnButton = toggleBtn.contains(e.target);
+            if (!mobileMenu.classList.contains('hidden') && !isClickInsideMenu && !isClickOnButton) {
+                closeMenu();
             }
-        };
-        window.requestAnimationFrame(step);
-    }
-
-    // 4. HERO DASHBOARD ANIMATION HELPER
-    function animateValue(id, start, end, duration) {
-        const obj = document.getElementById(id);
-        if (!obj) return;
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            obj.innerHTML = Math.floor(progress * (end - start) + start);
-            if (progress < 1) window.requestAnimationFrame(step);
-        };
-        window.requestAnimationFrame(step);
-    }
-
-  
-// 5. NAVIGATION
-const toggleBtn = document.getElementById('nav-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
-const backdrop = document.getElementById('mobile-backdrop');
-
-if (toggleBtn && mobileMenu && backdrop) {
-    const closeMenu = () => {
-        mobileMenu.classList.add('hidden');
-        backdrop.classList.add('hidden');
-        document.body.classList.remove('nav-open');
-    };
-
-    const openMenu = () => {
-        mobileMenu.classList.remove('hidden');
-        backdrop.classList.remove('hidden');
-        document.body.classList.add('nav-open');
-    };
-
-    toggleBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isHidden = mobileMenu.classList.contains('hidden');
-        isHidden ? openMenu() : closeMenu();
-    });
-
-    // Schließt das Menü bei Klick auf den Backdrop
-    backdrop.addEventListener('click', closeMenu);
-
-    // Schließt das Menü, wenn man auf einen Link klickt
-    mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', closeMenu);
-    });
-
-    // Globaler Click-Outside Schutz
-    document.addEventListener('click', (e) => {
-        const isClickInsideMenu = mobileMenu.contains(e.target);
-        const isClickOnButton = toggleBtn.contains(e.target);
-        
-        if (!mobileMenu.classList.contains('hidden') && !isClickInsideMenu && !isClickOnButton) {
-            closeMenu();
-        }
-    });
-}
-
-    const form = document.getElementById('contact-form');
-    if (form) {
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const btn = form.querySelector('[data-submit-button]');
-            if (btn) btn.disabled = true;
-            
-            const res = await fetch(form.action, { 
-                method: 'POST', 
-                body: new FormData(form), 
-                headers: { 'Accept': 'application/json' } 
-            });
-            
-            if (res.ok) { 
-                // Google Ads Conversion Trigger
-                gtag('event', 'conversion', {
-                    'send_to': 'G-9LJGWDQ2CR',
-                    'event_category': 'contact_form',
-                    'event_label': 'demo_request'
-                });
-                
-                form.reset(); 
-    document.getElementById('thankyou-overlay')?.classList.remove('hidden'); 
-}
-            if (btn) btn.disabled = false;
         });
     }
-    
-    
-
-    document.getElementById('thankyou-close')?.addEventListener('click', () => {
-        document.getElementById('thankyou-overlay')?.classList.add('hidden');
-
-    });
-
-    // Exit Intent Logic
-    const exitPopup = document.getElementById('exit-popup');
-    const exitPopupClose = document.getElementById('exit-popup-close');
-    const exitPopupDismiss = document.getElementById('exit-popup-dismiss');
-    const exitKey = 'vornac_exit_session';
-
-    const showExitPopup = () => {
-        if (!sessionStorage.getItem(exitKey) && exitPopup) {
-            exitPopup.classList.remove('hidden');
-            setTimeout(() => {
-                exitPopup.classList.remove('opacity-0');
-                exitPopup.querySelector('div').classList.remove('scale-95');
-                exitPopup.querySelector('div').classList.add('scale-100');
-            }, 10);
-            sessionStorage.setItem(exitKey, 'true');
-        }
-    };
-
-    const closeExitPopup = () => {
-        if (!exitPopup) return;
-        exitPopup.classList.add('opacity-0');
-        exitPopup.querySelector('div').classList.remove('scale-100');
-        exitPopup.querySelector('div').classList.add('scale-95');
-        setTimeout(() => {
-            exitPopup.classList.add('hidden');
-        }, 300);
-    };
-
-    document.addEventListener('mouseleave', (e) => {
-        if (e.clientY <= 20) {
-            showExitPopup();
-        }
-    });
-
-    if (exitPopupClose) exitPopupClose.addEventListener('click', closeExitPopup);
-    if (exitPopupDismiss) exitPopupDismiss.addEventListener('click', closeExitPopup);
-    if (exitPopup) exitPopup.addEventListener('click', (e) => {
-        if (e.target === exitPopup) closeExitPopup();
-    });
-
-
-});
-</script>
-<script>
-// Infinite logo scroll (measure widths on resize/load only — avoids layout thrashing per frame)
-document.addEventListener('DOMContentLoaded', function() {
-    const scrollContainer = document.querySelector('.logo-scroll');
-    if (!scrollContainer) return;
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        return;
-    }
-
-    let scrollPosition = 0;
-    const scrollSpeed = 0.5;
-    const gapPx = 48;
-    const halfChildren = scrollContainer.children.length / 2;
-    let resetPoint = 0;
-    let animationId;
-    let isPaused = false;
-
-    function measureResetPoint() {
-        let acc = 0;
-        for (let i = 0; i < halfChildren; i++) {
-            acc += scrollContainer.children[i].offsetWidth;
-            if (i < halfChildren - 1) acc += gapPx;
-        }
-        acc += gapPx;
-        resetPoint = acc;
-        if (resetPoint > 0 && scrollPosition >= resetPoint) scrollPosition = 0;
-    }
-
-    function scroll() {
-        if (isPaused) {
-            animationId = requestAnimationFrame(scroll);
-            return;
-        }
-        scrollPosition += scrollSpeed;
-        if (resetPoint > 0 && scrollPosition >= resetPoint) scrollPosition = 0;
-        scrollContainer.style.transform = `translate3d(-${scrollPosition}px, 0, 0)`;
-        animationId = requestAnimationFrame(scroll);
-    }
-
-    measureResetPoint();
-    window.addEventListener('load', measureResetPoint, { once: true });
-
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(measureResetPoint, 150);
-    });
-
-    scrollContainer.addEventListener('mouseenter', () => { isPaused = true; });
-    scrollContainer.addEventListener('mouseleave', () => { isPaused = false; });
-
-    animationId = requestAnimationFrame(scroll);
 });
 </script>
 <script type="text/javascript">

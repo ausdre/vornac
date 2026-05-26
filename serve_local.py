@@ -47,7 +47,7 @@ def main() -> None:
     with HTTPServer((host, port), VornacHandler) as httpd:
         print(f"Serving {ROOT}")
         print(f"  http://{host}:{port}/")
-        print("  /de → index_de.html; /pentesting → pentesting.html (when file exists)")
+        print("  /de → index_de.html; /pentesting_de → pentesting_de.html; /industries_de → industries_de.html")
         httpd.serve_forever()
 
 
