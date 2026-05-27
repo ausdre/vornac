@@ -10,11 +10,23 @@ module.exports = {
     extend: {
       colors: {
         'vornac-black': '#020308',
-        'vornac-gold': '#FFA326',
+        'vornac-gold': '#ffa317',
         'vornac-grey-dark': '#111317',
         'vornac-grey-top': '#1C1E23',
         'vornac-grey-light': '#C0C3C8',
         'vornac-red': '#FF4B4B',
+        amber: {
+          50:  '#fff7e9',
+          100: '#ffecc7',
+          200: '#ffd591',
+          300: '#ffc35a',
+          400: '#ffb33a',
+          500: '#ffa317',
+          600: '#d68500',
+          700: '#a36800',
+          800: '#7a4f00',
+          900: '#523500',
+        },
       },
       fontFamily: {
         display: ['"Archivo Black"', '"Archivo"', 'system-ui', 'sans-serif'],

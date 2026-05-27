@@ -11,8 +11,8 @@
     --v-line:      #e7e5e4;
     --v-line-soft: #f1f0ee;
     --v-line-dark: #2A2F39;
-    --v-amber:     #E89615;
-    --v-amber-deep:#B4720A;
+    --v-amber:     #ffa317;
+    --v-amber-deep:#cc8200;
     --v-display: 'Archivo Black', 'Archivo', system-ui, -apple-system, sans-serif;
     --v-sans:    'Archivo', system-ui, -apple-system, sans-serif;
     --v-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
@@ -359,7 +359,7 @@
 .about-contact-textarea:focus {
     outline: none;
     border-color: var(--v-amber);
-    box-shadow: 0 0 0 3px rgba(232, 150, 21, 0.15);
+    box-shadow: 0 0 0 3px rgba(255, 163, 23, 0.15);
 }
 .about-contact-textarea { resize: vertical; min-height: 96px; }
 .about-contact-submit {

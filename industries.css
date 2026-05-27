@@ -11,9 +11,9 @@
     --v-line:      #e7e5e4;
     --v-line-soft: #f1f0ee;
     --v-line-dark: #2A2F39;
-    --v-amber:     #E89615;
-    --v-amber-deep:#B4720A;
-    --v-amber-soft:#FEF3D8;
+    --v-amber:     #ffa317;
+    --v-amber-deep:#cc8200;
+    --v-amber-soft:#fff3d8;
     --v-display: 'Archivo Black', 'Archivo', system-ui, -apple-system, sans-serif;
     --v-sans:    'Archivo', system-ui, -apple-system, sans-serif;
     --v-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;

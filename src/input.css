@@ -464,12 +464,12 @@ img, video { max-width: 100%; }
     --v-line-soft:  #f1f0ee;
     --v-line-dark:  #2A2F39;
     --v-rule:       #0E1116;
-    --v-rule-amber: #E89615;
+    --v-rule-amber: #ffa317;
 
-    /* Accent — precision only, not decoration */
-    --v-amber:      #E89615;
-    --v-amber-deep: #B4720A;
-    --v-amber-soft: #FEF3D8;
+    /* Brand accent — precision only, not decoration */
+    --v-amber:      #ffa317;
+    --v-amber-deep: #cc8200;
+    --v-amber-soft: #fff3d8;
 
     /* Type families
        Use --v-display for billboard moments (H1, hero numbers, brand wordmark).
@@ -556,8 +556,8 @@ img, video { max-width: 100%; }
     --color-bg:        #ffffff;
     --color-bg-soft:   #f5f5f4;
     --color-bg-muted:  #e7e5e4;
-    --color-accent:    #d4a012;
-    --color-accent-dark:#b8860b;
+    --color-accent:    #ffa317;
+    --color-accent-dark:#cc8200;
     --color-text:      #1c1917;
     --color-text-muted:#57534e;
 }
