@@ -1,15 +1,15 @@
 /* VORNAC Industries — shared enterprise styles */
 
 :root {
-    --v-bg:        #f5f2ed;
-    --v-bg-band:   #efe9e3;
-    --v-bg-card:   #FFFFFF;
+    --v-bg:        #ffffff;
+    --v-bg-band:   #f5f5f4;
+    --v-bg-card:   #ffffff;
     --v-bg-dark:   #0E1116;
     --v-ink:       #0E1116;
     --v-ink-2:     #4B5260;
     --v-ink-3:     #7A8190;
-    --v-line:      #DCD5C5;
-    --v-line-soft: #E8E1D2;
+    --v-line:      #e7e5e4;
+    --v-line-soft: #f1f0ee;
     --v-line-dark: #2A2F39;
     --v-amber:     #E89615;
     --v-amber-deep:#B4720A;
@@ -17,7 +17,7 @@
     --v-sans: 'Manrope', system-ui, -apple-system, sans-serif;
 }
 
-.bg-warm { background-color: #f5f2ed; }
+.bg-warm { background-color: #ffffff; }
 
 /* Announcement */
 .v-announcement {
