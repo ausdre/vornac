@@ -44,7 +44,9 @@
         --v-amber:     #E89615;
         --v-amber-deep:#B4720A;
         --v-amber-soft:#FEF3D8;
-        --v-sans: 'Manrope', system-ui, -apple-system, sans-serif;
+        --v-display: 'Archivo Black', 'Archivo', system-ui, -apple-system, sans-serif;
+        --v-sans:    'Archivo', system-ui, -apple-system, sans-serif;
+        --v-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
     }
 
     .bg-warm { background-color: #ffffff; }
@@ -878,10 +880,11 @@
         max-width: 22ch;
     }
     .v-cta-final-emph {
-        font-family: 'Montserrat', var(--v-sans);
-        font-style: italic;
-        font-weight: 800;
+        font-family: var(--v-display);
+        font-weight: 900;
         color: var(--v-amber-deep);
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
         white-space: nowrap;
     }
     .v-cta-final-sub {

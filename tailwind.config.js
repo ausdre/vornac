@@ -17,8 +17,10 @@ module.exports = {
         'vornac-red': '#FF4B4B',
       },
       fontFamily: {
-        heading: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
-        body: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['"Archivo Black"', '"Archivo"', 'system-ui', 'sans-serif'],
+        heading: ['"Archivo"', 'system-ui', 'sans-serif'],
+        body: ['"Archivo"', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
       maxWidth: {
         content: '72rem', // 1152px

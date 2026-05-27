@@ -14,7 +14,9 @@
     --v-amber:     #E89615;
     --v-amber-deep:#B4720A;
     --v-amber-soft:#FEF3D8;
-    --v-sans: 'Manrope', system-ui, -apple-system, sans-serif;
+    --v-display: 'Archivo Black', 'Archivo', system-ui, -apple-system, sans-serif;
+    --v-sans:    'Archivo', system-ui, -apple-system, sans-serif;
+    --v-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 }
 
 .bg-warm { background-color: #ffffff; }

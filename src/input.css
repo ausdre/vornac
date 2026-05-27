@@ -440,24 +440,44 @@ img, video { max-width: 100%; }
     }
 
 /* ----------------------------------------
- * Enterprise design tokens (footer, announcement bar, and most page sections)
+ * Brutalist enterprise design tokens
+ * Type stack: Archivo (body + mid-display) + Archivo Black (billboard)
+ *             + JetBrains Mono (regulator-credible data accents)
+ * Surfaces:   clean white + faint stone band + printed-ink dark
+ * Rules:      hard ink hairlines, amber as precision accent only
  * -------------------------------------- */
 :root {
+    /* Surfaces */
     --v-bg:         #ffffff;
     --v-bg-band:    #f5f5f4;
     --v-bg-card:    #ffffff;
     --v-bg-dark:    #0E1116;
     --v-bg-dark-2:  #181C24;
+
+    /* Ink */
     --v-ink:        #0E1116;
     --v-ink-2:      #4B5260;
     --v-ink-3:      #7A8190;
+
+    /* Hairlines: soft stone for subtle separation, hard ink for brutalist rules */
     --v-line:       #e7e5e4;
     --v-line-soft:  #f1f0ee;
     --v-line-dark:  #2A2F39;
+    --v-rule:       #0E1116;
+    --v-rule-amber: #E89615;
+
+    /* Accent — precision only, not decoration */
     --v-amber:      #E89615;
     --v-amber-deep: #B4720A;
     --v-amber-soft: #FEF3D8;
-    --v-sans:       'Manrope', system-ui, -apple-system, sans-serif;
+
+    /* Type families
+       Use --v-display for billboard moments (H1, hero numbers, brand wordmark).
+       Use --v-sans for body and mid-scale display.
+       Use --v-mono for compliance frameworks, timestamps, signed evidence. */
+    --v-display:    'Archivo Black', 'Archivo', system-ui, -apple-system, sans-serif;
+    --v-sans:       'Archivo', system-ui, -apple-system, sans-serif;
+    --v-mono:       'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 }
 
 .v-footer {
