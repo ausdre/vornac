@@ -156,7 +156,31 @@
         align-items: center;
         gap: 28px;
         flex-wrap: wrap;
-        margin-bottom: 64px;
+        margin-bottom: 40px;
+    }
+    .v-hero-trust {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 14px 18px;
+        margin: 0 0 64px;
+        padding-top: 24px;
+        border-top: 1px solid var(--v-line);
+        max-width: 740px;
+        font-family: var(--v-sans);
+        font-size: 11.5px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        line-height: 1.5;
+    }
+    .v-hero-trust-label {
+        color: var(--v-amber-deep);
+    }
+    .v-hero-trust-list {
+        color: var(--v-ink-3);
+        font-weight: 600;
+        letter-spacing: 0.10em;
     }
     .v-btn-primary {
         display: inline-flex;
@@ -204,10 +228,11 @@
     }
     @media (max-width: 768px) {
         .v-hero-inner { padding: 64px 24px 48px; }
-        .v-hero-actions { gap: 20px; margin-bottom: 48px; }
+        .v-hero-actions { gap: 20px; margin-bottom: 28px; }
         .v-hero-subline { font-size: 17px; margin-bottom: 36px; }
         .v-hero-kicker { margin-bottom: 22px; font-size: 11px; }
         .v-hero-headline { margin-bottom: 28px; }
+        .v-hero-trust { padding-top: 20px; gap: 10px 14px; margin-bottom: 40px; font-size: 10.5px; }
     }
 
     /* Stats band */
