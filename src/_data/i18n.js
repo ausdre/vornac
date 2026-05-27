@@ -37,7 +37,10 @@ module.exports = {
       legalHeading: "Legal",
       legalLinks: {
         privacy: "Privacy Policy",
-        imprint: "Imprint",
+        imprint: "Imprint"
+      },
+      socialsHeading: "Socials",
+      socialLinks: {
         linkedin: "LinkedIn"
       },
       copyright: "© 2026 VORNAC GmbH. All rights reserved.",
@@ -87,7 +90,10 @@ module.exports = {
       legalHeading: "Rechtliches",
       legalLinks: {
         privacy: "Datenschutz",
-        imprint: "Impressum",
+        imprint: "Impressum"
+      },
+      socialsHeading: "Social Media",
+      socialLinks: {
         linkedin: "LinkedIn"
       },
       copyright: "© 2026 VORNAC GmbH. Alle Rechte vorbehalten.",
