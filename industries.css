@@ -44,7 +44,6 @@
     text-transform: uppercase;
     padding: 3px 8px;
     margin-right: 14px;
-    border-radius: 3px;
     vertical-align: 2px;
 }
 .v-announcement a {
@@ -288,7 +287,6 @@
     text-decoration: none;
     font-size: 15px;
     font-weight: 600;
-    border-radius: 4px;
     transition: background 0.15s, color 0.15s;
 }
 .ind-btn-primary:hover { background: var(--v-amber); color: var(--v-bg-dark); }
@@ -520,7 +518,6 @@
     text-decoration: none;
     font-size: 15px;
     font-weight: 700;
-    border-radius: 4px;
 }
 .ind-cta-btn:hover { background: #fff; }
 
