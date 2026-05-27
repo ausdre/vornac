@@ -206,9 +206,7 @@ img, video { max-width: 100%; }
         }
 
     #site-header.is-scrolled {
-        background-color: transparent;
-        border-bottom-color: rgba(255, 255, 255, 0.08);
-        box-shadow: 0 12px 34px rgba(0, 0, 0, 0.45);
+        box-shadow: 0 6px 24px rgba(14, 17, 22, 0.06);
         }
 
     #site-header.is-scrolled .nav-logo {
