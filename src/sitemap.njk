@@ -1,0 +1,52 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+priorities:
+  index: "1.0"
+  pentesting: "0.9"
+  industries: "0.85"
+  industries-insurance: "0.8"
+  industries-financial-services: "0.8"
+  industries-critical-infrastructure: "0.8"
+  industries-enterprise: "0.8"
+  industries-automotive: "0.8"
+  customers: "0.8"
+  about: "0.75"
+  apply: "0.6"
+  legal: "0.3"
+  comcenter: "0.5"
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{%- set lastmod = page.date | isoDate -%}
+{%- for entry in pages -%}
+  {%- set priority = priorities[entry.key] or "0.5" -%}
+  {%- if entry.en %}
+  <url>
+    <loc>{{ entry.en | absoluteUrl(site.domain) }}</loc>
+    <lastmod>{{ lastmod }}</lastmod>
+    <priority>{{ priority }}</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="{{ entry.en | absoluteUrl(site.domain) }}" />
+    {%- if entry.de %}
+    <xhtml:link rel="alternate" hreflang="de" href="{{ entry.de | absoluteUrl(site.domain) }}" />
+    {%- endif %}
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ entry.en | absoluteUrl(site.domain) }}" />
+  </url>
+  {%- endif -%}
+  {%- if entry.de %}
+  <url>
+    <loc>{{ entry.de | absoluteUrl(site.domain) }}</loc>
+    <lastmod>{{ lastmod }}</lastmod>
+    <priority>{{ priority }}</priority>
+    {%- if entry.en %}
+    <xhtml:link rel="alternate" hreflang="en" href="{{ entry.en | absoluteUrl(site.domain) }}" />
+    {%- endif %}
+    <xhtml:link rel="alternate" hreflang="de" href="{{ entry.de | absoluteUrl(site.domain) }}" />
+    {%- if entry.en %}
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ entry.en | absoluteUrl(site.domain) }}" />
+    {%- endif %}
+  </url>
+  {%- endif -%}
+{%- endfor %}
+</urlset>

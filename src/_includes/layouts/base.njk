@@ -1,0 +1,55 @@
+{# Base HTML shell for every page on the site.
+
+   Pages use this layout via Nunjucks extends, e.g.:
+
+     ---
+     title: "..."
+     description: "..."
+     i18nKey: pentesting
+     ---
+     {% extends "layouts/base.njk" %}
+
+     {% block extraHead %}
+       <style>...</style>
+       <script type="application/ld+json">...</script>
+     {% endblock %}
+
+     {% block content %}
+       <main>...</main>
+     {% endblock %}
+
+   Available blocks:
+     extraHead    — additional <head> content (page-specific styles, JSON-LD)
+     content      — main body HTML
+     extraBodyEnd — additional scripts before </body>
+#}
+<!DOCTYPE html>
+<html lang="{{ t.htmlLang }}" class="scroll-smooth">
+<head>
+    {% include "partials/head-analytics.njk" %}
+    {% include "partials/lang-redirect.njk" %}
+    {% include "partials/head-meta.njk" %}
+    {% include "partials/head-fonts.njk" %}
+
+    {% block extraHead %}{% endblock %}
+</head>
+<body class="bg-warm text-stone-900 font-body antialiased{% if bodyClass %} {{ bodyClass }}{% endif %}">
+
+    {% block announcementBar %}{% include "partials/announcement-bar.njk" %}{% endblock %}
+
+    {% block siteHeader %}{% include "partials/site-header.njk" %}{% endblock %}
+
+    {% block content %}{% endblock %}
+
+    {% include "partials/site-footer.njk" %}
+
+    {% include "partials/cookie-banner.njk" %}
+
+    {% include "partials/motion-script.njk" %}
+    {% include "partials/site-scripts.njk" %}
+    {% include "partials/linkedin-tracking.njk" %}
+
+    {% block extraBodyEnd %}{% endblock %}
+
+</body>
+</html>

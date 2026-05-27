@@ -1,0 +1,86 @@
+---
+title: "Financial services — DORA · VAIT · BAIT | VORNAC"
+description: "Continuous pentesting for banks, payment institutions, and asset managers — DORA resilience plus BaFin VAIT and BAIT depth, audit-ready for both."
+i18nKey: industries-financial-services
+ogType: website
+---
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+<link rel="stylesheet" href="/industries.css">
+{% endblock %}
+
+{% block content %}
+<main class="ind-page">
+    <section class="ind-hero">
+        <div class="ind-hero-inner">
+            <p class="ind-hero-breadcrumb"><a href="{{ pageUrls.industries }}">Industries</a> / Financial services</p>
+            <span class="ind-hero-framework">DORA · VAIT · BAIT</span>
+            <h1 class="ind-hero-headline">Continuous validation for <span class="ind-hero-headline-emph">banks and financial institutions</span></h1>
+            <p class="ind-hero-sub">DORA sets EU-wide operational resilience expectations. BaFin VAIT and BAIT add German-specific IT and outsourcing depth. VORNAC delivers exploit-proven findings — audit-ready for both supervisors, on live systems, every release.</p>
+            <div class="ind-hero-actions">
+                <a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="ind-btn-primary">Book a demo</a>
+                <a href="{{ pageUrls.pentesting }}" class="ind-btn-ghost">See the platform</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="ind-section ind-section--cream">
+        <div class="ind-section-inner">
+            <header class="ind-section-head">
+                <h2 class="ind-section-title">What regulators expect</h2>
+                <p class="ind-section-lead">Financial entities must demonstrate ICT resilience, outsourcing control, and testing discipline — under EU and German supervision.</p>
+            </header>
+            <div class="ind-req-grid">
+                <article class="ind-req-card"><h3 class="ind-req-card-title">DORA operational resilience</h3><p class="ind-req-card-desc">ICT risk management, incident classification, resilience testing including TLPT on critical systems.</p></article>
+                <article class="ind-req-card"><h3 class="ind-req-card-title">BaFin VAIT (insurance groups)</h3><p class="ind-req-card-desc">IT governance, information security, and continuity requirements for supervised insurance groups where applicable.</p></article>
+                <article class="ind-req-card"><h3 class="ind-req-card-title">BaFin BAIT (banks)</h3><p class="ind-req-card-desc">IT systems, information security, and outsourcing requirements for credit institutions and financial services institutions.</p></article>
+                <article class="ind-req-card"><h3 class="ind-req-card-title">Outsourcing &amp; cloud</h3><p class="ind-req-card-desc">Critical and important functions — contractual, monitoring, and exit requirements for ICT service providers.</p></article>
+            </div>
+        </div>
+    </section>
+
+    <section class="ind-gap-band">
+        <div class="ind-gap-inner">
+            <div>
+                <h2 class="ind-gap-title">Supervisors want proof, not posture slides</h2>
+                <p class="ind-gap-text">Annual pentest PDFs rarely survive BaFin or ECB scrutiny when core banking, payment rails, and trading interfaces change weekly. Continuous, signed exploit evidence closes the gap.</p>
+            </div>
+            <div class="ind-gap-stat">
+                <div class="ind-gap-stat-num">100%</div>
+                <p class="ind-gap-stat-label">Reports accepted on first auditor pass — audit-ready for your frameworks.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="ind-section ind-section--dark">
+        <div class="ind-section-inner">
+            <header class="ind-section-head ind-section-head--light"><h2 class="ind-section-title">How VORNAC helps</h2></header>
+            <ul class="ind-help-list">
+                <li class="ind-help-item"><span class="ind-help-num">01</span><div><h3 class="ind-help-title">Multi-framework mapping</h3><p class="ind-help-desc">DORA, VAIT, BAIT, NIS2, and TISAX where relevant — one finding, multiple clause references where applicable.</p></div></li>
+                <li class="ind-help-item"><span class="ind-help-num">02</span><div><h3 class="ind-help-title">Production-safe adversarial testing</h3><p class="ind-help-desc">Non-destructive emulation on live environments — no maintenance windows required for external surface validation.</p></div></li>
+                <li class="ind-help-item"><span class="ind-help-num">03</span><div><h3 class="ind-help-title">German jurisdiction by default</h3><p class="ind-help-desc">EU-hosted, German-operated — no US Cloud Act exposure for supervisory data and findings.</p></div></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="ind-related">
+        <div class="ind-related-inner">
+            <p class="ind-related-title">Also relevant</p>
+            <div class="ind-related-links">
+                <a href="{{ pageUrls['industries-insurance'] }}" class="ind-related-link">Insurance (DORA)</a>
+                <a href="{{ pageUrls['industries-enterprise'] }}" class="ind-related-link">Enterprise (NIS2)</a>
+                <a href="{{ pageUrls.pentesting }}" class="ind-related-link">VORNAC Pentesting</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="ind-cta">
+        <div class="ind-cta-inner">
+            <h2 class="ind-cta-headline">One validation cycle. <em>Every framework your auditors ask for.</em></h2>
+            <p class="ind-cta-sub">Book a 30-minute session — we scope your financial ICT landscape to continuous, clause-mapped testing.</p>
+            <div class="ind-cta-actions"><a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="ind-cta-btn">Book a demo</a></div>
+        </div>
+    </section>
+</main>
+{% endblock %}

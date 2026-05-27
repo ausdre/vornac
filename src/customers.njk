@@ -1,0 +1,116 @@
+---
+title: "Customers — Why CISOs choose VORNAC | VORNAC"
+description: "The teams that run continuous validation with VORNAC — banks, insurers, KRITIS operators, OEMs. In their own words."
+i18nKey: customers
+ogType: website
+---
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+{% include "partials/customers-styles.njk" %}
+{% endblock %}
+
+{% block content %}
+<section class="cust-hero">
+    <div class="cust-hero-inner">
+        <h1 class="cust-hero-headline">
+            <span>The teams</span>
+            <span>that ship secure.</span>
+        </h1>
+        <p class="cust-hero-subline">
+            Banks, insurers, KRITIS operators, and OEMs run continuous validation with VORNAC. In their own words — and the logos to back it up.
+        </p>
+    </div>
+</section>
+
+<section class="logo-wall">
+    <div class="logo-wall-inner">
+        <span class="logo-wall-eyebrow">Trusted by</span>
+        <h2 class="logo-wall-headline">
+            Security teams in regulated industries — <em>across the DACH region</em>.
+        </h2>
+        <div class="logo-grid">
+            <div class="logo-cell"><img src="/client-zeiss.png" alt="Carl Zeiss"></div>
+            <div class="logo-cell"><img src="/client-1.png" alt="mbits"></div>
+            <div class="logo-cell"><img src="/client-pfitzenmeier.png" alt="Pfitzenmeier"></div>
+            <div class="logo-cell"><img src="/logo_ipcrew.png" alt="IP Crew"></div>
+            <div class="logo-cell"><img src="/client-3.png" alt="Instaffo"></div>
+            <div class="logo-cell"><img src="/client-refundrebel.png" alt="RefundRebel"></div>
+            <div class="logo-cell"><img src="/client-2.png" alt="Knooing"></div>
+            <div class="logo-cell"><img src="/client-5.png" alt="Tilko"></div>
+        </div>
+    </div>
+</section>
+
+<section class="quotes">
+    <div class="quotes-inner">
+        <header class="quotes-header">
+            <span class="quotes-eyebrow">In their own words</span>
+            <h2 class="quotes-headline">
+                Why C-Level in regulated industries <em>switched to continuous validation</em>.
+            </h2>
+        </header>
+        <div class="quotes-grid">
+
+            <article class="quote-card">
+                <div class="quote-mark">"</div>
+                <p class="quote-text">We build software for hospitals — security isn't optional, it's mandatory. Our partners need to meet the same bar for quality and reliability that we set for ourselves. VORNAC clears both. Instead of one-off engagements, we get continuous testing at our development pace, findings we can act on directly, and full visibility into our security posture at any time. A partner that thinks alongside us — and one we can confidently recommend to our healthcare customers.</p>
+                <div class="quote-attribution">
+                    <span class="quote-name">Michael Müller</span>
+                    <span class="quote-role">CEO</span>
+                    <span class="quote-company">mbits GmbH · Healthcare Software</span>
+                </div>
+            </article>
+
+            <article class="quote-card">
+                <div class="quote-mark">"</div>
+                <p class="quote-text">Test results flow straight into our internal ticketing system. Findings are prioritized by technical severity. Our engineering team works through them as regular development tasks. The exact technical write-ups eliminate long alignment rounds on reproducing the bug.</p>
+                <div class="quote-attribution">
+                    <span class="quote-name">Nikolai Gulatz</span>
+                    <span class="quote-role">CIO</span>
+                    <span class="quote-company">Instaffo GmbH · HR Tech</span>
+                </div>
+            </article>
+
+            <article class="quote-card">
+                <div class="quote-mark">"</div>
+                <p class="quote-text">VORNAC's licensing runs on flat-rate access. We bake security spend into the budget for every new software module from day one. Unlimited test runs let us plan precise budgets for our mid-market clients.</p>
+                <div class="quote-attribution">
+                    <span class="quote-name">Bernhard Gauß</span>
+                    <span class="quote-role">Geschäftsführer</span>
+                    <span class="quote-company">IP-Crew GmbH · IT Services</span>
+                </div>
+            </article>
+
+            <article class="quote-card">
+                <div class="quote-mark">"</div>
+                <p class="quote-text">As a Wi-Fi and network specialist, we build the infrastructure our customers run their business on. That responsibility doesn't end with the rollout. With VORNAC we have a partner that tests our networks continuously and autonomously — not once a year, but ongoing. We see risks before they become problems, and we can give our customers verifiable proof that the networks we run are operated securely.</p>
+                <div class="quote-attribution">
+                    <span class="quote-name">Christopher Wesch</span>
+                    <span class="quote-role">Geschäftsführer</span>
+                    <span class="quote-company">tilko GmbH · Network Infrastructure</span>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<section class="cust-cta">
+    <div class="cust-cta-inner">
+        <h2 class="cust-cta-headline">
+            See what continuous validation <em>looks like</em> in your environment.
+        </h2>
+        <p class="cust-cta-sub">
+            30-minute session with our team. No procurement gymnastics.
+        </p>
+        <a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="cust-cta-btn">
+            Book a demo
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+            </svg>
+        </a>
+    </div>
+</section>
+{% endblock %}

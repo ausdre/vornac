@@ -34,3 +34,6 @@ pentest-report.html
 # Environment files (always good practice even if not present yet)
 .env
 *.local
+
+# Compound Engineering local config
+.compound-engineering/*.local.yaml

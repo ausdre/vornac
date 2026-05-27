@@ -1,0 +1,22 @@
+{# Cookie consent banner — hidden by default, surfaced by cookie-script after 2s on first visit. #}
+<div id="cookie-banner" class="fixed bottom-6 left-6 right-6 md:left-auto md:max-w-sm z-[200] hidden">
+    <div class="bg-white border border-stone-300 rounded-lg p-6 shadow-xl shadow-stone-900/20">
+        <div class="mb-4">
+            <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-stone-900" style="font-family: var(--v-sans);">{{ t.cookie.heading }}</span>
+        </div>
+        <p class="text-stone-600 text-[12px] leading-relaxed mb-6" style="font-family: var(--v-sans);">
+            {{ t.cookie.body | safe }}
+        </p>
+        <div class="flex gap-3">
+            <button id="accept-cookies" class="flex-1 bg-stone-900 text-white text-[11px] font-semibold uppercase tracking-widest py-2.5 rounded-md hover:bg-amber-600 transition-all" style="font-family: var(--v-sans);">
+                {{ t.cookie.accept }}
+            </button>
+            <button id="decline-cookies" class="flex-1 bg-white border border-stone-300 text-stone-700 text-[11px] font-semibold uppercase tracking-widest py-2.5 rounded-md hover:bg-stone-50 transition-all" style="font-family: var(--v-sans);">
+                {{ t.cookie.decline }}
+            </button>
+        </div>
+        <div class="mt-4 text-center">
+            <a href="{{ pageUrls.legal }}#privacy" class="text-[9px] text-stone-400 uppercase tracking-widest hover:text-amber-600 transition-colors" style="font-family: var(--v-sans);">{{ t.cookie.readPolicy }}</a>
+        </div>
+    </div>
+</div>

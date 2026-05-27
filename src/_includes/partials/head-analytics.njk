@@ -1,0 +1,23 @@
+{# Privacy-friendly analytics by Plausible #}
+<script async src="{{ site.analytics.plausibleScript }}"></script>
+<script>
+window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+plausible.init();
+</script>
+
+{# etracker Analytics — Made in Germany #}
+<script id="etracker" type="text/javascript" src="//code.etracker.com/code/e.js" data-secure-code="{{ site.analytics.etrackerSecureCode }}" data-block-cookies="true" data-respect-dnt="true" async></script>
+
+{# Google Analytics (requires consent for ad personalization, see cookie-banner) #}
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.gtagId }}"></script>
+<script>
+gtag('js', new Date());
+gtag('config', '{{ site.analytics.gtagId }}', { 'anonymize_ip': true });
+</script>
+
+{# Leadfeeder #}
+<script>(function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('{{ site.analytics.leadfeederSiteId }}');</script>

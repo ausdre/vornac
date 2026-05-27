@@ -1,8 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
+    // Legacy static HTML (kept during migration so old pages still get utilities)
     './*.html',
-    './src/**/*.{js,ts,jsx,tsx}',
+    // New Eleventy templates + partials + layouts
+    './src/**/*.{njk,html,js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {

@@ -1,0 +1,43 @@
+{# Handles the /about contact form: Formspree POST, GA4 conversion event,
+   and the thankyou-overlay modal close interactions. #}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('contact-form');
+    const thankyouOverlay = document.getElementById('thankyou-overlay');
+    const thankyouClose = document.getElementById('thankyou-close');
+
+    const closeThankyou = () => thankyouOverlay?.classList.remove('is-open');
+    thankyouClose?.addEventListener('click', closeThankyou);
+    thankyouOverlay?.addEventListener('click', (e) => {
+        if (e.target === thankyouOverlay) closeThankyou();
+    });
+
+    if (!form) return;
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('[data-submit-button]');
+        const gotcha = form.querySelector('[name="gotcha"]');
+        if (gotcha && gotcha.value) return;
+        if (btn) btn.disabled = true;
+
+        const res = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { Accept: 'application/json' }
+        });
+
+        if (res.ok) {
+            if (typeof gtag === 'function') {
+                gtag('event', 'conversion', {
+                    send_to: 'G-9LJGWDQ2CR',
+                    event_category: 'contact_form',
+                    event_label: 'demo_request'
+                });
+            }
+            form.reset();
+            thankyouOverlay?.classList.add('is-open');
+        }
+        if (btn) btn.disabled = false;
+    });
+});
+</script>

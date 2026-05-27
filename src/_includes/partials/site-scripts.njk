@@ -1,0 +1,81 @@
+{# Page-end scripts: cookie consent + mobile nav. One DOMContentLoaded block. #}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    // ── Cookie consent ──────────────────────────────────────────────
+    const banner = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('accept-cookies');
+    const declineBtn = document.getElementById('decline-cookies');
+    const consentKey = 'vornac_consent_given';
+
+    const activateAds = () => {
+        if (typeof gtag === 'function') {
+            gtag('consent', 'update', {
+                'ad_storage': 'granted',
+                'ad_user_data': 'granted',
+                'ad_personalization': 'granted'
+            });
+        }
+    };
+
+    if (!localStorage.getItem(consentKey)) {
+        setTimeout(() => {
+            if (banner) banner.classList.remove('hidden');
+        }, 2000);
+    } else if (localStorage.getItem(consentKey) === 'true') {
+        activateAds();
+    }
+
+    acceptBtn?.addEventListener('click', () => {
+        localStorage.setItem(consentKey, 'true');
+        banner?.classList.add('hidden');
+        activateAds();
+    });
+
+    declineBtn?.addEventListener('click', () => {
+        localStorage.setItem(consentKey, 'false');
+        banner?.classList.add('hidden');
+    });
+
+    // ── Mobile menu ────────────────────────────────────────────────
+    const toggleBtn = document.getElementById('nav-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const backdrop = document.getElementById('mobile-backdrop');
+
+    if (toggleBtn && mobileMenu && backdrop) {
+        const closeMenu = () => {
+            mobileMenu.classList.add('hidden');
+            backdrop.classList.add('hidden');
+            document.body.classList.remove('nav-open');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+        };
+
+        const openMenu = () => {
+            mobileMenu.classList.remove('hidden');
+            backdrop.classList.remove('hidden');
+            document.body.classList.add('nav-open');
+            toggleBtn.setAttribute('aria-expanded', 'true');
+        };
+
+        toggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isHidden = mobileMenu.classList.contains('hidden');
+            isHidden ? openMenu() : closeMenu();
+        });
+
+        backdrop.addEventListener('click', closeMenu);
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        document.addEventListener('click', (e) => {
+            const isClickInsideMenu = mobileMenu.contains(e.target);
+            const isClickOnButton = toggleBtn.contains(e.target);
+            if (!mobileMenu.classList.contains('hidden') && !isClickInsideMenu && !isClickOnButton) {
+                closeMenu();
+            }
+        });
+    }
+});
+</script>

@@ -1,0 +1,47 @@
+{# Polish-pass motion: scroll reveals, stat count-up, comp-table row stagger.
+   Honors prefers-reduced-motion via both CSS (rules scoped to no-preference)
+   and JS (early return). #}
+<script>
+(function() {
+    var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced || !('IntersectionObserver' in window)) return;
+
+    function animateCountUp(el) {
+        var target = parseInt(el.getAttribute('data-countup'), 10);
+        if (!isFinite(target)) return;
+        var start = performance.now();
+        var duration = 1100;
+        function tick(now) {
+            var t = Math.min(1, (now - start) / duration);
+            var eased = 1 - Math.pow(1 - t, 3);
+            el.textContent = Math.round(eased * target);
+            if (t < 1) requestAnimationFrame(tick);
+            else el.textContent = String(target);
+        }
+        requestAnimationFrame(tick);
+    }
+
+    var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (!entry.isIntersecting) return;
+            var el = entry.target;
+            if (el.classList.contains('v-reveal')) {
+                el.classList.add('is-in');
+            }
+            if (el.hasAttribute('data-countup') && !el.dataset.countupDone) {
+                el.dataset.countupDone = '1';
+                animateCountUp(el);
+            }
+            if (el.classList.contains('v-comp-table')) {
+                el.classList.add('is-in');
+            }
+            io.unobserve(el);
+        });
+    }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+
+    document.querySelectorAll('.v-reveal').forEach(function(el) { io.observe(el); });
+    document.querySelectorAll('[data-countup]').forEach(function(el) { io.observe(el); });
+    var compTable = document.querySelector('.v-comp-table');
+    if (compTable) io.observe(compTable);
+})();
+</script>

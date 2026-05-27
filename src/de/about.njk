@@ -1,0 +1,155 @@
+---
+title: "Über uns — VORNAC"
+description: "Über VORNAC: Team, Mission und Karriere im kontinuierlichen Pentesting und in der KI-Security — mit deutscher Datensouveränität, wo es darauf ankommt."
+i18nKey: about
+ogType: website
+bodyClass: about-page
+---
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+<link rel="stylesheet" href="/about.css">
+{% endblock %}
+
+{% block content %}
+<main>
+    <section id="{{ t.aboutAnchors.company }}" class="about-company">
+        <div class="about-company-inner">
+            <div class="about-company-copy">
+                <h1 class="about-company-headline">Cybersicherheit <em>neu gedacht.</em></h1>
+                <p class="about-company-text">
+                    VORNAC aus Heidelberg verbindet proaktive Sicherheit mit strenger Compliance — im Zentrum steht deutsche Datensouveränität.
+                </p>
+                <p class="about-company-text">
+                    Wir schließen die Lücke zwischen technischer Notwendigkeit, Regulatorik und dem Sicherheitsniveau, das Unternehmen heute brauchen.
+                </p>
+                <p class="about-company-meta">Heidelberg, Deutschland</p>
+            </div>
+            <div class="about-founders">
+                <div class="about-founders-frame">
+                    <img src="/founders-group.png" alt="André Feigenbutz und Arthur Raess, Gründer von VORNAC" width="640" height="480">
+                </div>
+                <p class="about-founders-caption">André Feigenbutz · Arthur Raess</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="{{ t.aboutAnchors.careers }}" class="about-careers">
+        <div class="about-careers-inner">
+            <div class="about-careers-head">
+                <h2 class="about-careers-headline">Werde Teil von VORNAC</h2>
+                <p class="about-careers-lead">Du willst deutsche Datensouveränität nicht nur predigen, sondern bauen?</p>
+                <p class="about-careers-sub">Wir suchen Talente, die mit uns die Zukunft der IT-Sicherheit gestalten.</p>
+            </div>
+
+            <div class="about-jobs">
+                <article class="about-job">
+                    <h3 class="about-job-title">Head of Sales — Cybersecurity Solutions (m/w/d)</h3>
+                    <div class="about-job-tags">
+                        <span class="about-job-tag">Heidelberg / Remote</span>
+                        <span class="about-job-tag">Vollzeit</span>
+                    </div>
+                    <h4 class="about-job-block-title">Deine Mission</h4>
+                    <ul class="about-job-list">
+                        <li>Verantwortung für die gesamte Sales-Pipeline</li>
+                        <li>Enterprise-Vertrieb an CISOs, CIOs &amp; Security-Entscheider</li>
+                        <li>Sales-Team aufbauen und führen</li>
+                    </ul>
+                    <h4 class="about-job-block-title">Du bringst mit</h4>
+                    <ul class="about-job-list">
+                        <li>5+ Jahre B2B-SaaS-Vertrieb (Cybersecurity bevorzugt)</li>
+                        <li>Nachweisbare Enterprise-Deal-Erfolge</li>
+                        <li>Starkes Netzwerk im DACH-Raum</li>
+                        <li>Fließend Deutsch und Englisch</li>
+                    </ul>
+                    <a href="{{ pageUrls.apply }}?position=head-of-sales" class="about-job-cta">Jetzt bewerben</a>
+                </article>
+
+                <article class="about-job about-job--alt">
+                    <h3 class="about-job-title">Pentester als Customer Success Manager (m/w/d)</h3>
+                    <div class="about-job-tags">
+                        <span class="about-job-tag">Heidelberg / Remote</span>
+                        <span class="about-job-tag">Vollzeit</span>
+                    </div>
+                    <h4 class="about-job-block-title">Deine Mission</h4>
+                    <ul class="about-job-list">
+                        <li>Kunden bei Pentesting-Ergebnissen beratend unterstützen</li>
+                        <li>Mit deinem Pentesting-Wissen Kunden zum Erfolg führen</li>
+                        <li>Technische Beratung &amp; Remediation-Support</li>
+                    </ul>
+                    <h4 class="about-job-block-title">Du bringst mit</h4>
+                    <ul class="about-job-list">
+                        <li><strong>BSI Kompetenzanerkennung</strong> oder gleichwertig</li>
+                        <li>Praxiserfahrung im Penetration Testing</li>
+                        <li>Kundenorientierung &amp; Kommunikationsstärke</li>
+                        <li>Fließend Deutsch und Englisch</li>
+                    </ul>
+                    <a href="{{ pageUrls.apply }}?position=pentester-csm" class="about-job-cta">Jetzt bewerben</a>
+                </article>
+            </div>
+
+            <div class="about-careers-open">
+                <p>Keine passende Stelle gefunden?</p>
+                <a href="{{ pageUrls.apply }}?position=initiativbewerbung">Initiativbewerbung →</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="about-contact">
+        <div class="about-contact-inner">
+            <div class="about-contact-head">
+                <h2 class="about-contact-headline">Bereit für <em>VORNAC</em> im Einsatz?</h2>
+                <p class="about-contact-sub">Vereinbaren Sie eine Session mit unserem Team — wir zeigen Ihnen, wie Sie in wenigen Stunden zu kontinuierlicher, nachweisbarer Sicherheit kommen.</p>
+                <a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="about-contact-book">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    Demo buchen
+                </a>
+                <p class="about-contact-book-note">30 Minuten Intro-Call mit unserem Team</p>
+            </div>
+
+            <div class="about-contact-divider">
+                <span class="about-contact-divider-line"></span>
+                <span class="about-contact-divider-text">Oder schreiben Sie uns</span>
+                <span class="about-contact-divider-line"></span>
+            </div>
+
+            <form id="contact-form" class="about-contact-form" action="https://formspree.io/f/meoyrzog" method="POST">
+                <input type="text" name="gotcha" class="hidden" autocomplete="off" tabindex="-1">
+                <div class="about-contact-field-row">
+                    <div class="about-contact-field">
+                        <label class="about-contact-label" for="contact-name">Name</label>
+                        <input class="about-contact-input" type="text" id="contact-name" name="name" required placeholder="Vollständiger Name">
+                    </div>
+                    <div class="about-contact-field">
+                        <label class="about-contact-label" for="contact-email">Geschäftliche E-Mail</label>
+                        <input class="about-contact-input" type="email" id="contact-email" name="email" required placeholder="name@firma.com">
+                    </div>
+                </div>
+                <div class="about-contact-field">
+                    <label class="about-contact-label" for="contact-company">Firma</label>
+                    <input class="about-contact-input" type="text" id="contact-company" name="company" placeholder="Organisation">
+                </div>
+                <div class="about-contact-field">
+                    <label class="about-contact-label" for="contact-message">Nachricht</label>
+                    <textarea class="about-contact-textarea" id="contact-message" name="message" rows="4" required placeholder="Ihre Nachricht…"></textarea>
+                </div>
+                <button type="submit" data-submit-button class="about-contact-submit">
+                    <span data-submit-text>Nachricht senden</span>
+                </button>
+            </form>
+        </div>
+    </section>
+</main>
+
+<div id="thankyou-overlay" class="about-thankyou-overlay" role="dialog" aria-modal="true" aria-labelledby="thankyou-title">
+    <div class="about-thankyou-modal">
+        <h3 id="thankyou-title" class="about-thankyou-title">Anfrage gesendet</h3>
+        <p class="about-thankyou-text">Danke. Ihre Anfrage ist eingegangen. Unser Team meldet sich innerhalb von 24 Stunden bei Ihnen.</p>
+        <button id="thankyou-close" type="button" class="about-thankyou-close">Schließen</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block extraBodyEnd %}
+{% include "partials/contact-form-script.njk" %}
+{% endblock %}

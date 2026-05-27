@@ -1,0 +1,53 @@
+{# Dark footer — three columns, language switcher in the bar.
+
+   Language switcher: hidden when this page has no counterpart (single-locale).
+   Sets ?lang=<target> + localStorage on click so future visits respect the choice.
+#}
+<footer class="v-footer pt-14 pb-10 px-4 sm:px-6">
+    <div class="max-w-content mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_auto_auto] gap-10 items-start">
+            <div class="space-y-4">
+                <img src="{{ site.logos.whiteSvg }}" alt="{{ site.brand }}" class="h-9 w-auto md:h-10">
+                <p class="max-w-md text-sm leading-relaxed text-stone-400">
+                    {{ t.footer.tagline }}
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white text-[11px] font-bold uppercase tracking-[0.18em] mb-4">{{ t.footer.navHeading }}</h4>
+                <ul class="space-y-3 text-sm text-stone-400">
+                    <li><a href="{{ pageUrls.index }}" class="hover:text-white transition-colors">{{ t.nav.home }}</a></li>
+                    <li><a href="{{ pageUrls.pentesting }}" class="hover:text-white transition-colors">{{ t.nav.pentesting }}</a></li>
+                    <li><a href="{{ pageUrls.industries }}" class="hover:text-white transition-colors">{{ t.nav.industries }}</a></li>
+                    <li><a href="{{ pageUrls.customers }}" class="hover:text-white transition-colors">{{ t.nav.customers }}</a></li>
+                    <li><a href="{{ pageUrls.about }}" class="hover:text-white transition-colors">{{ t.nav.about }}</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white text-[11px] font-bold uppercase tracking-[0.18em] mb-4">{{ t.footer.legalHeading }}</h4>
+                <ul class="space-y-3 text-sm text-stone-400">
+                    <li><a href="{{ pageUrls.legal }}" class="hover:text-white transition-colors">{{ t.footer.legalLinks.privacy }}</a></li>
+                    <li><a href="{{ pageUrls.legal }}" class="hover:text-white transition-colors">{{ t.footer.legalLinks.imprint }}</a></li>
+                    <li><a href="{{ site.contact.linkedin }}" target="_blank" rel="noopener" class="hover:text-white transition-colors">{{ t.footer.legalLinks.linkedin }}</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-10 pt-6 border-t v-footer-bar flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <p class="text-xs uppercase tracking-[0.16em] text-stone-500">{{ t.footer.copyright }}</p>
+
+            {# Lang switcher: only show when a counterpart exists. #}
+            {% if counterpart %}
+                <div class="v-lang-switch flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-stone-500" role="navigation" aria-label="{{ t.a11y.langNav }}">
+                    {% if locale == 'en' %}
+                        <a href="{{ counterpart }}?lang=de" hreflang="de" onclick="localStorage.setItem('vornac_lang', 'de')" class="hover:text-white transition-colors">DE</a>
+                        <span class="text-stone-700" aria-hidden="true">|</span>
+                        <span class="text-white" aria-current="true">EN</span>
+                    {% else %}
+                        <span class="text-white" aria-current="true">DE</span>
+                        <span class="text-stone-700" aria-hidden="true">|</span>
+                        <a href="{{ counterpart }}?lang=en" hreflang="en" onclick="localStorage.setItem('vornac_lang', 'en')" class="hover:text-white transition-colors">EN</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</footer>

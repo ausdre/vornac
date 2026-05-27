@@ -1,0 +1,316 @@
+---
+title: "84% less cyber risk with VORNAC – continuous pentesting"
+description: "VORNAC validates your live production environment against real adversarial techniques — continuously, on schedule, via API. Every finding is exploitability-proven and mapped to NIS2, DORA, VAIT/BAIT, KRITIS, and TISAX."
+i18nKey: index
+ogType: website
+permalink: /index.html
+---
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+  {"@type":"Organization","@id":"https://www.vornac.com/#organization","name":"VORNAC","url":"https://www.vornac.com/","logo":{"@type":"ImageObject","url":"https://www.vornac.com/vornacpentesting43.png"}},
+  {"@type":"WebSite","@id":"https://www.vornac.com/#website","url":"https://www.vornac.com/","name":"VORNAC","description":"Continuous adversarial validation for regulated EU industries.","publisher":{"@id":"https://www.vornac.com/#organization"},"inLanguage":["en","de"]}
+]}
+</script>
+
+{% include "partials/index-styles.njk" %}
+
+{# Amber-mark for EN: short phrase on a single line, use ::after underbar. #}
+<style>
+    .v-hero-headline .v-amber-mark {
+        position: relative;
+        white-space: nowrap;
+        display: inline-block;
+    }
+    .v-hero-headline .v-amber-mark::after {
+        content: '';
+        position: absolute;
+        left: -3px;
+        right: -3px;
+        bottom: 0.06em;
+        height: 0.30em;
+        background: var(--v-amber);
+        opacity: 0.92;
+        z-index: -1;
+        border-radius: 2px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="v-hero">
+    <div class="v-hero-inner">
+        <p class="v-hero-kicker v-reveal">Continuous adversarial validation</p>
+        <h1 class="v-hero-headline v-reveal" data-reveal-delay="1">
+            Continuous validation.<br>
+            <span class="v-amber-mark">Proven exploitability.</span><br>
+            Audit-ready by design.
+        </h1>
+        <p class="v-hero-subline v-reveal" data-reveal-delay="2">
+            VORNAC runs the techniques an attacker would — on your live production environment, continuously, on schedule, via API. Every finding is exploitability-proven. Every report is audit-ready for NIS2, DORA, BaFin VAIT/BAIT, KRITIS, and TISAX.
+        </p>
+        <div class="v-hero-actions v-reveal" data-reveal-delay="3">
+            <a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="v-btn-primary">
+                Book a demo
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                </svg>
+            </a>
+            <a href="{{ pageUrls.pentesting }}" class="v-btn-ghost">See the platform overview</a>
+        </div>
+    </div>
+</section>
+
+<section class="v-stats">
+    <div class="v-stats-inner">
+        <div class="v-stats-grid">
+            <div class="v-stat v-reveal" data-reveal-delay="1">
+                <div class="v-stat-number">
+                    <span class="v-stat-num" data-countup="84">84<span class="v-stat-unit">%</span></span>
+                </div>
+                <div class="v-stat-rule"></div>
+                <div class="v-stat-label">
+                    Less cyber risk
+                    <span class="v-stat-label-sub">across the validated estate</span>
+                </div>
+            </div>
+
+            <div class="v-stat v-reveal" data-reveal-delay="2">
+                <div class="v-stat-number">
+                    <span class="v-stat-prefix">up to</span>
+                    <span class="v-stat-num" data-countup="75">75<span class="v-stat-unit">%</span></span>
+                </div>
+                <div class="v-stat-rule"></div>
+                <div class="v-stat-label">
+                    Lower external pentesting costs
+                    <span class="v-stat-label-sub">vs. annual report-only engagements</span>
+                </div>
+            </div>
+
+            <div class="v-stat v-reveal" data-reveal-delay="3">
+                <div class="v-stat-number">
+                    <span class="v-stat-prefix">&gt;</span>
+                    <span class="v-stat-num" data-countup="90">90<span class="v-stat-unit">%</span></span>
+                </div>
+                <div class="v-stat-rule"></div>
+                <div class="v-stat-label">
+                    Faster mean time to remediation (MTTR)
+                    <span class="v-stat-label-sub">measured across the program</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="v-sovereignty">
+    <div class="v-sovereignty-inner">
+        <div class="v-sov-head v-reveal">
+            <h2 class="v-sov-headline">
+                German jurisdiction. German hosting. <span class="v-sov-emph">Zero foreign cloud exposure.</span>
+            </h2>
+            <p class="v-sov-subline">
+                VORNAC runs entirely on German-owned infrastructure. No US clouds. No data egress outside the EU. No subprocessors that bypass German jurisdiction. Every byte your team validates is processed under BDSG and GDPR — by default, not by request.
+            </p>
+        </div>
+
+        <div class="v-sov-marks">
+            <div class="v-sov-mark v-sov-mark--flag v-reveal" data-reveal-delay="1">
+                <div>
+                    <div class="v-sov-mark-flag" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <h3 class="v-sov-mark-title">Made &amp; hosted in Germany</h3>
+                    <p class="v-sov-mark-sub">German jurisdiction by default. Hosted in German data centers operated by German entities.</p>
+                </div>
+            </div>
+
+            <a class="v-sov-mark v-sov-mark--image v-reveal" data-reveal-delay="2" href="https://www.teletrust.de/" target="_blank" rel="noopener noreferrer">
+                <img src="/TeleTrusT-Mitgliedslogo.jpg" alt="TeleTrusT – Member of the IT Security Association Germany">
+                <div class="v-sov-mark-meta">Member, TeleTrusT — IT Security Association Germany</div>
+            </a>
+
+            <div class="v-sov-mark v-sov-mark--image v-reveal" data-reveal-delay="3">
+                <img src="/it-security-made-in-germany-teletrust-seal.png" alt="IT Security Made in Germany — TeleTrusT seal">
+                <div class="v-sov-mark-meta">Awarded the “IT Security Made in Germany” seal</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="v-stats is-dark">
+    <div class="v-stats-inner">
+        <h2 class="v-stats-headline v-reveal">
+            Pentest coverage you can prove. Time-to-result you can plan.
+        </h2>
+        <div class="v-stats-divider"></div>
+
+        <div class="v-stats-grid">
+            <div class="v-stat v-reveal" data-reveal-delay="1">
+                <div class="v-stat-number">
+                    <span class="v-stat-num" data-countup="97">97</span><span class="v-stat-unit">%</span>
+                </div>
+                <div class="v-stat-label">
+                    Of attack surface validated each cycle
+                    <span class="v-stat-label-sub">Across cloud, on-premises, APIs, and behind-VPN systems. Continuous — not annual — coverage from day one of deployment.</span>
+                </div>
+            </div>
+
+            <div class="v-stat v-reveal" data-reveal-delay="2">
+                <div class="v-stat-number">
+                    <span class="v-stat-num" data-countup="2">2<span class="v-stat-range">–5</span></span><span class="v-stat-unit">h</span>
+                </div>
+                <div class="v-stat-label">
+                    From trigger to actionable finding
+                    <span class="v-stat-label-sub">No multi-week engagement window. UI or API trigger, signed exploitability-proven findings the same day.</span>
+                </div>
+            </div>
+
+            <div class="v-stat v-reveal" data-reveal-delay="3">
+                <div class="v-stat-number">
+                    <span class="v-stat-num" data-countup="100">100</span><span class="v-stat-unit">%</span>
+                </div>
+                <div class="v-stat-label">
+                    Of reports accepted on first auditor pass
+                    <span class="v-stat-label-sub">Reports are audit-ready for NIS2, DORA, BaFin VAIT/BAIT, KRITIS, TISAX, and ISO/IEC 27001.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="v-trust" aria-label="Trusted by">
+    <div class="v-trust-label">Trusted by</div>
+    <div class="v-trust-marquee">
+        <div class="v-trust-track">
+            <img src="/client-zeiss.png" alt="Carl Zeiss">
+            <img src="/client-1.png" alt="mbits">
+            <img src="/client-2.png" alt="Knooing">
+            <img src="/client-3.png" alt="Instaffo">
+            <img src="/client-5.png" alt="Tilko">
+            <img src="/client-refundrebel.png" alt="RefundRebel">
+            <img src="/client-tkom.png" alt="TKOM">
+            <img src="/logo_ipcrew.png" alt="IP Crew">
+            <img src="/client-pfitzenmeier.png" alt="Pfitzenmeier">
+            <img src="/partner-hetzner.png" alt="Hetzner">
+            <img src="/partner-centron.png" alt="Centron">
+
+            <img src="/client-zeiss.png" alt="" aria-hidden="true">
+            <img src="/client-1.png" alt="" aria-hidden="true">
+            <img src="/client-2.png" alt="" aria-hidden="true">
+            <img src="/client-3.png" alt="" aria-hidden="true">
+            <img src="/client-5.png" alt="" aria-hidden="true">
+            <img src="/client-refundrebel.png" alt="" aria-hidden="true">
+            <img src="/client-tkom.png" alt="" aria-hidden="true">
+            <img src="/logo_ipcrew.png" alt="" aria-hidden="true">
+            <img src="/client-pfitzenmeier.png" alt="" aria-hidden="true">
+            <img src="/partner-hetzner.png" alt="" aria-hidden="true">
+            <img src="/partner-centron.png" alt="" aria-hidden="true">
+        </div>
+    </div>
+</section>
+
+<section class="v-comp" id="compare">
+    <div class="v-comp-inner">
+        <header class="v-comp-header v-reveal">
+            <h2 class="v-comp-headline">Why teams pick <em>VORNAC</em> over scanners and Pentera</h2>
+            <p class="v-comp-sub">Autonomous pentest depth at category-leader level — plus German sovereignty and BSI-certified pentesters as Customer Success Managers.</p>
+        </header>
+
+        <div class="v-comp-table-wrap" tabindex="0" role="region" aria-label="Comparison table — scroll horizontally to compare columns">
+            <table class="v-comp-table">
+                <caption>Feature comparison: classical VM, BAS, and EASM tools vs. Pentera vs. VORNAC</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Criterion</th>
+                        <th scope="col">Classical tools<span class="v-comp-col-sub">VM · BAS · EASM</span></th>
+                        <th scope="col">Pentera</th>
+                        <th scope="col" class="v-comp-col-vornac">
+                            <img src="/logo-vornac-black.svg" alt="VORNAC" class="v-comp-logo" width="132" height="28">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Autonomous pentest &amp; real-world emulation</th>
+                        <td>
+                            <span class="v-comp-status v-comp-status--no">No</span>
+                            <span class="v-comp-detail">Static scans or predefined playbooks only — not full adversarial emulation.</span>
+                        </td>
+                        <td>
+                            <span class="v-comp-status v-comp-status--yes">Yes</span>
+                            <span class="v-comp-detail">Emulates cognitive attacker workflows end to end.</span>
+                        </td>
+                        <td class="v-comp-col-vornac">
+                            <span class="v-comp-status v-comp-status--yes">Yes</span>
+                            <span class="v-comp-detail">Fully autonomous attacker emulation against your live estate.</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Safe-by-design exploits in production</th>
+                        <td>
+                            <span class="v-comp-status v-comp-status--no">No</span>
+                            <span class="v-comp-detail">Crash risk, theory-only findings, or no exploitation at all.</span>
+                        </td>
+                        <td>
+                            <span class="v-comp-status v-comp-status--yes">Yes</span>
+                            <span class="v-comp-detail">Safe exploits in live environments.</span>
+                        </td>
+                        <td class="v-comp-col-vornac">
+                            <span class="v-comp-status v-comp-status--yes">Yes</span>
+                            <span class="v-comp-detail">Production-safe by design — non-destructive, evidence-backed runs.</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Attack chaining</th>
+                        <td>
+                            <span class="v-comp-status v-comp-status--no">No</span>
+                            <span class="v-comp-detail">Findings treated in isolation — no cross-system paths.</span>
+                        </td>
+                        <td>
+                            <span class="v-comp-status v-comp-status--yes">Yes</span>
+                            <span class="v-comp-detail">Links findings into multi-step attack chains.</span>
+                        </td>
+                        <td class="v-comp-col-vornac">
+                            <span class="v-comp-status v-comp-status--yes">Yes</span>
+                            <span class="v-comp-detail">Automated detection of cross-system attack paths.</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Digital sovereignty &amp; hosting (NIS2 / DORA)</th>
+                        <td>
+                            <span class="v-comp-status v-comp-status--partial">Varies</span>
+                            <span class="v-comp-detail">Often US-hosted SaaS and subprocessors outside EU jurisdiction.</span>
+                        </td>
+                        <td>
+                            <span class="v-comp-status v-comp-status--no">No</span>
+                            <span class="v-comp-detail">Non-EU vendor footprint — limited alignment with German/EU data residency expectations.</span>
+                        </td>
+                        <td class="v-comp-col-vornac">
+                            <div class="v-comp-cell-top"><span class="v-comp-usp">USP</span><span class="v-comp-status v-comp-status--yes">Yes</span></div>
+                            <span class="v-comp-detail">100% made &amp; hosted in Germany, proprietary AI stack, GDPR- and NIS2-aligned operations.</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">BSI-recognized expert consultation</th>
+                        <td>
+                            <span class="v-comp-status v-comp-status--no">No</span>
+                            <span class="v-comp-detail">Scanner noise — high false-positive rates without human triage.</span>
+                        </td>
+                        <td>
+                            <span class="v-comp-status v-comp-status--no">No</span>
+                            <span class="v-comp-detail">Software-only delivery — no dedicated BSI-recognized pentester as your contact.</span>
+                        </td>
+                        <td class="v-comp-col-vornac">
+                            <div class="v-comp-cell-top"><span class="v-comp-usp">USP</span><span class="v-comp-status v-comp-status--yes">Yes</span></div>
+                            <span class="v-comp-detail">Every point of contact is a BSI-qualified penetration tester, not generic support staff.</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}
