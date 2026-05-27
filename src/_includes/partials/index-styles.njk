@@ -229,6 +229,24 @@
         margin: 0 auto;
         padding: 96px 40px 112px;
     }
+    .v-stats-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--v-amber-deep);
+        margin: 0 0 56px;
+    }
+    .v-stats-kicker::before {
+        content: '';
+        width: 28px;
+        height: 1px;
+        background: var(--v-amber);
+    }
+    .v-stats.is-dark .v-stats-kicker { color: var(--v-amber); }
     .v-stats-headline {
         font-family: var(--v-sans);
         font-size: clamp(38px, 4.6vw, 64px);
