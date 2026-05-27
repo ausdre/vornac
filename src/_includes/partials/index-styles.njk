@@ -460,7 +460,22 @@
         text-decoration: none;
         transition: border-color 0.18s ease, transform 0.18s ease;
         color: var(--v-ink);
+        position: relative;
     }
+    .v-sov-mark-num {
+        position: absolute;
+        top: 20px;
+        right: 24px;
+        font-family: var(--v-sans);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        color: var(--v-ink-3);
+        line-height: 1;
+        pointer-events: none;
+    }
+    .v-sov-mark--flag .v-sov-mark-num { color: var(--v-amber-deep); }
+    a.v-sov-mark:hover .v-sov-mark-num { color: var(--v-amber-deep); }
     a.v-sov-mark:hover { border-color: var(--v-ink); transform: translateY(-2px); }
     .v-sov-mark--flag { justify-content: space-between; }
     .v-sov-mark-flag {
