@@ -58,13 +58,12 @@
 
 /* Company */
 .about-company {
-    background: var(--v-bg-band);
-    border-bottom: 1px solid var(--v-line-soft);
+    background: var(--v-bg);
 }
 .about-company-inner {
     max-width: 1240px;
     margin: 0 auto;
-    padding: 88px 40px 96px;
+    padding: 140px 40px 140px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 64px;
@@ -123,12 +122,11 @@
 /* Careers */
 .about-careers {
     background: var(--v-bg-dark);
-    border-bottom: 1px solid var(--v-line-dark);
 }
 .about-careers-inner {
     max-width: 1240px;
     margin: 0 auto;
-    padding: 88px 40px 96px;
+    padding: 140px 40px 140px;
 }
 .about-careers-head {
     max-width: 720px;
@@ -191,8 +189,8 @@
     text-transform: uppercase;
     color: var(--v-ink-3);
     padding: 5px 10px;
-    background: var(--v-bg-band);
-    border: 1px solid var(--v-line-soft);
+    background: transparent;
+    border: 1px solid var(--v-line);
 }
 .about-job-block-title {
     font-size: 11px;
@@ -259,12 +257,11 @@
 /* Contact */
 .about-contact {
     background: var(--v-bg);
-    border-bottom: 1px solid var(--v-line-soft);
 }
 .about-contact-inner {
     max-width: 720px;
     margin: 0 auto;
-    padding: 88px 40px 96px;
+    padding: 140px 40px 140px;
 }
 .about-contact-head {
     text-align: center;
@@ -431,7 +428,7 @@
     .about-company-inner {
         grid-template-columns: 1fr;
         gap: 48px;
-        padding: 72px 32px 80px;
+        padding: 96px 32px 96px;
     }
     .about-company-copy { max-width: none; }
     .about-jobs { grid-template-columns: 1fr; }

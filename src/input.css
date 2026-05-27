@@ -563,8 +563,8 @@ img, video { max-width: 100%; }
 }
 
 .bg-warm       { background-color: #ffffff; }
-.bg-warm-soft  { background-color: #f5f5f4; }
-.bg-warm-muted { background-color: #e7e5e4; }
+.bg-warm-soft  { background-color: #ffffff; }
+.bg-warm-muted { background-color: #ffffff; }
 
 /* Mobile nav slide-in (markup lives in site-header.njk) */
 #mobile-menu:not(.hidden) {
