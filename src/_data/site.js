@@ -10,7 +10,8 @@ module.exports = {
   contact: {
     email: "hello@vornac.com",
     bookDemo: "https://zeeg.me/hello3950/your-vornac-meeting",
-    linkedin: "https://www.linkedin.com/company/vornac"
+    linkedin: "https://www.linkedin.com/company/vornac",
+    gartner: "https://www.gartner.com/reviews/product/vornac-pentesting"
   },
 
   analytics: {

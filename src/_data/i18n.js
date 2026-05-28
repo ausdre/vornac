@@ -41,7 +41,8 @@ module.exports = {
       },
       socialsHeading: "Socials",
       socialLinks: {
-        linkedin: "LinkedIn"
+        linkedin: "LinkedIn",
+        gartner: "Gartner Peer Insights"
       },
       copyright: "© 2026 VORNAC GmbH. All rights reserved.",
       langLabel: "Language"
@@ -94,7 +95,8 @@ module.exports = {
       },
       socialsHeading: "Social Media",
       socialLinks: {
-        linkedin: "LinkedIn"
+        linkedin: "LinkedIn",
+        gartner: "Gartner Peer Insights"
       },
       copyright: "© 2026 VORNAC GmbH. Alle Rechte vorbehalten.",
       langLabel: "Sprache"

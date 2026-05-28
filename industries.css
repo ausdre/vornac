@@ -69,7 +69,7 @@
 .ind-hub-hero {
     max-width: 1240px;
     margin: 0 auto;
-    padding: 200px 40px 120px;
+    padding: 100px 40px 60px;
 }
 .ind-hub-headline {
     font-family: var(--v-display);
@@ -230,7 +230,7 @@
 .ind-hero-inner {
     max-width: 1240px;
     margin: 0 auto;
-    padding: 200px 40px 160px;
+    padding: 100px 40px 80px;
 }
 .ind-hero-breadcrumb {
     font-size: 13px;
@@ -310,7 +310,7 @@
 .ind-section-inner {
     max-width: 1240px;
     margin: 0 auto;
-    padding: 200px 40px 200px;
+    padding: 100px 40px 100px;
 }
 .ind-section-head {
     max-width: 720px;
@@ -401,7 +401,7 @@
 .ind-gap-inner {
     max-width: 1240px;
     margin: 0 auto;
-    padding: 180px 40px;
+    padding: 90px 40px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 48px;
@@ -448,7 +448,7 @@
 .ind-related-inner {
     max-width: 1240px;
     margin: 0 auto;
-    padding: 160px 40px 200px;
+    padding: 80px 40px 100px;
 }
 .ind-related-title {
     font-size: 11.5px;
@@ -487,7 +487,7 @@
 .ind-cta-inner {
     max-width: 800px;
     margin: 0 auto;
-    padding: 200px 40px 200px;
+    padding: 100px 40px 100px;
 }
 .ind-cta-headline {
     font-family: var(--v-display);
