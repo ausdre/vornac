@@ -672,6 +672,11 @@
         color: var(--v-ink-3);
         margin: 0 0 36px;
     }
+    .v-trust-lanes {
+        display: flex;
+        flex-direction: column;
+        gap: 44px;
+    }
     .v-trust-marquee {
         position: relative;
         overflow: hidden;
@@ -684,6 +689,12 @@
         gap: 96px;
         width: max-content;
         animation: v-marquee 60s linear infinite;
+    }
+    /* Second lane runs the opposite direction (and at a slightly different
+       pace so the two rows never look mirror-locked). */
+    .v-trust-track--reverse {
+        animation-direction: reverse;
+        animation-duration: 72s;
     }
     @keyframes v-marquee {
         0%   { transform: translateX(0); }
@@ -699,12 +710,17 @@
         transition: opacity 0.2s ease, filter 0.2s ease;
         flex-shrink: 0;
     }
+    /* Square brand marks (GitHub, OWASP) sit a touch smaller so they carry
+       the same visual weight as the wordmark logos. */
+    .v-trust-track img.v-trust-ico { height: 42px; }
     .v-trust-track img:hover { opacity: 1; filter: grayscale(0%); }
     @media (max-width: 768px) {
         .v-trust { padding: 88px 0 88px; }
         .v-trust-label { font-size: 10.5px; margin-bottom: 24px; }
+        .v-trust-lanes { gap: 28px; }
         .v-trust-track { gap: 64px; }
         .v-trust-track img { height: 40px; }
+        .v-trust-track img.v-trust-ico { height: 30px; }
     }
     @media (prefers-reduced-motion: reduce) {
         .v-trust-track { animation: none; transform: none; }
