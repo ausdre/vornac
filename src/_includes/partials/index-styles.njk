@@ -49,7 +49,10 @@
         --v-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
     }
 
-    .bg-warm { background-color: #ffffff; }
+    /* Homepage body sits on the dark institutional base so the sticky glass
+       header reads dark at the top instead of bleeding the white body through.
+       Every section below sets its own --v-bg, so white sections stay white. */
+    .bg-warm { background-color: var(--v-bg-dark); }
     .bg-warm-soft { background-color: #ffffff; }
     .bg-warm-muted { background-color: #ffffff; }
 
