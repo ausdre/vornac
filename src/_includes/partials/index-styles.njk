@@ -431,10 +431,10 @@
         gap: 0;
     }
     .v-stats-grid.is-four { grid-template-columns: 1fr 1fr 1fr 1fr; }
-    .v-stat { position: relative; padding: 0 72px; }
+    .v-stat { position: relative; padding: 0 72px; text-align: center; }
     .v-stats-grid.is-four .v-stat { padding: 0 32px; }
-    .v-stat:first-child { padding-left: 0; }
-    .v-stat:last-child  { padding-right: 0; }
+    .v-stats-grid.is-four .v-stat:first-child { padding-left: 0; }
+    .v-stats-grid.is-four .v-stat:last-child  { padding-right: 0; }
     .v-stats-grid.is-four .v-stat-number {
         font-size: clamp(64px, 6.8vw, 108px);
         margin-bottom: 26px;
@@ -451,6 +451,7 @@
         color: var(--v-ink);
         display: flex;
         align-items: baseline;
+        justify-content: center;
         gap: 0;
         margin-bottom: 30px;
         white-space: nowrap;
@@ -493,6 +494,8 @@
         color: var(--v-ink);
         letter-spacing: -0.02em;
         max-width: 18ch;
+        margin-left: auto;
+        margin-right: auto;
     }
     .v-stats.is-dark .v-stat-label { color: #fff; }
     .v-stat-label .v-stat-label-sub {
@@ -505,6 +508,8 @@
         letter-spacing: -0.003em;
         line-height: 1.5;
         max-width: 34ch;
+        margin-left: auto;
+        margin-right: auto;
     }
     .v-stats.is-dark .v-stat-label .v-stat-label-sub { color: rgba(255, 255, 255, 0.62); }
     .v-stats.is-dark .v-stat-label .v-stat-label-sub { color: rgba(255, 255, 255, 0.7); }
