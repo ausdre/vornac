@@ -1,0 +1,62 @@
+{# Hero "Book a demo" email capture (homepage EN + DE).
+
+   The pill expands to an email field on hover (desktop) or tap (mobile),
+   and submits the address to Formspree via AJAX, reusing the page's
+   #thankyou-overlay confirmation. Mirrors contact-form-script.njk behaviour. #}
+<script>
+(function () {
+    const form = document.getElementById('hero-demo-form');
+    if (!form) return;
+
+    const trigger = form.querySelector('.v-hero-demo-trigger');
+    const input = form.querySelector('.v-hero-demo-input');
+    const submit = form.querySelector('.v-hero-demo-submit');
+    const overlay = document.getElementById('thankyou-overlay');
+
+    const open = () => {
+        form.classList.add('is-open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+        if (input) requestAnimationFrame(() => input.focus());
+    };
+
+    if (trigger) trigger.addEventListener('click', open);
+    if (input) {
+        input.addEventListener('focus', () => form.classList.add('is-open'));
+        input.addEventListener('blur', () => {
+            if (!input.value) {
+                form.classList.remove('is-open');
+                if (trigger) trigger.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const gotcha = form.querySelector('[name="gotcha"]');
+        if (gotcha && gotcha.value) return;
+        if (submit) submit.disabled = true;
+        try {
+            const res = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { Accept: 'application/json' }
+            });
+            if (res.ok) {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'conversion', {
+                        send_to: 'G-9LJGWDQ2CR',
+                        event_category: 'contact_form',
+                        event_label: 'hero_demo_request'
+                    });
+                }
+                form.reset();
+                form.classList.remove('is-open');
+                if (trigger) trigger.setAttribute('aria-expanded', 'false');
+                if (overlay) overlay.classList.add('is-open');
+            }
+        } finally {
+            if (submit) submit.disabled = false;
+        }
+    });
+})();
+</script>

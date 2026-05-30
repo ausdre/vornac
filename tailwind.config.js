@@ -29,7 +29,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        display: ['"Archivo Black"', '"Archivo"', 'system-ui', 'sans-serif'],
+        display: ['"Saira Condensed"', '"Archivo"', 'system-ui', 'sans-serif'],
         heading: ['"Archivo"', 'system-ui', 'sans-serif'],
         body: ['"Archivo"', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],

@@ -18,16 +18,17 @@ permalink: /de/index.html
 {% include "partials/index-styles.njk" %}
 <link rel="stylesheet" href="/pentesting.css">
 
-{# Amber-mark for DE: long phrase that wraps, use background-image with
-   box-decoration-break: clone so each visual line gets its own band. #}
+{# Hero phrase over the amber band: keep it plain ink (amber-on-amber won't
+   read). DE phrase is long, so it may wrap naturally. #}
 <style>
     .v-hero-headline .v-amber-mark {
-        background-image: linear-gradient(rgba(255, 163, 23, 0.92), rgba(255, 163, 23, 0.92));
-        background-repeat: no-repeat;
-        background-position: 0 0.78em;
-        background-size: 100% 0.30em;
-        -webkit-box-decoration-break: clone;
-        box-decoration-break: clone;
+        display: inline;
+    }
+    /* German compound nouns (e.g. Sicherheitsvalidierung) only need
+       hyphenation to fit on narrow screens; on desktop they wrap cleanly at
+       spaces, so scope hyphenation to mobile. lang="de" enables the dictionary. */
+    @media (max-width: 768px) {
+        .v-hero-headline { hyphens: auto; }
     }
 </style>
 {% endblock %}
@@ -43,13 +44,27 @@ permalink: /de/index.html
             Die Ära punktueller, manueller Pentests neigt sich dem Ende zu. Wir validieren Ihre Systeme kontinuierlich und autonom – und beweisen, was ein Angreifer tatsächlich ausnutzen kann. So entsteht ein belastbares, jederzeit auditfähiges Maß an Cyber-Resilienz.
         </p>
         <div class="v-hero-actions v-reveal" data-reveal-delay="3">
-            <a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="v-btn-primary">
-                Demo buchen
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <line x1="5" y1="12" x2="19" y2="12"/>
-                    <polyline points="12 5 19 12 12 19"/>
-                </svg>
-            </a>
+            <form class="v-hero-demo" id="hero-demo-form" action="https://formspree.io/f/meoyrzog" method="POST">
+                <input type="text" name="gotcha" class="hidden" autocomplete="off" tabindex="-1" aria-hidden="true">
+                <input type="hidden" name="_subject" value="Hero demo request — vornac.com">
+                <input type="hidden" name="source" value="hero-email-capture">
+                <button type="button" class="v-hero-demo-trigger" aria-expanded="false" aria-controls="hero-demo-input">
+                    Demo buchen
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                </button>
+                <div class="v-hero-demo-reveal">
+                    <input type="email" id="hero-demo-input" name="email" class="v-hero-demo-input" placeholder="name@unternehmen.de" aria-label="Geschäftliche E-Mail" autocomplete="email" required>
+                    <button type="submit" class="v-hero-demo-submit" aria-label="Demo anfragen">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </button>
+                </div>
+            </form>
             <a href="{{ pageUrls.pentesting }}" class="v-btn-ghost">So funktioniert's</a>
         </div>
         <p class="v-hero-trust v-reveal" data-reveal-delay="4">
@@ -143,7 +158,6 @@ permalink: /de/index.html
         <h2 class="v-stats-headline v-reveal">
         So wird Pentesting zur Sicherheitsfunktion mit planbarem OPEX-Budget.
         </h2>
-        <div class="v-stats-divider"></div>
 
         <div class="v-stats-grid">
             <div class="v-stat v-reveal" data-reveal-delay="1">
@@ -319,7 +333,6 @@ permalink: /de/index.html
 <section class="pent-contact pent-contact--final" id="contact">
     <div class="pent-contact-inner">
         <header class="pent-contact-header">
-            <span class="pent-contact-eyebrow">Loslegen</span>
             <h2 class="pent-contact-headline">
                 Lassen Sie Ihre Angriffsfläche in <span class="pent-contact-headline-emph">2–5&nbsp;Stunden</span> validieren.
             </h2>
@@ -387,4 +400,5 @@ permalink: /de/index.html
 
 {% block extraBodyEnd %}
 {% include "partials/contact-form-script.njk" %}
+{% include "partials/hero-demo-script.njk" %}
 {% endblock %}

@@ -18,24 +18,10 @@ permalink: /index.html
 {% include "partials/index-styles.njk" %}
 <link rel="stylesheet" href="/pentesting.css">
 
-{# Amber-mark for EN: short phrase on a single line, use ::after underbar. #}
+{# Hero phrase over the amber band: keep it plain ink (amber-on-amber won't
+   read). Inline so it wraps naturally on small screens. #}
 <style>
-    .v-hero-headline .v-amber-mark {
-        position: relative;
-        white-space: nowrap;
-        display: inline-block;
-    }
-    .v-hero-headline .v-amber-mark::after {
-        content: '';
-        position: absolute;
-        left: -3px;
-        right: -3px;
-        bottom: 0.06em;
-        height: 0.30em;
-        background: var(--v-amber);
-        opacity: 0.92;
-        z-index: -1;
-    }
+    .v-hero-headline .v-amber-mark { display: inline; }
 </style>
 {% endblock %}
 
@@ -50,13 +36,27 @@ permalink: /index.html
             The era of relying solely on periodic, manual penetration testing is sunsetting. By transitioning from static vulnerability reporting to dynamic, continuous exploitation modeling, organizations can achieve a mathematically rigorous standard of cyber resilience.
         </p>
         <div class="v-hero-actions v-reveal" data-reveal-delay="3">
-            <a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="v-btn-primary">
-                Book a demo
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <line x1="5" y1="12" x2="19" y2="12"/>
-                    <polyline points="12 5 19 12 12 19"/>
-                </svg>
-            </a>
+            <form class="v-hero-demo" id="hero-demo-form" action="https://formspree.io/f/meoyrzog" method="POST">
+                <input type="text" name="gotcha" class="hidden" autocomplete="off" tabindex="-1" aria-hidden="true">
+                <input type="hidden" name="_subject" value="Hero demo request — vornac.com">
+                <input type="hidden" name="source" value="hero-email-capture">
+                <button type="button" class="v-hero-demo-trigger" aria-expanded="false" aria-controls="hero-demo-input">
+                    Book a demo
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                </button>
+                <div class="v-hero-demo-reveal">
+                    <input type="email" id="hero-demo-input" name="email" class="v-hero-demo-input" placeholder="you@company.com" aria-label="Work email" autocomplete="email" required>
+                    <button type="submit" class="v-hero-demo-submit" aria-label="Request your demo">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </button>
+                </div>
+            </form>
             <a href="{{ pageUrls.pentesting }}" class="v-btn-ghost">How it works</a>
         </div>
         <p class="v-hero-trust v-reveal" data-reveal-delay="4">
@@ -150,7 +150,6 @@ permalink: /index.html
         <h2 class="v-stats-headline v-reveal">
                         Turning pentesting into a predictable OPEX-based security capability.
         </h2>
-        <div class="v-stats-divider"></div>
 
         <div class="v-stats-grid">
             <div class="v-stat v-reveal" data-reveal-delay="1">
@@ -326,7 +325,6 @@ permalink: /index.html
 <section class="pent-contact pent-contact--final" id="contact">
     <div class="pent-contact-inner">
         <header class="pent-contact-header">
-            <span class="pent-contact-eyebrow">Get started</span>
             <h2 class="pent-contact-headline">
                 See your attack surface validated in <span class="pent-contact-headline-emph">2–5&nbsp;hours</span>.
             </h2>
@@ -394,4 +392,5 @@ permalink: /index.html
 
 {% block extraBodyEnd %}
 {% include "partials/contact-form-script.njk" %}
+{% include "partials/hero-demo-script.njk" %}
 {% endblock %}

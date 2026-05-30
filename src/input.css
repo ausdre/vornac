@@ -10,7 +10,9 @@
  * Prevents accidental horizontal scroll from
  * oversized images or italic headlines.
  * -------------------------------------- */
-html, body { overflow-x: hidden; max-width: 100%; }
+/* overflow-x: clip (not hidden) prevents horizontal scroll without creating a
+   scroll container, so the sticky header keeps pinning to the viewport. */
+html, body { overflow-x: clip; max-width: 100%; }
 
 /* Reserve scrollbar space so toggling overflow (mobile nav) does not shift layout */
 html { scrollbar-gutter: stable; }
@@ -439,7 +441,7 @@ img, video { max-width: 100%; }
 
 /* ----------------------------------------
  * Brutalist enterprise design tokens
- * Type stack: Archivo (body + mid-display) + Archivo Black (billboard)
+ * Type stack: Archivo (body + mid-display) + Saira Condensed (billboard display)
  *             + JetBrains Mono (regulator-credible data accents)
  * Surfaces:   clean white + faint stone band + printed-ink dark
  * Rules:      hard ink hairlines, amber as precision accent only
@@ -473,7 +475,7 @@ img, video { max-width: 100%; }
        Use --v-display for billboard moments (H1, hero numbers, brand wordmark).
        Use --v-sans for body and mid-scale display.
        Use --v-mono for compliance frameworks, timestamps, signed evidence. */
-    --v-display:    'Archivo Black', 'Archivo', system-ui, -apple-system, sans-serif;
+    --v-display:    'Saira Condensed', 'Archivo', system-ui, -apple-system, sans-serif;
     --v-sans:       'Archivo', system-ui, -apple-system, sans-serif;
     --v-mono:       'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 }
@@ -496,8 +498,8 @@ img, video { max-width: 100%; }
  * Top announcement bar (all pages via output.css)
  * -------------------------------------- */
 .v-announcement {
-    background: var(--v-bg-dark);
-    color: #fff;
+    background: #ffffff;
+    color: var(--v-ink);
     font-family: var(--v-sans);
     font-size: 13.5px;
     font-weight: 500;
@@ -506,6 +508,7 @@ img, video { max-width: 100%; }
     position: relative;
     z-index: 60;
     letter-spacing: -0.005em;
+    border-bottom: 1px solid var(--v-line);
 }
 .v-announcement-inner {
     max-width: 1320px;
@@ -525,16 +528,16 @@ img, video { max-width: 100%; }
     vertical-align: 2px;
 }
 .v-announcement a {
-    color: #fff;
+    color: var(--v-ink);
     text-decoration: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+    border-bottom: 1px solid rgba(14, 17, 22, 0.28);
     padding-bottom: 1px;
     margin-left: 8px;
     font-weight: 600;
 }
 .v-announcement a:hover {
-    border-bottom-color: var(--v-amber);
-    color: var(--v-amber);
+    border-bottom-color: var(--v-amber-deep);
+    color: var(--v-amber-deep);
 }
 .v-announcement a:focus-visible {
     outline: 2px solid var(--v-amber);
