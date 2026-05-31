@@ -3,6 +3,22 @@
 @tailwind utilities;
 
 /* ----------------------------------------
+ * Type rendering — crisp, kerned, ligature-aware
+ * across the whole document for the brand stack.
+ * -------------------------------------- */
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    }
+
+/* Vector brand assets stay crisp at any size. */
+img[src$=".svg"] { image-rendering: auto; }
+
+/* ----------------------------------------
  * Global mobile safety net
  * Prevents accidental horizontal scroll from
  * oversized images or italic headlines.
