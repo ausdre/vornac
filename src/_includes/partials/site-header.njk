@@ -1,50 +1,44 @@
-{# Sticky site header — desktop nav + mobile drawer.
+{# Site header — Dataveyes-style transparent navbar.
 
-   The "active" nav link is detected from the page's i18nKey.
-   Nav targets are pulled from pageUrls (auto-localized).
-   Mobile menu logic lives in partials/cookie-script.njk (one DOMContentLoaded block).
+   Behaviour modelled on dataveyes.com:
+   - Transparent bar that sits over the dark hero and scrolls away (NOT sticky).
+   - Logo top-left (inline SVG with the run-in → collapse-to-V intro animation).
+   - Clean white links spread to the right; the current page is dimmed (opacity).
+   - EN/DE language switch + the VORNAC "Validate Now" CTA (kept verbatim).
+   - Mobile: a distinctive 18/9/18 burger that opens a full-screen overlay with
+     the nav items rendered as large stacked headings.
+
+   Mobile menu open/close logic lives in partials/site-scripts.njk
+   (toggles `.hidden` on #mobile-menu / #mobile-backdrop + body.nav-open).
 #}
 
-{# Macro: render a nav link with active-state styling. #}
-{% macro navLink(linkKey, label, isActiveOverride) %}
-  {% set isActive = isActiveOverride if isActiveOverride is defined else (i18nKey == linkKey) %}
-  {% set href = pageUrls[linkKey] %}
-  {% if isActive %}
-    <a href="{{ href }}" class="nav-link text-white font-semibold border-b-2 border-amber-500">{{ label }}</a>
-  {% else %}
-    <a href="{{ href }}" class="nav-link text-white/65 hover:text-white transition-colors">{{ label }}</a>
-  {% endif %}
+{# Desktop nav link — current page is dimmed, like the dataveyes nav. #}
+{% macro navLink(linkKey, label) %}
+  {% set isActive = (i18nKey == linkKey) %}
+  <a href="{{ pageUrls[linkKey] }}" class="v-dv-link{% if isActive %} is-active{% endif %}"{% if isActive %} aria-current="page"{% endif %}>{{ label }}</a>
 {% endmacro %}
 
-{# Macro: mobile drawer link. #}
+{# Mobile overlay link — large heading style. #}
 {% macro mobileLink(linkKey, label) %}
   {% set isActive = (i18nKey == linkKey) %}
-  {% set href = pageUrls[linkKey] %}
-  {% if isActive %}
-    <a href="{{ href }}" class="mobile-link text-lg font-medium text-amber-600">{{ label }}</a>
-  {% else %}
-    <a href="{{ href }}" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900">{{ label }}</a>
-  {% endif %}
+  <a href="{{ pageUrls[linkKey] }}" class="v-dv-mlink{% if isActive %} is-active{% endif %}"{% if isActive %} aria-current="page"{% endif %}>{{ label }}</a>
 {% endmacro %}
 
-<header id="site-header" class="sticky top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
-    <nav class="v-nav mx-auto flex max-w-content items-center justify-between rounded-[21px] px-5 py-2.5 shadow-[0_8px_30px_rgba(0,0,0,0.18)] backdrop-blur-sm backdrop-saturate-150 lg:px-7">
-
-        <a href="{{ pageUrls.index }}" class="flex items-center gap-3" aria-label="{{ t.a11y.siteHome }}">
-            {# Inline logo SVG (instead of <img>) so the intro can animate the V mark
-               and each ORNAC letter independently. Behaviour mirrors the dataveyes.com
-               mark: the letters run in one by one from the right, then slide back out
-               and vanish — leaving only the V monogram at rest. Same easing
-               cubic-bezier(.86,0,.07,1). The ORNAC paths were split out of the original
-               single wordmark path into one path per letter. #}
-            <svg class="nav-logo nav-logo-svg h-12 w-auto sm:h-14" viewBox="0 0 1448 208" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" aria-hidden="true" focusable="false">
+<header id="site-header" class="v-dv-header">
+    <div class="v-dv-bar">
+        <a href="{{ pageUrls.index }}" class="v-dv-logo" aria-label="{{ t.a11y.siteHome }}">
+            {# Inline logo SVG so the load intro can animate the V mark and each ORNAC
+               letter independently (modelled on dataveyes.com): the letters run in
+               from the right, hold as the full VORNAC, then slide out and vanish,
+               leaving just the V monogram. ORNAC was split into one path per letter. #}
+            <svg class="nav-logo-svg" viewBox="0 0 1448 208" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" aria-hidden="true" focusable="false">
                 <defs>
                     <linearGradient id="vLogoGrad" x1="339.35" x2="339.35" y1="894.62" y2="1102.62" gradientTransform="matrix(.48429 -.87489 1.06616 .90262 -1217.88 -510.577)" gradientUnits="userSpaceOnUse">
-                        <stop offset="0" stop-color="#fff"/><stop offset=".26" stop-color="#fff"/><stop offset=".52" stop-color="#fff"/><stop offset=".7" stop-color="#fff" stop-opacity=".04"/><stop offset=".88" stop-color="#fff" stop-opacity="0"/><stop offset=".88" stop-color="#fff"/><stop offset="1" stop-color="#fff"/>
+                        <stop offset="0" stop-color="currentColor"/><stop offset=".26" stop-color="currentColor"/><stop offset=".52" stop-color="currentColor"/><stop offset=".7" stop-color="currentColor" stop-opacity=".04"/><stop offset=".88" stop-color="currentColor" stop-opacity="0"/><stop offset=".88" stop-color="currentColor"/><stop offset="1" stop-color="currentColor"/>
                     </linearGradient>
                 </defs>
                 <path class="v-logo-mark" fill="url(#vLogoGrad)" fill-rule="evenodd" d="M0 0h50.1l67 126L187.09 0h49L114.06 207.74z" clip-rule="evenodd"/>
-                <g class="v-logo-word" fill="#fff" fill-rule="evenodd">
+                <g class="v-logo-word" fill="currentColor" fill-rule="evenodd">
                     <path class="v-logo-letter" style="--i:0" d="M297.22 43.48L422.22 43.48L422.11 164.82L297.22 164.82ZM296.22 0.03L251.23 43.48L251.4 164.82L296.22 207.74L421.22 207.74L465.91 164.82L466.09 43.48L421.22 0.03Z"/>
                     <path class="v-logo-letter" style="--i:1" d="M509.21 0.03L670.06 0L711.06 42L711.06 100L682.06 127L673.06 134L665.06 134L720.93 207.74L669.2 207.74L574.2 92.03L664.2 92.03L664.2 44.03L554.21 43.03L554.21 207.74L509.21 207.74Z"/>
                     <path class="v-logo-letter" style="--i:2" d="M754.05 0L904.04 122.03L904 0L945.1 0L945.04 208.03L797.05 86.03L797.05 207.74L754.05 207.74Z"/>
@@ -54,90 +48,246 @@
             </svg>
         </a>
 
-        <div class="hidden items-center gap-8 text-sm md:flex">
+        <nav class="v-dv-nav" aria-label="Primary">
             {{ navLink('index', t.nav.home) }}
             {{ navLink('pentesting', t.nav.pentesting) }}
             {{ navLink('industries', t.nav.industries) }}
             {{ navLink('customers', t.nav.customers) }}
 
-            {# About dropdown — active if any /about-* page or i18nKey 'about'. #}
             {% set aboutActive = (i18nKey == 'about') %}
-            <div class="relative group">
-                <button class="nav-link {{ 'text-white font-semibold border-b-2 border-amber-500' if aboutActive else 'text-white/65 hover:text-white transition-colors' }} flex items-center gap-1">
+            <div class="v-dv-about">
+                <a href="{{ pageUrls.about }}" class="v-dv-link{% if aboutActive %} is-active{% endif %} v-dv-about-trigger">
                     {{ t.nav.about }}
-                    <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                <div class="absolute left-0 mt-2 w-48 bg-white border border-stone-200 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                    <a href="{{ pageUrls.about }}#{{ t.aboutAnchors.company }}" class="block px-4 py-3 text-stone-700 hover:bg-stone-50 hover:text-stone-900 transition-colors">{{ t.nav.company }}</a>
-                    <a href="{{ pageUrls.about }}#{{ t.aboutAnchors.careers }}" class="block px-4 py-3 text-stone-700 hover:bg-stone-50 hover:text-stone-900 transition-colors border-t border-stone-100">{{ t.nav.careers }}</a>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </a>
+                <div class="v-dv-about-menu">
+                    <a href="{{ pageUrls.about }}#{{ t.aboutAnchors.company }}">{{ t.nav.company }}</a>
+                    <a href="{{ pageUrls.about }}#{{ t.aboutAnchors.careers }}">{{ t.nav.careers }}</a>
                 </div>
             </div>
 
-            <a href="{{ site.contact.bookDemo }}" class="bg-amber-500 uppercase tracking-widest hover:bg-amber-400 transition-colors duration-200" style="border-radius: 99999px 55550px 99999px 55550px; font-family: 'Archivo'; font-style: italic; font-weight: 900; color: rgba(0,0,0,0.75); letter-spacing: -0.65px; font-size: larger; padding: 0.5rem 1.5rem;">Validate<span style="font-style: oblique; font-family: 'Saira Condensed'; color: rgba(255,255,255,0.75); letter-spacing: .15px; font-size: 1.15rem; font-weight: 900; vertical-align: bottom;"> Now</span></a>
-        </div>
-
-        <button id="nav-toggle" class="relative z-[110] inline-flex h-10 w-10 items-center justify-center border border-white/40 md:hidden" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
-            <span class="flex flex-col gap-1.5">
-                <span class="block h-[2px] w-5 bg-white"></span>
-                <span class="block h-[2px] w-5 bg-white"></span>
-                <span class="block h-[2px] w-5 bg-white"></span>
+            {% if counterpart %}
+            <span class="v-dv-lang" role="navigation" aria-label="{{ t.a11y.langNav }}">
+                {% if locale == 'en' %}
+                    <span class="is-active" aria-current="true">EN</span><span class="v-dv-lang-sep" aria-hidden="true">/</span><a href="{{ counterpart }}?lang=de" hreflang="de" onclick="localStorage.setItem('vornac_lang','de')">DE</a>
+                {% else %}
+                    <span class="is-active" aria-current="true">DE</span><span class="v-dv-lang-sep" aria-hidden="true">/</span><a href="{{ counterpart }}?lang=en" hreflang="en" onclick="localStorage.setItem('vornac_lang','en')">EN</a>
+                {% endif %}
             </span>
+            {% endif %}
+
+            <a href="{{ site.contact.bookDemo }}" class="v-dv-cta bg-amber-500 uppercase tracking-widest hover:bg-amber-400 transition-colors duration-200" style="border-radius: 99999px 55550px 99999px 55550px; font-family: 'Archivo'; font-style: italic; font-weight: 900; color: rgba(0,0,0,0.75); letter-spacing: -0.65px; font-size: larger; padding: 0.5rem 1.5rem;">Validate<span style="font-style: oblique; font-family: 'Saira Condensed'; color: rgba(255,255,255,0.75); letter-spacing: .15px; font-size: 1.15rem; font-weight: 900; vertical-align: bottom;"> Now</span></a>
+        </nav>
+
+        <button id="nav-toggle" class="v-dv-burger" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+            <svg width="22" height="22" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <rect class="v-dv-burger-top" fill="currentColor" height="2" width="18" y="2"/>
+                <rect class="v-dv-burger-mid" fill="currentColor" height="2" width="9" y="8"/>
+                <rect class="v-dv-burger-bot" fill="currentColor" height="2" width="18" y="14"/>
+            </svg>
         </button>
-    </nav>
-
-    <div id="mobile-backdrop" class="fixed inset-0 z-[90] hidden bg-black/50 backdrop-blur-sm md:hidden"></div>
-
-    <div id="mobile-menu" class="fixed left-3 right-3 top-[84px] z-[100] hidden rounded-2xl border border-stone-200 bg-white/95 shadow-xl backdrop-blur-xl md:hidden">
-        <div class="flex flex-col space-y-6 px-8 py-10 text-center">
-            {{ mobileLink('index', t.nav.home) }}
-            {{ mobileLink('pentesting', t.nav.pentesting) }}
-            {{ mobileLink('industries', t.nav.industries) }}
-            {{ mobileLink('customers', t.nav.customers) }}
-            <div class="flex flex-col">
-                <button onclick="this.nextElementSibling.classList.toggle('hidden')" class="mobile-link text-lg font-medium text-stone-600 hover:text-stone-900 flex items-center justify-center gap-2">
-                    {{ t.nav.about }}
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                <div class="hidden flex flex-col space-y-3 mt-3 px-4">
-                    <a href="{{ pageUrls.about }}#{{ t.aboutAnchors.company }}" class="text-base text-stone-500 hover:text-stone-900">→ {{ t.nav.company }}</a>
-                    <a href="{{ pageUrls.about }}#{{ t.aboutAnchors.careers }}" class="text-base text-stone-500 hover:text-stone-900">→ {{ t.nav.careers }}</a>
-                </div>
-            </div>
-            <a href="{{ site.contact.bookDemo }}" class="mobile-link mt-4 flex h-14 items-center justify-center bg-stone-900 font-bold text-white transition-colors active:bg-amber-700 hover:bg-amber-600">{{ t.nav.bookDemo }}</a>
-        </div>
     </div>
 </header>
 
+<div id="mobile-backdrop" class="v-dv-backdrop hidden"></div>
+
+<div id="mobile-menu" class="v-dv-menu hidden">
+    <nav class="v-dv-menu-nav" aria-label="Mobile">
+        {{ mobileLink('index', t.nav.home) }}
+        {{ mobileLink('pentesting', t.nav.pentesting) }}
+        {{ mobileLink('industries', t.nav.industries) }}
+        {{ mobileLink('customers', t.nav.customers) }}
+        {{ mobileLink('about', t.nav.about) }}
+    </nav>
+    <div class="v-dv-menu-foot">
+        {% if counterpart %}
+        <span class="v-dv-lang v-dv-menu-lang" role="navigation" aria-label="{{ t.a11y.langNav }}">
+            {% if locale == 'en' %}
+                <span class="is-active" aria-current="true">EN</span><span class="v-dv-lang-sep" aria-hidden="true">/</span><a href="{{ counterpart }}?lang=de" hreflang="de" onclick="localStorage.setItem('vornac_lang','de')">DE</a>
+            {% else %}
+                <span class="is-active" aria-current="true">DE</span><span class="v-dv-lang-sep" aria-hidden="true">/</span><a href="{{ counterpart }}?lang=en" hreflang="en" onclick="localStorage.setItem('vornac_lang','en')">EN</a>
+            {% endif %}
+        </span>
+        {% endif %}
+        <a href="{{ site.contact.bookDemo }}" class="v-dv-cta bg-amber-500 uppercase tracking-widest hover:bg-amber-400 transition-colors duration-200" style="border-radius: 99999px 55550px 99999px 55550px; font-family: 'Archivo'; font-style: italic; font-weight: 900; color: rgba(0,0,0,0.75); letter-spacing: -0.65px; font-size: larger; padding: 0.6rem 1.7rem;">Validate<span style="font-style: oblique; font-family: 'Saira Condensed'; color: rgba(255,255,255,0.75); letter-spacing: .15px; font-size: 1.15rem; font-weight: 900; vertical-align: bottom;"> Now</span></a>
+    </div>
+</div>
+
 <style>
-    /* Logo intro — adapted from the dataveyes.com mark behaviour.
-       The V monogram settles first, then the ORNAC letters run in one by one
-       from the right, hold briefly as the full "VORNAC" wordmark, then slide
-       back out to the left and vanish — leaving just the V at rest. Each letter
-       is staggered via its --i index. */
-    .nav-logo-svg { display: block; }
+    /* ── Dataveyes-style navbar ─────────────────────────────────────────
+       Transparent, non-sticky bar over the dark hero; scrolls away. */
+    /* Adaptive colour: the homepage (v-home) has a dark hero → white nav;
+       every other page has a white body strip behind the nav → ink nav.
+       The logo (currentColor fills/gradient) follows the same colour. */
+    .v-dv-header { position: relative; z-index: 50; width: 100%; color: #0E1116; }
+    body.v-home .v-dv-header { color: #fff; }
+    .v-dv-bar {
+        max-width: 1320px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 28px;
+        padding: 26px 32px 14px;
+    }
+    .v-dv-logo { display: inline-flex; align-items: center; }
+
+    /* Logo sizing (replaces the old #site-header .nav-logo clamp). */
+    .nav-logo-svg {
+        display: block;
+        width: clamp(150px, 20vw, 240px);
+        height: auto;
+    }
+
+    .v-dv-nav { display: flex; align-items: center; gap: 30px; }
+    .v-dv-link {
+        position: relative;
+        color: currentColor;
+        font-family: var(--v-sans);
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1.4;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: opacity .2s ease;
+    }
+    .v-dv-link:hover { opacity: .6; }
+    .v-dv-link.is-active { opacity: .45; }   /* current page dimmed, like dataveyes */
+
+    /* About dropdown */
+    .v-dv-about { position: relative; }
+    .v-dv-about-trigger { display: inline-flex; align-items: center; gap: 5px; }
+    .v-dv-about-trigger svg { width: 13px; height: 13px; transition: transform .2s ease; }
+    .v-dv-about:hover .v-dv-about-trigger svg { transform: rotate(180deg); }
+    .v-dv-about-menu {
+        position: absolute;
+        left: 0;
+        top: 100%;
+        margin-top: 12px;
+        min-width: 180px;
+        background: rgba(14, 17, 22, 0.96);
+        backdrop-filter: blur(8px);
+        padding: 6px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-6px);
+        transition: opacity .2s ease, transform .2s ease, visibility .2s;
+    }
+    .v-dv-about:hover .v-dv-about-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .v-dv-about-menu a {
+        display: block;
+        padding: 10px 14px;
+        color: rgba(255, 255, 255, 0.7);
+        font-family: var(--v-sans);
+        font-size: 14px;
+        text-decoration: none;
+        transition: color .15s ease, background-color .15s ease;
+    }
+    .v-dv-about-menu a:hover { color: #fff; background: rgba(255, 255, 255, 0.06); }
+
+    /* Language switch */
+    .v-dv-lang {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-family: var(--v-sans);
+        font-size: 15px;
+        color: currentColor;
+    }
+    .v-dv-lang a { color: currentColor; opacity: .5; text-decoration: none; transition: opacity .2s ease; }
+    .v-dv-lang a:hover { opacity: 1; }
+    .v-dv-lang .is-active { opacity: 1; }
+    .v-dv-lang-sep { opacity: .3; }
+
+    .v-dv-cta { display: inline-block; line-height: 1; }
+
+    /* Burger (mobile) — 18/9/18 lines, like dataveyes. */
+    .v-dv-burger {
+        display: none;
+        position: relative;
+        z-index: 80;
+        color: currentColor;
+        background: none;
+        border: 0;
+        padding: 8px;
+        margin: -8px;
+        cursor: pointer;
+    }
+    .v-dv-burger svg rect { transition: transform .3s ease, opacity .2s ease; transform-box: fill-box; transform-origin: center; }
+    /* When the dark overlay is open the burger-turned-X is always white. */
+    body.nav-open .v-dv-burger { color: #fff; }
+    body.nav-open .v-dv-burger-top { transform: translateY(6px) rotate(45deg); }
+    body.nav-open .v-dv-burger-mid { opacity: 0; }
+    body.nav-open .v-dv-burger-bot { transform: translateY(-6px) rotate(-45deg); width: 18px; }
+
+    @media (max-width: 1023px) {
+        .v-dv-nav { display: none; }
+        .v-dv-burger { display: inline-flex; }
+        .v-dv-bar { padding: 18px 22px 12px; }
+    }
+
+    /* Full-screen overlay menu */
+    .v-dv-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 65;
+        background: rgba(14, 17, 22, 0.5);
+        backdrop-filter: blur(2px);
+    }
+    .v-dv-menu {
+        position: fixed;
+        inset: 0;
+        z-index: 70;
+        background: var(--v-bg-dark);
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 40px;
+        padding: 96px 32px 48px;
+        overflow-y: auto;
+    }
+    /* Higher specificity than `.v-dv-menu { display:flex }` so Tailwind's
+       `.hidden` (loaded earlier) still wins when the menu is closed. */
+    .v-dv-menu.hidden, .v-dv-backdrop.hidden { display: none; }
+    .v-dv-menu:not(.hidden) { animation: vDvMenuIn .28s cubic-bezier(.86, 0, .07, 1) both; }
+    @keyframes vDvMenuIn { from { opacity: 0; } to { opacity: 1; } }
+    .v-dv-menu-nav { display: flex; flex-direction: column; gap: 2px; }
+    .v-dv-mlink {
+        color: #fff;
+        font-family: var(--v-display);
+        font-weight: 700;
+        font-size: clamp(40px, 13vw, 72px);
+        line-height: 1.02;
+        letter-spacing: -0.01em;
+        text-decoration: none;
+        transition: opacity .2s ease;
+    }
+    .v-dv-mlink:hover { opacity: .6; }
+    .v-dv-mlink.is-active { opacity: .4; }
+    .v-dv-menu-foot { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+    .v-dv-menu-lang { font-size: 17px; }
+
+    @media (prefers-reduced-motion: reduce) {
+        .v-dv-menu:not(.hidden) { animation: none; }
+    }
+
+    /* ── Logo intro (run-in → collapse to the V monogram) ──────────────── */
     .nav-logo-svg .v-logo-mark,
     .nav-logo-svg .v-logo-letter { transform-box: fill-box; }
     .nav-logo-svg .v-logo-letter { will-change: transform, opacity; }
 
     @media (prefers-reduced-motion: no-preference) {
-        .nav-logo-svg .v-logo-mark {
-            animation: vLogoMarkIn .7s cubic-bezier(.86, 0, .07, 1) both;
-        }
+        .nav-logo-svg .v-logo-mark { animation: vLogoMarkIn .7s cubic-bezier(.86, 0, .07, 1) both; }
         .nav-logo-svg .v-logo-letter {
             animation: vLogoLetter 2.6s cubic-bezier(.86, 0, .07, 1) both;
             animation-delay: calc(.25s + var(--i, 0) * .13s);
         }
     }
-
     @keyframes vLogoMarkIn {
         0%   { opacity: 0; transform: translateX(-26px); }
         100% { opacity: 1; transform: translateX(0); }
     }
-    /* Run in from the right → hold as the full wordmark → slide out left + fade. */
     @keyframes vLogoLetter {
         0%        { opacity: 0; transform: translateX(170px); }
         14%       { opacity: 1; transform: translateX(0); }
@@ -145,15 +295,3 @@
         72%, 100% { opacity: 0; transform: translateX(-150px); }
     }
 </style>
-
-<script>
-    (function () {
-        var header = document.getElementById('site-header');
-        if (!header) return;
-        var sync = function () {
-            header.classList.toggle('is-scrolled', window.scrollY > 8);
-        };
-        sync();
-        window.addEventListener('scroll', sync, { passive: true });
-    })();
-</script>
