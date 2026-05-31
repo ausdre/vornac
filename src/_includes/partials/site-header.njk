@@ -31,7 +31,19 @@
     <nav class="v-nav mx-auto flex max-w-content items-center justify-between rounded-[21px] px-5 py-2.5 shadow-[0_8px_30px_rgba(0,0,0,0.18)] backdrop-blur-sm backdrop-saturate-150 lg:px-7">
 
         <a href="{{ pageUrls.index }}" class="flex items-center gap-3" aria-label="{{ t.a11y.siteHome }}">
-            <img src="{{ site.logos.whiteSvg }}" class="nav-logo h-12 w-auto sm:h-14" alt="{{ site.brand }}">
+            {# Inline logo SVG (instead of <img>) so the intro reveal can animate the
+               V mark and the ORNAC wordmark independently. Behaviour mirrors the
+               dataveyes.com mark: leading mark appears, holds, then the wordmark
+               sweeps in left→right with the same cubic-bezier(.86,0,.07,1) easing. #}
+            <svg class="nav-logo nav-logo-svg h-12 w-auto sm:h-14" viewBox="0 0 1448 208" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" aria-hidden="true" focusable="false">
+                <defs>
+                    <linearGradient id="vLogoGrad" x1="339.35" x2="339.35" y1="894.62" y2="1102.62" gradientTransform="matrix(.48429 -.87489 1.06616 .90262 -1217.88 -510.577)" gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#fff"/><stop offset=".26" stop-color="#fff"/><stop offset=".52" stop-color="#fff"/><stop offset=".7" stop-color="#fff" stop-opacity=".04"/><stop offset=".88" stop-color="#fff" stop-opacity="0"/><stop offset=".88" stop-color="#fff"/><stop offset="1" stop-color="#fff"/>
+                    </linearGradient>
+                </defs>
+                <path class="v-logo-mark" fill="url(#vLogoGrad)" fill-rule="evenodd" d="M0 0h50.1l67 126L187.09 0h49L114.06 207.74z" clip-rule="evenodd"/>
+                <path class="v-logo-word" fill="#fff" fill-rule="evenodd" d="M297.22 43.48h125l-.11 121.34H297.22zm-1-43.45-44.99 43.45.17 121.34 44.82 42.92h125l44.69-42.92.18-121.34L421.22.03zm212.99 0L670.06 0l41 42v58l-29 27-9 7h-8l55.87 73.74H669.2l-95-115.71h90v-48l-109.99-1v164.71h-45zM754.05 0l149.99 122.03L904 0h41.1l-.06 208.03-147.99-122v121.71h-43zm340.8 0 127.34 207.74h-166.16l23-42.74h69l-52-89-77.26 131.74h-50.73zm178.17 0H1448l-40.99 43-135.99.48V162l4 2.82h130.99l41.99 42.92h-175.98l-44.53-42.92-.6-121.34z" clip-rule="evenodd"/>
+            </svg>
         </a>
 
         <div class="hidden items-center gap-8 text-sm md:flex">
@@ -55,7 +67,7 @@
                 </div>
             </div>
 
-            <a href="{{ site.contact.bookDemo }}" class="bg-amber-500 uppercase tracking-widest hover:bg-amber-400 transition-colors duration-200" style="border-radius: 99999px 55550px 99999px 55550px; font-family: 'Archivo'; font-style: italic; font-weight: 900; color: rgba(0,0,0,0.55); letter-spacing: -0.65px; font-size: larger; padding: 1.25rem 2.15rem;">Validate<span style="font-style: oblique; font-family: 'Saira Condensed'; color: rgba(255,255,255,0.75); letter-spacing: .15px; font-size: 1.15rem; font-weight: 900; vertical-align: bottom;"> Now</span></a>
+            <a href="{{ site.contact.bookDemo }}" class="bg-amber-500 uppercase tracking-widest hover:bg-amber-400 transition-colors duration-200" style="border-radius: 99999px 55550px 99999px 55550px; font-family: 'Archivo'; font-style: italic; font-weight: 900; color: rgba(0,0,0,0.75); letter-spacing: -0.65px; font-size: larger; padding: 0.5rem 1.5rem;">Validate<span style="font-style: oblique; font-family: 'Saira Condensed'; color: rgba(255,255,255,0.75); letter-spacing: .15px; font-size: 1.15rem; font-weight: 900; vertical-align: bottom;"> Now</span></a>
         </div>
 
         <button id="nav-toggle" class="relative z-[110] inline-flex h-10 w-10 items-center justify-center border border-white/40 md:hidden" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
@@ -92,10 +104,40 @@
     </div>
 </header>
 
+<style>
+    /* Logo intro reveal — adapted from the dataveyes.com mark behaviour.
+       Two-beat sweep: the V mark fades in and holds alone, then the ORNAC
+       wordmark wipes in left→right. The clip-path is sized so 0–16% of the
+       logo (the V) shows first, matching the V's share of the viewBox. */
+    .nav-logo-svg { display: block; will-change: clip-path, opacity; }
+    .nav-logo-svg.is-intro { animation: vLogoReveal 1.6s cubic-bezier(.86, 0, .07, 1) both; }
+    @keyframes vLogoReveal {
+        0%   { clip-path: inset(0 100% 0 0); opacity: 0; }
+        10%  { opacity: 1; }
+        22%  { clip-path: inset(0 84% 0 0); }
+        40%  { clip-path: inset(0 84% 0 0); }
+        100% { clip-path: inset(0 0 0 0); opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .nav-logo-svg.is-intro { animation: none; }
+    }
+</style>
+
 <script>
     (function () {
         var header = document.getElementById('site-header');
         if (!header) return;
+
+        // Play the logo intro reveal once per browser session (like dataveyes).
+        try {
+            var logo = header.querySelector('.nav-logo-svg');
+            var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (logo && !reduce && !sessionStorage.getItem('vLogoIntroSeen')) {
+                logo.classList.add('is-intro');
+                sessionStorage.setItem('vLogoIntroSeen', '1');
+            }
+        } catch (e) { /* sessionStorage may be unavailable; skip the intro */ }
+
         var sync = function () {
             header.classList.toggle('is-scrolled', window.scrollY > 8);
         };
