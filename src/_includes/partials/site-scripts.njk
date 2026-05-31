@@ -37,31 +37,32 @@ document.addEventListener('DOMContentLoaded', function() {
         banner?.classList.add('hidden');
     });
 
-    // ── Mobile menu ────────────────────────────────────────────────
-    const toggleBtn = document.getElementById('nav-toggle');
+    // ── Nav overlay menu (shared by the top + sticky burgers) ──────────
+    const toggleBtns = Array.from(document.querySelectorAll('[data-nav-toggle]'));
     const mobileMenu = document.getElementById('mobile-menu');
     const backdrop = document.getElementById('mobile-backdrop');
 
-    if (toggleBtn && mobileMenu && backdrop) {
+    if (toggleBtns.length && mobileMenu && backdrop) {
+        const setExpanded = (state) => toggleBtns.forEach(b => b.setAttribute('aria-expanded', String(state)));
+
         const closeMenu = () => {
             mobileMenu.classList.add('hidden');
             backdrop.classList.add('hidden');
             document.body.classList.remove('nav-open');
-            toggleBtn.setAttribute('aria-expanded', 'false');
+            setExpanded(false);
         };
 
         const openMenu = () => {
             mobileMenu.classList.remove('hidden');
             backdrop.classList.remove('hidden');
             document.body.classList.add('nav-open');
-            toggleBtn.setAttribute('aria-expanded', 'true');
+            setExpanded(true);
         };
 
-        toggleBtn.addEventListener('click', (e) => {
+        toggleBtns.forEach(btn => btn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const isHidden = mobileMenu.classList.contains('hidden');
-            isHidden ? openMenu() : closeMenu();
-        });
+            mobileMenu.classList.contains('hidden') ? openMenu() : closeMenu();
+        }));
 
         backdrop.addEventListener('click', closeMenu);
 
@@ -70,11 +71,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         document.addEventListener('click', (e) => {
-            const isClickInsideMenu = mobileMenu.contains(e.target);
-            const isClickOnButton = toggleBtn.contains(e.target);
-            if (!mobileMenu.classList.contains('hidden') && !isClickInsideMenu && !isClickOnButton) {
+            const insideMenu = mobileMenu.contains(e.target);
+            const onButton = toggleBtns.some(b => b.contains(e.target));
+            if (!mobileMenu.classList.contains('hidden') && !insideMenu && !onButton) {
                 closeMenu();
             }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) closeMenu();
         });
     }
 });

@@ -1,16 +1,27 @@
-{# Site header — Dataveyes-style transparent navbar.
+{# Site header — Dataveyes-style navbar with a sticky logo + sticky burger.
 
    Behaviour modelled on dataveyes.com:
-   - Transparent bar that sits over the dark hero and scrolls away (NOT sticky).
-   - Logo top-left (inline SVG with the run-in → collapse-to-V intro animation).
-   - Clean white links spread to the right; the current page is dimmed (opacity).
-   - EN/DE language switch + the VORNAC "Validate Now" CTA (kept verbatim).
-   - Mobile: a distinctive 18/9/18 burger that opens a full-screen overlay with
-     the nav items rendered as large stacked headings.
+   - Logo is permanently sticky: it sits in the top bar, then stays pinned near
+     the viewport top as you scroll (a fixed element whose top tracks the bar,
+     then clamps). Its colour adapts (white over dark sections, ink over light)
+     so it never vanishes over our white sections.
+   - The top bar (nav links + lang + Validate Now on desktop, burger on mobile)
+     scrolls away with the page.
+   - A sticky burger slides down from the top with a subtle animation once you
+     scroll past ~1.5 viewport heights; it opens the full-screen overlay menu.
+   - Keeps the announcement bar and the run-in → collapse-to-V logo intro.
 
-   Mobile menu open/close logic lives in partials/site-scripts.njk
-   (toggles `.hidden` on #mobile-menu / #mobile-backdrop + body.nav-open).
+   Positioning + colour adaptation + sticky-burger reveal live in the script
+   below. Menu open/close (shared by both burgers) lives in site-scripts.njk.
 #}
+
+{% macro burgerIcon() %}
+<svg width="22" height="22" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+    <rect class="v-dv-burger-top" fill="currentColor" height="2" width="18" y="2"/>
+    <rect class="v-dv-burger-mid" fill="currentColor" height="2" width="9" y="8"/>
+    <rect class="v-dv-burger-bot" fill="currentColor" height="2" width="18" y="14"/>
+</svg>
+{% endmacro %}
 
 {# Desktop nav link — current page is dimmed, like the dataveyes nav. #}
 {% macro navLink(linkKey, label) %}
@@ -24,70 +35,75 @@
   <a href="{{ pageUrls[linkKey] }}" class="v-dv-mlink{% if isActive %} is-active{% endif %}"{% if isActive %} aria-current="page"{% endif %}>{{ label }}</a>
 {% endmacro %}
 
-<header id="site-header" class="v-dv-header">
-    <div class="v-dv-bar">
-        <a href="{{ pageUrls.index }}" class="v-dv-logo" aria-label="{{ t.a11y.siteHome }}">
-            {# Inline logo SVG so the load intro can animate the V mark and each ORNAC
-               letter independently (modelled on dataveyes.com): the letters run in
-               from the right, hold as the full VORNAC, then slide out and vanish,
-               leaving just the V monogram. ORNAC was split into one path per letter. #}
-            <svg class="nav-logo-svg" viewBox="0 0 1448 208" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" aria-hidden="true" focusable="false">
-                <defs>
-                    <linearGradient id="vLogoGrad" x1="339.35" x2="339.35" y1="894.62" y2="1102.62" gradientTransform="matrix(.48429 -.87489 1.06616 .90262 -1217.88 -510.577)" gradientUnits="userSpaceOnUse">
-                        <stop offset="0" stop-color="currentColor"/><stop offset=".26" stop-color="currentColor"/><stop offset=".52" stop-color="currentColor"/><stop offset=".7" stop-color="currentColor" stop-opacity=".04"/><stop offset=".88" stop-color="currentColor" stop-opacity="0"/><stop offset=".88" stop-color="currentColor"/><stop offset="1" stop-color="currentColor"/>
-                    </linearGradient>
-                </defs>
-                <path class="v-logo-mark" fill="url(#vLogoGrad)" fill-rule="evenodd" d="M0 0h50.1l67 126L187.09 0h49L114.06 207.74z" clip-rule="evenodd"/>
-                <g class="v-logo-word" fill="currentColor" fill-rule="evenodd">
-                    <path class="v-logo-letter" style="--i:0" d="M297.22 43.48L422.22 43.48L422.11 164.82L297.22 164.82ZM296.22 0.03L251.23 43.48L251.4 164.82L296.22 207.74L421.22 207.74L465.91 164.82L466.09 43.48L421.22 0.03Z"/>
-                    <path class="v-logo-letter" style="--i:1" d="M509.21 0.03L670.06 0L711.06 42L711.06 100L682.06 127L673.06 134L665.06 134L720.93 207.74L669.2 207.74L574.2 92.03L664.2 92.03L664.2 44.03L554.21 43.03L554.21 207.74L509.21 207.74Z"/>
-                    <path class="v-logo-letter" style="--i:2" d="M754.05 0L904.04 122.03L904 0L945.1 0L945.04 208.03L797.05 86.03L797.05 207.74L754.05 207.74Z"/>
-                    <path class="v-logo-letter" style="--i:3" d="M1094.85 0L1222.19 207.74L1056.03 207.74L1079.03 165L1148.03 165L1096.03 76L1018.77 207.74L968.04 207.74Z"/>
-                    <path class="v-logo-letter" style="--i:4" d="M1273.02 0L1448 0L1407.01 43L1271.02 43.48L1271.02 162L1275.02 164.82L1406.01 164.82L1448 207.74L1272.02 207.74L1227.49 164.82L1226.89 43.48Z"/>
-                </g>
-            </svg>
-        </a>
+{# In-flow top bar — scrolls away with the page. Leaves a spacer on the left
+   that the sticky logo is positioned over. #}
+<header id="site-header" class="v-dv-topbar">
+    <span class="v-dv-logo-spacer" aria-hidden="true"></span>
 
-        <nav class="v-dv-nav" aria-label="Primary">
-            {{ navLink('index', t.nav.home) }}
-            {{ navLink('pentesting', t.nav.pentesting) }}
-            {{ navLink('industries', t.nav.industries) }}
-            {{ navLink('customers', t.nav.customers) }}
+    <nav class="v-dv-nav" aria-label="Primary">
+        {{ navLink('index', t.nav.home) }}
+        {{ navLink('pentesting', t.nav.pentesting) }}
+        {{ navLink('industries', t.nav.industries) }}
+        {{ navLink('customers', t.nav.customers) }}
 
-            {% set aboutActive = (i18nKey == 'about') %}
-            <div class="v-dv-about">
-                <a href="{{ pageUrls.about }}" class="v-dv-link{% if aboutActive %} is-active{% endif %} v-dv-about-trigger">
-                    {{ t.nav.about }}
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                </a>
-                <div class="v-dv-about-menu">
-                    <a href="{{ pageUrls.about }}#{{ t.aboutAnchors.company }}">{{ t.nav.company }}</a>
-                    <a href="{{ pageUrls.about }}#{{ t.aboutAnchors.careers }}">{{ t.nav.careers }}</a>
-                </div>
+        {% set aboutActive = (i18nKey == 'about') %}
+        <div class="v-dv-about">
+            <a href="{{ pageUrls.about }}" class="v-dv-link{% if aboutActive %} is-active{% endif %} v-dv-about-trigger">
+                {{ t.nav.about }}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </a>
+            <div class="v-dv-about-menu">
+                <a href="{{ pageUrls.about }}#{{ t.aboutAnchors.company }}">{{ t.nav.company }}</a>
+                <a href="{{ pageUrls.about }}#{{ t.aboutAnchors.careers }}">{{ t.nav.careers }}</a>
             </div>
+        </div>
 
-            {% if counterpart %}
-            <span class="v-dv-lang" role="navigation" aria-label="{{ t.a11y.langNav }}">
-                {% if locale == 'en' %}
-                    <span class="is-active" aria-current="true">EN</span><span class="v-dv-lang-sep" aria-hidden="true">/</span><a href="{{ counterpart }}?lang=de" hreflang="de" onclick="localStorage.setItem('vornac_lang','de')">DE</a>
-                {% else %}
-                    <span class="is-active" aria-current="true">DE</span><span class="v-dv-lang-sep" aria-hidden="true">/</span><a href="{{ counterpart }}?lang=en" hreflang="en" onclick="localStorage.setItem('vornac_lang','en')">EN</a>
-                {% endif %}
-            </span>
+        {% if counterpart %}
+        <span class="v-dv-lang" role="navigation" aria-label="{{ t.a11y.langNav }}">
+            {% if locale == 'en' %}
+                <span class="is-active" aria-current="true">EN</span><span class="v-dv-lang-sep" aria-hidden="true">/</span><a href="{{ counterpart }}?lang=de" hreflang="de" onclick="localStorage.setItem('vornac_lang','de')">DE</a>
+            {% else %}
+                <span class="is-active" aria-current="true">DE</span><span class="v-dv-lang-sep" aria-hidden="true">/</span><a href="{{ counterpart }}?lang=en" hreflang="en" onclick="localStorage.setItem('vornac_lang','en')">EN</a>
             {% endif %}
+        </span>
+        {% endif %}
 
-            <a href="{{ site.contact.bookDemo }}" class="v-dv-cta bg-amber-500 uppercase tracking-widest hover:bg-amber-400 transition-colors duration-200" style="border-radius: 99999px 55550px 99999px 55550px; font-family: 'Archivo'; font-style: italic; font-weight: 900; color: rgba(0,0,0,0.75); letter-spacing: -0.65px; font-size: larger; padding: 0.5rem 1.5rem;">Validate<span style="font-style: oblique; font-family: 'Saira Condensed'; color: rgba(255,255,255,0.75); letter-spacing: .15px; font-size: 1.15rem; font-weight: 900; vertical-align: bottom;"> Now</span></a>
-        </nav>
+        <a href="{{ site.contact.bookDemo }}" class="v-dv-cta bg-amber-500 uppercase tracking-widest hover:bg-amber-400 transition-colors duration-200" style="border-radius: 99999px 55550px 99999px 55550px; font-family: 'Archivo'; font-style: italic; font-weight: 900; color: rgba(0,0,0,0.75); letter-spacing: -0.65px; font-size: larger; padding: 0.5rem 1.5rem;">Validate<span style="font-style: oblique; font-family: 'Saira Condensed'; color: rgba(255,255,255,0.75); letter-spacing: .15px; font-size: 1.15rem; font-weight: 900; vertical-align: bottom;"> Now</span></a>
+    </nav>
 
-        <button id="nav-toggle" class="v-dv-burger" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
-            <svg width="22" height="22" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-                <rect class="v-dv-burger-top" fill="currentColor" height="2" width="18" y="2"/>
-                <rect class="v-dv-burger-mid" fill="currentColor" height="2" width="9" y="8"/>
-                <rect class="v-dv-burger-bot" fill="currentColor" height="2" width="18" y="14"/>
-            </svg>
-        </button>
-    </div>
+    {# Burger for the top state (mobile only) — scrolls away with the bar. #}
+    <button class="v-dv-burger v-dv-burger--top" data-nav-toggle aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+        {{ burgerIcon() }}
+    </button>
 </header>
+
+{# Sticky logo — fixed; the script keeps it over the spacer, then pinned near
+   the top. Inline SVG so the intro can animate the V mark + each ORNAC letter
+   (run in from the right, hold as VORNAC, then vanish to the V monogram). #}
+<a href="{{ pageUrls.index }}" class="v-dv-logo" aria-label="{{ t.a11y.siteHome }}">
+    <svg class="nav-logo-svg" viewBox="0 0 1448 208" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" aria-hidden="true" focusable="false">
+        <defs>
+            <linearGradient id="vLogoGrad" x1="339.35" x2="339.35" y1="894.62" y2="1102.62" gradientTransform="matrix(.48429 -.87489 1.06616 .90262 -1217.88 -510.577)" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="currentColor"/><stop offset=".26" stop-color="currentColor"/><stop offset=".52" stop-color="currentColor"/><stop offset=".7" stop-color="currentColor" stop-opacity=".04"/><stop offset=".88" stop-color="currentColor" stop-opacity="0"/><stop offset=".88" stop-color="currentColor"/><stop offset="1" stop-color="currentColor"/>
+            </linearGradient>
+        </defs>
+        <path class="v-logo-mark" fill="url(#vLogoGrad)" fill-rule="evenodd" d="M0 0h50.1l67 126L187.09 0h49L114.06 207.74z" clip-rule="evenodd"/>
+        <g class="v-logo-word" fill="currentColor" fill-rule="evenodd">
+            <path class="v-logo-letter" style="--i:0" d="M297.22 43.48L422.22 43.48L422.11 164.82L297.22 164.82ZM296.22 0.03L251.23 43.48L251.4 164.82L296.22 207.74L421.22 207.74L465.91 164.82L466.09 43.48L421.22 0.03Z"/>
+            <path class="v-logo-letter" style="--i:1" d="M509.21 0.03L670.06 0L711.06 42L711.06 100L682.06 127L673.06 134L665.06 134L720.93 207.74L669.2 207.74L574.2 92.03L664.2 92.03L664.2 44.03L554.21 43.03L554.21 207.74L509.21 207.74Z"/>
+            <path class="v-logo-letter" style="--i:2" d="M754.05 0L904.04 122.03L904 0L945.1 0L945.04 208.03L797.05 86.03L797.05 207.74L754.05 207.74Z"/>
+            <path class="v-logo-letter" style="--i:3" d="M1094.85 0L1222.19 207.74L1056.03 207.74L1079.03 165L1148.03 165L1096.03 76L1018.77 207.74L968.04 207.74Z"/>
+            <path class="v-logo-letter" style="--i:4" d="M1273.02 0L1448 0L1407.01 43L1271.02 43.48L1271.02 162L1275.02 164.82L1406.01 164.82L1448 207.74L1272.02 207.74L1227.49 164.82L1226.89 43.48Z"/>
+        </g>
+    </svg>
+</a>
+
+{# Sticky burger — slides down from the top after ~1.5 pages of scroll. #}
+<div id="sticky-nav" class="v-dv-sticky">
+    <button class="v-dv-burger v-dv-burger--sticky" data-nav-toggle aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+        {{ burgerIcon() }}
+    </button>
+</div>
 
 <div id="mobile-backdrop" class="v-dv-backdrop hidden"></div>
 
@@ -114,30 +130,38 @@
 </div>
 
 <style>
-    /* ── Dataveyes-style navbar ─────────────────────────────────────────
-       Transparent, non-sticky bar over the dark hero; scrolls away. */
-    /* Adaptive colour: the homepage (v-home) has a dark hero → white nav;
-       every other page has a white body strip behind the nav → ink nav.
-       The logo (currentColor fills/gradient) follows the same colour. */
-    .v-dv-header { position: relative; z-index: 50; width: 100%; color: #0E1116; }
-    body.v-home .v-dv-header { color: #fff; }
-    .v-dv-bar {
+    /* ── Top bar (in-flow, scrolls away) ─────────────────────────────────
+       Colour is the page baseline: white over the dark homepage hero,
+       ink over the white strip on every other page. */
+    .v-dv-topbar {
+        position: relative;
+        z-index: 50;
         max-width: 1320px;
         margin: 0 auto;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 28px;
-        padding: 26px 32px 14px;
+        padding: 22px 32px 14px;
+        color: #0E1116;
     }
-    .v-dv-logo { display: inline-flex; align-items: center; }
+    body.v-home .v-dv-topbar { color: #fff; }
 
-    /* Logo sizing (replaces the old #site-header .nav-logo clamp). */
-    .nav-logo-svg {
-        display: block;
+    .v-dv-logo-spacer { flex: none; width: clamp(150px, 20vw, 240px); aspect-ratio: 1448 / 208; }
+
+    /* Sticky logo (fixed; positioned by the script). Colour is set inline by
+       the script per the section behind it; this is just the pre-JS baseline. */
+    .v-dv-logo {
+        position: fixed;
+        top: 70px;
+        left: 32px;
+        z-index: 55;
         width: clamp(150px, 20vw, 240px);
-        height: auto;
+        color: #0E1116;
+        will-change: top, left;
     }
+    body.v-home .v-dv-logo { color: #fff; }
+    .nav-logo-svg { display: block; width: 100%; height: auto; }
 
     .v-dv-nav { display: flex; align-items: center; gap: 30px; }
     .v-dv-link {
@@ -201,9 +225,8 @@
 
     .v-dv-cta { display: inline-block; line-height: 1; }
 
-    /* Burger (mobile) — 18/9/18 lines, like dataveyes. */
+    /* Burger — 18/9/18 lines, like dataveyes. currentColor follows context. */
     .v-dv-burger {
-        display: none;
         position: relative;
         z-index: 80;
         color: currentColor;
@@ -212,18 +235,43 @@
         padding: 8px;
         margin: -8px;
         cursor: pointer;
+        display: inline-flex;
     }
     .v-dv-burger svg rect { transition: transform .3s ease, opacity .2s ease; transform-box: fill-box; transform-origin: center; }
-    /* When the dark overlay is open the burger-turned-X is always white. */
+    .v-dv-burger--top { display: none; }
+
+    /* Burger morphs to an X while the (dark) overlay is open. */
     body.nav-open .v-dv-burger { color: #fff; }
     body.nav-open .v-dv-burger-top { transform: translateY(6px) rotate(45deg); }
     body.nav-open .v-dv-burger-mid { opacity: 0; }
     body.nav-open .v-dv-burger-bot { transform: translateY(-6px) rotate(-45deg); width: 18px; }
 
+    /* Sticky burger — hidden above the top, slides down once revealed. */
+    .v-dv-sticky {
+        position: fixed;
+        top: 18px;
+        right: 28px;
+        z-index: 58;
+        color: #0E1116;
+        opacity: 0;
+        transform: translateY(-160%);
+        transition: transform .6s cubic-bezier(.86, 0, .07, 1), opacity .35s ease;
+        pointer-events: none;
+    }
+    body.v-home .v-dv-sticky { color: #fff; }
+    .v-dv-sticky.is-visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    body.nav-open .v-dv-sticky { z-index: 80; }
+
     @media (max-width: 1023px) {
         .v-dv-nav { display: none; }
-        .v-dv-burger { display: inline-flex; }
-        .v-dv-bar { padding: 18px 22px 12px; }
+        .v-dv-burger--top { display: inline-flex; }
+        .v-dv-topbar { padding: 18px 22px 12px; }
+        .v-dv-logo { left: 22px; }
+        .v-dv-sticky { right: 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .v-dv-sticky { transition: none; }
     }
 
     /* Full-screen overlay menu */
@@ -295,3 +343,87 @@
         72%, 100% { opacity: 0; transform: translateX(-150px); }
     }
 </style>
+
+<script>
+    /* Sticky logo positioning + adaptive colour + sticky-burger reveal.
+       - The fixed logo mirrors the in-flow spacer's position, then clamps near
+         the top so it stays pinned as the bar scrolls away.
+       - Logo + sticky burger recolour (white/ink) based on the luminance of the
+         section behind them, so they stay legible over dark and light areas.
+       - The sticky burger slides in once scrolled past ~1.5 viewport heights. */
+    (function () {
+        var logo = document.querySelector('.v-dv-logo');
+        var spacer = document.querySelector('.v-dv-logo-spacer');
+        var sticky = document.getElementById('sticky-nav');
+        var stickyBtn = sticky ? sticky.querySelector('.v-dv-burger') : null;
+        if (!logo || !spacer) return;
+
+        var STICK_TOP = 14;
+        var REVEAL = 1.5; // viewport heights before the sticky burger appears
+
+        function luminance(rgb) {
+            var m = rgb.match(/\d+(\.\d+)?/g);
+            if (!m) return 1;
+            var r = m[0] / 255, g = m[1] / 255, b = m[2] / 255;
+            return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+        }
+
+        // Nav chrome is taken out of hit-testing while sampling so we read the
+        // section *behind* it, not the (transparent) logo/bar over the body.
+        var chrome = [logo, sticky, document.getElementById('site-header')].filter(Boolean);
+
+        // Effective background luminance at a viewport point (walks up to the
+        // first non-transparent background). Returns 1 (light) as a fallback.
+        function bgLumAt(x, y) {
+            var prev = chrome.map(function (el) { return el.style.pointerEvents; });
+            chrome.forEach(function (el) { el.style.pointerEvents = 'none'; });
+            var el = document.elementFromPoint(x, y);
+            chrome.forEach(function (e, i) { e.style.pointerEvents = prev[i]; });
+            while (el) {
+                var bg = getComputedStyle(el).backgroundColor;
+                if (bg && bg !== 'transparent' && !/rgba\([^)]*,\s*0\)/.test(bg)) {
+                    return luminance(bg);
+                }
+                el = el.parentElement;
+            }
+            return 1;
+        }
+
+        function inkFor(lum) { return lum < 0.5 ? '#ffffff' : '#0E1116'; }
+
+        function update() {
+            var r = spacer.getBoundingClientRect();
+            var top = Math.max(STICK_TOP, Math.round(r.top));
+            logo.style.left = Math.round(r.left) + 'px';
+            logo.style.top = top + 'px';
+
+            // Adaptive colour for the logo (sample at its centre, mid-left).
+            var ly = top + logo.offsetHeight / 2;
+            logo.style.color = inkFor(bgLumAt(Math.round(r.left + r.width / 2), Math.round(ly)));
+
+            // Sticky burger reveal + its own adaptive colour.
+            if (sticky) {
+                var show = window.scrollY > window.innerHeight * REVEAL;
+                sticky.classList.toggle('is-visible', show);
+                sticky.setAttribute('aria-hidden', show ? 'false' : 'true');
+                if (stickyBtn) stickyBtn.tabIndex = show ? 0 : -1;
+                if (show && stickyBtn && !document.body.classList.contains('nav-open')) {
+                    var sr = stickyBtn.getBoundingClientRect();
+                    sticky.style.color = inkFor(bgLumAt(Math.round(sr.left + sr.width / 2), Math.round(sr.top + sr.height / 2)));
+                }
+            }
+        }
+
+        var ticking = false;
+        function onScroll() {
+            if (!ticking) {
+                requestAnimationFrame(function () { update(); ticking = false; });
+                ticking = true;
+            }
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+        window.addEventListener('load', update);
+        update();
+    })();
+</script>
