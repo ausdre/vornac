@@ -110,7 +110,9 @@
        wordmark wipes in left→right. The clip-path is sized so 0–16% of the
        logo (the V) shows first, matching the V's share of the viewBox. */
     .nav-logo-svg { display: block; will-change: clip-path, opacity; }
-    .nav-logo-svg.is-intro { animation: vLogoReveal 1.6s cubic-bezier(.86, 0, .07, 1) both; }
+    @media (prefers-reduced-motion: no-preference) {
+        .nav-logo-svg { animation: vLogoReveal 1.6s cubic-bezier(.86, 0, .07, 1) both; }
+    }
     @keyframes vLogoReveal {
         0%   { clip-path: inset(0 100% 0 0); opacity: 0; }
         10%  { opacity: 1; }
@@ -118,26 +120,12 @@
         40%  { clip-path: inset(0 84% 0 0); }
         100% { clip-path: inset(0 0 0 0); opacity: 1; }
     }
-    @media (prefers-reduced-motion: reduce) {
-        .nav-logo-svg.is-intro { animation: none; }
-    }
 </style>
 
 <script>
     (function () {
         var header = document.getElementById('site-header');
         if (!header) return;
-
-        // Play the logo intro reveal once per browser session (like dataveyes).
-        try {
-            var logo = header.querySelector('.nav-logo-svg');
-            var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            if (logo && !reduce && !sessionStorage.getItem('vLogoIntroSeen')) {
-                logo.classList.add('is-intro');
-                sessionStorage.setItem('vLogoIntroSeen', '1');
-            }
-        } catch (e) { /* sessionStorage may be unavailable; skip the intro */ }
-
         var sync = function () {
             header.classList.toggle('is-scrolled', window.scrollY > 8);
         };
