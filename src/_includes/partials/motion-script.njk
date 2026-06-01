@@ -3,6 +3,9 @@
    and JS (early return). #}
 <script>
 (function() {
+    // The homepage runs its own anime.js-driven motion layer
+    // (partials/home-motion.njk); bail so we don't double-handle reveals.
+    if (document.body && document.body.classList.contains('v-home')) return;
     var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced || !('IntersectionObserver' in window)) return;
 

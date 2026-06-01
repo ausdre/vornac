@@ -1,0 +1,13 @@
+{# Arms the homepage motion layer BEFORE first paint, so reveal targets are
+   hidden without a flash — but only when motion is actually wanted. Reduced
+   motion (or no JS) leaves the page un-armed and fully visible. The matching
+   anime.js driver lives in partials/home-motion.njk. #}
+<script>
+    (function () {
+        try {
+            if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+                document.documentElement.classList.add('v-armed');
+            }
+        } catch (e) {}
+    })();
+</script>

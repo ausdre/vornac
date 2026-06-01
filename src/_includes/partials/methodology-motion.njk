@@ -1,0 +1,122 @@
+{# Methodology blueprint motion — anime.js.
+   Scroll-triggered assembly of the engagement-architecture system,
+   then a continuous iterative pulse that runs the technical loop.
+   Fully degrades: no anime / reduced-motion => the static composition
+   stays visible and untouched. #}
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
+<script>
+(function () {
+    function init() {
+        var section = document.getElementById('methodology');
+        if (!section || !window.anime) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        var q = function (s) { return Array.prototype.slice.call(section.querySelectorAll(s)); };
+        var head    = q('.method-kicker, .method-headline, .method-sub');
+        var rail    = section.querySelector('.method-rail');
+        var core    = section.querySelector('.method-core');
+        var feed    = section.querySelector('.method-feed-line');
+        var drop    = section.querySelector('.method-drop-line');
+        var dots    = q('.method-phase-dot');
+        var stages  = q('.method-stage');
+        var bracket = section.querySelector('.method-loop-bracket');
+        var comet   = section.querySelector('.method-comet');
+        var cats    = q('.method-cat');
+
+        if (bracket) { bracket.style.transformOrigin = 'left center'; }
+
+        // Arm the pieces we animate in (transform-free props for the
+        // connectors so their CSS centering survives across breakpoints).
+        anime.set(head, { opacity: 0, translateY: 16 });
+        anime.set([rail, core], { opacity: 0, translateY: 18 });
+        anime.set([feed, drop], { opacity: 0 });
+        anime.set(dots, { scale: 0 });
+        anime.set(stages, { opacity: 0, translateY: 14 });
+        anime.set(bracket, { opacity: 0, scaleX: 0 });
+        anime.set(cats, { opacity: 0, translateY: 14 });
+
+        var played = false;
+        function build() {
+            if (played) return;
+            played = true;
+            anime.timeline({ easing: 'easeOutCubic' })
+                .add({ targets: head, opacity: [0, 1], translateY: [16, 0], duration: 600, delay: anime.stagger(90) })
+                .add({ targets: [rail, core], opacity: [0, 1], translateY: [18, 0], duration: 600, delay: anime.stagger(130) }, '-=320')
+                .add({ targets: feed, opacity: [0, 1], duration: 360 }, '-=260')
+                .add({ targets: dots, scale: [0, 1], duration: 420, delay: anime.stagger(85), easing: 'easeOutBack' }, '-=260')
+                .add({ targets: stages, opacity: [0, 1], translateY: [14, 0], duration: 460, delay: anime.stagger(95) }, '-=320')
+                .add({ targets: bracket, opacity: [0, 1], scaleX: [0, 1], duration: 540, easing: 'easeInOutQuad' }, '-=140')
+                .add({ targets: drop, opacity: [0, 1], duration: 360 }, '-=260')
+                .add({ targets: cats, opacity: [0, 1], translateY: [14, 0], duration: 460, delay: anime.stagger(70) }, '-=220')
+                .add({ duration: 60, complete: runLoop });
+        }
+
+        function runLoop() {
+            var idle = 'rgba(255,255,255,0.14)';
+            var on = '#ffa317';
+            var glowOn = '0 0 22px rgba(255,163,23,0.45)';
+            var glowOff = '0 0 0px rgba(255,163,23,0)';
+            var loop = anime.timeline({ loop: true, easing: 'easeInOutSine' });
+
+            for (var i = 0; i < 4 && i < stages.length; i++) {
+                (function (st) {
+                    loop.add({
+                        targets: st,
+                        borderColor: [idle, on],
+                        boxShadow: [glowOff, glowOn],
+                        translateY: [0, -3],
+                        duration: 300
+                    }).add({
+                        targets: st,
+                        borderColor: [on, idle],
+                        boxShadow: [glowOn, glowOff],
+                        translateY: [-3, 0],
+                        duration: 260
+                    }, '-=60');
+                })(stages[i]);
+            }
+
+            // The loop "returns": bracket charges and the comet rides it
+            // back from Exploitation to Observation.
+            loop.add({
+                targets: bracket,
+                boxShadow: [glowOff, '0 7px 20px -4px rgba(255,163,23,0.55)'],
+                duration: 240
+            }, '-=120');
+            if (comet) {
+                loop.add({
+                    targets: comet,
+                    opacity: [0, 1, 1, 0],
+                    left: ['100%', '0%'],
+                    duration: 760,
+                    easing: 'easeInOutQuad'
+                }, '-=180');
+            }
+            loop.add({
+                targets: bracket,
+                boxShadow: '0 0 0px rgba(255,163,23,0)',
+                duration: 260
+            }, '-=320');
+            loop.add({ duration: 420 }); // breath before the next cycle
+        }
+
+        if (!('IntersectionObserver' in window)) { build(); return; }
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) { build(); io.disconnect(); }
+            });
+        }, { threshold: 0.2 });
+        io.observe(section);
+    }
+
+    function boot() {
+        if (window.anime) { init(); }
+        else { window.addEventListener('load', init); }
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', boot);
+    } else {
+        boot();
+    }
+})();
+</script>

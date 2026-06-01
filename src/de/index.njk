@@ -32,6 +32,8 @@ bodyClass: v-home
         .v-hero-headline { hyphens: auto; }
     }
 </style>
+
+{% include "partials/home-motion-head.njk" %}
 {% endblock %}
 
 {% block content %}
@@ -413,4 +415,5 @@ bodyClass: v-home
 {% block extraBodyEnd %}
 {% include "partials/contact-form-script.njk" %}
 {% include "partials/hero-demo-script.njk" %}
+{% include "partials/home-motion.njk" %}
 {% endblock %}

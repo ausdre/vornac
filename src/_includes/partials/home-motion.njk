@@ -1,0 +1,118 @@
+{# Homepage motion layer — anime.js.
+   Choreographs a hero entrance on load, then scroll-reveals every section
+   (reusing the existing .v-reveal / data-reveal-delay / data-countup /
+   .v-comp-table hooks). Pairs with partials/home-motion-head.njk (the arm)
+   and the html.v-armed CSS in partials/index-styles.njk.
+
+   Robust by design:
+   - reduced motion / no JS  -> never armed, full page visible.
+   - anime.js fails to load   -> onerror un-arms, full page visible.
+   - counters always settle on their final value. #}
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"
+        onerror="document.documentElement.classList.remove('v-armed')"></script>
+<script>
+(function () {
+    var docEl = document.documentElement;
+
+    function settleCounters() {
+        document.querySelectorAll('[data-countup]').forEach(function (el) {
+            el.textContent = el.getAttribute('data-countup');
+        });
+    }
+
+    function init() {
+        // Motion not wanted (reduced-motion): nothing was armed — just make
+        // sure the counters read their final values.
+        if (!docEl.classList.contains('v-armed')) { settleCounters(); return; }
+
+        // anime.js unavailable (blocked CDN): un-arm so nothing stays hidden.
+        if (!window.anime) { docEl.classList.remove('v-armed'); settleCounters(); return; }
+
+        var anime = window.anime;
+
+        function countUp(el) {
+            if (el.dataset.cuDone) return;
+            el.dataset.cuDone = '1';
+            var target = parseInt(el.getAttribute('data-countup'), 10);
+            if (!isFinite(target)) { el.textContent = el.getAttribute('data-countup'); return; }
+            var obj = { v: 0 };
+            anime({
+                targets: obj, v: target, duration: 1300, easing: 'easeOutExpo',
+                update: function () { el.textContent = Math.round(obj.v); },
+                complete: function () { el.textContent = String(target); }
+            });
+        }
+
+        function revealEl(el) {
+            var d = parseInt(el.getAttribute('data-reveal-delay'), 10);
+            anime({
+                targets: el, opacity: [0, 1], translateY: [16, 0],
+                duration: 700, delay: (isFinite(d) ? d * 80 : 0),
+                easing: 'easeOutCubic'
+            });
+        }
+
+        // ---- Hero: choreographed entrance on load ----
+        var hero = document.querySelector('.v-hero');
+        if (hero) {
+            var tl = anime.timeline({ easing: 'easeOutExpo' });
+            var seq = [
+                ['.v-hero-headline', 26, 900],
+                ['.v-hero-subline', 20, 760],
+                ['.v-hero-actions', 18, 720],
+                ['.v-hero-trust', 14, 660]
+            ];
+            seq.forEach(function (s, i) {
+                var node = hero.querySelector(s[0]);
+                if (!node) return;
+                tl.add({ targets: node, opacity: [0, 1], translateY: [s[1], 0], duration: s[2] }, i === 0 ? 0 : '-=' + Math.round(s[2] * 0.78));
+            });
+        }
+
+        // ---- Scroll reveals for everything below the hero ----
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (!e.isIntersecting) return;
+                var el = e.target;
+                if (el.classList.contains('v-comp-table')) {
+                    anime({
+                        targets: el.querySelectorAll('tbody tr'),
+                        opacity: [0, 1], translateY: [10, 0],
+                        duration: 620, delay: anime.stagger(80), easing: 'easeOutCubic'
+                    });
+                } else {
+                    revealEl(el);
+                }
+                io.unobserve(el);
+            });
+        }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+
+        document.querySelectorAll('.v-reveal').forEach(function (el) {
+            if (hero && hero.contains(el)) return; // hero plays on load
+            io.observe(el);
+        });
+        var comp = document.querySelector('.v-comp-table');
+        if (comp) io.observe(comp);
+
+        // ---- Count-up: fires as each stat scrolls into view ----
+        if ('IntersectionObserver' in window) {
+            var cio = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (!e.isIntersecting) return;
+                    countUp(e.target);
+                    cio.unobserve(e.target);
+                });
+            }, { threshold: 0.5 });
+            document.querySelectorAll('[data-countup]').forEach(function (el) { cio.observe(el); });
+        } else {
+            settleCounters();
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+</script>
