@@ -1,10 +1,9 @@
 ---
-title: "84% less cyber risk with VORNAC – continuous pentesting"
+title: "84% less cyber risk with VORNAC – continuous penetration testing"
 description: "VORNAC validates your live production environment against real adversarial techniques — continuously, on schedule, via API. Every finding is exploitability-proven and mapped to NIS2, DORA, VAIT/BAIT, KRITIS, and TISAX."
 i18nKey: index
 ogType: website
 permalink: /index.html
-bodyClass: v-home
 ---
 {% extends "layouts/base.njk" %}
 
@@ -71,6 +70,12 @@ bodyClass: v-home
 
 <section class="v-stats is-dark">
     <div class="v-stats-inner">
+        <h2 class="v-stats-headline v-reveal">
+            Surface real vulnerabilities with the industry leader.
+        </h2>
+        <p class="v-stats-intro v-reveal">
+            VORNAC simulates real attacks without putting your systems at risk. We surface your highest-impact vulnerabilities based on actual exploit data and accelerate remediation — taking cyber resilience to a new level.
+        </p>
         <div class="v-stats-grid">
             <div class="v-stat v-reveal" data-reveal-delay="1">
                 <div class="v-stat-number">
@@ -90,7 +95,7 @@ bodyClass: v-home
                 </div>
                 <div class="v-stat-rule"></div>
                 <div class="v-stat-label">
-                    Lower external pentesting costs
+                    Lower external penetration testing costs
                     <span class="v-stat-label-sub">vs. annual report-only engagements</span>
                 </div>
             </div>
@@ -105,6 +110,45 @@ bodyClass: v-home
                     Faster mean time to remediation (MTTR)
                     <span class="v-stat-label-sub">measured across the program</span>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="v-howwe">
+    <div class="v-howwe-inner">
+        <header class="v-howwe-head v-reveal">
+            <h2 class="v-howwe-headline">
+                We do penetration testing. <span class="v-howwe-emph">Except ours never stops.</span>
+            </h2>
+            <p class="v-howwe-sub">
+                Classical pentests are spot checks — once a year, a few weeks of work, then a PDF. VORNAC runs continuously: on every release, across the full attack surface, with working exploits instead of theoretical CVEs.
+            </p>
+        </header>
+
+        <div class="v-howwe-grid">
+            <div class="v-howwe-item v-reveal" data-reveal-delay="1">
+                <span class="v-howwe-num">01</span>
+                <h3 class="v-howwe-title">Real attacks, not scans.</h3>
+                <p class="v-howwe-desc">
+                    Full <strong>MITRE ATT&amp;CK Kill Chain</strong>: Reconnaissance → Initial Access → Privilege Escalation → Lateral Movement → Exfiltration. Every finding ships with a working exploit and reproducible proof-of-concept.
+                </p>
+            </div>
+
+            <div class="v-howwe-item v-reveal" data-reveal-delay="2">
+                <span class="v-howwe-num">02</span>
+                <h3 class="v-howwe-title">Triggered on every release.</h3>
+                <p class="v-howwe-desc">
+                    Via <strong>CI/CD webhook</strong>, on infrastructure changes, on schedule, or on-demand via API. From trigger to actionable finding: hours, not weeks. No engagement scoping, no calendar coordination.
+                </p>
+            </div>
+
+            <div class="v-howwe-item v-reveal" data-reveal-delay="3">
+                <span class="v-howwe-num">03</span>
+                <h3 class="v-howwe-title">Iterative loop until coverage is exhausted.</h3>
+                <p class="v-howwe-desc">
+                    <strong>Observation → Enumeration → Vulnerability Research → Exploitation → Documentation.</strong> Every finding feeds the next round. Iterates until coverage is exhausted.
+                </p>
             </div>
         </div>
     </div>
@@ -151,7 +195,7 @@ bodyClass: v-home
 <section class="v-stats is-dark">
     <div class="v-stats-inner">
         <h2 class="v-stats-headline v-reveal">
-                        Turning pentesting into a predictable OPEX-based security capability.
+                        Turning penetration testing into a predictable OPEX-based security capability.
         </h2>
 
         <div class="v-stats-grid">

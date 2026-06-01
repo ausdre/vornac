@@ -49,10 +49,8 @@
         --v-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
     }
 
-    /* Homepage body sits on the dark institutional base so the sticky glass
-       header reads dark at the top instead of bleeding the white body through.
-       Every section below sets its own --v-bg, so white sections stay white. */
-    .bg-warm { background-color: var(--v-bg-dark); }
+    /* Homepage body — white. Other pages share this default via input.css. */
+    .bg-warm { background-color: #ffffff; }
     .bg-warm-soft { background-color: #ffffff; }
     .bg-warm-muted { background-color: #ffffff; }
 
@@ -106,28 +104,14 @@
         .v-announcement a { display: inline-block; margin-left: 4px; }
     }
 
-    /* Hero — dark institutional field (Palantir-restrained). No photography,
-       no gradients: a solid dark band with generous whitespace and an
-       ultra-faint hairline grid for technical texture. Amber appears only as a
-       sparing accent (eyebrow rule + the emphasized headline phrase). */
+    /* Hero — clean white field. Amber appears only as a sparing accent on
+       the emphasized headline phrase. */
     .v-hero {
-        background: var(--v-bg-dark);
+        background: var(--v-bg);
         font-family: var(--v-sans);
         position: relative;
         z-index: 1;
         overflow: hidden;
-    }
-    /* Ultra-subtle technical hairline grid — barely-there, no noise. */
-    .v-hero::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background-image:
-            linear-gradient(to right, rgba(255, 255, 255, 0.022) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
-        background-size: 96px 96px;
-        pointer-events: none;
-        z-index: 0;
     }
     .v-hero-inner {
         position: relative;
@@ -163,23 +147,21 @@
         line-height: 0.95;
         letter-spacing: -0.02em;
         font-weight: 900;
-        color: #F4F5F7;
+        color: var(--v-ink);
         margin: 0 auto 48px;
         max-width: 20ch;
         overflow-wrap: break-word;
     }
-    /* On the dark hero the emphasized phrase carries the single amber accent. */
-    .v-hero-headline .v-amber-mark { color: var(--v-amber); }
-    /* Lead word ("Continuous") gets a soft white glow for a subtle effect. */
+    /* On the white hero the emphasized phrase carries the single amber accent. */
+    .v-hero-headline .v-amber-mark { color: var(--v-amber-deep); }
     .v-hero-headline .v-hero-lead {
         font-size: larger;
-        text-shadow: 1px 1px 3px #ffffff;
     }
     .v-hero-subline {
         font-family: var(--v-sans);
         font-size: 20px;
         line-height: 1.6;
-        color: rgba(244, 245, 247, 0.66);
+        color: var(--v-ink-2);
         max-width: 680px;
         margin: 0 auto 56px;
         font-weight: 400;
@@ -208,11 +190,11 @@
         line-height: 1.5;
     }
     .v-hero-trust-label {
-        color: rgba(244, 245, 247, 0.78);
+        color: var(--v-ink-2);
     }
     .v-hero-trust-list {
         font-family: var(--v-mono);
-        color: rgba(244, 245, 247, 0.52);
+        color: var(--v-ink-3);
         font-weight: 500;
         letter-spacing: 0.06em;
         font-size: 11px;
@@ -263,26 +245,20 @@
         line-height: 1.5;
         letter-spacing: -0.003em;
     }
-    /* Buttons over the dark hero: thin amber outline primary + light text
-       ghost (Palantir-restrained, amber as the single sparing accent). */
+    /* Buttons over the white hero: amber outline primary + ink ghost.
+       Amber stays the single sparing accent. */
     .v-hero .v-btn-primary {
         background: transparent;
-        color: var(--v-amber);
+        color: var(--v-amber-deep);
         border: 1px solid var(--v-amber);
         padding: 15px 27px;
     }
     .v-hero .v-btn-primary:hover {
         background: var(--v-amber);
         color: var(--v-bg-dark);
+        border-color: var(--v-amber);
     }
-    .v-hero .v-btn-ghost {
-        color: rgba(244, 245, 247, 0.86);
-        border-bottom-color: rgba(244, 245, 247, 0.32);
-    }
-    .v-hero .v-btn-ghost:hover {
-        color: #fff;
-        border-bottom-color: var(--v-amber);
-    }
+    /* .v-hero .v-btn-ghost inherits the default ink ghost; no override needed. */
 
     /* Hero "Book a demo" — a wider amber-outline pill that morphs into an
        inline email capture on hover (desktop) or tap (mobile, .is-open via JS).
@@ -309,7 +285,7 @@
         width: 100%;
         background: transparent;
         border: none;
-        color: var(--v-amber);
+        color: var(--v-amber-deep);
         font-family: var(--v-sans);
         font-size: 15px;
         font-weight: 600;
@@ -332,13 +308,13 @@
         background: transparent;
         border: none;
         outline: none;
-        color: #F4F5F7;
+        color: var(--v-ink);
         font-family: var(--v-sans);
         font-size: 15px;
         letter-spacing: -0.005em;
         padding: 0 18px;
     }
-    .v-hero-demo-input::placeholder { color: rgba(244, 245, 247, 0.42); }
+    .v-hero-demo-input::placeholder { color: var(--v-ink-3); }
     .v-hero-demo-submit {
         flex-shrink: 0;
         height: 100%;
@@ -359,7 +335,7 @@
     .v-hero-demo:hover,
     .v-hero-demo.is-open {
         width: 392px;
-        background: rgba(255, 255, 255, 0.04);
+        background: rgba(255, 163, 23, 0.06);
     }
     .v-hero-demo:hover .v-hero-demo-trigger,
     .v-hero-demo.is-open .v-hero-demo-trigger {
@@ -433,6 +409,22 @@
         text-align: center;
     }
     .v-stats.is-dark .v-stats-headline { color: #fff; }
+    /* Subline-style intro sentence over a stats section. Use instead of
+       (or alongside) .v-stats-headline when the lead is explanatory prose. */
+    .v-stats-intro {
+        font-family: var(--v-sans);
+        font-size: 19px;
+        line-height: 1.6;
+        color: var(--v-ink-2);
+        font-weight: 500;
+        margin: 0 auto 72px;
+        max-width: 760px;
+        text-align: center;
+    }
+    .v-stats.is-dark .v-stats-intro { color: rgba(255, 255, 255, 0.7); }
+    @media (max-width: 768px) {
+        .v-stats-intro { font-size: 16px; margin-bottom: 48px; max-width: none; }
+    }
     .v-stats-grid {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -531,6 +523,100 @@
         .v-stats-grid.is-four .v-stat:nth-child(2n+1) { padding-left: 0; }
         .v-stats-grid.is-four .v-stat:nth-child(2n)   { padding-right: 0; }
         .v-stats-grid.is-four .v-stat-number { font-size: clamp(72px, 10vw, 120px); }
+    }
+
+    /* How VORNAC works — high-level mechanism, sits between stats + sovereignty */
+    .v-howwe {
+        background: var(--v-bg);
+        font-family: var(--v-sans);
+        position: relative;
+        z-index: 1;
+    }
+    .v-howwe-inner {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 140px 48px 140px;
+    }
+    .v-howwe-head {
+        max-width: 920px;
+        margin: 0 auto 80px;
+        text-align: center;
+    }
+    .v-howwe-headline {
+        font-family: var(--v-display);
+        font-size: clamp(40px, 5.2vw, 76px);
+        line-height: 1.0;
+        letter-spacing: -0.035em;
+        font-weight: 900;
+        color: var(--v-ink);
+        margin: 0 0 28px;
+    }
+    .v-howwe-headline .v-howwe-emph { color: var(--v-amber-deep); }
+    .v-howwe-sub {
+        font-size: 19px;
+        line-height: 1.6;
+        color: var(--v-ink-2);
+        margin: 0;
+        font-weight: 500;
+        max-width: 720px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .v-howwe-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+        border-top: 1px solid var(--v-line);
+    }
+    .v-howwe-item {
+        padding: 48px 36px 12px;
+        border-right: 1px solid var(--v-line);
+        position: relative;
+    }
+    .v-howwe-item:last-child { border-right: none; }
+    .v-howwe-num {
+        font-family: var(--v-mono);
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        color: var(--v-amber-deep);
+        margin-bottom: 28px;
+        display: block;
+    }
+    .v-howwe-title {
+        font-family: var(--v-display);
+        font-size: clamp(22px, 1.9vw, 30px);
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        font-weight: 900;
+        color: var(--v-ink);
+        margin: 0 0 20px;
+    }
+    .v-howwe-desc {
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--v-ink-2);
+        font-weight: 500;
+        margin: 0;
+    }
+    .v-howwe-desc strong {
+        color: var(--v-ink);
+        font-weight: 700;
+    }
+    @media (max-width: 920px) {
+        .v-howwe-inner { padding: 80px 24px 80px; }
+        .v-howwe-head { margin-bottom: 56px; }
+        .v-howwe-grid {
+            grid-template-columns: 1fr;
+            border-top: 1px solid var(--v-line);
+        }
+        .v-howwe-item {
+            padding: 36px 0 36px;
+            border-right: none;
+            border-bottom: 1px solid var(--v-line);
+        }
+        .v-howwe-item:last-child { border-bottom: none; }
+        .v-howwe-num { margin-bottom: 20px; }
     }
 
     /* German data sovereignty */

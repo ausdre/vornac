@@ -4,7 +4,6 @@ description: "VORNAC prüft Ihre produktive Umgebung mit reale Angriffstechniken
 i18nKey: index
 ogType: website
 permalink: /de/index.html
-bodyClass: v-home
 ---
 {% extends "layouts/base.njk" %}
 
@@ -79,6 +78,12 @@ bodyClass: v-home
 
 <section class="v-stats is-dark">
     <div class="v-stats-inner">
+        <h2 class="v-stats-headline v-reveal">
+            Finden Sie reale Schwachstellen mit dem Branchenführer.
+        </h2>
+        <p class="v-stats-intro v-reveal">
+            VORNAC simuliert reale Angriffe völlig risikofrei. Wir priorisieren Ihre kritischsten Sicherheitslücken auf Basis echter Risikodaten und beschleunigen die Behebung, um die Cyber-Resilienz auf ein neues Level zu heben.
+        </p>
         <div class="v-stats-grid">
             <div class="v-stat v-reveal" data-reveal-delay="1">
                 <div class="v-stat-number">
@@ -113,6 +118,45 @@ bodyClass: v-home
                     Kürzere Mean Time to Remediation (MTTR)
                     <span class="v-stat-label-sub">über alle kritischen Findings hinweg.</span>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="v-howwe">
+    <div class="v-howwe-inner">
+        <header class="v-howwe-head v-reveal">
+            <h2 class="v-howwe-headline">
+                Wir machen Pentesting. <span class="v-howwe-emph">Nur dass unser Pentesting nie aufhört.</span>
+            </h2>
+            <p class="v-howwe-sub">
+                Klassische Pentests sind Stichproben — einmal im Jahr, ein paar Wochen, dann ein PDF. VORNAC läuft kontinuierlich: bei jedem Release, über die volle Angriffsfläche, mit echten Exploits statt theoretischen CVEs.
+            </p>
+        </header>
+
+        <div class="v-howwe-grid">
+            <div class="v-howwe-item v-reveal" data-reveal-delay="1">
+                <span class="v-howwe-num">01</span>
+                <h3 class="v-howwe-title">Echte Angriffe, keine Scans.</h3>
+                <p class="v-howwe-desc">
+                    Volle <strong>MITRE ATT&amp;CK Kill Chain</strong>: Reconnaissance → Initial Access → Privilege Escalation → Lateral Movement → Exfiltration. Jeder Befund kommt mit funktionierendem Exploit und reproduzierbarem Proof-of-Concept.
+                </p>
+            </div>
+
+            <div class="v-howwe-item v-reveal" data-reveal-delay="2">
+                <span class="v-howwe-num">02</span>
+                <h3 class="v-howwe-title">Bei jedem Release ausgelöst.</h3>
+                <p class="v-howwe-desc">
+                    Per <strong>CI/CD-Webhook</strong>, bei Infrastrukturänderungen, nach Zeitplan oder on-demand via API. Vom Trigger bis zum umsetzbaren Befund: Stunden, nicht Wochen. Kein Engagement-Scoping, keine Kalenderabstimmung.
+                </p>
+            </div>
+
+            <div class="v-howwe-item v-reveal" data-reveal-delay="3">
+                <span class="v-howwe-num">03</span>
+                <h3 class="v-howwe-title">Iterativer Loop bis nichts mehr offen ist.</h3>
+                <p class="v-howwe-desc">
+                    <strong>Observation → Enumeration → Vulnerability Research → Exploitation → Documentation.</strong> Jeder Befund speist die nächste Runde. Iteriert, bis die Angriffsfläche ausgeschöpft ist.
+                </p>
             </div>
         </div>
     </div>
