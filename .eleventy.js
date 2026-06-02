@@ -86,10 +86,13 @@ function walkAndLink(node, matcher, state) {
 
       walkAndLink(child, matcher, state);
     } else if (child instanceof TextNode) {
-      const newText = linkifyText(child.rawText, matcher, state);
-      if (newText !== null && newText !== child.rawText) {
-        // node-html-parser exposes `rawText` as read-only on TextNode in
-        // recent versions; replace the node with an HTML fragment.
+      // Match against the DECODED text (so "&middot;" → "·" and the
+      // regex sees plain characters), then re-encode in linkifyText.
+      // Using rawText here would double-escape entities like &nbsp;
+      // into &amp;nbsp;, breaking trust-lists / inline separators.
+      const decoded = child.text;
+      const newText = linkifyText(decoded, matcher, state);
+      if (newText !== null) {
         const placeholder = parseHTML(newText);
         const parent = child.parentNode;
         if (!parent) continue;
@@ -243,6 +246,7 @@ module.exports = function (eleventyConfig) {
   // of this file for the helper implementations and skip rules.
   eleventyConfig.addTransform("crosslink", function (content, outputPath) {
     if (!outputPath || !outputPath.endsWith(".html")) return content;
+    if (process.env.NO_CROSSLINK === "1") return content;
 
     // Locale derived from path (anything under dist/de/** is German).
     const locale = /(^|\/)dist\/de\//.test(outputPath.replace(/\\/g, "/")) ? "de" : "en";
