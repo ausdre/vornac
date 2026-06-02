@@ -146,6 +146,7 @@
 
 {% for d in research.domains %}
 {% set domainHref = ("/research/" + d.id + "/") if locale == "en" else ("/de/research/" + d.id + "/") %}
+{% set noteBase = domainHref %}
 <section class="rs-domain" id="domain-{{ d.id }}">
     <div class="rs-domain-inner">
         <header class="rs-domain-head">
@@ -183,7 +184,12 @@
                         </div>
                     </div>
                     <div class="rs-note-body">
-                        <h3 class="rs-note-title">{{ n.title[locale] }}</h3>
+                        <h3 class="rs-note-title">
+                            <a class="rs-note-title-link" href="{{ noteBase }}{{ n.id }}/">
+                                {{ n.title[locale] }}
+                                <span class="rs-note-link-arrow" aria-hidden="true">→</span>
+                            </a>
+                        </h3>
                         <p class="rs-note-blurb">{{ n.blurb[locale] }}</p>
                         {% if n.phases.length > 0 %}
                         <div class="rs-phase-chips">
@@ -205,7 +211,12 @@
                 {% for n in d.reference %}
                 <article class="rs-note-ref" data-tier="2" data-note="{{ n.id }}">
                     <div class="rs-ref-meta">{{ s.tierTwo }}</div>
-                    <h3 class="rs-ref-title">{{ n.title[locale] }}</h3>
+                    <h3 class="rs-ref-title">
+                        <a class="rs-ref-title-link" href="{{ noteBase }}{{ n.id }}/">
+                            {{ n.title[locale] }}
+                            <span class="rs-note-link-arrow" aria-hidden="true">→</span>
+                        </a>
+                    </h3>
                     <p class="rs-ref-blurb">{{ n.blurb[locale] }}</p>
                     {% if n.phases.length > 0 %}
                     <div class="rs-ref-phases">
@@ -225,7 +236,12 @@
             <ul class="rs-bg-list">
                 {% for n in d.background %}
                 <li class="rs-bg-item" data-tier="3" data-note="{{ n.id }}">
-                    <div class="rs-bg-title">{{ n.title[locale] }}</div>
+                    <div class="rs-bg-title">
+                        <a class="rs-bg-title-link" href="{{ noteBase }}{{ n.id }}/">
+                            {{ n.title[locale] }}
+                            <span class="rs-note-link-arrow" aria-hidden="true">→</span>
+                        </a>
+                    </div>
                     <p class="rs-bg-blurb">{{ n.blurb[locale] }}</p>
                     <div class="rs-bg-phases">
                         {% if n.phases.length > 0 %}

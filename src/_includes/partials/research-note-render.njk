@@ -1,0 +1,210 @@
+{# Render a single Research note detail page.
+
+   Re-used by the paginated EN and DE templates. The calling template runs
+   under Eleventy pagination with size=1 over `research.allNotes`, exposing
+   each denormalized note as the alias `note`.
+
+   Inputs in scope:
+     note                 — current note object (id, domain, tier, title{en,de},
+                            blurb{en,de}, body{en,de}, phases, domainTitle,
+                            domainNumber, domainBlurb, siblings, prev, next)
+     research.phases      — phase-key → {en,de} label map
+     locale               — "en" | "de"
+     t                    — i18n table for the current locale
+     pageUrls             — per-locale URL lookup
+#}
+
+{% if locale == "en" %}
+{% set s = {
+    "eyebrow":         "VORNAC RESEARCH",
+    "breadcrumbHome":  "Research Index",
+    "tierOne":         "Featured",
+    "tierTwo":         "Reference",
+    "tierThree":       "Background",
+    "metaTier":        "Tier",
+    "metaPhases":      "Engagement phases",
+    "metaNoPhases":    "No specific phase",
+    "metaDomain":      "Domain",
+    "siblingsHeading": "Related notes in this domain",
+    "noSiblings":      "This is the only note in this domain.",
+    "navPrev":         "Previous note",
+    "navNext":         "Next note",
+    "navBack":         "Back to domain",
+    "glossaryEyebrow": "Looking up an acronym?",
+    "glossaryLink":    "Open the Glossary",
+    "ctaEyebrow":      "From reference to evidence",
+    "ctaHeadline":     "Run this against your own environment.",
+    "ctaButton":       "Book a demo"
+} %}
+{% else %}
+{% set s = {
+    "eyebrow":         "VORNAC RESEARCH",
+    "breadcrumbHome":  "Research-Index",
+    "tierOne":         "Featured",
+    "tierTwo":         "Referenz",
+    "tierThree":       "Background",
+    "metaTier":        "Stufe",
+    "metaPhases":      "Engagement-Phasen",
+    "metaNoPhases":    "Keine spezifische Phase",
+    "metaDomain":      "Domain",
+    "siblingsHeading": "Verwandte Notizen in dieser Domain",
+    "noSiblings":      "Dies ist die einzige Notiz in dieser Domain.",
+    "navPrev":         "Vorherige Notiz",
+    "navNext":         "Nächste Notiz",
+    "navBack":         "Zurück zur Domain",
+    "glossaryEyebrow": "Akronym nachschlagen?",
+    "glossaryLink":    "Glossar öffnen",
+    "ctaEyebrow":      "Von der Referenz zum Befund",
+    "ctaHeadline":     "Validieren Sie das in Ihrer eigenen Umgebung.",
+    "ctaButton":       "Demo buchen"
+} %}
+{% endif %}
+
+{% set tierLabel = s.tierOne if note.tier == 1 else (s.tierTwo if note.tier == 2 else s.tierThree) %}
+{% set tierClass = "is-tier-1" if note.tier == 1 else ("is-tier-2" if note.tier == 2 else "is-tier-3") %}
+{% set researchBase = "/research/" if locale == "en" else "/de/research/" %}
+{% set domainHref = researchBase + note.domain + "/" %}
+
+<article class="rs-note-page {{ tierClass }}">
+
+    <section class="rs-note-hero">
+        <div class="rs-note-hero-inner">
+            <nav class="rs-breadcrumb" aria-label="breadcrumb">
+                <a href="{{ pageUrls.research }}">{{ s.breadcrumbHome }}</a>
+                <span class="rs-breadcrumb-sep">/</span>
+                <a href="{{ domainHref }}">{{ note.domainNumber }} — {{ note.domainTitle[locale] }}</a>
+                <span class="rs-breadcrumb-sep">/</span>
+                <span class="rs-breadcrumb-now">{{ note.title[locale] }}</span>
+            </nav>
+
+            <div class="rs-note-hero-meta">
+                <span class="rs-note-hero-tier">{{ tierLabel }}</span>
+                <span class="rs-note-hero-dot">·</span>
+                <span class="rs-note-hero-domain">
+                    <a href="{{ domainHref }}">{{ note.domainNumber }} {{ note.domainTitle[locale] }}</a>
+                </span>
+            </div>
+
+            <h1 class="rs-note-hero-title">{{ note.title[locale] }}<span class="rs-period">.</span></h1>
+            <p class="rs-note-hero-lead">{{ note.blurb[locale] }}</p>
+        </div>
+    </section>
+
+    <section class="rs-note-content">
+        <div class="rs-note-content-inner">
+
+            <div class="rs-note-body">
+                {{ note.body[locale] | safe }}
+            </div>
+
+            <aside class="rs-note-side">
+                <div class="rs-note-side-block">
+                    <p class="rs-note-side-label">{{ s.metaDomain }}</p>
+                    <p class="rs-note-side-value">
+                        <a href="{{ domainHref }}">{{ note.domainNumber }} · {{ note.domainTitle[locale] }}</a>
+                    </p>
+                </div>
+
+                <div class="rs-note-side-block">
+                    <p class="rs-note-side-label">{{ s.metaTier }}</p>
+                    <p class="rs-note-side-value">{{ tierLabel }}</p>
+                </div>
+
+                <div class="rs-note-side-block">
+                    <p class="rs-note-side-label">{{ s.metaPhases }}</p>
+                    {% if note.phases.length > 0 %}
+                    <div class="rs-note-side-phases">
+                        {% for p in note.phases %}<span class="rs-phase-chip">{{ research.phases[p][locale] }}</span>{% endfor %}
+                    </div>
+                    {% else %}
+                    <p class="rs-note-side-value rs-note-side-muted">{{ s.metaNoPhases }}</p>
+                    {% endif %}
+                </div>
+
+                <div class="rs-note-side-block rs-note-side-glossary">
+                    <p class="rs-note-side-label">{{ s.glossaryEyebrow }}</p>
+                    <a class="rs-note-side-glossary-link" href="{{ pageUrls.glossary }}">
+                        {{ s.glossaryLink }}
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </a>
+                </div>
+            </aside>
+
+        </div>
+    </section>
+
+    {% if note.siblings.length > 0 %}
+    <section class="rs-note-siblings">
+        <div class="rs-note-siblings-inner">
+            <h2 class="rs-note-section-heading">{{ s.siblingsHeading }}</h2>
+            <ul class="rs-note-siblings-list">
+                {% for sib in note.siblings %}
+                {% set sibTier = s.tierOne if sib.tier == 1 else (s.tierTwo if sib.tier == 2 else s.tierThree) %}
+                <li>
+                    <a href="{{ researchBase }}{{ note.domain }}/{{ sib.id }}/">
+                        <span class="rs-note-siblings-tier" data-tier="{{ sib.tier }}">{{ sibTier }}</span>
+                        <span class="rs-note-siblings-title">{{ sib.title[locale] }}</span>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+    {% endif %}
+
+    <nav class="rs-domain-nav rs-note-nav" aria-label="{{ s.navBack }}">
+        <div class="rs-domain-nav-inner">
+            {% if note.prev %}
+                <a class="rs-domain-nav-link rs-domain-nav-prev" href="{{ researchBase }}{{ note.domain }}/{{ note.prev.id }}/">
+                    <span class="rs-domain-nav-label">{{ s.navPrev }}</span>
+                    <span class="rs-domain-nav-title">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M13 7H1M1 7L6 12M1 7L6 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        {{ note.prev.title[locale] }}
+                    </span>
+                </a>
+            {% else %}
+                <span class="rs-domain-nav-link rs-domain-nav-prev is-empty" aria-hidden="true"></span>
+            {% endif %}
+
+            <a class="rs-domain-nav-back" href="{{ domainHref }}">
+                {{ s.navBack }}
+            </a>
+
+            {% if note.next %}
+                <a class="rs-domain-nav-link rs-domain-nav-next" href="{{ researchBase }}{{ note.domain }}/{{ note.next.id }}/">
+                    <span class="rs-domain-nav-label">{{ s.navNext }}</span>
+                    <span class="rs-domain-nav-title">
+                        {{ note.next.title[locale] }}
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M1 7H13M13 7L8 2M13 7L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </a>
+            {% else %}
+                <span class="rs-domain-nav-link rs-domain-nav-next is-empty" aria-hidden="true"></span>
+            {% endif %}
+        </div>
+    </nav>
+
+    <section class="rs-cta">
+        <div class="rs-cta-inner">
+            <div>
+                <p class="rs-cta-eyebrow">{{ s.ctaEyebrow }}</p>
+                <h2 class="rs-cta-headline">{{ s.ctaHeadline }}</h2>
+            </div>
+            <a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="rs-cta-btn">
+                {{ s.ctaButton }}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+</article>

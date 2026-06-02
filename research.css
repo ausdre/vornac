@@ -1064,3 +1064,426 @@
     color: var(--v-amber);
     transform: translateX(4px);
 }
+
+/* ============================================ */
+/* Per-note detail page                          */
+/* ============================================ */
+/* One page per consolidated research note.      */
+/* Layout: breadcrumb hero + 2-col body/aside    */
+/* + siblings strip + prev/next + CTA.           */
+/* No card frames, no section bands — separation */
+/* via whitespace and 1px hairlines.             */
+
+.rs-note-page { background: #ffffff; }
+
+.rs-note-hero {
+    background: #ffffff;
+    border-bottom: 1px solid var(--v-line);
+}
+
+.rs-note-hero-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 96px 40px 56px;
+}
+
+.rs-note-hero-meta {
+    font-family: var(--v-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+    margin: 0 0 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.rs-note-hero-tier {
+    color: var(--v-amber-deep);
+}
+
+.rs-note-hero-dot { color: var(--v-line); }
+
+.rs-note-hero-domain a {
+    color: var(--v-ink-3);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--v-line);
+    transition: color 140ms ease, border-color 140ms ease;
+}
+
+.rs-note-hero-domain a:hover {
+    color: var(--v-amber-deep);
+    border-bottom-color: var(--v-amber);
+}
+
+.rs-note-hero-title {
+    font-family: var(--v-display);
+    font-size: clamp(40px, 5.2vw, 72px);
+    line-height: 1.0;
+    letter-spacing: -0.028em;
+    font-weight: 900;
+    color: var(--v-ink);
+    margin: 0 0 28px;
+    max-width: 22ch;
+}
+
+.rs-note-hero-title .rs-period { color: var(--v-amber); }
+
+.rs-note-hero-lead {
+    font-family: var(--v-sans);
+    font-size: clamp(17px, 1.5vw, 21px);
+    line-height: 1.55;
+    color: var(--v-ink-2);
+    max-width: 62ch;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* ──────────────────────────────────────────── */
+/* Content grid: body + side                    */
+
+.rs-note-content {
+    background: #ffffff;
+}
+
+.rs-note-content-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 72px 40px 64px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 80px;
+    align-items: start;
+}
+
+.rs-note-section-heading {
+    font-family: var(--v-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+    margin: 0 0 22px;
+}
+
+.rs-note-body {}
+
+.rs-note-body p {
+    font-family: var(--v-sans);
+    font-size: clamp(16px, 1.15vw, 18px);
+    line-height: 1.7;
+    color: var(--v-ink);
+    margin: 0 0 20px;
+    font-weight: 400;
+    max-width: 64ch;
+}
+
+.rs-note-body p:last-child { margin-bottom: 0; }
+
+.rs-note-body h2 {
+    font-family: var(--v-display);
+    font-size: clamp(22px, 1.9vw, 28px);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    font-weight: 700;
+    color: var(--v-ink);
+    margin: 48px 0 18px;
+    padding-top: 24px;
+    border-top: 1px solid var(--v-line);
+}
+
+.rs-note-body h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+.rs-note-body h3 {
+    font-family: var(--v-display);
+    font-size: clamp(17px, 1.4vw, 20px);
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+    font-weight: 700;
+    color: var(--v-ink);
+    margin: 28px 0 10px;
+}
+
+.rs-note-body ul,
+.rs-note-body ol {
+    font-family: var(--v-sans);
+    font-size: clamp(16px, 1.15vw, 18px);
+    line-height: 1.6;
+    color: var(--v-ink);
+    margin: 0 0 22px;
+    padding-left: 22px;
+    max-width: 64ch;
+}
+
+.rs-note-body li {
+    margin: 0 0 10px;
+}
+
+.rs-note-body li > strong:first-child {
+    color: var(--v-ink);
+    font-weight: 700;
+}
+
+.rs-note-body ul li::marker { color: var(--v-amber); }
+.rs-note-body ol li::marker { color: var(--v-ink-3); font-family: var(--v-mono); font-size: 0.9em; }
+
+.rs-note-body code {
+    font-family: var(--v-mono);
+    font-size: 0.88em;
+    background: var(--v-line-soft);
+    color: var(--v-ink);
+    padding: 1px 6px;
+    border-radius: 4px;
+    border: 1px solid var(--v-line);
+    white-space: nowrap;
+}
+
+.rs-note-body strong {
+    color: var(--v-ink);
+    font-weight: 700;
+}
+
+.rs-note-body em {
+    color: var(--v-ink-2);
+    font-style: italic;
+}
+
+/* Decision-rule callout used at the end of many sections. */
+.rs-note-body .rs-rule {
+    font-family: var(--v-sans);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--v-ink-2);
+    margin: 16px 0 22px;
+    padding: 14px 18px;
+    background: var(--v-amber-soft);
+    border-left: 3px solid var(--v-amber);
+    border-radius: 0 4px 4px 0;
+    max-width: 64ch;
+}
+
+.rs-note-body .rs-rule strong {
+    font-family: var(--v-mono);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--v-amber-deep);
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* Side rail with metadata */
+.rs-note-side {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    position: sticky;
+    top: 120px;
+    align-self: start;
+}
+
+.rs-note-side-block {
+    padding-top: 18px;
+    border-top: 1px solid var(--v-line);
+}
+
+.rs-note-side-block:first-child {
+    padding-top: 0;
+    border-top: none;
+}
+
+.rs-note-side-label {
+    font-family: var(--v-mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+    margin: 0 0 12px;
+}
+
+.rs-note-side-value {
+    font-family: var(--v-sans);
+    font-size: 15px;
+    line-height: 1.45;
+    color: var(--v-ink);
+    margin: 0;
+    font-weight: 500;
+}
+
+.rs-note-side-value a {
+    color: var(--v-ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--v-line);
+    padding-bottom: 1px;
+    transition: color 140ms ease, border-color 140ms ease;
+}
+
+.rs-note-side-value a:hover {
+    color: var(--v-amber-deep);
+    border-bottom-color: var(--v-amber);
+}
+
+.rs-note-side-muted { color: var(--v-ink-3); font-style: italic; }
+
+.rs-note-side-phases {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.rs-note-side-glossary-link {
+    font-family: var(--v-mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--v-ink);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 140ms ease;
+}
+
+.rs-note-side-glossary-link:hover { color: var(--v-amber-deep); }
+.rs-note-side-glossary-link svg { transition: transform 140ms ease; }
+.rs-note-side-glossary-link:hover svg { transform: translateX(3px); }
+
+/* ──────────────────────────────────────────── */
+/* Siblings strip                               */
+
+.rs-note-siblings {
+    background: #ffffff;
+    border-top: 1px solid var(--v-line);
+}
+
+.rs-note-siblings-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 64px 40px 56px;
+}
+
+.rs-note-siblings-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0;
+    border-top: 1px solid var(--v-line);
+}
+
+.rs-note-siblings-list li {
+    border-bottom: 1px solid var(--v-line);
+    border-right: 1px solid var(--v-line);
+}
+
+.rs-note-siblings-list li a {
+    display: block;
+    padding: 22px 24px;
+    text-decoration: none;
+    color: var(--v-ink);
+    transition: background 140ms ease, color 140ms ease;
+    height: 100%;
+}
+
+.rs-note-siblings-list li a:hover {
+    background: rgba(255, 163, 23, 0.05);
+    color: var(--v-amber-deep);
+}
+
+.rs-note-siblings-tier {
+    display: block;
+    font-family: var(--v-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+    margin-bottom: 8px;
+}
+
+.rs-note-siblings-tier[data-tier="1"] { color: var(--v-amber-deep); }
+
+.rs-note-siblings-title {
+    display: block;
+    font-family: var(--v-display);
+    font-size: 17px;
+    line-height: 1.25;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+/* ──────────────────────────────────────────── */
+/* Tier-specific accents on the note hero       */
+
+.rs-note-page.is-tier-1 .rs-note-hero-tier { color: var(--v-amber-deep); }
+.rs-note-page.is-tier-2 .rs-note-hero-tier { color: var(--v-ink); }
+.rs-note-page.is-tier-3 .rs-note-hero-tier { color: var(--v-ink-3); }
+
+/* ──────────────────────────────────────────── */
+/* Mobile                                       */
+
+@media (max-width: 900px) {
+    .rs-note-hero-inner { padding: 72px 22px 40px; }
+    .rs-note-hero-title { font-size: 36px; }
+    .rs-note-content-inner {
+        grid-template-columns: 1fr;
+        gap: 56px;
+        padding: 48px 22px 48px;
+    }
+    .rs-note-side {
+        position: static;
+        order: -1;
+        padding-bottom: 32px;
+        border-bottom: 1px solid var(--v-line);
+    }
+    .rs-note-siblings-inner { padding: 48px 22px; }
+    .rs-note-siblings-list { grid-template-columns: 1fr; }
+    .rs-note-siblings-list li { border-right: none; }
+}
+
+/* ============================================ */
+/* Domain page: note titles now link to detail   */
+/* ============================================ */
+
+.rs-note-title-link,
+.rs-ref-title-link,
+.rs-bg-title-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 140ms ease;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.rs-note-title-link:hover,
+.rs-ref-title-link:hover,
+.rs-bg-title-link:hover {
+    color: var(--v-amber-deep);
+}
+
+.rs-note-link-arrow {
+    font-family: var(--v-mono);
+    font-size: 13px;
+    color: var(--v-ink-3);
+    transition: color 140ms ease, transform 140ms ease;
+}
+
+.rs-note-title-link:hover .rs-note-link-arrow,
+.rs-ref-title-link:hover .rs-note-link-arrow,
+.rs-bg-title-link:hover .rs-note-link-arrow {
+    color: var(--v-amber);
+    transform: translateX(3px);
+}

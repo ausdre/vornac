@@ -40,4 +40,14 @@ const RESEARCH_DOMAIN_PAGES = research.domains.map((d) => ({
   de: `/de/research/${d.id}`
 }));
 
-module.exports = [...STATIC_PAGES, ...RESEARCH_DOMAIN_PAGES];
+const RESEARCH_NOTE_PAGES = research.allNotes.map((n) => ({
+  key: `research-note-${n.id}`,
+  en: `/research/${n.domain}/${n.id}`,
+  de: `/de/research/${n.domain}/${n.id}`
+}));
+
+module.exports = [
+  ...STATIC_PAGES,
+  ...RESEARCH_DOMAIN_PAGES,
+  ...RESEARCH_NOTE_PAGES
+];
