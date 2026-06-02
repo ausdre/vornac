@@ -64,12 +64,16 @@
     max-width: 1240px;
     margin: 0 auto;
     padding: 100px 40px 100px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    gap: 56px;
+    text-align: center;
 }
-.about-company-copy { max-width: 520px; }
+.about-company-copy {
+    max-width: 720px;
+    margin: 0 auto;
+}
 .about-company-headline {
     font-family: var(--v-display);
     font-size: clamp(40px, 5.2vw, 76px);
@@ -77,7 +81,7 @@
     letter-spacing: -0.04em;
     font-weight: 900;
     color: var(--v-ink);
-    margin: 0 0 32px;
+    margin: 0 auto 32px;
 }
 .about-company-headline em {
     font-style: normal;
@@ -87,16 +91,18 @@
     font-size: 17px;
     line-height: 1.6;
     color: var(--v-ink-2);
-    margin: 0 0 16px;
+    margin: 0 auto 16px;
     font-weight: 500;
+    max-width: 64ch;
 }
 .about-company-meta {
     font-size: 14px;
     color: var(--v-ink-3);
-    margin: 0;
+    margin: 0 auto;
 }
 .about-founders {
     text-align: center;
+    max-width: 480px;
 }
 .about-founders-frame {
     background: var(--v-bg-card);
@@ -130,7 +136,8 @@
 }
 .about-careers-head {
     max-width: 720px;
-    margin-bottom: 56px;
+    margin: 0 auto 56px;
+    text-align: center;
 }
 .about-careers-headline {
     font-family: var(--v-display);
@@ -138,20 +145,20 @@
     font-weight: 900;
     letter-spacing: -0.035em;
     color: #fff;
-    margin: 0 0 32px;
+    margin: 0 auto 32px;
     line-height: 1.02;
 }
 .about-careers-lead {
     font-size: 17px;
     line-height: 1.55;
     color: rgba(255,255,255,0.68);
-    margin: 0 0 12px;
+    margin: 0 auto 12px;
     font-weight: 500;
 }
 .about-careers-sub {
     font-size: 15px;
     color: rgba(255,255,255,0.5);
-    margin: 0;
+    margin: 0 auto;
 }
 .about-jobs {
     display: grid;
@@ -264,8 +271,8 @@
     padding: 100px 40px 100px;
 }
 .about-contact-head {
-    text-align: left;
-    margin-bottom: 48px;
+    text-align: center;
+    margin: 0 auto 48px;
 }
 .about-contact-headline {
     font-family: var(--v-display);
@@ -273,7 +280,7 @@
     font-weight: 900;
     letter-spacing: -0.035em;
     color: var(--v-ink);
-    margin: 0 0 24px;
+    margin: 0 auto 24px;
     line-height: 1.04;
 }
 .about-contact-headline em {
@@ -284,7 +291,7 @@
     font-size: 17px;
     line-height: 1.55;
     color: var(--v-ink-2);
-    margin: 0 0 28px;
+    margin: 0 auto 28px;
 }
 .about-contact-book {
     display: inline-flex;

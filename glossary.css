@@ -22,6 +22,7 @@
     max-width: 1240px;
     margin: 0 auto;
     padding: 120px 40px 64px;
+    text-align: center;
 }
 
 .gl-hero-eyebrow {
@@ -51,7 +52,7 @@
     letter-spacing: -0.035em;
     font-weight: 900;
     color: var(--v-ink);
-    margin: 0 0 32px;
+    margin: 0 auto 32px;
     max-width: 14ch;
 }
 
@@ -65,7 +66,7 @@
     line-height: 1.55;
     color: var(--v-ink-2);
     max-width: 64ch;
-    margin: 0 0 56px;
+    margin: 0 auto 56px;
     font-weight: 400;
 }
 

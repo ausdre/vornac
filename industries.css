@@ -70,6 +70,7 @@
     max-width: 1240px;
     margin: 0 auto;
     padding: 100px 40px 60px;
+    text-align: center;
 }
 .ind-hub-headline {
     font-family: var(--v-display);
@@ -78,7 +79,7 @@
     letter-spacing: -0.04em;
     font-weight: 900;
     color: var(--v-ink);
-    margin: 0 0 32px;
+    margin: 0 auto 32px;
     max-width: 920px;
 }
 .ind-hub-headline-emph { color: var(--v-amber); }
@@ -87,7 +88,7 @@
     line-height: 1.6;
     color: var(--v-ink-2);
     max-width: 720px;
-    margin: 0;
+    margin: 0 auto;
     font-weight: 500;
 }
 .ind-hub-list-wrap {
@@ -231,6 +232,7 @@
     max-width: 1240px;
     margin: 0 auto;
     padding: 100px 40px 80px;
+    text-align: center;
 }
 .ind-hero-breadcrumb {
     font-size: 13px;
@@ -263,7 +265,7 @@
     letter-spacing: -0.04em;
     font-weight: 900;
     color: var(--v-ink);
-    margin: 0 0 32px;
+    margin: 0 auto 32px;
     max-width: 840px;
 }
 .ind-hero-headline-emph { color: var(--v-amber-deep); }
@@ -272,7 +274,7 @@
     line-height: 1.55;
     color: var(--v-ink-2);
     max-width: 720px;
-    margin: 0 0 36px;
+    margin: 0 auto 36px;
     font-weight: 500;
 }
 .ind-hero-actions {
@@ -280,6 +282,7 @@
     flex-wrap: wrap;
     gap: 20px;
     align-items: center;
+    justify-content: center;
 }
 .ind-btn-primary {
     display: inline-flex;
@@ -314,7 +317,8 @@
 }
 .ind-section-head {
     max-width: 720px;
-    margin-bottom: 48px;
+    margin: 0 auto 48px;
+    text-align: center;
 }
 .ind-section-head--light .ind-section-title,
 .ind-section-head--light .ind-section-lead { color: #fff; }
@@ -325,14 +329,14 @@
     font-weight: 900;
     letter-spacing: -0.035em;
     color: var(--v-ink);
-    margin: 0 0 24px;
+    margin: 0 auto 24px;
     line-height: 1.04;
 }
 .ind-section-lead {
     font-size: 17px;
     line-height: 1.55;
     color: var(--v-ink-2);
-    margin: 0;
+    margin: 0 auto;
     font-weight: 500;
 }
 .ind-req-grid {
@@ -482,7 +486,7 @@
 
 .ind-cta {
     background: var(--v-bg-dark);
-    text-align: left;
+    text-align: center;
 }
 .ind-cta-inner {
     max-width: 800px;
@@ -495,7 +499,7 @@
     font-weight: 900;
     letter-spacing: -0.035em;
     color: #fff;
-    margin: 0 0 32px;
+    margin: 0 auto 32px;
     line-height: 1.02;
 }
 .ind-cta-headline em { font-style: normal; color: var(--v-amber); }
@@ -503,14 +507,14 @@
     font-size: 17px;
     line-height: 1.55;
     color: rgba(255,255,255,0.68);
-    margin: 0 0 36px;
+    margin: 0 auto 36px;
     max-width: 520px;
 }
 .ind-cta-actions {
     display: inline-flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: flex-start;
+    justify-content: center;
 }
 .ind-cta-btn {
     display: inline-flex;

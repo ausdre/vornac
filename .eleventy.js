@@ -201,6 +201,13 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("x-term.js");
   eleventyConfig.addWatchTarget("./x-term.js");
 
+  // Watch the page-specific CSS files so edits hot-reload during dev.
+  eleventyConfig.addWatchTarget("./about.css");
+  eleventyConfig.addWatchTarget("./industries.css");
+  eleventyConfig.addWatchTarget("./pentesting.css");
+  eleventyConfig.addWatchTarget("./research.css");
+  eleventyConfig.addWatchTarget("./glossary.css");
+
   // Compiled Tailwind output (built by `npm run build:css` -> dist/output.css)
   // also keep a root copy if someone is serving from project root in legacy mode.
   // No passthrough needed because Tailwind writes directly to dist/.

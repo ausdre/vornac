@@ -11,7 +11,7 @@
 - The user writes prompts in mixed German and English; reply in the language they used in that message.
 - The footer must include a `socials` column.
 - Brand color is `#ffa317`; do not introduce new accent colors casually.
-- Keep section content consistently aligned (the user objects when one section is centered while the rest are left-aligned), and keep headline sizes consistent across sections.
+- Keep section content consistently aligned across all pages: section heads (kicker + headline + subline), CTAs, stats grids, and final/contact blocks are CENTERED. Structured content (definition lists, comparison tables, research note bodies, glossary entries, footer columns) stays left-aligned for readability. The user objects when one section breaks the convention. Keep headline sizes consistent across sections.
 - Never distort the logo — preserve its aspect ratio; size adjacent labels (e.g. `KLASSISCHE TOOLS` / `PENTERA`) to match the logo.
 
 ## Learned Workspace Facts
