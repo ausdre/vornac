@@ -617,27 +617,27 @@ img, video { max-width: 100%; }
  * Cross-link auto-glossary terms (.x-term)
  * Inserted by the `crosslink` Eleventy transform in .eleventy.js.
  *
- * Default: a near-invisible dotted line in the soft hairline color so
- * the affordance is felt rather than seen — Wikipedia-style: the link
- * is only obvious on hover. On hover/focus the underline picks up the
- * brand amber and the matching hovercard fades in (see .x-term-popover
- * below, populated by /x-term.js).
+ * No underline — the affordance is a subtle ink-color shift: linked
+ * words sit a touch darker than running body copy, then warm into the
+ * brand amber on hover/focus together with the hovercard fade-in (see
+ * .x-term-popover below, populated by /x-term.js).
  * -------------------------------------- */
 a.x-term {
-    color: inherit;
-    text-decoration: underline dotted var(--v-line);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 2px;
+    /* True black so the link reads a touch darker than the surrounding
+       ink (which is #0E1116 / #1c1917 in different surfaces) without
+       ever being visibly identical to body copy. */
+    color: #000000;
+    text-decoration: none;
     cursor: pointer;
-    transition: text-decoration-color .15s ease;
+    transition: color .15s ease;
 }
 a.x-term:hover,
 a.x-term:focus-visible {
-    text-decoration-color: var(--v-amber);
+    color: var(--v-amber-deep);
     outline: none;
 }
 @media print {
-    a.x-term { text-decoration: none; color: inherit; }
+    a.x-term { color: inherit; }
 }
 
 /* ----------------------------------------
