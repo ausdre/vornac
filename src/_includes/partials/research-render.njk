@@ -18,7 +18,7 @@
 {% set s = {
     "eyebrow":        "VORNAC RESEARCH · CURATED REFERENCE INDEX",
     "headlineMain":   "The Research Index",
-    "subline":        "Reference notes on offensive security — methodologies, tooling, and per-service exploitation matrices. Hand-titled, cross-mapped to engagement phases, kept free of dated artifacts.",
+    "subline":        "Reference notes on offensive security: methodologies, tooling, and per-service exploitation matrices. Hand-titled, cross-mapped to engagement phases, kept free of dated artifacts.",
     "statTotal":      "Notes",
     "statTierOne":    "Featured",
     "statDomain":     "Domains",
@@ -57,7 +57,7 @@
 {% set s = {
     "eyebrow":        "VORNAC RESEARCH · KURATIERTER REFERENZ-INDEX",
     "headlineMain":   "Der Research Index",
-    "subline":        "Referenznotizen zur Offensive Security — Methodiken, Tooling und Exploitation-Matrizen pro Dienst. Handgetitelt, zu Engagement-Phasen quervernetzt, frei von veralteten Artefakten.",
+    "subline":        "Referenznotizen zur Offensive Security: Methodiken, Tooling und Exploitation-Matrizen pro Dienst. Handgetitelt, zu Engagement-Phasen quervernetzt, frei von veralteten Artefakten.",
     "statTotal":      "Notizen",
     "statTierOne":    "Featured",
     "statDomain":     "Domains",
@@ -75,13 +75,13 @@
     "methodEyebrow":  "Methodik",
     "methodHeadline": "Wie der Index kuratiert wird",
     "methodIntro1":   "Jeder Eintrag wird per SHA-256 gegen den Quell-Korpus gefingerprintet, dedupliziert, maschinell aus diagrammatischer Form extrahiert und manuell in neutralem Englisch neu betitelt. Veraltete Themen (altes Tooling, jahresgestempelte Umfragen) werden entfernt statt umgelabelt.",
-    "methodIntro2":   "Einträge werden auf die Engagement-Phase abgebildet, die sie unterstützen — damit ein Tester, der in unserem Report einen Befund liest, exakt auf die Referenz kommt, die ihn informiert hat.",
+    "methodIntro2":   "Einträge werden auf die Engagement-Phase abgebildet, die sie unterstützen, damit ein Tester, der in unserem Report einen Befund liest, exakt auf die Referenz kommt, die ihn informiert hat.",
     "methodLi1Title": "Stabile Identifier.",
     "methodLi1":      "Jede Notiz trägt einen Content-Hash. Updates ändern den Hash; der Index ist reproduzierbar.",
     "methodLi2Title": "Eine Sprache.",
     "methodLi2":      "Veröffentlicht auf Englisch. Titel und Kurztexte bleiben neutral und damit zitierbar.",
     "methodLi3Title": "Phasen-gemappt.",
-    "methodLi3":      "Jede Notiz verweist auf die Engagement-Phasen, in denen sie tatsächlich greift — nicht in denen sie könnte.",
+    "methodLi3":      "Jede Notiz verweist auf die Engagement-Phasen, in denen sie tatsächlich greift, nicht in denen sie könnte.",
     "methodLi4Title": "Keine Werbung.",
     "methodLi4":      "Der Index bewirbt weder Tools noch Anbieter. Wo ein Tool genannt wird, dann aus technischer Genauigkeit.",
     "phasesShort":    "Phasen",
@@ -104,6 +104,15 @@
         <p class="rs-hero-eyebrow">{{ s.eyebrow }}</p>
         <h1 class="rs-hero-headline">{{ s.headlineMain }}<span class="rs-period">.</span></h1>
         <p class="rs-hero-subline">{{ s.subline }}</p>
+
+        <p class="rs-hero-glossary">
+            {{ s.glossaryLine }}
+            <a href="{{ pageUrls.glossary }}" class="rs-hero-glossary-link">{{ s.glossaryLink }}
+                <svg width="11" height="11" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M1 7H13M13 7L8 2M13 7L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </p>
 
         <div class="rs-hero-stats">
             <div>

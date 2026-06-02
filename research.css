@@ -68,9 +68,37 @@
     line-height: 1.55;
     color: var(--v-ink-2);
     max-width: 64ch;
-    margin: 0 0 56px;
+    margin: 0 0 24px;
     font-weight: 400;
 }
+
+.rs-hero-glossary {
+    margin: 0 0 56px;
+    font-family: var(--v-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--v-ink-3);
+}
+
+.rs-hero-glossary-link {
+    color: var(--v-amber);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 163, 23, 0.4);
+    padding-bottom: 1px;
+    margin-left: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 140ms ease, border-color 140ms ease;
+}
+
+.rs-hero-glossary-link:hover {
+    color: var(--v-ink);
+    border-bottom-color: var(--v-ink);
+}
+
+.rs-hero-glossary-link svg { transition: transform 140ms ease; }
+.rs-hero-glossary-link:hover svg { transform: translateX(2px); }
 
 /* Stats strip — four columns, mono labels, Saira numbers */
 .rs-hero-stats {

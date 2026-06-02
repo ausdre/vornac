@@ -8,7 +8,7 @@ ogType: article
 eleventyComputed:
   permalink: "/de/research/{{ note.domain }}/{{ note.id }}/index.html"
   i18nKey: "research-note-{{ note.id }}"
-  title: "{{ note.title.de | safe }} — VORNAC Research"
+  title: "{{ note.title.de | safe }} · VORNAC Research"
   description: "{{ note.blurb.de | safe }}"
 ---
 {% extends "layouts/base.njk" %}
