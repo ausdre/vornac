@@ -219,6 +219,10 @@
             <div class="v-dv-mgroup v-dv-mgroup--ind">
                 <span class="v-dv-mhead">{{ t.navHeadings.industries }}</span>
                 <ul class="v-dv-msubs">
+                    <li><a href="{{ pageUrls.industries }}" class="v-dv-msub v-dv-msub--index{% if i18nKey == 'industries' %} is-active{% endif %}"{% if i18nKey == 'industries' %} aria-current="page"{% endif %}>
+                        <span class="v-dv-msub-label">{{ t.navOverview }}</span>
+                        <span class="v-dv-msub-sub">{{ t.industriesNav | length }}</span>
+                    </a></li>
                     {% for ind in t.industriesNav %}
                       {{ mobileSub(pageUrls[ind.key], ind.label, ind.fw, i18nKey == ind.key) }}
                     {% endfor %}
@@ -228,6 +232,10 @@
             <div class="v-dv-mgroup v-dv-mgroup--research">
                 <span class="v-dv-mhead">{{ t.navHeadings.research }}</span>
                 <ul class="v-dv-msubs">
+                    <li><a href="{{ pageUrls.research }}" class="v-dv-msub v-dv-msub--index{% if i18nKey == 'research' %} is-active{% endif %}"{% if i18nKey == 'research' %} aria-current="page"{% endif %}>
+                        <span class="v-dv-msub-label">{{ t.navResearchHome }}</span>
+                        <span class="v-dv-msub-sub">{{ research.domains | length }}</span>
+                    </a></li>
                     {% for d in research.domains %}
                       {% set dHref = "/" + ("de/" if locale == "de" else "") + "research/" + d.id + "/" %}
                       {{ mobileSub(dHref, d.title[locale], "", i18nKey == ("research-" + d.id)) }}
@@ -243,19 +251,27 @@
                     {{ mobileSub(pageUrls.about + "#" + t.aboutAnchors.careers, t.nav.careers, "", false) }}
                 </ul>
             </div>
+
         </nav>
 
         <div class="v-dv-menu-foot">
-            {% if counterpart %}
-            <span class="v-dv-lang v-dv-menu-lang" role="navigation" aria-label="{{ t.a11y.langNav }}">
-                {% if locale == 'en' %}
-                    <span class="is-active" aria-current="true">EN</span><span class="v-dv-lang-sep" aria-hidden="true">/</span><a href="{{ counterpart }}?lang=de" hreflang="de" onclick="localStorage.setItem('vornac_lang','de')">DE</a>
-                {% else %}
-                    <span class="is-active" aria-current="true">DE</span><span class="v-dv-lang-sep" aria-hidden="true">/</span><a href="{{ counterpart }}?lang=en" hreflang="en" onclick="localStorage.setItem('vornac_lang','en')">EN</a>
+            <div class="v-dv-menu-legal" aria-label="{{ t.navHeadings.legal }}">
+                <a href="{{ pageUrls.legal }}#{{ t.legalAnchors.imprint }}">{{ t.footer.legalLinks.imprint }}</a>
+                <span class="v-dv-menu-legal-sep" aria-hidden="true">·</span>
+                <a href="{{ pageUrls.legal }}#{{ t.legalAnchors.privacy }}">{{ t.footer.legalLinks.privacy }}</a>
+            </div>
+            <div class="v-dv-menu-utility">
+                {% if counterpart %}
+                <span class="v-dv-lang v-dv-menu-lang" role="navigation" aria-label="{{ t.a11y.langNav }}">
+                    {% if locale == 'en' %}
+                        <span class="is-active" aria-current="true">EN</span><span class="v-dv-lang-sep" aria-hidden="true">/</span><a href="{{ counterpart }}?lang=de" hreflang="de" onclick="localStorage.setItem('vornac_lang','de')">DE</a>
+                    {% else %}
+                        <span class="is-active" aria-current="true">DE</span><span class="v-dv-lang-sep" aria-hidden="true">/</span><a href="{{ counterpart }}?lang=en" hreflang="en" onclick="localStorage.setItem('vornac_lang','en')">EN</a>
+                    {% endif %}
+                </span>
                 {% endif %}
-            </span>
-            {% endif %}
-            <a href="{{ site.contact.bookDemo }}" class="v-dv-cta bg-amber-500 uppercase tracking-widest hover:bg-amber-400 transition-colors duration-200" style="border-radius: 99999px 55550px 99999px 55550px; font-family: 'Archivo'; font-style: italic; font-weight: 900; color: rgba(0,0,0,0.75); letter-spacing: -0.65px; font-size: larger; padding: 0.6rem 1.7rem;">Validate<span style="font-style: oblique; font-family: 'Saira Condensed'; color: rgba(255,255,255,0.75); letter-spacing: .15px; font-size: 1.15rem; font-weight: 900; vertical-align: bottom;"> Now</span></a>
+                <a href="{{ site.contact.bookDemo }}" class="v-dv-cta bg-amber-500 uppercase tracking-widest hover:bg-amber-400 transition-colors duration-200" style="border-radius: 99999px 55550px 99999px 55550px; font-family: 'Archivo'; font-style: italic; font-weight: 900; color: rgba(0,0,0,0.75); letter-spacing: -0.65px; font-size: larger; padding: 0.6rem 1.7rem;">Validate<span style="font-style: oblique; font-family: 'Saira Condensed'; color: rgba(255,255,255,0.75); letter-spacing: .15px; font-size: 1.15rem; font-weight: 900; vertical-align: bottom;"> Now</span></a>
+            </div>
         </div>
     </div>
 </div>
@@ -565,6 +581,9 @@
 
     /* Body scroll lock — added by site-scripts.njk when the menu opens. */
     body.nav-open { overflow: hidden; }
+    /* The overlay carries its own close X in the header — hide the topbar
+       and sticky burgers so the user doesn't see two close icons. */
+    body.nav-open .v-dv-burger { display: none !important; }
 
     .v-dv-menu-shell {
         max-width: 1180px;
@@ -685,16 +704,58 @@
 
     .v-dv-menu-foot {
         display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 18px 0 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(14, 17, 22, 0.96);
+        position: relative;
+        z-index: 1;
+    }
+    .v-dv-menu-utility {
+        display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 20px;
-        padding: 20px 0 28px;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
     .v-dv-menu-lang { font-size: 13px; }
+    /* Small in-footer legal row (Imprint · Privacy) — dataveyes-style
+       muted text links, kept out of the main nav stack. */
+    .v-dv-menu-legal {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--v-mono);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.4);
+    }
+    .v-dv-menu-legal a {
+        color: rgba(255, 255, 255, 0.55);
+        text-decoration: none;
+        transition: color 160ms ease;
+    }
+    .v-dv-menu-legal a:hover { color: var(--v-amber); }
+    .v-dv-menu-legal-sep { color: rgba(255, 255, 255, 0.2); }
+
+    /* Index link — first row of each section that points at the section's
+       landing page (e.g. /industries, /research). Slightly stronger than
+       the leaf items and with a small count badge instead of a tag. */
+    .v-dv-msub--index {
+        color: #fff;
+        font-weight: 600;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .v-dv-msub--index:hover { color: var(--v-amber); padding-left: 4px; }
+    .v-dv-msub--index .v-dv-msub-sub {
+        color: rgba(255, 255, 255, 0.35);
+        font-family: var(--v-mono);
+    }
+    .v-dv-msub--index .v-dv-msub-sub::before { content: "→ "; }
 
     /* Desktop / tablet — split the body into two columns so the Research
-       domain list doesn't push the About group off-screen. */
+       domain list doesn't push the About / Legal groups off-screen. */
     @media (min-width: 720px) {
         .v-dv-menu-shell { padding: 0 48px; }
         .v-dv-menu-nav {
@@ -702,13 +763,13 @@
             gap: 40px 72px;
             padding: 40px 0;
         }
-        /* The two flat-link groups live in the left column on top, then
-           Industries below. Research takes the full-height right column,
-           About slots underneath Industries on the left. */
-        .v-dv-mgroup--solo { grid-column: 1; grid-row: 1; }
-        .v-dv-mgroup--ind { grid-column: 1; grid-row: 2; }
+        /* Left column stack: flat links → Industries → About. Right column:
+           Research (full height — it's the tallest list). Legal lives in
+           the menu footer to keep the main nav stack scannable. */
+        .v-dv-mgroup--solo     { grid-column: 1; grid-row: 1; }
+        .v-dv-mgroup--ind      { grid-column: 1; grid-row: 2; }
+        .v-dv-mgroup--about    { grid-column: 1; grid-row: 3; }
         .v-dv-mgroup--research { grid-column: 2; grid-row: 1 / span 3; }
-        .v-dv-mgroup--about { grid-column: 1; grid-row: 3; }
     }
 
     @media (prefers-reduced-motion: reduce) {

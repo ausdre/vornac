@@ -27,13 +27,21 @@ module.exports = {
       company: "company",
       careers: "careers"
     },
+    /** Anchor IDs on the bilingual /legal page (differ per locale). */
+    legalAnchors: {
+      imprint: "imprint",
+      privacy: "privacy"
+    },
     /** Mega-menu section headings (small uppercase labels above each column). */
     navHeadings: {
       research: "Research domains",
       industries: "Industries",
       about: "About",
-      glossary: "Reference"
+      glossary: "Reference",
+      legal: "Legal"
     },
+    navOverview: "All sectors",
+    navResearchHome: "Research index",
     /** Industries shown in the Industries dropdown. `fw` is the regulator/framework
         tag rendered as a small caption next to the link, mirroring /industries. */
     industriesNav: [
@@ -102,12 +110,19 @@ module.exports = {
       company: "unternehmen",
       careers: "karriere"
     },
+    legalAnchors: {
+      imprint: "impressum",
+      privacy: "datenschutz"
+    },
     navHeadings: {
       research: "Research-Domänen",
       industries: "Branchen",
       about: "Über uns",
-      glossary: "Referenz"
+      glossary: "Referenz",
+      legal: "Rechtliches"
     },
+    navOverview: "Alle Branchen",
+    navResearchHome: "Research-Übersicht",
     industriesNav: [
       { key: "industries-insurance",               label: "Versicherung",            fw: "DORA" },
       { key: "industries-financial-services",      label: "Finanzdienstleistungen",  fw: "DORA · VAIT · BAIT" },
