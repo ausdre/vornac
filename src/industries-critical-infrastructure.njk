@@ -19,7 +19,7 @@ ogType: website
             <h1 class="ind-hero-headline">Resilience testing for <span class="ind-hero-headline-emph">KRITIS and essential services</span></h1>
             <p class="ind-hero-sub">Operators of energy, water, transport, healthcare, and other essential facilities carry obligations under KRITIS and NIS2. VORNAC validates the OT/IT boundary and production systems with exploit-proven findings, audit-ready for BSI and sector regulators.</p>
             <div class="ind-hero-actions">
-                <a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="ind-btn-primary">Book Demo</a>
+                {% include "partials/hero-demo-button.njk" %}
                 <a href="{{ pageUrls.pentesting }}" class="ind-btn-ghost">How it works</a>
             </div>
         </div>
@@ -78,7 +78,9 @@ ogType: website
     <section class="ind-cta">
         <div class="ind-cta-inner">
             <h2 class="ind-cta-headline">Prove KRITIS resilience <em>before</em> the regulator asks.</h2>
-            <div class="ind-cta-actions"><a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="ind-cta-btn">Book Demo</a></div>
+            <div class="ind-cta-actions">
+                {% include "partials/hero-demo-button.njk" %}
+            </div>
         </div>
     </section>
 </main>

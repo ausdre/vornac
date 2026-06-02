@@ -20,7 +20,7 @@ ogType: website
             <h1 class="ind-hero-headline">Continuous validation for insurers under <span class="ind-hero-headline-emph">DORA</span></h1>
             <p class="ind-hero-sub">Insurance undertakings and groups carry binding obligations on ICT risk, incident reporting, and resilience. VORNAC delivers exploit-proven findings, audit-ready for DORA. Continuously. Not once a year.</p>
             <div class="ind-hero-actions">
-                <a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="ind-btn-primary">Book Demo</a>
+                {% include "partials/hero-demo-button.njk" %}
                 <a href="{{ pageUrls.pentesting }}" class="ind-btn-ghost">How it works</a>
             </div>
         </div>
@@ -114,7 +114,7 @@ ogType: website
             <h2 class="ind-cta-headline">Prove resilience to your supervisor. <em>Continuously</em>.</h2>
             <p class="ind-cta-sub">30-minute session. We map your insurance ICT landscape to a continuous DORA-aligned validation cycle.</p>
             <div class="ind-cta-actions">
-                <a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="ind-cta-btn">Book Demo</a>
+                {% include "partials/hero-demo-button.njk" %}
             </div>
         </div>
     </section>

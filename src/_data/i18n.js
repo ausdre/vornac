@@ -47,7 +47,8 @@ module.exports = {
       tag: "New",
       body: "The 2026 Continuous Validation Methodology Paper is now available.",
       cta: "Read the paper →",
-      ctaHref: "/CaseStudy_VORNAC_0526.pdf"
+      ctaHref: "/CaseStudy_VORNAC_0526.pdf",
+      dismiss: "Dismiss announcement"
     },
     footer: {
       tagline: "Enterprise-grade autonomous security testing for continuous assurance and compliance.",
@@ -115,7 +116,8 @@ module.exports = {
       tag: "Neu",
       body: "Das Whitepaper zur kontinuierlichen Sicherheitsvalidierung 2026 ist verfügbar.",
       cta: "Whitepaper lesen →",
-      ctaHref: "/CaseStudy_VORNAC_0526.pdf"
+      ctaHref: "/CaseStudy_VORNAC_0526.pdf",
+      dismiss: "Hinweisleiste schließen"
     },
     footer: {
       tagline: "Autonome Sicherheitsvalidierung auf Enterprise-Niveau – für kontinuierliche Absicherung und Compliance.",

@@ -19,7 +19,7 @@ ogType: website
             <h1 class="ind-hero-headline">Kontinuierliche Validierung für <span class="ind-hero-headline-emph">Banken und Finanzinstitute</span></h1>
             <p class="ind-hero-sub">DORA setzt den EU-weiten Maßstab für operationelle Resilienz. VAIT und BAIT setzen den deutschen Maßstab für IT und Outsourcing obendrauf. VORNAC liefert belegte Befunde, audit-ready für beide Aufsichten, bei jedem Release, jederzeit.</p>
             <div class="ind-hero-actions">
-                <a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="ind-btn-primary">Demo buchen</a>
+                {% include "partials/hero-demo-button.njk" %}
                 <a href="{{ pageUrls.pentesting }}" class="ind-btn-ghost">So funktioniert's</a>
             </div>
         </div>
@@ -79,7 +79,9 @@ ogType: website
         <div class="ind-cta-inner">
             <h2 class="ind-cta-headline">Ein Validierungszyklus. <em>Jedes Regelwerk, das Auditoren verlangen.</em></h2>
             <p class="ind-cta-sub">30 Minuten. Die Finanz-IKT-Landschaft wird auf einen kontinuierlichen, audit-ready Testzyklus gemappt.</p>
-            <div class="ind-cta-actions"><a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="ind-cta-btn">Demo buchen</a></div>
+            <div class="ind-cta-actions">
+                {% include "partials/hero-demo-button.njk" %}
+            </div>
         </div>
     </section>
 </main>

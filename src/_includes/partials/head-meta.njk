@@ -37,3 +37,32 @@
 
 <link rel="icon" type="image/svg+xml" href="{{ site.logos.favicon }}">
 <link rel="stylesheet" href="/output.css">
+
+{# Logo intro gate — read once, sync, before <body> renders so the CSS
+   selector `body.logo-intro-played .v-logo-letter { opacity: 0 }` is
+   applied on first paint and the ORNAC letters never flash on subsequent
+   visits. The flag is set the first time the intro plays through (see
+   site-header.njk). #}
+<script>
+(function () {
+    try {
+        if (localStorage.getItem('vornac_logo_intro_played') === '1') {
+            document.documentElement.classList.add('logo-intro-played');
+        }
+    } catch (e) {}
+})();
+</script>
+<style>
+    /* Mirror the body-class gate onto the documentElement so the inline
+       script above can apply it before <body> exists. Both targets work. */
+    html.logo-intro-played .nav-logo-svg .v-logo-letter {
+        opacity: 0 !important;
+        transform: translateX(-150px) !important;
+        animation: none !important;
+    }
+    html.logo-intro-played .nav-logo-svg .v-logo-mark {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+    }
+</style>

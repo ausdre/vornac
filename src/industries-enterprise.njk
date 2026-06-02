@@ -19,7 +19,7 @@ ogType: website
             <h1 class="ind-hero-headline">NIS2-ready validation for <span class="ind-hero-headline-emph">essential and important entities</span></h1>
             <p class="ind-hero-sub">The NIS2 Directive obliges thousands of EU organizations to cybersecurity measures. Article 21 requires risk management, incident handling, and effectiveness testing. VORNAC proves what attackers can actually reach. Audit-ready for NIS2.</p>
             <div class="ind-hero-actions">
-                <a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="ind-btn-primary">Book Demo</a>
+                {% include "partials/hero-demo-button.njk" %}
                 <a href="{{ pageUrls.pentesting }}" class="ind-btn-ghost">How it works</a>
             </div>
         </div>
@@ -78,7 +78,9 @@ ogType: website
     <section class="ind-cta">
         <div class="ind-cta-inner">
             <h2 class="ind-cta-headline">NIS2 compliance you can <em>demonstrate</em>, not just document.</h2>
-            <div class="ind-cta-actions"><a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="ind-cta-btn">Book Demo</a></div>
+            <div class="ind-cta-actions">
+                {% include "partials/hero-demo-button.njk" %}
+            </div>
         </div>
     </section>
 </main>

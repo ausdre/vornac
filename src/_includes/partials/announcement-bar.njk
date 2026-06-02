@@ -1,8 +1,37 @@
-{# Top announcement bar — dark band with amber "Neu/New" tag #}
-<div class="v-announcement">
+{# Top announcement bar — black band with amber "Neu/New" tag and a dismiss
+   button. The dismissal is persisted in localStorage so the bar stays
+   collapsed across pages and sessions once closed. #}
+<div class="v-announcement" id="announcement-bar" data-announcement>
     <div class="v-announcement-inner">
         <span class="v-announcement-tag">{{ t.announcement.tag }}</span>
-        {{ t.announcement.body }}
-        <a href="{{ t.announcement.ctaHref }}" target="_blank" rel="noopener">{{ t.announcement.cta }}</a>
+        <span class="v-announcement-body">{{ t.announcement.body }}</span>
+        <a class="v-announcement-cta" href="{{ t.announcement.ctaHref }}" target="_blank" rel="noopener">{{ t.announcement.cta }}</a>
     </div>
+    <button type="button" class="v-announcement-close" data-announcement-close aria-label="{{ t.announcement.dismiss or 'Dismiss' }}">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+    </button>
 </div>
+<script>
+(function () {
+    var bar = document.getElementById('announcement-bar');
+    if (!bar) return;
+    var KEY = 'vornac_announcement_dismissed_v1';
+    try {
+        if (localStorage.getItem(KEY) === '1') {
+            bar.style.display = 'none';
+            return;
+        }
+    } catch (e) {}
+    var btn = bar.querySelector('[data-announcement-close]');
+    if (btn) {
+        btn.addEventListener('click', function () {
+            bar.classList.add('is-closing');
+            setTimeout(function () { bar.style.display = 'none'; }, 220);
+            try { localStorage.setItem(KEY, '1'); } catch (e) {}
+        });
+    }
+})();
+</script>

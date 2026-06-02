@@ -59,8 +59,10 @@
   </a>
 {% endmacro %}
 
-{# In-flow top bar — scrolls away with the page. Leaves a spacer on the left
-   that the sticky logo is positioned over. #}
+{# In-flow top bar — scrolls away with the page. Three-zone grid like the
+   dataveyes top bar: a logo spacer on the left, centered primary nav, and
+   utility actions (lang switch + CTA) on the right. All zones top-align so
+   the logo's top edge sits on the same line as the nav text and lang. #}
 <header id="site-header" class="v-dv-topbar">
     <span class="v-dv-logo-spacer" aria-hidden="true"></span>
 
@@ -121,10 +123,10 @@
             </div>
         </div>
 
-        {# ─── About dropdown ─── #}
-        <div class="v-dv-drop" id="nav-about">
+        {# ─── About dropdown (right-anchored — it's the rightmost group) ─── #}
+        <div class="v-dv-drop v-dv-drop--right" id="nav-about">
             {{ dropTrigger('about', t.nav.about) }}
-            <div class="v-dv-drop-panel">
+            <div class="v-dv-drop-panel v-dv-drop-panel--right">
                 <div class="v-dv-drop-inner">
                     <span class="v-dv-drop-heading">{{ t.navHeadings.about }}</span>
                     <ul class="v-dv-drop-list">
@@ -134,7 +136,10 @@
                 </div>
             </div>
         </div>
+    </nav>
 
+    {# Right zone — utility actions (lang switch + Validate Now CTA). #}
+    <div class="v-dv-utility">
         {% if counterpart %}
         <span class="v-dv-lang" role="navigation" aria-label="{{ t.a11y.langNav }}">
             {% if locale == 'en' %}
@@ -146,7 +151,7 @@
         {% endif %}
 
         <a href="{{ site.contact.bookDemo }}" class="v-dv-cta bg-amber-500 uppercase tracking-widest hover:bg-amber-400 transition-colors duration-200" style="border-radius: 99999px 55550px 99999px 55550px; font-family: 'Archivo'; font-style: italic; font-weight: 900; color: rgba(0,0,0,0.75); letter-spacing: -0.65px; font-size: larger; padding: 0.5rem 1.5rem;">Validate<span style="font-style: oblique; font-family: 'Saira Condensed'; color: rgba(255,255,255,0.75); letter-spacing: .15px; font-size: 1.15rem; font-weight: 900; vertical-align: bottom;"> Now</span></a>
-    </nav>
+    </div>
 
     {# Burger for the top state (mobile only) — scrolls away with the bar. #}
     <button class="v-dv-burger v-dv-burger--top" data-nav-toggle aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
@@ -234,16 +239,18 @@
 
 <style>
     /* ── Top bar (in-flow, scrolls away) ─────────────────────────────────
-       Colour is the page baseline: white over the dark homepage hero,
-       ink over the white strip on every other page. */
+       Three-zone grid: logo spacer (left) — primary nav (centered) — utility
+       (lang + CTA, right). All zones align at the TOP edge so the logo's top
+       sits on the same line as the first row of nav text and the lang switch,
+       mirroring dataveyes.com. */
     .v-dv-topbar {
         position: relative;
         z-index: 50;
         max-width: 1320px;
         margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: start;
         gap: 28px;
         padding: 22px 32px 14px;
         color: #0E1116;
@@ -256,7 +263,7 @@
        the script per the section behind it; this is just the pre-JS baseline. */
     .v-dv-logo {
         position: fixed;
-        top: 70px;
+        top: 22px;
         left: 32px;
         z-index: 55;
         width: clamp(150px, 20vw, 240px);
@@ -266,7 +273,23 @@
     body.v-home .v-dv-logo { color: #fff; }
     .nav-logo-svg { display: block; width: 100%; height: auto; }
 
-    .v-dv-nav { display: flex; align-items: center; gap: 30px; }
+    /* Primary nav — centered group of section links. Wraps onto a second
+       row on narrower viewports so it can stay centered without crowding. */
+    .v-dv-nav {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-wrap: wrap;
+        column-gap: 30px;
+        row-gap: 6px;
+        padding-top: 4px;
+    }
+    .v-dv-utility {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding-top: 2px;
+    }
     .v-dv-link {
         position: relative;
         color: currentColor;
@@ -323,7 +346,8 @@
     }
     /* Research panel is wide; anchor to the right edge of the trigger so
        it doesn't spill out of the viewport on standard 1440 desktops. */
-    .v-dv-drop-panel--wide {
+    .v-dv-drop-panel--wide,
+    .v-dv-drop-panel--right {
         left: auto;
         right: -28px;
     }
@@ -423,19 +447,23 @@
     .v-dv-drop-aside-link:hover svg { transform: translateX(3px); opacity: 1; }
     .v-dv-drop-aside-link.is-active { color: var(--v-amber); }
 
-    /* Language switch */
+    /* Language switch — sized down so it reads as a quiet utility next to
+       the Validate CTA, not as a primary nav element. */
     .v-dv-lang {
         display: inline-flex;
         align-items: center;
-        gap: 7px;
-        font-family: var(--v-sans);
-        font-size: 15px;
+        gap: 5px;
+        font-family: var(--v-mono);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
         color: currentColor;
     }
-    .v-dv-lang a { color: currentColor; opacity: .5; text-decoration: none; transition: opacity .2s ease; }
+    .v-dv-lang a { color: currentColor; opacity: .45; text-decoration: none; transition: opacity .2s ease; }
     .v-dv-lang a:hover { opacity: 1; }
-    .v-dv-lang .is-active { opacity: 1; }
-    .v-dv-lang-sep { opacity: .3; }
+    .v-dv-lang .is-active { opacity: .9; }
+    .v-dv-lang-sep { opacity: .25; }
 
     .v-dv-cta { display: inline-block; line-height: 1; }
 
@@ -575,17 +603,30 @@
         .v-dv-menu:not(.hidden) { animation: none; }
     }
 
-    /* ── Logo intro (run-in → collapse to the V monogram) ──────────────── */
+    /* ── Logo intro (run-in → collapse to the V monogram) ────────────────
+       The full VORNAC run-in only plays on the very first visit (gated by
+       the `vornac_logo_intro_played` localStorage flag, set after the first
+       playthrough). On every subsequent page load — including after browser
+       restarts — the body carries `.logo-intro-played` from an inline script
+       in `head-meta.njk`, which skips the animation and keeps only the
+       V mark visible (ORNAC stays at its end-state of hidden + translated). */
     .nav-logo-svg .v-logo-mark,
     .nav-logo-svg .v-logo-letter { transform-box: fill-box; }
     .nav-logo-svg .v-logo-letter { will-change: transform, opacity; }
 
     @media (prefers-reduced-motion: no-preference) {
-        .nav-logo-svg .v-logo-mark { animation: vLogoMarkIn .7s cubic-bezier(.86, 0, .07, 1) both; }
-        .nav-logo-svg .v-logo-letter {
+        body:not(.logo-intro-played) .nav-logo-svg .v-logo-mark {
+            animation: vLogoMarkIn .7s cubic-bezier(.86, 0, .07, 1) both;
+        }
+        body:not(.logo-intro-played) .nav-logo-svg .v-logo-letter {
             animation: vLogoLetter 2.6s cubic-bezier(.86, 0, .07, 1) both;
             animation-delay: calc(.25s + var(--i, 0) * .13s);
         }
+    }
+    /* Subsequent visits: lock to V-only state. */
+    body.logo-intro-played .nav-logo-svg .v-logo-letter {
+        opacity: 0;
+        transform: translateX(-150px);
     }
     @keyframes vLogoMarkIn {
         0%   { opacity: 0; transform: translateX(-26px); }
@@ -606,6 +647,29 @@
        - Logo + sticky burger recolour (white/ink) based on the luminance of the
          section behind them, so they stay legible over dark and light areas.
        - The sticky burger slides in once scrolled past ~1.5 viewport heights. */
+    /* First-visit intro: when the longest ORNAC animation finishes (or the
+       reduced-motion equivalent fires immediately), persist the flag so
+       subsequent visits skip the run-in entirely (see head-meta.njk gate). */
+    (function () {
+        try {
+            if (localStorage.getItem('vornac_logo_intro_played') === '1') return;
+        } catch (e) {}
+        var mark = function () {
+            try { localStorage.setItem('vornac_logo_intro_played', '1'); } catch (e) {}
+            document.documentElement.classList.add('logo-intro-played');
+        };
+        var letters = document.querySelectorAll('.nav-logo-svg .v-logo-letter');
+        var last = letters[letters.length - 1];
+        if (last) {
+            last.addEventListener('animationend', mark, { once: true });
+            /* Safety net — set after the full 2.6s + delays even if the event
+               doesn't fire (e.g. tab inactive during the animation window). */
+            setTimeout(mark, 3600);
+        } else {
+            mark();
+        }
+    })();
+
     (function () {
         var logo = document.querySelector('.v-dv-logo');
         var spacer = document.querySelector('.v-dv-logo-spacer');

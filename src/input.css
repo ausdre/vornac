@@ -523,11 +523,141 @@ img, video { max-width: 100%; }
 }
 
 /* ----------------------------------------
+ * Hero "Book a demo" pill (all pages via the hero-demo-button partial)
+ * Amber-outline pill that morphs into an inline email-capture on hover
+ * (desktop) or tap (mobile, .is-open via JS). Submits to Formspree.
+ * -------------------------------------- */
+.v-hero-demo {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: 248px;
+    height: 54px;
+    border: 1px solid var(--v-amber);
+    background: transparent;
+    overflow: hidden;
+    transition: width 0.42s cubic-bezier(0.22, 1, 0.36, 1), background 0.2s ease, box-shadow 0.2s ease;
+    vertical-align: middle;
+}
+.v-hero-demo-trigger {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--v-amber-deep);
+    font-family: var(--v-sans);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+.v-hero-demo-reveal {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.25s ease 0.06s;
+}
+.v-hero-demo-input {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--v-ink);
+    font-family: var(--v-sans);
+    font-size: 15px;
+    letter-spacing: -0.005em;
+    padding: 0 18px;
+}
+.v-hero-demo-input::placeholder { color: var(--v-ink-3); }
+.v-hero-demo-submit {
+    flex-shrink: 0;
+    height: 100%;
+    width: 54px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--v-amber);
+    color: var(--v-bg-dark);
+    border: none;
+    cursor: pointer;
+    transition: background 0.18s ease;
+}
+.v-hero-demo-submit:hover { background: #ffb53d; }
+.v-hero-demo:focus-within {
+    box-shadow: 0 0 0 3px rgba(255, 163, 23, 0.18);
+}
+.v-hero-demo:hover,
+.v-hero-demo.is-open {
+    width: 392px;
+    background: rgba(255, 163, 23, 0.06);
+}
+.v-hero-demo:hover .v-hero-demo-trigger,
+.v-hero-demo.is-open .v-hero-demo-trigger {
+    opacity: 0;
+    pointer-events: none;
+}
+.v-hero-demo:hover .v-hero-demo-reveal,
+.v-hero-demo.is-open .v-hero-demo-reveal {
+    opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+    .v-hero-demo { transition: none; }
+    .v-hero-demo-reveal { transition: none; }
+}
+@media (max-width: 640px) {
+    .v-hero-demo { width: 232px; height: 52px; }
+    .v-hero-demo.is-open { width: min(100%, 340px); }
+}
+
+/* On-amber sections (pent-hero) — invert the pill for legible contrast:
+   dark border, dark label, dark filled submit button. */
+.pent-hero .v-hero-demo,
+.v-hero-demo--on-amber {
+    border-color: var(--v-ink);
+    background: rgba(14, 17, 22, 0.04);
+}
+.pent-hero .v-hero-demo .v-hero-demo-trigger,
+.v-hero-demo--on-amber .v-hero-demo-trigger {
+    color: var(--v-ink);
+}
+.pent-hero .v-hero-demo .v-hero-demo-input,
+.v-hero-demo--on-amber .v-hero-demo-input {
+    color: var(--v-ink);
+}
+.pent-hero .v-hero-demo .v-hero-demo-submit,
+.v-hero-demo--on-amber .v-hero-demo-submit {
+    background: var(--v-ink);
+    color: var(--v-amber);
+}
+.pent-hero .v-hero-demo .v-hero-demo-submit:hover,
+.v-hero-demo--on-amber .v-hero-demo-submit:hover {
+    background: #000;
+}
+.pent-hero .v-hero-demo:hover,
+.pent-hero .v-hero-demo.is-open,
+.v-hero-demo--on-amber:hover,
+.v-hero-demo--on-amber.is-open {
+    background: rgba(14, 17, 22, 0.08);
+}
+
+/* ----------------------------------------
  * Top announcement bar (all pages via output.css)
+ * Black band, amber NEU/NEW tag, dismissible via the trailing X button.
  * -------------------------------------- */
 .v-announcement {
-    background: #ffffff;
-    color: var(--v-ink);
+    background: var(--v-bg-dark);
+    color: #fff;
     font-family: var(--v-sans);
     font-size: 13.5px;
     font-weight: 500;
@@ -536,13 +666,15 @@ img, video { max-width: 100%; }
     position: relative;
     z-index: 60;
     letter-spacing: -0.005em;
-    border-bottom: 1px solid var(--v-line);
+    transition: opacity 0.2s ease;
 }
+.v-announcement.is-closing { opacity: 0; }
 .v-announcement-inner {
     max-width: 1320px;
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 0 56px;
 }
+.v-announcement-body { color: rgba(255, 255, 255, 0.85); }
 .v-announcement-tag {
     display: inline-block;
     background: var(--v-amber);
@@ -555,27 +687,52 @@ img, video { max-width: 100%; }
     margin-right: 14px;
     vertical-align: 2px;
 }
-.v-announcement a {
-    color: var(--v-ink);
+.v-announcement-cta {
+    color: #fff;
     text-decoration: none;
-    border-bottom: 1px solid rgba(14, 17, 22, 0.28);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     padding-bottom: 1px;
     margin-left: 8px;
     font-weight: 600;
 }
-.v-announcement a:hover {
-    border-bottom-color: var(--v-amber-deep);
-    color: var(--v-amber-deep);
+.v-announcement-cta:hover {
+    border-bottom-color: var(--v-amber);
+    color: var(--v-amber);
 }
-.v-announcement a:focus-visible {
+.v-announcement-cta:focus-visible {
     outline: 2px solid var(--v-amber);
     outline-offset: 3px;
     border-radius: 2px;
 }
+.v-announcement-close {
+    position: absolute;
+    top: 50%;
+    right: 18px;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 0;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+.v-announcement-close:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+}
+.v-announcement-close:focus-visible {
+    outline: 2px solid var(--v-amber);
+    outline-offset: 2px;
+}
 @media (max-width: 640px) {
     .v-announcement { font-size: 12.5px; padding: 10px 0; }
-    .v-announcement-inner { padding: 0 20px; }
-    .v-announcement a { display: inline-block; margin-left: 4px; }
+    .v-announcement-inner { padding: 0 44px 0 20px; }
+    .v-announcement-cta { display: inline-block; margin-left: 4px; }
+    .v-announcement-close { right: 10px; }
 }
 
 /* ----------------------------------------

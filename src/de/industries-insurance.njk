@@ -20,7 +20,7 @@ ogType: website
             <h1 class="ind-hero-headline">Kontinuierliche Validierung für Versicherer unter <span class="ind-hero-headline-emph">DORA</span></h1>
             <p class="ind-hero-sub">Versicherer und Versicherungsgruppen tragen verbindliche Pflichten zu IKT-Risiko, Vorfallmeldung und Resilienz. VORNAC liefert ausnutzbar belegte Befunde, audit-ready für DORA. Kontinuierlich. Nicht im Jahresrhythmus.</p>
             <div class="ind-hero-actions">
-                <a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="ind-btn-primary">Demo buchen</a>
+                {% include "partials/hero-demo-button.njk" %}
                 <a href="{{ pageUrls.pentesting }}" class="ind-btn-ghost">So funktioniert's</a>
             </div>
         </div>
@@ -114,7 +114,7 @@ ogType: website
             <h2 class="ind-cta-headline">Resilienz, die die Aufsicht akzeptiert. <em>Jeden Tag.</em></h2>
             <p class="ind-cta-sub">30 Minuten. Die IKT-Landschaft wird auf einen kontinuierlichen, DORA-konformen Validierungszyklus gemappt.</p>
             <div class="ind-cta-actions">
-                <a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="ind-cta-btn">Demo buchen</a>
+                {% include "partials/hero-demo-button.njk" %}
             </div>
         </div>
     </section>

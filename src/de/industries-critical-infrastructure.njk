@@ -19,7 +19,7 @@ ogType: website
             <h1 class="ind-hero-headline">Resilienztests für <span class="ind-hero-headline-emph">KRITIS-Betreiber und kritische Dienstleister</span></h1>
             <p class="ind-hero-sub">Betreiber von Energie, Wasser, Verkehr, Gesundheit und weiteren kritischen Anlagen tragen Pflichten nach KRITIS und NIS2. VORNAC validiert die OT/IT-Grenze und Produktionssysteme mit belegbaren Befunden, audit-ready für BSI und Branchenaufsicht.</p>
             <div class="ind-hero-actions">
-                <a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="ind-btn-primary">Demo buchen</a>
+                {% include "partials/hero-demo-button.njk" %}
                 <a href="{{ pageUrls.pentesting }}" class="ind-btn-ghost">So funktioniert's</a>
             </div>
         </div>
@@ -78,7 +78,9 @@ ogType: website
     <section class="ind-cta">
         <div class="ind-cta-inner">
             <h2 class="ind-cta-headline">KRITIS-Resilienz belegen, <em>bevor</em> die Aufsicht fragt.</h2>
-            <div class="ind-cta-actions"><a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="ind-cta-btn">Demo buchen</a></div>
+            <div class="ind-cta-actions">
+                {% include "partials/hero-demo-button.njk" %}
+            </div>
         </div>
     </section>
 </main>

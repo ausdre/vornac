@@ -19,7 +19,7 @@ ogType: website
             <h1 class="ind-hero-headline">Continuous validation for <span class="ind-hero-headline-emph">banks and financial institutions</span></h1>
             <p class="ind-hero-sub">DORA sets the EU-wide bar for operational resilience. VAIT and BAIT set the German bar for IT and outsourcing on top. VORNAC delivers exploit-proven findings, audit-ready for both supervisors, on every release, anytime.</p>
             <div class="ind-hero-actions">
-                <a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="ind-btn-primary">Book Demo</a>
+                {% include "partials/hero-demo-button.njk" %}
                 <a href="{{ pageUrls.pentesting }}" class="ind-btn-ghost">How it works</a>
             </div>
         </div>
@@ -79,7 +79,9 @@ ogType: website
         <div class="ind-cta-inner">
             <h2 class="ind-cta-headline">One validation cycle. <em>Every framework your auditors ask for.</em></h2>
             <p class="ind-cta-sub">30 minutes. We map your financial ICT landscape to a continuous, audit-ready testing cycle.</p>
-            <div class="ind-cta-actions"><a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="ind-cta-btn">Book Demo</a></div>
+            <div class="ind-cta-actions">
+                {% include "partials/hero-demo-button.njk" %}
+            </div>
         </div>
     </section>
 </main>

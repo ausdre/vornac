@@ -54,55 +54,7 @@
     .bg-warm-soft { background-color: #ffffff; }
     .bg-warm-muted { background-color: #ffffff; }
 
-    /* Announcement bar */
-    .v-announcement {
-        background: #ffffff;
-        color: var(--v-ink);
-        font-family: var(--v-sans);
-        font-size: 13.5px;
-        font-weight: 500;
-        padding: 11px 0;
-        text-align: center;
-        position: relative;
-        z-index: 60;
-        letter-spacing: -0.005em;
-        border-bottom: 1px solid var(--v-line);
-    }
-    .v-announcement-inner {
-        max-width: 1320px;
-        margin: 0 auto;
-        padding: 0 32px;
-    }
-    .v-announcement-tag {
-        display: inline-block;
-        background: var(--v-amber);
-        color: var(--v-bg-dark);
-        font-size: 10.5px;
-        font-weight: 800;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        padding: 3px 8px;
-        margin-right: 14px;
-        vertical-align: 2px;
-    }
-    .v-announcement a {
-        color: var(--v-ink);
-        text-decoration: none;
-        border-bottom: 1px solid rgba(14,17,22,0.28);
-        padding-bottom: 1px;
-        margin-left: 8px;
-        transition: border-color 0.15s, color 0.15s;
-        font-weight: 600;
-    }
-    .v-announcement a:hover {
-        border-bottom-color: var(--v-amber-deep);
-        color: var(--v-amber-deep);
-    }
-    @media (max-width: 640px) {
-        .v-announcement { font-size: 12.5px; padding: 10px 0; }
-        .v-announcement-inner { padding: 0 20px; }
-        .v-announcement a { display: inline-block; margin-left: 4px; }
-    }
+    /* Announcement bar — styles live in global input.css (dark, dismissable) */
 
     /* Hero — clean white field. Amber appears only as a sparing accent on
        the emphasized headline phrase. */
@@ -259,96 +211,8 @@
     }
     /* .v-hero .v-btn-ghost inherits the default ink ghost; no override needed. */
 
-    /* Hero "Book a demo" — a wider amber-outline pill that morphs into an
-       inline email capture on hover (desktop) or tap (mobile, .is-open via JS).
-       Collapsed: centered "Book a demo" label. Expanded: email input + submit. */
-    .v-hero-demo {
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        width: 248px;
-        height: 54px;
-        border: 1px solid var(--v-amber);
-        background: transparent;
-        overflow: hidden;
-        transition: width 0.42s cubic-bezier(0.22, 1, 0.36, 1), background 0.2s ease, box-shadow 0.2s ease;
-    }
-    .v-hero-demo-trigger {
-        position: absolute;
-        inset: 0;
-        z-index: 2;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        width: 100%;
-        background: transparent;
-        border: none;
-        color: var(--v-amber-deep);
-        font-family: var(--v-sans);
-        font-size: 15px;
-        font-weight: 600;
-        letter-spacing: -0.005em;
-        cursor: pointer;
-        transition: opacity 0.2s ease;
-    }
-    .v-hero-demo-reveal {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        transition: opacity 0.25s ease 0.06s;
-    }
-    .v-hero-demo-input {
-        flex: 1;
-        min-width: 0;
-        height: 100%;
-        background: transparent;
-        border: none;
-        outline: none;
-        color: var(--v-ink);
-        font-family: var(--v-sans);
-        font-size: 15px;
-        letter-spacing: -0.005em;
-        padding: 0 18px;
-    }
-    .v-hero-demo-input::placeholder { color: var(--v-ink-3); }
-    .v-hero-demo-submit {
-        flex-shrink: 0;
-        height: 100%;
-        width: 54px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--v-amber);
-        color: var(--v-bg-dark);
-        border: none;
-        cursor: pointer;
-        transition: background 0.18s ease;
-    }
-    .v-hero-demo-submit:hover { background: #ffb53d; }
-    .v-hero-demo:focus-within {
-        box-shadow: 0 0 0 3px rgba(255, 163, 23, 0.18);
-    }
-    .v-hero-demo:hover,
-    .v-hero-demo.is-open {
-        width: 392px;
-        background: rgba(255, 163, 23, 0.06);
-    }
-    .v-hero-demo:hover .v-hero-demo-trigger,
-    .v-hero-demo.is-open .v-hero-demo-trigger {
-        opacity: 0;
-        pointer-events: none;
-    }
-    .v-hero-demo:hover .v-hero-demo-reveal,
-    .v-hero-demo.is-open .v-hero-demo-reveal {
-        opacity: 1;
-    }
-    @media (prefers-reduced-motion: reduce) {
-        .v-hero-demo { transition: none; }
-        .v-hero-demo-reveal { transition: none; }
-    }
+    /* Hero "Book a demo" pill — definition moved to global input.css so the
+       partial works on every page; only the per-viewport overrides stay. */
 
     @media (max-width: 768px) {
         .v-hero-inner { padding: 80px 28px 96px; }
