@@ -134,29 +134,35 @@ permalink: /de/index.html
             </p>
         </header>
 
-        <div class="v-howwe-grid">
-            <div class="v-howwe-item v-reveal" data-reveal-delay="1">
-                <span class="v-howwe-num">1</span>
-                <h3 class="v-howwe-title">Echte Angriffe, keine Scans.</h3>
-                <p class="v-howwe-desc">
-                    Volle <strong>MITRE ATT&amp;CK Kill Chain</strong>: Reconnaissance → Initial Access → Privilege Escalation → Lateral Movement → Exfiltration. Jeder Befund kommt mit funktionierendem Exploit und reproduzierbarem Proof-of-Concept.
-                </p>
+        <div class="v-howwe-cascade">
+            <div class="v-howwe-row v-reveal" data-reveal-delay="1">
+                <span class="v-howwe-num" aria-hidden="true">1</span>
+                <div>
+                    <h3 class="v-howwe-title">Echte Angriffe, keine Scans.</h3>
+                    <p class="v-howwe-desc">
+                        Volle <strong>MITRE ATT&amp;CK Kill Chain</strong>: Reconnaissance → Initial Access → Privilege Escalation → Lateral Movement → Exfiltration. Jeder Befund kommt mit funktionierendem Exploit und reproduzierbarem Proof-of-Concept.
+                    </p>
+                </div>
             </div>
 
-            <div class="v-howwe-item v-reveal" data-reveal-delay="2">
-                <span class="v-howwe-num">2</span>
-                <h3 class="v-howwe-title">Bei jedem Release ausgelöst.</h3>
-                <p class="v-howwe-desc">
-                    Per <strong>CI/CD-Webhook</strong>, bei Infrastrukturänderungen, nach Zeitplan oder on-demand via API. Vom Trigger bis zum umsetzbaren Befund: Stunden, nicht Wochen. Kein Engagement-Scoping, keine Kalenderabstimmung.
-                </p>
+            <div class="v-howwe-row v-reveal" data-reveal-delay="2">
+                <span class="v-howwe-num" aria-hidden="true">2</span>
+                <div>
+                    <h3 class="v-howwe-title">Bei jedem Release ausgelöst.</h3>
+                    <p class="v-howwe-desc">
+                        Per <strong>CI/CD-Webhook</strong>, bei Infrastrukturänderungen, nach Zeitplan oder on-demand via API. Vom Trigger bis zum umsetzbaren Befund: Stunden, nicht Wochen. Kein Engagement-Scoping, keine Kalenderabstimmung.
+                    </p>
+                </div>
             </div>
 
-            <div class="v-howwe-item v-reveal" data-reveal-delay="3">
-                <span class="v-howwe-num">3</span>
-                <h3 class="v-howwe-title">Iterativer Loop bis nichts mehr offen ist.</h3>
-                <p class="v-howwe-desc">
-                    <strong>Observation → Enumeration → Vulnerability Research → Exploitation → Documentation.</strong> Jeder Befund speist die nächste Runde. Iteriert, bis die Angriffsfläche ausgeschöpft ist.
-                </p>
+            <div class="v-howwe-row v-reveal" data-reveal-delay="3">
+                <span class="v-howwe-num" aria-hidden="true">3</span>
+                <div>
+                    <h3 class="v-howwe-title">Iterativer Loop bis nichts mehr offen ist.</h3>
+                    <p class="v-howwe-desc">
+                        <strong>Observation → Enumeration → Vulnerability Research → Exploitation → Documentation.</strong> Jeder Befund speist die nächste Runde. Iteriert, bis die Angriffsfläche ausgeschöpft ist.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -206,38 +212,37 @@ permalink: /de/index.html
         So wird Pentesting zur Sicherheitsfunktion mit planbarem OPEX-Budget.
         </h2>
 
-        <div class="v-stats-grid">
-            <div class="v-stat v-reveal" data-reveal-delay="1">
+        <div class="v-stats-hero-wrap">
+            <div class="v-stat v-stat-hero v-reveal" data-reveal-delay="1">
                 <div class="v-stat-number">
                     <span class="v-stat-prefix">&gt;</span>
                     <span class="v-stat-num" data-countup="97">97</span><span class="v-stat-unit">%</span>
                 </div>
-                <div class="v-stat-rule"></div>
                 <div class="v-stat-label">
                     der Angriffsfläche pro Zyklus validiert
                     <span class="v-stat-label-sub">Cloud, On-Premises, APIs und Systeme hinter VPN. Kontinuierlich, nicht jährlich. Von Tag eins an.</span>
                 </div>
             </div>
 
-            <div class="v-stat v-reveal" data-reveal-delay="2">
-                <div class="v-stat-number">
-                    <span class="v-stat-num" data-countup="2">2</span><span class="v-stat-range">–5</span><span class="v-stat-unit">h</span>
+            <div class="v-stats-side-rows">
+                <div class="v-stat v-stat-row v-reveal" data-reveal-delay="2">
+                    <div class="v-stat-number">
+                        <span class="v-stat-num" data-countup="2">2</span><span class="v-stat-range">–5</span><span class="v-stat-unit">h</span>
+                    </div>
+                    <div class="v-stat-label">
+                        Vom Start bis zum Report
+                        <span class="v-stat-label-sub">Kein mehrwöchiges Projekt-Fenster. Start per Web-Oberfläche oder API, auditfähige Befunde noch am selben Tag.</span>
+                    </div>
                 </div>
-                <div class="v-stat-rule"></div>
-                <div class="v-stat-label">
-                    Vom Start bis zum Report
-                    <span class="v-stat-label-sub">Kein mehrwöchiges Projekt-Fenster. Start per Web-Oberfläche oder API, auditfähige Befunde noch am selben Tag.</span>
-                </div>
-            </div>
 
-            <div class="v-stat v-reveal" data-reveal-delay="3">
-                <div class="v-stat-number">
-                    <span class="v-stat-num" data-countup="4">4</span><span class="v-stat-unit">x</span>
-                </div>
-                <div class="v-stat-rule"></div>
-                <div class="v-stat-label">
-                    höhere Angriffskosten
-                    <span class="v-stat-label-sub">(Cost per Attack) für Cyberkriminelle. Senkt die wirtschaftliche Attraktivität als Angriffsziel.</span>
+                <div class="v-stat v-stat-row v-reveal" data-reveal-delay="3">
+                    <div class="v-stat-number">
+                        <span class="v-stat-num" data-countup="4">4</span><span class="v-stat-unit">x</span>
+                    </div>
+                    <div class="v-stat-label">
+                        Höhere Angriffskosten
+                        <span class="v-stat-label-sub">(Cost per Attack) für Cyberkriminelle. Senkt die wirtschaftliche Attraktivität als Angriffsziel.</span>
+                    </div>
                 </div>
             </div>
         </div>

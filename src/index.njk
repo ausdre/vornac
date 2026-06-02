@@ -126,29 +126,35 @@ permalink: /index.html
             </p>
         </header>
 
-        <div class="v-howwe-grid">
-            <div class="v-howwe-item v-reveal" data-reveal-delay="1">
-                <span class="v-howwe-num">1</span>
-                <h3 class="v-howwe-title">Real attacks, not scans.</h3>
-                <p class="v-howwe-desc">
-                    Full <strong>MITRE ATT&amp;CK Kill Chain</strong>: Reconnaissance → Initial Access → Privilege Escalation → Lateral Movement → Exfiltration. Every finding ships with a working exploit and reproducible proof-of-concept.
-                </p>
+        <div class="v-howwe-cascade">
+            <div class="v-howwe-row v-reveal" data-reveal-delay="1">
+                <span class="v-howwe-num" aria-hidden="true">1</span>
+                <div>
+                    <h3 class="v-howwe-title">Real attacks, not scans.</h3>
+                    <p class="v-howwe-desc">
+                        Full <strong>MITRE ATT&amp;CK Kill Chain</strong>: Reconnaissance → Initial Access → Privilege Escalation → Lateral Movement → Exfiltration. Every finding ships with a working exploit and reproducible proof-of-concept.
+                    </p>
+                </div>
             </div>
 
-            <div class="v-howwe-item v-reveal" data-reveal-delay="2">
-                <span class="v-howwe-num">2</span>
-                <h3 class="v-howwe-title">Triggered on every release.</h3>
-                <p class="v-howwe-desc">
-                    Via <strong>CI/CD webhook</strong>, on infrastructure changes, on schedule, or on-demand via API. From trigger to actionable finding: hours, not weeks. No engagement scoping, no calendar coordination.
-                </p>
+            <div class="v-howwe-row v-reveal" data-reveal-delay="2">
+                <span class="v-howwe-num" aria-hidden="true">2</span>
+                <div>
+                    <h3 class="v-howwe-title">Triggered on every release.</h3>
+                    <p class="v-howwe-desc">
+                        Via <strong>CI/CD webhook</strong>, on infrastructure changes, on schedule, or on-demand via API. From trigger to actionable finding: hours, not weeks. No engagement scoping, no calendar coordination.
+                    </p>
+                </div>
             </div>
 
-            <div class="v-howwe-item v-reveal" data-reveal-delay="3">
-                <span class="v-howwe-num">3</span>
-                <h3 class="v-howwe-title">Iterative loop until coverage is exhausted.</h3>
-                <p class="v-howwe-desc">
-                    <strong>Observation → Enumeration → Vulnerability Research → Exploitation → Documentation.</strong> Every finding feeds the next round. Iterates until coverage is exhausted.
-                </p>
+            <div class="v-howwe-row v-reveal" data-reveal-delay="3">
+                <span class="v-howwe-num" aria-hidden="true">3</span>
+                <div>
+                    <h3 class="v-howwe-title">Iterative loop until coverage is exhausted.</h3>
+                    <p class="v-howwe-desc">
+                        <strong>Observation → Enumeration → Vulnerability Research → Exploitation → Documentation.</strong> Every finding feeds the next round. Iterates until coverage is exhausted.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -198,38 +204,37 @@ permalink: /index.html
                         Turning penetration testing into a predictable OPEX-based security capability.
         </h2>
 
-        <div class="v-stats-grid">
-            <div class="v-stat v-reveal" data-reveal-delay="1">
+        <div class="v-stats-hero-wrap">
+            <div class="v-stat v-stat-hero v-reveal" data-reveal-delay="1">
                 <div class="v-stat-number">
                     <span class="v-stat-prefix">&gt;</span>
                     <span class="v-stat-num" data-countup="97">97</span><span class="v-stat-unit">%</span>
                 </div>
-                <div class="v-stat-rule"></div>
                 <div class="v-stat-label">
                     Of attack surface validated each cycle
                     <span class="v-stat-label-sub">Across cloud, on-premises, APIs, and behind-VPN systems. Continuous, not annual, coverage from day one of deployment.</span>
                 </div>
             </div>
 
-            <div class="v-stat v-reveal" data-reveal-delay="2">
-                <div class="v-stat-number">
-                    <span class="v-stat-num" data-countup="2">2</span><span class="v-stat-range">–5</span><span class="v-stat-unit">h</span>
+            <div class="v-stats-side-rows">
+                <div class="v-stat v-stat-row v-reveal" data-reveal-delay="2">
+                    <div class="v-stat-number">
+                        <span class="v-stat-num" data-countup="2">2</span><span class="v-stat-range">–5</span><span class="v-stat-unit">h</span>
+                    </div>
+                    <div class="v-stat-label">
+                        From trigger to actionable finding
+                        <span class="v-stat-label-sub">No multi-week engagement window. Start your pentest via Web or API. All findings come exploitability-proven.</span>
+                    </div>
                 </div>
-                <div class="v-stat-rule"></div>
-                <div class="v-stat-label">
-                    From trigger to actionable finding
-                    <span class="v-stat-label-sub">No multi-week engagement window. Start your pentest via Web or API. All findings come exploitability-proven.</span>
-                </div>
-            </div>
 
-            <div class="v-stat v-reveal" data-reveal-delay="3">
-                <div class="v-stat-number">
-                    <span class="v-stat-num" data-countup="4">4</span><span class="v-stat-unit">x</span>
-                </div>
-                <div class="v-stat-rule"></div>
-                <div class="v-stat-label">
-                    higher attack cost
-                    <span class="v-stat-label-sub">Cost per Attack (CPA) for adversaries. Makes your systems economically unattractive as a target, and shifts attackers elsewhere.</span>
+                <div class="v-stat v-stat-row v-reveal" data-reveal-delay="3">
+                    <div class="v-stat-number">
+                        <span class="v-stat-num" data-countup="4">4</span><span class="v-stat-unit">x</span>
+                    </div>
+                    <div class="v-stat-label">
+                        Higher attack cost
+                        <span class="v-stat-label-sub">Cost per Attack (CPA) for adversaries. Makes your systems economically unattractive as a target, and shifts attackers elsewhere.</span>
+                    </div>
                 </div>
             </div>
         </div>

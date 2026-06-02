@@ -562,26 +562,27 @@
         margin-left: auto;
         margin-right: auto;
     }
-    .v-howwe-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0;
+    /* Cascade layout — replaces the 3-col grid */
+    .v-howwe-cascade {
         border-top: 1px solid var(--v-line);
     }
-    .v-howwe-item {
-        padding: 48px 36px 12px;
-        border-right: 1px solid var(--v-line);
-        position: relative;
+    .v-howwe-row {
+        display: grid;
+        grid-template-columns: 56px 1fr;
+        gap: 0 28px;
+        padding: 44px 0;
+        border-bottom: 1px solid var(--v-line);
+        align-items: start;
     }
-    .v-howwe-item:last-child { border-right: none; }
+    .v-howwe-row:last-child { border-bottom: none; }
     .v-howwe-num {
-        font-family: var(--v-mono);
-        font-size: 12px;
-        font-weight: 500;
-        letter-spacing: 0.18em;
-        color: var(--v-amber-deep);
-        margin-bottom: 28px;
-        display: block;
+        font-family: var(--v-display);
+        font-size: clamp(36px, 3.8vw, 56px);
+        font-weight: 900;
+        line-height: 1;
+        color: var(--v-amber);
+        letter-spacing: -0.04em;
+        padding-top: 4px;
     }
     .v-howwe-title {
         font-family: var(--v-display);
@@ -590,7 +591,7 @@
         letter-spacing: -0.02em;
         font-weight: 900;
         color: var(--v-ink);
-        margin: 0 0 20px;
+        margin: 0 0 16px;
     }
     .v-howwe-desc {
         font-size: 16px;
@@ -598,6 +599,7 @@
         color: var(--v-ink-2);
         font-weight: 500;
         margin: 0;
+        max-width: 72ch;
     }
     .v-howwe-desc strong {
         color: var(--v-ink);
@@ -606,17 +608,14 @@
     @media (max-width: 920px) {
         .v-howwe-inner { padding: 80px 24px 80px; }
         .v-howwe-head { margin-bottom: 56px; }
-        .v-howwe-grid {
-            grid-template-columns: 1fr;
-            border-top: 1px solid var(--v-line);
+        .v-howwe-row {
+            grid-template-columns: 44px 1fr;
+            gap: 0 20px;
+            padding: 32px 0;
         }
-        .v-howwe-item {
-            padding: 36px 0 36px;
-            border-right: none;
-            border-bottom: 1px solid var(--v-line);
-        }
-        .v-howwe-item:last-child { border-bottom: none; }
-        .v-howwe-num { margin-bottom: 20px; }
+    }
+    @media (max-width: 480px) {
+        .v-howwe-row { grid-template-columns: 36px 1fr; gap: 0 16px; }
     }
 
     /* German data sovereignty */
@@ -1284,6 +1283,90 @@
         .v-stats-grid.is-four .v-stat { padding: 0; }
         .v-stat-number { font-size: clamp(78px, 18vw, 120px); margin-bottom: 24px; }
         .v-stats-grid.is-four .v-stat-number { font-size: clamp(78px, 18vw, 120px); }
+    }
+
+    /* Stats hero layout — one dominant number + two secondary rows */
+    .v-stats-hero-wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 80px;
+        align-items: start;
+    }
+    .v-stat-hero {
+        text-align: left;
+        padding: 0;
+        border-right: 1px solid var(--v-line-dark);
+        padding-right: 80px;
+    }
+    .v-stat-hero .v-stat-number {
+        justify-content: flex-start;
+        font-size: clamp(96px, 11vw, 172px);
+        margin-bottom: 24px;
+    }
+    .v-stat-hero .v-stat-label {
+        text-align: left;
+        margin-left: 0;
+        margin-right: 0;
+        max-width: 22ch;
+    }
+    .v-stat-hero .v-stat-label .v-stat-label-sub {
+        margin-left: 0;
+        margin-right: 0;
+        max-width: 38ch;
+    }
+    .v-stats-side-rows {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        justify-content: center;
+        align-self: center;
+    }
+    .v-stat-row {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0 32px;
+        align-items: center;
+        padding: 36px 0;
+        border-bottom: 1px solid var(--v-line-dark);
+    }
+    .v-stat-row:first-child { padding-top: 0; }
+    .v-stat-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .v-stat-row .v-stat-number {
+        font-size: clamp(52px, 5.5vw, 84px);
+        margin-bottom: 0;
+        justify-content: flex-start;
+        white-space: nowrap;
+    }
+    .v-stat-row .v-stat-label {
+        text-align: left;
+        margin-left: 0;
+        margin-right: 0;
+        font-size: clamp(17px, 1.4vw, 22px);
+        max-width: none;
+    }
+    .v-stat-row .v-stat-label .v-stat-label-sub {
+        margin-left: 0;
+        margin-right: 0;
+        max-width: none;
+    }
+    @media (max-width: 1024px) {
+        .v-stats-hero-wrap { gap: 0 48px; }
+        .v-stat-hero { padding-right: 48px; }
+    }
+    @media (max-width: 768px) {
+        .v-stats-hero-wrap {
+            grid-template-columns: 1fr;
+            gap: 48px 0;
+        }
+        .v-stat-hero {
+            border-right: none;
+            border-bottom: 1px solid var(--v-line-dark);
+            padding-right: 0;
+            padding-bottom: 48px;
+        }
+        .v-stat-hero .v-stat-number { font-size: clamp(86px, 20vw, 140px); }
+        .v-stat-row { gap: 0 24px; padding: 28px 0; }
+        .v-stat-row .v-stat-number { font-size: clamp(44px, 10vw, 64px); }
     }
 
     /* Mobile menu animations */
