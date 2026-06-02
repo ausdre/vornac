@@ -34,7 +34,7 @@
 const DOMAINS = [
   {
     id: "offensive-tradecraft",
-    number: "01",
+    number: "1",
     title: { en: "Offensive Tradecraft",            de: "Offensive Tradecraft" },
     blurb: {
       en: "Methodologies, frameworks, and red-team playbooks. The how-we-test layer.",
@@ -43,7 +43,7 @@ const DOMAINS = [
   },
   {
     id: "application-identity",
-    number: "02",
+    number: "2",
     title: { en: "Application & Identity Security", de: "Anwendungs- & Identitätssicherheit" },
     blurb: {
       en: "OWASP-adjacent vulnerability classes — from XSS to business logic flaws.",
@@ -52,7 +52,7 @@ const DOMAINS = [
   },
   {
     id: "cloud-infrastructure",
-    number: "03",
+    number: "3",
     title: { en: "Cloud & Modern Infrastructure",   de: "Cloud & moderne Infrastruktur" },
     blurb: {
       en: "Public-cloud security models and enterprise architecture patterns.",
@@ -61,7 +61,7 @@ const DOMAINS = [
   },
   {
     id: "ot-embedded",
-    number: "04",
+    number: "4",
     title: { en: "Operational Technology & Embedded", de: "Operational Technology & Embedded" },
     blurb: {
       en: "Surfaces outside conventional IT: ICS/SCADA, IoT, automotive, wireless.",
@@ -70,7 +70,7 @@ const DOMAINS = [
   },
   {
     id: "threat-intelligence",
-    number: "05",
+    number: "5",
     title: { en: "Threat Intelligence & Adversary Modeling", de: "Threat Intelligence & Adversary Modeling" },
     blurb: {
       en: "Diamond model, kill chains, attribution, and threat modeling.",
@@ -79,7 +79,7 @@ const DOMAINS = [
   },
   {
     id: "reverse-malware",
-    number: "06",
+    number: "6",
     title: { en: "Reverse Engineering, Binary & Malware", de: "Reverse Engineering, Binary & Malware" },
     blurb: {
       en: "Low-level attack surfaces — exploitation, fuzzing, and malware behavior.",
@@ -88,7 +88,7 @@ const DOMAINS = [
   },
   {
     id: "ai-emerging",
-    number: "07",
+    number: "7",
     title: { en: "AI, Data & Emerging Risk",         de: "KI, Daten & neue Risiken" },
     blurb: {
       en: "Machine-learning security, blockchain, and data-layer threats.",
@@ -97,7 +97,7 @@ const DOMAINS = [
   },
   {
     id: "defensive-ops",
-    number: "08",
+    number: "8",
     title: { en: "Defensive Operations & Governance", de: "Defensive Operations & Governance" },
     blurb: {
       en: "Blue-team operations, the security-product landscape, and compliance posture.",
@@ -2976,8 +2976,8 @@ suspicious = (
     domain: "threat-intelligence", tier: 3,
     title: T("Red Team Planning & Intel Analysis", "Red-Team-Planung & Intel-Analyse"),
     blurb: T(
-      "Adversary-emulation planning tree (objective, profile, infrastructure, evasion, deconfliction) and the source-rating discipline that keeps a threat-intel report honest about confidence.",
-      "Adversary-Emulation-Planungsbaum (Ziel, Profil, Infrastruktur, Evasion, Deconfliction) und die Quellenbewertungs-Disziplin, die einen Threat-Intel-Report ehrlich bei Konfidenz hält."
+      "Adversary-simulation planning tree (objective, profile, infrastructure, evasion, deconfliction) and the source-rating discipline that keeps a threat-intel report honest about confidence.",
+      "Adversary-Simulations-Planungsbaum (Ziel, Profil, Infrastruktur, Evasion, Deconfliction) und die Quellenbewertungs-Disziplin, die einen Threat-Intel-Report ehrlich bei Konfidenz hält."
     ),
     body: B(
       `
@@ -2990,9 +2990,9 @@ suspicious = (
 
 <h2>Planning tree — actor profile</h2>
 <ul>
-  <li><strong>Pick a named actor.</strong> Emulating "APT29" gives the engagement a TTP set to follow. MITRE ATT&amp;CK Navigator maps named-actor-to-techniques.</li>
+  <li><strong>Pick a named actor.</strong> Simulating "APT29" gives the engagement a TTP set to follow. MITRE ATT&amp;CK Navigator maps named-actor-to-techniques.</li>
   <li><strong>Fidelity level.</strong> High = exact tooling, exact infrastructure pattern, exact dwell-time profile. Low = TTP set only, modern tools to execute them.</li>
-  <li><strong>Don't mix.</strong> Emulating APT29's initial access with FIN7's lateral movement = unrepresentative. Stay within actor.</li>
+  <li><strong>Don't mix.</strong> Simulating APT29's initial access with FIN7's lateral movement = unrepresentative. Stay within actor.</li>
 </ul>
 
 <h2>Planning tree — infrastructure</h2>
@@ -3037,9 +3037,9 @@ suspicious = (
 
 <h2>Planungsbaum — Actor-Profil</h2>
 <ul>
-  <li><strong>Benannten Actor wählen.</strong> "APT29" emulieren gibt dem Engagement ein TTP-Set zu folgen. MITRE ATT&amp;CK Navigator mappt Named-Actor-zu-Techniques.</li>
+  <li><strong>Benannten Actor wählen.</strong> "APT29" simulieren gibt dem Engagement ein TTP-Set zu folgen. MITRE ATT&amp;CK Navigator mappt Named-Actor-zu-Techniques.</li>
   <li><strong>Fidelity-Level.</strong> Hoch = exaktes Tooling, exaktes Infrastruktur-Muster, exaktes Dwell-Time-Profil. Niedrig = nur TTP-Set, moderne Tools zur Ausführung.</li>
-  <li><strong>Nicht mischen.</strong> APT29-Initial-Access mit FIN7-Lateral-Movement emulieren = unrepräsentativ. Im Actor bleiben.</li>
+  <li><strong>Nicht mischen.</strong> APT29-Initial-Access mit FIN7-Lateral-Movement simulieren = unrepräsentativ. Im Actor bleiben.</li>
 </ul>
 
 <h2>Planungsbaum — Infrastruktur</h2>
