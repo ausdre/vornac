@@ -27,6 +27,22 @@ module.exports = {
       company: "company",
       careers: "careers"
     },
+    /** Mega-menu section headings (small uppercase labels above each column). */
+    navHeadings: {
+      research: "Research domains",
+      industries: "Industries",
+      about: "About",
+      glossary: "Reference"
+    },
+    /** Industries shown in the Industries dropdown. `fw` is the regulator/framework
+        tag rendered as a small caption next to the link, mirroring /industries. */
+    industriesNav: [
+      { key: "industries-insurance",               label: "Insurance",              fw: "DORA" },
+      { key: "industries-financial-services",      label: "Financial services",     fw: "DORA · VAIT · BAIT" },
+      { key: "industries-critical-infrastructure", label: "Critical infrastructure", fw: "KRITIS · NIS2" },
+      { key: "industries-automotive",              label: "Automotive",             fw: "TISAX" },
+      { key: "industries-enterprise",              label: "Enterprise",             fw: "NIS2" }
+    ],
     announcement: {
       tag: "New",
       body: "The 2026 Continuous Validation Methodology Paper is now available.",
@@ -82,6 +98,19 @@ module.exports = {
       company: "unternehmen",
       careers: "karriere"
     },
+    navHeadings: {
+      research: "Research-Domänen",
+      industries: "Branchen",
+      about: "Über uns",
+      glossary: "Referenz"
+    },
+    industriesNav: [
+      { key: "industries-insurance",               label: "Versicherung",            fw: "DORA" },
+      { key: "industries-financial-services",      label: "Finanzdienstleistungen",  fw: "DORA · VAIT · BAIT" },
+      { key: "industries-critical-infrastructure", label: "Kritische Infrastruktur", fw: "KRITIS · NIS2" },
+      { key: "industries-automotive",              label: "Automotive",              fw: "TISAX" },
+      { key: "industries-enterprise",              label: "Enterprise",              fw: "NIS2" }
+    ],
     announcement: {
       tag: "Neu",
       body: "Das Whitepaper zur kontinuierlichen Sicherheitsvalidierung 2026 ist verfügbar.",
