@@ -10,6 +10,169 @@
  *   /de          <- src/de/index.njk
  *   /de/pentesting <- src/de/pentesting.njk
  */
+const { parse: parseHTML, HTMLElement, TextNode } = require("node-html-parser");
+const CROSSLINKS = require("./src/_data/crosslinks.js");
+
+// HTML tags whose text content must never be auto-linked.
+const SKIP_TAGS = new Set([
+  "a", "code", "pre", "kbd", "script", "style", "noscript",
+  "nav", "header", "footer", "h1", "h2", "h3", "button",
+  "select", "textarea", "input", "label", "svg", "math"
+]);
+
+// CSS class names that mark a subtree as opt-out of cross-linking.
+const SKIP_CLASSES = new Set([
+  "rs-rule",            // research "Rule of thumb" callout
+  "rs-note-hero",       // note hero block (title area)
+  "rs-domain-hero",     // domain hero
+  "rs-research-hero",   // research index hero
+  "gl-eyebrow",         // glossary eyebrow / hero
+  "gl-hero",            // glossary hero
+  "gl-entry-term",      // glossary term label (don't link "OWASP" inside its own term row)
+  "gl-entry-full",      // glossary full-form line
+  "gl-cat-pill",        // glossary category chips
+  "gl-az-link",         // glossary A–Z jump links
+  "gl-meta",            // glossary meta line
+  "v-announcement",     // top announcement bar
+  "v-nav",              // floating nav island
+  "site-footer",        // global footer wrapper (defensive; tag is already <footer>)
+  "comcenter",          // command-centre block
+  "rs-tier-chip",       // tier chips
+  "rs-phase-chip"       // phase chips
+]);
+
+// Build a single regex per locale that captures any known phrase
+// (longest-first). We split acronyms (case-sensitive) from normal
+// phrases (case-insensitive) into two regexes so JavaScript's regex
+// engine can keep the right flags per group.
+function compileMatcher(phrases) {
+  const acronymList = phrases.filter((p) => p.acronym).map((p) => p.phrase);
+  const normalList  = phrases.filter((p) => !p.acronym).map((p) => p.phrase);
+
+  const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+  const acronymRe = acronymList.length
+    ? new RegExp(`(?<![A-Za-z0-9])(?:${acronymList.map(escapeRe).join("|")})(?![A-Za-z0-9])`, "g")
+    : null;
+  const normalRe = normalList.length
+    ? new RegExp(`(?<![A-Za-z0-9])(?:${normalList.map(escapeRe).join("|")})(?![A-Za-z0-9])`, "gi")
+    : null;
+
+  const byKeyAcronym = new Map(phrases.filter((p) => p.acronym).map((p) => [p.phrase, p]));
+  const byKeyNormal  = new Map(phrases.filter((p) => !p.acronym).map((p) => [p.phrase.toLowerCase(), p]));
+
+  return { acronymRe, normalRe, byKeyAcronym, byKeyNormal };
+}
+
+const MATCHERS = {
+  en: compileMatcher(CROSSLINKS.en),
+  de: compileMatcher(CROSSLINKS.de)
+};
+
+// Walk a parsed DOM and apply cross-linking to all eligible text nodes.
+// Mutates the tree in place. `state` tracks which phrase IDs have
+// already been linked on this page (first occurrence per term).
+function walkAndLink(node, matcher, state) {
+  if (!node || !node.childNodes) return;
+
+  for (const child of [...node.childNodes]) {
+    if (child instanceof HTMLElement) {
+      const tag = (child.rawTagName || "").toLowerCase();
+      if (SKIP_TAGS.has(tag)) continue;
+
+      const classList = (child.classList && Array.from(child.classList.values())) || [];
+      if (classList.some((c) => SKIP_CLASSES.has(c))) continue;
+      if (child.hasAttribute && child.hasAttribute("data-no-crosslink")) continue;
+
+      walkAndLink(child, matcher, state);
+    } else if (child instanceof TextNode) {
+      const newText = linkifyText(child.rawText, matcher, state);
+      if (newText !== null && newText !== child.rawText) {
+        // node-html-parser exposes `rawText` as read-only on TextNode in
+        // recent versions; replace the node with an HTML fragment.
+        const placeholder = parseHTML(newText);
+        const parent = child.parentNode;
+        if (!parent) continue;
+        const idx = parent.childNodes.indexOf(child);
+        if (idx < 0) continue;
+        parent.childNodes.splice(idx, 1, ...placeholder.childNodes);
+      }
+    }
+  }
+}
+
+function escapeHtml(s) {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+// Apply phrase matches to a single text fragment. Returns the new HTML
+// string, or null if no link was inserted.
+function linkifyText(text, matcher, state) {
+  if (!text || text.length < 2) return null;
+
+  // Collect all candidate matches with offsets, then resolve overlaps
+  // by length-descending priority and "first occurrence per phrase".
+  const candidates = [];
+
+  if (matcher.acronymRe) {
+    matcher.acronymRe.lastIndex = 0;
+    let m;
+    while ((m = matcher.acronymRe.exec(text)) !== null) {
+      const phrase = matcher.byKeyAcronym.get(m[0]);
+      if (phrase) candidates.push({ start: m.index, end: m.index + m[0].length, raw: m[0], phrase });
+    }
+  }
+  if (matcher.normalRe) {
+    matcher.normalRe.lastIndex = 0;
+    let m;
+    while ((m = matcher.normalRe.exec(text)) !== null) {
+      const phrase = matcher.byKeyNormal.get(m[0].toLowerCase());
+      if (phrase) candidates.push({ start: m.index, end: m.index + m[0].length, raw: m[0], phrase });
+    }
+  }
+
+  if (candidates.length === 0) return null;
+
+  // Sort: longer phrases first; then earlier offset first.
+  candidates.sort((a, b) => (b.end - b.start) - (a.end - a.start) || a.start - b.start);
+
+  // Greedy non-overlapping selection, skipping already-linked phrases
+  // and self-links.
+  const used = [];
+  for (const c of candidates) {
+    if (state.linked.has(c.phrase.id)) continue;
+    if (used.some((u) => !(c.end <= u.start || c.start >= u.end))) continue;
+    // Self-link guard: a research note shouldn't link to itself, and
+    // the glossary page is skipped wholesale at the top of the transform.
+    // For anchored hrefs ("/glossary#term-foo") we never suppress.
+    const hasAnchor = c.phrase.href.includes("#");
+    if (!hasAnchor) {
+      const target = c.phrase.href.split("#")[0].replace(/\/$/, "");
+      if (target === state.selfBase) continue;
+    }
+    used.push(c);
+    state.linked.add(c.phrase.id);
+  }
+
+  if (used.length === 0) return null;
+
+  // Build the replacement HTML left-to-right.
+  used.sort((a, b) => a.start - b.start);
+  let out = "";
+  let cursor = 0;
+  for (const u of used) {
+    out += escapeHtml(text.slice(cursor, u.start));
+    out += `<a class="x-term" href="${u.phrase.href}" data-x-term="${u.phrase.id}">${escapeHtml(u.raw)}</a>`;
+    cursor = u.end;
+  }
+  out += escapeHtml(text.slice(cursor));
+  return out;
+}
+
 module.exports = function (eleventyConfig) {
   // ── Static assets passthrough ─────────────────────────────────────
   // Project-root assets get copied to dist/ root so existing URLs work.
@@ -67,6 +230,53 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("isoDate", function (date) {
     const d = date ? new Date(date) : new Date();
     return d.toISOString().slice(0, 10);
+  });
+
+  // ── Cross-link transform ──────────────────────────────────────────
+  // Walks every generated HTML page and auto-links glossary terms +
+  // research note titles wherever they appear in body prose. See top
+  // of this file for the helper implementations and skip rules.
+  eleventyConfig.addTransform("crosslink", function (content, outputPath) {
+    if (!outputPath || !outputPath.endsWith(".html")) return content;
+
+    // Locale derived from path (anything under dist/de/** is German).
+    const locale = /(^|\/)dist\/de\//.test(outputPath.replace(/\\/g, "/")) ? "de" : "en";
+    const matcher = MATCHERS[locale];
+    if (!matcher) return content;
+
+    // Self-URL: derived from outputPath. Used to suppress links pointing
+    // to the current page (e.g. avoid linking "Active Directory" to the
+    // glossary anchor while standing on the glossary page).
+    const selfHref = outputPath
+      .replace(/\\/g, "/")
+      .replace(/^.*?dist/, "")
+      .replace(/\/index\.html$/, "/")
+      .replace(/\.html$/, "");
+
+    // Glossary page renders all terms inline — skip cross-linking
+    // entirely to avoid 154 self-links per page. Match both pretty-URL
+    // forms ("/glossary") and folder-index forms ("/glossary/").
+    const selfNormalized = selfHref.replace(/\/$/, "");
+    if (selfNormalized === "/glossary" || selfNormalized === "/de/glossary") return content;
+
+    let root;
+    try {
+      root = parseHTML(content, { lowerCaseTagName: false, comment: true });
+    } catch (e) {
+      return content;
+    }
+
+    // Only operate inside <body> if present; otherwise treat the whole
+    // parsed root as the surface.
+    const body = root.querySelector("body") || root;
+
+    const state = {
+      linked: new Set(),
+      selfBase: selfNormalized
+    };
+    walkAndLink(body, matcher, state);
+
+    return root.toString();
   });
 
   return {

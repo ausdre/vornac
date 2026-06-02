@@ -612,3 +612,25 @@ img, video { max-width: 100%; }
     from { opacity: 0; }
     to   { opacity: 1; }
 }
+
+/* ----------------------------------------
+ * Cross-link auto-glossary terms (.x-term)
+ * Inserted by the `crosslink` Eleventy transform in .eleventy.js.
+ * Subtle dotted amber underline; no color change on the text itself.
+ * -------------------------------------- */
+a.x-term {
+    color: inherit;
+    text-decoration: underline dotted var(--v-amber);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    cursor: help;
+    transition: color .12s ease, text-decoration-color .12s ease;
+}
+a.x-term:hover,
+a.x-term:focus-visible {
+    color: var(--v-amber-deep);
+    text-decoration-color: var(--v-amber-deep);
+}
+@media print {
+    a.x-term { text-decoration: none; color: inherit; }
+}
