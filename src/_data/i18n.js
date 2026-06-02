@@ -76,7 +76,10 @@ module.exports = {
     a11y: {
       siteHome: "VORNAC home",
       langNav: "Language",
-      langSwitchTo: "Switch to German"
+      langSwitchTo: "Switch to German",
+      menuLabel: "Site navigation",
+      closeMenu: "Close menu",
+      openMenu: "Open menu"
     }
   },
 
@@ -147,7 +150,10 @@ module.exports = {
     a11y: {
       siteHome: "VORNAC Startseite",
       langNav: "Sprache",
-      langSwitchTo: "Auf Englisch wechseln"
+      langSwitchTo: "Auf Englisch wechseln",
+      menuLabel: "Seiten-Navigation",
+      closeMenu: "Menü schließen",
+      openMenu: "Menü öffnen"
     }
   }
 };

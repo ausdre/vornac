@@ -189,51 +189,74 @@
 
 <div id="mobile-backdrop" class="v-dv-backdrop hidden"></div>
 
-<div id="mobile-menu" class="v-dv-menu hidden">
-    <nav class="v-dv-menu-nav" aria-label="Mobile">
-        {{ mobileLink('index', t.nav.home) }}
-        {{ mobileLink('pentesting', t.nav.pentesting) }}
+{# Full-screen overlay revealed by the burger. Layout: header (V mark + close
+   X) → scrollable nav body → sticky footer (lang + Validate Now). Each
+   parent section gets its own group with a small mono caption heading; the
+   sub-list sits below in a tidy column with `· FRAMEWORK` tags inline. #}
+<div id="mobile-menu" class="v-dv-menu hidden" role="dialog" aria-modal="true" aria-label="{{ t.a11y.menuLabel or 'Menu' }}">
+    <div class="v-dv-menu-shell">
+        <header class="v-dv-menu-head">
+            <a href="{{ pageUrls.index }}" class="v-dv-menu-logo" aria-label="{{ t.a11y.siteHome }}">
+                <svg viewBox="0 0 240 208" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                    <path fill="currentColor" d="M0 0h50.1l67 126L187.09 0h49L114.06 207.74z"/>
+                </svg>
+            </a>
+            <button type="button" class="v-dv-menu-close" data-nav-toggle aria-label="{{ t.a11y.closeMenu or 'Close menu' }}">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </header>
 
-        <div class="v-dv-mgroup">
-            {{ mobileLink('industries', t.nav.industries) }}
-            <ul class="v-dv-msubs">
-                {% for ind in t.industriesNav %}
-                  {{ mobileSub(pageUrls[ind.key], ind.label, ind.fw, i18nKey == ind.key) }}
-                {% endfor %}
-            </ul>
-        </div>
+        <nav class="v-dv-menu-nav" aria-label="Mobile">
+            <div class="v-dv-mgroup v-dv-mgroup--solo">
+                {{ mobileLink('index', t.nav.home) }}
+                {{ mobileLink('pentesting', t.nav.pentesting) }}
+                {{ mobileLink('customers', t.nav.customers) }}
+            </div>
 
-        {{ mobileLink('customers', t.nav.customers) }}
+            <div class="v-dv-mgroup v-dv-mgroup--ind">
+                <span class="v-dv-mhead">{{ t.navHeadings.industries }}</span>
+                <ul class="v-dv-msubs">
+                    {% for ind in t.industriesNav %}
+                      {{ mobileSub(pageUrls[ind.key], ind.label, ind.fw, i18nKey == ind.key) }}
+                    {% endfor %}
+                </ul>
+            </div>
 
-        <div class="v-dv-mgroup">
-            {{ mobileLink('research', t.nav.research) }}
-            <ul class="v-dv-msubs v-dv-msubs--cols">
-                {% for d in research.domains %}
-                  {% set dHref = "/" + ("de/" if locale == "de" else "") + "research/" + d.id + "/" %}
-                  {{ mobileSub(dHref, d.title[locale], "", i18nKey == ("research-" + d.id)) }}
-                {% endfor %}
-            </ul>
-        </div>
+            <div class="v-dv-mgroup v-dv-mgroup--research">
+                <span class="v-dv-mhead">{{ t.navHeadings.research }}</span>
+                <ul class="v-dv-msubs">
+                    {% for d in research.domains %}
+                      {% set dHref = "/" + ("de/" if locale == "de" else "") + "research/" + d.id + "/" %}
+                      {{ mobileSub(dHref, d.title[locale], "", i18nKey == ("research-" + d.id)) }}
+                    {% endfor %}
+                    {{ mobileSub(pageUrls.glossary, t.nav.glossary, t.navHeadings.glossary, i18nKey == 'glossary') }}
+                </ul>
+            </div>
 
-        <div class="v-dv-mgroup">
-            {{ mobileLink('about', t.nav.about) }}
-            <ul class="v-dv-msubs">
-                {{ mobileSub(pageUrls.about + "#" + t.aboutAnchors.company, t.nav.company, "", false) }}
-                {{ mobileSub(pageUrls.about + "#" + t.aboutAnchors.careers, t.nav.careers, "", false) }}
-            </ul>
-        </div>
-    </nav>
-    <div class="v-dv-menu-foot">
-        {% if counterpart %}
-        <span class="v-dv-lang v-dv-menu-lang" role="navigation" aria-label="{{ t.a11y.langNav }}">
-            {% if locale == 'en' %}
-                <span class="is-active" aria-current="true">EN</span><span class="v-dv-lang-sep" aria-hidden="true">/</span><a href="{{ counterpart }}?lang=de" hreflang="de" onclick="localStorage.setItem('vornac_lang','de')">DE</a>
-            {% else %}
-                <span class="is-active" aria-current="true">DE</span><span class="v-dv-lang-sep" aria-hidden="true">/</span><a href="{{ counterpart }}?lang=en" hreflang="en" onclick="localStorage.setItem('vornac_lang','en')">EN</a>
+            <div class="v-dv-mgroup v-dv-mgroup--about">
+                <span class="v-dv-mhead">{{ t.navHeadings.about }}</span>
+                <ul class="v-dv-msubs">
+                    {{ mobileSub(pageUrls.about + "#" + t.aboutAnchors.company, t.nav.company, "", false) }}
+                    {{ mobileSub(pageUrls.about + "#" + t.aboutAnchors.careers, t.nav.careers, "", false) }}
+                </ul>
+            </div>
+        </nav>
+
+        <div class="v-dv-menu-foot">
+            {% if counterpart %}
+            <span class="v-dv-lang v-dv-menu-lang" role="navigation" aria-label="{{ t.a11y.langNav }}">
+                {% if locale == 'en' %}
+                    <span class="is-active" aria-current="true">EN</span><span class="v-dv-lang-sep" aria-hidden="true">/</span><a href="{{ counterpart }}?lang=de" hreflang="de" onclick="localStorage.setItem('vornac_lang','de')">DE</a>
+                {% else %}
+                    <span class="is-active" aria-current="true">DE</span><span class="v-dv-lang-sep" aria-hidden="true">/</span><a href="{{ counterpart }}?lang=en" hreflang="en" onclick="localStorage.setItem('vornac_lang','en')">EN</a>
+                {% endif %}
+            </span>
             {% endif %}
-        </span>
-        {% endif %}
-        <a href="{{ site.contact.bookDemo }}" class="v-dv-cta bg-amber-500 uppercase tracking-widest hover:bg-amber-400 transition-colors duration-200" style="border-radius: 99999px 55550px 99999px 55550px; font-family: 'Archivo'; font-style: italic; font-weight: 900; color: rgba(0,0,0,0.75); letter-spacing: -0.65px; font-size: larger; padding: 0.6rem 1.7rem;">Validate<span style="font-style: oblique; font-family: 'Saira Condensed'; color: rgba(255,255,255,0.75); letter-spacing: .15px; font-size: 1.15rem; font-weight: 900; vertical-align: bottom;"> Now</span></a>
+            <a href="{{ site.contact.bookDemo }}" class="v-dv-cta bg-amber-500 uppercase tracking-widest hover:bg-amber-400 transition-colors duration-200" style="border-radius: 99999px 55550px 99999px 55550px; font-family: 'Archivo'; font-style: italic; font-weight: 900; color: rgba(0,0,0,0.75); letter-spacing: -0.65px; font-size: larger; padding: 0.6rem 1.7rem;">Validate<span style="font-style: oblique; font-family: 'Saira Condensed'; color: rgba(255,255,255,0.75); letter-spacing: .15px; font-size: 1.15rem; font-weight: 900; vertical-align: bottom;"> Now</span></a>
+        </div>
     </div>
 </div>
 
@@ -516,7 +539,11 @@
         .v-dv-sticky { transition: none; }
     }
 
-    /* Full-screen overlay menu */
+    /* ── Full-screen overlay menu ────────────────────────────────────────
+       Dark backdrop + a fixed dialog-shell with three rows: header
+       (V mark + close X) / scrolling nav body / sticky footer
+       (lang switcher + Validate Now CTA). Content is centered to a
+       reasonable max-width on desktop, full-width on phones. */
     .v-dv-backdrop {
         position: fixed;
         inset: 0;
@@ -530,77 +557,163 @@
         z-index: 70;
         background: var(--v-bg-dark);
         color: #fff;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 40px;
-        padding: 96px 32px 48px;
-        overflow-y: auto;
+        overflow: hidden;
     }
-    /* Higher specificity than `.v-dv-menu { display:flex }` so Tailwind's
-       `.hidden` (loaded earlier) still wins when the menu is closed. */
     .v-dv-menu.hidden, .v-dv-backdrop.hidden { display: none; }
     .v-dv-menu:not(.hidden) { animation: vDvMenuIn .28s cubic-bezier(.86, 0, .07, 1) both; }
     @keyframes vDvMenuIn { from { opacity: 0; } to { opacity: 1; } }
-    .v-dv-menu-nav { display: flex; flex-direction: column; gap: 2px; }
-    .v-dv-mlink {
-        color: #fff;
-        font-family: var(--v-display);
-        font-weight: 700;
-        font-size: clamp(36px, 10vw, 56px);
-        line-height: 1.04;
-        letter-spacing: -0.01em;
-        text-decoration: none;
-        transition: opacity .2s ease;
-    }
-    .v-dv-mlink:hover { opacity: .6; }
-    .v-dv-mlink.is-active { opacity: .4; }
 
-    /* Mobile sub-lists rendered inline under each group's parent link */
+    /* Body scroll lock — added by site-scripts.njk when the menu opens. */
+    body.nav-open { overflow: hidden; }
+
+    .v-dv-menu-shell {
+        max-width: 1180px;
+        height: 100%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        padding: 0 32px;
+    }
+
+    .v-dv-menu-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 22px 0 12px;
+    }
+    .v-dv-menu-logo {
+        display: inline-flex;
+        align-items: center;
+        color: #fff;
+        height: 32px;
+    }
+    .v-dv-menu-logo svg { height: 100%; width: auto; display: block; }
+    .v-dv-menu-close {
+        width: 44px;
+        height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: 0;
+        color: rgba(255, 255, 255, 0.7);
+        cursor: pointer;
+        transition: color .15s ease, background-color .15s ease;
+        border-radius: 999px;
+    }
+    .v-dv-menu-close:hover { color: #fff; background: rgba(255, 255, 255, 0.06); }
+    .v-dv-menu-close:focus-visible { outline: 2px solid var(--v-amber); outline-offset: 2px; }
+
+    .v-dv-menu-nav {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 36px 64px;
+        padding: 24px 0 32px;
+        overflow-y: auto;
+        align-content: start;
+    }
+
+    /* Solo group (Home / Pentesting / Customers) — stacks the three flat
+       links with a slightly tighter rhythm than the headed groups. */
     .v-dv-mgroup {
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 4px;
+        min-width: 0;
     }
+    .v-dv-mgroup--solo { gap: 2px; }
+
+    .v-dv-mhead {
+        font-family: var(--v-mono);
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.35);
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .v-dv-mlink {
+        color: #fff;
+        font-family: var(--v-display);
+        font-weight: 600;
+        font-size: clamp(28px, 6.5vw, 38px);
+        line-height: 1.15;
+        letter-spacing: -0.01em;
+        text-decoration: none;
+        padding: 6px 0;
+        transition: opacity .2s ease, color .2s ease;
+    }
+    .v-dv-mlink:hover { opacity: .65; }
+    .v-dv-mlink.is-active { color: var(--v-amber); opacity: 1; }
+
     .v-dv-msubs {
         list-style: none;
-        margin: 6px 0 12px;
+        margin: 0;
         padding: 0;
         display: flex;
         flex-direction: column;
         gap: 0;
-        border-left: 1px solid rgba(255, 255, 255, 0.12);
-        padding-left: 16px;
     }
-    .v-dv-msubs--cols { /* on phones we stay single column for thumb-reach */ }
     .v-dv-msub {
         display: flex;
         align-items: baseline;
-        justify-content: space-between;
-        gap: 12px;
-        padding: 7px 0;
-        color: rgba(255, 255, 255, 0.72);
+        gap: 10px;
+        padding: 9px 0;
+        color: rgba(255, 255, 255, 0.78);
         font-family: var(--v-sans);
-        font-size: 15px;
+        font-size: 16px;
         line-height: 1.35;
         text-decoration: none;
-        transition: color .15s ease;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        transition: color .15s ease, padding-left .15s ease;
     }
-    .v-dv-msub:hover { color: #fff; }
+    .v-dv-msub:last-child { border-bottom: 0; }
+    .v-dv-msub:hover { color: #fff; padding-left: 4px; }
     .v-dv-msub.is-active { color: var(--v-amber); }
+    .v-dv-msub-label { flex: 1 1 auto; }
     .v-dv-msub-sub {
         font-family: var(--v-mono);
         font-size: 10px;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: rgba(255, 163, 23, 0.65);
+        color: rgba(255, 163, 23, 0.7);
         white-space: nowrap;
+        flex: 0 0 auto;
     }
-    .v-dv-menu-foot { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
-    .v-dv-menu-lang { font-size: 17px; }
+
+    .v-dv-menu-foot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 20px 0 28px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .v-dv-menu-lang { font-size: 13px; }
+
+    /* Desktop / tablet — split the body into two columns so the Research
+       domain list doesn't push the About group off-screen. */
+    @media (min-width: 720px) {
+        .v-dv-menu-shell { padding: 0 48px; }
+        .v-dv-menu-nav {
+            grid-template-columns: 1fr 1fr;
+            gap: 40px 72px;
+            padding: 40px 0;
+        }
+        /* The two flat-link groups live in the left column on top, then
+           Industries below. Research takes the full-height right column,
+           About slots underneath Industries on the left. */
+        .v-dv-mgroup--solo { grid-column: 1; grid-row: 1; }
+        .v-dv-mgroup--ind { grid-column: 1; grid-row: 2; }
+        .v-dv-mgroup--research { grid-column: 2; grid-row: 1 / span 3; }
+        .v-dv-mgroup--about { grid-column: 1; grid-row: 3; }
+    }
 
     @media (prefers-reduced-motion: reduce) {
         .v-dv-menu:not(.hidden) { animation: none; }
+        .v-dv-msub { transition: none; }
     }
 
     /* ── Logo intro (run-in → collapse to the V monogram) ────────────────
