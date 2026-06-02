@@ -237,7 +237,72 @@ function buildIndex(locale) {
   return Array.from(seen.values()).sort((a, b) => b.phrase.length - a.phrase.length);
 }
 
+// Build the per-locale definitions map used by the hovercard popover.
+// Each entry: { term, snippet, href } where snippet is one to two
+// sentences kept short enough to fit a ~320px popover comfortably.
+function truncate(s, limit) {
+  if (!s) return "";
+  if (s.length <= limit) return s;
+  const cut = s.slice(0, limit);
+  const lastSpace = cut.lastIndexOf(" ");
+  return (lastSpace > limit - 40 ? cut.slice(0, lastSpace) : cut).trim() + "…";
+}
+
+function buildDefinitions(locale) {
+  const defs = {};
+
+  // ── Glossary definitions (the authoritative source) ───────────
+  for (const entry of glossary.sorted) {
+    const hrefBase = locale === "de" ? "/de/glossary" : "/glossary";
+    defs[entry.id] = {
+      term: entry.term,
+      snippet: truncate(entry.definition[locale], 280),
+      href: `${hrefBase}#term-${entry.id}`
+    };
+  }
+
+  // ── Research note definitions (blurb is exactly the right shape) ─
+  for (const note of research.allNotes) {
+    defs[`note-${note.id}`] = {
+      term: (note.title && note.title[locale]) || note.id,
+      snippet: truncate((note.blurb && note.blurb[locale]) || "", 280),
+      href: locale === "de"
+        ? `/de/research/${note.domain}/${note.id}/`
+        : `/research/${note.domain}/${note.id}/`
+    };
+  }
+
+  // ── Manual alias definitions (borrow blurb from the target note) ─
+  // Reverse-resolve each alias href to its research note id, then
+  // copy the note's blurb. The popover shows the alias phrase as title
+  // and points to the note as "More" destination.
+  const locPrefix = locale === "de" ? "/de" : "";
+  const noteByPath = new Map(
+    research.allNotes.map((n) => [
+      `${locPrefix}/research/${n.domain}/${n.id}/`,
+      n
+    ])
+  );
+  for (const group of MANUAL_ALIASES) {
+    const href = group.href.replace("{loc}", locPrefix);
+    const targetNote = noteByPath.get(href);
+    const snippet = targetNote
+      ? truncate((targetNote.blurb && targetNote.blurb[locale]) || "", 280)
+      : "";
+    for (const phrase of group.phrases) {
+      const id = `alias-${phrase.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+      defs[id] = { term: phrase, snippet, href };
+    }
+  }
+
+  return defs;
+}
+
 module.exports = {
   en: buildIndex("en"),
-  de: buildIndex("de")
+  de: buildIndex("de"),
+  definitions: {
+    en: buildDefinitions("en"),
+    de: buildDefinitions("de")
+  }
 };

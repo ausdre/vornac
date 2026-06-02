@@ -193,6 +193,11 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("research.css");
   eleventyConfig.addPassthroughCopy("glossary.css");
 
+  // Hovercard JS for .x-term cross-links (loaded by the crosslink
+  // transform when a page contains at least one cross-link).
+  eleventyConfig.addPassthroughCopy("x-term.js");
+  eleventyConfig.addWatchTarget("./x-term.js");
+
   // Compiled Tailwind output (built by `npm run build:css` -> dist/output.css)
   // also keep a root copy if someone is serving from project root in legacy mode.
   // No passthrough needed because Tailwind writes directly to dist/.
@@ -275,6 +280,28 @@ module.exports = function (eleventyConfig) {
       selfBase: selfNormalized
     };
     walkAndLink(body, matcher, state);
+
+    // Inject per-page definitions and the hovercard script so the
+    // Wikipedia-style preview popover has data to render. Only emit
+    // definitions for terms actually linked on this page (keeps payload
+    // small — typically 2–10 KB depending on density).
+    if (state.linked.size > 0) {
+      const allDefs = CROSSLINKS.definitions[locale] || {};
+      const pageDefs = {};
+      for (const id of state.linked) {
+        if (allDefs[id]) pageDefs[id] = allDefs[id];
+      }
+      const json = JSON.stringify(pageDefs)
+        // Defensive: keep the inline JSON safe against premature </script>.
+        .replace(/<\//g, "<\\/");
+      const inject =
+        `<script type="application/json" id="x-term-defs">${json}</script>` +
+        `<script src="/x-term.js" defer></script>`;
+      const bodyEl = root.querySelector("body");
+      if (bodyEl) {
+        bodyEl.insertAdjacentHTML("beforeend", inject);
+      }
+    }
 
     return root.toString();
   });

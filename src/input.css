@@ -616,21 +616,98 @@ img, video { max-width: 100%; }
 /* ----------------------------------------
  * Cross-link auto-glossary terms (.x-term)
  * Inserted by the `crosslink` Eleventy transform in .eleventy.js.
- * Subtle dotted amber underline; no color change on the text itself.
+ *
+ * Default: a near-invisible dotted line in the soft hairline color so
+ * the affordance is felt rather than seen — Wikipedia-style: the link
+ * is only obvious on hover. On hover/focus the underline picks up the
+ * brand amber and the matching hovercard fades in (see .x-term-popover
+ * below, populated by /x-term.js).
  * -------------------------------------- */
 a.x-term {
     color: inherit;
-    text-decoration: underline dotted var(--v-amber);
+    text-decoration: underline dotted var(--v-line);
     text-decoration-thickness: 1px;
-    text-underline-offset: 3px;
-    cursor: help;
-    transition: color .12s ease, text-decoration-color .12s ease;
+    text-underline-offset: 2px;
+    cursor: pointer;
+    transition: text-decoration-color .15s ease;
 }
 a.x-term:hover,
 a.x-term:focus-visible {
-    color: var(--v-amber-deep);
-    text-decoration-color: var(--v-amber-deep);
+    text-decoration-color: var(--v-amber);
+    outline: none;
 }
 @media print {
     a.x-term { text-decoration: none; color: inherit; }
+}
+
+/* ----------------------------------------
+ * Hovercard popover (.x-term-popover)
+ * Single shared element created by /x-term.js, positioned absolutely
+ * in the page below the hovered link. Subtle white card, soft shadow,
+ * no border — sits quietly above content.
+ * -------------------------------------- */
+.x-term-popover {
+    position: absolute;
+    z-index: 9000;
+    display: none;
+    width: 320px;
+    max-width: calc(100vw - 32px);
+    padding: 14px 16px 12px;
+    background: #ffffff;
+    color: var(--v-ink);
+    border: 1px solid var(--v-line-soft);
+    border-radius: 6px;
+    box-shadow:
+        0 1px 2px rgba(15, 17, 22, .04),
+        0 12px 32px rgba(15, 17, 22, .12);
+    font-family: var(--v-sans);
+    font-size: 13.5px;
+    line-height: 1.55;
+    opacity: 0;
+    transform: translateY(2px);
+    transition: opacity .14s ease, transform .14s ease;
+    pointer-events: auto;
+}
+.x-term-popover.is-open {
+    opacity: 1;
+    transform: translateY(0);
+}
+.x-term-popover-title {
+    font-family: var(--v-display, var(--v-sans));
+    font-weight: 700;
+    font-size: 14.5px;
+    letter-spacing: -.005em;
+    color: var(--v-ink);
+    margin-bottom: 6px;
+}
+.x-term-popover-body {
+    color: var(--v-ink-2, #4B5260);
+    font-size: 13px;
+    line-height: 1.55;
+    margin-bottom: 10px;
+}
+.x-term-popover-body:empty { display: none; }
+.x-term-popover-more {
+    display: inline-block;
+    font-family: var(--v-mono, ui-monospace, "JetBrains Mono", monospace);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--v-amber-deep);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color .12s ease, color .12s ease;
+}
+.x-term-popover-more:hover,
+.x-term-popover-more:focus-visible {
+    color: var(--v-amber);
+    border-bottom-color: var(--v-amber);
+    outline: none;
+}
+@media (prefers-reduced-motion: reduce) {
+    .x-term-popover { transition: none; transform: none; }
+}
+@media print {
+    .x-term-popover { display: none !important; }
 }
