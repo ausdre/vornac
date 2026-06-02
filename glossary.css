@@ -1,0 +1,562 @@
+/* ============================================ */
+/* Glossary page — section-scoped styles        */
+/* ============================================ */
+/* Library catalog idiom: alphabetical sections, */
+/* sticky A-Z + category filter, definition-list */
+/* layout, hairline-only separation. Brand tokens*/
+/* from src/input.css.                          */
+/* ============================================ */
+
+/* ============================================ */
+/* Hero                                         */
+/* ============================================ */
+
+.gl-hero {
+    background: #ffffff;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.gl-hero-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 120px 40px 64px;
+}
+
+.gl-hero-eyebrow {
+    font-family: var(--v-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+    margin: 0 0 32px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.gl-hero-eyebrow::before {
+    content: '';
+    width: 22px;
+    height: 1px;
+    background: var(--v-amber);
+}
+
+.gl-hero-headline {
+    font-family: var(--v-display);
+    font-size: clamp(56px, 9vw, 128px);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+    font-weight: 900;
+    color: var(--v-ink);
+    margin: 0 0 32px;
+    max-width: 14ch;
+}
+
+.gl-hero-headline .gl-period {
+    color: var(--v-amber);
+}
+
+.gl-hero-subline {
+    font-family: var(--v-sans);
+    font-size: clamp(17px, 1.5vw, 20px);
+    line-height: 1.55;
+    color: var(--v-ink-2);
+    max-width: 64ch;
+    margin: 0 0 56px;
+    font-weight: 400;
+}
+
+.gl-hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding-top: 40px;
+    border-top: 1px solid var(--v-line);
+}
+
+.gl-stat-num {
+    font-family: var(--v-display);
+    font-weight: 800;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1;
+    color: var(--v-ink);
+    letter-spacing: -0.02em;
+}
+
+.gl-stat-label {
+    margin-top: 10px;
+    font-family: var(--v-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+}
+
+@media (max-width: 720px) {
+    .gl-hero-inner { padding: 88px 22px 48px; }
+    .gl-hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+}
+
+/* ============================================ */
+/* Sticky control bar — category + A-Z          */
+/* ============================================ */
+
+.gl-controls {
+    background: rgba(255, 255, 255, 0.92);
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    border-top: 1px solid var(--v-line);
+    border-bottom: 1px solid var(--v-line);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.gl-controls-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 14px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.gl-controls-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.gl-controls-label {
+    font-family: var(--v-mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+    flex-shrink: 0;
+}
+
+/* Category chips */
+.gl-cat-chips {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    flex: 1;
+    min-width: 0;
+}
+
+.gl-cat-chip {
+    appearance: none;
+    border: 1px solid var(--v-line);
+    background: #ffffff;
+    color: var(--v-ink-2);
+    font-family: var(--v-mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 12px 6px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
+    white-space: nowrap;
+}
+
+.gl-cat-chip:hover { color: var(--v-ink); border-color: var(--v-ink-3); }
+
+.gl-cat-chip.is-active {
+    background: var(--v-ink);
+    color: #ffffff;
+    border-color: var(--v-ink);
+}
+
+/* A-Z jump row */
+.gl-az {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    align-items: center;
+}
+
+.gl-az a {
+    font-family: var(--v-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--v-ink-2);
+    text-decoration: none;
+    padding: 4px 7px;
+    border-radius: 4px;
+    transition: background 120ms ease, color 120ms ease;
+    min-width: 22px;
+    text-align: center;
+}
+
+.gl-az a:hover { background: var(--v-amber-soft); color: var(--v-ink); }
+
+.gl-az a.is-empty {
+    color: var(--v-line);
+    pointer-events: none;
+}
+
+@media (max-width: 720px) {
+    .gl-controls-inner { padding: 12px 18px; }
+    .gl-controls-label { display: none; }
+}
+
+/* ============================================ */
+/* Letter sections                              */
+/* ============================================ */
+
+.gl-section {
+    background: #ffffff;
+    padding: 80px 40px 24px;
+    scroll-margin-top: 110px;
+}
+
+.gl-section + .gl-section { padding-top: 56px; }
+
+.gl-section:last-of-type { padding-bottom: 80px; }
+
+.gl-section-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+.gl-letter-head {
+    display: grid;
+    grid-template-columns: minmax(110px, 14%) 1fr;
+    gap: 40px;
+    align-items: end;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--v-ink);
+    margin-bottom: 16px;
+}
+
+.gl-letter {
+    font-family: var(--v-display);
+    font-size: clamp(56px, 8vw, 96px);
+    line-height: 0.9;
+    font-weight: 900;
+    color: var(--v-amber);
+    letter-spacing: -0.04em;
+}
+
+.gl-letter-meta {
+    padding-bottom: 10px;
+    font-family: var(--v-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+}
+
+@media (max-width: 720px) {
+    .gl-section { padding: 64px 22px 18px; }
+    .gl-letter-head {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    .gl-letter { font-size: 56px; }
+    .gl-letter-meta { padding-bottom: 0; }
+}
+
+/* ============================================ */
+/* Entry — definition-list pattern              */
+/* ============================================ */
+
+.gl-entries {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.gl-entry {
+    display: grid;
+    grid-template-columns: minmax(220px, 28%) 1fr;
+    gap: 40px;
+    align-items: start;
+    padding: 28px 0 28px;
+    border-bottom: 1px solid var(--v-line);
+    transition: background 140ms ease;
+    scroll-margin-top: 120px;
+}
+
+.gl-entry:hover { background: rgba(255, 163, 23, 0.04); }
+
+.gl-entry-head {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 2px;
+}
+
+.gl-entry-term {
+    font-family: var(--v-display);
+    font-size: clamp(22px, 2.2vw, 28px);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    font-weight: 800;
+    color: var(--v-ink);
+    margin: 0;
+}
+
+.gl-entry-full {
+    font-family: var(--v-mono);
+    font-size: 12px;
+    line-height: 1.45;
+    color: var(--v-ink-3);
+    letter-spacing: 0.02em;
+    margin: 0;
+}
+
+.gl-entry-cat {
+    display: inline-block;
+    font-family: var(--v-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--v-amber-deep);
+    margin-top: 4px;
+    align-self: flex-start;
+}
+
+.gl-entry-body { min-width: 0; }
+
+.gl-entry-def {
+    font-family: var(--v-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--v-ink-2);
+    margin: 0 0 14px;
+    max-width: 72ch;
+    font-weight: 400;
+}
+
+.gl-entry-see {
+    font-family: var(--v-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--v-ink-3);
+    margin: 0;
+}
+
+.gl-entry-see-label {
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-right: 6px;
+}
+
+.gl-entry-see a {
+    color: var(--v-ink-2);
+    text-decoration: none;
+    border-bottom: 1px solid var(--v-line);
+    transition: color 120ms ease, border-color 120ms ease;
+}
+
+.gl-entry-see a:hover {
+    color: var(--v-amber-deep);
+    border-bottom-color: var(--v-amber);
+}
+
+@media (max-width: 820px) {
+    .gl-entry {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 22px 0;
+    }
+    .gl-entry-term { font-size: 22px; }
+}
+
+/* ============================================ */
+/* Empty-state when filter matches nothing      */
+/* ============================================ */
+
+[data-cat-hidden="true"] { display: none !important; }
+
+.gl-section[data-empty="true"] { display: none; }
+
+.gl-empty {
+    display: none;
+    padding: 80px 40px 120px;
+    text-align: center;
+    font-family: var(--v-sans);
+    font-size: 16px;
+    color: var(--v-ink-3);
+    background: #ffffff;
+}
+
+.gl-empty.is-shown { display: block; }
+
+.gl-empty strong {
+    display: block;
+    font-family: var(--v-display);
+    font-weight: 800;
+    font-size: 28px;
+    color: var(--v-ink);
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+}
+
+/* ============================================ */
+/* Cross-reference footer (to /research) + CTA  */
+/* ============================================ */
+
+.gl-method {
+    background: var(--v-bg-dark);
+    color: #ffffff;
+    padding: 96px 40px;
+}
+
+.gl-method-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(200px, 26%) 1fr;
+    gap: 56px;
+    align-items: start;
+}
+
+.gl-method-eyebrow {
+    font-family: var(--v-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--v-amber);
+    margin-bottom: 18px;
+}
+
+.gl-method-headline {
+    font-family: var(--v-display);
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin: 0;
+}
+
+.gl-method-body {
+    font-family: var(--v-sans);
+    font-size: 16px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.72);
+    margin: 0;
+    max-width: 62ch;
+}
+
+.gl-method-body p + p { margin-top: 18px; }
+
+.gl-method-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 28px;
+    padding: 14px 24px;
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    font-family: var(--v-sans);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    border-radius: 999px;
+    transition: background 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+
+.gl-method-link:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-1px);
+}
+
+.gl-method-link svg { transition: transform 140ms ease; }
+.gl-method-link:hover svg { transform: translateX(3px); }
+
+@media (max-width: 820px) {
+    .gl-method { padding: 72px 22px; }
+    .gl-method-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+}
+
+.gl-cta {
+    background: var(--v-amber);
+    padding: 80px 40px;
+}
+
+.gl-cta-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: center;
+}
+
+.gl-cta-eyebrow {
+    font-family: var(--v-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(14, 17, 22, 0.6);
+    margin-bottom: 14px;
+}
+
+.gl-cta-headline {
+    font-family: var(--v-display);
+    font-size: clamp(28px, 3.4vw, 44px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--v-ink);
+    margin: 0;
+    max-width: 24ch;
+}
+
+.gl-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 28px;
+    background: var(--v-ink);
+    color: #ffffff;
+    font-family: var(--v-sans);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    border-radius: 999px;
+    transition: transform 140ms ease, background 140ms ease;
+}
+
+.gl-cta-btn:hover {
+    background: #000;
+    transform: translateY(-1px);
+}
+
+.gl-cta-btn svg { transition: transform 140ms ease; }
+.gl-cta-btn:hover svg { transform: translateX(3px); }
+
+@media (max-width: 820px) {
+    .gl-cta { padding: 64px 22px; }
+    .gl-cta-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+}

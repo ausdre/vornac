@@ -1,0 +1,15 @@
+---
+title: "VORNAC Glossar — Sicherheits-, Compliance- und Pentest-Vokabular."
+description: "Ein kuratiertes, zweisprachiges Glossar der Sicherheits-, Compliance- und Pentest-Begriffe der VORNAC-Site — ein bis zwei Sätze pro Eintrag, EN und DE im Gleichschritt."
+i18nKey: glossary
+ogType: website
+---
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+<link rel="stylesheet" href="/glossary.css">
+{% endblock %}
+
+{% block content %}
+{% include "partials/glossary-render.njk" %}
+{% endblock %}

@@ -1,0 +1,253 @@
+{# Render the full glossary page body.
+   Re-used by /glossary (EN) and /de/glossary (DE).
+
+   Inputs in scope:
+     glossary.sorted     — array of terms, alphabetically pre-sorted
+     glossary.grouped    — [{letter, entries:[...]}], for letter-section rendering
+     glossary.categories — [{id, label:{en,de}}], for filter chips
+     glossary.stats      — {total, categories, letters, perCategory}
+     locale              — "en" | "de"
+     t                   — i18n table for the current locale
+     pageUrls            — per-locale URL lookup
+#}
+
+{% if locale == "en" %}
+{% set s = {
+    "eyebrow":         "VORNAC GLOSSARY · BILINGUAL REFERENCE",
+    "headlineMain":    "The Glossary",
+    "subline":         "Definitions for the security, compliance, and pentest vocabulary used across the VORNAC site — one or two sentences per term, no marketing voice, EN and DE in lockstep.",
+    "statTotal":       "Terms",
+    "statCategory":    "Categories",
+    "statLetters":     "Letters covered",
+    "statBilingual":   "EN and DE",
+    "bilingualValue":  "1 : 1",
+    "controlsCat":     "Filter by category",
+    "controlsAz":      "Jump to letter",
+    "filterAll":       "All",
+    "termsInLetter":   "terms",
+    "seeAlso":         "See also",
+    "emptyHeadline":   "No terms in this category.",
+    "emptyBody":       "Pick another category — or clear the filter to see the full index.",
+    "emptyClear":      "Clear filter",
+    "methodEyebrow":   "Reference",
+    "methodHeadline":  "Each term links back to where the work happens.",
+    "methodBody1":     "The glossary is editorial, not a wiki. Every entry is hand-written, kept terse, and refreshed when a standard moves. Acronyms expand exactly once, in the entry that owns them.",
+    "methodBody2":     "Coverage is keyed to what the rest of the VORNAC site actually relies on — the frameworks our customers are audited against, the vocabulary used in our reports, the techniques discussed in the Research Index.",
+    "methodLink":      "Open the Research Index",
+    "ctaEyebrow":      "From definition to evidence",
+    "ctaHeadline":     "Validate the controls behind the vocabulary.",
+    "ctaButton":       "Book a demo"
+} %}
+{% else %}
+{% set s = {
+    "eyebrow":         "VORNAC GLOSSARY · ZWEISPRACHIGE REFERENZ",
+    "headlineMain":    "Das Glossar",
+    "subline":         "Definitionen für die Sicherheits-, Compliance- und Pentest-Begriffe, die auf der VORNAC-Site verwendet werden — ein bis zwei Sätze pro Begriff, ohne Marketing-Stimme, EN und DE im Gleichschritt.",
+    "statTotal":       "Begriffe",
+    "statCategory":    "Kategorien",
+    "statLetters":     "Buchstaben abgedeckt",
+    "statBilingual":   "EN und DE",
+    "bilingualValue":  "1 : 1",
+    "controlsCat":     "Nach Kategorie filtern",
+    "controlsAz":      "Zum Buchstaben springen",
+    "filterAll":       "Alle",
+    "termsInLetter":   "Begriffe",
+    "seeAlso":         "Siehe auch",
+    "emptyHeadline":   "Keine Begriffe in dieser Kategorie.",
+    "emptyBody":       "Wähle eine andere Kategorie — oder hebe den Filter auf, um den vollständigen Index zu sehen.",
+    "emptyClear":      "Filter aufheben",
+    "methodEyebrow":   "Referenz",
+    "methodHeadline":  "Jeder Begriff verlinkt zurück dorthin, wo die Arbeit passiert.",
+    "methodBody1":     "Das Glossar ist redaktionell, kein Wiki. Jeder Eintrag ist handgeschrieben, knapp gehalten und wird aktualisiert, wenn sich ein Standard verändert. Akronyme werden genau einmal ausgeschrieben — in dem Eintrag, dem sie gehören.",
+    "methodBody2":     "Die Abdeckung orientiert sich daran, worauf der Rest der VORNAC-Site tatsächlich aufbaut — den Rahmenwerken, gegen die unsere Kunden geprüft werden, dem Vokabular unserer Reports, den Techniken aus dem Research Index.",
+    "methodLink":      "Zum Research Index",
+    "ctaEyebrow":      "Von der Definition zur Evidenz",
+    "ctaHeadline":     "Validiere die Controls hinter dem Vokabular.",
+    "ctaButton":       "Demo buchen"
+} %}
+{% endif %}
+
+{# Pre-computed in src/_data/glossary.js:
+     glossary.alphabet        — fixed A..Z
+     glossary.presentLetters  — { "A": true, "C": true, ... } only letters in use
+     glossary.categoryLabelById[locale][catId] — chip + per-entry labels
+     glossary.termById[id]    — display name for cross-references
+#}
+
+<section class="gl-hero">
+    <div class="gl-hero-inner">
+        <div class="gl-hero-eyebrow">{{ s.eyebrow }}</div>
+        <h1 class="gl-hero-headline">{{ s.headlineMain }}<span class="gl-period">.</span></h1>
+        <p class="gl-hero-subline">{{ s.subline }}</p>
+        <div class="gl-hero-stats">
+            <div>
+                <div class="gl-stat-num">{{ glossary.stats.total }}</div>
+                <div class="gl-stat-label">{{ s.statTotal }}</div>
+            </div>
+            <div>
+                <div class="gl-stat-num">{{ glossary.stats.categories }}</div>
+                <div class="gl-stat-label">{{ s.statCategory }}</div>
+            </div>
+            <div>
+                <div class="gl-stat-num">{{ glossary.stats.letters }}</div>
+                <div class="gl-stat-label">{{ s.statLetters }}</div>
+            </div>
+            <div>
+                <div class="gl-stat-num">{{ s.bilingualValue }}</div>
+                <div class="gl-stat-label">{{ s.statBilingual }}</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<nav class="gl-controls" aria-label="Glossary controls">
+    <div class="gl-controls-inner">
+        <div class="gl-controls-row" role="tablist" aria-label="{{ s.controlsCat }}">
+            <span class="gl-controls-label">{{ s.controlsCat }}</span>
+            <span class="gl-cat-chips">
+                <button class="gl-cat-chip is-active" data-cat="all" type="button">{{ s.filterAll }}</button>
+                {% for cat in glossary.categories %}
+                    <button class="gl-cat-chip" data-cat="{{ cat.id }}" type="button">{{ cat.label[locale] }}</button>
+                {% endfor %}
+            </span>
+        </div>
+        <div class="gl-controls-row">
+            <span class="gl-controls-label">{{ s.controlsAz }}</span>
+            <span class="gl-az">
+                {% for letter in glossary.alphabet %}
+                    {% if glossary.presentLetters[letter] %}
+                        <a href="#letter-{{ letter }}">{{ letter }}</a>
+                    {% else %}
+                        <a class="is-empty" aria-disabled="true">{{ letter }}</a>
+                    {% endif %}
+                {% endfor %}
+            </span>
+        </div>
+    </div>
+</nav>
+
+{# Render each alphabetical section. #}
+{% for group in glossary.grouped %}
+<section class="gl-section" id="letter-{{ group.letter }}" data-letter="{{ group.letter }}">
+    <div class="gl-section-inner">
+        <header class="gl-letter-head">
+            <div class="gl-letter">{{ group.letter }}</div>
+            <div class="gl-letter-meta">{{ group.entries.length }} {{ s.termsInLetter }}</div>
+        </header>
+        <ul class="gl-entries">
+            {% for entry in group.entries %}
+                <li class="gl-entry" id="term-{{ entry.id }}" data-cat="{{ entry.category }}">
+                    <div class="gl-entry-head">
+                        <h3 class="gl-entry-term">{{ entry.term }}</h3>
+                        {% if entry.fullForm and entry.fullForm[locale] %}
+                            <p class="gl-entry-full">{{ entry.fullForm[locale] }}</p>
+                        {% endif %}
+                        <span class="gl-entry-cat">{{ glossary.categoryLabelById[locale][entry.category] }}</span>
+                    </div>
+                    <div class="gl-entry-body">
+                        <p class="gl-entry-def">{{ entry.definition[locale] }}</p>
+                        {% if entry.seeAlso and entry.seeAlso.length > 0 %}
+                            <p class="gl-entry-see">
+                                <span class="gl-entry-see-label">{{ s.seeAlso }}</span>
+                                {% for refId in entry.seeAlso %}
+                                    {% if glossary.termById[refId] %}
+                                        <a href="#term-{{ refId }}">{{ glossary.termById[refId] }}</a>{% if not loop.last %}, {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            </p>
+                        {% endif %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+{% endfor %}
+
+<div class="gl-empty" id="gl-empty">
+    <strong>{{ s.emptyHeadline }}</strong>
+    {{ s.emptyBody }}
+    <div style="margin-top:18px;">
+        <button class="gl-cat-chip is-active" data-clear-filter="true" type="button">{{ s.emptyClear }}</button>
+    </div>
+</div>
+
+<section class="gl-method">
+    <div class="gl-method-inner">
+        <div>
+            <div class="gl-method-eyebrow">{{ s.methodEyebrow }}</div>
+            <h2 class="gl-method-headline">{{ s.methodHeadline }}</h2>
+        </div>
+        <div class="gl-method-body">
+            <p>{{ s.methodBody1 }}</p>
+            <p>{{ s.methodBody2 }}</p>
+            <a href="{{ pageUrls.research }}" class="gl-method-link">
+                {{ s.methodLink }}
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M1 7H13M13 7L8 2M13 7L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="gl-cta">
+    <div class="gl-cta-inner">
+        <div>
+            <div class="gl-cta-eyebrow">{{ s.ctaEyebrow }}</div>
+            <h2 class="gl-cta-headline">{{ s.ctaHeadline }}</h2>
+        </div>
+        <a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="gl-cta-btn">
+            {{ s.ctaButton }}
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M1 7H13M13 7L8 2M13 7L8 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+    </div>
+</section>
+
+<script>
+(function(){
+  // Category filter for the glossary index.
+  // Hides any entry whose data-cat does not match the active chip.
+  // After filtering, any letter section with zero visible entries is hidden,
+  // and if the entire result set is empty, the empty-state banner appears.
+  var chips     = document.querySelectorAll('.gl-cat-chip[data-cat]');
+  var clearBtn  = document.querySelector('[data-clear-filter]');
+  var entries   = document.querySelectorAll('.gl-entry');
+  var sections  = document.querySelectorAll('.gl-section[data-letter]');
+  var empty     = document.getElementById('gl-empty');
+
+  function apply(cat){
+    chips.forEach(function(c){
+      c.classList.toggle('is-active', c.getAttribute('data-cat') === cat);
+    });
+    var visibleTotal = 0;
+    entries.forEach(function(e){
+      var hide = (cat !== 'all') && (e.getAttribute('data-cat') !== cat);
+      if (hide){
+        e.setAttribute('data-cat-hidden','true');
+      } else {
+        e.removeAttribute('data-cat-hidden');
+        visibleTotal++;
+      }
+    });
+    sections.forEach(function(sec){
+      var visible = sec.querySelectorAll('.gl-entry:not([data-cat-hidden="true"])');
+      sec.setAttribute('data-empty', visible.length === 0 ? 'true' : 'false');
+    });
+    if (empty){
+      empty.classList.toggle('is-shown', visibleTotal === 0);
+    }
+  }
+
+  chips.forEach(function(c){
+    c.addEventListener('click', function(){
+      apply(c.getAttribute('data-cat'));
+    });
+  });
+  if (clearBtn){
+    clearBtn.addEventListener('click', function(){ apply('all'); });
+  }
+})();
+</script>

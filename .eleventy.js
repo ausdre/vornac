@@ -27,6 +27,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("about.css");
   eleventyConfig.addPassthroughCopy("industries.css");
   eleventyConfig.addPassthroughCopy("pentesting.css");
+  eleventyConfig.addPassthroughCopy("research.css");
+  eleventyConfig.addPassthroughCopy("glossary.css");
 
   // Compiled Tailwind output (built by `npm run build:css` -> dist/output.css)
   // also keep a root copy if someone is serving from project root in legacy mode.

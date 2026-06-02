@@ -9,10 +9,18 @@
  *   - sitemap.xml generation
  *
  * NOTE: keys must match the `i18nKey` declared in each page's front-matter.
+ *
+ * Dynamic entries: per-research-domain pages are appended at the bottom by
+ * deriving from src/_data/research.js. Each gets the key `research-<id>`
+ * matching the i18nKey set in the paginated template.
  */
-module.exports = [
+const research = require("./research.js");
+
+const STATIC_PAGES = [
   { key: "index",                              en: "/",                                   de: "/de" },
   { key: "pentesting",                         en: "/pentesting",                         de: "/de/pentesting" },
+  { key: "research",                           en: "/research",                           de: "/de/research" },
+  { key: "glossary",                           en: "/glossary",                           de: "/de/glossary" },
   { key: "about",                              en: "/about",                              de: "/de/about" },
   { key: "customers",                          en: "/customers",                          de: "/de/customers" },
   { key: "apply",                              en: "/apply",                              de: "/de/apply" },
@@ -25,3 +33,11 @@ module.exports = [
   { key: "legal",                              en: "/legal",                              de: "/de/legal" },
   { key: "comcenter",                          en: "/comcenter",                          de: null }
 ];
+
+const RESEARCH_DOMAIN_PAGES = research.domains.map((d) => ({
+  key: `research-${d.id}`,
+  en: `/research/${d.id}`,
+  de: `/de/research/${d.id}`
+}));
+
+module.exports = [...STATIC_PAGES, ...RESEARCH_DOMAIN_PAGES];

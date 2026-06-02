@@ -1,0 +1,15 @@
+---
+title: "VORNAC Research — Curated reference index for offensive security."
+description: "A curated, hand-titled index of reference notes on offensive security — methodologies, tooling, and per-service exploitation patterns, mapped to engagement phases."
+i18nKey: research
+ogType: website
+---
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+<link rel="stylesheet" href="/research.css">
+{% endblock %}
+
+{% block content %}
+{% include "partials/research-render.njk" %}
+{% endblock %}

@@ -1,0 +1,318 @@
+{# Render the full research page body.
+   Re-used by /research (EN) and /de/research (DE).
+   The calling template sets the locale via `t` (already injected by
+   src.11tydata.js) and so all data flows through `research.domains[*].title[locale]`
+   etc.
+
+   Inputs in scope:
+     research.domains  — array of 8 domains, each pre-grouped into featured/reference/background
+     research.phases   — phase-key → { en, de } label map
+     research.stats    — totals
+     locale            — "en" | "de"
+     t                 — i18n table for the current locale
+     pageUrls          — per-locale URL lookup
+     site              — site config
+#}
+
+{% if locale == "en" %}
+{% set s = {
+    "eyebrow":        "VORNAC RESEARCH · CURATED REFERENCE INDEX",
+    "headlineMain":   "The Research Index",
+    "subline":        "Reference notes on offensive security — methodologies, tooling, and per-service exploitation matrices. Hand-titled, cross-mapped to engagement phases, kept free of dated artifacts.",
+    "statTotal":      "Notes",
+    "statTierOne":    "Featured",
+    "statDomain":     "Domains",
+    "statPhase":      "Engagement phases",
+    "filterLabel":    "Filter",
+    "tierAll":        "All",
+    "tierOne":        "Featured",
+    "tierTwo":        "Reference",
+    "tierThree":      "Background",
+    "jumpLabel":      "Jump to",
+    "notesInDomain":  "notes",
+    "subFeatured":    "Featured",
+    "subReference":   "Reference",
+    "subBackground":  "Background",
+    "methodEyebrow":  "Methodology",
+    "methodHeadline": "How the index is curated",
+    "methodIntro1":   "Every entry is fingerprinted by SHA-256 against the source corpus, deduplicated, machine-extracted from diagrammatic form, and manually re-titled in neutral English. Where a topic has aged out (dated tooling, year-stamped surveys), it is removed rather than rebranded.",
+    "methodIntro2":   "Entries are mapped to the engagement phase they support, so a tester reading a finding in our report can land on the exact reference that informed it.",
+    "methodLi1Title": "Stable identifiers.",
+    "methodLi1":      "Every note carries a content hash. Updates change the hash; the index is reproducible.",
+    "methodLi2Title": "One language.",
+    "methodLi2":      "Published in English. Titles and blurbs are neutral so they remain quotable.",
+    "methodLi3Title": "Phase-mapped.",
+    "methodLi3":      "Each note links to the engagement phases where it actually applies, not where it might.",
+    "methodLi4Title": "No advertising.",
+    "methodLi4":      "The index does not promote tools or vendors. Where a tool is named, it is named for technical specificity.",
+    "phasesShort":    "phases",
+    "noPhases":       "no specific phase",
+    "glossaryLine":   "Looking up an acronym?",
+    "glossaryLink":   "Open the Glossary",
+    "ctaEyebrow":     "From reference to evidence",
+    "ctaHeadline":    "Validate these gaps in your own environment.",
+    "ctaButton":      "Book a demo"
+} %}
+{% else %}
+{% set s = {
+    "eyebrow":        "VORNAC RESEARCH · KURATIERTER REFERENZ-INDEX",
+    "headlineMain":   "Der Research Index",
+    "subline":        "Referenznotizen zur Offensive Security — Methodiken, Tooling und Exploitation-Matrizen pro Dienst. Handgetitelt, zu Engagement-Phasen quervernetzt, frei von veralteten Artefakten.",
+    "statTotal":      "Notizen",
+    "statTierOne":    "Featured",
+    "statDomain":     "Domains",
+    "statPhase":      "Engagement-Phasen",
+    "filterLabel":    "Filter",
+    "tierAll":        "Alle",
+    "tierOne":        "Featured",
+    "tierTwo":        "Referenz",
+    "tierThree":      "Background",
+    "jumpLabel":      "Springen zu",
+    "notesInDomain":  "Notizen",
+    "subFeatured":    "Featured",
+    "subReference":   "Referenz",
+    "subBackground":  "Background",
+    "methodEyebrow":  "Methodik",
+    "methodHeadline": "Wie der Index kuratiert wird",
+    "methodIntro1":   "Jeder Eintrag wird per SHA-256 gegen den Quell-Korpus gefingerprintet, dedupliziert, maschinell aus diagrammatischer Form extrahiert und manuell in neutralem Englisch neu betitelt. Veraltete Themen (altes Tooling, jahresgestempelte Umfragen) werden entfernt statt umgelabelt.",
+    "methodIntro2":   "Einträge werden auf die Engagement-Phase abgebildet, die sie unterstützen — damit ein Tester, der in unserem Report einen Befund liest, exakt auf die Referenz kommt, die ihn informiert hat.",
+    "methodLi1Title": "Stabile Identifier.",
+    "methodLi1":      "Jede Notiz trägt einen Content-Hash. Updates ändern den Hash; der Index ist reproduzierbar.",
+    "methodLi2Title": "Eine Sprache.",
+    "methodLi2":      "Veröffentlicht auf Englisch. Titel und Kurztexte bleiben neutral und damit zitierbar.",
+    "methodLi3Title": "Phasen-gemappt.",
+    "methodLi3":      "Jede Notiz verweist auf die Engagement-Phasen, in denen sie tatsächlich greift — nicht in denen sie könnte.",
+    "methodLi4Title": "Keine Werbung.",
+    "methodLi4":      "Der Index bewirbt weder Tools noch Anbieter. Wo ein Tool genannt wird, dann aus technischer Genauigkeit.",
+    "phasesShort":    "Phasen",
+    "noPhases":       "keine spezifische Phase",
+    "glossaryLine":   "Akronym nachschlagen?",
+    "glossaryLink":   "Zum Glossar",
+    "ctaEyebrow":     "Von der Referenz zum Befund",
+    "ctaHeadline":    "Validieren Sie diese Lücken in Ihrer eigenen Umgebung.",
+    "ctaButton":      "Demo buchen"
+} %}
+{% endif %}
+
+{# Helper macro to render a phase chip from its key #}
+{% macro phaseChip(key, cls) %}
+  <span class="{{ cls or 'rs-phase-chip' }}">{{ research.phases[key][locale] }}</span>
+{% endmacro %}
+
+<section class="rs-hero">
+    <div class="rs-hero-inner">
+        <p class="rs-hero-eyebrow">{{ s.eyebrow }}</p>
+        <h1 class="rs-hero-headline">{{ s.headlineMain }}<span class="rs-period">.</span></h1>
+        <p class="rs-hero-subline">{{ s.subline }}</p>
+
+        <div class="rs-hero-stats">
+            <div>
+                <div class="rs-stat-num">{{ research.stats.total }}</div>
+                <div class="rs-stat-label">{{ s.statTotal }}</div>
+            </div>
+            <div>
+                <div class="rs-stat-num">{{ research.stats.tierOne }}</div>
+                <div class="rs-stat-label">{{ s.statTierOne }}</div>
+            </div>
+            <div>
+                <div class="rs-stat-num">{{ research.stats.domainCount }}</div>
+                <div class="rs-stat-label">{{ s.statDomain }}</div>
+            </div>
+            <div>
+                <div class="rs-stat-num">{{ research.stats.phaseCount }}</div>
+                <div class="rs-stat-label">{{ s.statPhase }}</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<nav class="rs-filter" aria-label="{{ s.filterLabel }}">
+    <div class="rs-filter-inner">
+        <div class="rs-tier-toggles" role="tablist" aria-label="{{ s.filterLabel }}">
+            <button type="button" class="rs-tier-toggle is-active" data-tier="all">{{ s.tierAll }}</button>
+            <button type="button" class="rs-tier-toggle" data-tier="1">{{ s.tierOne }}</button>
+            <button type="button" class="rs-tier-toggle" data-tier="2">{{ s.tierTwo }}</button>
+            <button type="button" class="rs-tier-toggle" data-tier="3">{{ s.tierThree }}</button>
+        </div>
+
+        <div class="rs-domain-jump" aria-label="{{ s.jumpLabel }}">
+            <span class="rs-filter-label">{{ s.jumpLabel }}:</span>
+            {% for d in research.domains %}
+                <a href="#domain-{{ d.id }}">{{ d.number }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</nav>
+
+{% for d in research.domains %}
+{% set domainHref = ("/research/" + d.id + "/") if locale == "en" else ("/de/research/" + d.id + "/") %}
+<section class="rs-domain" id="domain-{{ d.id }}">
+    <div class="rs-domain-inner">
+        <header class="rs-domain-head">
+            <div class="rs-domain-num">{{ d.number }}</div>
+            <div class="rs-domain-titleblock">
+                <h2 class="rs-domain-title">
+                    <a class="rs-domain-titlelink" href="{{ domainHref }}">
+                        {{ d.title[locale] }}
+                        <span class="rs-domain-arrow" aria-hidden="true">→</span>
+                    </a>
+                </h2>
+                <p class="rs-domain-blurb">{{ d.blurb[locale] }}</p>
+            </div>
+            <div class="rs-domain-count">
+                <strong>{{ d.count }}</strong>
+                {{ s.notesInDomain }}
+            </div>
+        </header>
+
+        {# ── Featured (Tier 1) ────────────────────────────── #}
+        {% if d.featured.length > 0 %}
+        <div class="rs-sub-block" data-sub="featured">
+            <p class="rs-sub-label">{{ s.subFeatured }}</p>
+            <div class="rs-featured">
+                {% for n in d.featured %}
+                <article class="rs-note-featured" data-tier="1" data-note="{{ n.id }}">
+                    <div class="rs-note-meta">
+                        <span class="rs-tier-badge">{{ s.tierOne }}</span>
+                        <div class="rs-note-meta-line">
+                            {% if n.phases.length > 0 %}
+                                {{ n.phases.length }} {{ s.phasesShort }}
+                            {% else %}
+                                {{ s.noPhases }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="rs-note-body">
+                        <h3 class="rs-note-title">{{ n.title[locale] }}</h3>
+                        <p class="rs-note-blurb">{{ n.blurb[locale] }}</p>
+                        {% if n.phases.length > 0 %}
+                        <div class="rs-phase-chips">
+                            {% for p in n.phases %}{{ phaseChip(p) }}{% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        {# ── Reference (Tier 2) ───────────────────────────── #}
+        {% if d.reference.length > 0 %}
+        <div class="rs-sub-block" data-sub="reference">
+            <p class="rs-sub-label">{{ s.subReference }}</p>
+            <div class="rs-reference">
+                {% for n in d.reference %}
+                <article class="rs-note-ref" data-tier="2" data-note="{{ n.id }}">
+                    <div class="rs-ref-meta">{{ s.tierTwo }}</div>
+                    <h3 class="rs-ref-title">{{ n.title[locale] }}</h3>
+                    <p class="rs-ref-blurb">{{ n.blurb[locale] }}</p>
+                    {% if n.phases.length > 0 %}
+                    <div class="rs-ref-phases">
+                        {% for p in n.phases %}<span class="rs-ref-phase">{{ research.phases[p][locale] }}</span>{% endfor %}
+                    </div>
+                    {% endif %}
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        {# ── Background (Tier 3) ──────────────────────────── #}
+        {% if d.background.length > 0 %}
+        <div class="rs-sub-block" data-sub="background">
+            <p class="rs-sub-label">{{ s.subBackground }}</p>
+            <ul class="rs-bg-list">
+                {% for n in d.background %}
+                <li class="rs-bg-item" data-tier="3" data-note="{{ n.id }}">
+                    <div class="rs-bg-title">{{ n.title[locale] }}</div>
+                    <p class="rs-bg-blurb">{{ n.blurb[locale] }}</p>
+                    <div class="rs-bg-phases">
+                        {% if n.phases.length > 0 %}
+                            {% for p in n.phases %}{{ research.phases[p][locale] }}{% if not loop.last %} · {% endif %}{% endfor %}
+                        {% else %}
+                            &mdash;
+                        {% endif %}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endfor %}
+
+<section class="rs-method">
+    <div class="rs-method-inner">
+        <div>
+            <p class="rs-method-eyebrow">{{ s.methodEyebrow }}</p>
+            <h2 class="rs-method-headline">{{ s.methodHeadline }}</h2>
+        </div>
+        <div>
+            <div class="rs-method-body">
+                <p>{{ s.methodIntro1 }}</p>
+                <p>{{ s.methodIntro2 }}</p>
+            </div>
+            <ul class="rs-method-list">
+                <li><span><strong>{{ s.methodLi1Title }}</strong> {{ s.methodLi1 }}</span></li>
+                <li><span><strong>{{ s.methodLi2Title }}</strong> {{ s.methodLi2 }}</span></li>
+                <li><span><strong>{{ s.methodLi3Title }}</strong> {{ s.methodLi3 }}</span></li>
+                <li><span><strong>{{ s.methodLi4Title }}</strong> {{ s.methodLi4 }}</span></li>
+            </ul>
+            <p class="rs-method-glossary">
+                {{ s.glossaryLine }}
+                <a href="{{ pageUrls.glossary }}">{{ s.glossaryLink }}
+                    <svg width="11" height="11" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M1 7H13M13 7L8 2M13 7L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="rs-cta">
+    <div class="rs-cta-inner">
+        <div>
+            <p class="rs-cta-eyebrow">{{ s.ctaEyebrow }}</p>
+            <h2 class="rs-cta-headline">{{ s.ctaHeadline }}</h2>
+        </div>
+        <a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="rs-cta-btn">
+            {{ s.ctaButton }}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+            </svg>
+        </a>
+    </div>
+</section>
+
+{# Lightweight tier filter — toggles visibility of cards by data-tier.
+   No framework, no dependencies; fails closed on no-JS by showing everything. #}
+<script>
+(function () {
+    const toggles = document.querySelectorAll('.rs-tier-toggle');
+    const allItems = document.querySelectorAll('[data-tier]');
+    const subBlocks = document.querySelectorAll('.rs-sub-block');
+
+    function apply(tier) {
+        allItems.forEach((el) => {
+            const match = tier === 'all' || el.getAttribute('data-tier') === tier;
+            el.toggleAttribute('data-tier-hidden', !match);
+        });
+        subBlocks.forEach((block) => {
+            const visible = block.querySelectorAll('[data-tier]:not([data-tier-hidden])');
+            block.toggleAttribute('data-empty', visible.length === 0);
+        });
+    }
+
+    toggles.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            toggles.forEach((b) => b.classList.remove('is-active'));
+            btn.classList.add('is-active');
+            apply(btn.getAttribute('data-tier'));
+        });
+    });
+})();
+</script>
