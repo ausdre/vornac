@@ -1,7 +1,15 @@
 #!/usr/bin/env python3
 """
-Local static preview with production-like paths (/de, /pentesting, …).
-Plain `python -m http.server` cannot serve extensionless URLs.
+Local static preview of the Eleventy build.
+
+Serves files from `dist/` with production-like extensionless URLs
+(e.g. /de, /pentesting, /de/pentesting). For development you should
+normally use `npm run dev`, which gives you hot reload — this script
+is here for sanity-checking the built artifacts the way Vercel will
+serve them, without spinning up Vercel.
+
+Usage:
+    npm run build && python3 serve_local.py
 """
 from __future__ import annotations
 
@@ -9,6 +17,7 @@ import os
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
+DIST = os.path.join(ROOT, "dist")
 
 
 class VornacHandler(SimpleHTTPRequestHandler):
@@ -24,15 +33,18 @@ class VornacHandler(SimpleHTTPRequestHandler):
         path_only = parts_q[0].split("#", 1)[0]
         query = ("?" + parts_q[1]) if len(parts_q) > 1 else ""
 
+        # Map extensionless clean URLs to their .html files in dist/.
         new_path: str | None = None
-        if path_only in ("/de", "/de/"):
-            new_path = "/index_de.html"
-        elif path_only.startswith("/") and path_only not in ("/", ""):
-            seg = path_only.strip("/")
-            if seg and "/" not in seg and "." not in seg:
-                candidate = os.path.join(ROOT, seg + ".html")
-                if os.path.isfile(candidate):
-                    new_path = "/" + seg + ".html"
+        if path_only in ("", "/"):
+            new_path = "/index.html"
+        elif path_only.endswith("/"):
+            candidate = os.path.join(DIST, path_only.strip("/"), "index.html")
+            if os.path.isfile(candidate):
+                new_path = path_only + "index.html"
+        elif "." not in os.path.basename(path_only):
+            candidate = os.path.join(DIST, path_only.lstrip("/") + ".html")
+            if os.path.isfile(candidate):
+                new_path = path_only + ".html"
 
         if new_path is not None:
             self.path = new_path + query
@@ -41,13 +53,17 @@ class VornacHandler(SimpleHTTPRequestHandler):
 
 
 def main() -> None:
-    os.chdir(ROOT)
+    if not os.path.isdir(DIST):
+        raise SystemExit(
+            f"dist/ not found at {DIST}. Run `npm run build` first."
+        )
+    os.chdir(DIST)
     port = int(os.environ.get("PORT", "8080"))
     host = os.environ.get("HOST", "127.0.0.1")
     with HTTPServer((host, port), VornacHandler) as httpd:
-        print(f"Serving {ROOT}")
+        print(f"Serving {DIST}")
         print(f"  http://{host}:{port}/")
-        print("  /de → index_de.html; /pentesting → pentesting.html (when file exists)")
+        print("  Clean URLs: /pentesting, /de, /de/pentesting, /de/industries-automotive, …")
         httpd.serve_forever()
 
 

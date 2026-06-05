@@ -1,0 +1,75 @@
+{# Dark footer — three columns, language switcher in the bar.
+
+   Language switcher: hidden when this page has no counterpart (single-locale).
+   Sets ?lang=<target> + localStorage on click so future visits respect the choice.
+#}
+<footer class="v-footer pt-14 pb-10 px-4 sm:px-6">
+    <div class="max-w-content mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.4fr_auto_auto_auto] gap-10 items-start">
+            <div class="space-y-4">
+                <img src="{{ site.logos.whiteSvg }}" alt="{{ site.brand }}" class="h-9 w-auto md:h-10">
+                <p class="max-w-md text-sm leading-relaxed text-stone-400">
+                    {{ t.footer.tagline }}
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white text-[13px] uppercase tracking-[0.22em] mb-5 font-display" style="font-weight: 900;">{{ t.footer.navHeading }}</h4>
+                <ul class="space-y-3 text-sm text-stone-400">
+                    <li><a href="{{ pageUrls.index }}" class="hover:text-amber-500 transition-colors">{{ t.nav.home }}</a></li>
+                    <li><a href="{{ pageUrls.pentesting }}" class="hover:text-amber-500 transition-colors">{{ t.nav.pentesting }}</a></li>
+                    <li><a href="{{ pageUrls.industries }}" class="hover:text-amber-500 transition-colors">{{ t.nav.industries }}</a></li>
+                    <li><a href="{{ pageUrls.customers }}" class="hover:text-amber-500 transition-colors">{{ t.nav.customers }}</a></li>
+                    <li><a href="{{ pageUrls.research }}" class="hover:text-amber-500 transition-colors">{{ t.nav.research }}</a></li>
+                    <li><a href="{{ pageUrls.glossary }}" class="hover:text-amber-500 transition-colors">{{ t.nav.glossary }}</a></li>
+                    <li><a href="{{ pageUrls.about }}" class="hover:text-amber-500 transition-colors">{{ t.nav.about }}</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white text-[13px] uppercase tracking-[0.22em] mb-5 font-display" style="font-weight: 900;">{{ t.footer.legalHeading }}</h4>
+                <ul class="space-y-3 text-sm text-stone-400">
+                    <li><a href="{{ pageUrls.legal }}" class="hover:text-amber-500 transition-colors">{{ t.footer.legalLinks.privacy }}</a></li>
+                    <li><a href="{{ pageUrls.legal }}" class="hover:text-amber-500 transition-colors">{{ t.footer.legalLinks.imprint }}</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white text-[13px] uppercase tracking-[0.22em] mb-5 font-display" style="font-weight: 900;">{{ t.footer.socialsHeading }}</h4>
+                <ul class="space-y-3 text-sm text-stone-400">
+                    <li>
+                        <a href="{{ site.contact.linkedin }}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 hover:text-amber-500 transition-colors">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/>
+                            </svg>
+                            {{ t.footer.socialLinks.linkedin }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ site.contact.gartner }}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 hover:text-amber-500 transition-colors">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M12 2.5l2.95 6.14 6.55.84-4.86 4.5 1.27 6.52L12 17.36 6.09 20.5l1.27-6.52L2.5 9.48l6.55-.84L12 2.5z"/>
+                            </svg>
+                            {{ t.footer.socialLinks.gartner }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-10 pt-6 border-t v-footer-bar flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <p class="text-xs uppercase tracking-[0.16em] text-stone-500">{{ t.footer.copyright }}</p>
+
+            {# Lang switcher: only show when a counterpart exists. #}
+            {% if counterpart %}
+                <div class="v-lang-switch flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-stone-500" role="navigation" aria-label="{{ t.a11y.langNav }}">
+                    {% if locale == 'en' %}
+                        <a href="{{ counterpart }}?lang=de" hreflang="de" onclick="localStorage.setItem('vornac_lang', 'de')" class="hover:text-white transition-colors">DE</a>
+                        <span class="text-stone-700" aria-hidden="true">|</span>
+                        <span class="text-white" aria-current="true">EN</span>
+                    {% else %}
+                        <span class="text-white" aria-current="true">DE</span>
+                        <span class="text-stone-700" aria-hidden="true">|</span>
+                        <a href="{{ counterpart }}?lang=en" hreflang="en" onclick="localStorage.setItem('vornac_lang', 'en')" class="hover:text-white transition-colors">EN</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,22 @@
+---
+pagination:
+  data: research.allNotes
+  size: 1
+  alias: note
+  addAllPagesToCollections: false
+ogType: article
+eleventyComputed:
+  permalink: "/research/{{ note.domain }}/{{ note.id }}/index.html"
+  i18nKey: "research-note-{{ note.id }}"
+  title: "{{ note.title.en | safe }} · VORNAC Research"
+  description: "{{ note.blurb.en | safe }}"
+---
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+<link rel="stylesheet" href="/research.css">
+{% endblock %}
+
+{% block content %}
+{% include "partials/research-note-render.njk" %}
+{% endblock %}

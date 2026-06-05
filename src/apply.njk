@@ -1,0 +1,141 @@
+---
+title: "Application · VORNAC"
+description: "Apply to VORNAC: careers in continuous penetration testing and AI security with German data sovereignty and regulated-industry focus."
+i18nKey: apply
+ogType: website
+---
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+<div class="fixed inset-0 pointer-events-none overflow-hidden">
+    <div class="absolute -left-40 top-0 h-80 w-80 rounded-full bg-amber-300/30 blur-[80px] animate-pulse"></div>
+    <div class="absolute -right-32 top-1/3 h-96 w-96 rounded-full bg-amber-200/20 blur-[80px]"></div>
+</div>
+
+<main class="relative z-10">
+    <section class="py-16 lg:py-24">
+        <div class="max-w-4xl mx-auto px-6">
+
+            <div class="mb-8">
+                <a href="{{ pageUrls.about }}#{{ t.aboutAnchors.careers }}" class="inline-flex items-center gap-2 text-stone-600 hover:text-stone-900 font-bold uppercase text-sm tracking-wide transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    Back to Careers
+                </a>
+            </div>
+
+            <div class="text-center mb-12">
+                <h1 class="font-heading text-4xl sm:text-5xl md:text-7xl font-black italic uppercase text-stone-900 mb-4 tracking-tight leading-none">
+                    Application
+                </h1>
+                <p class="text-xl text-stone-600 max-w-2xl mx-auto">
+                    Join the VORNAC Team. We're excited to hear from you!
+                </p>
+            </div>
+
+            <div class="bg-white border-4 border-stone-900 p-5 sm:p-10 md:p-14 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] sm:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] mb-12">
+
+                <form name="application-en" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" class="space-y-8">
+
+                    <input type="hidden" name="form-name" value="application-en" />
+                    <p class="hidden">
+                        <label>Do not fill: <input name="bot-field" /></label>
+                    </p>
+
+                    <div>
+                        <label class="block font-black text-stone-900 mb-3 uppercase text-base tracking-wider">
+                            Position *
+                        </label>
+                        <select name="position" required id="position-select"
+                                class="w-full px-5 py-4 border-4 border-stone-900 bg-white text-stone-900 font-mono text-base focus:outline-none focus:border-amber-500 focus:shadow-[4px_4px_0px_0px_rgba(245,158,11,1)] transition-all">
+                            <option value="">Please select</option>
+                            <option value="Head of Sales">Head of Sales</option>
+                            <option value="Pentester as CSM">Pentester as Customer Success Manager</option>
+                            <option value="Assistant">Assistant</option>
+                            <option value="Open Application">Open Application</option>
+                        </select>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block font-black text-stone-900 mb-3 uppercase text-base tracking-wider">First Name *</label>
+                            <input type="text" name="firstname" required
+                                   class="w-full px-5 py-4 border-4 border-stone-900 bg-white text-stone-900 text-base focus:outline-none focus:border-amber-500 focus:shadow-[4px_4px_0px_0px_rgba(245,158,11,1)] transition-all" />
+                        </div>
+                        <div>
+                            <label class="block font-black text-stone-900 mb-3 uppercase text-base tracking-wider">Last Name *</label>
+                            <input type="text" name="lastname" required
+                                   class="w-full px-5 py-4 border-4 border-stone-900 bg-white text-stone-900 text-base focus:outline-none focus:border-amber-500 focus:shadow-[4px_4px_0px_0px_rgba(245,158,11,1)] transition-all" />
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block font-black text-stone-900 mb-3 uppercase text-base tracking-wider">E-Mail *</label>
+                            <input type="email" name="email" required
+                                   class="w-full px-5 py-4 border-4 border-stone-900 bg-white text-stone-900 text-base focus:outline-none focus:border-amber-500 focus:shadow-[4px_4px_0px_0px_rgba(245,158,11,1)] transition-all" />
+                        </div>
+                        <div>
+                            <label class="block font-black text-stone-900 mb-3 uppercase text-base tracking-wider">Phone</label>
+                            <input type="tel" name="phone"
+                                   class="w-full px-5 py-4 border-4 border-stone-900 bg-white text-stone-900 text-base focus:outline-none focus:border-amber-500 focus:shadow-[4px_4px_0px_0px_rgba(245,158,11,1)] transition-all" />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-black text-stone-900 mb-3 uppercase text-base tracking-wider">
+                            LinkedIn / Portfolio URL
+                        </label>
+                        <input type="url" name="linkedin" placeholder="https://"
+                               class="w-full px-5 py-4 border-4 border-stone-900 bg-white text-stone-900 text-base focus:outline-none focus:border-amber-500 focus:shadow-[4px_4px_0px_0px_rgba(245,158,11,1)] transition-all" />
+                    </div>
+
+                    <div>
+                        <label class="block font-black text-stone-900 mb-3 uppercase text-base tracking-wider">
+                            Resume (PDF) *
+                        </label>
+                        <div class="relative">
+                            <input type="file" name="cv" id="cv-upload" accept=".pdf" required class="hidden" />
+                            <label for="cv-upload" class="flex flex-col sm:flex-row items-stretch sm:items-center sm:justify-between w-full p-3 sm:px-5 sm:py-4 gap-3 sm:gap-4 border-4 border-stone-900 bg-white text-stone-700 cursor-pointer hover:border-amber-500 transition-all">
+                                <span id="cv-filename" data-default="No file chosen" class="text-sm sm:text-base truncate">No file chosen</span>
+                                <span class="bg-stone-900 text-white px-4 sm:px-6 py-2 text-center font-bold uppercase text-sm hover:bg-amber-600 transition-colors flex-shrink-0">Choose File</span>
+                            </label>
+                        </div>
+                        <p class="text-sm text-stone-500 mt-2 font-mono">Maximum 10 MB</p>
+                    </div>
+
+                    <div>
+                        <label class="block font-black text-stone-900 mb-3 uppercase text-base tracking-wider">
+                            Cover Letter / Motivation *
+                        </label>
+                        <textarea name="message" rows="10" required
+                                  placeholder="Tell us why you're a great fit for VORNAC..."
+                                  class="w-full px-5 py-4 border-4 border-stone-900 bg-white text-stone-900 text-base focus:outline-none focus:border-amber-500 focus:shadow-[4px_4px_0px_0px_rgba(245,158,11,1)] transition-all resize-none"></textarea>
+                    </div>
+
+                    <div class="flex items-start gap-4 bg-amber-50 p-5 border-2 border-amber-200">
+                        <input type="checkbox" name="privacy" required id="privacy"
+                               class="mt-1 w-6 h-6 border-2 border-stone-900 accent-amber-500 cursor-pointer" />
+                        <label for="privacy" class="text-sm text-stone-700 leading-relaxed">
+                            I have read the <a href="{{ pageUrls.legal }}" class="text-amber-600 hover:text-amber-700 font-bold underline">Privacy Policy</a> and agree to the processing of my data. *
+                        </label>
+                    </div>
+
+                    <button type="submit"
+                            class="w-full bg-stone-900 text-white py-5 sm:py-6 font-black uppercase tracking-wider sm:tracking-[0.2em] text-base sm:text-lg border-4 border-stone-900 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] sm:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:bg-amber-600 hover:border-amber-600 hover:translate-x-2 hover:translate-y-2 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all">
+                        Submit Application →
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block extraBodyEnd %}
+{% include "partials/apply-form-script.njk" %}
+{% endblock %}

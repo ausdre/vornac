@@ -1,0 +1,51 @@
+{# Position auto-select from ?position= query and file-upload filename display.
+
+   Position option keys are locale-agnostic slugs that map to the <option value>
+   strings in apply.njk / de/apply.njk. Slugs are union of EN + DE so a single
+   script handles both pages.
+
+   "No file chosen" text comes from data-default on the <span>, so the script
+   stays locale-neutral and never overwrites the localized label.
+#}
+<script>
+(function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const position = urlParams.get('position');
+    if (position) {
+        const select = document.getElementById('position-select');
+        const options = {
+            'head-of-sales':     ['Head of Sales'],
+            'pentester-csm':     ['Pentester as CSM', 'Pentester als CSM'],
+            'assistant':         ['Assistant'],
+            'assistenz':         ['Assistenz'],
+            'open-application':  ['Open Application'],
+            'initiativbewerbung':['Initiativbewerbung']
+        };
+        if (select && options[position]) {
+            for (const value of options[position]) {
+                const found = Array.from(select.options).find(o => o.value === value);
+                if (found) {
+                    select.value = value;
+                    break;
+                }
+            }
+        }
+    }
+
+    const fileInput = document.getElementById('cv-upload');
+    const filenameDisplay = document.getElementById('cv-filename');
+    if (fileInput && filenameDisplay) {
+        const defaultLabel = filenameDisplay.getAttribute('data-default') || filenameDisplay.textContent;
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                filenameDisplay.textContent = file.name;
+                filenameDisplay.classList.add('font-mono', 'text-stone-900');
+            } else {
+                filenameDisplay.textContent = defaultLabel;
+                filenameDisplay.classList.remove('font-mono', 'text-stone-900');
+            }
+        });
+    }
+})();
+</script>

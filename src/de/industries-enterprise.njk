@@ -1,0 +1,87 @@
+---
+title: "Enterprise · NIS2-feste Validierung | VORNAC"
+description: "NIS2-konformes, kontinuierliches Pentesting für wesentliche und wichtige Einrichtungen. Maßnahmen nach Artikel 21, live in Produktion belegt."
+i18nKey: industries-enterprise
+ogType: website
+---
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+<link rel="stylesheet" href="/industries.css">
+{% endblock %}
+
+{% block content %}
+<main class="ind-page">
+    <section class="ind-hero">
+        <div class="ind-hero-inner">
+            <p class="ind-hero-breadcrumb"><a href="{{ pageUrls.industries }}">Industrien</a> / Enterprise</p>
+            <span class="ind-hero-framework">NIS2</span>
+            <h1 class="ind-hero-headline">NIS2-feste Validierung für <span class="ind-hero-headline-emph">wesentliche und wichtige Einrichtungen</span></h1>
+            <p class="ind-hero-sub">Die NIS2-Richtlinie verpflichtet tausende EU-Organisationen zu Cybersecurity-Maßnahmen. Artikel 21 verlangt Risikomanagement, Vorfallbearbeitung und Wirksamkeitstests. VORNAC belegt, was Angreifer wirklich erreichen können. Audit-ready für NIS2.</p>
+            <div class="ind-hero-actions">
+                {% include "partials/hero-demo-button.njk" %}
+                <a href="{{ pageUrls.pentesting }}" class="ind-btn-ghost">So funktioniert's</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="ind-section ind-section--cream">
+        <div class="ind-section-inner">
+            <header class="ind-section-head">
+                <h2 class="ind-section-title">Was NIS2 Artikel 21 verlangt</h2>
+                <p class="ind-section-lead">Die Mitgliedstaaten setzen NIS2 in nationales Recht um. Wesentliche und wichtige Einrichtungen müssen dokumentierte Maßnahmen umsetzen, und belegen, dass sie wirken.</p>
+            </header>
+            <div class="ind-req-grid">
+                <article class="ind-req-card"><h3 class="ind-req-card-title">Richtlinien &amp; Risikomanagement</h3><p class="ind-req-card-desc">Cybersecurity-Risikoanalyse, Sicherheitsrichtlinien für Informationssysteme, Governance auf Geschäftsleitungsebene.</p></article>
+                <article class="ind-req-card"><h3 class="ind-req-card-title">Vorfallbearbeitung</h3><p class="ind-req-card-desc">Erkennung, Reaktion, Meldung. Fristgerecht. Mit dem Nachweis, dass die Playbooks im Ernstfall greifen.</p></article>
+                <article class="ind-req-card"><h3 class="ind-req-card-title">Lieferkettensicherheit</h3><p class="ind-req-card-desc">Sicherheit in der Beziehung zu direkten Lieferanten und Dienstleistern, inklusive Validierung exponierter Integrationspunkte.</p></article>
+                <article class="ind-req-card"><h3 class="ind-req-card-title">Wirksamkeitstests</h3><p class="ind-req-card-desc">Tests der Cybersecurity-Maßnahmen: von Vulnerability-Scans bis Angriffssimulation, wo angemessen.</p></article>
+            </div>
+        </div>
+    </section>
+
+    <section class="ind-gap-band">
+        <div class="ind-gap-inner">
+            <div>
+                <h2 class="ind-gap-title">Compliance ohne Exploit-Beleg bleibt Annahme.</h2>
+                <p class="ind-gap-text">NIS2-Auditoren fragen zunehmend, ob die Kontrollen echte Angriffstechniken überstehen, nicht ob ein Scanner eine CVE markiert hat. VORNAC schließt diese Evidenzlücke.</p>
+            </div>
+            <div class="ind-gap-stat">
+                <div class="ind-gap-stat-num">0</div>
+                <p class="ind-gap-stat-label">Daten verlassen die Jurisdiktion. Hosting und Betrieb in Deutschland.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="ind-section ind-section--dark">
+        <div class="ind-section-inner">
+            <header class="ind-section-head ind-section-head--light"><h2 class="ind-section-title">So hilft VORNAC im Unternehmen</h2></header>
+            <ul class="ind-help-list">
+                <li class="ind-help-item"><span class="ind-help-num">1</span><div><h3 class="ind-help-title">Reports zu Artikel 21</h3><p class="ind-help-desc">Befunde gemappt auf die Maßnahmen der nationalen NIS2-Umsetzung und auf die Erwartungen der Auditoren, plus TISAX und ISO 27001, wo einschlägig.</p></div></li>
+                <li class="ind-help-item"><span class="ind-help-num">2</span><div><h3 class="ind-help-title">Kontinuierliche Testtaktung</h3><p class="ind-help-desc">„Regelmäßige Tests" erfüllt mit Validierung bei jedem Release. Nicht mit einem einzigen Jahresprojekt.</p></div></li>
+                <li class="ind-help-item"><span class="ind-help-num">3</span><div><h3 class="ind-help-title">Ticketing &amp; Audit-Trail</h3><p class="ind-help-desc">Automatische Übergabe an Jira. Unveränderliches Audit-Log. Jeder Befund kryptografisch signiert.</p></div></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="ind-related">
+        <div class="ind-related-inner">
+            <p class="ind-related-title">Auch relevant</p>
+            <div class="ind-related-links">
+                <a href="{{ pageUrls['industries-critical-infrastructure'] }}" class="ind-related-link">Kritische Infrastruktur (KRITIS)</a>
+                <a href="{{ pageUrls['industries-insurance'] }}" class="ind-related-link">Versicherung (DORA)</a>
+                <a href="{{ pageUrls.pentesting }}" class="ind-related-link">VORNAC Pentesting</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="ind-cta">
+        <div class="ind-cta-inner">
+            <h2 class="ind-cta-headline">NIS2-Compliance, die sich <em>belegen</em> lässt. Nicht nur dokumentieren.</h2>
+            <div class="ind-cta-actions">
+                {% include "partials/hero-demo-button.njk" %}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

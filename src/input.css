@@ -1,16 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Inter:wght@400;700&display=swap');
-
-/* Updated from provided project file [file:3] */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ----------------------------------------
+ * Type rendering — crisp, kerned, ligature-aware
+ * across the whole document for the brand stack.
+ * -------------------------------------- */
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    }
+
+/* Vector brand assets stay crisp at any size. */
+img[src$=".svg"] { image-rendering: auto; }
 
 /* ----------------------------------------
  * Global mobile safety net
  * Prevents accidental horizontal scroll from
  * oversized images or italic headlines.
  * -------------------------------------- */
-html, body { overflow-x: hidden; max-width: 100%; }
+/* overflow-x: clip (not hidden) prevents horizontal scroll without creating a
+   scroll container, so the sticky header keeps pinning to the viewport. */
+html, body { overflow-x: clip; max-width: 100%; }
 
 /* Reserve scrollbar space so toggling overflow (mobile nav) does not shift layout */
 html { scrollbar-gutter: stable; }
@@ -206,13 +221,26 @@ img, video { max-width: 100%; }
         }
 
     #site-header.is-scrolled {
-        background-color: transparent;
-        border-bottom-color: rgba(255, 255, 255, 0.08);
-        box-shadow: 0 12px 34px rgba(0, 0, 0, 0.45);
+        box-shadow: 0 6px 24px rgba(14, 17, 22, 0.06);
         }
 
     #site-header.is-scrolled .nav-logo {
         transform: scale(0.92);
+        }
+
+    /* Header pill background is driven here (not via an arbitrary Tailwind
+       class) so it is reliable across builds. Default: solid dark glass —
+       legible over any section and on every page. */
+    .v-nav {
+        background-color: rgba(14, 17, 22, 0.9);
+        transition: background-color 250ms ease;
+        }
+
+    /* Homepage only: at the very top the pill melts into the dark hero body.
+       Once scrolled (over white sections) it falls back to the solid dark glass
+       so the white nav text stays legible. Other pages stay solid throughout. */
+    body.v-home #site-header:not(.is-scrolled) .v-nav {
+        background-color: rgba(14, 17, 22, 0.25);
         }
 
     /* ----------------------------------------
@@ -438,3 +466,405 @@ img, video { max-width: 100%; }
         -webkit-backdrop-filter: blur(8px);
         }
     }
+
+/* ----------------------------------------
+ * Brutalist enterprise design tokens
+ * Type stack: Archivo (body + mid-display) + Saira Condensed (billboard display)
+ *             + JetBrains Mono (regulator-credible data accents)
+ * Surfaces:   clean white + faint stone band + printed-ink dark
+ * Rules:      hard ink hairlines, amber as precision accent only
+ * -------------------------------------- */
+:root {
+    /* Surfaces */
+    --v-bg:         #ffffff;
+    --v-bg-band:    #f5f5f4;
+    --v-bg-card:    #ffffff;
+    --v-bg-dark:    #0E1116;
+    --v-bg-dark-2:  #181C24;
+
+    /* Ink */
+    --v-ink:        #0E1116;
+    --v-ink-2:      #4B5260;
+    --v-ink-3:      #7A8190;
+
+    /* Hairlines: soft stone for subtle separation, hard ink for brutalist rules */
+    --v-line:       #e7e5e4;
+    --v-line-soft:  #f1f0ee;
+    --v-line-dark:  #2A2F39;
+    --v-rule:       #0E1116;
+    --v-rule-amber: #ffa317;
+
+    /* Brand accent — precision only, not decoration */
+    --v-amber:      #ffa317;
+    --v-amber-deep: #cc8200;
+    --v-amber-soft: #fff3d8;
+
+    /* Type families
+       Use --v-display for billboard moments (H1, hero numbers, brand wordmark).
+       Use --v-sans for body and mid-scale display.
+       Use --v-mono for compliance frameworks, timestamps, signed evidence. */
+    --v-display:    'Saira Condensed', 'Archivo', system-ui, -apple-system, sans-serif;
+    --v-sans:       'Archivo', system-ui, -apple-system, sans-serif;
+    --v-mono:       'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+.v-footer {
+    background-color: var(--v-bg-dark);
+    border-top: 1px solid var(--v-line-dark);
+    font-family: var(--v-sans);
+}
+
+.v-footer-bar {
+    border-top: 1px solid var(--v-line-dark);
+}
+
+.v-footer a:hover {
+    color: var(--v-amber) !important;
+}
+
+/* ----------------------------------------
+ * Hero "Book a demo" pill (all pages via the hero-demo-button partial)
+ * Amber-outline pill that morphs into an inline email-capture on hover
+ * (desktop) or tap (mobile, .is-open via JS). Submits to Formspree.
+ * -------------------------------------- */
+.v-hero-demo {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: 248px;
+    height: 54px;
+    border: 1px solid var(--v-amber);
+    background: transparent;
+    overflow: hidden;
+    transition: width 0.42s cubic-bezier(0.22, 1, 0.36, 1), background 0.2s ease, box-shadow 0.2s ease;
+    vertical-align: middle;
+}
+.v-hero-demo-trigger {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--v-amber-deep);
+    font-family: var(--v-sans);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+.v-hero-demo-reveal {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.25s ease 0.06s;
+}
+.v-hero-demo-input {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--v-ink);
+    font-family: var(--v-sans);
+    font-size: 15px;
+    letter-spacing: -0.005em;
+    padding: 0 18px;
+}
+.v-hero-demo-input::placeholder { color: var(--v-ink-3); }
+.v-hero-demo-submit {
+    flex-shrink: 0;
+    height: 100%;
+    width: 54px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--v-amber);
+    color: var(--v-bg-dark);
+    border: none;
+    cursor: pointer;
+    transition: background 0.18s ease;
+}
+.v-hero-demo-submit:hover { background: #ffb53d; }
+.v-hero-demo:focus-within {
+    box-shadow: 0 0 0 3px rgba(255, 163, 23, 0.18);
+}
+.v-hero-demo:hover,
+.v-hero-demo.is-open {
+    width: 392px;
+    background: rgba(255, 163, 23, 0.06);
+}
+.v-hero-demo:hover .v-hero-demo-trigger,
+.v-hero-demo.is-open .v-hero-demo-trigger {
+    opacity: 0;
+    pointer-events: none;
+}
+.v-hero-demo:hover .v-hero-demo-reveal,
+.v-hero-demo.is-open .v-hero-demo-reveal {
+    opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+    .v-hero-demo { transition: none; }
+    .v-hero-demo-reveal { transition: none; }
+}
+@media (max-width: 640px) {
+    .v-hero-demo { width: 232px; height: 52px; }
+    .v-hero-demo.is-open { width: min(100%, 340px); }
+}
+
+/* On-amber sections (pent-hero) — invert the pill for legible contrast:
+   dark border, dark label, dark filled submit button. */
+.pent-hero .v-hero-demo,
+.v-hero-demo--on-amber {
+    border-color: var(--v-ink);
+    background: rgba(14, 17, 22, 0.04);
+}
+.pent-hero .v-hero-demo .v-hero-demo-trigger,
+.v-hero-demo--on-amber .v-hero-demo-trigger {
+    color: var(--v-ink);
+}
+.pent-hero .v-hero-demo .v-hero-demo-input,
+.v-hero-demo--on-amber .v-hero-demo-input {
+    color: var(--v-ink);
+}
+.pent-hero .v-hero-demo .v-hero-demo-submit,
+.v-hero-demo--on-amber .v-hero-demo-submit {
+    background: var(--v-ink);
+    color: var(--v-amber);
+}
+.pent-hero .v-hero-demo .v-hero-demo-submit:hover,
+.v-hero-demo--on-amber .v-hero-demo-submit:hover {
+    background: #000;
+}
+.pent-hero .v-hero-demo:hover,
+.pent-hero .v-hero-demo.is-open,
+.v-hero-demo--on-amber:hover,
+.v-hero-demo--on-amber.is-open {
+    background: rgba(14, 17, 22, 0.08);
+}
+
+/* ----------------------------------------
+ * Top announcement bar (all pages via output.css)
+ * Black band, amber NEU/NEW tag, dismissible via the trailing X button.
+ * -------------------------------------- */
+.v-announcement {
+    background: var(--v-bg-dark);
+    color: #fff;
+    font-family: var(--v-sans);
+    font-size: 13.5px;
+    font-weight: 500;
+    padding: 11px 0;
+    text-align: center;
+    position: relative;
+    z-index: 60;
+    letter-spacing: -0.005em;
+    transition: opacity 0.2s ease;
+}
+.v-announcement.is-closing { opacity: 0; }
+.v-announcement-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 56px;
+}
+.v-announcement-body { color: rgba(255, 255, 255, 0.85); }
+.v-announcement-tag {
+    display: inline-block;
+    background: var(--v-amber);
+    color: var(--v-bg-dark);
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    margin-right: 14px;
+    vertical-align: 2px;
+}
+.v-announcement-cta {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 1px;
+    margin-left: 8px;
+    font-weight: 600;
+}
+.v-announcement-cta:hover {
+    border-bottom-color: var(--v-amber);
+    color: var(--v-amber);
+}
+.v-announcement-cta:focus-visible {
+    outline: 2px solid var(--v-amber);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+.v-announcement-close {
+    position: absolute;
+    top: 50%;
+    right: 18px;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 0;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+.v-announcement-close:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+}
+.v-announcement-close:focus-visible {
+    outline: 2px solid var(--v-amber);
+    outline-offset: 2px;
+}
+@media (max-width: 640px) {
+    .v-announcement { font-size: 12.5px; padding: 10px 0; }
+    .v-announcement-inner { padding: 0 44px 0 20px; }
+    .v-announcement-cta { display: inline-block; margin-left: 4px; }
+    .v-announcement-close { right: 10px; }
+}
+
+/* ----------------------------------------
+ * Shared base for every page (was duplicated in each legacy page's <style>)
+ * -------------------------------------- */
+:root {
+    --color-bg:        #ffffff;
+    --color-bg-soft:   #f5f5f4;
+    --color-bg-muted:  #e7e5e4;
+    --color-accent:    #ffa317;
+    --color-accent-dark:#cc8200;
+    --color-text:      #1c1917;
+    --color-text-muted:#57534e;
+}
+
+.bg-warm       { background-color: #ffffff; }
+.bg-warm-soft  { background-color: #ffffff; }
+.bg-warm-muted { background-color: #ffffff; }
+
+/* Mobile nav slide-in (markup lives in site-header.njk) */
+#mobile-menu:not(.hidden) {
+    display: block;
+    animation: vornacSlideDown 0.3s ease-out forwards;
+}
+@keyframes vornacSlideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+#mobile-backdrop:not(.hidden) {
+    display: block;
+    animation: vornacFadeIn 0.3s ease-out forwards;
+}
+@keyframes vornacFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ----------------------------------------
+ * Cross-link auto-glossary terms (.x-term)
+ * Inserted by the `crosslink` Eleventy transform in .eleventy.js.
+ *
+ * No underline — the affordance is a subtle ink-color shift: linked
+ * words sit a touch darker than running body copy, then warm into the
+ * brand amber on hover/focus together with the hovercard fade-in (see
+ * .x-term-popover below, populated by /x-term.js).
+ * -------------------------------------- */
+a.x-term {
+    /* True black so the link reads a touch darker than the surrounding
+       ink (which is #0E1116 / #1c1917 in different surfaces) without
+       ever being visibly identical to body copy. */
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color .15s ease;
+}
+a.x-term:hover,
+a.x-term:focus-visible {
+    color: var(--v-amber-deep);
+    outline: none;
+}
+@media print {
+    a.x-term { color: inherit; }
+}
+
+/* ----------------------------------------
+ * Hovercard popover (.x-term-popover)
+ * Single shared element created by /x-term.js, positioned absolutely
+ * in the page below the hovered link. Subtle white card, soft shadow,
+ * no border — sits quietly above content.
+ * -------------------------------------- */
+.x-term-popover {
+    position: absolute;
+    z-index: 9000;
+    display: none;
+    width: 320px;
+    max-width: calc(100vw - 32px);
+    padding: 14px 16px 12px;
+    background: #ffffff;
+    color: var(--v-ink);
+    border: 1px solid var(--v-line-soft);
+    border-radius: 6px;
+    box-shadow:
+        0 1px 2px rgba(15, 17, 22, .04),
+        0 12px 32px rgba(15, 17, 22, .12);
+    font-family: var(--v-sans);
+    font-size: 13.5px;
+    line-height: 1.55;
+    opacity: 0;
+    transform: translateY(2px);
+    transition: opacity .14s ease, transform .14s ease;
+    pointer-events: auto;
+}
+.x-term-popover.is-open {
+    opacity: 1;
+    transform: translateY(0);
+}
+.x-term-popover-title {
+    font-family: var(--v-display, var(--v-sans));
+    font-weight: 700;
+    font-size: 14.5px;
+    letter-spacing: -.005em;
+    color: var(--v-ink);
+    margin-bottom: 6px;
+}
+.x-term-popover-body {
+    color: var(--v-ink-2, #4B5260);
+    font-size: 13px;
+    line-height: 1.55;
+    margin-bottom: 10px;
+}
+.x-term-popover-body:empty { display: none; }
+.x-term-popover-more {
+    display: inline-block;
+    font-family: var(--v-mono, ui-monospace, "JetBrains Mono", monospace);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--v-amber-deep);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color .12s ease, color .12s ease;
+}
+.x-term-popover-more:hover,
+.x-term-popover-more:focus-visible {
+    color: var(--v-amber);
+    border-bottom-color: var(--v-amber);
+    outline: none;
+}
+@media (prefers-reduced-motion: reduce) {
+    .x-term-popover { transition: none; transform: none; }
+}
+@media print {
+    .x-term-popover { display: none !important; }
+}

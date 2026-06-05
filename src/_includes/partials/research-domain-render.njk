@@ -1,0 +1,262 @@
+{# Render a single Research-domain detail page.
+
+   Re-used by the paginated EN and DE templates. The calling template runs
+   under Eleventy pagination with size=1 over `research.domains`, exposing
+   each domain as the alias `domain`. Prev/next URLs come from Eleventy's
+   built-in `pagination` object.
+
+   Inputs in scope:
+     domain                — current domain object (id, number, title{en,de},
+                             blurb{en,de}, count, featured[], reference[],
+                             background[])
+     pagination            — Eleventy pagination state (previous/next data)
+     prevHref / nextHref   — locale-aware prev/next URLs set by caller
+     research.phases       — phase-key → {en,de} label map
+     locale                — "en" | "de"
+     t                     — i18n table for the current locale
+     pageUrls              — per-locale URL lookup
+#}
+
+{% if locale == "en" %}
+{% set s = {
+    "eyebrow":         "VORNAC RESEARCH",
+    "breadcrumbHome":  "Research Index",
+    "subFeatured":     "Featured",
+    "subReference":    "Reference",
+    "subBackground":   "Background",
+    "statNotes":       "Notes in this domain",
+    "statFeatured":    "Featured",
+    "statReference":   "Reference",
+    "statBackground":  "Background",
+    "tierOne":         "Featured",
+    "tierTwo":         "Reference",
+    "tierThree":       "Background",
+    "phasesShort":     "phases",
+    "noPhases":        "no specific phase",
+    "coverageEyebrow": "Phase coverage in this domain",
+    "coverageNote":    "Numbers show how many notes in this domain map to that phase.",
+    "navPrev":         "Previous domain",
+    "navNext":         "Next domain",
+    "navBack":         "All eight domains",
+    "ctaEyebrow":      "From reference to evidence",
+    "ctaHeadline":     "Validate these gaps in your own environment.",
+    "ctaButton":       "Book a demo"
+} %}
+{% else %}
+{% set s = {
+    "eyebrow":         "VORNAC RESEARCH",
+    "breadcrumbHome":  "Research Index",
+    "subFeatured":     "Featured",
+    "subReference":    "Referenz",
+    "subBackground":   "Background",
+    "statNotes":       "Notizen in dieser Domain",
+    "statFeatured":    "Featured",
+    "statReference":   "Referenz",
+    "statBackground":  "Background",
+    "tierOne":         "Featured",
+    "tierTwo":         "Referenz",
+    "tierThree":       "Background",
+    "phasesShort":     "Phasen",
+    "noPhases":        "keine spezifische Phase",
+    "coverageEyebrow": "Phasenabdeckung in dieser Domain",
+    "coverageNote":    "Die Zahlen zeigen, wie viele Notizen dieser Domain auf die Phase abgebildet sind.",
+    "navPrev":         "Vorherige Domain",
+    "navNext":         "Nächste Domain",
+    "navBack":         "Alle acht Domains",
+    "ctaEyebrow":      "Von der Referenz zum Befund",
+    "ctaHeadline":     "Validieren Sie diese Lücken in Ihrer eigenen Umgebung.",
+    "ctaButton":       "Demo buchen"
+} %}
+{% endif %}
+
+{# Phase chip macro (mirrors the index). #}
+{% macro phaseChip(key, cls) %}
+  <span class="{{ cls or 'rs-phase-chip' }}">{{ research.phases[key][locale] }}</span>
+{% endmacro %}
+
+{# Resolve prev/next domain by indexing the source array — Eleventy's own
+   pagination.previous/next behave inconsistently with size=1 across versions,
+   so we do the lookup ourselves from a single source of truth. #}
+{% set pageIdx = pagination.pageNumber %}
+{% set prevDomain = research.domains[pageIdx - 1] if pageIdx > 0 else null %}
+{% set nextDomain = research.domains[pageIdx + 1] if pageIdx < (research.domains.length - 1) else null %}
+{% set baseHref = "/research/" if locale == "en" else "/de/research/" %}
+{% set noteBase = baseHref + domain.id + "/" %}
+
+<section class="rs-domain-hero">
+    <div class="rs-domain-hero-inner">
+        <nav class="rs-breadcrumb" aria-label="breadcrumb">
+            <a href="{{ pageUrls.research }}">{{ s.breadcrumbHome }}</a>
+            <span class="rs-breadcrumb-sep">/</span>
+            <span class="rs-breadcrumb-now">{{ domain.number }} · {{ domain.title[locale] }}</span>
+        </nav>
+        <p class="rs-domain-hero-eyebrow">{{ s.eyebrow }}</p>
+        <div class="rs-domain-hero-grid">
+            <div class="rs-domain-hero-num">{{ domain.number }}</div>
+            <div class="rs-domain-hero-text">
+                <h1 class="rs-domain-hero-title">{{ domain.title[locale] }}<span class="rs-period">.</span></h1>
+                <p class="rs-domain-hero-blurb">{{ domain.blurb[locale] }}</p>
+            </div>
+        </div>
+        <div class="rs-domain-hero-stats">
+            <div>
+                <div class="rs-stat-num">{{ domain.count }}</div>
+                <div class="rs-stat-label">{{ s.statNotes }}</div>
+            </div>
+            <div>
+                <div class="rs-stat-num">{{ domain.featured.length }}</div>
+                <div class="rs-stat-label">{{ s.statFeatured }}</div>
+            </div>
+            <div>
+                <div class="rs-stat-num">{{ domain.reference.length }}</div>
+                <div class="rs-stat-label">{{ s.statReference }}</div>
+            </div>
+            <div>
+                <div class="rs-stat-num">{{ domain.background.length }}</div>
+                <div class="rs-stat-label">{{ s.statBackground }}</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="rs-domain">
+    <div class="rs-domain-inner">
+
+        {# ── Featured (Tier 1) ────────────────────────────── #}
+        {% if domain.featured.length > 0 %}
+        <div class="rs-sub-block" data-sub="featured">
+            <p class="rs-sub-label">{{ s.subFeatured }}</p>
+            <div class="rs-featured">
+                {% for n in domain.featured %}
+                <article class="rs-note-featured" data-tier="1" data-note="{{ n.id }}">
+                    <div class="rs-note-meta">
+                        <span class="rs-tier-badge">{{ s.tierOne }}</span>
+                        <div class="rs-note-meta-line">
+                            {% if n.phases.length > 0 %}
+                                {{ n.phases.length }} {{ s.phasesShort }}
+                            {% else %}
+                                {{ s.noPhases }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="rs-note-body">
+                        <h3 class="rs-note-title">
+                            <a class="rs-note-title-link" href="{{ noteBase }}{{ n.id }}/">
+                                {{ n.title[locale] }}
+                                <span class="rs-note-link-arrow" aria-hidden="true">→</span>
+                            </a>
+                        </h3>
+                        <p class="rs-note-blurb">{{ n.blurb[locale] }}</p>
+                        {% if n.phases.length > 0 %}
+                        <div class="rs-phase-chips">
+                            {% for p in n.phases %}{{ phaseChip(p) }}{% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        {# ── Reference (Tier 2) ───────────────────────────── #}
+        {% if domain.reference.length > 0 %}
+        <div class="rs-sub-block" data-sub="reference">
+            <p class="rs-sub-label">{{ s.subReference }}</p>
+            <div class="rs-reference">
+                {% for n in domain.reference %}
+                <article class="rs-note-ref" data-tier="2" data-note="{{ n.id }}">
+                    <div class="rs-ref-meta">{{ s.tierTwo }}</div>
+                    <h3 class="rs-ref-title">
+                        <a class="rs-ref-title-link" href="{{ noteBase }}{{ n.id }}/">
+                            {{ n.title[locale] }}
+                            <span class="rs-note-link-arrow" aria-hidden="true">→</span>
+                        </a>
+                    </h3>
+                    <p class="rs-ref-blurb">{{ n.blurb[locale] }}</p>
+                    {% if n.phases.length > 0 %}
+                    <div class="rs-ref-phases">
+                        {% for p in n.phases %}<span class="rs-ref-phase">{{ research.phases[p][locale] }}</span>{% endfor %}
+                    </div>
+                    {% endif %}
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        {# ── Background (Tier 3) ──────────────────────────── #}
+        {% if domain.background.length > 0 %}
+        <div class="rs-sub-block" data-sub="background">
+            <p class="rs-sub-label">{{ s.subBackground }}</p>
+            <ul class="rs-bg-list">
+                {% for n in domain.background %}
+                <li class="rs-bg-item" data-tier="3" data-note="{{ n.id }}">
+                    <div class="rs-bg-title">
+                        <a class="rs-bg-title-link" href="{{ noteBase }}{{ n.id }}/">
+                            {{ n.title[locale] }}
+                            <span class="rs-note-link-arrow" aria-hidden="true">→</span>
+                        </a>
+                    </div>
+                    <p class="rs-bg-blurb">{{ n.blurb[locale] }}</p>
+                    <div class="rs-bg-phases">
+                        {% if n.phases.length > 0 %}
+                            {% for p in n.phases %}{{ research.phases[p][locale] }}{% if not loop.last %} · {% endif %}{% endfor %}
+                        {% else %}
+                            &mdash;
+                        {% endif %}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+    </div>
+</section>
+
+<nav class="rs-domain-nav" aria-label="{{ s.navBack }}">
+    <div class="rs-domain-nav-inner">
+        {% if prevDomain %}
+            <a class="rs-domain-nav-link rs-domain-nav-prev" href="{{ baseHref }}{{ prevDomain.id }}/">
+                <span class="rs-domain-nav-label">{{ s.navPrev }}</span>
+                <span class="rs-domain-nav-title">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M13 7H1M1 7L6 12M1 7L6 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    {{ prevDomain.number }} · {{ prevDomain.title[locale] }}
+                </span>
+            </a>
+        {% else %}
+            <span class="rs-domain-nav-link rs-domain-nav-prev is-empty" aria-hidden="true"></span>
+        {% endif %}
+
+        <a class="rs-domain-nav-back" href="{{ pageUrls.research }}">
+            {{ s.navBack }}
+        </a>
+
+        {% if nextDomain %}
+            <a class="rs-domain-nav-link rs-domain-nav-next" href="{{ baseHref }}{{ nextDomain.id }}/">
+                <span class="rs-domain-nav-label">{{ s.navNext }}</span>
+                <span class="rs-domain-nav-title">
+                    {{ nextDomain.number }} · {{ nextDomain.title[locale] }}
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M1 7H13M13 7L8 2M13 7L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+            </a>
+        {% else %}
+            <span class="rs-domain-nav-link rs-domain-nav-next is-empty" aria-hidden="true"></span>
+        {% endif %}
+    </div>
+</nav>
+
+<section class="rs-cta">
+    <div class="rs-cta-inner">
+        <div>
+            <p class="rs-cta-eyebrow">{{ s.ctaEyebrow }}</p>
+            <h2 class="rs-cta-headline">{{ s.ctaHeadline }}</h2>
+        </div>
+        {% include "partials/hero-demo-button.njk" %}
+    </div>
+</section>

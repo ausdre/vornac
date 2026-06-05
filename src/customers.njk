@@ -1,0 +1,110 @@
+---
+title: "Customers · Why CISOs choose VORNAC | VORNAC"
+description: "The teams that run continuous validation with VORNAC: banks, insurers, KRITIS operators, OEMs. In their own words."
+i18nKey: customers
+ogType: website
+---
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+{% include "partials/customers-styles.njk" %}
+{% endblock %}
+
+{% block content %}
+<section class="cust-hero">
+    <div class="cust-hero-inner">
+        <h1 class="cust-hero-headline">
+            <span>The teams</span>
+            <span>that ship secure.</span>
+        </h1>
+        <p class="cust-hero-subline">
+            Banks, insurers, KRITIS operators, and OEMs run continuous validation with VORNAC. In their own words, and the logos to back it up.
+        </p>
+    </div>
+</section>
+
+<section class="logo-wall">
+    <div class="logo-wall-inner">
+        <h2 class="logo-wall-headline">
+            Security teams in regulated industries, <em>across the DACH region</em>.
+        </h2>
+        <div class="logo-grid">
+            <div class="logo-cell"><img src="/client-zeiss.png" alt="Carl Zeiss"></div>
+            <div class="logo-cell"><img src="/client-penny.png" alt="Penny / REWE Group"></div>
+            <div class="logo-cell"><img src="/client-1.png" alt="mbits GmbH"></div>
+            <div class="logo-cell"><img src="/client-hochwarth.png" alt="Hochwarth IT GmbH"></div>
+            <div class="logo-cell"><img src="/client-pfitzenmeier.png" alt="Pfitzenmeier"></div>
+            <div class="logo-cell"><img src="/logo_ipcrew.png" alt="IP-Crew GmbH"></div>
+            <div class="logo-cell"><img src="/client-3.png" alt="Instaffo GmbH"></div>
+            <div class="logo-cell"><img src="/client-refundrebel.png" alt="RefundRebel"></div>
+            <div class="logo-cell"><img src="/client-2.png" alt="Knooing"></div>
+            <div class="logo-cell"><img src="/client-5.png" alt="tilko GmbH"></div>
+        </div>
+    </div>
+</section>
+
+<section class="quotes">
+    <div class="quotes-inner">
+        <header class="quotes-header">
+            <h2 class="quotes-headline">
+                Why C-Level in regulated industries <em>switched to continuous validation</em>.
+            </h2>
+        </header>
+        <div class="quotes-grid">
+
+            <article class="quote-card">
+                <div class="quote-mark">"</div>
+                <p class="quote-text">We build software for hospitals. Security isn't a feature, it's table stakes. Our partners need to hit the same bar we hold ourselves to. VORNAC delivers on both fronts. Instead of one-off engagements, we get continuous testing that matches our release cadence, findings we can ship straight into the backlog, and full visibility into our security posture at any moment. A partner that operates as an extension of our team, and one we recommend to our healthcare customers without hesitation.</p>
+                <div class="quote-attribution">
+                    <span class="quote-name">Michael Müller</span>
+                    <span class="quote-role">CEO</span>
+                    <span class="quote-company">mbits GmbH · Healthcare Software</span>
+                </div>
+            </article>
+
+            <article class="quote-card">
+                <div class="quote-mark">"</div>
+                <p class="quote-text">Test results flow straight into our internal ticketing system. Findings are prioritized by technical severity. Our engineering team works through them as regular development tasks. The exact technical write-ups eliminate long alignment rounds on reproducing the bug.</p>
+                <div class="quote-attribution">
+                    <span class="quote-name">Nikolai Gulatz</span>
+                    <span class="quote-role">CIO</span>
+                    <span class="quote-company">Instaffo GmbH · HR Tech</span>
+                </div>
+            </article>
+
+            <article class="quote-card">
+                <div class="quote-mark">"</div>
+                <p class="quote-text">VORNAC's licensing is a flat fee. That lets us bake security into every new software module as a fixed line item from day one. Unlimited test runs mean predictable budgets for our mid-market clients. No surprises.</p>
+                <div class="quote-attribution">
+                    <span class="quote-name">Bernhard Gauß</span>
+                    <span class="quote-role">Managing Director</span>
+                    <span class="quote-company">IP-Crew GmbH · IT Services</span>
+                </div>
+            </article>
+
+            <article class="quote-card">
+                <div class="quote-mark">"</div>
+                <p class="quote-text">As a Wi-Fi and network specialist, we build the infrastructure our customers run their business on, and that responsibility doesn't end at handover. With VORNAC, we have a partner that probes those networks continuously and autonomously, not once a year. We catch risks before they turn into incidents, and we can show our customers hard evidence that the networks we operate are secure.</p>
+                <div class="quote-attribution">
+                    <span class="quote-name">Christopher Wesch</span>
+                    <span class="quote-role">Managing Director</span>
+                    <span class="quote-company">tilko GmbH · Network Infrastructure</span>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<section class="cust-cta">
+    <div class="cust-cta-inner">
+        <h2 class="cust-cta-headline">
+            See what continuous validation <em>looks like</em> in your environment.
+        </h2>
+        <p class="cust-cta-sub">
+            30-minute session with our team. No procurement gymnastics.
+        </p>
+        {% include "partials/hero-demo-button.njk" %}
+    </div>
+</section>
+{% endblock %}

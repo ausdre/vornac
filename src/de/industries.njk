@@ -1,0 +1,95 @@
+---
+title: "Industrien · Kontinuierliche Validierung nach Sektor | VORNAC"
+description: "VORNAC kontinuierliches Pentesting, zugeordnet zu den Regelwerken der jeweiligen Branche: DORA, NIS2, KRITIS, BaFin VAIT/BAIT und TISAX."
+i18nKey: industries
+ogType: website
+---
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+<link rel="stylesheet" href="/industries.css">
+{% endblock %}
+
+{% block content %}
+<main class="ind-hub">
+    <div class="ind-hub-hero">
+        <h1 class="ind-hub-headline">
+            Die richtige Industrie. <span class="ind-hub-headline-emph">Mit kontinuierlicher Validierung zur maximalen Compliance und Sicherheit.</span>
+        </h1>
+        <p class="ind-hub-sub">
+            VORNAC ordnet jeden Befund so ein, dass er immer im Kontext des Unternehmens steht. Damit ist sofort klar: Welchen Impact hat die Schwachstelle für genau diese Industrie?
+        </p>
+    </div>
+
+    <div class="ind-hub-list-wrap">
+        <nav class="ind-hub-list" aria-label="Industrien nach Sektor">
+
+            <a href="{{ pageUrls['industries-insurance'] }}" class="ind-hub-row">
+                <div class="ind-hub-row-inner">
+                    <span class="ind-hub-row-num" aria-hidden="true">1</span>
+                    <div class="ind-hub-row-body">
+                        <span class="ind-hub-row-fw">DORA</span>
+                        <h2 class="ind-hub-row-title">Versicherung</h2>
+                        <p class="ind-hub-row-desc">IKT-Risikomanagement, Resilienztests und Drittparteienmanagement für Versicherer und Versicherungsgruppen.</p>
+                    </div>
+                    <span class="ind-hub-row-go" aria-hidden="true">→</span>
+                </div>
+            </a>
+
+            <a href="{{ pageUrls['industries-financial-services'] }}" class="ind-hub-row">
+                <div class="ind-hub-row-inner">
+                    <span class="ind-hub-row-num" aria-hidden="true">2</span>
+                    <div class="ind-hub-row-body">
+                        <span class="ind-hub-row-fw">DORA · VAIT · BAIT</span>
+                        <h2 class="ind-hub-row-title">Finanzdienstleistungen</h2>
+                        <p class="ind-hub-row-desc">Banken, Zahlungsinstitute und Vermögensverwalter. Operationelle Resilienz nach DORA, in der Tiefe von VAIT und BAIT.</p>
+                    </div>
+                    <span class="ind-hub-row-go" aria-hidden="true">→</span>
+                </div>
+            </a>
+
+            <a href="{{ pageUrls['industries-critical-infrastructure'] }}" class="ind-hub-row">
+                <div class="ind-hub-row-inner">
+                    <span class="ind-hub-row-num" aria-hidden="true">3</span>
+                    <div class="ind-hub-row-body">
+                        <span class="ind-hub-row-fw">KRITIS · NIS2</span>
+                        <h2 class="ind-hub-row-title">Kritische Infrastruktur</h2>
+                        <p class="ind-hub-row-desc">Energie, Verkehr, Gesundheitswesen, KRITIS-Betreiber. Resilienz nach BSI-Vorgaben und NIS2.</p>
+                    </div>
+                    <span class="ind-hub-row-go" aria-hidden="true">→</span>
+                </div>
+            </a>
+
+            <a href="{{ pageUrls['industries-automotive'] }}" class="ind-hub-row">
+                <div class="ind-hub-row-inner">
+                    <span class="ind-hub-row-num" aria-hidden="true">4</span>
+                    <div class="ind-hub-row-body">
+                        <span class="ind-hub-row-fw">TISAX</span>
+                        <h2 class="ind-hub-row-title">Automotive</h2>
+                        <p class="ind-hub-row-desc">OEMs und Zulieferer. TISAX mit kontinuierlicher Validierung vernetzter Systeme und Binaries.</p>
+                    </div>
+                    <span class="ind-hub-row-go" aria-hidden="true">→</span>
+                </div>
+            </a>
+
+            <a href="{{ pageUrls['industries-enterprise'] }}" class="ind-hub-row">
+                <div class="ind-hub-row-inner">
+                    <span class="ind-hub-row-num" aria-hidden="true">5</span>
+                    <div class="ind-hub-row-body">
+                        <span class="ind-hub-row-fw">NIS2</span>
+                        <h2 class="ind-hub-row-title">Enterprise</h2>
+                        <p class="ind-hub-row-desc">Wesentliche und wichtige Einrichtungen. Maßnahmen nach Artikel 21, live in Produktion belegt.</p>
+                    </div>
+                    <span class="ind-hub-row-go" aria-hidden="true">→</span>
+                </div>
+            </a>
+
+        </nav>
+    </div>
+
+    <div class="ind-hub-platform">
+        <p class="ind-hub-platform-text">Methodik, Scope und Nachweise auf der Produktseite.</p>
+        <a href="{{ pageUrls.pentesting }}" class="ind-hub-platform-link">So arbeitet VORNAC →</a>
+    </div>
+</main>
+{% endblock %}

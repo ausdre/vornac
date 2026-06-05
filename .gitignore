@@ -28,9 +28,22 @@ Thumbs.db
 
 # Project Specific
 .ihatevercel
+
+# Scratch directories (design-iter screenshots, compound-engineering local, cursor hook state)
+.design-iter/
+.compound-engineering/
+.cursor/hooks/state/
 pentest-report.html
 .dummy
+
+# Raw research corpus — source-only mindmap dump used during Research-index
+# curation. The published Research section lives in src/_data/research.js;
+# this directory stays local so the raw source material is not redistributed.
+somedata/
 
 # Environment files (always good practice even if not present yet)
 .env
 *.local
+
+# Compound Engineering local config
+.compound-engineering/*.local.yaml

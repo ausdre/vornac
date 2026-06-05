@@ -1,0 +1,87 @@
+---
+title: "Automotive · TISAX & kontinuierliche Validierung | VORNAC"
+description: "Kontinuierliches Pentesting für OEMs und Zulieferer in der Automobilindustrie. TISAX-konforme Validierung plus adversariale Tests vernetzter Fahrzeuge, APIs und Binaries."
+i18nKey: industries-automotive
+ogType: website
+---
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+<link rel="stylesheet" href="/industries.css">
+{% endblock %}
+
+{% block content %}
+<main class="ind-page">
+    <section class="ind-hero">
+        <div class="ind-hero-inner">
+            <p class="ind-hero-breadcrumb"><a href="{{ pageUrls.industries }}">Industrien</a> / Automotive</p>
+            <span class="ind-hero-framework">TISAX</span>
+            <h1 class="ind-hero-headline">Sicherheitsvalidierung für <span class="ind-hero-headline-emph">Automotive-Lieferketten</span></h1>
+            <p class="ind-hero-sub">OEMs und Zulieferer müssen TISAX und Kunden-Audits bestehen, und gleichzeitig vernetzte Software schneller ausliefern. VORNAC liefert kontinuierliche und belegte Validierung über Web, APIs, Binaries und Cloud. Mit Evidenz, die Prüfer akzeptieren.</p>
+            <div class="ind-hero-actions">
+                {% include "partials/hero-demo-button.njk" %}
+                <a href="{{ pageUrls.pentesting }}#coverage" class="ind-btn-ghost">Zum Scope</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="ind-section ind-section--cream">
+        <div class="ind-section-inner">
+            <header class="ind-section-head">
+                <h2 class="ind-section-title">Was TISAX und OEM-Programme verlangen</h2>
+                <p class="ind-section-lead">Das Informationssicherheits-Assessment der Automobilindustrie, plus kundenspezifische Anforderungen an vernetzte Produkte.</p>
+            </header>
+            <div class="ind-req-grid">
+                <article class="ind-req-card"><h3 class="ind-req-card-title">TISAX-Assessment-Ziele</h3><p class="ind-req-card-desc">Schutzstufen nach VDA ISA: Prototypenschutz, Datenschutz, Anbindung Dritter.</p></article>
+                <article class="ind-req-card"><h3 class="ind-req-card-title">Connected Vehicle &amp; Backend</h3><p class="ind-req-card-desc">Telematik, OTA-Updates, Mobile Apps, API-Backends. Echte Angriffspfade. Keine Checkbox-Scans.</p></article>
+                <article class="ind-req-card"><h3 class="ind-req-card-title">Binaries &amp; Embedded Software</h3><p class="ind-req-card-desc">.exe, .dmg, Firmware, ECU-Artefakte. Reverse Engineering und Exploit-Validierung, wo es zählt.</p></article>
+                <article class="ind-req-card"><h3 class="ind-req-card-title">Tier-N-Kaskade</h3><p class="ind-req-card-desc">Zulieferer aller Stufen müssen denselben Anspruch belegen wie OEMs. Kontinuierliche Evidenz schlägt jährliche Audit-Snapshots.</p></article>
+            </div>
+        </div>
+    </section>
+
+    <section class="ind-gap-band">
+        <div class="ind-gap-inner">
+            <div>
+                <h2 class="ind-gap-title">TISAX alle drei Jahre. Code-Releases jede Woche.</h2>
+                <p class="ind-gap-text">Neue Fahrzeuglinien, Zulieferer-Integrationen und OTA-Releases verändern die Angriffsfläche zwischen den Assessments. Kontinuierliche Validierung hält Label und Kundenvertrauen.</p>
+            </div>
+            <div class="ind-gap-stat">
+                <div class="ind-gap-stat-num">2–5h</div>
+                <p class="ind-gap-stat-label">Vom Trigger zum umsetzbaren Befund, bei jedem Release.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="ind-section ind-section--dark">
+        <div class="ind-section-inner">
+            <header class="ind-section-head ind-section-head--light"><h2 class="ind-section-title">So hilft VORNAC der Automotive-Industrie</h2></header>
+            <ul class="ind-help-list">
+                <li class="ind-help-item"><span class="ind-help-num">1</span><div><h3 class="ind-help-title">Reports mit TISAX-Mapping</h3><p class="ind-help-desc">Befunde auf Assessment-Ziele und Kontrollerwartungen gemappt. Direkt verwendbar für ENX und Kunden-Audits.</p></div></li>
+                <li class="ind-help-item"><span class="ind-help-num">2</span><div><h3 class="ind-help-title">Full-Stack-Scope</h3><p class="ind-help-desc">Externe Angriffsfläche, Cloud, APIs, Binaries (.exe, .dmg, .apk). Eine Plattform, eine Evidenzkette.</p></div></li>
+                <li class="ind-help-item"><span class="ind-help-num">3</span><div><h3 class="ind-help-title">Betrieb in EU und Deutschland</h3><p class="ind-help-desc">Kein US-Tooling auf Prototypen- und Produktionsdaten. Gebaut für europäische Automotive-Lieferketten.</p></div></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="ind-related">
+        <div class="ind-related-inner">
+            <p class="ind-related-title">Auch relevant</p>
+            <div class="ind-related-links">
+                <a href="{{ pageUrls['industries-enterprise'] }}" class="ind-related-link">Enterprise (NIS2)</a>
+                <a href="{{ pageUrls['industries-critical-infrastructure'] }}" class="ind-related-link">Kritische Infrastruktur</a>
+                <a href="{{ pageUrls.pentesting }}" class="ind-related-link">VORNAC Pentesting</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="ind-cta">
+        <div class="ind-cta-inner">
+            <h2 class="ind-cta-headline">TISAX-Evidenz <em>aktuell</em> halten, zwischen den Assessments.</h2>
+            <div class="ind-cta-actions">
+                {% include "partials/hero-demo-button.njk" %}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

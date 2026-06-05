@@ -1,0 +1,68 @@
+{# Page meta + Open Graph + hreflang. Driven by page front-matter:
+     title:           required, full <title>
+     description:     required, meta description
+     ogImage:         optional, defaults to site.socialPreviewImage
+     ogType:          optional, defaults to "website"
+     i18nKey:         optional, opts the page into bilingual hreflang from pages.js
+#}
+<meta charset="UTF-8">
+<title>{{ title }}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="{{ description }}">
+
+<link rel="canonical" href="{{ canonicalPath | absoluteUrl(site.domain) }}">
+
+{# hreflang: each page declares its i18nKey, we pull both URLs from the registry. #}
+{% if i18nKey %}
+  {% for p in pages %}
+    {% if p.key == i18nKey %}
+      {% if p.en %}<link rel="alternate" hreflang="en" href="{{ p.en | absoluteUrl(site.domain) }}">{% endif %}
+      {% if p.de %}<link rel="alternate" hreflang="de" href="{{ p.de | absoluteUrl(site.domain) }}">{% endif %}
+      {% if p.en %}<link rel="alternate" hreflang="x-default" href="{{ p.en | absoluteUrl(site.domain) }}">{% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<meta property="og:type" content="{{ ogType or 'website' }}">
+<meta property="og:url" content="{{ canonicalPath | absoluteUrl(site.domain) }}">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:image" content="{{ (ogImage or site.socialPreviewImage) | absoluteUrl(site.domain) }}">
+<meta property="og:locale" content="{{ 'de_DE' if locale == 'de' else 'en_US' }}">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ title }}">
+<meta name="twitter:description" content="{{ description }}">
+<meta name="twitter:image" content="{{ (ogImage or site.socialPreviewImage) | absoluteUrl(site.domain) }}">
+
+<link rel="icon" type="image/svg+xml" href="{{ site.logos.favicon }}">
+<link rel="stylesheet" href="/output.css">
+
+{# Logo intro gate — read once, sync, before <body> renders so the CSS
+   selector `body.logo-intro-played .v-logo-letter { opacity: 0 }` is
+   applied on first paint and the ORNAC letters never flash on subsequent
+   visits. The flag is set the first time the intro plays through (see
+   site-header.njk). #}
+<script>
+(function () {
+    try {
+        if (localStorage.getItem('vornac_logo_intro_played') === '1') {
+            document.documentElement.classList.add('logo-intro-played');
+        }
+    } catch (e) {}
+})();
+</script>
+<style>
+    /* Mirror the body-class gate onto the documentElement so the inline
+       script above can apply it before <body> exists. Both targets work. */
+    html.logo-intro-played .nav-logo-svg .v-logo-letter {
+        opacity: 0 !important;
+        transform: translateX(-150px) !important;
+        animation: none !important;
+    }
+    html.logo-intro-played .nav-logo-svg .v-logo-mark {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+    }
+</style>

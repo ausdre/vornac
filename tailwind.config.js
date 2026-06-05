@@ -1,22 +1,38 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
+    // Legacy static HTML (kept during migration so old pages still get utilities)
     './*.html',
-    './src/**/*.{js,ts,jsx,tsx}',
+    // New Eleventy templates + partials + layouts
+    './src/**/*.{njk,html,js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
       colors: {
         'vornac-black': '#020308',
-        'vornac-gold': '#FFA326',
+        'vornac-gold': '#ffa317',
         'vornac-grey-dark': '#111317',
         'vornac-grey-top': '#1C1E23',
         'vornac-grey-light': '#C0C3C8',
         'vornac-red': '#FF4B4B',
+        amber: {
+          50:  '#fff7e9',
+          100: '#ffecc7',
+          200: '#ffd591',
+          300: '#ffc35a',
+          400: '#ffb33a',
+          500: '#ffa317',
+          600: '#d68500',
+          700: '#a36800',
+          800: '#7a4f00',
+          900: '#523500',
+        },
       },
       fontFamily: {
-        heading: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
-        body: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['"Saira Condensed"', '"Archivo"', 'system-ui', 'sans-serif'],
+        heading: ['"Archivo"', 'system-ui', 'sans-serif'],
+        body: ['"Archivo"', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
       maxWidth: {
         content: '72rem', // 1152px

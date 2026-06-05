@@ -1,0 +1,42 @@
+{# Hero-style "Book a demo" — the amber-outline pill from the homepage hero
+   that morphs into an inline email-capture on hover (desktop) or tap (mobile),
+   submits to Formspree, and opens a thank-you overlay.
+
+   Reusable: drop this partial in any section to replace a generic Book-a-demo
+   button. Every instance gets a unique form id (random per build) so multiple
+   instances on one page don't collide, and the page-level
+   `partials/hero-demo-script.njk` powers all of them at once.
+
+   Variables:
+     btnLabel       — overrides the trigger label (default: locale-aware "Book a demo")
+     btnSource      — optional Formspree `source` value to identify the placement #}
+
+{% set hd_id   = "demo-" ~ (range(0, 999999) | random) %}
+{% set hd_lbl  = btnLabel or t.nav.bookDemo %}
+{% set hd_src  = btnSource or i18nKey or 'inline-cta' %}
+
+<form class="v-hero-demo v-hero-demo--inline"
+      id="{{ hd_id }}"
+      data-hero-demo
+      action="https://formspree.io/f/meoyrzog"
+      method="POST">
+    <input type="text" name="gotcha" class="hidden" autocomplete="off" tabindex="-1" aria-hidden="true">
+    <input type="hidden" name="_subject" value="Demo request · {{ hd_src }} · vornac.com">
+    <input type="hidden" name="source" value="{{ hd_src }}">
+    <button type="button" class="v-hero-demo-trigger" aria-expanded="false" aria-controls="{{ hd_id }}-input">
+        {{ hd_lbl }}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+        </svg>
+    </button>
+    <div class="v-hero-demo-reveal">
+        <input type="email" id="{{ hd_id }}-input" name="email" class="v-hero-demo-input" placeholder="{{ 'sie@unternehmen.de' if locale == 'de' else 'you@company.com' }}" aria-label="{{ 'Geschäftliche E-Mail' if locale == 'de' else 'Work email' }}" autocomplete="email" required>
+        <button type="submit" class="v-hero-demo-submit" aria-label="{{ 'Demo anfordern' if locale == 'de' else 'Request your demo' }}">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+            </svg>
+        </button>
+    </div>
+</form>

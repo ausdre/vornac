@@ -1,0 +1,1520 @@
+/* ============================================ */
+/* Research page — section-scoped styles        */
+/* ============================================ */
+/* Global tokens (--v-*), .bg-warm utilities,   */
+/* .v-announcement, and mobile menu animations  */
+/* live in src/input.css and are global.        */
+/*                                              */
+/* Visual idiom: library catalog, not SaaS.     */
+/* No card frames, no gray section bands,       */
+/* separation via whitespace + 1px hairlines.   */
+/* ============================================ */
+
+/* ============================================ */
+/* Hero                                         */
+/* ============================================ */
+
+.rs-hero {
+    background: #ffffff;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.rs-hero-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 120px 40px 64px;
+    text-align: center;
+}
+
+.rs-hero-eyebrow {
+    font-family: var(--v-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+    margin: 0 0 32px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.rs-hero-eyebrow::before {
+    content: '';
+    width: 22px;
+    height: 1px;
+    background: var(--v-amber);
+}
+
+.rs-hero-headline {
+    font-family: var(--v-display);
+    font-size: clamp(56px, 9vw, 128px);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+    font-weight: 900;
+    color: var(--v-ink);
+    margin: 0 auto 32px;
+    max-width: 14ch;
+}
+
+.rs-hero-headline .rs-period {
+    color: var(--v-amber);
+}
+
+.rs-hero-subline {
+    font-family: var(--v-sans);
+    font-size: clamp(17px, 1.5vw, 20px);
+    line-height: 1.55;
+    color: var(--v-ink-2);
+    max-width: 64ch;
+    margin: 0 auto 24px;
+    font-weight: 400;
+}
+
+.rs-hero-glossary {
+    margin: 0 auto 56px;
+    font-family: var(--v-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--v-ink-3);
+}
+
+.rs-hero-glossary-link {
+    color: var(--v-amber);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 163, 23, 0.4);
+    padding-bottom: 1px;
+    margin-left: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 140ms ease, border-color 140ms ease;
+}
+
+.rs-hero-glossary-link:hover {
+    color: var(--v-ink);
+    border-bottom-color: var(--v-ink);
+}
+
+.rs-hero-glossary-link svg { transition: transform 140ms ease; }
+.rs-hero-glossary-link:hover svg { transform: translateX(2px); }
+
+/* Stats strip — four columns, mono labels, Saira numbers */
+.rs-hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding-top: 40px;
+    border-top: 1px solid var(--v-line);
+}
+
+.rs-stat-num {
+    font-family: var(--v-display);
+    font-weight: 800;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1;
+    color: var(--v-ink);
+    letter-spacing: -0.02em;
+}
+
+.rs-stat-label {
+    margin-top: 10px;
+    font-family: var(--v-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+}
+
+@media (max-width: 720px) {
+    .rs-hero-inner { padding: 88px 22px 48px; }
+    .rs-hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+}
+
+/* ============================================ */
+/* Filter strip (anchor index, tier toggles)    */
+/* ============================================ */
+
+.rs-filter {
+    background: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    border-top: 1px solid var(--v-line);
+    border-bottom: 1px solid var(--v-line);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.92);
+}
+
+.rs-filter-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.rs-filter-label {
+    font-family: var(--v-mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+}
+
+.rs-tier-toggles {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    border: 1px solid var(--v-line);
+    border-radius: 999px;
+}
+
+.rs-tier-toggle {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    font-family: var(--v-mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--v-ink-2);
+    padding: 7px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 160ms ease, color 160ms ease;
+}
+
+.rs-tier-toggle:hover { color: var(--v-ink); }
+
+.rs-tier-toggle.is-active {
+    background: var(--v-ink);
+    color: #ffffff;
+}
+
+.rs-domain-jump {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-family: var(--v-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+}
+
+.rs-domain-jump a {
+    color: var(--v-ink-3);
+    text-decoration: none;
+    padding: 4px 6px;
+    transition: color 140ms ease;
+}
+
+.rs-domain-jump a:hover { color: var(--v-ink); }
+
+@media (max-width: 980px) {
+    .rs-domain-jump { display: none; }
+}
+@media (max-width: 640px) {
+    .rs-filter-inner { padding: 12px 18px; }
+    .rs-tier-toggle { padding: 6px 10px; font-size: 10px; }
+}
+
+/* ============================================ */
+/* Domain section — chapter layout              */
+/* ============================================ */
+
+.rs-domain {
+    background: #ffffff;
+    padding: 96px 40px 64px;
+    scroll-margin-top: 64px;
+}
+
+.rs-domain + .rs-domain { padding-top: 80px; }
+
+.rs-domain-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+/* Chapter header: big number + title on the same baseline.
+   Number is dramatically large and amber-tinted; sits in mono. */
+.rs-domain-head {
+    display: grid;
+    grid-template-columns: minmax(110px, 14%) 1fr auto;
+    gap: 40px;
+    align-items: end;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--v-ink);
+    margin-bottom: 56px;
+}
+
+.rs-domain-num {
+    font-family: var(--v-mono);
+    font-size: clamp(48px, 7vw, 88px);
+    font-weight: 700;
+    line-height: 0.9;
+    color: var(--v-amber);
+    letter-spacing: -0.02em;
+}
+
+.rs-domain-titleblock { padding-bottom: 8px; }
+
+.rs-domain-title {
+    font-family: var(--v-display);
+    font-size: clamp(32px, 4.2vw, 56px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    font-weight: 800;
+    color: var(--v-ink);
+    margin: 0 0 14px;
+}
+
+.rs-domain-blurb {
+    font-family: var(--v-sans);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--v-ink-2);
+    max-width: 56ch;
+    margin: 0;
+    font-weight: 400;
+}
+
+.rs-domain-count {
+    align-self: end;
+    padding-bottom: 12px;
+    text-align: right;
+    font-family: var(--v-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+}
+
+.rs-domain-count strong {
+    display: block;
+    font-family: var(--v-display);
+    font-weight: 800;
+    font-size: 34px;
+    line-height: 1;
+    color: var(--v-ink);
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+}
+
+@media (max-width: 820px) {
+    .rs-domain { padding: 72px 22px 48px; }
+    .rs-domain-head {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        align-items: start;
+    }
+    .rs-domain-num { font-size: 56px; }
+    .rs-domain-count {
+        align-self: start;
+        text-align: left;
+        padding-bottom: 0;
+        order: -1;
+    }
+    .rs-domain-count strong { display: inline; margin-right: 8px; }
+}
+
+/* ============================================ */
+/* Subsection labels inside a domain            */
+/* ============================================ */
+
+.rs-sub-label {
+    font-family: var(--v-mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+    margin: 0 0 28px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rs-sub-label::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--v-amber);
+    border-radius: 50%;
+}
+
+.rs-sub-block + .rs-sub-block { margin-top: 64px; }
+
+/* ============================================ */
+/* Tier 1 — featured entries (large typographic) */
+/* ============================================ */
+
+.rs-featured {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.rs-note-featured {
+    display: grid;
+    grid-template-columns: minmax(170px, 18%) 1fr;
+    gap: 40px;
+    padding: 32px 0;
+    border-top: 1px solid var(--v-line);
+    transition: background 160ms ease;
+}
+
+.rs-note-featured:first-child { border-top: 0; padding-top: 8px; }
+.rs-note-featured:last-child { padding-bottom: 8px; }
+.rs-note-featured:hover { background: rgba(255, 163, 23, 0.04); }
+
+.rs-note-meta {
+    font-family: var(--v-mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+    line-height: 1.6;
+    padding-top: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.rs-note-meta-line {
+    font-family: var(--v-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    color: var(--v-ink-3);
+}
+
+.rs-tier-badge {
+    display: inline-block;
+    padding: 3px 8px 4px;
+    background: var(--v-ink);
+    color: #ffffff;
+    font-family: var(--v-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    margin-bottom: 6px;
+}
+
+.rs-tier-badge--two {
+    background: var(--v-amber-soft);
+    color: var(--v-amber-deep);
+}
+
+.rs-tier-badge--three {
+    background: transparent;
+    color: var(--v-ink-3);
+    border: 1px solid var(--v-line);
+    padding: 2px 7px 3px;
+}
+
+.rs-note-body { min-width: 0; }
+
+.rs-note-title {
+    font-family: var(--v-display);
+    font-size: clamp(22px, 2.4vw, 32px);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    font-weight: 700;
+    color: var(--v-ink);
+    margin: 0 0 12px;
+}
+
+.rs-note-blurb {
+    font-family: var(--v-sans);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--v-ink-2);
+    margin: 0 0 18px;
+    max-width: 70ch;
+    font-weight: 400;
+}
+
+.rs-phase-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.rs-phase-chip {
+    font-family: var(--v-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--v-ink-2);
+    padding: 3px 9px 4px;
+    border: 1px solid var(--v-line);
+    border-radius: 999px;
+    background: #ffffff;
+    white-space: nowrap;
+}
+
+@media (max-width: 820px) {
+    .rs-note-featured {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 28px 0;
+    }
+    .rs-note-meta { padding-top: 0; }
+    .rs-note-title { font-size: 22px; }
+}
+
+/* ============================================ */
+/* Tier 2 — reference entries (2-col compact)   */
+/* ============================================ */
+
+.rs-reference {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--v-line);
+}
+
+.rs-note-ref {
+    padding: 24px 32px 24px 0;
+    border-bottom: 1px solid var(--v-line);
+    transition: background 160ms ease;
+}
+
+.rs-note-ref:nth-child(2n) {
+    padding-right: 0;
+    padding-left: 32px;
+    border-left: 1px solid var(--v-line);
+}
+
+.rs-note-ref:hover { background: rgba(255, 163, 23, 0.04); }
+
+.rs-ref-meta {
+    font-family: var(--v-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--v-amber-deep);
+    margin-bottom: 8px;
+}
+
+.rs-ref-title {
+    font-family: var(--v-display);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--v-ink);
+    margin: 0 0 8px;
+}
+
+.rs-ref-blurb {
+    font-family: var(--v-sans);
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--v-ink-2);
+    margin: 0 0 12px;
+    max-width: 60ch;
+    font-weight: 400;
+}
+
+.rs-ref-phases {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.rs-ref-phase {
+    font-family: var(--v-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--v-ink-3);
+    padding: 2px 7px 3px;
+    border: 1px solid var(--v-line-soft);
+    border-radius: 999px;
+}
+
+@media (max-width: 820px) {
+    .rs-reference { grid-template-columns: 1fr; }
+    .rs-note-ref { padding: 22px 0; }
+    .rs-note-ref:nth-child(2n) {
+        padding-left: 0;
+        border-left: 0;
+    }
+}
+
+/* ============================================ */
+/* Tier 3 — background entries (compact list)   */
+/* ============================================ */
+
+.rs-background {
+    border-top: 1px solid var(--v-line);
+}
+
+.rs-bg-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.rs-bg-item {
+    display: grid;
+    grid-template-columns: minmax(220px, 28%) 1fr auto;
+    gap: 24px;
+    align-items: baseline;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--v-line-soft);
+    transition: background 160ms ease;
+}
+
+.rs-bg-item:hover { background: rgba(255, 163, 23, 0.04); }
+
+.rs-bg-title {
+    font-family: var(--v-display);
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    color: var(--v-ink);
+    line-height: 1.25;
+}
+
+.rs-bg-blurb {
+    font-family: var(--v-sans);
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--v-ink-2);
+    margin: 0;
+    font-weight: 400;
+}
+
+.rs-bg-phases {
+    font-family: var(--v-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+    white-space: nowrap;
+}
+
+@media (max-width: 820px) {
+    .rs-bg-item {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        padding: 16px 0;
+    }
+    .rs-bg-phases { font-size: 9.5px; }
+}
+
+/* ============================================ */
+/* Methodology footer                           */
+/* ============================================ */
+
+.rs-method {
+    background: var(--v-bg-dark);
+    color: #ffffff;
+    padding: 96px 40px;
+}
+
+.rs-method-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(200px, 26%) 1fr;
+    gap: 56px;
+    align-items: start;
+}
+
+.rs-method-eyebrow {
+    font-family: var(--v-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--v-amber);
+    margin-bottom: 18px;
+}
+
+.rs-method-headline {
+    font-family: var(--v-display);
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin: 0;
+}
+
+.rs-method-body {
+    font-family: var(--v-sans);
+    font-size: 16px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.72);
+    margin: 0;
+    max-width: 62ch;
+}
+
+.rs-method-body p + p { margin-top: 18px; }
+
+.rs-method-list {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px 40px;
+    list-style: none;
+    padding: 0;
+}
+
+.rs-method-list li {
+    display: grid;
+    grid-template-columns: 18px 1fr;
+    gap: 12px;
+    align-items: start;
+    font-family: var(--v-sans);
+    font-size: 14.5px;
+    color: rgba(255, 255, 255, 0.82);
+    line-height: 1.5;
+}
+
+.rs-method-list li::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--v-amber);
+    margin-top: 7px;
+    border-radius: 50%;
+}
+
+.rs-method-list strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.rs-method-glossary {
+    margin-top: 28px;
+    font-family: var(--v-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.56);
+}
+
+.rs-method-glossary a {
+    color: var(--v-amber);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 163, 23, 0.4);
+    padding-bottom: 1px;
+    margin-left: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 140ms ease, border-color 140ms ease;
+}
+
+.rs-method-glossary a:hover {
+    color: #ffffff;
+    border-bottom-color: rgba(255, 255, 255, 0.6);
+}
+
+.rs-method-glossary a svg { transition: transform 140ms ease; }
+.rs-method-glossary a:hover svg { transform: translateX(2px); }
+
+@media (max-width: 820px) {
+    .rs-method { padding: 72px 22px; }
+    .rs-method-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+    .rs-method-list { grid-template-columns: 1fr; }
+}
+
+/* ============================================ */
+/* CTA strip                                    */
+/* ============================================ */
+
+.rs-cta {
+    background: var(--v-amber);
+    padding: 80px 40px;
+}
+
+.rs-cta-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: center;
+}
+
+.rs-cta-eyebrow {
+    font-family: var(--v-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(14, 17, 22, 0.6);
+    margin-bottom: 14px;
+}
+
+.rs-cta-headline {
+    font-family: var(--v-display);
+    font-size: clamp(28px, 3.4vw, 44px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--v-ink);
+    margin: 0;
+    max-width: 24ch;
+}
+
+.rs-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 28px;
+    background: var(--v-ink);
+    color: #ffffff;
+    font-family: var(--v-sans);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    border-radius: 999px;
+    transition: transform 160ms ease, background 160ms ease;
+}
+
+.rs-cta-btn:hover {
+    background: #000;
+    transform: translateY(-1px);
+}
+
+.rs-cta-btn svg { transition: transform 160ms ease; }
+.rs-cta-btn:hover svg { transform: translateX(3px); }
+
+@media (max-width: 820px) {
+    .rs-cta { padding: 64px 22px; }
+    .rs-cta-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+}
+
+/* ============================================ */
+/* Hidden state for tier-toggle filtering       */
+/* ============================================ */
+
+[data-tier-hidden="true"] { display: none !important; }
+
+/* When a whole sub-block is empty due to filter, fade gracefully */
+.rs-sub-block[data-empty="true"] { display: none; }
+
+/* ============================================ */
+/* Per-domain detail page                       */
+/* ============================================ */
+/* Used by /research/<id> and /de/research/<id>.*/
+/* Adds: breadcrumb, domain hero, prev/next nav.*/
+/* The featured/reference/background blocks    */
+/* below the hero reuse the index-page styles. */
+
+.rs-domain-hero {
+    background: #ffffff;
+    border-bottom: 1px solid var(--v-line);
+}
+
+.rs-domain-hero-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 96px 40px 64px;
+}
+
+.rs-breadcrumb {
+    font-family: var(--v-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.rs-breadcrumb a {
+    color: var(--v-ink-3);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--v-line);
+    transition: color 140ms ease, border-color 140ms ease;
+}
+
+.rs-breadcrumb a:hover {
+    color: var(--v-amber-deep);
+    border-bottom-color: var(--v-amber);
+}
+
+.rs-breadcrumb-sep { color: var(--v-line); }
+.rs-breadcrumb-now { color: var(--v-ink); }
+
+.rs-domain-hero-eyebrow {
+    font-family: var(--v-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--v-amber-deep);
+    margin: 0 0 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.rs-domain-hero-eyebrow::before {
+    content: '';
+    width: 22px;
+    height: 1px;
+    background: var(--v-amber);
+}
+
+.rs-domain-hero-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 48px;
+    text-align: center;
+}
+
+.rs-domain-hero-num {
+    font-family: var(--v-mono);
+    font-size: clamp(72px, 10vw, 144px);
+    line-height: 0.85;
+    color: var(--v-amber);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+}
+
+.rs-domain-hero-title {
+    font-family: var(--v-display);
+    font-size: clamp(48px, 6vw, 88px);
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+    font-weight: 900;
+    color: var(--v-ink);
+    margin: 0 auto 22px;
+    max-width: 18ch;
+}
+
+.rs-domain-hero-title .rs-period { color: var(--v-amber); }
+
+.rs-domain-hero-blurb {
+    font-family: var(--v-sans);
+    font-size: clamp(17px, 1.5vw, 21px);
+    line-height: 1.5;
+    color: var(--v-ink-2);
+    max-width: 60ch;
+    margin: 0 auto;
+    font-weight: 400;
+}
+
+.rs-domain-hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding-top: 36px;
+    border-top: 1px solid var(--v-line);
+}
+
+@media (max-width: 820px) {
+    .rs-domain-hero-inner { padding: 72px 22px 48px; }
+    .rs-domain-hero-grid {
+        gap: 16px;
+    }
+    .rs-domain-hero-num { font-size: 80px; }
+    .rs-domain-hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+}
+
+/* On the detail page, the .rs-domain section sits below the dedicated
+   hero, so it doesn't render its own large number/title header — only
+   the sub-blocks. Hide the header that the index template normally shows
+   above each domain section. The detail partial intentionally omits the
+   header, so no override needed; this block exists only to scope-reset
+   spacing for the first sub-block on a detail page. */
+.rs-domain-hero + .rs-domain .rs-domain-inner { padding-top: 56px; }
+
+/* ============================================ */
+/* Per-domain prev/next nav                     */
+/* ============================================ */
+
+.rs-domain-nav {
+    background: #ffffff;
+    border-top: 1px solid var(--v-line);
+    padding: 32px 40px;
+}
+
+.rs-domain-nav-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 24px;
+    align-items: center;
+}
+
+.rs-domain-nav-link {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 6px;
+    text-decoration: none;
+    color: var(--v-ink);
+    padding: 14px 18px;
+    border-radius: 8px;
+    transition: background 140ms ease;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.rs-domain-nav-link:hover { background: rgba(255, 163, 23, 0.06); }
+
+.rs-domain-nav-prev { justify-self: start; text-align: left; }
+.rs-domain-nav-next { justify-self: end; text-align: right; }
+.rs-domain-nav-link.is-empty { background: transparent; cursor: default; }
+
+.rs-domain-nav-label {
+    font-family: var(--v-mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+}
+
+.rs-domain-nav-title {
+    font-family: var(--v-display);
+    font-size: clamp(16px, 1.4vw, 19px);
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--v-ink);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 140ms ease;
+}
+
+.rs-domain-nav-link:hover .rs-domain-nav-title { color: var(--v-amber-deep); }
+.rs-domain-nav-link svg { transition: transform 140ms ease; flex-shrink: 0; }
+.rs-domain-nav-prev:hover svg { transform: translateX(-3px); }
+.rs-domain-nav-next:hover svg { transform: translateX(3px); }
+
+.rs-domain-nav-back {
+    justify-self: center;
+    font-family: var(--v-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid var(--v-line);
+    border-radius: 999px;
+    transition: color 140ms ease, border-color 140ms ease, background 140ms ease;
+    white-space: nowrap;
+}
+
+.rs-domain-nav-back:hover {
+    color: var(--v-ink);
+    border-color: var(--v-ink-3);
+    background: rgba(255, 163, 23, 0.04);
+}
+
+@media (max-width: 820px) {
+    .rs-domain-nav { padding: 28px 22px; }
+    .rs-domain-nav-inner {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    .rs-domain-nav-prev,
+    .rs-domain-nav-next,
+    .rs-domain-nav-back {
+        justify-self: stretch;
+        text-align: left;
+    }
+    .rs-domain-nav-back { text-align: center; order: 99; }
+    .rs-domain-nav-link.is-empty { display: none; }
+}
+
+/* ============================================ */
+/* Index page: domain headers are now real links*/
+/* ============================================ */
+/* Apply on the INDEX only — the detail page    */
+/* doesn't render this header block.            */
+
+.rs-domain-titleblock a.rs-domain-titlelink {
+    text-decoration: none;
+    color: inherit;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 14px;
+    transition: color 140ms ease;
+}
+
+.rs-domain-titleblock a.rs-domain-titlelink:hover {
+    color: var(--v-amber-deep);
+}
+
+.rs-domain-titleblock .rs-domain-arrow {
+    font-family: var(--v-mono);
+    font-size: 14px;
+    color: var(--v-ink-3);
+    transition: color 140ms ease, transform 140ms ease;
+}
+
+.rs-domain-titleblock a.rs-domain-titlelink:hover .rs-domain-arrow {
+    color: var(--v-amber);
+    transform: translateX(4px);
+}
+
+/* ============================================ */
+/* Per-note detail page                          */
+/* ============================================ */
+/* One page per consolidated research note.      */
+/* Layout: breadcrumb hero + 2-col body/aside    */
+/* + siblings strip + prev/next + CTA.           */
+/* No card frames, no section bands — separation */
+/* via whitespace and 1px hairlines.             */
+
+.rs-note-page { background: #ffffff; }
+
+.rs-note-hero {
+    background: #ffffff;
+    border-bottom: 1px solid var(--v-line);
+}
+
+.rs-note-hero-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 96px 40px 56px;
+    text-align: center;
+}
+
+.rs-note-hero-meta {
+    font-family: var(--v-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+    margin: 0 0 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.rs-note-hero-tier {
+    color: var(--v-amber-deep);
+}
+
+.rs-note-hero-dot { color: var(--v-line); }
+
+.rs-note-hero-domain a {
+    color: var(--v-ink-3);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--v-line);
+    transition: color 140ms ease, border-color 140ms ease;
+}
+
+.rs-note-hero-domain a:hover {
+    color: var(--v-amber-deep);
+    border-bottom-color: var(--v-amber);
+}
+
+.rs-note-hero-title {
+    font-family: var(--v-display);
+    font-size: clamp(40px, 5.2vw, 72px);
+    line-height: 1.0;
+    letter-spacing: -0.028em;
+    font-weight: 900;
+    color: var(--v-ink);
+    margin: 0 auto 28px;
+    max-width: 22ch;
+}
+
+.rs-note-hero-title .rs-period { color: var(--v-amber); }
+
+.rs-note-hero-lead {
+    font-family: var(--v-sans);
+    font-size: clamp(17px, 1.5vw, 21px);
+    line-height: 1.55;
+    color: var(--v-ink-2);
+    max-width: 62ch;
+    margin: 0 auto;
+    font-weight: 400;
+}
+
+/* ──────────────────────────────────────────── */
+/* Content grid: body + side                    */
+
+.rs-note-content {
+    background: #ffffff;
+}
+
+.rs-note-content-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 72px 40px 64px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 80px;
+    align-items: start;
+}
+
+.rs-note-section-heading {
+    font-family: var(--v-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+    margin: 0 0 22px;
+}
+
+.rs-note-body {}
+
+.rs-note-body p {
+    font-family: var(--v-sans);
+    font-size: clamp(16px, 1.15vw, 18px);
+    line-height: 1.7;
+    color: var(--v-ink);
+    margin: 0 0 20px;
+    font-weight: 400;
+    max-width: 64ch;
+}
+
+.rs-note-body p:last-child { margin-bottom: 0; }
+
+.rs-note-body h2 {
+    font-family: var(--v-display);
+    font-size: clamp(22px, 1.9vw, 28px);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    font-weight: 700;
+    color: var(--v-ink);
+    margin: 48px 0 18px;
+    padding-top: 24px;
+    border-top: 1px solid var(--v-line);
+}
+
+.rs-note-body h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+.rs-note-body h3 {
+    font-family: var(--v-display);
+    font-size: clamp(17px, 1.4vw, 20px);
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+    font-weight: 700;
+    color: var(--v-ink);
+    margin: 28px 0 10px;
+}
+
+.rs-note-body ul,
+.rs-note-body ol {
+    font-family: var(--v-sans);
+    font-size: clamp(16px, 1.15vw, 18px);
+    line-height: 1.6;
+    color: var(--v-ink);
+    margin: 0 0 22px;
+    padding-left: 22px;
+    max-width: 64ch;
+}
+
+.rs-note-body li {
+    margin: 0 0 10px;
+}
+
+.rs-note-body li > strong:first-child {
+    color: var(--v-ink);
+    font-weight: 700;
+}
+
+.rs-note-body ul li::marker { color: var(--v-amber); }
+.rs-note-body ol li::marker { color: var(--v-ink-3); font-family: var(--v-mono); font-size: 0.9em; }
+
+.rs-note-body code {
+    font-family: var(--v-mono);
+    font-size: 0.88em;
+    background: var(--v-line-soft);
+    color: var(--v-ink);
+    padding: 1px 6px;
+    border-radius: 4px;
+    border: 1px solid var(--v-line);
+    white-space: nowrap;
+}
+
+.rs-note-body strong {
+    color: var(--v-ink);
+    font-weight: 700;
+}
+
+.rs-note-body em {
+    color: var(--v-ink-2);
+    font-style: italic;
+}
+
+/* Decision-rule callout used at the end of many sections. */
+.rs-note-body .rs-rule {
+    font-family: var(--v-sans);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--v-ink-2);
+    margin: 16px 0 22px;
+    padding: 14px 18px;
+    background: var(--v-amber-soft);
+    border-left: 3px solid var(--v-amber);
+    border-radius: 0 4px 4px 0;
+    max-width: 64ch;
+}
+
+.rs-note-body .rs-rule strong {
+    font-family: var(--v-mono);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--v-amber-deep);
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* Side rail with metadata */
+.rs-note-side {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    position: sticky;
+    top: 120px;
+    align-self: start;
+}
+
+.rs-note-side-block {
+    padding-top: 18px;
+    border-top: 1px solid var(--v-line);
+}
+
+.rs-note-side-block:first-child {
+    padding-top: 0;
+    border-top: none;
+}
+
+.rs-note-side-label {
+    font-family: var(--v-mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+    margin: 0 0 12px;
+}
+
+.rs-note-side-value {
+    font-family: var(--v-sans);
+    font-size: 15px;
+    line-height: 1.45;
+    color: var(--v-ink);
+    margin: 0;
+    font-weight: 500;
+}
+
+.rs-note-side-value a {
+    color: var(--v-ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--v-line);
+    padding-bottom: 1px;
+    transition: color 140ms ease, border-color 140ms ease;
+}
+
+.rs-note-side-value a:hover {
+    color: var(--v-amber-deep);
+    border-bottom-color: var(--v-amber);
+}
+
+.rs-note-side-muted { color: var(--v-ink-3); font-style: italic; }
+
+.rs-note-side-phases {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.rs-note-side-glossary-link {
+    font-family: var(--v-mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--v-ink);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 140ms ease;
+}
+
+.rs-note-side-glossary-link:hover { color: var(--v-amber-deep); }
+.rs-note-side-glossary-link svg { transition: transform 140ms ease; }
+.rs-note-side-glossary-link:hover svg { transform: translateX(3px); }
+
+/* ──────────────────────────────────────────── */
+/* Siblings strip                               */
+
+.rs-note-siblings {
+    background: #ffffff;
+    border-top: 1px solid var(--v-line);
+}
+
+.rs-note-siblings-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 64px 40px 56px;
+}
+
+.rs-note-siblings-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0;
+    border-top: 1px solid var(--v-line);
+}
+
+.rs-note-siblings-list li {
+    border-bottom: 1px solid var(--v-line);
+    border-right: 1px solid var(--v-line);
+}
+
+.rs-note-siblings-list li a {
+    display: block;
+    padding: 22px 24px;
+    text-decoration: none;
+    color: var(--v-ink);
+    transition: background 140ms ease, color 140ms ease;
+    height: 100%;
+}
+
+.rs-note-siblings-list li a:hover {
+    background: rgba(255, 163, 23, 0.05);
+    color: var(--v-amber-deep);
+}
+
+.rs-note-siblings-tier {
+    display: block;
+    font-family: var(--v-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+    margin-bottom: 8px;
+}
+
+.rs-note-siblings-tier[data-tier="1"] { color: var(--v-amber-deep); }
+
+.rs-note-siblings-title {
+    display: block;
+    font-family: var(--v-display);
+    font-size: 17px;
+    line-height: 1.25;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+/* ──────────────────────────────────────────── */
+/* Tier-specific accents on the note hero       */
+
+.rs-note-page.is-tier-1 .rs-note-hero-tier { color: var(--v-amber-deep); }
+.rs-note-page.is-tier-2 .rs-note-hero-tier { color: var(--v-ink); }
+.rs-note-page.is-tier-3 .rs-note-hero-tier { color: var(--v-ink-3); }
+
+/* ──────────────────────────────────────────── */
+/* Mobile                                       */
+
+@media (max-width: 900px) {
+    .rs-note-hero-inner { padding: 72px 22px 40px; }
+    .rs-note-hero-title { font-size: 36px; }
+    .rs-note-content-inner {
+        grid-template-columns: 1fr;
+        gap: 56px;
+        padding: 48px 22px 48px;
+    }
+    .rs-note-side {
+        position: static;
+        order: -1;
+        padding-bottom: 32px;
+        border-bottom: 1px solid var(--v-line);
+    }
+    .rs-note-siblings-inner { padding: 48px 22px; }
+    .rs-note-siblings-list { grid-template-columns: 1fr; }
+    .rs-note-siblings-list li { border-right: none; }
+}
+
+/* ============================================ */
+/* Domain page: note titles now link to detail   */
+/* ============================================ */
+
+.rs-note-title-link,
+.rs-ref-title-link,
+.rs-bg-title-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 140ms ease;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.rs-note-title-link:hover,
+.rs-ref-title-link:hover,
+.rs-bg-title-link:hover {
+    color: var(--v-amber-deep);
+}
+
+.rs-note-link-arrow {
+    font-family: var(--v-mono);
+    font-size: 13px;
+    color: var(--v-ink-3);
+    transition: color 140ms ease, transform 140ms ease;
+}
+
+.rs-note-title-link:hover .rs-note-link-arrow,
+.rs-ref-title-link:hover .rs-note-link-arrow,
+.rs-bg-title-link:hover .rs-note-link-arrow {
+    color: var(--v-amber);
+    transform: translateX(3px);
+}

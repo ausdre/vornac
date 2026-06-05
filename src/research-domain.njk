@@ -1,0 +1,22 @@
+---
+pagination:
+  data: research.domains
+  size: 1
+  alias: domain
+  addAllPagesToCollections: false
+ogType: website
+eleventyComputed:
+  permalink: "/research/{{ domain.id }}/index.html"
+  i18nKey: "research-{{ domain.id }}"
+  title: "Research · {{ domain.number }} {{ domain.title.en | safe }} · VORNAC"
+  description: "{{ domain.blurb.en | safe }} {{ domain.count }} curated notes across featured, reference, and background tiers."
+---
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+<link rel="stylesheet" href="/research.css">
+{% endblock %}
+
+{% block content %}
+{% include "partials/research-domain-render.njk" %}
+{% endblock %}
