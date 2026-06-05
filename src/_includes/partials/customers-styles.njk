@@ -114,6 +114,16 @@
         .logo-wall-inner { padding: 48px 20px 48px; }
         .logo-wall-headline { font-size: clamp(24px, 7vw, 32px); margin-bottom: 32px; }
         .logo-grid { grid-template-columns: repeat(2, 1fr); }
+        /* Tighter cells on phones — 28px padding × 2 sides was eating the
+           whole column width, so wide logos (Pfitzenmeier, IP-Crew) pushed
+           the grid past the viewport. Also enforce min-width: 0 so the
+           grid tracks don't grow to the intrinsic content size. */
+        .logo-cell {
+            padding: 18px 14px;
+            min-width: 0;
+            aspect-ratio: 16 / 9;
+        }
+        .logo-cell img { max-height: 44px; }
     }
 
     .quotes {
