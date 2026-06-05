@@ -68,11 +68,19 @@
 {% endif %}
 
 {# Pre-computed in src/_data/glossary.js:
-     glossary.alphabet        — fixed A..Z
-     glossary.presentLetters  — { "A": true, "C": true, ... } only letters in use
+     glossary.alphabet                 — fixed A..Z
+     glossary.presentLettersByLocale   — per-locale { "A": true, ... }
+     glossary.sortedByLocale[locale]   — alphabetically sorted for display
+     glossary.groupedByLocale[locale]  — letter sections for display
+     glossary.statsByLocale[locale]    — hero stats for display
      glossary.categoryLabelById[locale][catId] — chip + per-entry labels
-     glossary.termById[id]    — display name for cross-references
+     glossary.termById[locale][id]     — display name for cross-references
 #}
+
+{% set glSorted = glossary.sortedByLocale[locale] %}
+{% set glGrouped = glossary.groupedByLocale[locale] %}
+{% set glStats = glossary.statsByLocale[locale] %}
+{% set glPresentLetters = glossary.presentLettersByLocale[locale] %}
 
 <section class="gl-hero">
     <div class="gl-hero-inner">
@@ -81,15 +89,15 @@
         <p class="gl-hero-subline">{{ s.subline }}</p>
         <div class="gl-hero-stats">
             <div>
-                <div class="gl-stat-num">{{ glossary.stats.total }}</div>
+                <div class="gl-stat-num">{{ glStats.total }}</div>
                 <div class="gl-stat-label">{{ s.statTotal }}</div>
             </div>
             <div>
-                <div class="gl-stat-num">{{ glossary.stats.categories }}</div>
+                <div class="gl-stat-num">{{ glStats.categories }}</div>
                 <div class="gl-stat-label">{{ s.statCategory }}</div>
             </div>
             <div>
-                <div class="gl-stat-num">{{ glossary.stats.letters }}</div>
+                <div class="gl-stat-num">{{ glStats.letters }}</div>
                 <div class="gl-stat-label">{{ s.statLetters }}</div>
             </div>
             <div>
@@ -115,7 +123,7 @@
             <span class="gl-controls-label">{{ s.controlsAz }}</span>
             <span class="gl-az">
                 {% for letter in glossary.alphabet %}
-                    {% if glossary.presentLetters[letter] %}
+                    {% if glPresentLetters[letter] %}
                         <a href="#letter-{{ letter }}">{{ letter }}</a>
                     {% else %}
                         <a class="is-empty" aria-disabled="true">{{ letter }}</a>
@@ -127,7 +135,7 @@
 </nav>
 
 {# Render each alphabetical section. #}
-{% for group in glossary.grouped %}
+{% for group in glGrouped %}
 <section class="gl-section" id="letter-{{ group.letter }}" data-letter="{{ group.letter }}">
     <div class="gl-section-inner">
         <header class="gl-letter-head">
@@ -138,7 +146,7 @@
             {% for entry in group.entries %}
                 <li class="gl-entry" id="term-{{ entry.id }}" data-cat="{{ entry.category }}">
                     <div class="gl-entry-head">
-                        <h3 class="gl-entry-term">{{ entry.term }}</h3>
+                        <h3 class="gl-entry-term">{{ glossary.termById[locale][entry.id] }}</h3>
                         {% if entry.fullForm and entry.fullForm[locale] %}
                             <p class="gl-entry-full">{{ entry.fullForm[locale] }}</p>
                         {% endif %}
@@ -150,8 +158,8 @@
                             <p class="gl-entry-see">
                                 <span class="gl-entry-see-label">{{ s.seeAlso }}</span>
                                 {% for refId in entry.seeAlso %}
-                                    {% if glossary.termById[refId] %}
-                                        <a href="#term-{{ refId }}">{{ glossary.termById[refId] }}</a>{% if not loop.last %}, {% endif %}
+                                    {% if glossary.termById[locale][refId] %}
+                                        <a href="#term-{{ refId }}">{{ glossary.termById[locale][refId] }}</a>{% if not loop.last %}, {% endif %}
                                     {% endif %}
                                 {% endfor %}
                             </p>

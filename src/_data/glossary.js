@@ -27,14 +27,19 @@ const CATEGORIES = [
 ];
 
 // Compact constructor — keeps the entry list readable.
+// Optional `termLocale` overrides the displayed heading per locale
 const T = (
-  id, term, category, fullEn, fullDe, defEn, defDe, seeAlso = []
+  id, term, category, fullEn, fullDe, defEn, defDe, seeAlso = [], termLocale = null
 ) => ({
-  id, term, category,
+  id, term, category, termLocale,
   fullForm: fullEn || fullDe ? { en: fullEn, de: fullDe } : null,
   definition: { en: defEn, de: defDe },
   seeAlso
 });
+
+function displayTerm(entry, locale) {
+  return (entry.termLocale && entry.termLocale[locale]) || entry.term;
+}
 
 const TERMS = [
 
@@ -115,9 +120,10 @@ const TERMS = [
     ["iso-27001", "bsi-grundschutz"]
   ),
   T("swiss-cheese-model", "Swiss Cheese Model", "methodology", null, null,
-    "A James Reason model that treats layered defenses as stacked slices with holes — latent conditions and active failures — and attributes harm to moments when holes align across slices. The standard metaphor for why defense-in-depth reduces but never eliminates incidents.",
-    "Ein James-Reason-Modell, das geschichtete Defenses als gestapelte Scheiben mit Löchern behandelt — latente Bedingungen und aktive Fehler — und Schaden dem Moment zuschreibt, in dem sich Löcher über die Schichten hinweg ausrichten. Die Standard-Metapher dafür, warum Defense-in-Depth Risiko reduziert, aber nicht eliminiert.",
-    ["defense-in-depth", "nist-csf"]
+    "A human-factors model formulated by British psychologist James Reason, depicting layered protections as imperfect barriers where latent organizational weaknesses and active failures create gaps; incidents occur when those gaps align across layers. The reference framework in aviation, healthcare, and high-reliability safety culture — and increasingly in cybersecurity — for explaining why defense-in-depth lowers risk without removing it.",
+    "Das Schweizer-Käse-Modell (James Reason) vergleicht geschichtete Defenses mit hintereinanderliegenden Käsescheiben — latente Bedingungen und aktive Fehler — und schreibt Schaden dem Moment zu, in dem sich die Löcher über die Schichten hinweg ausrichten. Die Standard-Metapher dafür, warum Defense-in-Depth Risiko reduziert, aber nicht eliminiert.",
+    ["defense-in-depth", "nist-csf"],
+    { de: "Schweizer-Käse-Modell" }
   ),
 
   // ── Engagement Type ────────────────────────────────────────────────
@@ -988,9 +994,12 @@ const TERMS = [
 
 // ── Derived shapes ──────────────────────────────────────────────────
 
-function sortedTerms() {
+function sortedTermsFor(locale) {
   const arr = TERMS.slice();
-  arr.sort((a, b) => a.term.localeCompare(b.term, "en", { sensitivity: "base" }));
+  const collator = locale === "de" ? "de" : "en";
+  arr.sort((a, b) =>
+    displayTerm(a, locale).localeCompare(displayTerm(b, locale), collator, { sensitivity: "base" })
+  );
   return arr;
 }
 
@@ -999,11 +1008,11 @@ function firstLetter(term) {
   return stripped ? stripped[0].toUpperCase() : "#";
 }
 
-function groupedByLetter(termsSorted) {
+function groupedByLetter(termsSorted, locale) {
   const out = {};
   const order = [];
   for (const t of termsSorted) {
-    const letter = firstLetter(t.term);
+    const letter = firstLetter(displayTerm(t, locale));
     if (!out[letter]) {
       out[letter] = [];
       order.push(letter);
@@ -1013,7 +1022,7 @@ function groupedByLetter(termsSorted) {
   return order.map((letter) => ({ letter, entries: out[letter] }));
 }
 
-function statsFor(terms) {
+function statsFor(terms, locale) {
   const perCategory = {};
   for (const c of CATEGORIES) perCategory[c.id] = 0;
   for (const t of terms) {
@@ -1022,13 +1031,21 @@ function statsFor(terms) {
   return {
     total: terms.length,
     categories: CATEGORIES.length,
-    letters: new Set(terms.map((t) => firstLetter(t.term))).size,
+    letters: new Set(terms.map((t) => firstLetter(displayTerm(t, locale)))).size,
     perCategory
   };
 }
 
-const sorted = sortedTerms();
-const grouped = groupedByLetter(sorted);
+const sortedByLocale = {
+  en: sortedTermsFor("en"),
+  de: sortedTermsFor("de")
+};
+const groupedByLocale = {
+  en: groupedByLetter(sortedByLocale.en, "en"),
+  de: groupedByLetter(sortedByLocale.de, "de")
+};
+const sorted = sortedByLocale.en;
+const grouped = groupedByLocale.en;
 
 // Pre-computed lookup maps so the Nunjucks template never has to do
 // nested `set inside for` to resolve a category label or a cross-ref term.
@@ -1038,19 +1055,33 @@ for (const c of CATEGORIES) {
   categoryLabelById.de[c.id] = c.label.de;
 }
 
-const termById = {};
-for (const t of sorted) termById[t.id] = t.term;
+const termById = { en: {}, de: {} };
+for (const locale of ["en", "de"]) {
+  for (const t of sortedByLocale[locale]) {
+    termById[locale][t.id] = displayTerm(t, locale);
+  }
+}
 
-const presentLetters = {};
-for (const g of grouped) presentLetters[g.letter] = true;
+const presentLettersByLocale = { en: {}, de: {} };
+for (const locale of ["en", "de"]) {
+  for (const g of groupedByLocale[locale]) presentLettersByLocale[locale][g.letter] = true;
+}
 
 module.exports = {
   categories: CATEGORIES,
   sorted,
   grouped,
-  stats: statsFor(sorted),
+  sortedByLocale,
+  groupedByLocale,
+  stats: statsFor(sorted, "en"),
+  statsByLocale: {
+    en: statsFor(sortedByLocale.en, "en"),
+    de: statsFor(sortedByLocale.de, "de")
+  },
   categoryLabelById,
   termById,
-  presentLetters,
+  presentLetters: presentLettersByLocale.en,
+  presentLettersByLocale,
+  displayTerm,
   alphabet: ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 };
