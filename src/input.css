@@ -23,9 +23,12 @@ img[src$=".svg"] { image-rendering: auto; }
  * Prevents accidental horizontal scroll from
  * oversized images or italic headlines.
  * -------------------------------------- */
-/* overflow-x: clip (not hidden) prevents horizontal scroll without creating a
-   scroll container, so the sticky header keeps pinning to the viewport. */
-html, body { overflow-x: clip; max-width: 100%; }
+/* Prevent accidental horizontal scroll without breaking position: fixed.
+   On <html>, overflow-x: clip kills the viewport sizing for fixed-positioned
+   children (the mobile menu collapses to height 0) — so we only clip on body.
+   max-width: 100% on html still prevents overflow there. */
+html { max-width: 100%; }
+body { overflow-x: clip; max-width: 100%; }
 
 /* Reserve scrollbar space so toggling overflow (mobile nav) does not shift layout */
 html { scrollbar-gutter: stable; }
@@ -459,13 +462,10 @@ img, video { max-width: 100%; }
     .min-h-screen { min-height: 100svh; }
     }
 
-/* Narrow viewports: strong backdrop-blur on sticky chrome is a common Safari jank source */
-@media (max-width: 768px) {
-    #site-header {
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        }
-    }
+/* No backdrop-filter on #site-header: it creates a containing block for
+   position: fixed children (per the CSS Filter Effects spec), which would
+   pin the mobile menu burger to the header instead of the viewport. The
+   header is also transparent at top-of-page, so there's nothing to blur. */
 
 /* ----------------------------------------
  * Brutalist enterprise design tokens
@@ -795,6 +795,69 @@ a.x-term:focus-visible {
 }
 @media print {
     a.x-term { color: inherit; }
+}
+
+/* On dark sections the default #000 crosslink colour disappears into the
+   background (notably "OT" and "Entra ID" inside the methodology audit
+   catalogue). Inherit the surrounding white text and underline subtly so
+   the link stays discoverable without yelling. List every dark-section
+   wrapper class so we don't need to walk the DOM at runtime. */
+.method a.x-term,
+.ind-section--dark a.x-term,
+.v-stats.is-dark a.x-term,
+.v-comp .v-comp-col-vornac a.x-term,
+.v-sovereignty a.x-term,
+.v-footer a.x-term,
+.about-careers a.x-term,
+.about-contact a.x-term,
+.cust-cta a.x-term,
+.pent-cta a.x-term,
+.pent-hero a.x-term,
+.pent-contact a.x-term,
+.ind-cta a.x-term,
+.ind-gap-band a.x-term,
+.rs-cta a.x-term,
+.rs-note-page a.x-term {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 163, 23, 0.45);
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+}
+.method a.x-term:hover,
+.method a.x-term:focus-visible,
+.ind-section--dark a.x-term:hover,
+.ind-section--dark a.x-term:focus-visible,
+.v-stats.is-dark a.x-term:hover,
+.v-stats.is-dark a.x-term:focus-visible,
+.v-comp .v-comp-col-vornac a.x-term:hover,
+.v-comp .v-comp-col-vornac a.x-term:focus-visible,
+.v-sovereignty a.x-term:hover,
+.v-sovereignty a.x-term:focus-visible,
+.v-footer a.x-term:hover,
+.v-footer a.x-term:focus-visible,
+.about-careers a.x-term:hover,
+.about-careers a.x-term:focus-visible,
+.about-contact a.x-term:hover,
+.about-contact a.x-term:focus-visible,
+.cust-cta a.x-term:hover,
+.cust-cta a.x-term:focus-visible,
+.pent-cta a.x-term:hover,
+.pent-cta a.x-term:focus-visible,
+.pent-hero a.x-term:hover,
+.pent-hero a.x-term:focus-visible,
+.pent-contact a.x-term:hover,
+.pent-contact a.x-term:focus-visible,
+.ind-cta a.x-term:hover,
+.ind-cta a.x-term:focus-visible,
+.ind-gap-band a.x-term:hover,
+.ind-gap-band a.x-term:focus-visible,
+.rs-cta a.x-term:hover,
+.rs-cta a.x-term:focus-visible,
+.rs-note-page a.x-term:hover,
+.rs-note-page a.x-term:focus-visible {
+    color: var(--v-amber);
+    text-decoration-color: var(--v-amber);
 }
 
 /* ----------------------------------------

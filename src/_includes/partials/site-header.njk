@@ -251,8 +251,11 @@
             </div>
 
             <div class="v-dv-mgroup v-dv-mgroup--about">
-                <span class="v-dv-mhead">{{ t.navHeadings.about }}</span>
-                <ul class="v-dv-msubs">
+                <button type="button" class="v-dv-mhead--toggle" data-mobile-collapse aria-controls="mnav-about" aria-expanded="false">
+                    <span>{{ t.navHeadings.about }}</span>
+                    <svg class="v-dv-mhead-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <ul class="v-dv-msubs" id="mnav-about" hidden>
                     {{ mobileSub(pageUrls.about + "#" + t.aboutAnchors.company, t.nav.company, "", false) }}
                     {{ mobileSub(pageUrls.about + "#" + t.aboutAnchors.careers, t.nav.careers, "", false) }}
                 </ul>
@@ -550,26 +553,31 @@
     body.nav-open .v-dv-sticky { z-index: 80; }
 
     @media (max-width: 1023px) {
-        /* Mobile topbar: logo-spacer left, in-flow burger right. Desktop
-           centre-nav and utility (lang + CTA) are hidden; both are reachable
-           from inside the overlay menu. The sticky burger appears on scroll
-           (same scroll-reveal as desktop) so users keep menu access after
-           the topbar scrolls away. */
+        /* Mobile topbar: logo-spacer left. The burger gets pinned to the
+           viewport (see below) so it stays reachable while scrolling — no
+           separate sticky burger needed. Desktop centre-nav and utility
+           (lang + CTA) are hidden; both are reachable from inside the menu. */
         .v-dv-topbar {
-            grid-template-columns: auto 1fr auto;
+            grid-template-columns: auto 1fr;
             align-items: center;
             padding: 18px 22px 12px;
         }
         .v-dv-nav { display: none; }
         .v-dv-utility { display: none; }
+        .v-dv-logo { left: 22px; }
+
+        /* Pin the topbar burger to the viewport: always visible, no scroll
+           reveal, no second burger. Sits in the same spot the in-flow burger
+           used to sit, so the layout looks identical at top-of-page. */
         .v-dv-burger--top {
             display: inline-flex;
-            grid-column: 3;
-            justify-self: end;
+            position: fixed;
+            top: 18px;
+            right: 20px;
+            z-index: 75;
         }
-        .v-dv-logo { left: 22px; }
-        /* Sticky burger is desktop-only. Mobile uses the in-flow topbar burger
-           which scrolls away with the page; that's the intended behaviour. */
+
+        /* Sticky burger is desktop-only. Mobile uses the pinned topbar burger. */
         .v-dv-sticky { display: none !important; }
     }
 
@@ -648,7 +656,9 @@
     .v-dv-menu-nav {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 36px 64px;
+        /* Tight vertical rhythm so all top-level items (flat links + toggles)
+           feel like one continuous nav, not separate sections. */
+        gap: 4px 64px;
         padding: 24px 0 32px;
         overflow-y: auto;
         align-content: start;
@@ -674,31 +684,42 @@
         padding-bottom: 10px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
-    /* Collapsible mobile section header — same look, button mechanics + caret. */
+    /* Collapsible mobile section header — matches the .v-dv-mlink display
+       size so Home/Pentesting/Kunden and Branchen/Research/Über uns share
+       the same top-level hierarchy. Caret sits flush right. */
     .v-dv-mhead--toggle {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: 12px;
         width: 100%;
         background: none;
         border: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        padding: 0 0 10px;
-        margin: 0 0 10px;
+        padding: 6px 0;
+        margin: 0;
         cursor: pointer;
-        color: inherit;
         text-align: left;
         -webkit-tap-highlight-color: transparent;
+        /* Match .v-dv-mlink */
+        color: #fff;
+        font-family: var(--v-display);
+        font-weight: 600;
+        font-size: clamp(28px, 6.5vw, 38px);
+        line-height: 1.15;
+        letter-spacing: -0.01em;
+        text-transform: none;
+        transition: opacity .2s ease, color .2s ease;
     }
+    .v-dv-mhead--toggle:hover { opacity: .65; }
+    .v-dv-mhead--toggle:focus-visible { outline: 1px dashed rgba(255, 163, 23, 0.6); outline-offset: 4px; }
     .v-dv-mhead-caret {
-        width: 16px;
-        height: 16px;
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
         opacity: 0.55;
         transition: transform .25s ease, opacity .2s ease;
     }
     .v-dv-mhead--toggle[aria-expanded="true"] .v-dv-mhead-caret { transform: rotate(180deg); opacity: 1; }
-    .v-dv-mhead--toggle:hover { color: rgba(255, 255, 255, 0.55); }
-    .v-dv-mhead--toggle:focus-visible { outline: 1px dashed rgba(255, 163, 23, 0.6); outline-offset: 4px; }
 
     .v-dv-mlink {
         color: #fff;
@@ -716,12 +737,16 @@
 
     .v-dv-msubs {
         list-style: none;
-        margin: 0;
+        margin: 6px 0 14px;
         padding: 0;
         display: flex;
         flex-direction: column;
         gap: 0;
     }
+    /* `display: flex` above is more specific than the browser's default
+       `[hidden] { display: none }`, so the [hidden] attribute on the
+       collapsible panels would be ignored. Restore it explicitly. */
+    .v-dv-msubs[hidden] { display: none; }
     .v-dv-msub {
         display: flex;
         align-items: baseline;
@@ -896,6 +921,7 @@
         var spacer = document.querySelector('.v-dv-logo-spacer');
         var sticky = document.getElementById('sticky-nav');
         var stickyBtn = sticky ? sticky.querySelector('.v-dv-burger') : null;
+        var topBurger = document.querySelector('.v-dv-burger--top');
         if (!logo || !spacer) return;
 
         var STICK_TOP = 14;
@@ -910,15 +936,33 @@
 
         // Nav chrome is taken out of hit-testing while sampling so we read the
         // section *behind* it, not the (transparent) logo/bar over the body.
-        var chrome = [logo, sticky, document.getElementById('site-header')].filter(Boolean);
+        var chrome = [logo, sticky, topBurger, document.getElementById('site-header')].filter(Boolean);
 
         // Effective background luminance at a viewport point (walks up to the
         // first non-transparent background). Returns 1 (light) as a fallback.
+        //
+        // Special case: inside .method (the dark methodology section), there's
+        // a live anime.js loop that toggles border/background colours on the
+        // .method-stage cards. Sampling those animated layers makes the burger
+        // and logo colour flicker. So if any ancestor is .method, we jump
+        // straight to that section's own background and ignore the children.
         function bgLumAt(x, y) {
             var prev = chrome.map(function (el) { return el.style.pointerEvents; });
             chrome.forEach(function (el) { el.style.pointerEvents = 'none'; });
             var el = document.elementFromPoint(x, y);
             chrome.forEach(function (e, i) { e.style.pointerEvents = prev[i]; });
+
+            // Short-circuit: if the hit point is inside the methodology
+            // section, use its stable section background, not the animated
+            // children inside it.
+            var methodEl = el && el.closest ? el.closest('.method') : null;
+            if (methodEl) {
+                var bgM = getComputedStyle(methodEl).backgroundColor;
+                if (bgM && bgM !== 'transparent' && !/rgba\([^)]*,\s*0\)/.test(bgM)) {
+                    return luminance(bgM);
+                }
+            }
+
             while (el) {
                 var bg = getComputedStyle(el).backgroundColor;
                 if (bg && bg !== 'transparent' && !/rgba\([^)]*,\s*0\)/.test(bg)) {
@@ -959,10 +1003,11 @@
             var logoRect = logo.getBoundingClientRect();
             logo.style.color = inkFor(bgLumAround(logoRect));
 
+            var isMobile = window.matchMedia('(max-width: 1023px)').matches;
+
             // Sticky burger: desktop-only. On mobile (≤1023px) it's hidden
-            // via CSS; skip all updates so we don't sample a hidden element
-            // or fight the in-flow topbar burger for attention.
-            if (sticky && !window.matchMedia('(max-width: 1023px)').matches) {
+            // via CSS; skip all updates so we don't sample a hidden element.
+            if (sticky && !isMobile) {
                 var show = window.scrollY > window.innerHeight * REVEAL;
                 sticky.classList.toggle('is-visible', show);
                 sticky.setAttribute('aria-hidden', show ? 'false' : 'true');
@@ -970,6 +1015,13 @@
                 if (show && stickyBtn && !document.body.classList.contains('nav-open')) {
                     sticky.style.color = inkFor(bgLumAround(stickyBtn.getBoundingClientRect()));
                 }
+            }
+
+            // Mobile: .v-dv-burger--top is pinned (position: fixed) and is
+            // the only burger. Re-colour it on scroll like the desktop sticky
+            // burger so it stays legible over both light and dark sections.
+            if (isMobile && topBurger && !document.body.classList.contains('nav-open')) {
+                topBurger.style.color = inkFor(bgLumAround(topBurger.getBoundingClientRect()));
             }
         }
 
