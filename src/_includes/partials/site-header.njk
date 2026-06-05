@@ -217,8 +217,11 @@
             </div>
 
             <div class="v-dv-mgroup v-dv-mgroup--ind">
-                <span class="v-dv-mhead">{{ t.navHeadings.industries }}</span>
-                <ul class="v-dv-msubs">
+                <button type="button" class="v-dv-mhead v-dv-mhead--toggle" data-mobile-collapse aria-controls="mnav-ind" aria-expanded="false">
+                    <span>{{ t.navHeadings.industries }}</span>
+                    <svg class="v-dv-mhead-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <ul class="v-dv-msubs" id="mnav-ind" hidden>
                     <li><a href="{{ pageUrls.industries }}" class="v-dv-msub v-dv-msub--index{% if i18nKey == 'industries' %} is-active{% endif %}"{% if i18nKey == 'industries' %} aria-current="page"{% endif %}>
                         <span class="v-dv-msub-label">{{ t.navOverview }}</span>
                         <span class="v-dv-msub-sub">{{ t.industriesNav | length }}</span>
@@ -230,8 +233,11 @@
             </div>
 
             <div class="v-dv-mgroup v-dv-mgroup--research">
-                <span class="v-dv-mhead">{{ t.navHeadings.research }}</span>
-                <ul class="v-dv-msubs">
+                <button type="button" class="v-dv-mhead v-dv-mhead--toggle" data-mobile-collapse aria-controls="mnav-res" aria-expanded="false">
+                    <span>{{ t.navHeadings.research }}</span>
+                    <svg class="v-dv-mhead-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <ul class="v-dv-msubs" id="mnav-res" hidden>
                     <li><a href="{{ pageUrls.research }}" class="v-dv-msub v-dv-msub--index{% if i18nKey == 'research' %} is-active{% endif %}"{% if i18nKey == 'research' %} aria-current="page"{% endif %}>
                         <span class="v-dv-msub-label">{{ t.navResearchHome }}</span>
                         <span class="v-dv-msub-sub">{{ research.domains | length }}</span>
@@ -668,6 +674,31 @@
         padding-bottom: 10px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
+    /* Collapsible mobile section header — same look, button mechanics + caret. */
+    .v-dv-mhead--toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        background: none;
+        border: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 0 0 10px;
+        margin: 0 0 10px;
+        cursor: pointer;
+        color: inherit;
+        text-align: left;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .v-dv-mhead-caret {
+        width: 16px;
+        height: 16px;
+        opacity: 0.55;
+        transition: transform .25s ease, opacity .2s ease;
+    }
+    .v-dv-mhead--toggle[aria-expanded="true"] .v-dv-mhead-caret { transform: rotate(180deg); opacity: 1; }
+    .v-dv-mhead--toggle:hover { color: rgba(255, 255, 255, 0.55); }
+    .v-dv-mhead--toggle:focus-visible { outline: 1px dashed rgba(255, 163, 23, 0.6); outline-offset: 4px; }
 
     .v-dv-mlink {
         color: #fff;
