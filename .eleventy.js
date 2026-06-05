@@ -181,6 +181,7 @@ module.exports = function (eleventyConfig) {
   // Project-root assets get copied to dist/ root so existing URLs work.
   eleventyConfig.addPassthroughCopy("*.png");
   eleventyConfig.addPassthroughCopy("*.jpg");
+  eleventyConfig.addPassthroughCopy("*.webp");
   eleventyConfig.addPassthroughCopy("*.svg");
   eleventyConfig.addPassthroughCopy("*.MP4");
   eleventyConfig.addPassthroughCopy("*.pdf");
