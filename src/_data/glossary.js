@@ -114,6 +114,11 @@ const TERMS = [
     "Ein Framework des US National Institute of Standards and Technology, das Sicherheit um fünf Funktionen organisiert: Identify, Protect, Detect, Respond, Recover (Version 2.0 ergänzt Govern). International als Reifegrad-Gerüst weit zitiert.",
     ["iso-27001", "bsi-grundschutz"]
   ),
+  T("swiss-cheese-model", "Swiss Cheese Model", "methodology", null, null,
+    "A James Reason model that treats layered defenses as stacked slices with holes — latent conditions and active failures — and attributes harm to moments when holes align across slices. The standard metaphor for why defense-in-depth reduces but never eliminates incidents.",
+    "Ein James-Reason-Modell, das geschichtete Defenses als gestapelte Scheiben mit Löchern behandelt — latente Bedingungen und aktive Fehler — und Schaden dem Moment zuschreibt, in dem sich Löcher über die Schichten hinweg ausrichten. Die Standard-Metapher dafür, warum Defense-in-Depth Risiko reduziert, aber nicht eliminiert.",
+    ["defense-in-depth", "nist-csf"]
+  ),
 
   // ── Engagement Type ────────────────────────────────────────────────
   T("pentest", "Penetration Test", "engagement", null, null,
@@ -594,7 +599,7 @@ const TERMS = [
   T("defense-in-depth", "Defense in Depth", "defense", null, null,
     "The classical principle of layering independent controls so that the failure of any single layer does not compromise the system. Complementary to, not replaced by, Zero Trust.",
     "Das klassische Prinzip, unabhängige Controls so zu schichten, dass das Versagen einer einzelnen Schicht das System nicht kompromittiert. Komplementär zu Zero Trust — nicht durch es ersetzt.",
-    ["zero-trust"]
+    ["zero-trust", "swiss-cheese-model"]
   ),
   T("threat-hunting", "Threat Hunting", "defense", null, null,
     "Hypothesis-driven proactive search through telemetry for adversary activity that escaped automated detection. Distinguished from alert triage by who started the investigation: the hunter, not the SIEM.",
