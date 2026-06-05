@@ -532,7 +532,7 @@
         position: fixed;
         top: 18px;
         right: 28px;
-        z-index: 58;
+        z-index: 75;
         color: #0E1116;
         opacity: 0;
         transform: translateY(-160%);
@@ -544,11 +544,27 @@
     body.nav-open .v-dv-sticky { z-index: 80; }
 
     @media (max-width: 1023px) {
+        /* Mobile topbar: logo-spacer left, in-flow burger right. Desktop
+           centre-nav and utility (lang + CTA) are hidden; both are reachable
+           from inside the overlay menu. The sticky burger appears on scroll
+           (same scroll-reveal as desktop) so users keep menu access after
+           the topbar scrolls away. */
+        .v-dv-topbar {
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            padding: 18px 22px 12px;
+        }
         .v-dv-nav { display: none; }
-        .v-dv-burger--top { display: inline-flex; }
-        .v-dv-topbar { padding: 18px 22px 12px; }
+        .v-dv-utility { display: none; }
+        .v-dv-burger--top {
+            display: inline-flex;
+            grid-column: 3;
+            justify-self: end;
+        }
         .v-dv-logo { left: 22px; }
-        .v-dv-sticky { right: 20px; }
+        /* Sticky burger is desktop-only. Mobile uses the in-flow topbar burger
+           which scrolls away with the page; that's the intended behaviour. */
+        .v-dv-sticky { display: none !important; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -882,6 +898,24 @@
             return 1;
         }
 
+        // Multi-point sample around an element's box, return the median
+        // luminance. Single-pixel sampling flickers at section boundaries;
+        // sampling the four corners + centre gives a stable read even when
+        // the burger sits exactly on a section seam.
+        function bgLumAround(rect) {
+            var pad = 4;
+            var pts = [
+                [rect.left + pad,            rect.top + pad],
+                [rect.right - pad,           rect.top + pad],
+                [rect.left + pad,            rect.bottom - pad],
+                [rect.right - pad,           rect.bottom - pad],
+                [rect.left + rect.width / 2, rect.top + rect.height / 2]
+            ];
+            var lums = pts.map(function (p) { return bgLumAt(Math.round(p[0]), Math.round(p[1])); });
+            lums.sort(function (a, b) { return a - b; });
+            return lums[2]; // median of 5
+        }
+
         function inkFor(lum) { return lum < 0.5 ? '#ffffff' : '#0E1116'; }
 
         function update() {
@@ -890,19 +924,20 @@
             logo.style.left = Math.round(r.left) + 'px';
             logo.style.top = top + 'px';
 
-            // Adaptive colour for the logo (sample at its centre, mid-left).
-            var ly = top + logo.offsetHeight / 2;
-            logo.style.color = inkFor(bgLumAt(Math.round(r.left + r.width / 2), Math.round(ly)));
+            // Adaptive colour for the logo — sample around its box, take median.
+            var logoRect = logo.getBoundingClientRect();
+            logo.style.color = inkFor(bgLumAround(logoRect));
 
-            // Sticky burger reveal + its own adaptive colour.
-            if (sticky) {
+            // Sticky burger: desktop-only. On mobile (≤1023px) it's hidden
+            // via CSS; skip all updates so we don't sample a hidden element
+            // or fight the in-flow topbar burger for attention.
+            if (sticky && !window.matchMedia('(max-width: 1023px)').matches) {
                 var show = window.scrollY > window.innerHeight * REVEAL;
                 sticky.classList.toggle('is-visible', show);
                 sticky.setAttribute('aria-hidden', show ? 'false' : 'true');
                 if (stickyBtn) stickyBtn.tabIndex = show ? 0 : -1;
                 if (show && stickyBtn && !document.body.classList.contains('nav-open')) {
-                    var sr = stickyBtn.getBoundingClientRect();
-                    sticky.style.color = inkFor(bgLumAt(Math.round(sr.left + sr.width / 2), Math.round(sr.top + sr.height / 2)));
+                    sticky.style.color = inkFor(bgLumAround(stickyBtn.getBoundingClientRect()));
                 }
             }
         }

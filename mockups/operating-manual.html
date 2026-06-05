@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VORNAC — Operating Manual mockup</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* PAPER */
+    --paper:        #F0EBE0;   /* warmer than current cream — looks like uncoated stock */
+    --paper-deep:   #E6DFD0;   /* pull-card backgrounds */
+    --paper-edge:   #2A2520;   /* hairline rules */
+    --ink:          #1A1714;   /* warm near-black, NOT pure */
+    --ink-soft:     #4A4137;   /* warm muted */
+    --ink-faint:    #8C7F70;   /* small captions */
+    --amber:        #A8632B;   /* toasted copper — desaturated, deep */
+    --amber-deep:   #7A4720;   /* hover state */
+    --amber-soft:   #E8C896;   /* very subtle wash for spec cards */
+
+    --serif:  'Instrument Serif', 'Iowan Old Style', Georgia, serif;
+    --sans:   'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+    --mono:   'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+
+  /* paper texture overlay (very subtle noise) */
+  body::before {
+    content: "";
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(168,99,43,0.025), transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(26,23,20,0.018), transparent 40%);
+  }
+
+  /* MOCKUP TOOLBAR */
+  .mockup-bar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--ink); color: var(--paper);
+    padding: 9px 24px; font-family: var(--mono); font-size: 11px;
+    display: flex; align-items: center; justify-content: space-between;
+    letter-spacing: 0.04em;
+  }
+  .mockup-bar .label { opacity: 0.75; }
+  .mockup-bar .label strong { color: var(--paper); opacity: 1; }
+
+  .doc { max-width: 1280px; margin: 0 auto; padding: 0 56px; position: relative; }
+
+  /* ============================================================
+     MASTHEAD — top of the page, like a printed manual
+  ============================================================ */
+  .masthead {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    display: flex; align-items: flex-end; justify-content: space-between;
+    border-bottom: 1px solid var(--ink);
+  }
+  .masthead-left {
+    display: flex; align-items: baseline; gap: 18px;
+  }
+  .wordmark {
+    font-family: var(--serif);
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .wordmark em {
+    font-style: italic; color: var(--amber);
+  }
+  .masthead-meta {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+  .masthead-meta span { color: var(--ink-soft); }
+  .masthead-nav {
+    display: flex; gap: 28px;
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .masthead-nav a {
+    color: var(--ink); text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+  }
+  .masthead-nav a:hover { border-bottom-color: var(--ink); }
+  .masthead-nav a.cur { border-bottom-color: var(--amber); color: var(--amber); }
+
+  /* ============================================================
+     SECOND RULE — the running header of section/folio
+  ============================================================ */
+  .folio {
+    display: flex; justify-content: space-between;
+    padding: 12px 0;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border-bottom: 1px solid var(--ink-faint);
+  }
+  .folio span:nth-child(2) { color: var(--ink); }
+
+  /* ============================================================
+     HERO BLOCK — asymmetric, paper-spread feel
+  ============================================================ */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    padding: 80px 0 64px;
+    position: relative;
+  }
+
+  /* the vertical hairline between the two columns */
+  .hero::after {
+    content: "";
+    position: absolute; top: 80px; bottom: 64px; left: 50%;
+    width: 1px;
+    background: var(--ink-faint);
+    opacity: 0.4;
+    transform: translateX(-50%);
+  }
+
+  /* LEFT COLUMN — verdict / headline */
+  .hero-left {}
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: "§ 01";
+    color: var(--ink-faint);
+    border-right: 1px solid var(--ink-faint);
+    padding-right: 12px;
+  }
+
+  h1.headline {
+    font-family: var(--serif);
+    font-size: clamp(48px, 6.8vw, 92px);
+    line-height: 0.96;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    color: var(--ink);
+    margin: 0 0 36px;
+  }
+  h1.headline .a {
+    font-style: italic;
+    color: var(--amber);
+  }
+  h1.headline .b {
+    display: block;
+    font-size: 0.82em;
+    color: var(--ink-soft);
+    margin-top: 0.08em;
+  }
+
+  .hero-deck {
+    font-family: var(--serif);
+    font-size: 21px; line-height: 1.45;
+    color: var(--ink-soft);
+    max-width: 460px;
+    margin: 0 0 40px;
+    font-weight: 400;
+  }
+
+  .hero-actions {
+    display: flex; align-items: center; gap: 28px;
+    margin-top: auto;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 14px 22px;
+    font-family: var(--mono); font-size: 12px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--ink);
+    transition: background 0.18s, color 0.18s;
+  }
+  .btn:hover { background: var(--amber); border-color: var(--amber); color: var(--paper); }
+  .btn .arrow {
+    width: 16px; height: 1px; background: currentColor;
+    position: relative;
+  }
+  .btn .arrow::after {
+    content: ""; position: absolute; right: 0; top: -3px;
+    border-left: 1px solid currentColor;
+    border-top: 1px solid currentColor;
+    width: 7px; height: 7px; transform: rotate(135deg);
+  }
+  .btn:hover .arrow { background: var(--paper); }
+
+  .read-link {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+  }
+  .read-link:hover { color: var(--amber); border-bottom-color: var(--amber); }
+
+  /* RIGHT COLUMN — the methodology diagram */
+  .hero-right {
+    position: relative;
+  }
+  .diagram-card {
+    background: var(--paper-deep);
+    border: 1px solid var(--ink);
+    padding: 40px 36px 32px;
+    position: relative;
+  }
+  /* small corner tabs that make the card look engineered */
+  .diagram-card::before, .diagram-card::after {
+    content: ""; position: absolute;
+    width: 10px; height: 10px;
+    border: 1px solid var(--ink);
+    background: var(--paper);
+  }
+  .diagram-card::before { top: -5px; left: -5px; }
+  .diagram-card::after { bottom: -5px; right: -5px; }
+
+  .diagram-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-soft);
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--ink-faint);
+    margin-bottom: 28px;
+  }
+  .diagram-head strong { color: var(--ink); font-weight: 500; }
+
+  .diagram-svg {
+    width: 100%;
+    display: block;
+  }
+
+  .diagram-legend {
+    margin-top: 24px;
+    border-top: 1px solid var(--ink-faint);
+    padding-top: 16px;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 24px;
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+  }
+  .diagram-legend strong {
+    color: var(--ink); font-weight: 500;
+  }
+  .diagram-legend .swatch {
+    display: inline-block; width: 10px; height: 10px;
+    margin-right: 8px; vertical-align: -1px;
+  }
+
+  /* ============================================================
+     SPEC STRIP — a single supporting block, like a manual footer
+  ============================================================ */
+  .specs {
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    padding: 28px 0;
+    gap: 24px;
+  }
+  .spec dt {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 8px;
+  }
+  .spec dd {
+    font-family: var(--serif);
+    font-size: 20px; line-height: 1.2;
+    color: var(--ink);
+    margin: 0;
+    font-weight: 400;
+  }
+  .spec dd em { color: var(--amber); font-style: italic; }
+  .spec .annotation {
+    font-family: var(--sans); font-size: 12px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+    font-weight: 400;
+  }
+
+  /* PAGE FOOT — folio-style */
+  .pagefoot {
+    margin-top: 64px;
+    padding: 18px 0 32px;
+    display: flex; justify-content: space-between;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .pagefoot strong { color: var(--ink); font-weight: 500; }
+
+  @media (max-width: 900px) {
+    .doc { padding: 0 24px; }
+    .masthead { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .masthead-nav { gap: 18px; }
+    .hero { grid-template-columns: 1fr; gap: 48px; }
+    .hero::after { display: none; }
+    .specs { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="mockup-bar">
+  <div class="label">Mockup <strong>C — Operating Manual</strong> · Editorial-Industrial · Anthropic / Vitsoe / Linear-old register</div>
+  <div>VORNAC.DE / METHODOLOGY-DOC.001</div>
+</div>
+
+<div class="doc">
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <div class="masthead-left">
+      <div class="wordmark">VORNAC<em>.</em></div>
+      <div class="masthead-meta">Continuous Pentesting · <span>Made in Germany</span></div>
+    </div>
+    <nav class="masthead-nav">
+      <a href="#" class="cur">Platform</a>
+      <a href="#">Methodology</a>
+      <a href="#">Compliance</a>
+      <a href="#">Customers</a>
+      <a href="#">Company</a>
+    </nav>
+  </header>
+
+  <!-- FOLIO BAR -->
+  <div class="folio">
+    <span>Vol. 01 / No. 03</span>
+    <span>The continuous validation methodology</span>
+    <span>Issued · Q3 2026</span>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <!-- LEFT: the verdict -->
+    <div class="hero-left">
+      <div class="hero-eyebrow">A method, not a vendor</div>
+
+      <h1 class="headline">
+        Pentesting,<br>
+        <span class="a">measured</span> like a<br>
+        <span class="b">production system.</span>
+      </h1>
+
+      <p class="hero-deck">
+        Once a year, a stranger probes part of your network and writes a PDF.
+        We treat penetration testing as a continuous signal — one that runs against the real environment, on a schedule your regulator already accepts.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#" class="btn">Request a session <span class="arrow"></span></a>
+        <a href="#" class="read-link">Read the methodology paper</a>
+      </div>
+    </div>
+
+    <!-- RIGHT: the diagram -->
+    <div class="hero-right">
+      <div class="diagram-card">
+        <div class="diagram-head">
+          <span>Fig. 01 · The validation loop</span>
+          <span><strong>Rev. 03</strong></span>
+        </div>
+
+        <!-- Custom hand-drafted diagram -->
+        <svg class="diagram-svg" viewBox="0 0 480 380" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10" fill="none" stroke="#1A1714" stroke-width="1.4"/>
+            </marker>
+            <marker id="arr-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10" fill="none" stroke="#A8632B" stroke-width="1.4"/>
+            </marker>
+          </defs>
+
+          <!-- TARGET BOX -->
+          <rect x="40" y="60" width="200" height="120" fill="none" stroke="#1A1714" stroke-width="1.4"/>
+          <!-- small corner ticks -->
+          <line x1="40" y1="60" x2="46" y2="60" stroke="#1A1714" stroke-width="2"/>
+          <line x1="40" y1="60" x2="40" y2="66" stroke="#1A1714" stroke-width="2"/>
+          <line x1="240" y1="180" x2="234" y2="180" stroke="#1A1714" stroke-width="2"/>
+          <line x1="240" y1="180" x2="240" y2="174" stroke="#1A1714" stroke-width="2"/>
+
+          <text x="48" y="50" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8C7F70" letter-spacing="1.2">[01.A]  PRODUCTION ASSETS</text>
+
+          <!-- asset items inside -->
+          <g font-family="IBM Plex Sans, sans-serif" font-size="13" fill="#1A1714">
+            <text x="60" y="92">— Web applications</text>
+            <text x="60" y="113">— APIs</text>
+            <text x="60" y="134">— Binaries  <tspan font-family="IBM Plex Mono, monospace" font-size="10" fill="#8C7F70">.ipa .apk .exe</tspan></text>
+            <text x="60" y="155">— Network &amp; behind-VPN</text>
+          </g>
+
+          <!-- right edge dimension to validator -->
+          <line x1="240" y1="120" x2="320" y2="120" stroke="#1A1714" stroke-width="1.4" marker-end="url(#arr)"/>
+          <text x="245" y="113" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8C7F70" letter-spacing="0.8">T+0  TRIGGER</text>
+
+          <!-- VALIDATOR (the loop) -->
+          <circle cx="370" cy="120" r="50" fill="none" stroke="#1A1714" stroke-width="1.4"/>
+          <text x="370" y="116" text-anchor="middle" font-family="Instrument Serif, serif" font-style="italic" font-size="22" fill="#1A1714">validate</text>
+          <text x="370" y="132" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8C7F70" letter-spacing="0.8">2–5 H</text>
+
+          <!-- amber loop arrow back to asset box (continuous) -->
+          <path d="M 370,70 Q 370,20 200,20 Q 60,20 60,60"
+                fill="none" stroke="#A8632B" stroke-width="1.4" stroke-dasharray="4 3"
+                marker-end="url(#arr-amber)"/>
+          <text x="200" y="14" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#A8632B" letter-spacing="1.2">CONTINUOUS · API OR SCHEDULE</text>
+
+          <!-- VALIDATOR -> REPORT -->
+          <line x1="370" y1="170" x2="370" y2="240" stroke="#1A1714" stroke-width="1.4" marker-end="url(#arr)"/>
+
+          <!-- REPORT BOX -->
+          <rect x="270" y="240" width="200" height="80" fill="none" stroke="#1A1714" stroke-width="1.4"/>
+          <line x1="270" y1="240" x2="276" y2="240" stroke="#1A1714" stroke-width="2"/>
+          <line x1="270" y1="240" x2="270" y2="246" stroke="#1A1714" stroke-width="2"/>
+          <line x1="470" y1="320" x2="464" y2="320" stroke="#1A1714" stroke-width="2"/>
+          <line x1="470" y1="320" x2="470" y2="314" stroke="#1A1714" stroke-width="2"/>
+          <text x="278" y="230" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8C7F70" letter-spacing="1.2">[01.B]  SIGNED REPORT</text>
+          <text x="290" y="268" font-family="Instrument Serif, serif" font-size="20" fill="#1A1714">Audit-ready, by clause.</text>
+          <text x="290" y="291" font-family="IBM Plex Sans, sans-serif" font-size="11" fill="#4A4137">NIS2 · DORA · BaFin VAIT / BAIT</text>
+          <text x="290" y="308" font-family="IBM Plex Sans, sans-serif" font-size="11" fill="#4A4137">KRITIS · ISO/IEC 27001</text>
+
+          <!-- ground-truth ruler at bottom -->
+          <line x1="40" y1="350" x2="240" y2="350" stroke="#8C7F70" stroke-width="1"/>
+          <line x1="40" y1="346" x2="40" y2="354" stroke="#8C7F70" stroke-width="1"/>
+          <line x1="140" y1="346" x2="140" y2="354" stroke="#8C7F70" stroke-width="1"/>
+          <line x1="240" y1="346" x2="240" y2="354" stroke="#8C7F70" stroke-width="1"/>
+          <text x="40" y="368" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8C7F70" letter-spacing="0.8">T+0</text>
+          <text x="140" y="368" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8C7F70" letter-spacing="0.8">T+2H</text>
+          <text x="240" y="368" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8C7F70" letter-spacing="0.8">T+5H · DELIVERED</text>
+        </svg>
+
+        <div class="diagram-legend">
+          <div><span class="swatch" style="background:#1A1714"></span><strong>Adversarial step</strong></div>
+          <div><span class="swatch" style="background:#A8632B"></span><strong>Continuous trigger</strong></div>
+          <div>Driven via UI or REST API</div>
+          <div>Signed evidence chain captured per finding</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECS STRIP — like a manual footer with technical specifications -->
+  <dl class="specs">
+    <div class="spec">
+      <dt>What it does</dt>
+      <dd>Validates <em>exploitability</em>, not severity scores.</dd>
+      <div class="annotation">CVSS tells you a vulnerability exists. We prove an attacker can reach it.</div>
+    </div>
+    <div class="spec">
+      <dt>How often</dt>
+      <dd>Every day. Every commit. Or on call.</dd>
+      <div class="annotation">Schedule-driven or API-triggered.</div>
+    </div>
+    <div class="spec">
+      <dt>Where it runs</dt>
+      <dd>Frankfurt &amp; Berlin.</dd>
+      <div class="annotation">German operators. No data egress.</div>
+    </div>
+    <div class="spec">
+      <dt>What you receive</dt>
+      <dd>A report, not a CSV.</dd>
+      <div class="annotation">Signed PDF, mapped to article clauses.</div>
+    </div>
+  </dl>
+
+  <!-- PAGE FOOT -->
+  <div class="pagefoot">
+    <span>VORNAC GmbH · <strong>Berlin</strong></span>
+    <span>Page <strong>001</strong> / Continued overleaf →</span>
+    <span>© 2026 · Methodology paper</span>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layout-Optionen</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #111; color: #f0f0f0; font-family: 'Inter', system-ui, sans-serif; padding: 32px 24px 64px; }
+
+  h1 { font-size: 18px; font-weight: 600; color: #aaa; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+  .page-sub { color: #666; font-size: 14px; margin-bottom: 48px; }
+
+  /* Option cards */
+  .options-wrap { display: flex; flex-direction: column; gap: 48px; }
+
+  .option-card {
+    border: 2px solid #2a2a2a;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .option-card:hover { border-color: #555; }
+  .option-card.selected { border-color: #d4a017; }
+
+  .option-label {
+    padding: 16px 24px;
+    background: #1a1a1a;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 1px solid #2a2a2a;
+  }
+  .option-letter {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: #2a2a2a;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; color: #888;
+    flex-shrink: 0;
+  }
+  .option-card.selected .option-letter { background: #d4a017; color: #000; }
+  .option-name { font-size: 15px; font-weight: 600; color: #e0e0e0; }
+  .option-desc { font-size: 13px; color: #666; margin-left: auto; }
+
+  .mockup-wrap { padding: 32px 24px; background: #0d0d0d; }
+
+  /* ── Shared section chrome ── */
+  .sec-dark { background: #141414; border-radius: 8px; padding: 32px; }
+  .sec-light { background: #1c1c1c; border-radius: 8px; padding: 32px; }
+
+  .sec-eyebrow { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #d4a017; margin-bottom: 12px; font-weight: 600; }
+  .sec-headline { font-size: 20px; font-weight: 700; color: #fff; line-height: 1.3; margin-bottom: 10px; }
+  .sec-sub { font-size: 13px; color: #888; line-height: 1.6; margin-bottom: 28px; max-width: 540px; }
+
+  /* ── OPTION A: Cascading steps (vertical stagger) ── */
+  .steps-cascade { display: flex; flex-direction: column; gap: 0; }
+  .step-row {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 0 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid #252525;
+    align-items: start;
+  }
+  .step-row:last-child { border-bottom: none; }
+  .step-num-big {
+    font-size: 36px; font-weight: 800; color: #d4a017;
+    line-height: 1; padding-top: 2px;
+  }
+  .step-body-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .step-body-text { font-size: 13px; color: #777; line-height: 1.6; }
+  .step-tag {
+    display: inline-block;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    background: #1e1e1e; border: 1px solid #333;
+    color: #aaa; border-radius: 4px; padding: 2px 8px; margin-bottom: 8px;
+  }
+
+  /* stats below steps A */
+  .stats-a { display: grid; grid-template-columns: 1fr 2fr; gap: 24px; margin-top: 28px; }
+  .stat-hero { background: #0a0a0a; border-radius: 8px; padding: 24px; display: flex; flex-direction: column; justify-content: center; }
+  .stat-hero-num { font-size: 56px; font-weight: 800; color: #d4a017; line-height: 1; }
+  .stat-hero-unit { font-size: 28px; }
+  .stat-hero-label { font-size: 13px; color: #888; margin-top: 8px; line-height: 1.4; }
+  .stat-hero-sub { font-size: 11px; color: #555; margin-top: 4px; }
+  .stats-a-side { display: flex; flex-direction: column; gap: 16px; }
+  .stat-row {
+    background: #0a0a0a; border-radius: 6px; padding: 16px 20px;
+    display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center;
+  }
+  .stat-row-num { font-size: 28px; font-weight: 800; color: #fff; white-space: nowrap; }
+  .stat-row-num span { font-size: 16px; color: #d4a017; }
+  .stat-row-text { font-size: 12px; color: #777; line-height: 1.5; }
+
+  /* ── OPTION B: Full-width narrative step + compact grid ── */
+  .step-feature {
+    background: #0a0a0a; border-radius: 8px; padding: 28px;
+    margin-bottom: 16px;
+    display: grid; grid-template-columns: 56px 1fr; gap: 20px; align-items: start;
+  }
+  .step-feature-num { font-size: 48px; font-weight: 800; color: #d4a017; line-height: 1; }
+  .step-feature-title { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+  .step-feature-text { font-size: 13px; color: #777; line-height: 1.6; }
+  .step-feature-chain {
+    margin-top: 12px; font-size: 11px; color: #d4a017;
+    font-family: monospace; letter-spacing: 0.05em;
+  }
+  .steps-compact { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .step-compact-item {
+    background: #0a0a0a; border-radius: 6px; padding: 16px 18px;
+    display: flex; gap: 12px;
+  }
+  .step-compact-num { font-size: 20px; font-weight: 800; color: #333; flex-shrink: 0; }
+  .step-compact-title { font-size: 13px; font-weight: 600; color: #ccc; margin-bottom: 4px; }
+  .step-compact-text { font-size: 12px; color: #666; line-height: 1.5; }
+
+  /* stats B: single dominant + inline pair */
+  .stats-b { margin-top: 24px; display: flex; flex-direction: column; gap: 12px; }
+  .stat-b-main {
+    background: #0a0a0a; border-radius: 8px; padding: 24px 28px;
+    display: flex; align-items: center; gap: 24px;
+  }
+  .stat-b-main-num { font-size: 64px; font-weight: 800; color: #fff; line-height: 1; white-space: nowrap; }
+  .stat-b-main-num .pct { font-size: 36px; color: #d4a017; }
+  .stat-b-main-text { }
+  .stat-b-main-label { font-size: 16px; font-weight: 600; color: #ddd; margin-bottom: 4px; }
+  .stat-b-main-sub { font-size: 12px; color: #666; line-height: 1.5; }
+  .stat-b-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .stat-b-item { background: #0a0a0a; border-radius: 6px; padding: 18px 20px; }
+  .stat-b-item-num { font-size: 32px; font-weight: 800; color: #fff; }
+  .stat-b-item-num .u { font-size: 18px; color: #d4a017; }
+  .stat-b-item-label { font-size: 12px; color: #888; margin-top: 6px; line-height: 1.4; }
+
+  /* ── OPTION C: Horizontal scrolling steps + statement stats ── */
+  .steps-timeline {
+    position: relative;
+    padding-left: 0;
+  }
+  .timeline-track {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0; position: relative;
+  }
+  .timeline-track::before {
+    content: '';
+    position: absolute; top: 20px; left: 24px; right: 24px; height: 2px;
+    background: linear-gradient(90deg, #d4a017 33%, #333 33%);
+  }
+  .tl-step { padding: 48px 16px 20px; position: relative; }
+  .tl-dot {
+    position: absolute; top: 14px; left: 24px;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: #d4a017;
+  }
+  .tl-step:nth-child(2) .tl-dot { background: #555; }
+  .tl-step:nth-child(3) .tl-dot { background: #555; }
+  .tl-num { font-size: 11px; font-weight: 700; color: #d4a017; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
+  .tl-step:nth-child(2) .tl-num, .tl-step:nth-child(3) .tl-num { color: #555; }
+  .tl-title { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+  .tl-text { font-size: 12px; color: #666; line-height: 1.6; }
+
+  .stats-c { display: grid; grid-template-columns: 1fr; gap: 0; margin-top: 24px; }
+  .stat-c-row {
+    display: grid; grid-template-columns: 160px 1fr;
+    align-items: center; gap: 24px;
+    padding: 20px 0; border-top: 1px solid #222;
+  }
+  .stat-c-num { font-size: 48px; font-weight: 800; color: #fff; text-align: right; }
+  .stat-c-num .u { font-size: 28px; color: #d4a017; }
+  .stat-c-num .pre { display: block; font-size: 12px; color: #666; font-weight: 400; text-align: right; margin-bottom: -4px; }
+  .stat-c-text-label { font-size: 14px; font-weight: 600; color: #ccc; margin-bottom: 4px; }
+  .stat-c-text-sub { font-size: 12px; color: #666; line-height: 1.5; }
+
+  /* selected indicator */
+  .sel-bar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: #d4a017; color: #000;
+    text-align: center; padding: 12px;
+    font-size: 14px; font-weight: 700;
+    transform: translateY(100%);
+    transition: transform 0.2s;
+    z-index: 100;
+  }
+  .sel-bar.visible { transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<h1>Layout-Optionen</h1>
+<p class="page-sub">Drei Vorschläge, um das 3er-Raster bei "How it works" und "Stats 2" aufzubrechen. Klick zum Auswählen.</p>
+
+<div class="options-wrap">
+
+  <!-- ══════════════════ OPTION A ══════════════════ -->
+  <div class="option-card" data-choice="a" onclick="pick(this)">
+    <div class="option-label">
+      <div class="option-letter">A</div>
+      <div class="option-name">Vertikale Kaskade + Hero-Stat</div>
+      <div class="option-desc">Schritte als gestapelte Zeilen · eine Zahl dominiert</div>
+    </div>
+    <div class="mockup-wrap">
+
+      <!-- How it works: cascading rows -->
+      <div class="sec-dark" style="margin-bottom: 16px;">
+        <div class="sec-eyebrow">So funktioniert's</div>
+        <div class="sec-headline">Pentesting, das nie aufhört.</div>
+        <div class="sec-sub">Klassische Pentests sind Stichproben. VORNAC läuft kontinuierlich – bei jedem Release, über die volle Angriffsfläche.</div>
+
+        <div class="steps-cascade">
+          <div class="step-row">
+            <div class="step-num-big">1</div>
+            <div>
+              <div class="step-tag">Angriff</div>
+              <div class="step-body-title">Echte Angriffe, keine Scans.</div>
+              <div class="step-body-text">Volle MITRE ATT&CK Kill Chain: Reconnaissance → Initial Access → Privilege Escalation → Lateral Movement → Exfiltration. Jeder Befund mit funktionierendem Exploit.</div>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-num-big">2</div>
+            <div>
+              <div class="step-tag">Trigger</div>
+              <div class="step-body-title">Bei jedem Release ausgelöst.</div>
+              <div class="step-body-text">Per CI/CD-Webhook, bei Infrastrukturänderungen, nach Zeitplan oder on-demand via API. Vom Trigger bis zum Befund: Stunden, nicht Wochen.</div>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-num-big">3</div>
+            <div>
+              <div class="step-tag">Loop</div>
+              <div class="step-body-title">Iterativer Loop bis nichts mehr offen ist.</div>
+              <div class="step-body-text">Observation → Enumeration → Exploitation → Documentation. Jeder Befund speist die nächste Runde.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats 2: hero + side pair -->
+      <div class="sec-dark">
+        <div class="sec-eyebrow">Messbar überlegen</div>
+        <div class="sec-headline">Pentesting als planbare OPEX-Funktion.</div>
+        <div class="stats-a">
+          <div class="stat-hero">
+            <div class="stat-hero-num">&gt;97<span class="stat-hero-unit">%</span></div>
+            <div class="stat-hero-label">Angriffsfläche pro Zyklus validiert</div>
+            <div class="stat-hero-sub">Cloud, On-Prem, APIs, hinter VPN. Kontinuierlich, nicht jährlich.</div>
+          </div>
+          <div class="stats-a-side">
+            <div class="stat-row">
+              <div class="stat-row-num">2–5<span>h</span></div>
+              <div class="stat-row-text">Vom Start bis zum auditfähigen Report. Kein mehrwöchiges Projekt-Fenster.</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-row-num">4<span>×</span></div>
+              <div class="stat-row-text">Höhere Angriffskosten für Kriminelle. Senkt die wirtschaftliche Attraktivität als Ziel.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════ OPTION B ══════════════════ -->
+  <div class="option-card" data-choice="b" onclick="pick(this)">
+    <div class="option-label">
+      <div class="option-letter">B</div>
+      <div class="option-name">Feature-Schritt + Kompakt-Grid</div>
+      <div class="option-desc">Schritt 1 dominant · 2 & 3 kleiner · Stats nebeneinander</div>
+    </div>
+    <div class="mockup-wrap">
+
+      <!-- How it works: feature step + compact -->
+      <div class="sec-dark" style="margin-bottom: 16px;">
+        <div class="sec-eyebrow">So funktioniert's</div>
+        <div class="sec-headline">Pentesting, das nie aufhört.</div>
+
+        <div class="step-feature">
+          <div class="step-feature-num">1</div>
+          <div>
+            <div class="step-feature-title">Echte Angriffe, keine Scans.</div>
+            <div class="step-feature-text">Volle MITRE ATT&CK Kill Chain: Reconnaissance → Initial Access → Privilege Escalation → Lateral Movement → Exfiltration. Jeder Befund kommt mit funktionierendem Exploit und reproduzierbarem Proof-of-Concept.</div>
+            <div class="step-feature-chain">Recon → Initial Access → Priv-Esc → Lateral Move → Exfil</div>
+          </div>
+        </div>
+
+        <div class="steps-compact">
+          <div class="step-compact-item">
+            <div class="step-compact-num">2</div>
+            <div>
+              <div class="step-compact-title">Bei jedem Release ausgelöst.</div>
+              <div class="step-compact-text">Per CI/CD-Webhook oder on-demand via API. Stunden, nicht Wochen.</div>
+            </div>
+          </div>
+          <div class="step-compact-item">
+            <div class="step-compact-num">3</div>
+            <div>
+              <div class="step-compact-title">Iterativer Loop.</div>
+              <div class="step-compact-text">Jeder Befund speist die nächste Runde. Bis die Fläche ausgeschöpft ist.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats 2: main + pair -->
+      <div class="sec-dark">
+        <div class="sec-eyebrow">Messbar überlegen</div>
+        <div class="sec-headline">Pentesting als planbare OPEX-Funktion.</div>
+        <div class="stats-b">
+          <div class="stat-b-main">
+            <div class="stat-b-main-num">&gt;97<span class="pct">%</span></div>
+            <div class="stat-b-main-text">
+              <div class="stat-b-main-label">Angriffsfläche pro Zyklus validiert</div>
+              <div class="stat-b-main-sub">Cloud, On-Premises, APIs und Systeme hinter VPN. Kontinuierlich, nicht jährlich. Von Tag eins an.</div>
+            </div>
+          </div>
+          <div class="stat-b-pair">
+            <div class="stat-b-item">
+              <div class="stat-b-item-num">2–5<span class="u">h</span></div>
+              <div class="stat-b-item-label">Vom Start bis zum Report. Start per Web oder API, auditfähige Befunde noch am selben Tag.</div>
+            </div>
+            <div class="stat-b-item">
+              <div class="stat-b-item-num">4<span class="u">×</span></div>
+              <div class="stat-b-item-label">Höhere Angriffskosten (CPA) für Kriminelle. Senkt die wirtschaftliche Attraktivität als Ziel.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════ OPTION C ══════════════════ -->
+  <div class="option-card" data-choice="c" onclick="pick(this)">
+    <div class="option-label">
+      <div class="option-letter">C</div>
+      <div class="option-name">Timeline + Zeilenstatistiken</div>
+      <div class="option-desc">Horizontale Timeline · Stats als nummerierte Zeilen</div>
+    </div>
+    <div class="mockup-wrap">
+
+      <!-- How it works: timeline -->
+      <div class="sec-dark" style="margin-bottom: 16px;">
+        <div class="sec-eyebrow">So funktioniert's</div>
+        <div class="sec-headline">Pentesting, das nie aufhört.</div>
+        <div class="sec-sub">VORNAC läuft kontinuierlich – bei jedem Release, über die volle Angriffsfläche, mit echten Exploits.</div>
+
+        <div class="steps-timeline">
+          <div class="timeline-track">
+            <div class="tl-step">
+              <div class="tl-dot"></div>
+              <div class="tl-num">Schritt 1 · Angriff</div>
+              <div class="tl-title">Echte Angriffe, keine Scans.</div>
+              <div class="tl-text">Volle MITRE ATT&CK Kill Chain mit funktionierendem Exploit und Proof-of-Concept.</div>
+            </div>
+            <div class="tl-step">
+              <div class="tl-dot"></div>
+              <div class="tl-num">Schritt 2 · Trigger</div>
+              <div class="tl-title">Bei jedem Release ausgelöst.</div>
+              <div class="tl-text">Per CI/CD-Webhook oder on-demand via API. Stunden, nicht Wochen.</div>
+            </div>
+            <div class="tl-step">
+              <div class="tl-dot"></div>
+              <div class="tl-num">Schritt 3 · Loop</div>
+              <div class="tl-title">Iterativer Loop.</div>
+              <div class="tl-text">Jeder Befund speist die nächste Runde. Bis zur Ausschöpfung.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats 2: horizontal rows -->
+      <div class="sec-dark">
+        <div class="sec-eyebrow">Messbar überlegen</div>
+        <div class="sec-headline">Pentesting als planbare OPEX-Funktion.</div>
+        <div class="stats-c">
+          <div class="stat-c-row">
+            <div class="stat-c-num"><span class="pre">&gt;</span>97<span class="u">%</span></div>
+            <div>
+              <div class="stat-c-text-label">Angriffsfläche pro Zyklus validiert</div>
+              <div class="stat-c-text-sub">Cloud, On-Premises, APIs und Systeme hinter VPN. Kontinuierlich, nicht jährlich. Von Tag eins an.</div>
+            </div>
+          </div>
+          <div class="stat-c-row">
+            <div class="stat-c-num">2–5<span class="u">h</span></div>
+            <div>
+              <div class="stat-c-text-label">Vom Start bis zum Report</div>
+              <div class="stat-c-text-sub">Kein mehrwöchiges Projekt-Fenster. Start per Web oder API, auditfähige Befunde noch am selben Tag.</div>
+            </div>
+          </div>
+          <div class="stat-c-row">
+            <div class="stat-c-num">4<span class="u">×</span></div>
+            <div>
+              <div class="stat-c-text-label">Höhere Angriffskosten für Kriminelle</div>
+              <div class="stat-c-text-sub">Cost per Attack (CPA). Senkt die wirtschaftliche Attraktivität als Angriffsziel.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /options-wrap -->
+
+<div class="sel-bar" id="sel-bar"></div>
+
+<script>
+let selected = null;
+function pick(el) {
+  document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  selected = el.dataset.choice;
+  const bar = document.getElementById('sel-bar');
+  const names = { a: 'Option A gewählt', b: 'Option B gewählt', c: 'Option C gewählt' };
+  bar.textContent = names[selected] + ' · Sag mir im Terminal, was du denkst';
+  bar.classList.add('visible');
+
+  // log to superpowers events if available
+  if (window.__sp_logEvent) window.__sp_logEvent({ type: 'click', choice: selected });
+}
+</script>
+</body>
+</html>

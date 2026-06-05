@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VORNAC — Progressive mockup</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* PALETTE — warm dark, not cold tech-blue */
+    --ink:           #0C0B09;   /* near-black with warmth */
+    --ink-2:         #15130F;   /* card surface */
+    --ink-3:         #1F1C16;   /* elevated surface */
+    --line:          #2C2820;   /* hairlines */
+    --line-2:        #3A352A;
+    --paper:         #F4F0E6;   /* warm off-white text */
+    --paper-mute:    #B5AC97;   /* muted body text */
+    --paper-soft:    #847C68;   /* secondary */
+    --paper-faint:   #564F40;   /* tertiary */
+    --amber:         #E89A2C;   /* the brand, used confidently */
+    --amber-deep:    #B47114;   /* hover */
+    --amber-soft:    #F4C97A;   /* highlights */
+    --amber-glow:    rgba(232,154,44,0.18);
+    --green:         #6EA869;   /* validated */
+    --red:           #D4564A;   /* critical */
+
+    --sans:  'Geist', system-ui, -apple-system, sans-serif;
+    --mono:  'Geist Mono', ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--sans);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    letter-spacing: -0.005em;
+  }
+
+  /* MOCKUP TOOLBAR */
+  .mockup-bar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--ink-3); color: var(--paper-mute);
+    padding: 9px 24px; font-family: var(--mono); font-size: 11px;
+    display: flex; align-items: center; justify-content: space-between;
+    letter-spacing: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .mockup-bar strong { color: var(--paper); font-weight: 500; }
+
+  /* SUBTLE AMBIENT GLOW behind the hero — adds depth, never noise */
+  .scene {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .scene::before {
+    content: "";
+    position: absolute;
+    top: -200px; right: -300px;
+    width: 900px; height: 900px;
+    background: radial-gradient(closest-side, rgba(232,154,44,0.10), transparent 70%);
+    z-index: -1;
+    filter: blur(30px);
+    pointer-events: none;
+  }
+  .scene::after {
+    content: "";
+    position: absolute;
+    top: 30%; left: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(closest-side, rgba(232,154,44,0.05), transparent 70%);
+    z-index: -1;
+    filter: blur(20px);
+    pointer-events: none;
+  }
+
+  /* faint grid texture */
+  .scene .grid-tex {
+    position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at top right, black 30%, transparent 80%);
+  }
+
+  /* CONTAINER */
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 0 40px; position: relative; }
+
+  /* ============================================================
+     NAV — confident, modern, minimal
+  ============================================================ */
+  nav.top {
+    border-bottom: 1px solid var(--line);
+    background: rgba(12,11,9,0.65);
+    backdrop-filter: blur(12px);
+  }
+  nav.top .inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 0;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 17px; font-weight: 600; letter-spacing: -0.02em;
+    color: var(--paper);
+  }
+  .brand-mark {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px;
+    background: var(--amber);
+    color: var(--ink);
+    font-weight: 700; font-size: 14px;
+    border-radius: 6px;
+    font-family: var(--mono);
+  }
+  .nav-links {
+    display: flex; gap: 32px;
+    font-size: 13.5px; font-weight: 450;
+  }
+  .nav-links a {
+    color: var(--paper-mute); text-decoration: none;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: var(--paper); }
+  .nav-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 9px 16px;
+    background: var(--paper);
+    color: var(--ink);
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 13.5px; font-weight: 500;
+    transition: background 0.15s;
+  }
+  .nav-cta:hover { background: var(--amber); }
+
+  /* ============================================================
+     HERO
+  ============================================================ */
+  .hero {
+    padding: 96px 0 56px;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--amber);
+    letter-spacing: 0;
+    margin-bottom: 32px;
+    padding: 6px 12px 6px 10px;
+    border: 1px solid var(--line-2);
+    border-radius: 100px;
+    background: rgba(232,154,44,0.06);
+    width: fit-content;
+  }
+  .eyebrow .pulse {
+    width: 6px; height: 6px;
+    background: var(--amber);
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(232,154,44,0.5);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(232,154,44,0.5); }
+    70% { box-shadow: 0 0 0 8px rgba(232,154,44,0); }
+    100% { box-shadow: 0 0 0 0 rgba(232,154,44,0); }
+  }
+
+  h1.headline {
+    font-size: clamp(48px, 5.4vw, 78px);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    font-weight: 500;
+    color: var(--paper);
+    margin: 0 0 28px;
+  }
+  h1.headline .accent {
+    color: var(--amber);
+  }
+
+  .subline {
+    font-size: 19px; line-height: 1.55;
+    color: var(--paper-mute);
+    max-width: 540px;
+    margin: 0 0 40px;
+    font-weight: 400;
+  }
+
+  .cta-row {
+    display: flex; align-items: center; gap: 16px;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 13px 22px;
+    background: var(--amber);
+    color: var(--ink);
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14.5px; font-weight: 500;
+    transition: all 0.18s;
+    box-shadow: 0 12px 32px -8px rgba(232,154,44,0.45), inset 0 1px 0 rgba(255,255,255,0.18);
+  }
+  .btn-primary:hover {
+    background: var(--amber-soft);
+    transform: translateY(-1px);
+    box-shadow: 0 16px 40px -8px rgba(232,154,44,0.6), inset 0 1px 0 rgba(255,255,255,0.25);
+  }
+  .btn-primary svg { transition: transform 0.18s; }
+  .btn-primary:hover svg { transform: translateX(3px); }
+
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 20px;
+    background: transparent;
+    color: var(--paper);
+    text-decoration: none;
+    border: 1px solid var(--line-2);
+    border-radius: 8px;
+    font-size: 14.5px; font-weight: 450;
+    transition: all 0.15s;
+  }
+  .btn-ghost:hover { background: var(--ink-3); border-color: var(--paper-soft); }
+
+  .hero-trust {
+    margin-top: 56px;
+    display: flex; align-items: center; gap: 24px;
+    font-family: var(--mono); font-size: 11px;
+    color: var(--paper-faint);
+  }
+  .hero-trust .label { color: var(--paper-soft); }
+  .hero-trust .badge-row {
+    display: flex; gap: 18px;
+  }
+  .hero-trust .badge {
+    color: var(--paper-mute);
+    border-left: 1px solid var(--line-2);
+    padding-left: 18px;
+    transition: color 0.15s;
+  }
+  .hero-trust .badge:first-child { border-left: 0; padding-left: 0; }
+  .hero-trust .badge:hover { color: var(--paper); }
+
+  /* ============================================================
+     PRODUCT UI — dense, real-feeling
+  ============================================================ */
+  .product {
+    position: relative;
+    transform: translateY(0);
+  }
+  /* secondary card peeking behind */
+  .product::before {
+    content: "";
+    position: absolute;
+    top: 28px; right: -28px; left: 28px; bottom: -16px;
+    background: var(--ink-2);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    z-index: 0;
+    transform: rotate(1.2deg);
+    opacity: 0.55;
+  }
+
+  .product-card {
+    position: relative;
+    background: var(--ink-2);
+    border: 1px solid var(--line-2);
+    border-radius: 14px;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow:
+      0 30px 80px -20px rgba(0,0,0,0.6),
+      0 8px 24px -8px rgba(232,154,44,0.18),
+      inset 0 1px 0 rgba(255,255,255,0.04);
+  }
+
+  .product-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  }
+  .product-head-left {
+    display: flex; align-items: center; gap: 12px;
+    font-family: var(--mono); font-size: 11.5px;
+    color: var(--paper-mute);
+  }
+  .product-head-left strong { color: var(--paper); font-weight: 500; }
+  .live-dot {
+    display: inline-block;
+    width: 7px; height: 7px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(110,168,105,0.18);
+  }
+  .product-head-right {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--paper-soft);
+    display: flex; gap: 14px;
+  }
+
+  /* filter chips */
+  .filters {
+    display: flex; gap: 8px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--mono); font-size: 11px;
+  }
+  .chip {
+    padding: 5px 10px;
+    border: 1px solid var(--line-2);
+    color: var(--paper-mute);
+    border-radius: 6px;
+    background: transparent;
+  }
+  .chip.crit { color: var(--red); border-color: rgba(212,86,74,0.4); background: rgba(212,86,74,0.08); }
+  .chip.amber { color: var(--amber); border-color: rgba(232,154,44,0.45); background: rgba(232,154,44,0.1); }
+  .chip.active { color: var(--paper); border-color: var(--paper-soft); }
+  .chip span { opacity: 0.65; margin-left: 4px; }
+
+  /* findings list */
+  .findings {
+    padding: 4px 0;
+  }
+  .finding {
+    display: grid;
+    grid-template-columns: 16px 86px 1fr 84px;
+    align-items: center;
+    gap: 14px;
+    padding: 11px 18px;
+    border-bottom: 1px solid var(--line);
+    font-size: 13px;
+    transition: background 0.15s;
+  }
+  .finding:last-child { border-bottom: 0; }
+  .finding:hover { background: rgba(255,255,255,0.015); }
+  .sev {
+    width: 10px; height: 10px; border-radius: 2px;
+    margin: 0 3px;
+  }
+  .sev.crit { background: var(--red); box-shadow: 0 0 8px rgba(212,86,74,0.35); }
+  .sev.high { background: var(--amber); box-shadow: 0 0 8px rgba(232,154,44,0.3); }
+  .sev.med { background: #C7A86F; }
+  .sev.low { background: #5E5A4D; }
+  .asset {
+    font-family: var(--mono); font-size: 11.5px;
+    color: var(--paper-soft);
+    letter-spacing: 0;
+  }
+  .title {
+    color: var(--paper);
+    font-weight: 450;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .title .ind {
+    display: inline-block;
+    width: 5px; height: 5px;
+    background: var(--amber);
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: 2px;
+    box-shadow: 0 0 6px rgba(232,154,44,0.7);
+  }
+  .pill {
+    font-family: var(--mono); font-size: 10.5px;
+    padding: 4px 9px;
+    border-radius: 5px;
+    text-align: center;
+    letter-spacing: 0;
+  }
+  .pill.live   { background: rgba(232,154,44,0.13); color: var(--amber); border: 1px solid rgba(232,154,44,0.35); }
+  .pill.fixed  { background: rgba(110,168,105,0.1); color: var(--green); border: 1px solid rgba(110,168,105,0.3); }
+  .pill.queued { background: var(--ink-3); color: var(--paper-soft); border: 1px solid var(--line-2); }
+
+  /* product footer / status bar */
+  .product-foot {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 18px;
+    border-top: 1px solid var(--line);
+    background: linear-gradient(0deg, rgba(232,154,44,0.04), transparent);
+    font-family: var(--mono); font-size: 11px;
+    color: var(--paper-soft);
+  }
+  .product-foot .right { display: flex; gap: 18px; color: var(--paper-mute); }
+  .product-foot .right strong { color: var(--paper); font-weight: 500; }
+
+  @media (max-width: 980px) {
+    .hero { grid-template-columns: 1fr; gap: 56px; }
+    .nav-links { display: none; }
+    .product::before { display: none; }
+    .hero-trust { flex-direction: column; align-items: flex-start; gap: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="mockup-bar">
+  <div>Mockup <strong>D — Progressive</strong> · Warm-dark · Confident amber as primary brand color</div>
+  <div>VORNAC.DE</div>
+</div>
+
+<div class="scene">
+  <div class="grid-tex"></div>
+
+  <!-- NAV -->
+  <nav class="top">
+    <div class="wrap inner">
+      <div class="brand">
+        <span class="brand-mark">V</span>
+        <span>VORNAC</span>
+      </div>
+      <div class="nav-links">
+        <a href="#">Platform</a>
+        <a href="#">Pentesting</a>
+        <a href="#">Compliance</a>
+        <a href="#">Customers</a>
+        <a href="#">Pricing</a>
+      </div>
+      <a href="#" class="nav-cta">
+        Book a demo
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="wrap hero">
+
+    <div>
+      <div class="eyebrow">
+        <span class="pulse"></span>
+        Continuous · live now in 47 environments
+      </div>
+
+      <h1 class="headline">
+        Pentesting that runs while you <span class="accent">sleep</span>, ships, and scales.
+      </h1>
+
+      <p class="subline">
+        VORNAC validates your live production environment against real adversarial techniques — continuously, on schedule, and via API. Findings are exploitability-proven and audit-ready for NIS2, DORA, BaFin, and KRITIS.
+      </p>
+
+      <div class="cta-row">
+        <a href="#" class="btn-primary">
+          Book a demo
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#" class="btn-ghost">See it in action</a>
+      </div>
+
+      <div class="hero-trust">
+        <span class="label">In production for</span>
+        <div class="badge-row">
+          <span class="badge">EU Banks · Tier-1</span>
+          <span class="badge">Energy &amp; Utilities</span>
+          <span class="badge">KRITIS Operators</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRODUCT UI -->
+    <div class="product">
+      <div class="product-card">
+
+        <div class="product-head">
+          <div class="product-head-left">
+            <span class="live-dot"></span>
+            <span><strong>Production · EU-Frankfurt</strong></span>
+            <span style="opacity:0.6">/ Continuous pentest</span>
+          </div>
+          <div class="product-head-right">
+            <span>cycle 142</span>
+            <span>2 min ago</span>
+          </div>
+        </div>
+
+        <div class="filters">
+          <button class="chip crit">Critical <span>3</span></button>
+          <button class="chip amber">High <span>12</span></button>
+          <button class="chip">Medium <span>41</span></button>
+          <button class="chip">Low <span>86</span></button>
+          <button class="chip active" style="margin-left:auto">Exploitable only</button>
+        </div>
+
+        <div class="findings">
+          <div class="finding">
+            <span class="sev crit"></span>
+            <span class="asset">api.payments</span>
+            <span class="title"><span class="ind"></span>JWT signature reuse across tenants</span>
+            <span class="pill live">LIVE</span>
+          </div>
+          <div class="finding">
+            <span class="sev high"></span>
+            <span class="asset">vpn-eu-1</span>
+            <span class="title"><span class="ind"></span>SSL/TLS downgrade — CVE-2026-1147</span>
+            <span class="pill live">LIVE</span>
+          </div>
+          <div class="finding">
+            <span class="sev high"></span>
+            <span class="asset">admin.portal</span>
+            <span class="title">IDOR on /orgs/:id/invoices</span>
+            <span class="pill queued">QUEUED</span>
+          </div>
+          <div class="finding">
+            <span class="sev med"></span>
+            <span class="asset">storage-1</span>
+            <span class="title">S3 bucket public-list permission</span>
+            <span class="pill fixed">FIXED</span>
+          </div>
+          <div class="finding">
+            <span class="sev med"></span>
+            <span class="asset">ad-controller</span>
+            <span class="title">Kerberoasting · weak service account</span>
+            <span class="pill live">LIVE</span>
+          </div>
+          <div class="finding">
+            <span class="sev low"></span>
+            <span class="asset">marketing.web</span>
+            <span class="title">Missing security headers (CSP, HSTS)</span>
+            <span class="pill queued">QUEUED</span>
+          </div>
+        </div>
+
+        <div class="product-foot">
+          <span>142 findings · 3 new · ↑ trend</span>
+          <div class="right">
+            <span>Coverage <strong>97%</strong></span>
+            <span>MTTR <strong>2.4h</strong></span>
+            <span>Audit <strong>ready</strong></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+</div>
+
+</body>
+</html>

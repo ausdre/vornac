@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VORNAC – Mockup B: Editorial / Mandiant</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF9;            /* stone-50 — warm paper */
+    --bg-pure: #FFFFFF;
+    --bg-ink: #0A0A0A;
+    --ink: #111111;
+    --ink-soft: #1F2937;
+    --rule: #1F1F1F;
+    --paper-rule: #E5E5E1;
+    --muted: #525252;
+    --subtle: #A8A29E;
+    --signal: #8B5A1F;        /* deep tobacco / sober amber */
+    --signal-soft: #F5EFE3;
+    --signal-rule: #C9A86A;
+    --link: #1F1F1F;
+
+    --font-serif: 'Spectral', 'Iowan Old Style', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    --container: 1240px;
+  }
+
+  body.no-amber {
+    --signal: var(--ink);
+    --signal-soft: var(--bg);
+    --signal-rule: var(--rule);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-sans);
+    color: var(--ink);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+
+  .container { max-width: var(--container); margin: 0 auto; padding: 0 40px; }
+
+  /* MOCKUP TOOLBAR */
+  .mockup-bar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg-ink); color: #fff;
+    padding: 10px 24px; font-size: 12px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: var(--font-mono);
+    letter-spacing: 0.02em;
+  }
+  .mockup-bar .label strong { color: #fff; }
+  .mockup-bar .label { opacity: 0.7; }
+  .mockup-bar button {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    font-family: var(--font-mono); font-size: 11px;
+    padding: 6px 12px; border-radius: 2px;
+    cursor: pointer;
+  }
+
+  /* NAV */
+  .nav {
+    border-bottom: 1px solid var(--rule);
+    background: var(--bg);
+    position: sticky; top: 33px; z-index: 50;
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 40px; max-width: var(--container); margin: 0 auto;
+  }
+  .nav-logo {
+    font-family: var(--font-serif); font-weight: 500; font-size: 22px;
+    letter-spacing: 0.01em; color: var(--ink);
+  }
+  .nav-logo em { font-style: italic; font-weight: 400; color: var(--signal); }
+  body.no-amber .nav-logo em { color: var(--muted); }
+  .nav-links {
+    display: flex; align-items: center; gap: 36px;
+  }
+  .nav-links a {
+    color: var(--ink); text-decoration: none;
+    font-size: 13px; font-weight: 450;
+    letter-spacing: 0.01em;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: border-color 0.15s;
+  }
+  .nav-links a:hover { border-bottom-color: var(--ink); }
+  .nav-links a.active { font-weight: 500; border-bottom-color: var(--ink); }
+  .nav-cta {
+    padding: 8px 16px !important;
+    background: var(--ink); color: #fff !important;
+    border-bottom: 0 !important;
+    border-radius: 2px;
+    font-size: 12px !important;
+  }
+
+  /* HERO */
+  .hero { padding: 80px 0 64px; }
+  .hero-meta {
+    display: flex; gap: 24px;
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em;
+    border-bottom: 1px solid var(--paper-rule);
+    padding-bottom: 14px; margin-bottom: 48px;
+  }
+  .hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
+  .hero-meta span::before {
+    content: ""; display: inline-block; width: 6px; height: 6px;
+    background: var(--ink);
+  }
+
+  h1.headline {
+    font-family: var(--font-serif);
+    font-size: 76px; line-height: 1.02; letter-spacing: -0.01em;
+    font-weight: 400;
+    color: var(--ink);
+    margin: 0 0 32px;
+    max-width: 940px;
+  }
+  h1.headline em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--signal);
+  }
+  body.no-amber h1.headline em { color: var(--ink); font-weight: 500; }
+  .hero-lede {
+    font-family: var(--font-serif);
+    font-size: 21px; line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 680px;
+    margin: 0 0 48px;
+    font-weight: 400;
+  }
+  .hero-lede::first-letter {
+    font-size: 1.6em; font-weight: 500; float: left;
+    line-height: 0.95; padding: 4px 8px 0 0;
+    color: var(--ink);
+  }
+  .cta-row { display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 24px;
+    background: var(--ink); color: #fff;
+    text-decoration: none;
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.02em;
+    border-radius: 2px;
+    transition: background 0.15s;
+  }
+  .btn-primary:hover { background: var(--signal); }
+  body.no-amber .btn-primary:hover { background: var(--muted); }
+  .btn-inline {
+    color: var(--ink); text-decoration: none;
+    font-size: 14px; font-weight: 500;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+    transition: gap 0.15s;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .btn-inline:hover { gap: 10px; }
+
+  /* HERO BOTTOM RULE WITH PRODUCT TEASER */
+  .hero-rule {
+    display: grid; grid-template-columns: 1fr 1fr;
+    margin-top: 80px;
+    border-top: 1px solid var(--rule);
+    padding-top: 24px;
+    gap: 64px;
+  }
+  .hero-rule-col h4 {
+    font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--muted); margin: 0 0 12px;
+  }
+  .hero-rule-col p {
+    font-family: var(--font-serif);
+    font-size: 16px; line-height: 1.5;
+    color: var(--ink); margin: 0;
+  }
+
+  /* COMPLIANCE BAR */
+  .compliance-bar {
+    background: var(--ink); color: var(--bg);
+    padding: 56px 0;
+  }
+  .compliance-inner {
+    display: flex; flex-wrap: wrap; align-items: center;
+    justify-content: space-between; gap: 32px;
+  }
+  .compliance-label {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: 18px; color: var(--bg);
+    max-width: 280px;
+  }
+  .compliance-badges {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .compliance-badge {
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--bg);
+    padding: 8px 14px;
+    border: 1px solid rgba(255,255,255,0.25);
+    letter-spacing: 0.06em;
+  }
+  .compliance-badge strong { color: #fff; font-weight: 500; }
+
+  /* METRICS — editorial */
+  .metrics { padding: 96px 0; }
+  .metrics-eyebrow {
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em;
+    margin-bottom: 18px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .metrics-eyebrow::after {
+    content: ""; flex: 1; height: 1px; background: var(--paper-rule);
+  }
+  .metrics-title {
+    font-family: var(--font-serif); font-size: 40px; line-height: 1.1;
+    font-weight: 400; max-width: 720px; margin: 0 0 64px;
+  }
+  .metrics-title em { font-style: italic; font-weight: 500; color: var(--signal); }
+  body.no-amber .metrics-title em { color: var(--ink); }
+
+  .metrics-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .metric {
+    padding: 40px 32px 40px 0;
+    border-right: 1px solid var(--paper-rule);
+  }
+  .metric:last-child { border-right: none; padding-right: 0; }
+  .metric:not(:first-child) { padding-left: 32px; }
+  .metric .num {
+    font-family: var(--font-serif);
+    font-style: italic; font-weight: 400;
+    font-size: 96px; line-height: 0.95;
+    color: var(--ink);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .metric .num .unit {
+    font-size: 40px; font-style: normal; color: var(--muted); margin-left: 4px;
+  }
+  .metric .label {
+    font-family: var(--font-mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--muted); margin-bottom: 10px;
+  }
+  .metric .title {
+    font-family: var(--font-serif); font-size: 19px;
+    line-height: 1.35; color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .metric .body {
+    font-size: 13.5px; line-height: 1.55; color: var(--muted);
+  }
+
+  /* PULL-QUOTE / EDITORIAL CARD */
+  .quote-section {
+    background: var(--signal-soft);
+    border-top: 1px solid var(--signal-rule);
+    border-bottom: 1px solid var(--signal-rule);
+    padding: 96px 0;
+  }
+  body.no-amber .quote-section { background: var(--bg-pure); border-color: var(--paper-rule); }
+  .quote {
+    max-width: 920px;
+  }
+  .quote-mark {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: 88px; line-height: 0.7;
+    color: var(--signal);
+    margin-bottom: -8px; display: block;
+  }
+  body.no-amber .quote-mark { color: var(--ink); }
+  .quote p {
+    font-family: var(--font-serif);
+    font-size: 32px; line-height: 1.3; font-weight: 400;
+    color: var(--ink); margin: 0 0 32px;
+    letter-spacing: -0.005em;
+  }
+  .quote-attr {
+    display: flex; align-items: center; gap: 14px;
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .quote-attr::before {
+    content: ""; width: 32px; height: 1px; background: var(--ink);
+  }
+  .quote-attr strong { color: var(--ink); font-weight: 500; }
+
+  /* MADE-IN-GERMANY */
+  .made-in {
+    padding: 80px 0;
+    border-top: 1px solid var(--paper-rule);
+  }
+  .made-in-grid {
+    display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: start;
+  }
+  .made-in-grid h4 {
+    font-family: var(--font-mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--muted); font-weight: 500; margin: 0 0 12px;
+  }
+  .made-in-grid .head {
+    font-family: var(--font-serif);
+    font-size: 32px; line-height: 1.15; font-weight: 400;
+    color: var(--ink); margin: 0;
+  }
+  .made-in-grid .head em { font-style: italic; color: var(--signal); font-weight: 500; }
+  body.no-amber .made-in-grid .head em { color: var(--ink); }
+  .made-in-grid .body p {
+    font-family: var(--font-serif); font-size: 18px; line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0 0 24px;
+  }
+  .made-in-grid .body dl {
+    display: grid; grid-template-columns: 140px 1fr;
+    gap: 12px 32px; margin: 0;
+    font-family: var(--font-mono); font-size: 12px;
+    border-top: 1px solid var(--paper-rule); padding-top: 24px;
+  }
+  .made-in-grid dt {
+    color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .made-in-grid dd { margin: 0; color: var(--ink); font-weight: 500; }
+
+  @media (max-width: 900px) {
+    h1.headline { font-size: 44px; }
+    .metrics-grid { grid-template-columns: 1fr; }
+    .metric { border-right: none; border-bottom: 1px solid var(--paper-rule); padding: 32px 0; }
+    .metric:not(:first-child) { padding-left: 0; }
+    .made-in-grid { grid-template-columns: 1fr; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    .quote p { font-size: 22px; }
+    .hero-rule { grid-template-columns: 1fr; gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="mockup-bar">
+  <div class="label">Mockup <strong>B — Editorial / Mandiant</strong> · Research-house register, serif accent</div>
+  <button onclick="document.body.classList.toggle('no-amber'); this.textContent=document.body.classList.contains('no-amber')?'Show amber accent':'Hide amber accent';">Hide amber accent</button>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Vornac<em>.</em></div>
+    <div class="nav-links">
+      <a href="#" class="active">Platform</a>
+      <a href="#">Pentesting</a>
+      <a href="#">Research</a>
+      <a href="#">Customers</a>
+      <a href="#">Company</a>
+      <a href="#" class="nav-cta">Request demo</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-meta">
+      <span>Vol. 01 · Q3 2026</span>
+      <span>Continuous validation</span>
+      <span>Made in Germany</span>
+    </div>
+
+    <h1 class="headline">Continuous pentesting, <em>engineered for proof.</em></h1>
+    <p class="hero-lede">Most security tools tell you what could go wrong. VORNAC proves what already can — on your live environment, every week, with reports your regulator already knows how to read. Built for NIS2, DORA, BaFin, and KRITIS jurisdictions, operated entirely within Germany.</p>
+
+    <div class="cta-row">
+      <a href="#" class="btn-primary">Request a demo →</a>
+      <a href="#" class="btn-inline">Read the methodology paper <span>↗</span></a>
+    </div>
+
+    <div class="hero-rule">
+      <div class="hero-rule-col">
+        <h4>Method</h4>
+        <p>Adversarial emulation against production assets, scheduled or API-triggered, with full chain-of-evidence captured per finding.</p>
+      </div>
+      <div class="hero-rule-col">
+        <h4>Outcome</h4>
+        <p>Audit-ready reports — signed, dated, mapped to article-level regulatory clauses — delivered in 2 to 5 hours from trigger.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLIANCE BAR -->
+<section class="compliance-bar">
+  <div class="container compliance-inner">
+    <div class="compliance-label">Reports natively aligned with the regulations our customers actually file under.</div>
+    <div class="compliance-badges">
+      <div class="compliance-badge"><strong>NIS2</strong> · Art. 21</div>
+      <div class="compliance-badge"><strong>DORA</strong> · TLPT</div>
+      <div class="compliance-badge"><strong>BaFin</strong> · VAIT/BAIT</div>
+      <div class="compliance-badge"><strong>KRITIS</strong></div>
+      <div class="compliance-badge"><strong>ISO/IEC</strong> 27001</div>
+      <div class="compliance-badge"><strong>BSI</strong> aligned</div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section class="metrics">
+  <div class="container">
+    <div class="metrics-eyebrow">Outcomes · First quarter</div>
+    <h2 class="metrics-title">Coverage you can <em>prove</em>, time-to-result you can plan around.</h2>
+    <div class="metrics-grid">
+      <div class="metric">
+        <div class="label">Attack surface</div>
+        <div class="num">95<span class="unit">%+</span></div>
+        <div class="title">Of attack surface validated each cycle.</div>
+        <div class="body">Across cloud, on-prem, APIs, and behind-VPN systems — continuous, not annual.</div>
+      </div>
+      <div class="metric">
+        <div class="label">Time to first finding</div>
+        <div class="num">2–5<span class="unit">h</span></div>
+        <div class="title">From schedule to actionable, exploitable evidence.</div>
+        <div class="body">No multi-week engagement window. Trigger via UI or API, receive signed findings the same day.</div>
+      </div>
+      <div class="metric">
+        <div class="label">Audit acceptance</div>
+        <div class="num">100<span class="unit">%</span></div>
+        <div class="title">Of reports accepted on first auditor pass.</div>
+        <div class="body">Mapped to article-level clauses for NIS2, DORA, VAIT, BAIT, and KRITIS frameworks.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <div class="container">
+    <div class="quote">
+      <span class="quote-mark">"</span>
+      <p>For the first time, we have penetration test evidence at the frequency a regulator actually expects — not once a year, but every sprint. The reports go straight to BaFin without re-assembly.</p>
+      <div class="quote-attr">
+        <span><strong>CISO</strong> · German Tier-1 Bank · Frankfurt</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MADE IN GERMANY -->
+<section class="made-in">
+  <div class="container made-in-grid">
+    <div>
+      <h4>Operational footprint</h4>
+      <p class="head">Engineered, hosted, and operated <em>entirely in Germany.</em></p>
+    </div>
+    <div class="body">
+      <p>Your scans, your findings, and your evidence chain never leave EU jurisdiction. Operated by a German GmbH on infrastructure run by German operators — by design, not by claim.</p>
+      <dl>
+        <dt>Hosting</dt><dd>Frankfurt &amp; Berlin · German operators</dd>
+        <dt>Jurisdiction</dt><dd>Germany · EU GDPR</dd>
+        <dt>Entity</dt><dd>VORNAC GmbH · Registered in Germany</dd>
+        <dt>Alignment</dt><dd>BSI IT-Grundschutz</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
