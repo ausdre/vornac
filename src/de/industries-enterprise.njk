@@ -8,6 +8,48 @@ ogType: website
 
 {% block extraHead %}
 <link rel="stylesheet" href="/industries.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.vornac.com/de/industries-enterprise#service",
+      "name": "NIS2-feste Validierung für wesentliche und wichtige Einrichtungen",
+      "serviceType": "Penetration Testing für NIS2-Compliance",
+      "description": "NIS2-konformes, kontinuierliches Pentesting für wesentliche und wichtige Einrichtungen. Maßnahmen nach Artikel 21, live in Produktion belegt.",
+      "provider": { "@id": "https://www.vornac.com/#organization" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" },
+        { "@type": "Place", "name": "Europäische Union" }
+      ],
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "Wesentliche und wichtige Einrichtungen unter NIS2 in regulierten EU-Sektoren"
+      },
+      "category": "Cybersicherheit / Enterprise Compliance",
+      "url": "https://www.vornac.com/de/industries-enterprise",
+      "inLanguage": "de",
+      "about": [
+        { "@type": "Thing", "name": "NIS2-Richtlinie" },
+        { "@type": "Thing", "name": "NIS2 Artikel 21" },
+        { "@type": "Thing", "name": "ISO/IEC 27001" },
+        { "@type": "Thing", "name": "TISAX" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.vornac.com/de" },
+        { "@type": "ListItem", "position": 2, "name": "Industrien", "item": "https://www.vornac.com/de/industries" },
+        { "@type": "ListItem", "position": 3, "name": "Enterprise", "item": "https://www.vornac.com/de/industries-enterprise" }
+      ]
+    }
+  ]
+}
+</script>
 {% endblock %}
 
 {% block content %}

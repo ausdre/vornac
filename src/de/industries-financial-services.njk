@@ -8,6 +8,48 @@ ogType: website
 
 {% block extraHead %}
 <link rel="stylesheet" href="/industries.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.vornac.com/de/industries-financial-services#service",
+      "name": "Kontinuierliche Validierung für Banken und Finanzinstitute",
+      "serviceType": "Penetration Testing für Finanzdienstleistungen",
+      "description": "Kontinuierliches Pentesting für Banken, Zahlungsinstitute und Vermögensverwalter. Operationelle Resilienz nach DORA, in der Tiefe von VAIT und BAIT.",
+      "provider": { "@id": "https://www.vornac.com/#organization" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" },
+        { "@type": "Place", "name": "Europäische Union" }
+      ],
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "Banken, Zahlungsinstitute, Vermögensverwalter und Finanzdienstleistungsinstitute"
+      },
+      "category": "Cybersicherheit / Finanzdienstleistungen",
+      "url": "https://www.vornac.com/de/industries-financial-services",
+      "inLanguage": "de",
+      "about": [
+        { "@type": "Thing", "name": "Digital Operational Resilience Act (DORA)" },
+        { "@type": "Thing", "name": "BaFin VAIT" },
+        { "@type": "Thing", "name": "BaFin BAIT" },
+        { "@type": "Thing", "name": "Threat-Led Penetration Testing (TLPT)" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.vornac.com/de" },
+        { "@type": "ListItem", "position": 2, "name": "Industrien", "item": "https://www.vornac.com/de/industries" },
+        { "@type": "ListItem", "position": 3, "name": "Finanzdienstleistungen", "item": "https://www.vornac.com/de/industries-financial-services" }
+      ]
+    }
+  ]
+}
+</script>
 {% endblock %}
 
 {% block content %}
