@@ -826,22 +826,17 @@
     }
     .v-dv-msub--index .v-dv-msub-sub::before { content: "→ "; }
 
-    /* Desktop / tablet — split the body into two columns so the Research
-       domain list doesn't push the About / Legal groups off-screen. */
+    /* Tablet / desktop — keep the single-column stack (was a two-column
+       split when Research was always expanded; now that all groups are
+       collapsible the right column was just empty space). Centre the nav
+       so it doesn't hug the left edge on wider viewports. */
     @media (min-width: 720px) {
         .v-dv-menu-shell { padding: 0 48px; }
         .v-dv-menu-nav {
-            grid-template-columns: 1fr 1fr;
-            gap: 40px 72px;
+            grid-template-columns: minmax(0, 520px);
+            justify-content: center;
             padding: 40px 0;
         }
-        /* Left column stack: flat links → Industries → About. Right column:
-           Research (full height — it's the tallest list). Legal lives in
-           the menu footer to keep the main nav stack scannable. */
-        .v-dv-mgroup--solo     { grid-column: 1; grid-row: 1; }
-        .v-dv-mgroup--ind      { grid-column: 1; grid-row: 2; }
-        .v-dv-mgroup--about    { grid-column: 1; grid-row: 3; }
-        .v-dv-mgroup--research { grid-column: 2; grid-row: 1 / span 3; }
     }
 
     @media (prefers-reduced-motion: reduce) {
