@@ -609,6 +609,14 @@
         .v-sov-head { margin-bottom: 40px; }
         .v-sov-marks { grid-template-columns: 1fr; gap: 16px; }
         .v-sov-mark { min-height: 180px; }
+        /* Single-column mobile layout: centre the flag mark so all three
+           sovereignty cards share the same visual rhythm — the image marks
+           are already centred via .v-sov-mark--image. */
+        .v-sov-mark--flag {
+            align-items: center;
+            text-align: center;
+        }
+        .v-sov-mark--flag .v-sov-mark-flag { margin-left: auto; margin-right: auto; }
     }
 
     /* Trust strip (logo marquee) */
