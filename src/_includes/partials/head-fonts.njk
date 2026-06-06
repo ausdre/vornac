@@ -2,7 +2,18 @@
      Saira Condensed — condensed industrial display (weights 500–900), used for billboard moments (H1, hero numbers, section headlines)
      Archivo         — regular family for body + mid-display
      JetBrains Mono  — regulator-credible mono for compliance frameworks, timestamps, signed-evidence callouts
-   These three are loaded site-wide. Per-element font choice comes from the `--v-display / --v-sans / --v-mono` tokens in src/input.css. #}
+   These three are loaded site-wide. Per-element font choice comes from the `--v-display / --v-sans / --v-mono` tokens in src/input.css.
+
+   Load strategy:
+     1. preconnect to fonts.googleapis.com + gstatic so the TLS+DNS is warm
+        by the time the stylesheet starts.
+     2. Fetch the CSS as `media="print"` so it doesn't block the critical render
+        path, then swap to `media="all"` once it lands (and via <noscript> for
+        users without JS). System fonts paint immediately; web fonts swap in.
+     3. `display=swap` already lives in the font URL — covers FOIT prevention. #}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,900&family=Saira+Condensed:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,900&family=Saira+Condensed:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" media="print" onload="this.media='all'">
+<noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,900&family=Saira+Condensed:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap">
+</noscript>
