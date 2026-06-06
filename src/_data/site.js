@@ -15,8 +15,7 @@ module.exports = {
   },
 
   analytics: {
-    plausibleScript: "https://plausible.io/js/pa-OqjHdWkljhzM3AXJtXHXl.js",
-    linkedinPartnerId: "8795970"
+    plausibleScript: "https://plausible.io/js/pa-OqjHdWkljhzM3AXJtXHXl.js"
   },
 
   // Logo paths (live at site root via passthrough copy)

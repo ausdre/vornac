@@ -74,13 +74,6 @@ module.exports = {
       copyright: "© 2026 VORNAC GmbH. All rights reserved.",
       langLabel: "Language"
     },
-    cookie: {
-      heading: "Privacy Preference",
-      body: 'We use <span class="text-stone-900 font-semibold">Plausible Analytics</span> (privacy-friendly, no cookies) and the <span class="text-stone-900 font-semibold">LinkedIn Insight Tag</span> for campaign attribution. Your consent is only required for LinkedIn.',
-      accept: "Accept",
-      decline: "Decline",
-      readPolicy: "Read Privacy Policy"
-    },
     a11y: {
       siteHome: "VORNAC home",
       langNav: "Language",
@@ -153,14 +146,6 @@ module.exports = {
       },
       copyright: "© 2026 VORNAC GmbH. Alle Rechte vorbehalten.",
       langLabel: "Sprache"
-    },
-    cookie: {
-      heading: "Datenschutz-Einstellung",
-      body: 'Wir nutzen <span class="text-stone-900 font-semibold">Plausible Analytics</span> (datenschutzfreundlich, ohne Cookies) und das <span class="text-stone-900 font-semibold">LinkedIn Insight Tag</span> zur Kampagnenmessung. Ihre Einwilligung ist nur für LinkedIn erforderlich.',
-      // FIX: current DE site renders "Accept"/"Decline" in English. German labels.
-      accept: "Akzeptieren",
-      decline: "Ablehnen",
-      readPolicy: "Datenschutzerklärung"
     },
     a11y: {
       siteHome: "VORNAC Startseite",
