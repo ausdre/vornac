@@ -5,17 +5,3 @@ window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push
 plausible.init();
 </script>
 
-{# etracker Analytics — Made in Germany #}
-<script id="etracker" type="text/javascript" src="//code.etracker.com/code/e.js" data-secure-code="{{ site.analytics.etrackerSecureCode }}" data-block-cookies="true" data-respect-dnt="true" async></script>
-
-{# Google Analytics (requires consent for ad personalization, see cookie-banner) #}
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.gtagId }}"></script>
-<script>
-gtag('js', new Date());
-gtag('config', '{{ site.analytics.gtagId }}', { 'anonymize_ip': true });
-</script>
-

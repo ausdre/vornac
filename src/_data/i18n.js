@@ -76,7 +76,7 @@ module.exports = {
     },
     cookie: {
       heading: "Privacy Preference",
-      body: 'We use <span class="text-stone-900 font-semibold">Plausible Analytics</span> (privacy-friendly, no cookies) and <span class="text-stone-900 font-semibold">Google Ads Conversion Tracking</span>. Your consent is only required for Google Ads.',
+      body: 'We use <span class="text-stone-900 font-semibold">Plausible Analytics</span> (privacy-friendly, no cookies) and the <span class="text-stone-900 font-semibold">LinkedIn Insight Tag</span> for campaign attribution. Your consent is only required for LinkedIn.',
       accept: "Accept",
       decline: "Decline",
       readPolicy: "Read Privacy Policy"
@@ -156,7 +156,7 @@ module.exports = {
     },
     cookie: {
       heading: "Datenschutz-Einstellung",
-      body: 'Wir nutzen <span class="text-stone-900 font-semibold">Plausible Analytics</span> (datenschutzfreundlich, ohne Cookies) und <span class="text-stone-900 font-semibold">Google Ads Conversion Tracking</span>. Ihre Einwilligung ist nur für Google Ads erforderlich.',
+      body: 'Wir nutzen <span class="text-stone-900 font-semibold">Plausible Analytics</span> (datenschutzfreundlich, ohne Cookies) und das <span class="text-stone-900 font-semibold">LinkedIn Insight Tag</span> zur Kampagnenmessung. Ihre Einwilligung ist nur für LinkedIn erforderlich.',
       // FIX: current DE site renders "Accept"/"Decline" in English. German labels.
       accept: "Akzeptieren",
       decline: "Ablehnen",

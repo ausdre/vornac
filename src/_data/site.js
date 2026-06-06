@@ -16,8 +16,6 @@ module.exports = {
 
   analytics: {
     plausibleScript: "https://plausible.io/js/pa-OqjHdWkljhzM3AXJtXHXl.js",
-    etrackerSecureCode: "LVKB09",
-    gtagId: "G-9LJGWDQ2CR",
     linkedinPartnerId: "8795970"
   },
 

@@ -8,16 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const declineBtn = document.getElementById('decline-cookies');
     const consentKey = 'vornac_consent_given';
 
-    const activateAds = () => {
-        if (typeof gtag === 'function') {
-            gtag('consent', 'update', {
-                'ad_storage': 'granted',
-                'ad_user_data': 'granted',
-                'ad_personalization': 'granted'
-            });
-        }
-    };
-
     if (!localStorage.getItem(consentKey)) {
         // Surface the consent banner on the next animation frame instead of
         // waiting 2s — the previous setTimeout delayed the banner so much that
@@ -26,14 +16,11 @@ document.addEventListener('DOMContentLoaded', function() {
         requestAnimationFrame(() => {
             if (banner) banner.classList.remove('hidden');
         });
-    } else if (localStorage.getItem(consentKey) === 'true') {
-        activateAds();
     }
 
     acceptBtn?.addEventListener('click', () => {
         localStorage.setItem(consentKey, 'true');
         banner?.classList.add('hidden');
-        activateAds();
     });
 
     declineBtn?.addEventListener('click', () => {
