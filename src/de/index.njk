@@ -16,7 +16,10 @@ permalink: /de/index.html
 </script>
 
 {% include "partials/index-styles.njk" %}
-<link rel="stylesheet" href="/pentesting.css">
+{# pentesting.css only feeds the final contact + thankyou-overlay block at the
+   bottom of the page. Load it asynchronously so it doesn't block first paint. #}
+<link rel="stylesheet" href="/pentesting.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="/pentesting.css"></noscript>
 
 {# Hero phrase over the amber band: keep it plain ink (amber-on-amber won't
    read). DE phrase is long, so it may wrap naturally. #}
@@ -193,13 +196,19 @@ permalink: /de/index.html
 
             <a class="v-sov-mark v-sov-mark--image v-reveal" data-reveal-delay="2" href="https://www.teletrust.de/" target="_blank" rel="noopener noreferrer">
                 <span class="v-sov-mark-num" aria-hidden="true">2</span>
-                <img src="/TeleTrusT-Mitgliedslogo.jpg" width="674" height="361" alt="TeleTrusT – Member of the IT Security Association Germany">
+                <picture>
+                    <source type="image/webp" srcset="/TeleTrusT-Mitgliedslogo.webp">
+                    <img src="/TeleTrusT-Mitgliedslogo.jpg" width="674" height="361" alt="TeleTrusT – Member of the IT Security Association Germany" loading="lazy" decoding="async">
+                </picture>
                 <div class="v-sov-mark-meta">Mitglied TeleTrusT · IT-Sicherheitsverband Deutschland</div>
             </a>
 
             <div class="v-sov-mark v-sov-mark--image v-reveal" data-reveal-delay="3">
                 <span class="v-sov-mark-num" aria-hidden="true">3</span>
-                <img src="/it-security-made-in-germany-teletrust-seal.png" width="697" height="400" alt="IT Security Made in Germany · TeleTrusT seal">
+                <picture>
+                    <source type="image/webp" srcset="/it-security-made-in-germany-teletrust-seal.webp">
+                    <img src="/it-security-made-in-germany-teletrust-seal.png" width="697" height="400" alt="IT Security Made in Germany · TeleTrusT seal" loading="lazy" decoding="async">
+                </picture>
                 <div class="v-sov-mark-meta">Mit dem Siegel „IT Security Made in Germany“ ausgezeichnet</div>
             </div>
         </div>
