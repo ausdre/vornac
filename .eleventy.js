@@ -202,6 +202,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("x-term.js");
   eleventyConfig.addWatchTarget("./x-term.js");
 
+  // anime.js, self-hosted instead of fetched from jsdelivr — saves a TLS
+  // hop on the critical path (was -336ms LCP).
+  eleventyConfig.addPassthroughCopy("anime.min.js");
+
   // Watch the page-specific CSS files so edits hot-reload during dev.
   eleventyConfig.addWatchTarget("./about.css");
   eleventyConfig.addWatchTarget("./industries.css");

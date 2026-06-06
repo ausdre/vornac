@@ -8,7 +8,7 @@
    - reduced motion / no JS  -> never armed, full page visible.
    - anime.js fails to load   -> onerror un-arms, full page visible.
    - counters always settle on their final value. #}
-<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"
+<script src="/anime.min.js" defer
         onerror="document.documentElement.classList.remove('v-armed')"></script>
 <script>
 (function () {

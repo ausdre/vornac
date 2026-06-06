@@ -19,9 +19,13 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     if (!localStorage.getItem(consentKey)) {
-        setTimeout(() => {
+        // Surface the consent banner on the next animation frame instead of
+        // waiting 2s — the previous setTimeout delayed the banner so much that
+        // Lighthouse picked it as the LCP element (3s delay), tanking LCP to
+        // ~6.7s. Showing it immediately keeps LCP tied to the hero text.
+        requestAnimationFrame(() => {
             if (banner) banner.classList.remove('hidden');
-        }, 2000);
+        });
     } else if (localStorage.getItem(consentKey) === 'true') {
         activateAds();
     }
