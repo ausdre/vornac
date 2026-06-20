@@ -3,7 +3,7 @@
    then a continuous iterative pulse that runs the technical loop.
    Fully degrades: no anime / reduced-motion => the static composition
    stays visible and untouched. #}
-<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
+<script src="/anime.min.js" defer></script>
 <script>
 (function () {
     function init() {
@@ -44,10 +44,44 @@
                 .add({ targets: [rail, core], opacity: [0, 1], translateY: [18, 0], duration: 600, delay: anime.stagger(130) }, '-=320')
                 .add({ targets: feed, opacity: [0, 1], duration: 360 }, '-=260')
                 .add({ targets: dots, scale: [0, 1], duration: 420, delay: anime.stagger(85), easing: 'easeOutBack' }, '-=260')
-                .add({ targets: stages, opacity: [0, 1], translateY: [14, 0], duration: 460, delay: anime.stagger(95) }, '-=320')
+                .add({
+                    targets: stages,
+                    opacity: [0, 1],
+                    translateY: [14, 0],
+                    duration: 460,
+                    delay: anime.stagger(95),
+                    complete: function () {
+                        /* Same Safari sub-pixel/GPU-layer fix as for .cats: drop
+                           the leftover transform so the loop animation below
+                           starts from a clean integer offset. */
+                        stages.forEach(function (el) {
+                            el.style.transform = 'none';
+                            el.style.opacity = '1';
+                        });
+                    }
+                }, '-=320')
                 .add({ targets: bracket, opacity: [0, 1], scaleX: [0, 1], duration: 540, easing: 'easeInOutQuad' }, '-=140')
                 .add({ targets: drop, opacity: [0, 1], duration: 360 }, '-=260')
-                .add({ targets: cats, opacity: [0, 1], translateY: [14, 0], duration: 460, delay: anime.stagger(70) }, '-=220')
+                .add({
+                    targets: cats,
+                    opacity: [0, 1],
+                    translateY: [14, 0],
+                    duration: 460,
+                    delay: anime.stagger(70),
+                    complete: function () {
+                        /* Drop the GPU layer and any sub-pixel transform that
+                           anime.js left behind. Without this, Safari/iOS keep
+                           rendering the per-word glyph runs on separate layers
+                           with mismatched anti-aliasing, which shows up as
+                           individual words inside .method-cat looking dimmer
+                           or doubled (notably "OT" and "Entra ID"). */
+                        cats.forEach(function (el) {
+                            el.style.transform = 'none';
+                            el.style.opacity = '1';
+                            el.style.willChange = 'auto';
+                        });
+                    }
+                }, '-=220')
                 .add({ duration: 60, complete: runLoop });
         }
 

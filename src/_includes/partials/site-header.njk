@@ -217,8 +217,11 @@
             </div>
 
             <div class="v-dv-mgroup v-dv-mgroup--ind">
-                <span class="v-dv-mhead">{{ t.navHeadings.industries }}</span>
-                <ul class="v-dv-msubs">
+                <button type="button" class="v-dv-mhead v-dv-mhead--toggle" data-mobile-collapse aria-controls="mnav-ind" aria-expanded="false">
+                    <span>{{ t.navHeadings.industries }}</span>
+                    <svg class="v-dv-mhead-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <ul class="v-dv-msubs" id="mnav-ind" hidden>
                     <li><a href="{{ pageUrls.industries }}" class="v-dv-msub v-dv-msub--index{% if i18nKey == 'industries' %} is-active{% endif %}"{% if i18nKey == 'industries' %} aria-current="page"{% endif %}>
                         <span class="v-dv-msub-label">{{ t.navOverview }}</span>
                         <span class="v-dv-msub-sub">{{ t.industriesNav | length }}</span>
@@ -230,8 +233,11 @@
             </div>
 
             <div class="v-dv-mgroup v-dv-mgroup--research">
-                <span class="v-dv-mhead">{{ t.navHeadings.research }}</span>
-                <ul class="v-dv-msubs">
+                <button type="button" class="v-dv-mhead v-dv-mhead--toggle" data-mobile-collapse aria-controls="mnav-res" aria-expanded="false">
+                    <span>{{ t.navHeadings.research }}</span>
+                    <svg class="v-dv-mhead-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <ul class="v-dv-msubs" id="mnav-res" hidden>
                     <li><a href="{{ pageUrls.research }}" class="v-dv-msub v-dv-msub--index{% if i18nKey == 'research' %} is-active{% endif %}"{% if i18nKey == 'research' %} aria-current="page"{% endif %}>
                         <span class="v-dv-msub-label">{{ t.navResearchHome }}</span>
                         <span class="v-dv-msub-sub">{{ research.domains | length }}</span>
@@ -245,8 +251,11 @@
             </div>
 
             <div class="v-dv-mgroup v-dv-mgroup--about">
-                <span class="v-dv-mhead">{{ t.navHeadings.about }}</span>
-                <ul class="v-dv-msubs">
+                <button type="button" class="v-dv-mhead--toggle" data-mobile-collapse aria-controls="mnav-about" aria-expanded="false">
+                    <span>{{ t.navHeadings.about }}</span>
+                    <svg class="v-dv-mhead-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <ul class="v-dv-msubs" id="mnav-about" hidden>
                     {{ mobileSub(pageUrls.about + "#" + t.aboutAnchors.company, t.nav.company, "", false) }}
                     {{ mobileSub(pageUrls.about + "#" + t.aboutAnchors.careers, t.nav.careers, "", false) }}
                 </ul>
@@ -532,7 +541,7 @@
         position: fixed;
         top: 18px;
         right: 28px;
-        z-index: 58;
+        z-index: 75;
         color: #0E1116;
         opacity: 0;
         transform: translateY(-160%);
@@ -544,11 +553,32 @@
     body.nav-open .v-dv-sticky { z-index: 80; }
 
     @media (max-width: 1023px) {
+        /* Mobile topbar: logo-spacer left. The burger gets pinned to the
+           viewport (see below) so it stays reachable while scrolling — no
+           separate sticky burger needed. Desktop centre-nav and utility
+           (lang + CTA) are hidden; both are reachable from inside the menu. */
+        .v-dv-topbar {
+            grid-template-columns: auto 1fr;
+            align-items: center;
+            padding: 18px 22px 12px;
+        }
         .v-dv-nav { display: none; }
-        .v-dv-burger--top { display: inline-flex; }
-        .v-dv-topbar { padding: 18px 22px 12px; }
+        .v-dv-utility { display: none; }
         .v-dv-logo { left: 22px; }
-        .v-dv-sticky { right: 20px; }
+
+        /* Pin the topbar burger to the viewport: always visible, no scroll
+           reveal, no second burger. Sits in the same spot the in-flow burger
+           used to sit, so the layout looks identical at top-of-page. */
+        .v-dv-burger--top {
+            display: inline-flex;
+            position: fixed;
+            top: 18px;
+            right: 20px;
+            z-index: 75;
+        }
+
+        /* Sticky burger is desktop-only. Mobile uses the pinned topbar burger. */
+        .v-dv-sticky { display: none !important; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -626,7 +656,9 @@
     .v-dv-menu-nav {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 36px 64px;
+        /* Tight vertical rhythm so all top-level items (flat links + toggles)
+           feel like one continuous nav, not separate sections. */
+        gap: 4px 64px;
         padding: 24px 0 32px;
         overflow-y: auto;
         align-content: start;
@@ -652,6 +684,42 @@
         padding-bottom: 10px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
+    /* Collapsible mobile section header — matches the .v-dv-mlink display
+       size so Home/Pentesting/Kunden and Branchen/Research/Über uns share
+       the same top-level hierarchy. Caret sits flush right. */
+    .v-dv-mhead--toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        width: 100%;
+        background: none;
+        border: 0;
+        padding: 6px 0;
+        margin: 0;
+        cursor: pointer;
+        text-align: left;
+        -webkit-tap-highlight-color: transparent;
+        /* Match .v-dv-mlink */
+        color: #fff;
+        font-family: var(--v-display);
+        font-weight: 600;
+        font-size: clamp(28px, 6.5vw, 38px);
+        line-height: 1.15;
+        letter-spacing: -0.01em;
+        text-transform: none;
+        transition: opacity .2s ease, color .2s ease;
+    }
+    .v-dv-mhead--toggle:hover { opacity: .65; }
+    .v-dv-mhead--toggle:focus-visible { outline: 1px dashed rgba(255, 163, 23, 0.6); outline-offset: 4px; }
+    .v-dv-mhead-caret {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        opacity: 0.55;
+        transition: transform .25s ease, opacity .2s ease;
+    }
+    .v-dv-mhead--toggle[aria-expanded="true"] .v-dv-mhead-caret { transform: rotate(180deg); opacity: 1; }
 
     .v-dv-mlink {
         color: #fff;
@@ -669,12 +737,16 @@
 
     .v-dv-msubs {
         list-style: none;
-        margin: 0;
+        margin: 6px 0 14px;
         padding: 0;
         display: flex;
         flex-direction: column;
         gap: 0;
     }
+    /* `display: flex` above is more specific than the browser's default
+       `[hidden] { display: none }`, so the [hidden] attribute on the
+       collapsible panels would be ignored. Restore it explicitly. */
+    .v-dv-msubs[hidden] { display: none; }
     .v-dv-msub {
         display: flex;
         align-items: baseline;
@@ -754,22 +826,17 @@
     }
     .v-dv-msub--index .v-dv-msub-sub::before { content: "→ "; }
 
-    /* Desktop / tablet — split the body into two columns so the Research
-       domain list doesn't push the About / Legal groups off-screen. */
+    /* Tablet / desktop — keep the single-column stack (was a two-column
+       split when Research was always expanded; now that all groups are
+       collapsible the right column was just empty space). Centre the nav
+       so it doesn't hug the left edge on wider viewports. */
     @media (min-width: 720px) {
         .v-dv-menu-shell { padding: 0 48px; }
         .v-dv-menu-nav {
-            grid-template-columns: 1fr 1fr;
-            gap: 40px 72px;
+            grid-template-columns: minmax(0, 520px);
+            justify-content: center;
             padding: 40px 0;
         }
-        /* Left column stack: flat links → Industries → About. Right column:
-           Research (full height — it's the tallest list). Legal lives in
-           the menu footer to keep the main nav stack scannable. */
-        .v-dv-mgroup--solo     { grid-column: 1; grid-row: 1; }
-        .v-dv-mgroup--ind      { grid-column: 1; grid-row: 2; }
-        .v-dv-mgroup--about    { grid-column: 1; grid-row: 3; }
-        .v-dv-mgroup--research { grid-column: 2; grid-row: 1 / span 3; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -849,6 +916,7 @@
         var spacer = document.querySelector('.v-dv-logo-spacer');
         var sticky = document.getElementById('sticky-nav');
         var stickyBtn = sticky ? sticky.querySelector('.v-dv-burger') : null;
+        var topBurger = document.querySelector('.v-dv-burger--top');
         if (!logo || !spacer) return;
 
         var STICK_TOP = 14;
@@ -863,15 +931,33 @@
 
         // Nav chrome is taken out of hit-testing while sampling so we read the
         // section *behind* it, not the (transparent) logo/bar over the body.
-        var chrome = [logo, sticky, document.getElementById('site-header')].filter(Boolean);
+        var chrome = [logo, sticky, topBurger, document.getElementById('site-header')].filter(Boolean);
 
         // Effective background luminance at a viewport point (walks up to the
         // first non-transparent background). Returns 1 (light) as a fallback.
+        //
+        // Special case: inside .method (the dark methodology section), there's
+        // a live anime.js loop that toggles border/background colours on the
+        // .method-stage cards. Sampling those animated layers makes the burger
+        // and logo colour flicker. So if any ancestor is .method, we jump
+        // straight to that section's own background and ignore the children.
         function bgLumAt(x, y) {
             var prev = chrome.map(function (el) { return el.style.pointerEvents; });
             chrome.forEach(function (el) { el.style.pointerEvents = 'none'; });
             var el = document.elementFromPoint(x, y);
             chrome.forEach(function (e, i) { e.style.pointerEvents = prev[i]; });
+
+            // Short-circuit: if the hit point is inside the methodology
+            // section, use its stable section background, not the animated
+            // children inside it.
+            var methodEl = el && el.closest ? el.closest('.method') : null;
+            if (methodEl) {
+                var bgM = getComputedStyle(methodEl).backgroundColor;
+                if (bgM && bgM !== 'transparent' && !/rgba\([^)]*,\s*0\)/.test(bgM)) {
+                    return luminance(bgM);
+                }
+            }
+
             while (el) {
                 var bg = getComputedStyle(el).backgroundColor;
                 if (bg && bg !== 'transparent' && !/rgba\([^)]*,\s*0\)/.test(bg)) {
@@ -882,6 +968,24 @@
             return 1;
         }
 
+        // Multi-point sample around an element's box, return the median
+        // luminance. Single-pixel sampling flickers at section boundaries;
+        // sampling the four corners + centre gives a stable read even when
+        // the burger sits exactly on a section seam.
+        function bgLumAround(rect) {
+            var pad = 4;
+            var pts = [
+                [rect.left + pad,            rect.top + pad],
+                [rect.right - pad,           rect.top + pad],
+                [rect.left + pad,            rect.bottom - pad],
+                [rect.right - pad,           rect.bottom - pad],
+                [rect.left + rect.width / 2, rect.top + rect.height / 2]
+            ];
+            var lums = pts.map(function (p) { return bgLumAt(Math.round(p[0]), Math.round(p[1])); });
+            lums.sort(function (a, b) { return a - b; });
+            return lums[2]; // median of 5
+        }
+
         function inkFor(lum) { return lum < 0.5 ? '#ffffff' : '#0E1116'; }
 
         function update() {
@@ -890,20 +994,29 @@
             logo.style.left = Math.round(r.left) + 'px';
             logo.style.top = top + 'px';
 
-            // Adaptive colour for the logo (sample at its centre, mid-left).
-            var ly = top + logo.offsetHeight / 2;
-            logo.style.color = inkFor(bgLumAt(Math.round(r.left + r.width / 2), Math.round(ly)));
+            // Adaptive colour for the logo — sample around its box, take median.
+            var logoRect = logo.getBoundingClientRect();
+            logo.style.color = inkFor(bgLumAround(logoRect));
 
-            // Sticky burger reveal + its own adaptive colour.
-            if (sticky) {
+            var isMobile = window.matchMedia('(max-width: 1023px)').matches;
+
+            // Sticky burger: desktop-only. On mobile (≤1023px) it's hidden
+            // via CSS; skip all updates so we don't sample a hidden element.
+            if (sticky && !isMobile) {
                 var show = window.scrollY > window.innerHeight * REVEAL;
                 sticky.classList.toggle('is-visible', show);
                 sticky.setAttribute('aria-hidden', show ? 'false' : 'true');
                 if (stickyBtn) stickyBtn.tabIndex = show ? 0 : -1;
                 if (show && stickyBtn && !document.body.classList.contains('nav-open')) {
-                    var sr = stickyBtn.getBoundingClientRect();
-                    sticky.style.color = inkFor(bgLumAt(Math.round(sr.left + sr.width / 2), Math.round(sr.top + sr.height / 2)));
+                    sticky.style.color = inkFor(bgLumAround(stickyBtn.getBoundingClientRect()));
                 }
+            }
+
+            // Mobile: .v-dv-burger--top is pinned (position: fixed) and is
+            // the only burger. Re-colour it on scroll like the desktop sticky
+            // burger so it stays legible over both light and dark sections.
+            if (isMobile && topBurger && !document.body.classList.contains('nav-open')) {
+                topBurger.style.color = inkFor(bgLumAround(topBurger.getBoundingClientRect()));
             }
         }
 

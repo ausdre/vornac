@@ -8,6 +8,47 @@ ogType: website
 
 {% block extraHead %}
 <link rel="stylesheet" href="/industries.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.vornac.com/industries-critical-infrastructure#service",
+      "name": "Resilience testing for KRITIS and essential services",
+      "serviceType": "Penetration Testing for Critical Infrastructure",
+      "description": "Continuous penetration testing for KRITIS operators and essential service providers. BSI-aligned validation for energy, transport, healthcare, and OT/IT estates.",
+      "provider": { "@id": "https://www.vornac.com/#organization" },
+      "areaServed": [
+        { "@type": "Country", "name": "Germany" },
+        { "@type": "Country", "name": "Austria" },
+        { "@type": "Country", "name": "Switzerland" },
+        { "@type": "Place", "name": "European Union" }
+      ],
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "Operators of critical infrastructure (KRITIS) in energy, water, transport, healthcare, and other essential sectors"
+      },
+      "category": "Cybersecurity / Critical Infrastructure",
+      "url": "https://www.vornac.com/industries-critical-infrastructure",
+      "about": [
+        { "@type": "Thing", "name": "KRITIS regulation" },
+        { "@type": "Thing", "name": "NIS2 Directive" },
+        { "@type": "Thing", "name": "BSI security standards" },
+        { "@type": "Thing", "name": "OT/IT convergence" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.vornac.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Industries", "item": "https://www.vornac.com/industries" },
+        { "@type": "ListItem", "position": 3, "name": "Critical Infrastructure", "item": "https://www.vornac.com/industries-critical-infrastructure" }
+      ]
+    }
+  ]
+}
+</script>
 {% endblock %}
 
 {% block content %}

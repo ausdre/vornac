@@ -8,6 +8,48 @@ ogType: website
 
 {% block extraHead %}
 <link rel="stylesheet" href="/industries.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.vornac.com/de/industries-critical-infrastructure#service",
+      "name": "Resilienztests für KRITIS-Betreiber und kritische Dienstleister",
+      "serviceType": "Penetration Testing für kritische Infrastruktur",
+      "description": "Kontinuierliches Pentesting für KRITIS-Betreiber und essenzielle Dienstleister. BSI-konforme Validierung für Energie, Verkehr, Gesundheit und OT/IT-Landschaften.",
+      "provider": { "@id": "https://www.vornac.com/#organization" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" },
+        { "@type": "Place", "name": "Europäische Union" }
+      ],
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "Betreiber kritischer Infrastrukturen (KRITIS) in Energie, Wasser, Verkehr, Gesundheit und weiteren essenziellen Sektoren"
+      },
+      "category": "Cybersicherheit / Kritische Infrastruktur",
+      "url": "https://www.vornac.com/de/industries-critical-infrastructure",
+      "inLanguage": "de",
+      "about": [
+        { "@type": "Thing", "name": "KRITIS-Regulierung" },
+        { "@type": "Thing", "name": "NIS2-Richtlinie" },
+        { "@type": "Thing", "name": "BSI-Sicherheitsstandards" },
+        { "@type": "Thing", "name": "OT/IT-Konvergenz" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.vornac.com/de" },
+        { "@type": "ListItem", "position": 2, "name": "Industrien", "item": "https://www.vornac.com/de/industries" },
+        { "@type": "ListItem", "position": 3, "name": "Kritische Infrastruktur", "item": "https://www.vornac.com/de/industries-critical-infrastructure" }
+      ]
+    }
+  ]
+}
+</script>
 {% endblock %}
 
 {% block content %}

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VORNAC – Mockup A: Engineered Confidence</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* PALETTE */
+    --bg: #FFFFFF;
+    --bg-band: #F8FAFC;       /* slate-50 */
+    --bg-dark: #0B1220;       /* deep ink */
+    --text: #0F172A;          /* slate-900 */
+    --text-muted: #475569;    /* slate-600 */
+    --text-subtle: #94A3B8;   /* slate-400 */
+    --border: #E2E8F0;        /* slate-200 */
+    --border-strong: #CBD5E1; /* slate-300 */
+    --primary: #0F172A;       /* deep navy CTA */
+    --primary-hover: #1E293B; /* slate-800 */
+    --accent: #2563EB;        /* blue-600 */
+    --accent-soft: #DBEAFE;   /* blue-100 */
+    --signal: #B45309;        /* amber-700 — Made-in-Germany badge only */
+    --signal-soft: #FEF3C7;   /* amber-100 */
+    --signal-border: #FCD34D; /* amber-300 */
+
+    /* TYPE */
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    /* SHAPE */
+    --radius-sm: 4px;
+    --radius: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+    --shadow-md: 0 4px 16px -4px rgba(15, 23, 42, 0.10), 0 2px 4px -2px rgba(15, 23, 42, 0.06);
+    --shadow-lg: 0 20px 40px -16px rgba(15, 23, 42, 0.18), 0 8px 16px -8px rgba(15, 23, 42, 0.08);
+
+    /* SPACING */
+    --container: 1200px;
+  }
+
+  /* AMBER OFF: replace signal with neutral charcoal */
+  body.no-amber {
+    --signal: #0F172A;
+    --signal-soft: #F1F5F9;
+    --signal-border: #CBD5E1;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-sans);
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "cv11", "ss01";
+    line-height: 1.55;
+  }
+
+  .container { max-width: var(--container); margin: 0 auto; padding: 0 32px; }
+
+  /* MOCKUP TOOLBAR — only for review */
+  .mockup-bar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg-dark); color: #fff;
+    padding: 10px 24px; font-size: 12px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: var(--font-mono);
+    letter-spacing: 0.02em;
+  }
+  .mockup-bar .label { opacity: 0.7; }
+  .mockup-bar .label strong { color: #fff; opacity: 1; }
+  .mockup-bar button {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    font-family: var(--font-mono); font-size: 11px;
+    padding: 6px 12px; border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .mockup-bar button:hover { background: rgba(255,255,255,0.08); }
+
+  /* TOP NAV */
+  .nav {
+    border-bottom: 1px solid var(--border);
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(10px);
+    position: sticky; top: 33px; z-index: 50;
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 32px; max-width: var(--container); margin: 0 auto;
+  }
+  .nav-logo {
+    font-weight: 700; letter-spacing: 0.04em; font-size: 17px;
+    color: var(--text);
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; align-items: center; gap: 36px; }
+  .nav-links a {
+    color: var(--text-muted); text-decoration: none; font-size: 14px;
+    font-weight: 450;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a.active { color: var(--text); font-weight: 500; }
+  .nav-cta {
+    background: var(--primary); color: #fff !important;
+    padding: 9px 18px !important; border-radius: var(--radius);
+    font-weight: 500 !important; font-size: 13px !important;
+    transition: background 0.15s !important;
+  }
+  .nav-cta:hover { background: var(--primary-hover); color: #fff !important; }
+
+  /* HERO */
+  .hero {
+    padding: 96px 0 80px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--accent);
+    text-transform: uppercase; letter-spacing: 0.12em;
+    background: var(--accent-soft);
+    padding: 6px 12px; border-radius: 100px;
+    margin-bottom: 28px;
+  }
+  .eyebrow::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+  }
+  h1.headline {
+    font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 24px;
+    max-width: 580px;
+  }
+  h1.headline em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .subline {
+    font-size: 19px; line-height: 1.55; color: var(--text-muted);
+    margin: 0 0 40px; max-width: 520px;
+  }
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 22px;
+    border-radius: var(--radius);
+    font-size: 14px; font-weight: 500;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    border: 1px solid transparent;
+  }
+  .btn-primary {
+    background: var(--primary); color: #fff;
+    box-shadow: var(--shadow-sm);
+  }
+  .btn-primary:hover { background: var(--primary-hover); box-shadow: var(--shadow-md); }
+  .btn-secondary {
+    background: #fff; color: var(--text);
+    border-color: var(--border-strong);
+  }
+  .btn-secondary:hover { background: var(--bg-band); border-color: var(--text-muted); }
+  .btn .arrow { transition: transform 0.15s; }
+  .btn:hover .arrow { transform: translateX(2px); }
+
+  /* PRODUCT MOCKUP */
+  .product-frame {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+  }
+  .product-chrome {
+    display: flex; align-items: center; gap: 6px;
+    padding: 12px 16px;
+    background: var(--bg-band);
+    border-bottom: 1px solid var(--border);
+  }
+  .product-chrome .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border-strong); }
+  .product-chrome .url {
+    margin-left: 14px; font-family: var(--font-mono); font-size: 11px;
+    color: var(--text-subtle);
+  }
+  .product-body { display: grid; grid-template-columns: 180px 1fr; min-height: 380px; }
+  .product-sidebar {
+    background: var(--bg-band); border-right: 1px solid var(--border);
+    padding: 20px 14px;
+  }
+  .product-sidebar .brand {
+    font-weight: 700; font-size: 13px; letter-spacing: 0.03em;
+    color: var(--text); margin-bottom: 24px; padding: 0 8px;
+  }
+  .product-sidebar .nav-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 10px; border-radius: var(--radius-sm);
+    font-size: 12px; color: var(--text-muted);
+    margin-bottom: 2px;
+  }
+  .product-sidebar .nav-item.active { background: #fff; color: var(--text); font-weight: 500; box-shadow: var(--shadow-sm); }
+  .product-sidebar .nav-item .ico { width: 14px; height: 14px; background: currentColor; opacity: 0.5; border-radius: 2px; }
+  .product-sidebar .nav-item.active .ico { opacity: 1; background: var(--accent); }
+  .product-main { padding: 22px 24px; }
+  .product-main .row1 {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 18px;
+  }
+  .product-main h3 { font-size: 14px; font-weight: 600; margin: 0; color: var(--text); }
+  .product-main .badge {
+    font-family: var(--font-mono); font-size: 10px;
+    background: #ECFDF5; color: #047857;
+    padding: 4px 8px; border-radius: 100px; font-weight: 500;
+  }
+  .stat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 18px; }
+  .stat {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+  }
+  .stat .lbl { font-family: var(--font-mono); font-size: 9px; color: var(--text-subtle); text-transform: uppercase; letter-spacing: 0.08em; }
+  .stat .val { font-size: 22px; font-weight: 600; margin-top: 6px; color: var(--text); letter-spacing: -0.02em; }
+  .stat .val.warn { color: #C2410C; }
+  .stat .val.ok { color: #047857; }
+  .chart {
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 14px; height: 120px; position: relative;
+    background: linear-gradient(180deg, #fff, var(--bg-band));
+  }
+  .chart .label { font-family: var(--font-mono); font-size: 10px; color: var(--text-subtle); text-transform: uppercase; letter-spacing: 0.08em; }
+  .chart svg { width: 100%; height: 80px; }
+
+  /* TRUST STRIP */
+  .trust {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 36px 0;
+    background: #fff;
+  }
+  .trust-inner {
+    display: flex; flex-direction: column; gap: 24px;
+    align-items: center;
+  }
+  .trust-label {
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--text-subtle);
+    text-transform: uppercase; letter-spacing: 0.14em;
+  }
+  .trust-logos {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+    gap: 56px;
+  }
+  .trust-logo {
+    font-weight: 700; font-size: 17px;
+    letter-spacing: 0.02em; color: var(--text-subtle);
+    opacity: 0.8;
+    font-variant-caps: small-caps;
+  }
+  .trust-logo.serif { font-family: Georgia, serif; font-style: italic; font-weight: 600; }
+  .trust-logo.mono { font-family: var(--font-mono); font-weight: 500; font-size: 14px; letter-spacing: 0.04em; }
+
+  /* METRIC BLOCK */
+  .metrics {
+    padding: 80px 0;
+    background: var(--bg-band);
+    border-bottom: 1px solid var(--border);
+  }
+  .metrics .lead {
+    text-align: center; max-width: 640px; margin: 0 auto 48px;
+  }
+  .metrics .lead h2 {
+    font-size: 32px; font-weight: 600; letter-spacing: -0.02em;
+    margin: 0 0 12px; color: var(--text);
+  }
+  .metrics .lead p {
+    font-size: 16px; color: var(--text-muted); margin: 0;
+  }
+  .metrics-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 24px;
+  }
+  .metric-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+  }
+  .metric-card .num {
+    font-size: 48px; font-weight: 600;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .metric-card .num .unit {
+    font-size: 24px; color: var(--text-subtle); font-weight: 500;
+    margin-left: 2px;
+  }
+  .metric-card .title {
+    font-size: 14px; font-weight: 500; color: var(--text);
+    margin-bottom: 8px;
+  }
+  .metric-card .desc {
+    font-size: 13px; color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .metric-card .tag {
+    display: inline-block;
+    font-family: var(--font-mono); font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 4px 8px; border-radius: 4px;
+    margin-bottom: 14px;
+  }
+
+  /* MADE IN GERMANY STRIP (the only amber moment) */
+  .made-in {
+    padding: 56px 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .made-in-inner {
+    display: flex; align-items: center; gap: 32px;
+    padding: 28px 32px;
+    border: 1px solid var(--signal-border);
+    background: var(--signal-soft);
+    border-radius: var(--radius-lg);
+  }
+  body.no-amber .made-in-inner {
+    background: var(--bg-band);
+    border-color: var(--border);
+  }
+  .made-in-badge {
+    flex-shrink: 0;
+    width: 56px; height: 56px;
+    background: #fff;
+    border: 1px solid var(--signal-border);
+    border-radius: var(--radius-md);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--signal);
+    font-weight: 700;
+  }
+  body.no-amber .made-in-badge { border-color: var(--border-strong); color: var(--text); }
+  .made-in-text h3 {
+    font-size: 18px; font-weight: 600; margin: 0 0 4px;
+    color: var(--text);
+  }
+  .made-in-text p {
+    margin: 0; color: var(--text-muted); font-size: 14px;
+  }
+  .made-in-meta {
+    margin-left: auto;
+    display: flex; gap: 24px; align-items: center;
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .made-in-meta span strong {
+    color: var(--signal);
+    font-family: var(--font-sans);
+    font-size: 13px;
+  }
+  body.no-amber .made-in-meta span strong { color: var(--text); }
+
+  /* responsive */
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 56px; }
+    h1.headline { font-size: 40px; }
+    .nav-links { gap: 18px; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    .metrics-grid { grid-template-columns: 1fr; }
+    .made-in-inner { flex-direction: column; align-items: flex-start; }
+    .made-in-meta { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="mockup-bar">
+  <div class="label">Mockup <strong>A — Engineered Confidence</strong> · Enterprise SaaS register (Pentera / Wiz / Vanta family)</div>
+  <button onclick="document.body.classList.toggle('no-amber'); this.textContent=document.body.classList.contains('no-amber')?'Show amber accent':'Hide amber accent';">Hide amber accent</button>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">VORNAC<span>.</span></div>
+    <div class="nav-links">
+      <a href="#" class="active">Platform</a>
+      <a href="#">Pentesting</a>
+      <a href="#">Compliance</a>
+      <a href="#">Customers</a>
+      <a href="#">Company</a>
+      <a href="#" class="nav-cta">Book a demo</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">Continuous exposure validation</div>
+      <h1 class="headline">Pentesting that <em>proves</em> you're secure — continuously.</h1>
+      <p class="subline">VORNAC runs adversarial validation against your live environment on a continuous schedule. Findings are exploitable, prioritized, and audit-ready out of the box — for NIS2, DORA, BaFin, and KRITIS.</p>
+      <div class="cta-row">
+        <a href="#" class="btn btn-primary">Book a demo <span class="arrow">→</span></a>
+        <a href="#" class="btn btn-secondary">Read the methodology</a>
+      </div>
+    </div>
+
+    <!-- Product mockup -->
+    <div class="product-frame">
+      <div class="product-chrome">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="url">app.vornac.com/findings</span>
+      </div>
+      <div class="product-body">
+        <div class="product-sidebar">
+          <div class="brand">VORNAC</div>
+          <div class="nav-item active"><span class="ico"></span>Overview</div>
+          <div class="nav-item"><span class="ico"></span>Findings</div>
+          <div class="nav-item"><span class="ico"></span>Assets</div>
+          <div class="nav-item"><span class="ico"></span>Schedules</div>
+          <div class="nav-item"><span class="ico"></span>Reports</div>
+          <div class="nav-item"><span class="ico"></span>Settings</div>
+        </div>
+        <div class="product-main">
+          <div class="row1">
+            <h3>Continuous Pentest · Production</h3>
+            <span class="badge">● Active</span>
+          </div>
+          <div class="stat-grid">
+            <div class="stat"><div class="lbl">Coverage</div><div class="val ok">97%</div></div>
+            <div class="stat"><div class="lbl">Findings</div><div class="val">142</div></div>
+            <div class="stat"><div class="lbl">Critical</div><div class="val warn">3</div></div>
+          </div>
+          <div class="chart">
+            <div class="label">Exploitable findings · 30d</div>
+            <svg viewBox="0 0 300 80" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#2563EB" stop-opacity="0.18"/>
+                  <stop offset="100%" stop-color="#2563EB" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M0,60 L20,55 L40,58 L60,42 L80,46 L100,30 L120,38 L140,22 L160,26 L180,18 L200,24 L220,12 L240,18 L260,10 L280,16 L300,8 L300,80 L0,80 Z" fill="url(#g)"/>
+              <path d="M0,60 L20,55 L40,58 L60,42 L80,46 L100,30 L120,38 L140,22 L160,26 L180,18 L200,24 L220,12 L240,18 L260,10 L280,16 L300,8" fill="none" stroke="#2563EB" stroke-width="1.5"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust">
+  <div class="container trust-inner">
+    <div class="trust-label">Trusted across EU finance, energy, and critical infrastructure</div>
+    <div class="trust-logos">
+      <span class="trust-logo">DEUTSCHE BANK</span>
+      <span class="trust-logo serif">Allianz</span>
+      <span class="trust-logo">SIEMENS</span>
+      <span class="trust-logo mono">E.ON</span>
+      <span class="trust-logo">DZ BANK</span>
+      <span class="trust-logo serif">Helaba</span>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section class="metrics">
+  <div class="container">
+    <div class="lead">
+      <h2>Outcomes our customers measure within the first quarter</h2>
+      <p>Coverage you can prove, time-to-result you can plan around, and findings your auditor accepts on the first pass.</p>
+    </div>
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <span class="tag">Coverage</span>
+        <div class="num">&gt;95<span class="unit">%</span></div>
+        <div class="title">of attack surface validated</div>
+        <div class="desc">Continuous testing across cloud, on-prem, APIs, and behind-VPN systems — every cycle, not once a year.</div>
+      </div>
+      <div class="metric-card">
+        <span class="tag">Speed</span>
+        <div class="num">2–5<span class="unit">h</span></div>
+        <div class="title">time to first finding</div>
+        <div class="desc">From schedule trigger to actionable, exploitability-validated finding. No multi-week engagement window.</div>
+      </div>
+      <div class="metric-card">
+        <span class="tag">Compliance</span>
+        <div class="num">100<span class="unit">%</span></div>
+        <div class="title">audit-ready on day one</div>
+        <div class="desc">Signed reports aligned with NIS2 Art. 21, DORA TLPT, BaFin VAIT/BAIT, and KRITIS — generated, not assembled.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MADE IN GERMANY -->
+<section class="made-in">
+  <div class="container">
+    <div class="made-in-inner">
+      <div class="made-in-badge">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 12l2-2 4 4 12-12"/>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+        </svg>
+      </div>
+      <div class="made-in-text">
+        <h3>Engineered and operated in Germany.</h3>
+        <p>Hosted by German operators on German soil — your data and findings never leave EU jurisdiction.</p>
+      </div>
+      <div class="made-in-meta">
+        <span>Hosting <strong>DE</strong></span>
+        <span>Jurisdiction <strong>EU</strong></span>
+        <span>BSI <strong>aligned</strong></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

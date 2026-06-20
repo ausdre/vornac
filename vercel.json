@@ -65,5 +65,25 @@
     { "source": "/preventive",             "destination": "/",   "permanent": true },
     { "source": "/preventive_de.html",     "destination": "/de", "permanent": true },
     { "source": "/preventive_de",          "destination": "/de", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)\\.(png|jpg|jpeg|webp|svg|gif|ico|avif)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(css|js|woff|woff2|ttf|otf|eot)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(pdf|MP4|mp4|webm)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=2592000" }
+      ]
+    }
   ]
 }

@@ -1,41 +1,6 @@
-{# Page-end scripts: cookie consent + mobile nav. One DOMContentLoaded block. #}
+{# Page-end scripts: mobile nav. One DOMContentLoaded block. #}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-
-    // ── Cookie consent ──────────────────────────────────────────────
-    const banner = document.getElementById('cookie-banner');
-    const acceptBtn = document.getElementById('accept-cookies');
-    const declineBtn = document.getElementById('decline-cookies');
-    const consentKey = 'vornac_consent_given';
-
-    const activateAds = () => {
-        if (typeof gtag === 'function') {
-            gtag('consent', 'update', {
-                'ad_storage': 'granted',
-                'ad_user_data': 'granted',
-                'ad_personalization': 'granted'
-            });
-        }
-    };
-
-    if (!localStorage.getItem(consentKey)) {
-        setTimeout(() => {
-            if (banner) banner.classList.remove('hidden');
-        }, 2000);
-    } else if (localStorage.getItem(consentKey) === 'true') {
-        activateAds();
-    }
-
-    acceptBtn?.addEventListener('click', () => {
-        localStorage.setItem(consentKey, 'true');
-        banner?.classList.add('hidden');
-        activateAds();
-    });
-
-    declineBtn?.addEventListener('click', () => {
-        localStorage.setItem(consentKey, 'false');
-        banner?.classList.add('hidden');
-    });
 
     // ── Nav overlay menu (shared by the top + sticky burgers) ──────────
     const toggleBtns = Array.from(document.querySelectorAll('[data-nav-toggle]'));
@@ -80,6 +45,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) closeMenu();
+        });
+
+        // Collapsible groups inside the mobile menu (Industries, Research).
+        // Long unfiltered lists are noisy on phones — let the user expand on
+        // demand. The current section is opened by default (set in the
+        // template's aria-expanded), so users see where they are immediately.
+        mobileMenu.querySelectorAll('[data-mobile-collapse]').forEach(btn => {
+            const targetId = btn.getAttribute('aria-controls');
+            const panel = targetId ? document.getElementById(targetId) : null;
+            if (!panel) return;
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const open = btn.getAttribute('aria-expanded') === 'true';
+                btn.setAttribute('aria-expanded', String(!open));
+                panel.hidden = open;
+            });
         });
     }
 });

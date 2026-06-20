@@ -8,6 +8,47 @@ ogType: website
 
 {% block extraHead %}
 <link rel="stylesheet" href="/industries.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.vornac.com/de/industries-insurance#service",
+      "name": "Kontinuierliche DORA-Validierung für Versicherer",
+      "serviceType": "Penetration Testing für Versicherungen",
+      "description": "DORA-konformes, kontinuierliches Pentesting für Versicherer und Versicherungsgruppen. IKT-Risiko, Vorfall- und Resilienztests, audit-ready.",
+      "provider": { "@id": "https://www.vornac.com/#organization" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" },
+        { "@type": "Place", "name": "Europäische Union" }
+      ],
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "Versicherer und Versicherungsgruppen unter DORA"
+      },
+      "category": "Cybersicherheit / Versicherung",
+      "url": "https://www.vornac.com/de/industries-insurance",
+      "inLanguage": "de",
+      "about": [
+        { "@type": "Thing", "name": "Digital Operational Resilience Act (DORA)" },
+        { "@type": "Thing", "name": "Threat-Led Penetration Testing (TLPT)" },
+        { "@type": "Thing", "name": "IKT-Risikomanagement" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.vornac.com/de" },
+        { "@type": "ListItem", "position": 2, "name": "Industrien", "item": "https://www.vornac.com/de/industries" },
+        { "@type": "ListItem", "position": 3, "name": "Versicherung", "item": "https://www.vornac.com/de/industries-insurance" }
+      ]
+    }
+  ]
+}
+</script>
 {% endblock %}
 
 {% block content %}

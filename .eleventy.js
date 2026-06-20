@@ -181,6 +181,7 @@ module.exports = function (eleventyConfig) {
   // Project-root assets get copied to dist/ root so existing URLs work.
   eleventyConfig.addPassthroughCopy("*.png");
   eleventyConfig.addPassthroughCopy("*.jpg");
+  eleventyConfig.addPassthroughCopy("*.webp");
   eleventyConfig.addPassthroughCopy("*.svg");
   eleventyConfig.addPassthroughCopy("*.MP4");
   eleventyConfig.addPassthroughCopy("*.pdf");
@@ -200,6 +201,10 @@ module.exports = function (eleventyConfig) {
   // transform when a page contains at least one cross-link).
   eleventyConfig.addPassthroughCopy("x-term.js");
   eleventyConfig.addWatchTarget("./x-term.js");
+
+  // anime.js, self-hosted instead of fetched from jsdelivr — saves a TLS
+  // hop on the critical path (was -336ms LCP).
+  eleventyConfig.addPassthroughCopy("anime.min.js");
 
   // Watch the page-specific CSS files so edits hot-reload during dev.
   eleventyConfig.addWatchTarget("./about.css");
