@@ -61,7 +61,9 @@
   }
 
   function isDeLocale() {
-    return location.pathname.indexOf("/de/") === 0 || location.pathname === "/de";
+    // Domain-based i18n: German is served at the root of its own domain,
+    // so detect locale from the document language rather than the path.
+    return (document.documentElement.lang || "").toLowerCase().indexOf("de") === 0;
   }
   var MORE_LABEL = isDeLocale() ? "Zur Definition →" : "View definition →";
 

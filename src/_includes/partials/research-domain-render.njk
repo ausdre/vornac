@@ -80,7 +80,7 @@
 {% set pageIdx = pagination.pageNumber %}
 {% set prevDomain = research.domains[pageIdx - 1] if pageIdx > 0 else null %}
 {% set nextDomain = research.domains[pageIdx + 1] if pageIdx < (research.domains.length - 1) else null %}
-{% set baseHref = "/research/" if locale == "en" else "/de/research/" %}
+{% set baseHref = "/research/" %}
 {% set noteBase = baseHref + domain.id + "/" %}
 
 <section class="rs-domain-hero">

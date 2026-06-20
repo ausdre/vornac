@@ -60,13 +60,13 @@
             {% if counterpart %}
                 <div class="v-lang-switch flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-stone-500" role="navigation" aria-label="{{ t.a11y.langNav }}">
                     {% if locale == 'en' %}
-                        <a href="{{ counterpart }}?lang=de" hreflang="de" onclick="localStorage.setItem('vornac_lang', 'de')" class="hover:text-white transition-colors">DE</a>
+                        <a href="{{ counterpart }}" hreflang="de" class="hover:text-white transition-colors">DE</a>
                         <span class="text-stone-700" aria-hidden="true">|</span>
                         <span class="text-white" aria-current="true">EN</span>
                     {% else %}
                         <span class="text-white" aria-current="true">DE</span>
                         <span class="text-stone-700" aria-hidden="true">|</span>
-                        <a href="{{ counterpart }}?lang=en" hreflang="en" onclick="localStorage.setItem('vornac_lang', 'en')" class="hover:text-white transition-colors">EN</a>
+                        <a href="{{ counterpart }}" hreflang="en" class="hover:text-white transition-colors">EN</a>
                     {% endif %}
                 </div>
             {% endif %}

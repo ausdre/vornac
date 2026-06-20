@@ -8,6 +8,8 @@
     "build:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
     "build:html": "eleventy",
     "build": "npm run build:css && npm run build:html",
+    "build:de": "VORNAC_LOCALE=de npm run build",
+    "dev:de": "VORNAC_LOCALE=de npm run dev",
     "clean": "rm -rf dist",
     "start": "npm run build && python3 serve_local.py"
   },

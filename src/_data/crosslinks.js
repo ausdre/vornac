@@ -163,7 +163,9 @@ function buildIndex(locale) {
   // ── Glossary ────────────────────────────────────────────────────
   for (const entry of glossary.sorted) {
     if (EXCLUDE_IDS.has(entry.id)) continue;
-    const hrefBase = locale === "de" ? "/de/glossary" : "/glossary";
+    // Domain-based i18n: both locales are served at their domain root, so
+    // cross-link paths are root-relative for both.
+    const hrefBase = "/glossary";
     const href = `${hrefBase}#term-${entry.id}`;
     const meta = { href, kind: "glossary", id: entry.id };
 
@@ -194,7 +196,7 @@ function buildIndex(locale) {
   }
 
   // ── Manual aliases (curated specialist terms) ──────────────────
-  const locPrefix = locale === "de" ? "/de" : "";
+  const locPrefix = "";
   for (const group of MANUAL_ALIASES) {
     const href = group.href.replace("{loc}", locPrefix);
     for (const phrase of group.phrases) {
@@ -209,9 +211,7 @@ function buildIndex(locale) {
 
   // ── Research notes ──────────────────────────────────────────────
   for (const note of research.allNotes) {
-    const href = locale === "de"
-      ? `/de/research/${note.domain}/${note.id}/`
-      : `/research/${note.domain}/${note.id}/`;
+    const href = `/research/${note.domain}/${note.id}/`;
     const meta = { href, kind: "research", id: `note-${note.id}` };
 
     const rawTitle = (note.title && note.title[locale]) || "";
@@ -253,7 +253,9 @@ function buildDefinitions(locale) {
 
   // ── Glossary definitions (the authoritative source) ───────────
   for (const entry of glossary.sorted) {
-    const hrefBase = locale === "de" ? "/de/glossary" : "/glossary";
+    // Domain-based i18n: both locales are served at their domain root, so
+    // cross-link paths are root-relative for both.
+    const hrefBase = "/glossary";
     defs[entry.id] = {
       term: entry.term,
       snippet: truncate(entry.definition[locale], 280),
@@ -266,9 +268,7 @@ function buildDefinitions(locale) {
     defs[`note-${note.id}`] = {
       term: (note.title && note.title[locale]) || note.id,
       snippet: truncate((note.blurb && note.blurb[locale]) || "", 280),
-      href: locale === "de"
-        ? `/de/research/${note.domain}/${note.id}/`
-        : `/research/${note.domain}/${note.id}/`
+      href: `/research/${note.domain}/${note.id}/`
     };
   }
 
@@ -276,7 +276,7 @@ function buildDefinitions(locale) {
   // Reverse-resolve each alias href to its research note id, then
   // copy the note's blurb. The popover shows the alias phrase as title
   // and points to the note as "More" destination.
-  const locPrefix = locale === "de" ? "/de" : "";
+  const locPrefix = "";
   const noteByPath = new Map(
     research.allNotes.map((n) => [
       `${locPrefix}/research/${n.domain}/${n.id}/`,

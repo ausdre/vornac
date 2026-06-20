@@ -104,7 +104,7 @@
                             {% for d in research.domains %}
                               {% set dActive = (i18nKey == ('research-' + d.id)) %}
                               <li>
-                                  <a href="/{% if locale == 'de' %}de/{% endif %}research/{{ d.id }}/" class="v-dv-drop-link{% if dActive %} is-active{% endif %}"{% if dActive %} aria-current="page"{% endif %}>
+                                  <a href="/research/{{ d.id }}/" class="v-dv-drop-link{% if dActive %} is-active{% endif %}"{% if dActive %} aria-current="page"{% endif %}>
                                       <span class="v-dv-drop-link-num">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span>
                                       <span class="v-dv-drop-link-label">{{ d.title[locale] }}</span>
                                   </a>
@@ -143,9 +143,9 @@
         {% if counterpart %}
         <span class="v-dv-lang" role="navigation" aria-label="{{ t.a11y.langNav }}">
             {% if locale == 'en' %}
-                <span class="is-active" aria-current="true">EN</span><span class="v-dv-lang-sep" aria-hidden="true">/</span><a href="{{ counterpart }}?lang=de" hreflang="de" onclick="localStorage.setItem('vornac_lang','de')">DE</a>
+                <span class="is-active" aria-current="true">EN</span><span class="v-dv-lang-sep" aria-hidden="true">/</span><a href="{{ counterpart }}" hreflang="de">DE</a>
             {% else %}
-                <span class="is-active" aria-current="true">DE</span><span class="v-dv-lang-sep" aria-hidden="true">/</span><a href="{{ counterpart }}?lang=en" hreflang="en" onclick="localStorage.setItem('vornac_lang','en')">EN</a>
+                <span class="is-active" aria-current="true">DE</span><span class="v-dv-lang-sep" aria-hidden="true">/</span><a href="{{ counterpart }}" hreflang="en">EN</a>
             {% endif %}
         </span>
         {% endif %}
@@ -243,7 +243,7 @@
                         <span class="v-dv-msub-sub">{{ research.domains | length }}</span>
                     </a></li>
                     {% for d in research.domains %}
-                      {% set dHref = "/" + ("de/" if locale == "de" else "") + "research/" + d.id + "/" %}
+                      {% set dHref = "/research/" + d.id + "/" %}
                       {{ mobileSub(dHref, d.title[locale], "", i18nKey == ("research-" + d.id)) }}
                     {% endfor %}
                     {{ mobileSub(pageUrls.glossary, t.nav.glossary, t.navHeadings.glossary, i18nKey == 'glossary') }}
@@ -273,9 +273,9 @@
                 {% if counterpart %}
                 <span class="v-dv-lang v-dv-menu-lang" role="navigation" aria-label="{{ t.a11y.langNav }}">
                     {% if locale == 'en' %}
-                        <span class="is-active" aria-current="true">EN</span><span class="v-dv-lang-sep" aria-hidden="true">/</span><a href="{{ counterpart }}?lang=de" hreflang="de" onclick="localStorage.setItem('vornac_lang','de')">DE</a>
+                        <span class="is-active" aria-current="true">EN</span><span class="v-dv-lang-sep" aria-hidden="true">/</span><a href="{{ counterpart }}" hreflang="de">DE</a>
                     {% else %}
-                        <span class="is-active" aria-current="true">DE</span><span class="v-dv-lang-sep" aria-hidden="true">/</span><a href="{{ counterpart }}?lang=en" hreflang="en" onclick="localStorage.setItem('vornac_lang','en')">EN</a>
+                        <span class="is-active" aria-current="true">DE</span><span class="v-dv-lang-sep" aria-hidden="true">/</span><a href="{{ counterpart }}" hreflang="en">EN</a>
                     {% endif %}
                 </span>
                 {% endif %}

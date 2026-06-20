@@ -13,6 +13,11 @@
 const { parse: parseHTML, HTMLElement, TextNode } = require("node-html-parser");
 const CROSSLINKS = require("./src/_data/crosslinks.js");
 
+// Domain-based i18n: a build is single-locale, selected at build time.
+// "de" builds the German site (src/de/** at the domain root, → vornac.de);
+// anything else builds the English site (src/ root, → vornac.com).
+const VORNAC_LOCALE = process.env.VORNAC_LOCALE === "de" ? "de" : "en";
+
 // HTML tags whose text content must never be auto-linked.
 const SKIP_TAGS = new Set([
   "a", "code", "pre", "kbd", "script", "style", "noscript",
@@ -177,6 +182,22 @@ function linkifyText(text, matcher, state) {
 }
 
 module.exports = function (eleventyConfig) {
+  // ── Single-locale build selection ─────────────────────────────────
+  // Each domain gets its own build. The German build keeps only the
+  // German page templates (src/de/**) plus the German sitemap; the
+  // English build keeps only the English ones. Shared data (_data),
+  // includes (_includes) and root assets are never page templates, so
+  // they survive both. This guarantees each language is served at its
+  // own domain root with no EN/DE path collisions.
+  if (VORNAC_LOCALE === "de") {
+    // Drop the English content + sitemap templates at the src root.
+    // (src/de/*.njk are NOT matched by this glob and are kept.)
+    eleventyConfig.ignores.add("src/*.njk");
+  } else {
+    // English build: drop the German tree entirely.
+    eleventyConfig.ignores.add("src/de/**");
+  }
+
   // ── Static assets passthrough ─────────────────────────────────────
   // Project-root assets get copied to dist/ root so existing URLs work.
   eleventyConfig.addPassthroughCopy("*.png");
@@ -260,8 +281,8 @@ module.exports = function (eleventyConfig) {
     if (!outputPath || !outputPath.endsWith(".html")) return content;
     if (process.env.NO_CROSSLINK === "1") return content;
 
-    // Locale derived from path (anything under dist/de/** is German).
-    const locale = /(^|\/)dist\/de\//.test(outputPath.replace(/\\/g, "/")) ? "de" : "en";
+    // Locale is fixed for the whole build (domain-based i18n).
+    const locale = VORNAC_LOCALE;
     const matcher = MATCHERS[locale];
     if (!matcher) return content;
 
@@ -278,7 +299,7 @@ module.exports = function (eleventyConfig) {
     // entirely to avoid 154 self-links per page. Match both pretty-URL
     // forms ("/glossary") and folder-index forms ("/glossary/").
     const selfNormalized = selfHref.replace(/\/$/, "");
-    if (selfNormalized === "/glossary" || selfNormalized === "/de/glossary") return content;
+    if (selfNormalized === "/glossary") return content;
 
     let root;
     try {

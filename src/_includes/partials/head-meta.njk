@@ -12,13 +12,14 @@
 
 <link rel="canonical" href="{{ canonicalPath | absoluteUrl(site.domain) }}">
 
-{# hreflang: each page declares its i18nKey, we pull both URLs from the registry. #}
+{# hreflang: each page declares its i18nKey; we pull each locale's URL from
+   the registry and pair it with that locale's own domain (cross-domain). #}
 {% if i18nKey %}
   {% for p in pages %}
     {% if p.key == i18nKey %}
-      {% if p.en %}<link rel="alternate" hreflang="en" href="{{ p.en | absoluteUrl(site.domain) }}">{% endif %}
-      {% if p.de %}<link rel="alternate" hreflang="de" href="{{ p.de | absoluteUrl(site.domain) }}">{% endif %}
-      {% if p.en %}<link rel="alternate" hreflang="x-default" href="{{ p.en | absoluteUrl(site.domain) }}">{% endif %}
+      {% if p.en %}<link rel="alternate" hreflang="en" href="{{ p.en | absoluteUrl(site.domains.en) }}">{% endif %}
+      {% if p.de %}<link rel="alternate" hreflang="de" href="{{ p.de | absoluteUrl(site.domains.de) }}">{% endif %}
+      {% if p.en %}<link rel="alternate" hreflang="x-default" href="{{ p.en | absoluteUrl(site.domains.en) }}">{% endif %}
     {% endif %}
   {% endfor %}
 {% endif %}

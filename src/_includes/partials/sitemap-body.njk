@@ -1,0 +1,27 @@
+{#- Shared sitemap body. Emits one <url> per registry entry that exists in
+    THIS build's locale, on this build's domain, with cross-domain hreflang
+    alternates. Expects a `priorities` map from the including template. -#}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{%- set lastmod = page.date | isoDate -%}
+{%- for entry in pages -%}
+  {%- set path = entry[site.locale] -%}
+  {%- if path %}
+  <url>
+    <loc>{{ path | absoluteUrl(site.domain) }}</loc>
+    <lastmod>{{ lastmod }}</lastmod>
+    <priority>{{ priorities[entry.key] or "0.5" }}</priority>
+    {%- if entry.en %}
+    <xhtml:link rel="alternate" hreflang="en" href="{{ entry.en | absoluteUrl(site.domains.en) }}" />
+    {%- endif %}
+    {%- if entry.de %}
+    <xhtml:link rel="alternate" hreflang="de" href="{{ entry.de | absoluteUrl(site.domains.de) }}" />
+    {%- endif %}
+    {%- if entry.en %}
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ entry.en | absoluteUrl(site.domains.en) }}" />
+    {%- endif %}
+  </url>
+  {%- endif -%}
+{%- endfor %}
+</urlset>

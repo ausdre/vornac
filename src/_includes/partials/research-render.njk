@@ -1,5 +1,5 @@
 {# Render the full research page body.
-   Re-used by /research (EN) and /de/research (DE).
+   Re-used by /research on both locale domains (vornac.com / vornac.de).
    The calling template sets the locale via `t` (already injected by
    src.11tydata.js) and so all data flows through `research.domains[*].title[locale]`
    etc.
@@ -153,7 +153,7 @@
 </nav>
 
 {% for d in research.domains %}
-{% set domainHref = ("/research/" + d.id + "/") if locale == "en" else ("/de/research/" + d.id + "/") %}
+{% set domainHref = "/research/" + d.id + "/" %}
 {% set noteBase = domainHref %}
 <section class="rs-domain" id="domain-{{ d.id }}">
     <div class="rs-domain-inner">
