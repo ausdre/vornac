@@ -167,7 +167,7 @@ function buildIndex(locale) {
     const href = `${hrefBase}#term-${entry.id}`;
     const meta = { href, kind: "glossary", id: entry.id };
 
-    const { base, acronymInParens } = cleanGlossaryTerm(entry.term);
+    const { base, acronymInParens } = cleanGlossaryTerm(glossary.displayTerm(entry, locale));
 
     // Base term (e.g. "Active Directory" from "Active Directory (AD)")
     if (base) {
@@ -255,7 +255,7 @@ function buildDefinitions(locale) {
   for (const entry of glossary.sorted) {
     const hrefBase = locale === "de" ? "/de/glossary" : "/glossary";
     defs[entry.id] = {
-      term: entry.term,
+      term: glossary.displayTerm(entry, locale),
       snippet: truncate(entry.definition[locale], 280),
       href: `${hrefBase}#term-${entry.id}`
     };
