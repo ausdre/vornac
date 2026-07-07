@@ -118,6 +118,10 @@
                             {{ t.nav.glossary }}
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M13 5l7 7-7 7"/></svg>
                         </a>
+                        <a href="{{ pageUrls.faq }}" class="v-dv-drop-aside-link{% if i18nKey == 'faq' %} is-active{% endif %}">
+                            {{ t.nav.faq }}
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M13 5l7 7-7 7"/></svg>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -247,6 +251,7 @@
                       {{ mobileSub(dHref, d.title[locale], "", i18nKey == ("research-" + d.id)) }}
                     {% endfor %}
                     {{ mobileSub(pageUrls.glossary, t.nav.glossary, t.navHeadings.glossary, i18nKey == 'glossary') }}
+                    {{ mobileSub(pageUrls.faq, t.nav.faq, t.navHeadings.glossary, i18nKey == 'faq') }}
                 </ul>
             </div>
 
@@ -471,7 +476,12 @@
     .v-dv-drop-aside {
         border-left: 1px solid rgba(255, 255, 255, 0.08);
         padding-left: 36px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
     }
+    .v-dv-drop-aside .v-dv-drop-heading { margin-bottom: 0; }
     .v-dv-drop-aside-link {
         display: inline-flex;
         align-items: center;

@@ -30,6 +30,7 @@ const STATIC_PAGES = [
   { key: "industries-enterprise",              en: "/industries-enterprise",              de: "/de/industries-enterprise" },
   { key: "industries-financial-services",      en: "/industries-financial-services",      de: "/de/industries-financial-services" },
   { key: "industries-insurance",               en: "/industries-insurance",               de: "/de/industries-insurance" },
+  { key: "faq",                                en: "/faq",                                de: "/de/faq" },
   { key: "legal",                              en: "/legal",                              de: "/de/legal" },
   { key: "comcenter",                          en: "/comcenter",                          de: null }
 ];

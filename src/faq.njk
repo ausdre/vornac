@@ -1,0 +1,178 @@
+---
+title: "FAQ · DORA, NIS2, KRITIS, TISAX and continuous pentesting | VORNAC"
+description: "Answers to the questions CISOs and compliance leads ask before running continuous pentesting under DORA, NIS2, KRITIS, BaFin VAIT/BAIT, and TISAX."
+i18nKey: faq
+ogType: website
+---
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+{% include "partials/prose-styles.njk" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is continuous pentesting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Continuous pentesting is adversarial validation that runs on every release, infrastructure change, or scheduled cadence, instead of the once-a-year project model. It chains real exploit techniques across the full attack surface (web, APIs, cloud, identity, binaries, internal network) and delivers exploit-proven findings within hours, not weeks. The goal is to keep the gap between code change and supervisory evidence as short as possible: every finding ships with a reproducible proof-of-concept, business impact, and remediation plan."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between pentesting and vulnerability scanning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A vulnerability scanner (e.g. Nessus, Qualys, Greenbone) checks assets against a database of known CVEs and misconfigurations, then prints a list. Typically thousands of findings, mostly noise, no exploit context. A penetration test chains those findings into real attack paths: it proves whether a vulnerability is actually exploitable in your environment, escalates privileges, moves laterally, and reaches the data or systems an adversary would target. Scanners answer 'what could be wrong'; pentests answer 'what an attacker can actually do today'. Auditors under NIS2, DORA, and KRITIS explicitly distinguish the two."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is VORNAC data stored?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "All customer data (test configurations, raw findings, proof-of-concept evidence, reports, audit logs) is processed and stored exclusively in German data centres operated by German providers (Hetzner, Centron), under German jurisdiction. Not the EU at large: Germany specifically. No subprocessors outside Germany. No US Cloud Act exposure. The processing complies with GDPR and BDSG by default, not on request. This is one of the reasons regulated customers under DORA / KRITIS / NIS2 / TISAX choose VORNAC: ICT third-party risk obligations on data residency are met without contractual workarounds."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What reports does VORNAC deliver for audits?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every test cycle produces a single audit-ready report that is admissible under all relevant European frameworks: TISAX, KRITIS, NIS2, DORA, BaFin VAIT/BAIT, ISO/IEC 27001. No separate per-framework export, no re-formatting. The report goes straight into the audit binder."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is NIS2 and who is affected?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The NIS2 Directive (EU 2022/2555) is the EU framework for cybersecurity across essential and important entities. It expands the scope from NIS1 to roughly 100,000 organisations in sectors like energy, transport, healthcare, water, digital infrastructure, public administration, manufacturing, food, postal services, chemicals, research, and digital providers. NIS2 mandates risk management, incident handling, supply-chain security, and effectiveness testing. Member states transposed NIS2 into national law (in Germany: NIS2-Umsetzungsgesetz); management bodies are personally liable for compliance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is DORA and who is affected?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Digital Operational Resilience Act (DORA, EU Regulation 2022/2554) sets binding ICT risk-management, incident-reporting, resilience-testing and third-party-risk obligations for the financial sector across the EU. It applies to banks, payment and e-money institutions, investment firms, insurance and reinsurance undertakings, asset managers, crypto-asset service providers, and the critical ICT third-party providers that serve them. DORA has been in full effect since 17 January 2025. Supervisors expect demonstrable evidence, not policy documents alone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is KRITIS and who is affected?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "KRITIS is the German regulatory category for critical infrastructure operators, defined in the BSI-KritisV ordinance. It covers nine sectors (energy, water, food, IT and telecommunications, healthcare, finance and insurance, transport, public administration, media and culture) whenever an operator exceeds the sector-specific threshold (e.g. 500,000 supplied citizens). KRITIS operators must implement state-of-the-art security, register with the BSI, report significant incidents within hours, and provide auditable evidence every two years. NIS2 broadens this further to all essential and important entities."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is TISAX and who is affected?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TISAX (Trusted Information Security Assessment Exchange) is the information-security assessment scheme of the German automotive industry, managed by the ENX Association and based on the VDA ISA catalogue. Automotive OEMs (VW, BMW, Mercedes-Benz, Audi, Porsche, etc.) and many Tier-N suppliers require TISAX from their partners as a contractual prerequisite, typically before any prototype data, personal data, or connected-vehicle data is exchanged. Assessment levels range from AL1 (self-assessment) to AL3 (on-site audit by an accredited audit provider). Labels are valid for three years."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are BaFin VAIT and BAIT?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "VAIT (Versicherungsaufsichtliche Anforderungen an die IT) and BAIT (Bankaufsichtliche Anforderungen an die IT) are the German Federal Financial Supervisory Authority's (BaFin) circulars that translate broader IT-governance principles into concrete supervisory expectations for insurers (VAIT) and banks/financial-services institutions (BAIT). They cover IT strategy, IT governance, information-risk management, identity and access management, IT projects, IT operations, outsourcing, and IT continuity. Since DORA's entry into force, VAIT/BAIT continue to apply as the German national specification layered on top of the EU framework."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is TLPT and when is it required?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Threat-Led Penetration Testing (TLPT) is an intelligence-driven red-team exercise on a financial entity's live production systems, scoped against realistic adversary tradecraft. Under DORA and the TIBER-EU framework, TLPT is mandatory for designated financial entities (typically banks, insurers and market-infrastructure providers above a supervisory materiality threshold) at least every three years. Tests must be conducted by independent, accredited testers; the scope, threat intelligence, and results are reviewed by the competent authority (in Germany: BaFin / Deutsche Bundesbank)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does continuous pentesting cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "VORNAC is licensed per target system, not per engagement and not per pentest. The fee depends on the number of in-scope systems, independent of their complexity, and includes unlimited test runs over the contract period: every release, every infrastructure change, on-demand via UI or API. You are not buying a pentest; you are buying continuous security for each system in scope. Compared to manual annual pentests (typically €15-30k for a single scope) plus the gaps between them, customers report up to 75% lower external testing cost while running tests every week instead of once a year. We share a concrete quote in the 30-minute intro call once we understand the perimeter."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What qualifications do my VORNAC points of contact hold?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every named contact at VORNAC is a working offensive-security practitioner, not an account manager handed a pentest deck. Each pentester holds at least one credential from OSCP (Offensive Security Certified Professional), OSEP (Experienced Penetration Tester), CISSP (Certified Information Systems Security Professional), or BSI-recognised competence credentials, plus practical experience across regulated industries. Triage, scope discussions, and remediation calls go straight to someone who has done the work. Auditors see credentials they already trust on the engagement record."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does VORNAC integrate with CI/CD pipelines?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pentests can be triggered from any CI/CD system via webhook on commit, merge, deploy, or scheduled jobs: GitHub Actions, GitLab CI, Jenkins, Azure DevOps, Bitbucket Pipelines, CircleCI. Findings are pushed back into the developer's ticketing system (Jira, Linear, GitHub Issues) with severity, reproducible proof-of-concept, and remediation guidance, so engineering teams treat them as regular development tickets. The result: validated security feedback in the same pipeline that already ships the code, no separate engagement-scoping or consultant-calendar friction."
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<main class="relative z-10 py-16 lg:py-24">
+    <div class="mx-auto max-w-3xl px-4 prose">
+
+        <h1 class="text-4xl lg:text-5xl">FAQ</h1>
+        <p class="text-lg text-stone-500">
+            The questions CISOs, compliance leads, and engineering owners ask before running continuous pentesting in regulated EU industries. Updated as the regulations evolve.
+        </p>
+
+        <h3 id="continuous-pentesting" class="mt-16">What is continuous pentesting?</h3>
+        <p>Continuous pentesting is adversarial validation that runs on every release, infrastructure change, or scheduled cadence, instead of the once-a-year project model. It chains real exploit techniques across the full attack surface (web, APIs, cloud, identity, binaries, internal network) and delivers exploit-proven findings within hours, not weeks. The goal is to keep the gap between code change and supervisory evidence as short as possible: every finding ships with a reproducible proof-of-concept, business impact, and remediation plan that maps to NIS2 / DORA / KRITIS / TISAX controls.</p>
+
+        <h3 id="pentest-vs-scan">What is the difference between pentesting and vulnerability scanning?</h3>
+        <p>A vulnerability scanner (e.g. Nessus, Qualys, Greenbone) checks assets against a database of known CVEs and misconfigurations, then prints a list. Typically thousands of findings, mostly noise, no exploit context. A penetration test chains those findings into real attack paths: it proves whether a vulnerability is actually exploitable in your environment, escalates privileges, moves laterally, and reaches the data or systems an adversary would target. Scanners answer "what could be wrong"; pentests answer "what an attacker can actually do today". Auditors under NIS2, DORA, and KRITIS explicitly distinguish the two.</p>
+
+        <h3 id="data-storage">Where is VORNAC data stored?</h3>
+        <p>All customer data (test configurations, raw findings, proof-of-concept evidence, reports, audit logs) is processed and stored exclusively in German data centres operated by German providers, under German jurisdiction. Not the EU at large: Germany specifically. No subprocessors outside Germany. No US Cloud Act exposure. The processing complies with GDPR and BDSG by default, not on request. This is one of the reasons regulated customers under DORA / KRITIS / NIS2 / TISAX choose VORNAC: ICT third-party risk obligations on data residency are met without contractual workarounds.</p>
+
+        <h3 id="audit-reports">What reports does VORNAC deliver for audits?</h3>
+        <p>Every test cycle produces a single audit-ready report that is admissible under all relevant European frameworks: TISAX, KRITIS, NIS2, DORA, BaFin VAIT/BAIT, ISO/IEC 27001. No separate per-framework export, no re-formatting. The report goes straight into the audit binder.</p>
+
+        <h3 id="nis2">What is NIS2 and who is affected?</h3>
+        <p>The NIS2 Directive (EU 2022/2555) is the EU framework for cybersecurity across essential and important entities. It expands the scope from NIS1 to roughly 100,000 organisations in sectors like energy, transport, healthcare, water, digital infrastructure, public administration, manufacturing, food, postal services, chemicals, research, and digital providers. NIS2 mandates risk management, incident handling, supply-chain security, and effectiveness testing. Member states transposed NIS2 into national law (in Germany: NIS2-Umsetzungsgesetz); management bodies are personally liable for compliance.</p>
+
+        <h3 id="dora">What is DORA and who is affected?</h3>
+        <p>The Digital Operational Resilience Act (DORA, EU Regulation 2022/2554) sets binding ICT risk-management, incident-reporting, resilience-testing and third-party-risk obligations for the financial sector across the EU. It applies to banks, payment and e-money institutions, investment firms, insurance and reinsurance undertakings, asset managers, crypto-asset service providers, and the critical ICT third-party providers that serve them. DORA has been in full effect since 17 January 2025. Supervisors expect demonstrable evidence, not policy documents alone.</p>
+
+        <h3 id="kritis">What is KRITIS and who is affected?</h3>
+        <p>KRITIS is the German regulatory category for critical infrastructure operators, defined in the BSI-KritisV ordinance. It covers nine sectors (energy, water, food, IT and telecommunications, healthcare, finance and insurance, transport, public administration, media and culture) whenever an operator exceeds the sector-specific threshold (e.g. 500,000 supplied citizens). KRITIS operators must implement state-of-the-art security, register with the BSI, report significant incidents within hours, and provide auditable evidence every two years. NIS2 broadens this further to all essential and important entities.</p>
+
+        <h3 id="tisax">What is TISAX and who is affected?</h3>
+        <p>TISAX (Trusted Information Security Assessment Exchange) is the information-security assessment scheme of the German automotive industry, managed by the ENX Association and based on the VDA ISA catalogue. Automotive OEMs (VW, BMW, Mercedes-Benz, Audi, Porsche, etc.) and many Tier-N suppliers require TISAX from their partners as a contractual prerequisite, typically before any prototype data, personal data, or connected-vehicle data is exchanged. Assessment levels range from AL1 (self-assessment) to AL3 (on-site audit by an accredited audit provider). Labels are valid for three years.</p>
+
+        <h3 id="vait-bait">What are BaFin VAIT and BAIT?</h3>
+        <p>VAIT (Versicherungsaufsichtliche Anforderungen an die IT) and BAIT (Bankaufsichtliche Anforderungen an die IT) are the German Federal Financial Supervisory Authority's (BaFin) circulars that translate broader IT-governance principles into concrete supervisory expectations for insurers (VAIT) and banks/financial-services institutions (BAIT). They cover IT strategy, IT governance, information-risk management, identity and access management, IT projects, IT operations, outsourcing, and IT continuity. Since DORA's entry into force, VAIT/BAIT continue to apply as the German national specification layered on top of the EU framework.</p>
+
+        <h3 id="tlpt">What is TLPT and when is it required?</h3>
+        <p>Threat-Led Penetration Testing (TLPT) is an intelligence-driven red-team exercise on a financial entity's live production systems, scoped against realistic adversary tradecraft. Under DORA and the TIBER-EU framework, TLPT is mandatory for designated financial entities (typically banks, insurers and market-infrastructure providers above a supervisory materiality threshold) at least every three years. Tests must be conducted by independent, accredited testers; the scope, threat intelligence, and results are reviewed by the competent authority (in Germany: BaFin / Deutsche Bundesbank).</p>
+
+        <h3 id="cost">How much does continuous pentesting cost?</h3>
+        <p>VORNAC is licensed per target system, not per engagement and not per pentest. The fee depends on the number of in-scope systems, independent of their complexity, and includes unlimited test runs over the contract period: every release, every infrastructure change, on-demand via web interface or API. You are not buying a pentest; you are buying continuous security for each system in scope. Compared to manual annual pentests, customers report up to 75% lower external testing cost while running tests every week instead of once a year. We share a concrete quote after a 30-min intro call, which you can book on our website.</p>
+
+        <h3 id="contacts">What qualifications do my VORNAC points of contact hold?</h3>
+        <p>Every named contact at VORNAC is a working offensive-security practitioner, not an account manager handed a pentest deck. Each pentester holds at least one credential from OSCP (Offensive Security Certified Professional), OSEP (Experienced Penetration Tester), CISSP (Certified Information Systems Security Professional), or BSI-recognised competence credentials, plus practical experience across regulated industries. Triage, scope discussions, and remediation calls go straight to someone who has done the work. Auditors see credentials they already trust on the engagement record.</p>
+
+        <h3 id="ci-cd">How does VORNAC integrate with CI/CD pipelines?</h3>
+        <p>Pentests can be triggered from any CI/CD system via webhook on commit, merge, deploy, or scheduled jobs: GitHub Actions, GitLab CI, Jenkins, Azure DevOps, Bitbucket Pipelines, CircleCI. Findings are pushed back into the developer's ticketing system (e.g. Jira) with severity, reproducible proof-of-concept, and remediation guidance, so engineering teams treat them as regular development tickets. The result: validated security feedback in the same pipeline that already ships the code, no separate engagement-scoping or consultant-calendar friction.</p>
+
+        <div class="mt-16 border-t border-stone-200 pt-8">
+            <p class="text-stone-500">Question we didn't answer? <a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener">Book a 30-minute call</a> with the VORNAC team.</p>
+        </div>
+    </div>
+</main>
+{% endblock %}
