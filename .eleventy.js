@@ -16,7 +16,7 @@ const CROSSLINKS = require("./src/_data/crosslinks.js");
 // HTML tags whose text content must never be auto-linked.
 const SKIP_TAGS = new Set([
   "a", "code", "pre", "kbd", "script", "style", "noscript",
-  "nav", "header", "footer", "h1", "h2", "h3", "button",
+  "nav", "header", "footer", "h1", "h2", "h3", "button", "summary",
   "select", "textarea", "input", "label", "svg", "math"
 ]);
 
