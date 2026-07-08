@@ -7,7 +7,7 @@ ogType: website
 {% extends "layouts/base.njk" %}
 
 {% block extraHead %}
-{% include "partials/prose-styles.njk" %}
+<link rel="stylesheet" href="/faq.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -99,7 +99,7 @@ ogType: website
       "name": "Was kostet kontinuierliches Pentesting?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "VORNAC wird pro Zielsystem lizenziert, nicht pro Engagement und nicht pro Pentest. Die Gebühr richtet sich nach der Anzahl der Zielsysteme im Scope, unabhängig von deren Komplexität, und enthält unbegrenzt viele Test-Läufe über die Vertragslaufzeit: bei jedem Release, jeder Infrastrukturänderung, on-demand per Weboberfläche oder API. Verkauft wird kein einzelner Pentest, sondern kontinuierliche Sicherheit pro System im Scope. Im Vergleich zu manuellen Jahres-Pentests ergeben sich bis zu 75% geringere externe Pentest-Kosten, und gleichzeitig unendliche Tests statt einmal im Jahr. Ein konkretes Angebot erhalten Sie in einem persönlichen Gespräch."
+        "text": "VORNAC wird pro Zielsystem lizenziert, nicht pro Engagement und nicht pro Pentest. Die Gebühr richtet sich nach der Anzahl der Zielsysteme im Scope, unabhängig von deren Komplexität, und enthält unbegrenzt viele Test-Läufe über die Vertragslaufzeit: bei jedem Release, jeder Infrastrukturänderung, on-demand per Weboberfläche oder API. Verkauft wird kein einzelner Pentest, sondern kontinuierliche Sicherheit pro System im Scope. Im Vergleich zu manuellen Jahres-Pentests ergeben sich bis zu 75% geringere externe Pentest-Kosten, und gleichzeitig unendliche Tests statt einmal im Jahr. Ein konkretes Angebot folgt im persönlichen Gespräch."
       }
     },
     {
@@ -124,56 +124,85 @@ ogType: website
 {% endblock %}
 
 {% block content %}
-<main class="relative z-10 py-16 lg:py-24">
-    <div class="mx-auto max-w-3xl px-4 prose">
-
-        <h1 class="text-4xl lg:text-5xl">FAQ</h1>
-        <p class="text-lg text-stone-500">
+<section class="faq-hero">
+    <div class="faq-hero-inner">
+        <h1 class="faq-hero-headline">FAQ<span class="faq-period">.</span></h1>
+        <p class="faq-hero-sub">
             Die Fragen, die CISOs, Compliance-Verantwortliche und Engineering-Owner stellen, bevor sie kontinuierliches Pentesting in regulierten EU-Branchen einführen. Wird aktualisiert, sobald sich die Regulatorik weiterentwickelt.
         </p>
-
-        <h3 id="continuous-pentesting" class="mt-16">Was ist kontinuierliches Pentesting?</h3>
-        <p>Kontinuierliches Pentesting wird im Gegensatz zu traditionellem Pentesting, bei jedem Release, jeder Infrastrukturänderung oder nach Zeitplan ausgeführt, anstatt im Jahresrhythmus als einzelnes Projekt. Echte Exploit-Ketten werden über die gesamte Angriffsfläche (Web, APIs, Cloud, Identity, Binaries, internes Netzwerk) abgespielt und liefern ausnutzbar belegte Befunde innerhalb von Stunden, nicht Wochen. Ziel: die Lücke zwischen Code-Änderung und Audit-Evidenz so klein wie möglich halten. Jeder Befund kommt mit reproduzierbarem Proof-of-Concept, Business-Impact und Maßnahmenplan.</p>
-
-        <h3 id="pentest-vs-scan">Was ist der Unterschied zwischen Pentesting und Vulnerability Scanning?</h3>
-        <p>Ein Vulnerability-Scanner (z.B. Nessus, Qualys, Greenbone) prüft Assets gegen eine Datenbank bekannter CVEs und Fehlkonfigurationen und gibt eine Liste aus. Meist tausende Befunde, viel Rauschen, kein Exploit-Kontext. Ein Penetration Test verkettet diese Befunde zu echten Angriffspfaden: er belegt, ob eine Schwachstelle in der konkreten Umgebung tatsächlich ausnutzbar ist, eskaliert Privilegien, bewegt sich lateral und erreicht die Daten oder Systeme, die ein Angreifer angreifen würde. Scanner beantworten „was könnte falsch sein“; Pentests beantworten „was ein Angreifer heute tatsächlich erreichen kann“. Auditoren unter NIS2, DORA und KRITIS unterscheiden beides ausdrücklich.</p>
-
-        <h3 id="data-storage">Wo werden VORNAC-Daten gespeichert?</h3>
-        <p>Alle Kundendaten (Test-Konfigurationen, Roh-Befunde, Proof-of-Concept-Evidenz, Reports, Audit-Logs) werden ausschließlich in deutschen Rechenzentren deutscher Betreiber unter deutscher Jurisdiktion verarbeitet und gespeichert. Nicht „irgendwo in der EU“: Deutschland. Keine Auftragsverarbeiter außerhalb Deutschlands. Kein US Cloud Act. Die Verarbeitung entspricht standardmäßig DSGVO und BDSG, nicht auf Nachfrage. Genau das ist einer der Gründe, warum regulierte Kunden unter DORA / KRITIS / NIS2 / TISAX VORNAC wählen: IKT-Drittparteienrisiko-Anforderungen an den Datenstandort werden ohne vertragliche Sonderkonstruktionen erfüllt.</p>
-
-        <h3 id="audit-reports">Welche Reports liefert VORNAC für Audits?</h3>
-        <p>Jeder Testzyklus produziert einen einzigen auditfähigen Report, der unter allen relevanten europäischen Regelwerken zulässig ist: TISAX, KRITIS, NIS2, DORA, BaFin VAIT/BAIT, ISO/IEC 27001. Kein separater Export pro Regelwerk, keine Umformatierung. Der Report landet direkt im Audit-Ordner.</p>
-
-        <h3 id="nis2">Was ist NIS2 und wer ist betroffen?</h3>
-        <p>Die NIS2-Richtlinie (EU 2022/2555) ist der EU-Rahmen für Cybersicherheit wesentlicher und wichtiger Einrichtungen. Sie weitet den Geltungsbereich gegenüber NIS1 deutlich aus, auf rund 100.000 Organisationen in Sektoren wie Energie, Verkehr, Gesundheit, Wasser, digitale Infrastruktur, öffentliche Verwaltung, verarbeitendes Gewerbe, Lebensmittel, Post, Chemie, Forschung und digitale Dienste. NIS2 verlangt Risikomanagement, Vorfallbearbeitung, Lieferkettensicherheit und Wirksamkeitstests. Die Mitgliedstaaten setzen NIS2 in nationales Recht um (in Deutschland: NIS2-Umsetzungsgesetz); die Geschäftsleitung haftet persönlich.</p>
-
-        <h3 id="dora">Was ist DORA und wer ist betroffen?</h3>
-        <p>Der Digital Operational Resilience Act (DORA, EU-Verordnung 2022/2554) regelt verbindlich IKT-Risikomanagement, Vorfallmeldung, Resilienztests und Drittparteienrisiko für den Finanzsektor in der EU. DORA gilt für Banken, Zahlungs- und E-Geld-Institute, Wertpapierfirmen, Versicherer und Rückversicherer, Vermögensverwalter, Krypto-Dienstleister und die kritischen IKT-Drittanbieter, die diese Unternehmen beliefern. DORA ist seit 17. Januar 2025 vollständig anwendbar. Die Aufsicht erwartet belegbare Evidenz, keine Policy-Dokumente allein.</p>
-
-        <h3 id="kritis">Was ist KRITIS und wer ist betroffen?</h3>
-        <p>KRITIS ist die deutsche Regulierungskategorie für Betreiber kritischer Infrastrukturen, definiert in der BSI-KritisV. Sie umfasst neun Sektoren (Energie, Wasser, Ernährung, IT und Telekommunikation, Gesundheit, Finanz- und Versicherungswesen, Transport und Verkehr, öffentliche Verwaltung, Medien und Kultur), sobald ein Betreiber den sektorspezifischen Schwellenwert überschreitet (etwa 500.000 versorgte Personen). KRITIS-Betreiber müssen Sicherheit nach dem Stand der Technik umsetzen, sich beim BSI registrieren, erhebliche Vorfälle innerhalb von Stunden melden und alle zwei Jahre prüffähige Nachweise erbringen. NIS2 weitet diesen Rahmen auf alle wesentlichen und wichtigen Einrichtungen aus.</p>
-
-        <h3 id="tisax">Was ist TISAX und wer ist betroffen?</h3>
-        <p>TISAX (Trusted Information Security Assessment Exchange) ist das Informationssicherheits-Assessment der deutschen Automobilindustrie, verwaltet von der ENX Association und basierend auf dem VDA-ISA-Katalog. Automobil-OEMs (VW, BMW, Mercedes-Benz, Audi, Porsche und andere) sowie viele Tier-N-Zulieferer verlangen TISAX vertraglich von ihren Partnern, typischerweise bevor Prototypen-, Personen- oder Connected-Vehicle-Daten ausgetauscht werden. Die Assessment-Levels reichen von AL1 (Selbst-Assessment) bis AL3 (Vor-Ort-Audit durch akkreditierten Prüfdienstleister). Labels sind drei Jahre gültig.</p>
-
-        <h3 id="vait-bait">Was sind BaFin VAIT und BAIT?</h3>
-        <p>VAIT (Versicherungsaufsichtliche Anforderungen an die IT) und BAIT (Bankaufsichtliche Anforderungen an die IT) sind Rundschreiben der BaFin, die übergeordnete IT-Governance-Prinzipien in konkrete aufsichtliche Erwartungen übersetzen: für Versicherer (VAIT) und Banken/Finanzdienstleistungsinstitute (BAIT). Sie decken IT-Strategie, IT-Governance, Informationsrisikomanagement, Identitäts- und Berechtigungsmanagement, IT-Projekte, IT-Betrieb, Auslagerungen und IT-Kontinuität ab. Seit Geltungsbeginn von DORA bleiben VAIT und BAIT als nationale Konkretisierung über dem EU-Rahmen bestehen.</p>
-
-        <h3 id="tlpt">Was ist TLPT und wann ist es Pflicht?</h3>
-        <p>Threat-Led Penetration Testing (TLPT) ist eine intelligence-basierte Red-Team-Übung auf den Produktivsystemen eines Finanzunternehmens, ausgelegt auf reale Adversary-TTPs. Unter DORA und dem TIBER-EU-Rahmenwerk ist TLPT für designierte Finanzunternehmen verpflichtend (typischerweise Banken, Versicherer und Marktinfrastrukturen oberhalb eines aufsichtlichen Materialitätsschwellenwerts) mindestens alle drei Jahre. Die Tests sind durch unabhängige, akkreditierte Tester durchzuführen; Scope, Threat Intelligence und Ergebnisse werden von der zuständigen Behörde (in Deutschland: BaFin / Deutsche Bundesbank) geprüft.</p>
-
-        <h3 id="cost">Was kostet kontinuierliches Pentesting?</h3>
-        <p>VORNAC wird pro Zielsystem lizenziert, nicht pro Engagement und nicht pro Pentest. Die Gebühr richtet sich nach der Anzahl der Zielsysteme im Scope, unabhängig von deren Komplexität, und enthält unbegrenzt viele Test-Läufe über die Vertragslaufzeit: bei jedem Release, jeder Infrastrukturänderung, on-demand per UI oder API. Verkauft wird kein einzelner Pentest, sondern kontinuierliche Sicherheit pro System im Scope. Im Vergleich zu manuellen Jahres-Pentests (typischerweise 15–30k € pro Scope) plus den Lücken dazwischen berichten Kunden bis zu 75 % geringere externe Pentest-Kosten, und gleichzeitig Tests jede Woche statt einmal im Jahr. Ein konkretes Angebot folgt im 30-Minuten-Erstgespräch, sobald der Perimeter klar ist.</p>
-
-        <h3 id="contacts">Welche Qualifizierungen haben meine Ansprechpartner bei VORNAC?</h3>
-        <p>Jeder feste Ansprechpartner bei VORNAC ist selbst praktizierender Offensive-Security-Experte, kein Account-Manager mit Pentest-Deck. Jeder Pentester hält mindestens eine der folgenden Qualifizierungen: OSCP (Offensive Security Certified Professional), OSEP (Experienced Penetration Tester), CISSP (Certified Information Systems Security Professional) oder einen BSI-anerkannten Kompetenz-Nachweis, dazu Praxiserfahrung in regulierten Branchen. Triage, Scope-Gespräche und Remediation-Calls gehen direkt an jemanden, der die Arbeit selbst macht. Auf dem Engagement-Record sehen Auditoren Credentials, die sie bereits kennen.</p>
-
-        <h3 id="ci-cd">Wie integriert sich VORNAC in CI/CD-Pipelines?</h3>
-        <p>Pentests lassen sich aus jedem CI/CD-System per Webhook auslösen, bei Commit, Merge, Deploy oder nach Zeitplan. Unterstützt werden GitHub Actions, GitLab CI, Jenkins, Azure DevOps, Bitbucket Pipelines, CircleCI. Befunde werden ins Ticketing-System zurückgegeben (Jira), mit Schweregrad, reproduzierbarem Proof-of-Concept und Remediation-Hinweisen, sodass Entwicklungsteams sie wie reguläre Development-Tickets bearbeiten. Ergebnis: validierte Sicherheitsrückmeldung im gleichen Pipeline-Lauf, der ohnehin den Code ausliefert. Kein separates Engagement-Scoping, keine Berater-Kalenderabstimmung.</p>
-
-        <div class="mt-16 border-t border-stone-200 pt-8">
-            <p class="text-stone-500">Frage hier nicht beantwortet? <a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener">30-Minuten-Erstgespräch buchen</a>.</p>
-        </div>
     </div>
-</main>
+</section>
+
+<section class="faq-list">
+    <div class="faq-list-inner">
+
+        <details class="faq-item" id="continuous-pentesting">
+            <summary>Was ist kontinuierliches Pentesting?</summary>
+            <div class="faq-item-body">Kontinuierliches Pentesting wird im Gegensatz zu traditionellem Pentesting, bei jedem Release, jeder Infrastrukturänderung oder nach Zeitplan ausgeführt, anstatt im Jahresrhythmus als einzelnes Projekt. Echte Exploit-Ketten werden über die gesamte Angriffsfläche (Web, APIs, Cloud, Identity, Binaries, internes Netzwerk) abgespielt und liefern ausnutzbar belegte Befunde innerhalb von Stunden, nicht Wochen. Ziel: die Lücke zwischen Code-Änderung und Audit-Evidenz so klein wie möglich halten. Jeder Befund kommt mit reproduzierbarem Proof-of-Concept, Business-Impact und Maßnahmenplan.</div>
+        </details>
+
+        <details class="faq-item" id="pentest-vs-scan">
+            <summary>Was ist der Unterschied zwischen Pentesting und Vulnerability Scanning?</summary>
+            <div class="faq-item-body">Ein Vulnerability-Scanner (z.B. Nessus, Qualys, Greenbone) prüft Assets gegen eine Datenbank bekannter CVEs und Fehlkonfigurationen und gibt eine Liste aus. Meist tausende Befunde, viel Rauschen, kein Exploit-Kontext. Ein Penetration Test verkettet diese Befunde zu echten Angriffspfaden: er belegt, ob eine Schwachstelle in der konkreten Umgebung tatsächlich ausnutzbar ist, eskaliert Privilegien, bewegt sich lateral und erreicht die Daten oder Systeme, die ein Angreifer angreifen würde. Scanner beantworten „was könnte falsch sein“; Pentests beantworten „was ein Angreifer heute tatsächlich erreichen kann“. Auditoren unter NIS2, DORA und KRITIS unterscheiden beides ausdrücklich.</div>
+        </details>
+
+        <details class="faq-item" id="data-storage">
+            <summary>Wo werden VORNAC-Daten gespeichert?</summary>
+            <div class="faq-item-body">Alle Kundendaten (Test-Konfigurationen, Roh-Befunde, Proof-of-Concept-Evidenz, Reports, Audit-Logs) werden ausschließlich in deutschen Rechenzentren deutscher Betreiber unter deutscher Jurisdiktion verarbeitet und gespeichert. Nicht „irgendwo in der EU“: Deutschland. Keine Auftragsverarbeiter außerhalb Deutschlands. Kein US Cloud Act. Die Verarbeitung entspricht standardmäßig DSGVO und BDSG, nicht auf Nachfrage. Genau das ist einer der Gründe, warum regulierte Kunden unter DORA / KRITIS / NIS2 / TISAX VORNAC wählen: IKT-Drittparteienrisiko-Anforderungen an den Datenstandort werden ohne vertragliche Sonderkonstruktionen erfüllt.</div>
+        </details>
+
+        <details class="faq-item" id="audit-reports">
+            <summary>Welche Reports liefert VORNAC für Audits?</summary>
+            <div class="faq-item-body">Jeder Testzyklus produziert einen einzigen auditfähigen Report, der unter allen relevanten europäischen Regelwerken zulässig ist: TISAX, KRITIS, NIS2, DORA, BaFin VAIT/BAIT, ISO/IEC 27001. Kein separater Export pro Regelwerk, keine Umformatierung. Der Report landet direkt im Audit-Ordner.</div>
+        </details>
+
+        <details class="faq-item" id="nis2">
+            <summary>Was ist NIS2 und wer ist betroffen?</summary>
+            <div class="faq-item-body">Die NIS2-Richtlinie (EU 2022/2555) ist der EU-Rahmen für Cybersicherheit wesentlicher und wichtiger Einrichtungen. Sie weitet den Geltungsbereich gegenüber NIS1 deutlich aus, auf rund 100.000 Organisationen in Sektoren wie Energie, Verkehr, Gesundheit, Wasser, digitale Infrastruktur, öffentliche Verwaltung, verarbeitendes Gewerbe, Lebensmittel, Post, Chemie, Forschung und digitale Dienste. NIS2 verlangt Risikomanagement, Vorfallbearbeitung, Lieferkettensicherheit und Wirksamkeitstests. Die Mitgliedstaaten setzen NIS2 in nationales Recht um (in Deutschland: NIS2-Umsetzungsgesetz); die Geschäftsleitung haftet persönlich.</div>
+        </details>
+
+        <details class="faq-item" id="dora">
+            <summary>Was ist DORA und wer ist betroffen?</summary>
+            <div class="faq-item-body">Der Digital Operational Resilience Act (DORA, EU-Verordnung 2022/2554) regelt verbindlich IKT-Risikomanagement, Vorfallmeldung, Resilienztests und Drittparteienrisiko für den Finanzsektor in der EU. DORA gilt für Banken, Zahlungs- und E-Geld-Institute, Wertpapierfirmen, Versicherer und Rückversicherer, Vermögensverwalter, Krypto-Dienstleister und die kritischen IKT-Drittanbieter, die diese Unternehmen beliefern. DORA ist seit 17. Januar 2025 vollständig anwendbar. Die Aufsicht erwartet belegbare Evidenz, keine Policy-Dokumente allein.</div>
+        </details>
+
+        <details class="faq-item" id="kritis">
+            <summary>Was ist KRITIS und wer ist betroffen?</summary>
+            <div class="faq-item-body">KRITIS ist die deutsche Regulierungskategorie für Betreiber kritischer Infrastrukturen, definiert in der BSI-KritisV. Sie umfasst neun Sektoren (Energie, Wasser, Ernährung, IT und Telekommunikation, Gesundheit, Finanz- und Versicherungswesen, Transport und Verkehr, öffentliche Verwaltung, Medien und Kultur), sobald ein Betreiber den sektorspezifischen Schwellenwert überschreitet (etwa 500.000 versorgte Personen). KRITIS-Betreiber müssen Sicherheit nach dem Stand der Technik umsetzen, sich beim BSI registrieren, erhebliche Vorfälle innerhalb von Stunden melden und alle zwei Jahre prüffähige Nachweise erbringen. NIS2 weitet diesen Rahmen auf alle wesentlichen und wichtigen Einrichtungen aus.</div>
+        </details>
+
+        <details class="faq-item" id="tisax">
+            <summary>Was ist TISAX und wer ist betroffen?</summary>
+            <div class="faq-item-body">TISAX (Trusted Information Security Assessment Exchange) ist das Informationssicherheits-Assessment der deutschen Automobilindustrie, verwaltet von der ENX Association und basierend auf dem VDA-ISA-Katalog. Automobil-OEMs (VW, BMW, Mercedes-Benz, Audi, Porsche und andere) sowie viele Tier-N-Zulieferer verlangen TISAX vertraglich von ihren Partnern, typischerweise bevor Prototypen-, Personen- oder Connected-Vehicle-Daten ausgetauscht werden. Die Assessment-Levels reichen von AL1 (Selbst-Assessment) bis AL3 (Vor-Ort-Audit durch akkreditierten Prüfdienstleister). Labels sind drei Jahre gültig.</div>
+        </details>
+
+        <details class="faq-item" id="vait-bait">
+            <summary>Was sind BaFin VAIT und BAIT?</summary>
+            <div class="faq-item-body">VAIT (Versicherungsaufsichtliche Anforderungen an die IT) und BAIT (Bankaufsichtliche Anforderungen an die IT) sind Rundschreiben der BaFin, die übergeordnete IT-Governance-Prinzipien in konkrete aufsichtliche Erwartungen übersetzen: für Versicherer (VAIT) und Banken/Finanzdienstleistungsinstitute (BAIT). Sie decken IT-Strategie, IT-Governance, Informationsrisikomanagement, Identitäts- und Berechtigungsmanagement, IT-Projekte, IT-Betrieb, Auslagerungen und IT-Kontinuität ab. Seit Geltungsbeginn von DORA bleiben VAIT und BAIT als nationale Konkretisierung über dem EU-Rahmen bestehen.</div>
+        </details>
+
+        <details class="faq-item" id="tlpt">
+            <summary>Was ist TLPT und wann ist es Pflicht?</summary>
+            <div class="faq-item-body">Threat-Led Penetration Testing (TLPT) ist eine intelligence-basierte Red-Team-Übung auf den Produktivsystemen eines Finanzunternehmens, ausgelegt auf reale Adversary-TTPs. Unter DORA und dem TIBER-EU-Rahmenwerk ist TLPT für designierte Finanzunternehmen verpflichtend (typischerweise Banken, Versicherer und Marktinfrastrukturen oberhalb eines aufsichtlichen Materialitätsschwellenwerts) mindestens alle drei Jahre. Die Tests sind durch unabhängige, akkreditierte Tester durchzuführen; Scope, Threat Intelligence und Ergebnisse werden von der zuständigen Behörde (in Deutschland: BaFin / Deutsche Bundesbank) geprüft.</div>
+        </details>
+
+        <details class="faq-item" id="cost">
+            <summary>Was kostet kontinuierliches Pentesting?</summary>
+            <div class="faq-item-body">VORNAC wird pro Zielsystem lizenziert, nicht pro Engagement und nicht pro Pentest. Die Gebühr richtet sich nach der Anzahl der Zielsysteme im Scope, unabhängig von deren Komplexität, und enthält unbegrenzt viele Test-Läufe über die Vertragslaufzeit: bei jedem Release, jeder Infrastrukturänderung, on-demand per UI oder API. Verkauft wird kein einzelner Pentest, sondern kontinuierliche Sicherheit pro System im Scope. Im Vergleich zu manuellen Jahres-Pentests (typischerweise 15–30k € pro Scope) plus den Lücken dazwischen berichten Kunden bis zu 75 % geringere externe Pentest-Kosten, und gleichzeitig Tests jede Woche statt einmal im Jahr. Ein konkretes Angebot folgt im 30-Minuten-Erstgespräch, sobald der Perimeter klar ist.</div>
+        </details>
+
+        <details class="faq-item" id="contacts">
+            <summary>Welche Qualifizierungen haben meine Ansprechpartner bei VORNAC?</summary>
+            <div class="faq-item-body">Jeder feste Ansprechpartner bei VORNAC ist selbst praktizierender Offensive-Security-Experte, kein Account-Manager mit Pentest-Deck. Jeder Pentester hält mindestens eine der folgenden Qualifizierungen: OSCP (Offensive Security Certified Professional), OSEP (Experienced Penetration Tester), CISSP (Certified Information Systems Security Professional) oder einen BSI-anerkannten Kompetenz-Nachweis, dazu Praxiserfahrung in regulierten Branchen. Triage, Scope-Gespräche und Remediation-Calls gehen direkt an jemanden, der die Arbeit selbst macht. Auf dem Engagement-Record sehen Auditoren Credentials, die sie bereits kennen.</div>
+        </details>
+
+        <details class="faq-item" id="ci-cd">
+            <summary>Wie integriert sich VORNAC in CI/CD-Pipelines?</summary>
+            <div class="faq-item-body">Pentests lassen sich aus jedem CI/CD-System per Webhook auslösen, bei Commit, Merge, Deploy oder nach Zeitplan. Unterstützt werden GitHub Actions, GitLab CI, Jenkins, Azure DevOps, Bitbucket Pipelines, CircleCI. Befunde werden ins Ticketing-System zurückgegeben (Jira), mit Schweregrad, reproduzierbarem Proof-of-Concept und Remediation-Hinweisen, sodass Entwicklungsteams sie wie reguläre Development-Tickets bearbeiten. Ergebnis: validierte Sicherheitsrückmeldung im gleichen Pipeline-Lauf, der ohnehin den Code ausliefert. Kein separates Engagement-Scoping, keine Berater-Kalenderabstimmung.</div>
+        </details>
+
+        <p class="faq-cta">Frage hier nicht beantwortet? <a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener">30-Minuten-Erstgespräch buchen</a>.</p>
+
+    </div>
+</section>
 {% endblock %}

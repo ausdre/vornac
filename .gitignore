@@ -47,3 +47,6 @@ somedata/
 
 # Compound Engineering local config
 .compound-engineering/*.local.yaml
+
+# Visual brainstorming companion (superpowers)
+.superpowers/

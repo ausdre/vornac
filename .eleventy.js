@@ -196,6 +196,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("pentesting.css");
   eleventyConfig.addPassthroughCopy("research.css");
   eleventyConfig.addPassthroughCopy("glossary.css");
+  eleventyConfig.addPassthroughCopy("faq.css");
 
   // Hovercard JS for .x-term cross-links (loaded by the crosslink
   // transform when a page contains at least one cross-link).
@@ -212,6 +213,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget("./pentesting.css");
   eleventyConfig.addWatchTarget("./research.css");
   eleventyConfig.addWatchTarget("./glossary.css");
+  eleventyConfig.addWatchTarget("./faq.css");
 
   // Compiled Tailwind output (built by `npm run build:css` -> dist/output.css)
   // also keep a root copy if someone is serving from project root in legacy mode.
