@@ -70,7 +70,6 @@
 .faq-item {
     background: var(--v-bg-card);
     border: 1px solid var(--v-line);
-    border-radius: 10px;
     overflow: hidden;
 }
 
@@ -112,10 +111,13 @@
     margin-top: 4px;
 }
 
-.faq-item summary:hover { background: var(--v-line-soft); }
+.faq-item:not([open]) summary:hover { background: var(--v-line-soft); }
+
+.faq-item[open] summary { padding-bottom: 16px; }
 
 .faq-item-body {
-    padding: 0 22px 22px;
+    padding: 16px 22px 24px;
+    border-top: 1px solid var(--v-line-soft);
     font-family: var(--v-sans);
     font-size: 14.5px;
     line-height: 1.65;
@@ -159,5 +161,6 @@
     .faq-hero-inner { padding: 96px 24px 40px; }
     .faq-list-inner { padding: 40px 20px 96px; gap: 8px; }
     .faq-item summary { padding: 16px 18px; font-size: 15.5px; }
-    .faq-item-body { padding: 0 18px 18px; font-size: 14px; }
+    .faq-item[open] summary { padding-bottom: 13px; }
+    .faq-item-body { padding: 13px 18px 20px; font-size: 14px; }
 }
