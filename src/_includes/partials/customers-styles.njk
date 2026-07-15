@@ -85,7 +85,12 @@
     }
     .logo-cell {
         background: var(--v-bg-card);
-        aspect-ratio: 2 / 1;
+        /* Fixed min-height instead of aspect-ratio: a definite aspect-ratio
+           height that falls below a cell's content height (tall/square logos
+           at 64px + padding) is NOT stretched by the grid, so shorter cells
+           leave the grey grid background showing as bands. min-height lets
+           every cell stretch to the tallest in its row, keeping them equal. */
+        min-height: 116px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -125,7 +130,7 @@
         .logo-cell {
             padding: 18px 14px;
             min-width: 0;
-            aspect-ratio: 16 / 9;
+            min-height: 88px;
         }
         .logo-cell img { max-height: 44px; }
     }
