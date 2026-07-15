@@ -90,6 +90,10 @@
         align-items: center;
         justify-content: center;
         padding: 28px 32px;
+        /* Grid items default to min-width: auto (min-content); wide logos
+           (RealTyme, RefundRebel, IP-Crew) would otherwise force their column
+           past 1fr and overflow the row. Let the track shrink instead. */
+        min-width: 0;
     }
     .logo-cell img {
         max-width: 100%;
