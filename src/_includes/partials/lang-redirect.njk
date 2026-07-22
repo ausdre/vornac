@@ -48,6 +48,9 @@
         location.hostname === '[::1]';
       var target = counterpart;
       if (isLocal && target === '/de') target = '/de/index.html';
+      // Tell salesviewer.njk (loaded right after us) to sit this page out — the
+      // counterpart page will fire instead, so we get exactly one hit, not zero.
+      window.__vornacLangRedirect = true;
       window.location.replace(target);
       return;
     }
