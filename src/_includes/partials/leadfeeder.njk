@@ -1,0 +1,22 @@
+{#
+  Leadfeeder (Dealfront) — B2B visitor / company identification tracking.
+
+  Loaded in <head>, directly after lang-redirect.njk. It has to run before the
+  language redirect navigates away, otherwise the entry hit on / (the one that
+  still carries the external referrer) gets aborted for German-locale first-time
+  visitors. When a redirect is in flight we skip entirely, so the counterpart
+  page fires the single hit instead.
+
+  Snippet body is Leadfeeder's vendor code, kept verbatim (incl. the leaked `fs`
+  global); only the redirect guard wraps it.
+#}
+<script>
+    if (!window.__vornacLangRedirect) (function(ss,ex){
+        window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));};
+        (function(d,s){
+            fs=d.getElementsByTagName(s)[0];
+            function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); };
+            ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js');
+        })(document,'script');
+    })('DzLR5a5AnPWaBoQ2');
+</script>
