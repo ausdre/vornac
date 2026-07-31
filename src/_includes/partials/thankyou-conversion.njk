@@ -1,0 +1,41 @@
+{#
+  Fires the "Termin vereinbaren" conversion on the Formspree redirect
+  ("thank you") pages — /thank-you and /de/thank-you.
+
+  Guards:
+  - ?fs=1 token: the _next inputs append it and Formspree's 302 carries it
+    along; direct visits (the URL is discoverable in every page's source),
+    bookmarks, and shared links arrive without it and fire nothing. The
+    token is stripped from the address bar right away so it can't be
+    bookmarked or re-shared.
+  - sessionStorage flag: reloads / back-navigation within the same browser
+    session don't re-fire the conversion. (Google Ads should additionally
+    count this action "one per click" — set in the Ads UI.)
+  - gtag is always defined by google-tag.njk in <head>; consent gating is
+    handled centrally by Consent Mode (default-deny + consent-banner.njk),
+    so no consent check is needed here — without consent Google receives
+    cookieless pings and models the conversion.
+#}
+<script>
+(function () {
+    if (new URLSearchParams(location.search).get('fs') !== '1') return;
+    try {
+        var clean = new URL(location.href);
+        clean.searchParams.delete('fs');
+        history.replaceState(null, '', clean.pathname + clean.search + clean.hash);
+    } catch (e) {}
+    try {
+        if (sessionStorage.getItem('vornac_ty_conv')) return;
+        sessionStorage.setItem('vornac_ty_conv', '1');
+    } catch (e) { /* private mode: fire without dedup rather than not at all */ }
+    if (typeof gtag !== 'function') return;
+    gtag('event', 'generate_lead', {
+        send_to: 'G-9LJGWDQ2CR',
+        form_location: 'formspree_redirect'
+    });
+    // Google Ads "Termin vereinbaren" conversion
+    gtag('event', 'conversion', {
+        send_to: 'AW-18358463564/E8DRCLW1xtkcEMzY_7FE'
+    });
+})();
+</script>

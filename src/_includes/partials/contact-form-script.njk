@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn = form.querySelector('[data-submit-button]');
-        const gotcha = form.querySelector('[name="gotcha"]');
+        const gotcha = form.querySelector('[name="_gotcha"]');
         if (gotcha && gotcha.value) return;
         if (btn) btn.disabled = true;
 
