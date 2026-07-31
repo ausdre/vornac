@@ -45,7 +45,11 @@
                     if (typeof gtag === 'function') {
                         // Enhanced conversions: gtag SHA-256-hashes the email
                         // client-side; only used once enabled in the Ads UI.
-                        if (input && input.value) {
+                        // Requires ad_user_data consent (consent-banner.njk) —
+                        // without it Google discards the user_data anyway.
+                        var consented = false;
+                        try { consented = localStorage.getItem('vornac_consent_v1') === 'granted'; } catch (err) {}
+                        if (consented && input && input.value) {
                             gtag('set', 'user_data', { email: input.value });
                         }
                         gtag('event', 'generate_lead', {
