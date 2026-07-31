@@ -1,9 +1,10 @@
 {#
-  Google tag (gtag.js) — Google Ads account AW-18358463564.
+  Google tag (gtag.js) — Google Ads account AW-18358463564 plus the GA4
+  property G-9LJGWDQ2CR that the form scripts send their events to.
 
   Loaded in <head> after lang-redirect.njk / leadfeeder.njk. `gtag` is always
   defined (the form scripts call it for conversion events), but the initial
-  `config` page_view is skipped while a language redirect is in flight — same
+  `config` page_views are skipped while a language redirect is in flight — same
   reasoning as leadfeeder.njk: the counterpart page fires the single hit.
 
   Conversion events (e.g. "Termin vereinbaren",
@@ -17,5 +18,19 @@
   if (!window.__vornacLangRedirect) {
     gtag('js', new Date());
     gtag('config', 'AW-18358463564');
+    gtag('config', 'G-9LJGWDQ2CR');
   }
+
+  // The header "Validate Now" pill and the FAQ CTA link straight to the
+  // zeeg.me scheduler — the direct booking path. Beacon transport so the
+  // event survives the same-tab navigation of the header CTA.
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest ? e.target.closest('a[href*="zeeg.me"]') : null;
+    if (!link) return;
+    gtag('event', 'scheduler_click', {
+      send_to: 'G-9LJGWDQ2CR',
+      link_url: link.href,
+      transport_type: 'beacon'
+    });
+  });
 </script>

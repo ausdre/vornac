@@ -28,10 +28,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (res.ok) {
             if (typeof gtag === 'function') {
-                gtag('event', 'conversion', {
+                // Enhanced conversions: gtag SHA-256-hashes the email
+                // client-side; only used once enabled in the Ads UI.
+                const emailField = form.querySelector('[name="email"]');
+                if (emailField && emailField.value) {
+                    gtag('set', 'user_data', { email: emailField.value });
+                }
+                gtag('event', 'generate_lead', {
                     send_to: 'G-9LJGWDQ2CR',
-                    event_category: 'contact_form',
-                    event_label: 'demo_request'
+                    form_location: 'contact_form'
                 });
                 // Google Ads "Termin vereinbaren" conversion
                 gtag('event', 'conversion', {

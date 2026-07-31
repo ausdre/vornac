@@ -43,10 +43,14 @@
             }).then(function (res) {
                 if (res.ok) {
                     if (typeof gtag === 'function') {
-                        gtag('event', 'conversion', {
+                        // Enhanced conversions: gtag SHA-256-hashes the email
+                        // client-side; only used once enabled in the Ads UI.
+                        if (input && input.value) {
+                            gtag('set', 'user_data', { email: input.value });
+                        }
+                        gtag('event', 'generate_lead', {
                             send_to: 'G-9LJGWDQ2CR',
-                            event_category: 'contact_form',
-                            event_label: 'hero_demo_request'
+                            form_location: 'hero_demo'
                         });
                         // Google Ads "Termin vereinbaren" conversion
                         gtag('event', 'conversion', {
