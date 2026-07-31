@@ -1,0 +1,49 @@
+{# Cookie consent banner — Consent Mode v2 companion to google-tag.njk.
+
+   Rendered hidden; the script shows it only when no choice is stored under
+   'vornac_consent_v1' (the same key google-tag.njk and the form scripts
+   read). "Accept all" flips all four Google consent signals to granted via
+   gtag('consent','update'); "Decline" only stores the choice — the head
+   defaults already deny everything. Leadfeeder and Plausible are not gated
+   here (legitimate interest / cookieless). #}
+<div class="v-consent" id="consent-banner" role="region" aria-label="{{ t.consent.label }}" hidden>
+    <div class="v-consent-inner">
+        <p class="v-consent-body">
+            {{ t.consent.body }}
+            <a class="v-consent-link" href="{{ pageUrls.legal }}#{{ t.legalAnchors.privacy }}">{{ t.consent.privacy }}</a>
+        </p>
+        <div class="v-consent-actions">
+            <button type="button" class="v-consent-btn v-consent-btn--decline" data-consent-decline>{{ t.consent.decline }}</button>
+            <button type="button" class="v-consent-btn v-consent-btn--accept" data-consent-accept>{{ t.consent.accept }}</button>
+        </div>
+    </div>
+</div>
+<script>
+(function () {
+    var banner = document.getElementById('consent-banner');
+    if (!banner) return;
+    var KEY = 'vornac_consent_v1';
+    try {
+        if (localStorage.getItem(KEY)) return;
+    } catch (e) {}
+    // No stored choice (or storage unavailable): ask.
+    banner.hidden = false;
+
+    function choose(granted) {
+        try { localStorage.setItem(KEY, granted ? 'granted' : 'denied'); } catch (e) {}
+        if (granted && typeof gtag === 'function') {
+            gtag('consent', 'update', {
+                ad_storage: 'granted',
+                ad_user_data: 'granted',
+                ad_personalization: 'granted',
+                analytics_storage: 'granted'
+            });
+        }
+        banner.classList.add('is-closing');
+        setTimeout(function () { banner.hidden = true; }, 220);
+    }
+
+    banner.querySelector('[data-consent-accept]').addEventListener('click', function () { choose(true); });
+    banner.querySelector('[data-consent-decline]').addEventListener('click', function () { choose(false); });
+})();
+</script>

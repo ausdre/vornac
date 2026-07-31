@@ -59,6 +59,13 @@ module.exports = {
       ctaHref: "/CaseStudy_VORNAC_0526.pdf",
       dismiss: "Dismiss announcement"
     },
+    consent: {
+      label: "Cookie consent",
+      body: "We use Google Analytics and Google Ads to measure how our site and campaigns perform. These cookies are only set with your consent.",
+      privacy: "Privacy Policy",
+      accept: "Accept all",
+      decline: "Decline"
+    },
     footer: {
       tagline: "Enterprise-grade autonomous security testing for continuous assurance and compliance.",
       navHeading: "Navigation",
@@ -131,6 +138,13 @@ module.exports = {
       cta: "Whitepaper lesen →",
       ctaHref: "/CaseStudy_VORNAC_0526.pdf",
       dismiss: "Hinweisleiste schließen"
+    },
+    consent: {
+      label: "Cookie-Einwilligung",
+      body: "Wir nutzen Google Analytics und Google Ads, um die Wirkung unserer Website und Kampagnen zu messen. Diese Cookies setzen wir nur mit Ihrer Einwilligung.",
+      privacy: "Datenschutzerklärung",
+      accept: "Alle akzeptieren",
+      decline: "Ablehnen"
     },
     footer: {
       tagline: "Autonome Sicherheitsvalidierung auf Enterprise-Niveau – für kontinuierliche Absicherung und Compliance.",

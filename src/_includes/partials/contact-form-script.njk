@@ -30,8 +30,12 @@ document.addEventListener('DOMContentLoaded', function () {
             if (typeof gtag === 'function') {
                 // Enhanced conversions: gtag SHA-256-hashes the email
                 // client-side; only used once enabled in the Ads UI.
+                // Requires ad_user_data consent (consent-banner.njk) —
+                // without it Google discards the user_data anyway.
+                let consented = false;
+                try { consented = localStorage.getItem('vornac_consent_v1') === 'granted'; } catch (err) {}
                 const emailField = form.querySelector('[name="email"]');
-                if (emailField && emailField.value) {
+                if (consented && emailField && emailField.value) {
                     gtag('set', 'user_data', { email: emailField.value });
                 }
                 gtag('event', 'generate_lead', {
