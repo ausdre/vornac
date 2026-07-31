@@ -1,0 +1,49 @@
+---
+title: "Thank you · VORNAC"
+description: "Your request has been received. Our team will get back to you within 24 hours."
+ogType: website
+eleventyExcludeFromCollections: true
+---
+{# Formspree post-submit redirect target ("thank you" page), EN.
+
+   Reached ONLY via the `_next` hidden input in the DEMO forms (src/index.njk,
+   src/de/index.njk, hero-demo-button.njk; DE forms point to /de/thank-you).
+   Do NOT set a form-level redirect URL in the Formspree dashboard: endpoint
+   f/meoyrzog is shared with the /apply job-application forms, whose no-JS
+   submits must keep landing on Formspree's own confirmation page — a
+   dashboard redirect would send applicants here and fire the "Termin
+   vereinbaren" Ads conversion for job applications (and it supports only one
+   URL, so per-locale routing is impossible there anyway).
+
+   Only the no-JS fallback path lands here — the AJAX submit in
+   hero-demo-script.njk shows the overlay instead and fires its own events,
+   so the two paths never double-count a submit.
+
+   Deliberately NOT in the pages.js registry: keeps it out of sitemap.xml and
+   disables the language auto-redirect (counterpart is null). noindex below —
+   the page must not collect organic hits that would inflate conversions. #}
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+<meta name="robots" content="noindex, nofollow">
+{% endblock %}
+
+{% block content %}
+<main class="relative z-10 py-24 lg:py-32">
+    <div class="mx-auto max-w-3xl px-4 text-center">
+        <p class="font-mono text-sm tracking-widest text-amber-600">&#10003; REQUEST SENT</p>
+        <h1 class="mt-4 text-4xl lg:text-5xl font-semibold">Thank you.</h1>
+        <p class="mt-6 text-lg text-stone-500">
+            Your request has been received. Our team will get back to you within 24 hours.
+        </p>
+        <div class="mt-10 flex items-center justify-center gap-6">
+            <a href="/" class="rounded-full bg-amber-500 px-6 py-2.5 font-semibold text-stone-900 transition-colors duration-200 hover:bg-amber-400">Back to homepage</a>
+            <a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="font-semibold text-stone-600 underline underline-offset-4 hover:text-stone-900">Book a call directly</a>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block extraBodyEnd %}
+{% include "partials/thankyou-conversion.njk" %}
+{% endblock %}

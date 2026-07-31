@@ -1,0 +1,49 @@
+---
+title: "Vielen Dank · VORNAC"
+description: "Ihre Anfrage ist eingegangen. Unser Team meldet sich innerhalb von 24 Stunden."
+ogType: website
+eleventyExcludeFromCollections: true
+---
+{# Formspree-Redirect-Ziel nach dem Absenden ("Danke"-Seite), DE.
+
+   Wird AUSSCHLIESSLICH über die `_next`-Hidden-Inputs der DEMO-Formulare
+   erreicht (src/index.njk, src/de/index.njk, hero-demo-button.njk; EN-Forms
+   zeigen auf /thank-you). KEINEN Formular-Redirect im Formspree-Dashboard
+   setzen: Endpoint f/meoyrzog wird auch von den Bewerbungsformularen
+   /apply und /de/apply genutzt, deren No-JS-Submits weiterhin auf Formsprees
+   eigener Bestätigungsseite landen müssen — ein Dashboard-Redirect würde
+   Bewerber hierher schicken und die "Termin vereinbaren"-Conversion für
+   Bewerbungen feuern (und kann ohnehin nur EINE URL, keine Sprachtrennung).
+
+   Hier landet nur der No-JS-Fallback-Pfad — der AJAX-Submit in
+   hero-demo-script.njk zeigt stattdessen das Overlay und feuert seine
+   eigenen Events, die Pfade zählen also nie doppelt.
+
+   Bewusst NICHT in der pages.js-Registry: hält die Seite aus sitemap.xml
+   heraus und deaktiviert den Sprach-Redirect (counterpart ist null).
+   noindex unten — organische Aufrufe dürfen die Conversions nicht aufblähen. #}
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+<meta name="robots" content="noindex, nofollow">
+{% endblock %}
+
+{% block content %}
+<main class="relative z-10 py-24 lg:py-32">
+    <div class="mx-auto max-w-3xl px-4 text-center">
+        <p class="font-mono text-sm tracking-widest text-amber-600">&#10003; ANFRAGE GESENDET</p>
+        <h1 class="mt-4 text-4xl lg:text-5xl font-semibold">Vielen Dank.</h1>
+        <p class="mt-6 text-lg text-stone-500">
+            Ihre Anfrage ist eingegangen. Unser Team meldet sich innerhalb von 24 Stunden.
+        </p>
+        <div class="mt-10 flex items-center justify-center gap-6">
+            <a href="/de" class="rounded-full bg-amber-500 px-6 py-2.5 font-semibold text-stone-900 transition-colors duration-200 hover:bg-amber-400">Zur Startseite</a>
+            <a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener" class="font-semibold text-stone-600 underline underline-offset-4 hover:text-stone-900">Direkt Termin buchen</a>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block extraBodyEnd %}
+{% include "partials/thankyou-conversion.njk" %}
+{% endblock %}

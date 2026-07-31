@@ -33,7 +33,7 @@
 
         form.addEventListener('submit', function (e) {
             e.preventDefault();
-            var gotcha = form.querySelector('[name="gotcha"]');
+            var gotcha = form.querySelector('[name="_gotcha"]');
             if (gotcha && gotcha.value) return;
             if (submit) submit.disabled = true;
             fetch(form.action, {

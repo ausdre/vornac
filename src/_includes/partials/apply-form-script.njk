@@ -44,7 +44,7 @@
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const gotcha = form.querySelector('[name="gotcha"]');
+        const gotcha = form.querySelector('[name="_gotcha"]');
         if (gotcha && gotcha.value) return;
 
         errorBox.classList.add('hidden');
