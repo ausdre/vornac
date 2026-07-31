@@ -1,0 +1,28 @@
+---
+title: "Page not found · VORNAC"
+description: "The page you are looking for does not exist or has moved."
+ogType: website
+eleventyExcludeFromCollections: true
+---
+{# Custom 404 — Vercel serves dist/404.html for unmatched routes. Extends the
+   base layout so analytics (incl. the Google tag) still run: a stale ad URL
+   landing here keeps its gclid and the visitor keeps the site navigation.
+   No i18nKey on purpose: counterpart stays null, so no language redirect. #}
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+<main class="relative z-10 py-24 lg:py-32">
+    <div class="mx-auto max-w-3xl px-4 text-center">
+        <p class="font-mono text-sm tracking-widest text-amber-600">404</p>
+        <h1 class="mt-4 text-4xl lg:text-5xl font-semibold">Page not found</h1>
+        <p class="mt-6 text-lg text-stone-500">
+            The page you are looking for does not exist or has moved.
+            Seite nicht gefunden &mdash; sie existiert nicht oder wurde verschoben.
+        </p>
+        <div class="mt-10 flex items-center justify-center gap-6">
+            <a href="/" class="rounded-full bg-amber-500 px-6 py-2.5 font-semibold text-stone-900 transition-colors duration-200 hover:bg-amber-400">Homepage</a>
+            <a href="/de" class="font-semibold text-stone-600 underline underline-offset-4 hover:text-stone-900">Deutsche Startseite</a>
+        </div>
+    </div>
+</main>
+{% endblock %}

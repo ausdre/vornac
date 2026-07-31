@@ -48,6 +48,10 @@
         location.hostname === '[::1]';
       var target = counterpart;
       if (isLocal && target === '/de') target = '/de/index.html';
+      // Carry the query string and hash across the redirect — ad-click and
+      // campaign params (gclid, utm_*) must reach the counterpart page, where
+      // gtag/leadfeeder fire the single hit, or attribution is lost.
+      target += location.search + location.hash;
       // Tell salesviewer.njk (loaded right after us) to sit this page out — the
       // counterpart page will fire instead, so we get exactly one hit, not zero.
       window.__vornacLangRedirect = true;
