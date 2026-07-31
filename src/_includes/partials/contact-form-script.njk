@@ -33,6 +33,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     event_category: 'contact_form',
                     event_label: 'demo_request'
                 });
+                // Google Ads "Termin vereinbaren" conversion
+                gtag('event', 'conversion', {
+                    send_to: 'AW-18358463564/E8DRCLW1xtkcEMzY_7FE'
+                });
             }
             form.reset();
             thankyouOverlay?.classList.add('is-open');

@@ -1,0 +1,21 @@
+{#
+  Google tag (gtag.js) — Google Ads account AW-18358463564.
+
+  Loaded in <head> after lang-redirect.njk / leadfeeder.njk. `gtag` is always
+  defined (the form scripts call it for conversion events), but the initial
+  `config` page_view is skipped while a language redirect is in flight — same
+  reasoning as leadfeeder.njk: the counterpart page fires the single hit.
+
+  Conversion events (e.g. "Termin vereinbaren",
+  AW-18358463564/E8DRCLW1xtkcEMzY_7FE) fire from contact-form-script.njk and
+  hero-demo-script.njk on successful form submission.
+#}
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18358463564"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  if (!window.__vornacLangRedirect) {
+    gtag('js', new Date());
+    gtag('config', 'AW-18358463564');
+  }
+</script>
