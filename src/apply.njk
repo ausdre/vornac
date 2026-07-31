@@ -34,14 +34,23 @@ ogType: website
                 </p>
             </div>
 
-            <div class="bg-white border-4 border-stone-900 p-5 sm:p-10 md:p-14 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] sm:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] mb-12">
+            <div id="apply-success" class="hidden bg-white border-4 border-stone-900 p-5 sm:p-10 md:p-14 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] sm:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] mb-12 text-center" role="status" aria-live="polite">
+                <h2 class="font-heading text-3xl sm:text-4xl font-black italic uppercase text-stone-900 mb-4">Application received.</h2>
+                <p class="text-lg text-stone-600">Thank you. We have your application and will get back to you shortly.</p>
+            </div>
 
-                <form name="application-en" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" class="space-y-8">
+            <div id="apply-form-card" class="bg-white border-4 border-stone-900 p-5 sm:p-10 md:p-14 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] sm:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] mb-12">
 
-                    <input type="hidden" name="form-name" value="application-en" />
-                    <p class="hidden">
-                        <label>Do not fill: <input name="bot-field" /></label>
-                    </p>
+                <div id="apply-error" class="hidden mb-8 border-4 border-red-600 bg-red-50 p-5 sm:p-6" role="alert">
+                    <p class="font-black uppercase tracking-wider text-red-700 mb-2">Submission failed</p>
+                    <p class="text-stone-800">Your application was <strong>not</strong> sent. Please try again, or email us at
+                        <a href="mailto:{{ site.contact.email }}" class="text-amber-600 hover:text-amber-700 font-bold underline">{{ site.contact.email }}</a>.</p>
+                </div>
+
+                <form id="apply-form" action="https://formspree.io/f/meoyrzog" method="POST" class="space-y-8">
+
+                    <input type="hidden" name="_subject" value="Application (EN) · VORNAC careers" />
+                    <input type="text" name="gotcha" class="hidden" autocomplete="off" tabindex="-1" aria-hidden="true" />
 
                     <div>
                         <label class="block font-black text-stone-900 mb-3 uppercase text-base tracking-wider">
@@ -93,20 +102,6 @@ ogType: website
 
                     <div>
                         <label class="block font-black text-stone-900 mb-3 uppercase text-base tracking-wider">
-                            Resume (PDF) *
-                        </label>
-                        <div class="relative">
-                            <input type="file" name="cv" id="cv-upload" accept=".pdf" required class="hidden" />
-                            <label for="cv-upload" class="flex flex-col sm:flex-row items-stretch sm:items-center sm:justify-between w-full p-3 sm:px-5 sm:py-4 gap-3 sm:gap-4 border-4 border-stone-900 bg-white text-stone-700 cursor-pointer hover:border-amber-500 transition-all">
-                                <span id="cv-filename" data-default="No file chosen" class="text-sm sm:text-base truncate">No file chosen</span>
-                                <span class="bg-stone-900 text-white px-4 sm:px-6 py-2 text-center font-bold uppercase text-sm hover:bg-amber-600 transition-colors flex-shrink-0">Choose File</span>
-                            </label>
-                        </div>
-                        <p class="text-sm text-stone-500 mt-2 font-mono">Maximum 10 MB</p>
-                    </div>
-
-                    <div>
-                        <label class="block font-black text-stone-900 mb-3 uppercase text-base tracking-wider">
                             Cover Letter / Motivation *
                         </label>
                         <textarea name="message" rows="10" required
@@ -122,8 +117,8 @@ ogType: website
                         </label>
                     </div>
 
-                    <button type="submit"
-                            class="w-full bg-stone-900 text-white py-5 sm:py-6 font-black uppercase tracking-wider sm:tracking-[0.2em] text-base sm:text-lg border-4 border-stone-900 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] sm:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:bg-amber-600 hover:border-amber-600 hover:translate-x-2 hover:translate-y-2 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all">
+                    <button type="submit" data-sending="Sending…"
+                            class="w-full bg-stone-900 text-white py-5 sm:py-6 font-black uppercase tracking-wider sm:tracking-[0.2em] text-base sm:text-lg border-4 border-stone-900 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] sm:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:bg-amber-600 hover:border-amber-600 hover:translate-x-2 hover:translate-y-2 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all disabled:opacity-60 disabled:cursor-not-allowed">
                         Submit Application →
                     </button>
 
