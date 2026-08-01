@@ -173,22 +173,24 @@
                 <stop offset="0" stop-color="currentColor"/><stop offset=".26" stop-color="currentColor"/><stop offset=".52" stop-color="currentColor"/><stop offset=".7" stop-color="currentColor" stop-opacity=".04"/><stop offset=".88" stop-color="currentColor" stop-opacity="0"/><stop offset=".88" stop-color="currentColor"/><stop offset="1" stop-color="currentColor"/>
             </linearGradient>
         </defs>
-        <path class="v-logo-mark" fill="url(#vLogoGrad)" fill-rule="evenodd" d="M0 0h50.1l67 126L187.09 0h49L114.06 207.74z" clip-rule="evenodd"/>
-        {# Hover glint: the brand's gradient-cut motif glides once across the
-           V — clipped to the mark, so it reads as light passing through the
-           cut rather than an overlay effect. #}
-        <clipPath id="vGlintClip"><path d="M0 0h50.1l67 126L187.09 0h49L114.06 207.74z"/></clipPath>
+        {# Hover glint — no hue: a moving transparency slice, the mark's own
+           gradient-cut motif in motion. Implemented as a luminance mask; the
+           band dims the mark by up to 30%, so the page ground shows through —
+           reads as light passing through the cut on any logo colour. Band is
+           rotated to the same diagonal as the cut (iso-lines of vLogoGrad
+           ≈ 50°). #}
         <linearGradient id="vGlintBand" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#f59e0b" stop-opacity="0"/>
-            <stop offset=".35" stop-color="#f59e0b" stop-opacity=".12"/>
-            <stop offset=".5" stop-color="#f59e0b" stop-opacity=".3"/>
-            <stop offset=".65" stop-color="#f59e0b" stop-opacity=".12"/>
-            <stop offset="1" stop-color="#f59e0b" stop-opacity="0"/>
+            <stop offset="0" stop-color="#000" stop-opacity="0"/>
+            <stop offset=".35" stop-color="#000" stop-opacity=".12"/>
+            <stop offset=".5" stop-color="#000" stop-opacity=".3"/>
+            <stop offset=".65" stop-color="#000" stop-opacity=".12"/>
+            <stop offset="1" stop-color="#000" stop-opacity="0"/>
         </linearGradient>
-        {# Band is rotated to the same diagonal as the mark's gradient cut
-           (iso-lines of vLogoGrad ≈ 50°), so the sweep travels along the
-           brand motif instead of a generic vertical sheen. #}
-        <rect class="v-logo-glint" x="0" y="-80" width="56" height="368" fill="url(#vGlintBand)" clip-path="url(#vGlintClip)"/>
+        <mask id="vGlintMask" maskUnits="userSpaceOnUse" x="-20" y="-20" width="280" height="250">
+            <rect x="-20" y="-20" width="280" height="250" fill="#fff"/>
+            <rect class="v-logo-glint" x="0" y="-80" width="56" height="368" fill="url(#vGlintBand)"/>
+        </mask>
+        <path class="v-logo-mark" mask="url(#vGlintMask)" fill="url(#vLogoGrad)" fill-rule="evenodd" d="M0 0h50.1l67 126L187.09 0h49L114.06 207.74z" clip-rule="evenodd"/>
         <g class="v-logo-word" fill="currentColor" fill-rule="evenodd">
             <path class="v-logo-letter" style="--i:0" d="M297.22 43.48L422.22 43.48L422.11 164.82L297.22 164.82ZM296.22 0.03L251.23 43.48L251.4 164.82L296.22 207.74L421.22 207.74L465.91 164.82L466.09 43.48L421.22 0.03Z"/>
             <path class="v-logo-letter" style="--i:1" d="M509.21 0.03L670.06 0L711.06 42L711.06 100L682.06 127L673.06 134L665.06 134L720.93 207.74L669.2 207.74L574.2 92.03L664.2 92.03L664.2 44.03L554.21 43.03L554.21 207.74L509.21 207.74Z"/>
