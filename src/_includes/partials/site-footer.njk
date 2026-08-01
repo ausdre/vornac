@@ -3,8 +3,13 @@
    Language switcher: hidden when this page has no counterpart (single-locale).
    Sets ?lang=<target> + localStorage on click so future visits respect the choice.
 #}
-<footer class="v-footer pt-14 pb-10 px-4 sm:px-6">
-    <div class="max-w-content mx-auto">
+<footer class="v-footer relative overflow-hidden pt-14 pb-10 px-4 sm:px-6">
+    {# Watermark: the V mark, oversized and nearly invisible, anchored to the
+       right edge. Pure texture — no interaction, no motion. #}
+    <svg class="pointer-events-none absolute -right-16 -top-10 h-[150%] w-auto text-white opacity-[0.03]" viewBox="0 0 236 208" aria-hidden="true" focusable="false">
+        <path fill="currentColor" fill-rule="evenodd" d="M0 0h50l67 126L187 0h49L114 208z"/>
+    </svg>
+    <div class="max-w-content mx-auto relative">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.4fr_auto_auto_auto] gap-10 items-start">
             <div class="space-y-4">
                 <img src="{{ site.logos.whiteSvg }}" alt="{{ site.brand }}" class="h-9 w-auto md:h-10">
