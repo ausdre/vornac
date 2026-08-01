@@ -5,8 +5,13 @@
 #}
 <footer class="v-footer relative overflow-hidden pt-14 pb-10 px-4 sm:px-6">
     {# Watermark: the V mark, oversized and nearly invisible, anchored to the
-       right edge. Pure texture — no interaction, no motion. #}
-    <svg class="pointer-events-none absolute -right-16 -top-10 h-[150%] w-auto text-white opacity-[0.03]" viewBox="0 0 236 208" aria-hidden="true" focusable="false">
+       right edge. Pure texture — no interaction, no motion.
+       Styled INLINE on purpose: /output.css used to ship with a year-long
+       immutable cache on an unhashed filename, so returning visitors can
+       hold stale CSS for a long time. Inline styles travel with the HTML
+       and can never desync — without the opacity this reads as a giant
+       solid white V over the footer. #}
+    <svg style="position:absolute; right:-4rem; top:-2.5rem; height:150%; width:auto; color:#fff; opacity:.03; pointer-events:none;" viewBox="0 0 236 208" aria-hidden="true" focusable="false">
         <path fill="currentColor" fill-rule="evenodd" d="M0 0h50l67 126L187 0h49L114 208z"/>
     </svg>
     <div class="max-w-content mx-auto relative">

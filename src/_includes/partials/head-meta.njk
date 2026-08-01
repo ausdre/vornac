@@ -36,7 +36,10 @@
 <meta name="twitter:image" content="{{ (ogImage or site.socialPreviewImage) | absoluteUrl(site.domain) }}">
 
 <link rel="icon" type="image/svg+xml" href="{{ site.logos.favicon }}">
-<link rel="stylesheet" href="/output.css">
+{# ?v= busts browser caches poisoned by the former year-long immutable
+   Cache-Control on this unhashed file (see vercel.json) — bump on breaking
+   CSS changes if the cache policy ever regresses. #}
+<link rel="stylesheet" href="/output.css?v=2">
 
 {# Logo intro gate — read once, sync, before <body> renders so the CSS
    selector `body.logo-intro-played .v-logo-letter { opacity: 0 }` is
