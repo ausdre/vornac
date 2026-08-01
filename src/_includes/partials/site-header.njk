@@ -174,6 +174,21 @@
             </linearGradient>
         </defs>
         <path class="v-logo-mark" fill="url(#vLogoGrad)" fill-rule="evenodd" d="M0 0h50.1l67 126L187.09 0h49L114.06 207.74z" clip-rule="evenodd"/>
+        {# Hover glint: the brand's gradient-cut motif glides once across the
+           V — clipped to the mark, so it reads as light passing through the
+           cut rather than an overlay effect. #}
+        <clipPath id="vGlintClip"><path d="M0 0h50.1l67 126L187.09 0h49L114.06 207.74z"/></clipPath>
+        <linearGradient id="vGlintBand" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#f59e0b" stop-opacity="0"/>
+            <stop offset=".35" stop-color="#f59e0b" stop-opacity=".12"/>
+            <stop offset=".5" stop-color="#f59e0b" stop-opacity=".3"/>
+            <stop offset=".65" stop-color="#f59e0b" stop-opacity=".12"/>
+            <stop offset="1" stop-color="#f59e0b" stop-opacity="0"/>
+        </linearGradient>
+        {# Band is rotated to the same diagonal as the mark's gradient cut
+           (iso-lines of vLogoGrad ≈ 50°), so the sweep travels along the
+           brand motif instead of a generic vertical sheen. #}
+        <rect class="v-logo-glint" x="0" y="-80" width="56" height="368" fill="url(#vGlintBand)" clip-path="url(#vGlintClip)"/>
         <g class="v-logo-word" fill="currentColor" fill-rule="evenodd">
             <path class="v-logo-letter" style="--i:0" d="M297.22 43.48L422.22 43.48L422.11 164.82L297.22 164.82ZM296.22 0.03L251.23 43.48L251.4 164.82L296.22 207.74L421.22 207.74L465.91 164.82L466.09 43.48L421.22 0.03Z"/>
             <path class="v-logo-letter" style="--i:1" d="M509.21 0.03L670.06 0L711.06 42L711.06 100L682.06 127L673.06 134L665.06 134L720.93 207.74L669.2 207.74L574.2 92.03L664.2 92.03L664.2 44.03L554.21 43.03L554.21 207.74L509.21 207.74Z"/>
@@ -325,6 +340,24 @@
     }
     body.v-home .v-dv-logo { color: #fff; }
     .nav-logo-svg { display: block; width: 100%; height: auto; }
+
+    /* Logo glint: parked off-mark; one sweep per hover/focus, slanted to
+       the brand cut's diagonal. */
+    .v-logo-glint {
+        transform-box: fill-box;
+        transform-origin: center;
+        transform: translateX(-150px) rotate(-40deg);
+    }
+    .v-dv-logo:hover .v-logo-glint,
+    .v-dv-logo:focus-visible .v-logo-glint { animation: v-glint 1.05s cubic-bezier(.45, 0, .25, 1); }
+    @keyframes v-glint {
+        from { transform: translateX(-150px) rotate(-40deg); }
+        to   { transform: translateX(340px) rotate(-40deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .v-dv-logo:hover .v-logo-glint,
+        .v-dv-logo:focus-visible .v-logo-glint { animation: none; }
+    }
 
     /* Primary nav — centered group of section links. Wraps onto a second
        row on narrower viewports so it can stay centered without crowding. */
