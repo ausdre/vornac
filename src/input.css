@@ -781,23 +781,38 @@ img, video { max-width: 100%; }
  * -------------------------------------- */
 .v-consent {
     position: fixed;
-    left: 20px;
-    right: 20px;
-    bottom: 20px;
+    inset: 0;
     z-index: 9500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(28, 25, 23, 0.6);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    font-family: var(--v-sans);
+    transition: opacity 0.2s ease;
+}
+.v-consent.is-closing { opacity: 0; }
+/* Lock page scroll while the modal is open (toggled by consent-banner.njk). */
+html.v-consent-open { overflow: hidden; }
+.v-consent-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 26px;
+    width: 100%;
     max-width: 560px;
     background: var(--v-bg-dark);
     border: 1px solid var(--v-line-dark);
     box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
-    font-family: var(--v-sans);
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    outline: none;
 }
-.v-consent.is-closing { opacity: 0; transform: translateY(8px); }
-.v-consent-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 20px 22px;
+.v-consent-title {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
 }
 .v-consent-body {
     color: rgba(255, 255, 255, 0.85);
@@ -860,8 +875,8 @@ img, video { max-width: 100%; }
     color: #fff;
 }
 @media (max-width: 640px) {
-    .v-consent { left: 12px; right: 12px; bottom: 12px; }
-    .v-consent-inner { padding: 16px; gap: 14px; }
+    .v-consent { padding: 12px; align-items: flex-end; }
+    .v-consent-card { padding: 18px; gap: 14px; }
     .v-consent-actions { flex-direction: column-reverse; }
 }
 

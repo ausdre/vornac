@@ -60,11 +60,11 @@ module.exports = {
       dismiss: "Dismiss announcement"
     },
     consent: {
-      label: "Cookie consent",
-      body: "We use Google Analytics and Google Ads to measure how our site and campaigns perform. These cookies are only set with your consent.",
+      title: "We use cookies",
+      body: "We use cookies on our website. Some of them are essential, while others help us improve this website and your experience. You can find more information in our",
       privacy: "Privacy Policy",
       accept: "Accept all",
-      decline: "Decline"
+      decline: "Essential only"
     },
     /** Inline "Book a demo" pill (partials/hero-demo-button.njk). */
     heroDemo: {
@@ -144,11 +144,11 @@ module.exports = {
       dismiss: "Hinweisleiste schließen"
     },
     consent: {
-      label: "Cookie-Einwilligung",
-      body: "Wir nutzen Google Analytics und Google Ads, um die Wirkung unserer Website und Kampagnen zu messen. Diese Cookies setzen wir nur mit Ihrer Einwilligung.",
+      title: "Wir verwenden Cookies",
+      body: "Wir verwenden Cookies auf unserer Website. Einige von ihnen sind essenziell, während andere uns helfen, diese Website und Ihre Erfahrung zu verbessern. Weitere Informationen finden Sie in unserer",
       privacy: "Datenschutzerklärung",
       accept: "Alle akzeptieren",
-      decline: "Ablehnen"
+      decline: "Nur essenzielle Cookies"
     },
     /** Inline "Book a demo" pill (partials/hero-demo-button.njk). */
     heroDemo: {
