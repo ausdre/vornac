@@ -1,11 +1,10 @@
 {#
   Leadfeeder (Dealfront) — B2B visitor / company identification tracking.
 
-  Loaded in <head>, directly after lang-redirect.njk. It has to run before the
-  language redirect navigates away, otherwise the entry hit on / (the one that
-  still carries the external referrer) gets aborted for German-locale first-time
-  visitors. When a redirect is in flight we skip entirely, so the counterpart
-  page fires the single hit instead.
+  Loaded in <head> after lang-redirect.njk, so the __vornacLangRedirect flag is
+  already set when we run. When a redirect is in flight we skip entirely and
+  the counterpart page fires the single hit instead — one hit per visit, never
+  a double count on / for German-locale first-time visitors.
 
   Snippet body is Leadfeeder's vendor code, kept verbatim (incl. the leaked `fs`
   global); only the redirect guard wraps it.

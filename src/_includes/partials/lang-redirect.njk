@@ -52,8 +52,15 @@
       // campaign params (gclid, utm_*) must reach the counterpart page, where
       // gtag/leadfeeder fire the single hit, or attribution is lost.
       target += location.search + location.hash;
-      // Tell salesviewer.njk (loaded right after us) to sit this page out — the
-      // counterpart page will fire instead, so we get exactly one hit, not zero.
+      // Stash the external referrer: location.replace() drops it, so without
+      // this GA4 attributes redirected first-time visitors as Direct.
+      // google-tag.njk on the counterpart page picks it up as page_referrer.
+      try {
+        if (document.referrer) sessionStorage.setItem('vornac_page_referrer', document.referrer);
+      } catch (err) {}
+      // Tell the analytics partials loaded right after us (head-analytics.njk,
+      // leadfeeder.njk, google-tag.njk) to sit this page out — the counterpart
+      // page will fire instead, so we get exactly one hit, not zero.
       window.__vornacLangRedirect = true;
       window.location.replace(target);
       return;

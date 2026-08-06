@@ -1,7 +1,19 @@
-{# Privacy-friendly analytics by Plausible #}
-<script async src="{{ site.analytics.plausibleScript }}"></script>
+{#
+  Privacy-friendly analytics by Plausible.
+
+  Loaded in <head> after lang-redirect.njk and guarded the same way as
+  leadfeeder.njk: while a language redirect is in flight the tracker script is
+  not injected, so only the counterpart page counts the pageview (one hit, not
+  two). The window.plausible stub stays unguarded so event calls from other
+  scripts never throw.
+#}
 <script>
 window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
 plausible.init();
+if (!window.__vornacLangRedirect) {
+  (function(d,s){
+    var cs=d.createElement(s); cs.async=1; cs.src={{ site.analytics.plausibleScript | dump | safe }};
+    var fs=d.getElementsByTagName(s)[0]; fs.parentNode.insertBefore(cs,fs);
+  })(document,'script');
+}
 </script>
-
