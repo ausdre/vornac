@@ -1,6 +1,7 @@
 {# Hero-style "Book a demo" — the amber-outline pill from the homepage hero
    that morphs into an inline email-capture on hover (desktop) or tap (mobile),
-   submits to Formspree, and opens a thank-you overlay.
+   submits to Formspree, and confirms inline: the pill settles into a
+   "Request sent ✓" state (pages with a #thankyou-overlay use that instead).
 
    Reusable: drop this partial in any section to replace a generic Book-a-demo
    button. Every instance gets a unique form id (random per build) so multiple
@@ -18,6 +19,7 @@
 <form class="v-hero-demo v-hero-demo--inline"
       id="{{ hd_id }}"
       data-hero-demo
+      data-sent-label="{{ t.heroDemo.sent }}"
       action="https://formspree.io/f/meoyrzog"
       method="POST">
     <input type="text" name="_gotcha" class="hidden" autocomplete="off" tabindex="-1" aria-hidden="true">
@@ -39,5 +41,11 @@
                 <polyline points="12 5 19 12 12 19"/>
             </svg>
         </button>
+    </div>
+    <div class="v-hero-demo-sent">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <span role="status"></span>
     </div>
 </form>
