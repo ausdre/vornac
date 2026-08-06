@@ -793,6 +793,9 @@ img, video { max-width: 100%; }
     font-family: var(--v-sans);
     transition: opacity 0.2s ease;
 }
+/* display:flex above beats the UA [hidden]{display:none} rule, so restate it
+   with higher specificity — without this the modal renders on every page. */
+.v-consent[hidden] { display: none; }
 .v-consent.is-closing { opacity: 0; }
 /* Lock page scroll while the modal is open (toggled by consent-banner.njk). */
 html.v-consent-open { overflow: hidden; }
