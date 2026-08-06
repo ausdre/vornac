@@ -611,9 +611,40 @@ img, video { max-width: 100%; }
 .v-hero-demo.is-open .v-hero-demo-reveal {
     opacity: 1;
 }
+.v-hero-demo-sent {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--v-amber-deep);
+    font-family: var(--v-sans);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease 0.06s;
+}
+/* Sent state — pill settles back to rest width and stays inert.
+   pointer-events: none also keeps :hover from re-expanding it. */
+.v-hero-demo.is-sent {
+    pointer-events: none;
+    background: rgba(255, 163, 23, 0.06);
+}
+.v-hero-demo.is-sent .v-hero-demo-trigger,
+.v-hero-demo.is-sent .v-hero-demo-reveal {
+    opacity: 0;
+}
+.v-hero-demo.is-sent .v-hero-demo-sent {
+    opacity: 1;
+}
 @media (prefers-reduced-motion: reduce) {
     .v-hero-demo { transition: none; }
     .v-hero-demo-reveal { transition: none; }
+    .v-hero-demo-sent { transition: none; }
 }
 @media (max-width: 640px) {
     .v-hero-demo { width: 232px; height: 52px; }
@@ -635,6 +666,10 @@ img, video { max-width: 100%; }
 .v-hero-demo--on-amber .v-hero-demo-input {
     color: var(--v-ink);
 }
+.pent-hero .v-hero-demo .v-hero-demo-sent,
+.v-hero-demo--on-amber .v-hero-demo-sent {
+    color: var(--v-ink);
+}
 .pent-hero .v-hero-demo .v-hero-demo-submit,
 .v-hero-demo--on-amber .v-hero-demo-submit {
     background: var(--v-ink);
@@ -648,6 +683,10 @@ img, video { max-width: 100%; }
 .pent-hero .v-hero-demo.is-open,
 .v-hero-demo--on-amber:hover,
 .v-hero-demo--on-amber.is-open {
+    background: rgba(14, 17, 22, 0.08);
+}
+.pent-hero .v-hero-demo.is-sent,
+.v-hero-demo--on-amber.is-sent {
     background: rgba(14, 17, 22, 0.08);
 }
 

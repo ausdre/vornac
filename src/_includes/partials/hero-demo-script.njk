@@ -1,8 +1,9 @@
 {# Hero "Book a demo" email capture — wires up every `.v-hero-demo` form on
    the page (the homepage hero plus any inline `hero-demo-button.njk` partial
    instances in section CTAs). Each pill expands to an email field on hover
-   (desktop) or tap (mobile), and submits to Formspree via AJAX, reusing the
-   page's `#thankyou-overlay` confirmation when present. #}
+   (desktop) or tap (mobile), and submits to Formspree via AJAX. Confirmation:
+   the page's `#thankyou-overlay` when present (homepages), otherwise the pill
+   itself settles into a "Request sent ✓" state (`.is-sent`). #}
 <script>
 (function () {
     var forms = document.querySelectorAll('.v-hero-demo');
@@ -64,10 +65,18 @@
                     form.reset();
                     form.classList.remove('is-open');
                     if (trigger) trigger.setAttribute('aria-expanded', 'false');
-                    if (overlay) overlay.classList.add('is-open');
+                    if (overlay) {
+                        overlay.classList.add('is-open');
+                    } else {
+                        form.classList.add('is-sent');
+                        if (input) input.disabled = true;
+                        if (trigger) trigger.disabled = true;
+                        var sentLabel = form.querySelector('.v-hero-demo-sent [role="status"]');
+                        if (sentLabel) sentLabel.textContent = form.getAttribute('data-sent-label') || 'Request sent';
+                    }
                 }
             }).finally(function () {
-                if (submit) submit.disabled = false;
+                if (submit) submit.disabled = form.classList.contains('is-sent');
             });
         });
     });

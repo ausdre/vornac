@@ -66,6 +66,10 @@ module.exports = {
       accept: "Accept all",
       decline: "Decline"
     },
+    /** Inline "Book a demo" pill (partials/hero-demo-button.njk). */
+    heroDemo: {
+      sent: "Request sent"
+    },
     footer: {
       tagline: "Enterprise-grade autonomous security testing for continuous assurance and compliance.",
       navHeading: "Navigation",
@@ -145,6 +149,10 @@ module.exports = {
       privacy: "Datenschutzerklärung",
       accept: "Alle akzeptieren",
       decline: "Ablehnen"
+    },
+    /** Inline "Book a demo" pill (partials/hero-demo-button.njk). */
+    heroDemo: {
+      sent: "Anfrage gesendet"
     },
     footer: {
       tagline: "Autonome Sicherheitsvalidierung auf Enterprise-Niveau – für kontinuierliche Absicherung und Compliance.",
