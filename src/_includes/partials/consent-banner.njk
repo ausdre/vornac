@@ -1,16 +1,22 @@
-{# Cookie consent banner — Consent Mode v2 companion to google-tag.njk.
+{# Cookie consent modal — Consent Mode v2 companion to google-tag.njk.
 
    Rendered hidden; the script shows it only when no choice is stored under
    'vornac_consent_v1' (the same key google-tag.njk and the form scripts
-   read). "Accept all" flips all four Google consent signals to granted via
-   gtag('consent','update'); "Decline" only stores the choice — the head
-   defaults already deny everything. Leadfeeder and Plausible are not gated
-   here (legitimate interest / cookieless). #}
-<div class="v-consent" id="consent-banner" role="region" aria-label="{{ t.consent.label }}" hidden>
-    <div class="v-consent-inner">
+   read). The modal is blocking: a full-viewport backdrop sits over the page
+   and scrolling is locked until the visitor picks one of the two options.
+   "Accept all" flips all four Google consent signals to granted via
+   gtag('consent','update'); "Essential only" just stores the choice — the
+   head defaults already deny everything. Leadfeeder and Plausible are not
+   gated here (legitimate interest / cookieless).
+
+   The legal pages are exempt: the modal links to the privacy policy, so that
+   page has to stay readable without a prior consent decision. #}
+<div class="v-consent" id="consent-banner" role="dialog" aria-modal="true" aria-labelledby="consent-title" hidden>
+    <div class="v-consent-card" tabindex="-1">
+        <h2 class="v-consent-title" id="consent-title">{{ t.consent.title }}</h2>
         <p class="v-consent-body">
             {{ t.consent.body }}
-            <a class="v-consent-link" href="{{ pageUrls.legal }}#{{ t.legalAnchors.privacy }}">{{ t.consent.privacy }}</a>
+            <a class="v-consent-link" href="{{ pageUrls.legal }}#{{ t.legalAnchors.privacy }}">{{ t.consent.privacy }}</a>.
         </p>
         <div class="v-consent-actions">
             <button type="button" class="v-consent-btn v-consent-btn--decline" data-consent-decline>{{ t.consent.decline }}</button>
@@ -22,12 +28,17 @@
 (function () {
     var banner = document.getElementById('consent-banner');
     if (!banner) return;
+    // Privacy policy must stay readable without a consent decision.
+    if (/^\/(de\/)?legal(\/|$)/.test(location.pathname)) return;
     var KEY = 'vornac_consent_v1';
     try {
         if (localStorage.getItem(KEY)) return;
     } catch (e) {}
-    // No stored choice (or storage unavailable): ask.
+    // No stored choice (or storage unavailable): ask, and block until chosen.
     banner.hidden = false;
+    document.documentElement.classList.add('v-consent-open');
+    var card = banner.querySelector('.v-consent-card');
+    if (card) card.focus();
 
     function choose(granted) {
         try { localStorage.setItem(KEY, granted ? 'granted' : 'denied'); } catch (e) {}
@@ -40,7 +51,10 @@
             });
         }
         banner.classList.add('is-closing');
-        setTimeout(function () { banner.hidden = true; }, 220);
+        setTimeout(function () {
+            banner.hidden = true;
+            document.documentElement.classList.remove('v-consent-open');
+        }, 220);
     }
 
     banner.querySelector('[data-consent-accept]').addEventListener('click', function () { choose(true); });
