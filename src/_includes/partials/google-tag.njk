@@ -1,6 +1,6 @@
 {#
   Google tag (gtag.js) — Google Ads account AW-18358463564 plus the GA4
-  property G-9LJGWDQ2CR that the form scripts send their events to.
+  property G-DHK749WPQ7 that the form scripts send their events to.
 
   Loaded in <head> after lang-redirect.njk / leadfeeder.njk. `gtag` is always
   defined (the form scripts call it for conversion events), but the initial
@@ -78,7 +78,7 @@
     } catch (e) {}
     gtag('js', new Date());
     gtag('config', 'AW-18358463564', configParams);
-    gtag('config', 'G-9LJGWDQ2CR', configParams);
+    gtag('config', 'G-DHK749WPQ7', configParams);
   }
 
   // The header "Validate Now" pill and the FAQ CTA link straight to the
@@ -88,7 +88,7 @@
     var link = e.target.closest ? e.target.closest('a[href*="zeeg.me"]') : null;
     if (!link) return;
     gtag('event', 'scheduler_click', {
-      send_to: 'G-9LJGWDQ2CR',
+      send_to: 'G-DHK749WPQ7',
       link_url: link.href,
       transport_type: 'beacon'
     });
