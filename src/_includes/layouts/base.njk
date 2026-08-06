@@ -36,6 +36,8 @@
     {% block extraHead %}{% endblock %}
 </head>
 <body class="bg-warm text-stone-900 font-body antialiased{% if bodyClass %} {{ bodyClass }}{% endif %}">
+    {# GTM no-JS fallback — the loader itself sits in partials/google-tag.njk #}
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.analytics.gtmContainerId }}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     {% block announcementBar %}{% include "partials/announcement-bar.njk" %}{% endblock %}
 

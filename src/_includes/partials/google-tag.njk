@@ -18,6 +18,13 @@
   'vornac_consent_v1' in localStorage; a stored "granted" is re-applied here
   on every pageview, before the config calls. Leadfeeder and Plausible are
   deliberately not consent-gated (legitimate interest / cookieless).
+
+  Google Tag Manager ({{ site.analytics.gtmContainerId }}) loads between the
+  consent defaults and the gtag.js loader: after the defaults because GTM
+  reads the consent state that is current when it boots, behind the
+  lang-redirect guard because a redirecting page must not fire container
+  tags (the counterpart page is the one countable pageview). The matching
+  <noscript> iframe lives in layouts/base.njk right after <body>.
 #}
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -38,6 +45,15 @@
       });
     }
   } catch (e) {}
+</script>
+<script>
+  if (!window.__vornacLangRedirect) {
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','{{ site.analytics.gtmContainerId }}');
+  }
 </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18358463564"></script>
 <script>
