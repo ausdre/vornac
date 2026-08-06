@@ -1,8 +1,10 @@
-{# Handles the /about contact form: Formspree POST, GA4 conversion event,
-   and the thankyou-overlay modal close interactions. #}
+{# Close interactions for the #thankyou-overlay modal on the index pages.
+   The overlay is opened by hero-demo-script.njk after a successful hero-form
+   submission; this script only wires up the close button and backdrop click.
+   (A former Formspree submit handler for id="contact-form" was removed — that
+   form no longer exists on any page.) #}
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('contact-form');
     const thankyouOverlay = document.getElementById('thankyou-overlay');
     const thankyouClose = document.getElementById('thankyou-close');
 
@@ -10,47 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
     thankyouClose?.addEventListener('click', closeThankyou);
     thankyouOverlay?.addEventListener('click', (e) => {
         if (e.target === thankyouOverlay) closeThankyou();
-    });
-
-    if (!form) return;
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const btn = form.querySelector('[data-submit-button]');
-        const gotcha = form.querySelector('[name="_gotcha"]');
-        if (gotcha && gotcha.value) return;
-        if (btn) btn.disabled = true;
-
-        const res = await fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form),
-            headers: { Accept: 'application/json' }
-        });
-
-        if (res.ok) {
-            if (typeof gtag === 'function') {
-                // Enhanced conversions: gtag SHA-256-hashes the email
-                // client-side; only used once enabled in the Ads UI.
-                // Requires ad_user_data consent (consent-banner.njk) —
-                // without it Google discards the user_data anyway.
-                let consented = false;
-                try { consented = localStorage.getItem('vornac_consent_v1') === 'granted'; } catch (err) {}
-                const emailField = form.querySelector('[name="email"]');
-                if (consented && emailField && emailField.value) {
-                    gtag('set', 'user_data', { email: emailField.value });
-                }
-                gtag('event', 'generate_lead', {
-                    send_to: 'G-9LJGWDQ2CR',
-                    form_location: 'contact_form'
-                });
-                // Google Ads "Termin vereinbaren" conversion
-                gtag('event', 'conversion', {
-                    send_to: 'AW-18358463564/E8DRCLW1xtkcEMzY_7FE'
-                });
-            }
-            form.reset();
-            thankyouOverlay?.classList.add('is-open');
-        }
-        if (btn) btn.disabled = false;
     });
 });
 </script>

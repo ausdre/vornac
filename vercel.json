@@ -5,6 +5,13 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "vornac.com" }],
+      "destination": "https://www.vornac.com/:path*",
+      "permanent": true
+    },
+
     { "source": "/index.html",     "destination": "/",   "permanent": true },
     { "source": "/index",          "destination": "/",   "permanent": true },
     { "source": "/index_de.html",  "destination": "/de", "permanent": true },

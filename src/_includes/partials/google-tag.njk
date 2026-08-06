@@ -8,8 +8,8 @@
   reasoning as leadfeeder.njk: the counterpart page fires the single hit.
 
   Conversion events (e.g. "Termin vereinbaren",
-  AW-18358463564/E8DRCLW1xtkcEMzY_7FE) fire from contact-form-script.njk and
-  hero-demo-script.njk on successful form submission.
+  AW-18358463564/E8DRCLW1xtkcEMzY_7FE) fire from hero-demo-script.njk on
+  successful form submission.
 
   Consent Mode v2 (TTDSG §25 / GDPR): the default-deny call is the first
   dataLayer entry — before the gtag.js loader and outside the lang-redirect
@@ -35,6 +35,13 @@
     ad_personalization: 'denied',
     analytics_storage: 'denied'
   });
+  // With ad_storage denied there is no _gcl_* cookie, so a gclid would die on
+  // the first internal navigation. url_passthrough carries it (plus dclid,
+  // wbraid, gbraid) through internal links as a URL param instead;
+  // ads_data_redaction additionally strips ad-click identifiers from the
+  // cookieless pings Google still receives while consent is denied.
+  gtag('set', 'url_passthrough', true);
+  gtag('set', 'ads_data_redaction', true);
   try {
     if (localStorage.getItem('vornac_consent_v1') === 'granted') {
       gtag('consent', 'update', {
@@ -58,9 +65,20 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18358463564"></script>
 <script>
   if (!window.__vornacLangRedirect) {
+    // If lang-redirect.njk just replaced the entry URL, the original external
+    // referrer (Google organic, LinkedIn, …) was stashed in sessionStorage —
+    // hand it to GA4/Ads as page_referrer so the visit isn't counted as Direct.
+    var configParams = {};
+    try {
+      var storedReferrer = sessionStorage.getItem('vornac_page_referrer');
+      if (storedReferrer) {
+        configParams.page_referrer = storedReferrer;
+        sessionStorage.removeItem('vornac_page_referrer');
+      }
+    } catch (e) {}
     gtag('js', new Date());
-    gtag('config', 'AW-18358463564');
-    gtag('config', 'G-9LJGWDQ2CR');
+    gtag('config', 'AW-18358463564', configParams);
+    gtag('config', 'G-9LJGWDQ2CR', configParams);
   }
 
   // The header "Validate Now" pill and the FAQ CTA link straight to the
