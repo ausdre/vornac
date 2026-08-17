@@ -19,6 +19,7 @@ const research = require("./research.js");
 const STATIC_PAGES = [
   { key: "index",                              en: "/",                                   de: "/de" },
   { key: "pentesting",                         en: "/pentesting",                         de: "/de/pentesting" },
+  { key: "ot-pentesting",                      en: "/ot-pentesting",                      de: "/de/ot-pentesting" },
   { key: "research",                           en: "/research",                           de: "/de/research" },
   { key: "glossary",                           en: "/glossary",                           de: "/de/glossary" },
   { key: "about",                              en: "/about",                              de: "/de/about" },

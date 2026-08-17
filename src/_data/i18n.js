@@ -12,6 +12,7 @@ module.exports = {
     nav: {
       home: "Home",
       pentesting: "Pentesting",
+      otPentesting: "OT Pentesting",
       industries: "Industries",
       customers: "Customers",
       research: "Research",
@@ -101,6 +102,7 @@ module.exports = {
     nav: {
       home: "Home",
       pentesting: "Pentesting",
+      otPentesting: "OT Pentesting",
       industries: "Industrien",
       customers: "Kunden",
       research: "Research",
