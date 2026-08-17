@@ -194,6 +194,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("about.css");
   eleventyConfig.addPassthroughCopy("industries.css");
   eleventyConfig.addPassthroughCopy("pentesting.css");
+  eleventyConfig.addPassthroughCopy("ot-pentesting.css");
   eleventyConfig.addPassthroughCopy("research.css");
   eleventyConfig.addPassthroughCopy("glossary.css");
   eleventyConfig.addPassthroughCopy("faq.css");
@@ -211,6 +212,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget("./about.css");
   eleventyConfig.addWatchTarget("./industries.css");
   eleventyConfig.addWatchTarget("./pentesting.css");
+  eleventyConfig.addWatchTarget("./ot-pentesting.css");
   eleventyConfig.addWatchTarget("./research.css");
   eleventyConfig.addWatchTarget("./glossary.css");
   eleventyConfig.addWatchTarget("./faq.css");
