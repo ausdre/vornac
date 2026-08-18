@@ -54,8 +54,8 @@ const TERMS = [
   T("owasp", "OWASP", "methodology",
     "Open Worldwide Application Security Project",
     "Open Worldwide Application Security Project",
-    "A nonprofit foundation publishing freely available standards, guidance, and tooling for application security. Its outputs — Top 10, ASVS, Testing Guide, Cheat Sheets — are the de-facto reference set for web and API security work.",
-    "Eine gemeinnützige Stiftung, die frei verfügbare Standards, Leitfäden und Tooling für Anwendungssicherheit veröffentlicht. Ihre Ergebnisse — Top 10, ASVS, Testing Guide, Cheat Sheets — sind die De-facto-Referenz für Web- und API-Sicherheitsarbeit.",
+    "A nonprofit foundation publishing freely available standards, guidance, and tooling for application security. Its outputs (Top 10, ASVS, Testing Guide, Cheat Sheets) are the de-facto reference set for web and API security work.",
+    "Eine gemeinnützige Stiftung, die frei verfügbare Standards, Leitfäden und Tooling für Anwendungssicherheit veröffentlicht. Ihre Ergebnisse (Top 10, ASVS, Testing Guide, Cheat Sheets) sind die De-facto-Referenz für Web- und API-Sicherheitsarbeit.",
     ["owasp-top-10", "owasp-asvs"]
   ),
   T("owasp-top-10", "OWASP Top 10", "methodology", null, null,
@@ -86,8 +86,8 @@ const TERMS = [
     ["mitre-attack", "diamond-model"]
   ),
   T("diamond-model", "Diamond Model", "methodology", null, null,
-    "A four-vertex analytical framework — adversary, capability, infrastructure, victim — for structured note-taking on a single intrusion event. Pairs naturally with ATT&CK for TTPs.",
-    "Ein analytisches Vier-Knoten-Framework — Adversary, Capability, Infrastructure, Victim — für strukturierte Notizen zu einem einzelnen Intrusion-Event. Ergänzt sich natürlich mit ATT&CK für TTPs.",
+    "A four-vertex analytical framework (adversary, capability, infrastructure, victim) for structured note-taking on a single intrusion event. Pairs naturally with ATT&CK for TTPs.",
+    "Ein analytisches Vier-Knoten-Framework (Adversary, Capability, Infrastructure, Victim) für strukturierte Notizen zu einem einzelnen Intrusion-Event. Ergänzt sich natürlich mit ATT&CK für TTPs.",
     ["mitre-attack", "cyber-kill-chain"]
   ),
   T("stride", "STRIDE", "methodology", null, null,
@@ -96,18 +96,18 @@ const TERMS = [
     ["linddun", "threat-modeling"]
   ),
   T("linddun", "LINDDUN", "methodology", null, null,
-    "A privacy-focused threat-modeling framework — Linkability, Identifiability, Non-repudiation, Detectability, Disclosure of information, Unawareness, Non-compliance. Used where GDPR-class data is in scope.",
-    "Ein datenschutzfokussiertes Threat-Modeling-Framework — Linkability, Identifiability, Non-Repudiation, Detectability, Disclosure of Information, Unawareness, Non-Compliance. Wird verwendet, wo DSGVO-relevante Daten im Scope sind.",
+    "A privacy-focused threat-modeling framework: Linkability, Identifiability, Non-repudiation, Detectability, Disclosure of information, Unawareness, Non-compliance. Used where GDPR-class data is in scope.",
+    "Ein datenschutzfokussiertes Threat-Modeling-Framework: Linkability, Identifiability, Non-Repudiation, Detectability, Disclosure of Information, Unawareness, Non-Compliance. Wird verwendet, wo DSGVO-relevante Daten im Scope sind.",
     ["stride", "gdpr"]
   ),
   T("threat-modeling", "Threat Modeling", "methodology", null, null,
     "The structured exercise of enumerating likely threats against a system before they are realized. Outputs are control gaps and test priorities, not predictions.",
-    "Die strukturierte Übung, plausible Bedrohungen gegen ein System zu enumerieren, bevor sie eintreten. Ergebnisse sind Control-Lücken und Test-Prioritäten — keine Vorhersagen.",
+    "Die strukturierte Übung, plausible Bedrohungen gegen ein System zu enumerieren, bevor sie eintreten. Ergebnisse sind Control-Lücken und Test-Prioritäten, keine Vorhersagen.",
     ["stride", "linddun", "diamond-model"]
   ),
   T("tiber-eu", "TIBER-EU", "methodology",
-    "Threat Intelligence-based Ethical Red Teaming — European framework",
-    "Threat Intelligence-based Ethical Red Teaming — Europäisches Rahmenwerk",
+    "Threat Intelligence-based Ethical Red Teaming, European framework",
+    "Threat Intelligence-based Ethical Red Teaming, Europäisches Rahmenwerk",
     "An ECB-published framework for intelligence-led red-team tests against financial-sector entities, with national flavors (TIBER-DE, TIBER-NL, etc.). The implementation baseline for DORA's threat-led penetration testing requirement.",
     "Ein von der EZB veröffentlichtes Framework für intelligence-led Red-Team-Tests gegen Finanzsektor-Entitäten, mit nationalen Ausprägungen (TIBER-DE, TIBER-NL, etc.). Die Umsetzungsgrundlage für die Threat-Led-Penetration-Testing-Anforderung der DORA.",
     ["dora", "tlpt", "red-team"]
@@ -120,8 +120,8 @@ const TERMS = [
     ["iso-27001", "bsi-grundschutz"]
   ),
   T("swiss-cheese-model", "Swiss Cheese Model", "methodology", null, null,
-    "A human-factors model formulated by British psychologist James Reason, depicting layered protections as imperfect barriers where latent organizational weaknesses and active failures create gaps; incidents occur when those gaps align across layers. The reference framework in aviation, healthcare, and high-reliability safety culture — and increasingly in cybersecurity — for explaining why defense-in-depth lowers risk without removing it.",
-    "Das Schweizer-Käse-Modell (James Reason) vergleicht geschichtete Defenses mit hintereinanderliegenden Käsescheiben — latente Bedingungen und aktive Fehler — und schreibt Schaden dem Moment zu, in dem sich die Löcher über die Schichten hinweg ausrichten. Die Standard-Metapher dafür, warum Defense-in-Depth Risiko reduziert, aber nicht eliminiert.",
+    "A human-factors model formulated by British psychologist James Reason, depicting layered protections as imperfect barriers where latent organizational weaknesses and active failures create gaps; incidents occur when those gaps align across layers. The reference framework in aviation, healthcare, and high-reliability safety culture (and increasingly in cybersecurity) for explaining why defense-in-depth lowers risk without removing it.",
+    "Das Schweizer-Käse-Modell (James Reason) vergleicht geschichtete Defenses mit hintereinanderliegenden Käsescheiben (latente Bedingungen und aktive Fehler) und schreibt Schaden dem Moment zu, in dem sich die Löcher über die Schichten hinweg ausrichten. Die Standard-Metapher dafür, warum Defense-in-Depth Risiko reduziert, aber nicht eliminiert.",
     ["defense-in-depth", "nist-csf"],
     { de: "Schweizer-Käse-Modell" }
   ),
@@ -133,13 +133,13 @@ const TERMS = [
     ["red-team", "tlpt", "black-box", "assumed-breach"]
   ),
   T("red-team", "Red Team", "engagement", null, null,
-    "An offensive-security operation simulating a specific adversary against the full attack surface — people, processes, technology. Scope-light, objective-driven, often unannounced to defenders.",
-    "Eine offensive Sicherheitsoperation, die einen spezifischen Adversary gegen die gesamte Angriffsfläche simuliert — Menschen, Prozesse, Technologie. Scope-leicht, zielgetrieben, oft den Verteidigern nicht angekündigt.",
+    "An offensive-security operation simulating a specific adversary against the full attack surface: people, processes, technology. Scope-light, objective-driven, often unannounced to defenders.",
+    "Eine offensive Sicherheitsoperation, die einen spezifischen Adversary gegen die gesamte Angriffsfläche simuliert: Menschen, Prozesse, Technologie. Scope-leicht, zielgetrieben, oft den Verteidigern nicht angekündigt.",
     ["blue-team", "purple-team", "adversary-emulation", "tlpt"]
   ),
   T("blue-team", "Blue Team", "engagement", null, null,
-    "The defensive counterpart to red — the people, tooling, and detections that protect, monitor, and respond. In an exercise context, the team being tested.",
-    "Das defensive Gegenstück zum Red Team — die Personen, das Tooling und die Detektionen, die schützen, überwachen und reagieren. Im Übungskontext: das getestete Team.",
+    "The defensive counterpart to red: the people, tooling, and detections that protect, monitor, and respond. In an exercise context, the team being tested.",
+    "Das defensive Gegenstück zum Red Team: die Personen, das Tooling und die Detektionen, die schützen, überwachen und reagieren. Im Übungskontext: das getestete Team.",
     ["red-team", "purple-team", "soc"]
   ),
   T("purple-team", "Purple Team", "engagement", null, null,
@@ -149,27 +149,27 @@ const TERMS = [
   ),
   T("black-box", "Black Box Testing", "engagement", null, null,
     "Testing from an outside attacker's perspective, with no internal knowledge, accounts, or source code provided. Maximizes realism, minimizes depth per unit of time.",
-    "Tests aus der Perspektive eines externen Angreifers — ohne internes Wissen, Zugänge oder Quellcode. Maximiert Realismus, minimiert Tiefe pro Zeiteinheit.",
+    "Tests aus der Perspektive eines externen Angreifers, ohne internes Wissen, Zugänge oder Quellcode. Maximiert Realismus, minimiert Tiefe pro Zeiteinheit.",
     ["white-box", "grey-box", "assumed-breach"]
   ),
   T("white-box", "White Box Testing", "engagement", null, null,
-    "Testing with full information — source code, architecture diagrams, credentials. Maximizes coverage and defect-density yield; useful before a code release.",
-    "Tests mit vollständigen Informationen — Quellcode, Architekturdiagramme, Zugänge. Maximiert Abdeckung und Defekt-Dichte; nützlich vor einem Code-Release.",
+    "Testing with full information: source code, architecture diagrams, credentials. Maximizes coverage and defect-density yield; useful before a code release.",
+    "Tests mit vollständigen Informationen: Quellcode, Architekturdiagramme, Zugänge. Maximiert Abdeckung und Defekt-Dichte; nützlich vor einem Code-Release.",
     ["black-box", "grey-box"]
   ),
   T("grey-box", "Grey Box Testing", "engagement", null, null,
-    "Testing with partial information — typically authenticated user accounts and high-level architecture, but no source. The most common mode for application assessments.",
-    "Tests mit partiellen Informationen — typischerweise authentifizierte Nutzer-Accounts und High-Level-Architektur, aber kein Quellcode. Der häufigste Modus für Anwendungs-Assessments.",
+    "Testing with partial information: typically authenticated user accounts and high-level architecture, but no source. The most common mode for application assessments.",
+    "Tests mit partiellen Informationen: typischerweise authentifizierte Nutzer-Accounts und High-Level-Architektur, aber kein Quellcode. Der häufigste Modus für Anwendungs-Assessments.",
     ["black-box", "white-box"]
   ),
   T("assumed-breach", "Assumed Breach", "engagement", null, null,
-    "An engagement that starts inside the perimeter — for example, with an attacker-controlled workstation — to bypass the (already-tested) external surface and focus on lateral movement and blast radius.",
-    "Ein Engagement, das innerhalb des Perimeters startet — beispielsweise mit einer angreifer-kontrollierten Workstation — um die (bereits getestete) externe Oberfläche zu umgehen und sich auf Lateral Movement und Blast Radius zu konzentrieren.",
+    "An engagement that starts inside the perimeter (for example, with an attacker-controlled workstation) to bypass the (already-tested) external surface and focus on lateral movement and blast radius.",
+    "Ein Engagement, das innerhalb des Perimeters startet (beispielsweise mit einer angreifer-kontrollierten Workstation), um die (bereits getestete) externe Oberfläche zu umgehen und sich auf Lateral Movement und Blast Radius zu konzentrieren.",
     ["red-team", "lateral-movement", "blue-team"]
   ),
   T("adversary-emulation", "Adversary Emulation", "engagement", null, null,
-    "A red-team variant where the operators imitate a specific named threat actor — its TTPs, tooling, infrastructure pattern — to test whether defenses tuned for that actor actually catch it.",
-    "Eine Red-Team-Variante, in der die Operatoren einen spezifischen benannten Threat-Actor imitieren — seine TTPs, Tooling, Infrastruktur-Muster — um zu prüfen, ob speziell auf diesen Actor abgestimmte Defenses ihn tatsächlich erkennen.",
+    "A red-team variant where the operators imitate a specific named threat actor (its TTPs, tooling, infrastructure pattern) to test whether defenses tuned for that actor actually catch it.",
+    "Eine Red-Team-Variante, in der die Operatoren einen spezifischen benannten Threat-Actor imitieren (seine TTPs, Tooling, Infrastruktur-Muster), um zu prüfen, ob speziell auf diesen Actor abgestimmte Defenses ihn tatsächlich erkennen.",
     ["red-team", "mitre-attack", "apt"]
   ),
   T("tlpt", "TLPT", "engagement",
@@ -186,7 +186,7 @@ const TERMS = [
   ),
   T("responsible-disclosure", "Responsible Disclosure", "engagement", null, null,
     "The practice (and norm) of reporting a discovered vulnerability to the affected party privately first, allowing a remediation window before public disclosure. Sometimes called coordinated disclosure.",
-    "Die Praxis (und Norm), eine entdeckte Schwachstelle zunächst privat an die betroffene Partei zu melden — mit einem Remediation-Fenster vor Veröffentlichung. Wird auch als Coordinated Disclosure bezeichnet.",
+    "Die Praxis (und Norm), eine entdeckte Schwachstelle zunächst privat an die betroffene Partei zu melden: mit einem Remediation-Fenster vor Veröffentlichung. Wird auch als Coordinated Disclosure bezeichnet.",
     ["bug-bounty", "cve"]
   ),
   T("ctf", "CTF", "engagement",
@@ -207,7 +207,7 @@ const TERMS = [
   ),
   T("dom-xss", "DOM XSS", "vuln-class", null, null,
     "An XSS variant where the malicious payload is introduced and executed entirely within the browser via unsafe handling of DOM sinks, with no server-side reflection.",
-    "Eine XSS-Variante, bei der der bösartige Payload vollständig im Browser über unsichere DOM-Sinks eingeführt und ausgeführt wird — ohne serverseitige Reflektion.",
+    "Eine XSS-Variante, bei der der bösartige Payload vollständig im Browser über unsichere DOM-Sinks eingeführt und ausgeführt wird, ohne serverseitige Reflektion.",
     ["xss"]
   ),
   T("csrf", "CSRF", "vuln-class",
@@ -223,8 +223,8 @@ const TERMS = [
     ["nosql-injection", "cmd-injection"]
   ),
   T("nosql-injection", "NoSQL Injection", "vuln-class", null, null,
-    "The NoSQL counterpart to SQL injection — manipulation of query operators (e.g., MongoDB's `$ne`, `$gt`) or JavaScript evaluation inside the database engine.",
-    "Das NoSQL-Pendant zur SQL-Injection — Manipulation von Query-Operatoren (z. B. MongoDB `$ne`, `$gt`) oder JavaScript-Auswertung in der Datenbank-Engine.",
+    "The NoSQL counterpart to SQL injection: manipulation of query operators (e.g., MongoDB's `$ne`, `$gt`) or JavaScript evaluation inside the database engine.",
+    "Das NoSQL-Pendant zur SQL-Injection: Manipulation von Query-Operatoren (z. B. MongoDB `$ne`, `$gt`) oder JavaScript-Auswertung in der Datenbank-Engine.",
     ["sqli"]
   ),
   T("cmd-injection", "Command Injection", "vuln-class", null, null,
@@ -235,15 +235,15 @@ const TERMS = [
   T("ssrf", "SSRF", "vuln-class",
     "Server-Side Request Forgery",
     "Server-Side Request Forgery",
-    "Coercing a server to make a network request the attacker controls — to internal services, cloud metadata endpoints, or arbitrary URLs. A primary path into otherwise unreachable internal infrastructure.",
-    "Ein Server wird gezwungen, eine angreifer-kontrollierte Netzwerk-Anfrage zu senden — an interne Dienste, Cloud-Metadata-Endpoints oder beliebige URLs. Ein zentraler Pfad in ansonsten unerreichbare interne Infrastruktur.",
+    "Coercing a server to make a network request the attacker controls: to internal services, cloud metadata endpoints, or arbitrary URLs. A primary path into otherwise unreachable internal infrastructure.",
+    "Ein Server wird gezwungen, eine angreifer-kontrollierte Netzwerk-Anfrage zu senden: an interne Dienste, Cloud-Metadata-Endpoints oder beliebige URLs. Ein zentraler Pfad in ansonsten unerreichbare interne Infrastruktur.",
     ["xxe"]
   ),
   T("xxe", "XXE", "vuln-class",
     "XML External Entity",
     "XML External Entity",
     "Abuse of XML parsers that resolve external entity references, enabling file read, SSRF, and in some configurations remote code execution. Mitigated by disabling DTD processing.",
-    "Missbrauch von XML-Parsern, die externe Entity-Referenzen auflösen — ermöglicht Datei-Auslesen, SSRF und in manchen Konfigurationen Remote Code Execution. Wird durch Deaktivieren der DTD-Verarbeitung mitigiert.",
+    "Missbrauch von XML-Parsern, die externe Entity-Referenzen auflösen: ermöglicht Datei-Auslesen, SSRF und in manchen Konfigurationen Remote Code Execution. Wird durch Deaktivieren der DTD-Verarbeitung mitigiert.",
     ["ssrf", "path-traversal"]
   ),
   T("path-traversal", "Path Traversal", "vuln-class", null, null,
@@ -255,12 +255,12 @@ const TERMS = [
     "Insecure Direct Object Reference",
     "Insecure Direct Object Reference",
     "An authorization flaw where a user can access another user's records by guessing or altering an identifier in the request, because the server checks authentication but not ownership.",
-    "Ein Autorisierungsfehler, bei dem ein Nutzer auf Datensätze anderer zugreifen kann, indem er einen Identifier in der Anfrage rät oder verändert — weil der Server zwar Authentifizierung, aber nicht Eigentümerschaft prüft.",
+    "Ein Autorisierungsfehler, bei dem ein Nutzer auf Datensätze anderer zugreifen kann, indem er einen Identifier in der Anfrage rät oder verändert: weil der Server zwar Authentifizierung, aber nicht Eigentümerschaft prüft.",
     ["biz-logic", "auth-bypass"]
   ),
   T("file-upload", "Insecure File Upload", "vuln-class", null, null,
     "A vulnerability class where the server stores or executes uploaded files without sufficient validation, allowing webshells, archive bombs, or content-type confusion attacks.",
-    "Eine Schwachstellenklasse, bei der der Server hochgeladene Dateien ohne hinreichende Validierung speichert oder ausführt — was Webshells, Archive-Bomben oder Content-Type-Confusion-Angriffe ermöglicht.",
+    "Eine Schwachstellenklasse, bei der der Server hochgeladene Dateien ohne hinreichende Validierung speichert oder ausführt: was Webshells, Archive-Bomben oder Content-Type-Confusion-Angriffe ermöglicht.",
     ["path-traversal", "cmd-injection"]
   ),
   T("deserialization", "Insecure Deserialization", "vuln-class", null, null,
@@ -269,18 +269,18 @@ const TERMS = [
     ["cmd-injection", "cves"]
   ),
   T("biz-logic", "Business Logic Flaw", "vuln-class", null, null,
-    "A defect where every individual request is authenticated and authorized correctly, but the sequence or combination of requests violates the application's intended rules — e.g., a discount applied twice, a checkout completed without payment.",
-    "Ein Defekt, bei dem jede einzelne Anfrage korrekt authentifiziert und autorisiert wird, die Sequenz oder Kombination der Anfragen jedoch die beabsichtigten Anwendungsregeln verletzt — z. B. ein doppelt angewendeter Rabatt, ein Checkout ohne Zahlung.",
+    "A defect where every individual request is authenticated and authorized correctly, but the sequence or combination of requests violates the application's intended rules: e.g., a discount applied twice, a checkout completed without payment.",
+    "Ein Defekt, bei dem jede einzelne Anfrage korrekt authentifiziert und autorisiert wird, die Sequenz oder Kombination der Anfragen jedoch die beabsichtigten Anwendungsregeln verletzt: z. B. ein doppelt angewendeter Rabatt, ein Checkout ohne Zahlung.",
     ["idor", "race-condition"]
   ),
   T("auth-bypass", "Authentication Bypass", "vuln-class", null, null,
-    "Reaching an authenticated state without valid credentials — via logic flaws, hardcoded credentials, mass-assignment, or session-handling defects.",
-    "Erreichen eines authentifizierten Zustands ohne gültige Zugangsdaten — über Logikfehler, hardcodierte Credentials, Mass-Assignment oder Session-Handling-Defekte.",
+    "Reaching an authenticated state without valid credentials: via logic flaws, hardcoded credentials, mass-assignment, or session-handling defects.",
+    "Erreichen eines authentifizierten Zustands ohne gültige Zugangsdaten: über Logikfehler, hardcodierte Credentials, Mass-Assignment oder Session-Handling-Defekte.",
     ["session-fixation", "jwt"]
   ),
   T("session-fixation", "Session Fixation", "vuln-class", null, null,
     "Forcing a victim to use a session identifier known to the attacker, who then hijacks the session after the victim authenticates. Mitigated by regenerating the session ID on login.",
-    "Ein Opfer wird gezwungen, einen dem Angreifer bekannten Session-Identifier zu nutzen — der Angreifer übernimmt die Session nach der Anmeldung. Wird durch Regenerieren der Session-ID beim Login mitigiert.",
+    "Ein Opfer wird gezwungen, einen dem Angreifer bekannten Session-Identifier zu nutzen: der Angreifer übernimmt die Session nach der Anmeldung. Wird durch Regenerieren der Session-ID beim Login mitigiert.",
     ["auth-bypass"]
   ),
   T("race-condition", "Race Condition", "vuln-class", null, null,
@@ -289,18 +289,18 @@ const TERMS = [
     ["biz-logic"]
   ),
   T("misconfig", "Misconfiguration", "vuln-class", null, null,
-    "A vulnerability rooted in a configuration choice — not an unsafe primitive — that exposes data or functionality unintentionally. Default credentials, open S3 buckets, exposed management consoles are typical.",
-    "Eine Schwachstelle, die in einer Konfigurationsentscheidung wurzelt — nicht in einer unsicheren Primitive — und Daten oder Funktionalität ungewollt freilegt. Default-Credentials, offene S3-Buckets, exponierte Management-Konsolen sind typisch.",
+    "A vulnerability rooted in a configuration choice (not an unsafe primitive) that exposes data or functionality unintentionally. Default credentials, open S3 buckets, exposed management consoles are typical.",
+    "Eine Schwachstelle, die in einer Konfigurationsentscheidung wurzelt (nicht in einer unsicheren Primitive) und Daten oder Funktionalität ungewollt freilegt. Default-Credentials, offene S3-Buckets, exponierte Management-Konsolen sind typisch.",
     ["hardcoded-creds", "cves"]
   ),
   T("hardcoded-creds", "Hardcoded Credentials", "vuln-class", null, null,
     "Authentication material baked into source code, configuration files, or firmware images. Eliminated by secret managers and build-time injection, not by `.gitignore`.",
-    "Authentifizierungsmaterial, das in Quellcode, Konfigurationsdateien oder Firmware-Images eingebacken ist. Wird durch Secret Manager und Build-Time-Injection beseitigt — nicht durch `.gitignore`.",
+    "Authentifizierungsmaterial, das in Quellcode, Konfigurationsdateien oder Firmware-Images eingebacken ist. Wird durch Secret Manager und Build-Time-Injection beseitigt, nicht durch `.gitignore`.",
     ["misconfig", "hsm"]
   ),
   T("memory-corruption", "Memory Corruption", "vuln-class", null, null,
-    "A class of vulnerabilities in unsafe-language code where memory layout assumptions are violated — buffer overflows, use-after-free, type confusion. Mitigated by ASLR, stack canaries, and increasingly by memory-safe languages.",
-    "Eine Schwachstellenklasse in Code unsicherer Sprachen, bei der Annahmen über das Speicherlayout verletzt werden — Buffer Overflows, Use-after-Free, Type Confusion. Mitigiert durch ASLR, Stack-Canaries und zunehmend durch speichersichere Sprachen.",
+    "A class of vulnerabilities in unsafe-language code where memory layout assumptions are violated: buffer overflows, use-after-free, type confusion. Mitigated by ASLR, stack canaries, and increasingly by memory-safe languages.",
+    "Eine Schwachstellenklasse in Code unsicherer Sprachen, bei der Annahmen über das Speicherlayout verletzt werden: Buffer Overflows, Use-after-Free, Type Confusion. Mitigiert durch ASLR, Stack-Canaries und zunehmend durch speichersichere Sprachen.",
     ["zero-day", "cves"]
   ),
   T("crypto-failure", "Cryptographic Failure", "vuln-class", null, null,
@@ -310,7 +310,7 @@ const TERMS = [
   ),
   T("cors-flaw", "CORS Misconfiguration", "vuln-class",
     "Cross-Origin Resource Sharing misconfiguration",
-    "Cross-Origin Resource Sharing — Fehlkonfiguration",
+    "Cross-Origin Resource Sharing, Fehlkonfiguration",
     "Overly permissive CORS headers (e.g., `Access-Control-Allow-Origin: *` combined with credentials) that let attacker-controlled origins read protected responses.",
     "Zu großzügige CORS-Header (z. B. `Access-Control-Allow-Origin: *` in Kombination mit Credentials), die angreifer-kontrollierten Origins erlauben, geschützte Responses zu lesen.",
     ["xss", "csrf"]
@@ -320,8 +320,8 @@ const TERMS = [
   T("osint", "OSINT", "attack",
     "Open-Source Intelligence",
     "Open-Source Intelligence",
-    "Collection of information from publicly available sources — DNS, code repositories, breach data, social media, archives — to build a target picture without active interaction.",
-    "Sammlung von Informationen aus öffentlich verfügbaren Quellen — DNS, Code-Repositories, Breach-Daten, Social Media, Archive — um ein Zielbild ohne aktive Interaktion aufzubauen.",
+    "Collection of information from publicly available sources (DNS, code repositories, breach data, social media, archives) to build a target picture without active interaction.",
+    "Sammlung von Informationen aus öffentlich verfügbaren Quellen (DNS, Code-Repositories, Breach-Daten, Social Media, Archive), um ein Zielbild ohne aktive Interaktion aufzubauen.",
     ["recon", "fingerprinting"]
   ),
   T("recon", "Reconnaissance", "attack", null, null,
@@ -330,8 +330,8 @@ const TERMS = [
     ["osint", "fingerprinting"]
   ),
   T("fingerprinting", "Fingerprinting", "attack", null, null,
-    "Identifying the specific software stack — server, framework, library version — of a target via header patterns, error pages, default content, or behavioral probes.",
-    "Identifikation des spezifischen Software-Stacks — Server, Framework, Library-Version — eines Ziels über Header-Muster, Error-Pages, Default-Inhalte oder Verhaltens-Probes.",
+    "Identifying the specific software stack (server, framework, library version) of a target via header patterns, error pages, default content, or behavioral probes.",
+    "Identifikation des spezifischen Software-Stacks (Server, Framework, Library-Version) eines Ziels über Header-Muster, Error-Pages, Default-Inhalte oder Verhaltens-Probes.",
     ["recon", "dir-fuzz"]
   ),
   T("dir-fuzz", "Directory Fuzzing", "attack", null, null,
@@ -340,8 +340,8 @@ const TERMS = [
     ["fingerprinting"]
   ),
   T("initial-access", "Initial Access", "attack", null, null,
-    "The first foothold an attacker establishes inside a target environment — through phishing, exposed credentials, exploitable service, or supply-chain compromise.",
-    "Der erste Foothold, den ein Angreifer in einem Zielumfeld etabliert — über Phishing, exponierte Credentials, einen ausnutzbaren Dienst oder eine Supply-Chain-Kompromittierung.",
+    "The first foothold an attacker establishes inside a target environment: through phishing, exposed credentials, exploitable service, or supply-chain compromise.",
+    "Der erste Foothold, den ein Angreifer in einem Zielumfeld etabliert: über Phishing, exponierte Credentials, einen ausnutzbaren Dienst oder eine Supply-Chain-Kompromittierung.",
     ["phishing", "foothold", "lateral-movement"]
   ),
   T("foothold", "Foothold", "attack", null, null,
@@ -350,8 +350,8 @@ const TERMS = [
     ["initial-access", "c2", "persistence"]
   ),
   T("lateral-movement", "Lateral Movement", "attack", null, null,
-    "Moving from the initial foothold to other systems inside the same environment — using stolen credentials, exploited trust relationships, or remote-execution primitives.",
-    "Die Bewegung vom anfänglichen Foothold zu anderen Systemen im selben Umfeld — mit gestohlenen Credentials, ausgenutzten Vertrauensbeziehungen oder Remote-Execution-Primitiven.",
+    "Moving from the initial foothold to other systems inside the same environment: using stolen credentials, exploited trust relationships, or remote-execution primitives.",
+    "Die Bewegung vom anfänglichen Foothold zu anderen Systemen im selben Umfeld: mit gestohlenen Credentials, ausgenutzten Vertrauensbeziehungen oder Remote-Execution-Primitiven.",
     ["pivoting", "priv-esc", "kerberos"]
   ),
   T("pivoting", "Pivoting", "attack", null, null,
@@ -360,13 +360,13 @@ const TERMS = [
     ["lateral-movement", "c2"]
   ),
   T("priv-esc", "Privilege Escalation", "attack", null, null,
-    "Elevating from a low-privilege context to a higher one — local (user → root/SYSTEM) or remote (standard user → domain admin).",
-    "Erhöhung von einem niedrigprivilegierten in einen höheren Kontext — lokal (User → root/SYSTEM) oder remote (Standard-User → Domain-Admin).",
+    "Elevating from a low-privilege context to a higher one: local (user → root/SYSTEM) or remote (standard user → domain admin).",
+    "Erhöhung von einem niedrigprivilegierten in einen höheren Kontext: lokal (User → root/SYSTEM) oder remote (Standard-User → Domain-Admin).",
     ["lateral-movement", "kerberos", "active-directory"]
   ),
   T("persistence", "Persistence", "attack", null, null,
-    "Mechanisms that allow an attacker to retain access across reboots, credential changes, or partial cleanup — registry autoruns, scheduled tasks, service installs, malicious certificates.",
-    "Mechanismen, die einem Angreifer erlauben, Zugriff über Reboots, Credential-Änderungen oder teilweise Bereinigungen hinweg zu behalten — Registry-Autoruns, Scheduled Tasks, Service-Installationen, bösartige Zertifikate.",
+    "Mechanisms that allow an attacker to retain access across reboots, credential changes, or partial cleanup: registry autoruns, scheduled tasks, service installs, malicious certificates.",
+    "Mechanismen, die einem Angreifer erlauben, Zugriff über Reboots, Credential-Änderungen oder teilweise Bereinigungen hinweg zu behalten: Registry-Autoruns, Scheduled Tasks, Service-Installationen, bösartige Zertifikate.",
     ["foothold", "c2"]
   ),
   T("c2", "Command & Control (C2)", "attack", null, null,
@@ -386,17 +386,17 @@ const TERMS = [
   ),
   T("phishing", "Phishing", "attack", null, null,
     "Social-engineering attacks delivered at volume, typically via email, asking the recipient to disclose credentials or run a payload. The most common initial-access vector.",
-    "Social-Engineering-Angriffe mit hohem Volumen, typischerweise per E-Mail — der Empfänger soll Credentials preisgeben oder einen Payload ausführen. Der häufigste Initial-Access-Vektor.",
+    "Social-Engineering-Angriffe mit hohem Volumen, typischerweise per E-Mail: der Empfänger soll Credentials preisgeben oder einen Payload ausführen. Der häufigste Initial-Access-Vektor.",
     ["spear-phishing", "social-engineering", "initial-access"]
   ),
   T("spear-phishing", "Spear Phishing", "attack", null, null,
     "Phishing targeted at a single person or small group, with personalized context that increases the click-through rate dramatically.",
-    "Phishing, das auf eine Einzelperson oder kleine Gruppe abzielt — mit personalisiertem Kontext, der die Klickrate dramatisch erhöht.",
+    "Phishing, das auf eine Einzelperson oder kleine Gruppe abzielt: mit personalisiertem Kontext, der die Klickrate dramatisch erhöht.",
     ["phishing", "social-engineering"]
   ),
   T("social-engineering", "Social Engineering", "attack", null, null,
-    "Manipulation of people — by impersonation, pretext, urgency, or authority — to obtain information or actions that bypass technical controls.",
-    "Manipulation von Menschen — durch Impersonation, Pretext, Dringlichkeit oder Autorität — um Informationen oder Handlungen zu erlangen, die technische Controls umgehen.",
+    "Manipulation of people (by impersonation, pretext, urgency, or authority) to obtain information or actions that bypass technical controls.",
+    "Manipulation von Menschen (durch Impersonation, Pretext, Dringlichkeit oder Autorität), um Informationen oder Handlungen zu erlangen, die technische Controls umgehen.",
     ["phishing", "spear-phishing"]
   ),
   T("threat-actor", "Threat Actor", "attack", null, null,
@@ -407,8 +407,8 @@ const TERMS = [
   T("apt", "APT", "attack",
     "Advanced Persistent Threat",
     "Advanced Persistent Threat",
-    "A threat actor characterized by sustained, well-resourced, multi-stage operations against specific targets — typically state-aligned or state-sponsored. The label is overused; the meaning is operational, not legal.",
-    "Ein Threat-Actor, charakterisiert durch nachhaltige, gut ausgestattete, mehrstufige Operationen gegen spezifische Ziele — typischerweise staatsnah oder staatlich gesponsert. Der Begriff wird inflationär verwendet; die Bedeutung ist operativ, nicht juristisch.",
+    "A threat actor characterized by sustained, well-resourced, multi-stage operations against specific targets: typically state-aligned or state-sponsored. The label is overused; the meaning is operational, not legal.",
+    "Ein Threat-Actor, charakterisiert durch nachhaltige, gut ausgestattete, mehrstufige Operationen gegen spezifische Ziele: typischerweise staatsnah oder staatlich gesponsert. Der Begriff wird inflationär verwendet; die Bedeutung ist operativ, nicht juristisch.",
     ["threat-actor", "adversary-emulation", "ttp"]
   ),
 
@@ -430,8 +430,8 @@ const TERMS = [
   T("pki", "PKI", "identity",
     "Public Key Infrastructure",
     "Public Key Infrastructure",
-    "The system of policies, processes, and components — root CAs, intermediate CAs, registration authorities, revocation lists — that binds public keys to identities.",
-    "Das System aus Policies, Prozessen und Komponenten — Root-CAs, Intermediate-CAs, Registration Authorities, Revocation Lists — das öffentliche Schlüssel an Identitäten bindet.",
+    "The system of policies, processes, and components (root CAs, intermediate CAs, registration authorities, revocation lists) that binds public keys to identities.",
+    "Das System aus Policies, Prozessen und Komponenten (Root-CAs, Intermediate-CAs, Registration Authorities, Revocation Lists), das öffentliche Schlüssel an Identitäten bindet.",
     ["ca", "tls", "hsm"]
   ),
   T("ca", "Certificate Authority (CA)", "identity", null, null,
@@ -456,8 +456,8 @@ const TERMS = [
   T("sso", "SSO", "identity",
     "Single Sign-On",
     "Single Sign-On",
-    "An architecture where one authentication event grants access to multiple downstream applications via federated tokens — typically SAML or OIDC.",
-    "Eine Architektur, bei der ein einziges Authentifizierungs-Event Zugang zu mehreren nachgelagerten Anwendungen über föderierte Tokens gewährt — typischerweise SAML oder OIDC.",
+    "An architecture where one authentication event grants access to multiple downstream applications via federated tokens: typically SAML or OIDC.",
+    "Eine Architektur, bei der ein einziges Authentifizierungs-Event Zugang zu mehreren nachgelagerten Anwendungen über föderierte Tokens gewährt: typischerweise SAML oder OIDC.",
     ["saml", "oidc", "oauth"]
   ),
   T("saml", "SAML", "identity",
@@ -475,8 +475,8 @@ const TERMS = [
     ["oauth", "saml", "sso", "jwt"]
   ),
   T("oauth", "OAuth 2.0", "identity", null, null,
-    "An authorization framework that allows a user to grant a third party scoped access to their resources without sharing credentials. Authorization, not authentication — OIDC adds the authentication.",
-    "Ein Autorisierungs-Framework, das einem Nutzer erlaubt, einem Dritten gescopten Zugriff auf seine Ressourcen zu gewähren, ohne Credentials zu teilen. Autorisierung, nicht Authentifizierung — OIDC ergänzt die Authentifizierung.",
+    "An authorization framework that allows a user to grant a third party scoped access to their resources without sharing credentials. Authorization, not authentication: OIDC adds the authentication.",
+    "Ein Autorisierungs-Framework, das einem Nutzer erlaubt, einem Dritten gescopten Zugriff auf seine Ressourcen zu gewähren, ohne Credentials zu teilen. Autorisierung, nicht Authentifizierung: OIDC ergänzt die Authentifizierung.",
     ["oidc", "jwt"]
   ),
   T("jwt", "JWT", "identity",
@@ -510,14 +510,14 @@ const TERMS = [
   ),
   T("sha-256", "SHA-256", "identity", null, null,
     "The 256-bit member of the SHA-2 family. The current default cryptographic hash for general use, including TLS certificates and content addressing.",
-    "Das 256-Bit-Mitglied der SHA-2-Familie. Der aktuelle Default für kryptografisches Hashing — etwa für TLS-Zertifikate und Content-Addressing.",
+    "Das 256-Bit-Mitglied der SHA-2-Familie. Der aktuelle Default für kryptografisches Hashing: etwa für TLS-Zertifikate und Content-Addressing.",
     ["hash-function", "hmac"]
   ),
   T("hmac", "HMAC", "identity",
     "Hash-based Message Authentication Code",
     "Hash-based Message Authentication Code",
     "A construction that combines a cryptographic hash with a shared secret to produce a message authentication code. Resistant to length-extension attacks that plain `hash(key || message)` is not.",
-    "Eine Konstruktion, die einen kryptografischen Hash mit einem geteilten Geheimnis kombiniert, um einen Message Authentication Code zu erzeugen. Resistent gegen Length-Extension-Angriffe — anders als naives `hash(key || message)`.",
+    "Eine Konstruktion, die einen kryptografischen Hash mit einem geteilten Geheimnis kombiniert, um einen Message Authentication Code zu erzeugen. Resistent gegen Length-Extension-Angriffe, anders als naives `hash(key || message)`.",
     ["hash-function", "sha-256"]
   ),
   T("salt", "Salt", "identity", null, null,
@@ -537,8 +537,8 @@ const TERMS = [
   T("soc", "SOC", "defense",
     "Security Operations Center",
     "Security Operations Center",
-    "The function — internal or outsourced — that monitors security events, triages alerts, and runs incident response. Measured by mean time to detect and mean time to respond.",
-    "Die Funktion — intern oder ausgelagert — die Sicherheits-Events überwacht, Alerts triagiert und Incident Response durchführt. Gemessen an Mean Time to Detect und Mean Time to Respond.",
+    "The function (internal or outsourced) that monitors security events, triages alerts, and runs incident response. Measured by mean time to detect and mean time to respond.",
+    "Die Funktion (intern oder ausgelagert), die Sicherheits-Events überwacht, Alerts triagiert und Incident Response durchführt. Gemessen an Mean Time to Detect und Mean Time to Respond.",
     ["siem", "soar", "mdr"]
   ),
   T("edr", "EDR", "defense",
@@ -558,8 +558,8 @@ const TERMS = [
   T("mdr", "MDR", "defense",
     "Managed Detection and Response",
     "Managed Detection and Response",
-    "An outsourced SOC service — usually built on EDR or XDR plus a 24/7 analyst team. Where a 24/7 in-house SOC is uneconomical.",
-    "Ein ausgelagerter SOC-Dienst — meist aufgebaut auf EDR oder XDR plus einem 24/7-Analystenteam. Wo ein 24/7-In-House-SOC unwirtschaftlich ist.",
+    "An outsourced SOC service: usually built on EDR or XDR plus a 24/7 analyst team. Where a 24/7 in-house SOC is uneconomical.",
+    "Ein ausgelagerter SOC-Dienst: meist aufgebaut auf EDR oder XDR plus einem 24/7-Analystenteam. Wo ein 24/7-In-House-SOC unwirtschaftlich ist.",
     ["soc", "edr", "xdr"]
   ),
   T("waf", "WAF", "defense",
@@ -593,8 +593,8 @@ const TERMS = [
   T("dlp", "DLP", "defense",
     "Data Loss Prevention",
     "Data Loss Prevention",
-    "Controls — at endpoint, network, and cloud-storage layers — that classify sensitive data and block disallowed transfers. Effective against accidents and lazy insiders, evadable by motivated attackers.",
-    "Controls — auf Endpoint-, Netzwerk- und Cloud-Storage-Ebene — die sensible Daten klassifizieren und unerlaubte Transfers blockieren. Wirksam gegen Versehen und nachlässige Insider, umgehbar durch motivierte Angreifer.",
+    "Controls (at endpoint, network, and cloud-storage layers) that classify sensitive data and block disallowed transfers. Effective against accidents and lazy insiders, evadable by motivated attackers.",
+    "Controls (auf Endpoint-, Netzwerk- und Cloud-Storage-Ebene), die sensible Daten klassifizieren und unerlaubte Transfers blockieren. Wirksam gegen Versehen und nachlässige Insider, umgehbar durch motivierte Angreifer.",
     ["exfiltration"]
   ),
   T("zero-trust", "Zero Trust", "defense", null, null,
@@ -604,7 +604,7 @@ const TERMS = [
   ),
   T("defense-in-depth", "Defense in Depth", "defense", null, null,
     "The classical principle of layering independent controls so that the failure of any single layer does not compromise the system. Complementary to, not replaced by, Zero Trust.",
-    "Das klassische Prinzip, unabhängige Controls so zu schichten, dass das Versagen einer einzelnen Schicht das System nicht kompromittiert. Komplementär zu Zero Trust — nicht durch es ersetzt.",
+    "Das klassische Prinzip, unabhängige Controls so zu schichten, dass das Versagen einer einzelnen Schicht das System nicht kompromittiert. Komplementär zu Zero Trust, nicht durch es ersetzt.",
     ["zero-trust", "swiss-cheese-model"]
   ),
   T("threat-hunting", "Threat Hunting", "defense", null, null,
@@ -615,15 +615,15 @@ const TERMS = [
   T("ttp", "TTP", "defense",
     "Tactics, Techniques, and Procedures",
     "Tactics, Techniques, and Procedures",
-    "The behavioral fingerprint of an adversary — what they do (tactics), how (techniques), and exactly how (procedures). Catalogued by MITRE ATT&CK.",
-    "Der Verhaltens-Fingerprint eines Adversary — was er tut (Tactics), wie (Techniques), und genau wie (Procedures). Wird von MITRE ATT&CK katalogisiert.",
+    "The behavioral fingerprint of an adversary: what they do (tactics), how (techniques), and exactly how (procedures). Catalogued by MITRE ATT&CK.",
+    "Der Verhaltens-Fingerprint eines Adversary: was er tut (Tactics), wie (Techniques), und genau wie (Procedures). Wird von MITRE ATT&CK katalogisiert.",
     ["mitre-attack", "ioc", "threat-actor"]
   ),
   T("ioc", "IOC", "defense",
     "Indicator of Compromise",
     "Indicator of Compromise",
-    "An observable artifact — IP address, file hash, domain, registry key — that suggests an intrusion may have occurred. Useful for known-bad detection; brittle against novel adversaries.",
-    "Ein beobachtbares Artefakt — IP-Adresse, File-Hash, Domain, Registry-Key — das auf eine erfolgte Intrusion hindeutet. Nützlich für Known-Bad-Detection; spröde gegen neuartige Adversaries.",
+    "An observable artifact (IP address, file hash, domain, registry key) that suggests an intrusion may have occurred. Useful for known-bad detection; brittle against novel adversaries.",
+    "Ein beobachtbares Artefakt (IP-Adresse, File-Hash, Domain, Registry-Key), das auf eine erfolgte Intrusion hindeutet. Nützlich für Known-Bad-Detection; spröde gegen neuartige Adversaries.",
     ["ttp", "stix-taxii"]
   ),
   T("stix-taxii", "STIX / TAXII", "defense",
@@ -698,7 +698,7 @@ const TERMS = [
     ["tisax", "vda-isa"]
   ),
   T("vda-isa", "VDA ISA", "compliance",
-    "Verband der Automobilindustrie — Information Security Assessment",
+    "Verband der Automobilindustrie, Information Security Assessment",
     "VDA Information Security Assessment",
     "The control catalog that TISAX assessments evaluate against. Maintained by the German automotive association (VDA), aligned to ISO/IEC 27001 with automotive-specific extensions.",
     "Der Control-Katalog, gegen den TISAX-Assessments geprüft werden. Vom Verband der Automobilindustrie (VDA) gepflegt, an ISO/IEC 27001 ausgerichtet mit automobil-spezifischen Erweiterungen.",
@@ -714,8 +714,8 @@ const TERMS = [
   T("bait", "BAIT", "compliance",
     "Bankaufsichtliche Anforderungen an die IT",
     "Bankaufsichtliche Anforderungen an die IT",
-    "BaFin's IT-supervisory requirements for credit institutions — covering IT governance, information security, identity management, and outsourcing. The interpretation framework for §25a KWG.",
-    "Die IT-Aufsichtsanforderungen der BaFin für Kreditinstitute — IT-Governance, Informationssicherheit, Identitäts- und Berechtigungsmanagement, Auslagerung. Der Auslegungsrahmen für §25a KWG.",
+    "BaFin's IT-supervisory requirements for credit institutions, covering IT governance, information security, identity management, and outsourcing. The interpretation framework for §25a KWG.",
+    "Die IT-Aufsichtsanforderungen der BaFin für Kreditinstitute: IT-Governance, Informationssicherheit, Identitäts- und Berechtigungsmanagement, Auslagerung. Der Auslegungsrahmen für §25a KWG.",
     ["bafin", "vait", "marisk", "dora"]
   ),
   T("vait", "VAIT", "compliance",
@@ -770,15 +770,15 @@ const TERMS = [
   T("enisa", "ENISA", "compliance",
     "European Union Agency for Cybersecurity",
     "Agentur der Europäischen Union für Cybersicherheit",
-    "The EU cybersecurity agency. Publishes threat landscapes, certification schemes, and implementation guidance — including for NIS2, CRA, and the Cybersecurity Act.",
-    "Die EU-Agentur für Cybersicherheit. Veröffentlicht Threat-Landscape-Berichte, Zertifizierungsschemata und Umsetzungsleitfäden — u. a. für NIS2, CRA und den Cybersecurity Act.",
+    "The EU cybersecurity agency. Publishes threat landscapes, certification schemes, and implementation guidance: including for NIS2, CRA, and the Cybersecurity Act.",
+    "Die EU-Agentur für Cybersicherheit. Veröffentlicht Threat-Landscape-Berichte, Zertifizierungsschemata und Umsetzungsleitfäden: u. a. für NIS2, CRA und den Cybersecurity Act.",
     ["nis2", "cra", "ai-act"]
   ),
   T("cra", "CRA", "compliance",
     "Cyber Resilience Act",
     "Cyber Resilience Act",
-    "EU regulation (2024/2847) setting horizontal cybersecurity requirements for products with digital elements — across hardware and software. Comes into force in stages from 2026.",
-    "EU-Verordnung (2024/2847), die horizontale Cybersicherheitsanforderungen für Produkte mit digitalen Elementen festlegt — über Hardware und Software hinweg. Tritt ab 2026 gestaffelt in Kraft.",
+    "EU regulation (2024/2847) setting horizontal cybersecurity requirements for products with digital elements: across hardware and software. Comes into force in stages from 2026.",
+    "EU-Verordnung (2024/2847), die horizontale Cybersicherheitsanforderungen für Produkte mit digitalen Elementen festlegt: über Hardware und Software hinweg. Tritt ab 2026 gestaffelt in Kraft.",
     ["enisa", "ai-act", "nis2"]
   ),
   T("ai-act", "AI Act", "compliance",
@@ -791,8 +791,8 @@ const TERMS = [
   T("cer", "CER", "compliance",
     "Critical Entities Resilience Directive",
     "Richtlinie zur Resilienz kritischer Einrichtungen",
-    "EU directive (2022/2557) on the physical resilience of critical entities — the non-cyber companion piece to NIS2.",
-    "EU-Richtlinie (2022/2557) zur physischen Resilienz kritischer Einrichtungen — das Nicht-Cyber-Gegenstück zu NIS2.",
+    "EU directive (2022/2557) on the physical resilience of critical entities: the non-cyber companion piece to NIS2.",
+    "EU-Richtlinie (2022/2557) zur physischen Resilienz kritischer Einrichtungen: das Nicht-Cyber-Gegenstück zu NIS2.",
     ["nis2", "kritis"]
   ),
   T("nist-800-53", "NIST 800-53", "compliance", null, null,
@@ -824,8 +824,8 @@ const TERMS = [
   T("iam", "IAM", "cloud-ot",
     "Identity and Access Management",
     "Identity and Access Management",
-    "The discipline and tooling for managing who can do what in a system — users, groups, roles, policies, sessions. In cloud contexts, the highest-leverage attack surface.",
-    "Die Disziplin und das Tooling für die Verwaltung, wer was in einem System tun darf — User, Gruppen, Rollen, Policies, Sessions. In Cloud-Kontexten die hebelwirksamste Angriffsfläche.",
+    "The discipline and tooling for managing who can do what in a system: users, groups, roles, policies, sessions. In cloud contexts, the highest-leverage attack surface.",
+    "Die Disziplin und das Tooling für die Verwaltung, wer was in einem System tun darf: User, Gruppen, Rollen, Policies, Sessions. In Cloud-Kontexten die hebelwirksamste Angriffsfläche.",
     ["sso", "mfa", "zero-trust"]
   ),
   T("vpc", "VPC", "cloud-ot",
@@ -860,8 +860,8 @@ const TERMS = [
     ["iac", "devsecops"]
   ),
   T("devsecops", "DevSecOps", "cloud-ot", null, null,
-    "The practice of integrating security activities — threat modeling, automated testing, dependency scanning — into the same pipeline that builds and deploys software.",
-    "Die Praxis, Sicherheitsaktivitäten — Threat Modeling, automatisierte Tests, Dependency-Scanning — in dieselbe Pipeline zu integrieren, die Software baut und deployt.",
+    "The practice of integrating security activities (threat modeling, automated testing, dependency scanning) into the same pipeline that builds and deploys software.",
+    "Die Praxis, Sicherheitsaktivitäten (Threat Modeling, automatisierte Tests, Dependency-Scanning) in dieselbe Pipeline zu integrieren, die Software baut und deployt.",
     ["cicd", "iac"]
   ),
   T("saas-paas-iaas", "SaaS / PaaS / IaaS", "cloud-ot",
@@ -872,22 +872,22 @@ const TERMS = [
     ["iam", "vpc"]
   ),
   T("api-gateway", "API Gateway", "cloud-ot", null, null,
-    "A managed front door for APIs — handling authentication, rate limiting, request routing, and observability. Where most modern web traffic actually first hits a security control.",
-    "Eine verwaltete Eingangstür für APIs — übernimmt Authentifizierung, Rate Limiting, Request-Routing und Observability. Wo der Großteil des modernen Web-Traffics tatsächlich zuerst auf ein Sicherheits-Control trifft.",
+    "A managed front door for APIs: handling authentication, rate limiting, request routing, and observability. Where most modern web traffic actually first hits a security control.",
+    "Eine verwaltete Eingangstür für APIs: übernimmt Authentifizierung, Rate Limiting, Request-Routing und Observability. Wo der Großteil des modernen Web-Traffics tatsächlich zuerst auf ein Sicherheits-Control trifft.",
     ["waf", "oauth", "jwt"]
   ),
   T("ics", "ICS", "cloud-ot",
     "Industrial Control Systems",
     "Industrielle Steuerungssysteme",
-    "The umbrella for systems that monitor and control physical industrial processes — from a single PLC to a plant-wide DCS. Security model is fundamentally different from IT: safety and availability first, confidentiality last.",
-    "Der Oberbegriff für Systeme, die physische industrielle Prozesse überwachen und steuern — vom einzelnen PLC bis zum anlagenweiten DCS. Das Sicherheitsmodell unterscheidet sich grundlegend von IT: Sicherheit und Verfügbarkeit zuerst, Vertraulichkeit zuletzt.",
+    "The umbrella for systems that monitor and control physical industrial processes: from a single PLC to a plant-wide DCS. Security model is fundamentally different from IT: safety and availability first, confidentiality last.",
+    "Der Oberbegriff für Systeme, die physische industrielle Prozesse überwachen und steuern: vom einzelnen PLC bis zum anlagenweiten DCS. Das Sicherheitsmodell unterscheidet sich grundlegend von IT: Sicherheit und Verfügbarkeit zuerst, Vertraulichkeit zuletzt.",
     ["scada", "plc", "dcs", "ot"]
   ),
   T("scada", "SCADA", "cloud-ot",
     "Supervisory Control and Data Acquisition",
     "Supervisory Control and Data Acquisition",
-    "A specific class of ICS that supervises distributed assets — pipelines, grids, water networks — via long-distance telemetry and remote control. The classic high-impact target.",
-    "Eine spezifische Klasse von ICS, die verteilte Assets überwacht — Pipelines, Stromnetze, Wassernetze — über Fern-Telemetrie und Remote-Control. Das klassische High-Impact-Ziel.",
+    "A specific class of ICS that supervises distributed assets (pipelines, grids, water networks) via long-distance telemetry and remote control. The classic high-impact target.",
+    "Eine spezifische Klasse von ICS, die verteilte Assets überwacht (Pipelines, Stromnetze, Wassernetze) über Fern-Telemetrie und Remote-Control. Das klassische High-Impact-Ziel.",
     ["ics", "plc"]
   ),
   T("plc", "PLC", "cloud-ot",
@@ -907,34 +907,34 @@ const TERMS = [
   T("dcs", "DCS", "cloud-ot",
     "Distributed Control System",
     "Distributed Control System",
-    "An ICS variant designed for plant-scale process control — refineries, power generation, chemical plants — with controllers, HMIs, and engineering stations on a tightly integrated network.",
-    "Eine ICS-Variante für anlagenweite Prozesssteuerung — Raffinerien, Energieerzeugung, Chemiewerke — mit Controllern, HMIs und Engineering-Stations in einem eng integrierten Netzwerk.",
+    "An ICS variant designed for plant-scale process control (refineries, power generation, chemical plants) with controllers, HMIs, and engineering stations on a tightly integrated network.",
+    "Eine ICS-Variante für anlagenweite Prozesssteuerung (Raffinerien, Energieerzeugung, Chemiewerke) mit Controllern, HMIs und Engineering-Stations in einem eng integrierten Netzwerk.",
     ["ics", "scada"]
   ),
   T("opc-ua", "OPC UA", "cloud-ot",
-    "Open Platform Communications — Unified Architecture",
-    "Open Platform Communications — Unified Architecture",
+    "Open Platform Communications, Unified Architecture",
+    "Open Platform Communications, Unified Architecture",
     "A platform-independent industrial communication protocol with first-class security (encryption, authentication, certificates). The modern replacement for the older OPC Classic.",
     "Ein plattformunabhängiges Industrie-Kommunikationsprotokoll mit erstklassiger Sicherheit (Verschlüsselung, Authentifizierung, Zertifikate). Der moderne Nachfolger des älteren OPC Classic.",
     ["modbus", "ics"]
   ),
   T("modbus", "Modbus", "cloud-ot", null, null,
-    "A 1979-vintage serial industrial protocol still ubiquitous in field devices. No native authentication or encryption — security depends entirely on network isolation.",
-    "Ein 1979 entstandenes serielles Industrieprotokoll, das in Feldgeräten allgegenwärtig ist. Keine native Authentifizierung oder Verschlüsselung — Sicherheit hängt vollständig von Netzwerk-Isolation ab.",
+    "A 1979-vintage serial industrial protocol still ubiquitous in field devices. No native authentication or encryption: security depends entirely on network isolation.",
+    "Ein 1979 entstandenes serielles Industrieprotokoll, das in Feldgeräten allgegenwärtig ist. Keine native Authentifizierung oder Verschlüsselung: Sicherheit hängt vollständig von Netzwerk-Isolation ab.",
     ["opc-ua", "ics"]
   ),
   T("iot", "IoT", "cloud-ot",
     "Internet of Things",
     "Internet of Things",
-    "Network-connected embedded devices outside the traditional IT inventory — sensors, cameras, building automation, consumer electronics. Notorious for unpatched stacks and hardcoded credentials.",
-    "Vernetzte Embedded-Geräte außerhalb des klassischen IT-Inventars — Sensoren, Kameras, Gebäudeautomation, Consumer-Elektronik. Berüchtigt für ungepatche Stacks und hardcodierte Credentials.",
+    "Network-connected embedded devices outside the traditional IT inventory: sensors, cameras, building automation, consumer electronics. Notorious for unpatched stacks and hardcoded credentials.",
+    "Vernetzte Embedded-Geräte außerhalb des klassischen IT-Inventars: Sensoren, Kameras, Gebäudeautomation, Consumer-Elektronik. Berüchtigt für ungepatche Stacks und hardcodierte Credentials.",
     ["ot", "hardcoded-creds"]
   ),
   T("ot", "OT", "cloud-ot",
     "Operational Technology",
     "Operational Technology",
-    "The umbrella for technology that interacts with the physical world — ICS, SCADA, building automation, medical devices. Differentiated from IT by its different priorities (safety, availability) and far longer lifecycles.",
-    "Der Oberbegriff für Technologie, die mit der physischen Welt interagiert — ICS, SCADA, Gebäudeautomation, Medizingeräte. Unterscheidet sich von IT durch andere Prioritäten (Safety, Verfügbarkeit) und deutlich längere Lebenszyklen.",
+    "The umbrella for technology that interacts with the physical world: ICS, SCADA, building automation, medical devices. Differentiated from IT by its different priorities (safety, availability) and far longer lifecycles.",
+    "Der Oberbegriff für Technologie, die mit der physischen Welt interagiert: ICS, SCADA, Gebäudeautomation, Medizingeräte. Unterscheidet sich von IT durch andere Prioritäten (Safety, Verfügbarkeit) und deutlich längere Lebenszyklen.",
     ["ics", "iot"]
   ),
   T("edge-computing", "Edge Computing", "cloud-ot", null, null,
@@ -971,13 +971,13 @@ const TERMS = [
     ["cve", "exploit"]
   ),
   T("exploit", "Exploit", "vuln-class", null, null,
-    "Working code that takes a vulnerability from theoretical to actual — gaining unauthorized access, execution, or data. Distinct from a proof-of-concept by intent and reliability.",
-    "Funktionierender Code, der eine Schwachstelle von theoretisch zu praktisch macht — unauthorisierten Zugriff, Ausführung oder Daten zu erlangen. Unterscheidet sich von einem Proof-of-Concept durch Intent und Zuverlässigkeit.",
+    "Working code that takes a vulnerability from theoretical to actual: gaining unauthorized access, execution, or data. Distinct from a proof-of-concept by intent and reliability.",
+    "Funktionierender Code, der eine Schwachstelle von theoretisch zu praktisch macht: unauthorisierten Zugriff, Ausführung oder Daten zu erlangen. Unterscheidet sich von einem Proof-of-Concept durch Intent und Zuverlässigkeit.",
     ["poc", "zero-day", "cve"]
   ),
   T("poc", "Proof-of-Concept (PoC)", "vuln-class", null, null,
     "Minimal demonstration code that proves a vulnerability is real and exploitable, often used to convince a vendor or stakeholder. Not engineered for reliability or weaponization.",
-    "Minimaler Demonstrations-Code, der zeigt, dass eine Schwachstelle real und ausnutzbar ist — häufig eingesetzt, um Anbieter oder Stakeholder zu überzeugen. Nicht auf Zuverlässigkeit oder Weaponization ausgelegt.",
+    "Minimaler Demonstrations-Code, der zeigt, dass eine Schwachstelle real und ausnutzbar ist: häufig eingesetzt, um Anbieter oder Stakeholder zu überzeugen. Nicht auf Zuverlässigkeit oder Weaponization ausgelegt.",
     ["exploit", "cve"]
   ),
   T("sandbox", "Sandbox", "defense", null, null,
@@ -986,8 +986,8 @@ const TERMS = [
     ["edr", "honeypot"]
   ),
   T("honeypot", "Honeypot", "defense", null, null,
-    "An intentionally exposed system with no legitimate purpose, designed to attract attackers so their behavior — and indicators — can be captured. Useful for early-warning and threat intelligence.",
-    "Ein absichtlich exponiertes System ohne legitimen Zweck, das Angreifer anlocken soll, sodass deren Verhalten — und Indicators — erfasst werden können. Nützlich für Frühwarnung und Threat Intelligence.",
+    "An intentionally exposed system with no legitimate purpose, designed to attract attackers so their behavior (and indicators) can be captured. Useful for early-warning and threat intelligence.",
+    "Ein absichtlich exponiertes System ohne legitimen Zweck, das Angreifer anlocken soll, sodass deren Verhalten (und Indicators) erfasst werden können. Nützlich für Frühwarnung und Threat Intelligence.",
     ["ioc", "threat-hunting"]
   )
 ];
