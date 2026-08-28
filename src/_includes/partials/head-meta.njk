@@ -12,6 +12,9 @@
 
 <link rel="canonical" href="{{ canonicalPath | absoluteUrl(site.domain) }}">
 
+{# Mastodon profile verification — invisible, head-only rel="me" link. #}
+<link rel="me" href="https://mastodon.social/@vornac">
+
 {# hreflang: each page declares its i18nKey, we pull both URLs from the registry. #}
 {% if i18nKey %}
   {% for p in pages %}
