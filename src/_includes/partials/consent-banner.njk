@@ -1,16 +1,28 @@
 {# Cookie consent modal — Consent Mode v2 companion to google-tag.njk.
 
-   Rendered hidden; the script shows it only when no choice is stored under
-   'vornac_consent_v1' (the same key google-tag.njk and the form scripts
-   read). The modal is blocking: a full-viewport backdrop sits over the page
-   and scrolling is locked until the visitor picks one of the two options.
-   "Accept all" flips all four Google consent signals to granted via
-   gtag('consent','update'); "Essential only" just stores the choice — the
-   head defaults already deny everything. Leadfeeder and Plausible are not
-   gated here (legitimate interest / cookieless).
+   Rendered hidden; the script shows it on its own only when no choice is
+   stored under 'vornac_consent_v1' (the same key google-tag.njk, leadfeeder.njk
+   and the form scripts read). The modal is blocking: a full-viewport backdrop
+   sits over the page and scrolling is locked until the visitor picks one of
+   the two options.
 
-   The legal pages are exempt: the modal links to the privacy policy, so that
-   page has to stay readable without a prior consent decision. #}
+   What each choice actually does:
+     "Accept all"      → all four Google consent signals flip to granted via
+                         gtag('consent','update'), and Leadfeeder is injected
+                         for the first time.
+     "Essential only"  → the four signals are explicitly re-denied (matters
+                         when an earlier "granted" is being withdrawn),
+                         Leadfeeder's persistent _lfa identifier is purged,
+                         and the _ga* / _gcl* / _gac_* cookies and local
+                         storage entries a previous "Accept all" wrote are
+                         deleted. Leadfeeder is never loaded.
+
+   Withdrawal has to be as easy as consent (§ 25 TDDDG / Art. 7(3) GDPR), so
+   the footer carries a "Cookie settings" control: any element with
+   [data-consent-reopen] re-opens this modal, on every page including /legal.
+
+   Plausible is not gated here — it is cookieless and stores nothing on the
+   device, so § 25 TDDDG does not bite. Leadfeeder is gated; it used not to be. #}
 <div class="v-consent" id="consent-banner" role="dialog" aria-modal="true" aria-labelledby="consent-title" hidden>
     <div class="v-consent-card" tabindex="-1">
         <h2 class="v-consent-title" id="consent-title">{{ t.consent.title }}</h2>
@@ -28,36 +40,89 @@
 (function () {
     var banner = document.getElementById('consent-banner');
     if (!banner) return;
-    // Privacy policy must stay readable without a consent decision.
-    if (/^\/(de\/)?legal(\/|$)/.test(location.pathname)) return;
     var KEY = 'vornac_consent_v1';
-    try {
-        if (localStorage.getItem(KEY)) return;
-    } catch (e) {}
-    // No stored choice (or storage unavailable): ask, and block until chosen.
-    banner.hidden = false;
-    document.documentElement.classList.add('v-consent-open');
-    var card = banner.querySelector('.v-consent-card');
-    if (card) card.focus();
 
-    function choose(granted) {
-        try { localStorage.setItem(KEY, granted ? 'granted' : 'denied'); } catch (e) {}
-        if (granted && typeof gtag === 'function') {
-            gtag('consent', 'update', {
-                ad_storage: 'granted',
-                ad_user_data: 'granted',
-                ad_personalization: 'granted',
-                analytics_storage: 'granted'
-            });
-        }
+    function open() {
+        banner.classList.remove('is-closing');
+        banner.hidden = false;
+        document.documentElement.classList.add('v-consent-open');
+        var card = banner.querySelector('.v-consent-card');
+        if (card) card.focus();
+    }
+
+    function close() {
         banner.classList.add('is-closing');
         setTimeout(function () {
             banner.hidden = true;
+            banner.classList.remove('is-closing');
             document.documentElement.classList.remove('v-consent-open');
         }, 220);
     }
 
+    // gtag('consent','update',{...:'denied'}) stops Google from writing new
+    // cookies, but it does not remove the ones an earlier "Accept all" already
+    // wrote (_ga, _ga_<id>, _gcl_au, and the _gcl_ls link-state entry in local
+    // storage). Withdrawal has to actually undo the storage, so we drop them.
+    var GOOGLE_STORAGE = /^(_ga($|_)|_gcl|_gac_)/;
+
+    function purgeGoogleStorage() {
+        var root = location.hostname.replace(/^www\./, '');
+        var domains = ['', '; domain=' + root, '; domain=.' + root];
+        document.cookie.split(';').forEach(function (pair) {
+            var name = pair.split('=')[0].trim();
+            if (!GOOGLE_STORAGE.test(name)) return;
+            domains.forEach(function (d) {
+                document.cookie = name + '=; Max-Age=0; path=/' + d;
+            });
+        });
+        try {
+            Object.keys(localStorage).forEach(function (name) {
+                if (GOOGLE_STORAGE.test(name)) localStorage.removeItem(name);
+            });
+        } catch (e) {}
+    }
+
+    function choose(granted) {
+        try { localStorage.setItem(KEY, granted ? 'granted' : 'denied'); } catch (e) {}
+        if (typeof gtag === 'function') {
+            // Denied is sent explicitly too: a visitor withdrawing an earlier
+            // "Accept all" must be back at the head defaults within this
+            // pageview, not only after the next reload.
+            var state = granted ? 'granted' : 'denied';
+            gtag('consent', 'update', {
+                ad_storage: state,
+                ad_user_data: state,
+                ad_personalization: state,
+                analytics_storage: state
+            });
+        }
+        if (window.__vornacLeadfeeder) {
+            if (granted) window.__vornacLeadfeeder.load();
+            else window.__vornacLeadfeeder.purge();
+        }
+        if (!granted) purgeGoogleStorage();
+        close();
+    }
+
     banner.querySelector('[data-consent-accept]').addEventListener('click', function () { choose(true); });
     banner.querySelector('[data-consent-decline]').addEventListener('click', function () { choose(false); });
+
+    // Footer "Cookie settings" — available on every page, also once a choice
+    // has been stored, so consent can be withdrawn as easily as it was given.
+    document.addEventListener('click', function (e) {
+        var trigger = e.target.closest ? e.target.closest('[data-consent-reopen]') : null;
+        if (!trigger) return;
+        e.preventDefault();
+        open();
+    });
+
+    // The privacy policy must stay readable without a prior consent decision —
+    // the modal links to it — so it never auto-opens there.
+    if (/^\/(de\/)?legal(\/|$)/.test(location.pathname)) return;
+    try {
+        if (localStorage.getItem(KEY)) return;
+    } catch (e) {}
+    // No stored choice (or storage unavailable): ask, and block until chosen.
+    open();
 })();
 </script>

@@ -259,7 +259,11 @@ bodyClass: comcenter
 {% endblock %}
 
 {% block extraBodyEnd %}
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+{# Chart.js 4.4.0, self-hosted rather than pulled from cdn.jsdelivr.net:
+   a CDN request hands the visitor's IP to a third party on page load,
+   before any consent decision — the same reason the brand webfonts are
+   served from our own origin (see partials/head-fonts.njk). #}
+<script src="/chart.umd.js"></script>
 <script>
     const viewButtons = document.querySelectorAll('.view-btn');
     const views = document.querySelectorAll('[data-view]');

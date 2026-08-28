@@ -16,15 +16,16 @@
   guard — so Google sets no _gcl_*/_ga* cookies without consent.
   consent-banner.njk collects the choice and stores it under
   'vornac_consent_v1' in localStorage; a stored "granted" is re-applied here
-  on every pageview, before the config calls. Leadfeeder and Plausible are
-  deliberately not consent-gated (legitimate interest / cookieless).
+  on every pageview, before the config calls. Leadfeeder reads the same key
+  and is gated on it too (see partials/leadfeeder.njk); Plausible is not,
+  because it is cookieless and stores nothing on the device.
 
   Google Tag Manager ({{ site.analytics.gtmContainerId }}) loads between the
   consent defaults and the gtag.js loader: after the defaults because GTM
   reads the consent state that is current when it boots, behind the
   lang-redirect guard because a redirecting page must not fire container
-  tags (the counterpart page is the one countable pageview). The matching
-  <noscript> iframe lives in layouts/base.njk right after <body>.
+  tags (the counterpart page is the one countable pageview). There is
+  deliberately no <noscript> iframe fallback — see layouts/base.njk.
 #}
 <script>
   window.dataLayer = window.dataLayer || [];

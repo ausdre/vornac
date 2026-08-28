@@ -41,6 +41,9 @@
                 <ul class="space-y-3 text-sm text-stone-400">
                     <li><a href="{{ pageUrls.legal }}" class="hover:text-amber-500 transition-colors">{{ t.footer.legalLinks.privacy }}</a></li>
                     <li><a href="{{ pageUrls.legal }}" class="hover:text-amber-500 transition-colors">{{ t.footer.legalLinks.imprint }}</a></li>
+                    {# Withdrawal has to be as easy as consent (§ 25 TDDDG /
+                       Art. 7(3) GDPR): re-opens partials/consent-banner.njk. #}
+                    <li><button type="button" data-consent-reopen class="text-left hover:text-amber-500 transition-colors">{{ t.footer.legalLinks.cookies }}</button></li>
                 </ul>
             </div>
             <div>

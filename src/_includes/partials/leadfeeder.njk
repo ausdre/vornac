@@ -1,21 +1,70 @@
 {#
   Leadfeeder (Dealfront) — B2B visitor / company identification tracking.
 
+  CONSENT-GATED. Leadfeeder writes a persistent device identifier
+  (`_lfa` = "LF1.1.…", plus `_lfa_expiry`, ~1 year) into localStorage and
+  replays it to tr.lfeeder.com on every hit. That is storage/access on the
+  visitor's terminal equipment for a non-essential purpose, so § 25(1) TDDDG
+  requires prior consent — legitimate interest does not carry it, and neither
+  does Leadfeeder's own `consentLevel: "none"` mode, which still creates and
+  sends the identifier. The script is therefore injected only after the
+  visitor has actively chosen "Accept all" in consent-banner.njk.
+
+  On every pageview without a stored "granted" we additionally purge whatever
+  Leadfeeder left behind, so visitors who were tracked under the previous
+  ungated implementation (or who withdraw consent later) lose the identifier
+  rather than keeping it forever.
+
   Loaded in <head> after lang-redirect.njk, so the __vornacLangRedirect flag is
-  already set when we run. When a redirect is in flight we skip entirely and
+  already set when we run. When a redirect is in flight we skip loading and
   the counterpart page fires the single hit instead — one hit per visit, never
   a double count on / for German-locale first-time visitors.
 
-  Snippet body is Leadfeeder's vendor code, kept verbatim (incl. the leaked `fs`
-  global); only the redirect guard wraps it.
+  Snippet body is Leadfeeder's vendor code, kept verbatim except that the
+  leaked `fs` global is now scoped with `var`.
 #}
 <script>
-    if (!window.__vornacLangRedirect) (function(ss,ex){
-        window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));};
-        (function(d,s){
-            fs=d.getElementsByTagName(s)[0];
-            function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); };
-            ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js');
-        })(document,'script');
-    })('DzLR5a5AnPWaBoQ2');
+(function () {
+    var KEY = 'vornac_consent_v1';
+    var loaded = false;
+
+    function load() {
+        if (loaded) return;
+        loaded = true;
+        (function (ss, ex) {
+            window.ldfdr = window.ldfdr || function () { (ldfdr._q = ldfdr._q || []).push([].slice.call(arguments)); };
+            (function (d, s) {
+                var fs = d.getElementsByTagName(s)[0];
+                function ce(src) { var cs = d.createElement(s); cs.src = src; cs.async = 1; fs.parentNode.insertBefore(cs, fs); }
+                ce('https://sc.lfeeder.com/lftracker_v1_' + ss + (ex ? '_' + ex : '') + '.js');
+            })(document, 'script');
+        })('DzLR5a5AnPWaBoQ2');
+    }
+
+    // Everything Leadfeeder persists first-party: the LF1.1.* device id, its
+    // expiry stamp, and the cookie mirror the tracker falls back to.
+    function purge() {
+        try {
+            localStorage.removeItem('_lfa');
+            localStorage.removeItem('_lfa_expiry');
+        } catch (e) {}
+        var root = location.hostname.replace(/^www\./, '');
+        document.cookie = '_lfa=; Max-Age=0; path=/';
+        document.cookie = '_lfa=; Max-Age=0; path=/; domain=' + root;
+        document.cookie = '_lfa=; Max-Age=0; path=/; domain=.' + root;
+    }
+
+    // consent-banner.njk drives these when the visitor makes or changes a choice.
+    window.__vornacLeadfeeder = { load: load, purge: purge };
+
+    var stored = null;
+    try { stored = localStorage.getItem(KEY); } catch (e) {}
+
+    if (stored !== 'granted') {
+        purge();
+        return;
+    }
+    if (window.__vornacLangRedirect) return;
+    load();
+})();
 </script>
