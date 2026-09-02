@@ -1,0 +1,312 @@
+---
+title: "VORNAC CTEM · Continuous Threat Exposure Management. Your external attack surface, daily, as an attacker sees it."
+description: "Continuous Threat Exposure Management by VORNAC: a complete, daily rebuilt picture of your external attack surface, starting from core domains and IP ranges. Subdomains, services, cloud resources, subsidiary systems, leaked employee credentials, rated within 24 hours. Audit documentation for NIS2, DORA and ISO 27001. Optional continuous pentesting across everything discovery finds, as a flat rate. Developed and operated in Germany."
+i18nKey: ctem
+ogType: website
+---
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+<link rel="stylesheet" href="/ctem.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.vornac.com/ctem#service",
+      "name": "VORNAC CTEM",
+      "serviceType": "Continuous Threat Exposure Management",
+      "description": "A complete, daily rebuilt picture of the external attack surface as an attacker sees it, starting from core domains and IP ranges: subdomains, services, cloud resources, subsidiary systems, assets in no inventory, and leaked employee credentials, rated within 24 hours. Produces the continuous vulnerability-management documentation NIS2, DORA and ISO 27001 require. Optional autonomous continuous pentesting across the entire discovered attack surface as a flat rate. Developed and operated in Germany.",
+      "provider": { "@id": "https://www.vornac.com/#organization" },
+      "areaServed": [
+        { "@type": "Country", "name": "Germany" },
+        { "@type": "Country", "name": "Austria" },
+        { "@type": "Country", "name": "Switzerland" },
+        { "@type": "Place", "name": "European Union" }
+      ],
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "Regulated enterprises, banks, insurers, KRITIS operators, industrial groups with subsidiaries"
+      },
+      "url": "https://www.vornac.com/ctem",
+      "category": "Cybersecurity"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.vornac.com/" },
+        { "@type": "ListItem", "position": 2, "name": "CTEM", "item": "https://www.vornac.com/ctem" }
+      ]
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="ctem-hero" data-no-crosslink>
+    <div class="ctem-hero-inner">
+        <h1 class="ctem-hero-headline">
+            <span>VORNAC</span>
+            <span>CTEM</span>
+        </h1>
+
+        <p class="ctem-hero-subline">
+            Continuous Threat Exposure Management. A complete, current picture of your external attack surface, <strong>as an attacker sees it, rebuilt every day.</strong> Start with your core domains and IP ranges. VORNAC finds the rest, including the employee credentials that have already leaked.
+        </p>
+
+        <div class="ctem-hero-actions">
+            {% set btnLabel = "Book a demo" %}
+            {% set btnSource = "ctem-hero" %}
+            {% include "partials/hero-demo-button.njk" %}
+            <a href="#phases" class="ctem-btn-ghost">The five phases.</a>
+        </div>
+    </div>
+
+    {% include "partials/ctem-topology.njk" %}
+</section>
+
+<section class="ctem-results">
+    <div class="ctem-results-inner">
+        <h2 class="ctem-results-headline">
+            Know what you show. <em>Not what you think you show.</em>
+        </h2>
+
+        <p class="ctem-results-sub">
+            The result of CTEM is threefold.
+        </p>
+
+        <div class="ctem-results-grid">
+            <div class="ctem-result">
+                <p class="ctem-result-word">Complete.</p>
+                <p class="ctem-result-desc">You know what you expose, not what you believe you expose. In the first weeks, the list of unknown assets and the first credentials found are usually the most valuable result.</p>
+            </div>
+
+            <div class="ctem-result">
+                <p class="ctem-result-word">Current.</p>
+                <p class="ctem-result-desc">An attack surface changes weekly. An annual test describes a state that no longer exists by the time the report is read. CTEM rebuilds the picture every day.</p>
+            </div>
+
+            <div class="ctem-result">
+                <p class="ctem-result-word">Provable.</p>
+                <p class="ctem-result-desc">NIS2, DORA and ISO 27001 require continuous vulnerability management across the entire attack surface. CTEM produces exactly the documentation an auditor wants to see, without anyone compiling it by hand.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ctem-compare">
+    <div class="ctem-compare-inner">
+        <header class="ctem-compare-header">
+            <h2 class="ctem-compare-headline">
+                An annual test describes a state that no longer exists when you read the report.
+            </h2>
+            <p class="ctem-compare-sub">
+                The attack surface of a company changes weekly. New subdomains, a changed service, the forgotten host of a subsidiary, a password in a stealer log. A snapshot cannot keep up. A daily picture can.
+            </p>
+        </header>
+
+        <div class="ctem-compare-grid">
+            <article class="ctem-compare-card ctem-compare-card--old">
+                <header class="ctem-compare-card-head">
+                    <h3 class="ctem-compare-card-title">The annual assessment</h3>
+                </header>
+                <ul class="ctem-compare-list">
+                    <li class="ctem-compare-row"><span class="ctem-compare-dim">Starting point</span><span class="ctem-compare-val">An asset list you maintain yourself. Scope negotiated per engagement.</span></li>
+                    <li class="ctem-compare-row"><span class="ctem-compare-dim">Coverage</span><span class="ctem-compare-val">What is on the list. Subsidiaries under other brands and forgotten hosts are out of scope by definition.</span></li>
+                    <li class="ctem-compare-row"><span class="ctem-compare-dim">Cadence</span><span class="ctem-compare-val">Once a year. The report describes the network of a few months ago.</span></li>
+                    <li class="ctem-compare-row"><span class="ctem-compare-dim">Credentials</span><span class="ctem-compare-val">Not part of the test. A leaked password is noticed when it is used.</span></li>
+                    <li class="ctem-compare-row"><span class="ctem-compare-dim">Evidence</span><span class="ctem-compare-val">A PDF snapshot, compiled by hand for the auditor.</span></li>
+                    <li class="ctem-compare-row"><span class="ctem-compare-dim">Billing</span><span class="ctem-compare-val">Per asset, per engagement. Someone decides in advance which systems are worth it.</span></li>
+                </ul>
+            </article>
+
+            <article class="ctem-compare-card ctem-compare-card--new">
+                <header class="ctem-compare-card-head">
+                    <img src="/logo-vornac-white.svg" alt="VORNAC" class="ctem-compare-card-logo">
+                </header>
+                <ul class="ctem-compare-list">
+                    <li class="ctem-compare-row"><span class="ctem-compare-dim">Starting point</span><span class="ctem-compare-val">Core domains and IP ranges. Everything else is found, not listed.</span></li>
+                    <li class="ctem-compare-row"><span class="ctem-compare-dim">Coverage</span><span class="ctem-compare-val">Everything an attacker can see: subdomains, services, cloud resources, systems of subsidiaries under other brands, assets in no inventory.</span></li>
+                    <li class="ctem-compare-row"><span class="ctem-compare-dim">Cadence</span><span class="ctem-compare-val">Rebuilt every day. A new system, a changed service, a published vulnerability: known within 24 hours, with rating.</span></li>
+                    <li class="ctem-compare-row"><span class="ctem-compare-dim">Credentials</span><span class="ctem-compare-val">Employee credentials watched continuously in leaks, stealer logs and darknet marketplaces, attributed to account and system.</span></li>
+                    <li class="ctem-compare-row"><span class="ctem-compare-dim">Evidence</span><span class="ctem-compare-val">Continuous documentation for NIS2, DORA and ISO 27001, produced as a by-product of the monitoring.</span></li>
+                    <li class="ctem-compare-row"><span class="ctem-compare-dim">Billing</span><span class="ctem-compare-val">One flat rate. No per-asset billing, no pre-selection of what is worth testing.</span></li>
+                </ul>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="ctem-phases" id="phases">
+    <div class="ctem-phases-inner">
+        <header class="ctem-phases-header">
+            <h2 class="ctem-phases-headline">
+                From two inputs to the whole attack surface. <em>In five phases.</em>
+            </h2>
+            <p class="ctem-phases-sub">
+                Continuous Threat Exposure Management is the five-phase program Gartner described in 2022: scoping, discovery, prioritization, validation, mobilization. This is what each phase looks like when VORNAC runs it.
+            </p>
+        </header>
+
+        <ol class="ctem-phase-list">
+            <li class="ctem-phase">
+                <div class="ctem-phase-tag">
+                    <span class="ctem-phase-num">I</span>
+                    <span class="ctem-phase-name">Scoping</span>
+                </div>
+                <div class="ctem-phase-body">
+                    <h3 class="ctem-phase-title">Two inputs. Core domains and IP ranges.</h3>
+                    <p class="ctem-phase-desc">That is all the starting point needs. No asset list to maintain, no scope negotiation, no decision about which systems deserve attention. Subsidiaries under other brands, cloud tenants and forgotten hosts come in through discovery, not through a spreadsheet. Onboarding and setup are included in the price.</p>
+                </div>
+                <div class="ctem-phase-posture"><b>You provide</b>Core domains and IP ranges. Onboarding and setup included.</div>
+            </li>
+
+            <li class="ctem-phase">
+                <div class="ctem-phase-tag">
+                    <span class="ctem-phase-num">II</span>
+                    <span class="ctem-phase-name">Discovery</span>
+                </div>
+                <div class="ctem-phase-body">
+                    <h3 class="ctem-phase-title">Everything else, VORNAC finds itself.</h3>
+                    <p class="ctem-phase-desc">Subdomains, services, cloud resources, systems of subsidiaries under other brands, assets that appear in no inventory. The picture is rebuilt every day, from the outside, as an attacker sees it. And because an attack surface is not only systems: the credentials of your employees are watched continuously for appearances in leaks, stealer logs and darknet marketplaces. A leaked password is often the more convenient route than any vulnerability, and without monitoring a company learns of it only once it has been used.</p>
+                </div>
+                <div class="ctem-phase-posture"><b>Cadence</b>Rebuilt daily. Credentials watched in leaks, stealer logs and darknet marketplaces.</div>
+            </li>
+
+            <li class="ctem-phase">
+                <div class="ctem-phase-tag">
+                    <span class="ctem-phase-num">III</span>
+                    <span class="ctem-phase-name">Prioritization</span>
+                </div>
+                <div class="ctem-phase-body">
+                    <h3 class="ctem-phase-title">Known within 24 hours. Rated, not just listed.</h3>
+                    <p class="ctem-phase-desc">A new system appears, a service changes, a relevant vulnerability is published: within 24 hours it is known, including its rating. Credential hits are attributed to the affected account and system and rated together with the rest of the attack surface. One picture, not two lists.</p>
+                </div>
+                <div class="ctem-phase-posture"><b>Time to rating</b>24 hours from the change to a rated entry.</div>
+            </li>
+
+            <li class="ctem-phase ctem-phase--validation">
+                <div class="ctem-phase-tag">
+                    <span class="ctem-phase-num">IV</span>
+                    <span class="ctem-phase-name">Validation</span>
+                </div>
+                <div class="ctem-phase-body">
+                    <h3 class="ctem-phase-title">Whether a system can actually be compromised, only exploitation proves.</h3>
+                    <p class="ctem-phase-desc">CTEM shows what is there and where the risk sits. Whoever wants the proof adds autonomous pentesting as a flat rate. It then runs across the entire discovered attack surface, not a list agreed in advance: every system discovery knows is tested fully and regularly, newly found systems automatically included. Production-safe, with a proof of concept per finding. Critical findings are confirmed by a BSI-recognised penetration tester before they are reported. Retests after remediation run automatically.</p>
+                </div>
+                <div class="ctem-phase-posture"><b>Optional</b>One flat rate. The whole discovered surface, not a list.</div>
+            </li>
+
+            <li class="ctem-phase">
+                <div class="ctem-phase-tag">
+                    <span class="ctem-phase-num">V</span>
+                    <span class="ctem-phase-name">Mobilization</span>
+                </div>
+                <div class="ctem-phase-body">
+                    <h3 class="ctem-phase-title">The documentation an auditor wants to see. Nobody compiles it by hand.</h3>
+                    <p class="ctem-phase-desc">NIS2, DORA and ISO 27001 require continuous vulnerability management across the entire attack surface. CTEM produces exactly that record as a by-product: what is exposed, since when, how it was rated. Hits are attributed to the affected account and system, so remediation starts where it belongs. With the pentesting flat rate, the automatic retest closes the loop.</p>
+                </div>
+                <div class="ctem-phase-posture"><b>Evidence for</b>NIS2, DORA, ISO 27001. Hits attributed to account and system.</div>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<section class="ctem-offer" id="offer">
+    <div class="ctem-offer-inner">
+        <header class="ctem-offer-header">
+            <h2 class="ctem-offer-headline">
+                Two variants. <em>No billing per asset.</em>
+            </h2>
+            <p class="ctem-offer-sub">
+                CTEM is the base service. Continuous pentesting is the flat rate on top. Nobody has to decide in advance which systems are worth testing.
+            </p>
+        </header>
+
+        <div class="ctem-offer-grid">
+            <article class="ctem-plan">
+                <h3 class="ctem-plan-name">CTEM</h3>
+                <p class="ctem-plan-tag">The base service</p>
+                <ul class="ctem-plan-list">
+                    <li>The external attack surface, rebuilt every day, as an attacker sees it</li>
+                    <li>Discovery of subdomains, services, cloud resources and systems of subsidiaries under other brands</li>
+                    <li>Employee credentials watched in leaks, stealer logs and darknet marketplaces, attributed to account and system</li>
+                    <li>New systems, changed services and published vulnerabilities rated within 24 hours</li>
+                    <li>Audit documentation for NIS2, DORA and ISO 27001, without manual compilation</li>
+                    <li>Onboarding and setup included</li>
+                </ul>
+            </article>
+
+            <article class="ctem-plan">
+                <h3 class="ctem-plan-name">CTEM + Continuous Pentesting</h3>
+                <p class="ctem-plan-tag">The flat rate on top</p>
+                <ul class="ctem-plan-list">
+                    <li><strong>Everything in CTEM</strong></li>
+                    <li>Autonomous pentesting across the entire discovered attack surface, not a pre-agreed list</li>
+                    <li>Every known system tested fully and regularly, newly found systems automatically included</li>
+                    <li>Production-safe, with a proof of concept for every finding</li>
+                    <li>Critical findings confirmed by a BSI-recognised penetration tester before reporting</li>
+                    <li>Automatic retests after remediation</li>
+                </ul>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="ctem-trust" id="germany">
+    <div class="ctem-trust-inner">
+        <header class="ctem-trust-header">
+            <h2 class="ctem-trust-headline">
+                Developed and operated <em>in Germany.</em>
+            </h2>
+            <p class="ctem-trust-sub">
+                No external AI provider. No processing outside Germany.
+            </p>
+        </header>
+
+        <div class="ctem-badges">
+            <div class="ctem-badge">
+                <picture><source type="image/webp" srcset="/cert-iso27001.webp"><img src="/cert-iso27001.png" width="407" height="400" alt="ISO 27001" class="ctem-badge-img"></picture>
+                <p class="ctem-badge-label">Built on ISO 27001</p>
+            </div>
+            <div class="ctem-badge">
+                <picture><source type="image/webp" srcset="/cert-bsi.webp"><img src="/cert-bsi.png" width="817" height="400" alt="BSI" class="ctem-badge-img"></picture>
+                <p class="ctem-badge-label">Aligned with BSI</p>
+            </div>
+            <div class="ctem-badge">
+                <picture><source type="image/webp" srcset="/cert-cissp.webp"><img src="/cert-cissp.png" width="340" height="340" alt="CISSP" class="ctem-badge-img"></picture>
+                <p class="ctem-badge-label">CISSP certified</p>
+            </div>
+            <div class="ctem-badge">
+                <picture><source type="image/webp" srcset="/cert-oscp.webp"><img src="/cert-oscp.png" width="400" height="400" alt="OSCP" class="ctem-badge-img"></picture>
+                <p class="ctem-badge-label">OSCP certified</p>
+            </div>
+        </div>
+
+        <p class="ctem-trust-residency">
+            Discovery, credential monitoring, ratings and documentation run on a platform VORNAC develops and operates itself, <strong>in Germany, under German jurisdiction</strong>. No external AI provider, no third-country transfers.
+        </p>
+    </div>
+</section>
+
+<section class="ctem-cta">
+    <div class="ctem-cta-inner">
+        <h2 class="ctem-cta-headline">
+            See your attack surface <em>as an attacker sees it.</em>
+        </h2>
+
+        <p class="ctem-cta-sub">
+            Two inputs to start: core domains and IP ranges. Within the first weeks you usually hold the list of assets nobody knew about, and the first credentials that had already leaked.
+        </p>
+
+        <div class="ctem-cta-actions">
+            {% set btnLabel = "Book a demo" %}
+            {% set btnSource = "ctem-cta" %}
+            {% include "partials/hero-demo-button.njk" %}
+            <a href="#phases" class="ctem-cta-btn-ghost">The five phases.</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
