@@ -105,6 +105,7 @@
     { "source": "/industries-insurance_de",                   "destination": "/industries-insurance",              "permanent": true },
 
     { "source": "/comcenter.html",    "destination": "/en/comcenter", "permanent": true },
+    { "source": "/comcenter",         "destination": "/en/comcenter", "permanent": true },
 
     { "source": "/preventive.html",        "destination": "/en", "permanent": true },
     { "source": "/preventive",             "destination": "/en", "permanent": true },
