@@ -1,0 +1,61 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://www.vornac.com/de/wissen/nis2-wirksamkeitspruefung#article",
+      "mainEntityOfPage": "https://www.vornac.com/de/wissen/nis2-wirksamkeitspruefung",
+      "headline": "NIS2: Wirksamkeit der Sicherheitsmaßnahmen belegen (§ 30 BSIG)",
+      "description": "Was § 30 Abs. 2 Satz 2 Nr. 6 BSIG von besonders wichtigen und wichtigen Einrichtungen verlangt, welche Nachweise das BSI erwartet und welche Rolle kontinuierliche Penetrationstests dabei spielen.",
+      "inLanguage": "de",
+      "author": {
+        "@type": "Person",
+        "name": "André Feigenbutz",
+        "jobTitle": "Mitgründer und Geschäftsführer, VORNAC GmbH",
+        "description": "BSI-qualifizierter Penetrationstester",
+        "url": "https://www.vornac.com/de/about"
+      },
+      "publisher": { "@id": "https://www.vornac.com/#organization" },
+      "datePublished": "2026-09-15",
+      "dateModified": "2026-09-15",
+      "about": [
+        { "@type": "Thing", "name": "NIS2" },
+        { "@type": "Legislation", "name": "§ 30 BSIG", "legislationIdentifier": "BSIG 2025 § 30" }
+      ],
+      "citation": [
+        "https://www.gesetze-im-internet.de/bsig_2025/__30.html",
+        "https://www.bsi.bund.de/DE/Themen/Regulierte-Wirtschaft/NIS-2-regulierte-Unternehmen/NIS-2-Infopakete/NIS-2-Bewertung-der-Wirksamkeit-von-Massnahmen/NIS-2-Bewertung-der-Wirksamkeit_node.html"
+      ],
+      "isPartOf": { "@id": "https://www.vornac.com/#website" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.vornac.com/de/wissen/nis2-wirksamkeitspruefung#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Verlangt NIS2 einen Penetrationstest?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Das BSIG schreibt keinen Penetrationstest namentlich vor. § 30 Abs. 2 Satz 2 Nr. 5 verlangt Schwachstellenmanagement, Nr. 6 verlangt Konzepte und Verfahren zur Bewertung der Wirksamkeit der Risikomanagementmaßnahmen. Ein Penetrationstest ist der gängige technische Nachweis dafür, dass Maßnahmen einem realen Angriff standhalten."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie oft muss die Wirksamkeit bewertet werden?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Das BSI beschreibt die Wirksamkeitsbewertung als fortlaufenden Prozess, nicht als einmaliges Ereignis. Eine feste Frist nennt das Gesetz nicht; die Bewertung muss zum Risiko und zur Änderungsrate der Systeme passen."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Wissen", "item": "https://www.vornac.com/de/wissen" },
+        { "@type": "ListItem", "position": 2, "name": "NIS2 Wirksamkeitsprüfung", "item": "https://www.vornac.com/de/wissen/nis2-wirksamkeitspruefung" }
+      ]
+    }
+  ]
+}

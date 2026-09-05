@@ -1,0 +1,162 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.vornac.com/#organization",
+      "name": "VORNAC GmbH",
+      "alternateName": "VORNAC",
+      "legalName": "VORNAC GmbH",
+      "url": "https://www.vornac.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.vornac.com/vornacpentesting43.png"
+      },
+      "description": "Kontinuierliche, autonome Penetrationstests und Sicherheitsvalidierung für regulierte Unternehmen. Betrieb und Datenhaltung ausschließlich in Deutschland. Auditfähige Reports für NIS2, DORA, KRITIS, TISAX, VAIT/BAIT und ISO/IEC 27001.",
+      "slogan": "Made & Hosted in Germany",
+      "foundingDate": "TODO-JJJJ-MM-TT",
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "Heidelberg, Deutschland"
+      },
+      "founder": [
+        {
+          "@type": "Person",
+          "name": "André Feigenbutz",
+          "jobTitle": "Mitgründer und Geschäftsführer",
+          "url": "https://www.vornac.com/de/about"
+        },
+        {
+          "@type": "Person",
+          "name": "Arthur Raess",
+          "jobTitle": "Mitgründer",
+          "url": "https://www.vornac.com/de/about"
+        }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Carl-Friedrich-Gauß-Ring 5",
+        "postalCode": "69124",
+        "addressLocality": "Heidelberg",
+        "addressRegion": "Baden-Württemberg",
+        "addressCountry": "DE"
+      },
+      "telephone": "+49 6221 6479525",
+      "email": "hello@vornac.com",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "Handelsregister",
+        "value": "HRB 757584, Amtsgericht Mannheim"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Deutschland"
+      },
+      "knowsLanguage": ["de", "en"],
+      "knowsAbout": [
+        "Automatisierte Penetrationstests",
+        "Kontinuierliche Sicherheitsvalidierung",
+        "Assumed Breach Simulation",
+        "Continuous Threat Exposure Management",
+        "Breach and Attack Simulation",
+        "Pentest as a Service",
+        "NIS2 und § 30 BSIG",
+        "DORA",
+        "TISAX",
+        "KRITIS",
+        "ISO/IEC 27001",
+        "BSI IT-Grundschutz"
+      ],
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "name": "TeleTrusT Bundesverband IT-Sicherheit e.V.",
+          "url": "https://www.teletrust.de/"
+        },
+        {
+          "@type": "Organization",
+          "name": "Allianz für Cyber-Sicherheit (BSI)",
+          "url": "https://www.allianz-fuer-cybersicherheit.de/"
+        }
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/company/vornac",
+        "https://www.crunchbase.com/organization/vornac-gmbh"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "telephone": "+49 6221 6479525",
+        "email": "hello@vornac.com",
+        "availableLanguage": ["de", "en"],
+        "areaServed": "DE"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.vornac.com/#website",
+      "url": "https://www.vornac.com/",
+      "name": "VORNAC",
+      "description": "Kontinuierliche Sicherheitsvalidierung für regulierte Unternehmen in Deutschland.",
+      "publisher": { "@id": "https://www.vornac.com/#organization" },
+      "inLanguage": ["de", "en"]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.vornac.com/#service-pentesting",
+      "name": "VORNAC Pentesting (Single Target)",
+      "serviceType": "Kontinuierlicher Penetrationstest, Automated Security Validation, Pentest as a Service",
+      "description": "Kontinuierlicher, autonomer Penetrationstest eines Zielsystems in der Live-Umgebung. Auslösung per Web-Oberfläche, API oder CI/CD-Webhook. Jeder Befund mit reproduzierbarem Proof-of-Concept. Reports auditfähig für NIS2, DORA, KRITIS, TISAX und ISO/IEC 27001.",
+      "provider": { "@id": "https://www.vornac.com/#organization" },
+      "areaServed": { "@type": "Country", "name": "Deutschland" },
+      "availableLanguage": ["de", "en"],
+      "url": "https://www.vornac.com/de/pentesting",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.vornac.com/de/preise",
+        "priceCurrency": "EUR",
+        "price": "15000",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "15000",
+          "priceCurrency": "EUR",
+          "unitText": "pro Jahr und Zielsystem",
+          "valueAddedTaxIncluded": false
+        },
+        "availability": "https://schema.org/InStock",
+        "eligibleRegion": { "@type": "Country", "name": "DE" },
+        "description": "Jahreslizenz je Zielsystem. Beliebig häufige Testläufe (Fair Use: ein vollständiger Lauf pro Tag), alle Umgebungen des Zielsystems, authentifiziertes Testen, Onboarding inklusive, Mindestlaufzeit zwölf Monate."
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.vornac.com/#service-abs",
+      "name": "VORNAC Assumed Breach Simulation",
+      "serviceType": "Assumed Breach Simulation, interne Angriffssimulation",
+      "provider": { "@id": "https://www.vornac.com/#organization" },
+      "areaServed": { "@type": "Country", "name": "Deutschland" },
+      "url": "https://www.vornac.com/de/assumed-breach-simulation",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "description": "Preis auf Anfrage, abhängig von Umfang der internen Umgebung."
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.vornac.com/#service-ctem",
+      "name": "VORNAC Continuous Threat Exposure Management",
+      "serviceType": "Continuous Threat Exposure Management, External Attack Surface Management, Exposure Validation",
+      "provider": { "@id": "https://www.vornac.com/#organization" },
+      "areaServed": { "@type": "Country", "name": "Deutschland" },
+      "url": "https://www.vornac.com/de/ctem",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "description": "Grundgebühr für Discovery und Monitoring der gesamten externen Angriffsfläche, voller Pentest je Zielsystem optional."
+      }
+    }
+  ]
+}
