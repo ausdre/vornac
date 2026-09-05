@@ -1,0 +1,40 @@
+# VORNAC
+
+> VORNAC GmbH (Heidelberg) betreibt eine Plattform für kontinuierliche, autonome Penetrationstests (Automated Security Validation, Pentest as a Service) für regulierte Unternehmen in Deutschland. Die Tests laufen in produktiven Umgebungen mit realen Exploits; jeder Befund kommt mit reproduzierbarem Proof-of-Concept, Business-Impact und Maßnahmenplan. Betrieb und Datenhaltung ausschließlich in deutschen Rechenzentren deutscher Betreiber, kein US-Cloud-Anbieter, kein CLOUD Act. Reports sind auditfähig für NIS2 (§ 30 BSIG), DORA, KRITIS, TISAX, VAIT/BAIT und ISO/IEC 27001.
+
+Leistungen: kontinuierliches Pentesting je Zielsystem (Web-Anwendungen, APIs, Mobile Apps, interne Netzwerke, Cloud-Workloads, Binaries, Identity und Access), Assumed Breach Simulation (interne Angriffssimulation), Continuous Threat Exposure Management (kontinuierliche Discovery und Validierung der externen Angriffsfläche), OT-Pentesting für KRITIS und Industrie.
+
+Auslösung per Web-Oberfläche, API oder CI/CD-Webhook; vom Start bis zum auditfähigen Report zwei bis fünf Stunden. Jeder Ansprechpartner ist BSI-qualifizierter Pentester. VORNAC ist Partner der Allianz für Cyber-Sicherheit und Mitglied im TeleTrusT Bundesverband IT-Sicherheit e.V.
+
+Unternehmen: VORNAC GmbH, Carl-Friedrich-Gauß-Ring 5, 69124 Heidelberg, Deutschland. Kontakt: hello@vornac.com, +49 6221 6479525.
+
+## Kernseiten (Deutsch)
+
+- [Startseite](https://www.vornac.com/): Überblick, Kennzahlen, Vergleich mit Pentera und klassischen VM-, BAS- und EASM-Tools
+- [Pentesting](https://www.vornac.com/pentesting): Ablauf in vier Schritten, Methodik, geprüfte Angriffsfläche, Reportformate
+- [OT-Pentesting](https://www.vornac.com/ot-pentesting): Produktionssicheres Testen für KRITIS, NIS2 und IEC 62443
+- [FAQ](https://www.vornac.com/faq): Antworten zu kontinuierlichem Pentesting, Datenstandort, Reports, DORA, NIS2, KRITIS, TISAX
+- [Glossar](https://www.vornac.com/glossary): 155 Begriffe aus Pentesting, Compliance und Sicherheitsarchitektur
+- [Branchen](https://www.vornac.com/industries): Versicherung, Finanzdienstleister, kritische Infrastruktur, Automotive, Enterprise
+- [Kunden](https://www.vornac.com/customers): Warum CISOs VORNAC wählen
+- [Über uns](https://www.vornac.com/about): Gründer, Standort Heidelberg, Auszeichnungen
+
+## Regelwerke
+
+- [KRITIS und NIS2](https://www.vornac.com/industries-critical-infrastructure): Nachweise für Betreiber kritischer Anlagen und wesentliche Einrichtungen
+- [DORA, VAIT, BAIT](https://www.vornac.com/industries-financial-services): Tests der digitalen operationalen Resilienz für Finanzdienstleister
+- [DORA für Versicherer](https://www.vornac.com/industries-insurance)
+- [TISAX](https://www.vornac.com/industries-automotive): Automotive-Lieferkette, VDA ISA
+- [NIS2 für Unternehmen](https://www.vornac.com/industries-enterprise)
+
+## English
+
+- [Home](https://www.vornac.com/en)
+- [Pentesting](https://www.vornac.com/en/pentesting)
+- [FAQ](https://www.vornac.com/en/faq)
+- [Glossary](https://www.vornac.com/en/glossary)
+
+## Optional
+
+- [Research](https://www.vornac.com/research): Kuratierter Referenzindex für Offensive Security, 45 Notizen in acht Domänen
+- [Forschungspapier (Englisch, PDF)](https://www.vornac.com/CaseStudy_VORNAC_0526.pdf): Autonomous Penetration Testing in High-Complexity Environments, POMDP-Framework und empirische Auswertung des VORNAC-Agenten, Mai 2026

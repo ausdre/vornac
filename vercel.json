@@ -12,6 +12,30 @@
       "permanent": true
     },
     {
+      "source": "/de",
+      "has": [{ "type": "host", "value": "vornac.de" }],
+      "destination": "https://www.vornac.com/",
+      "permanent": true
+    },
+    {
+      "source": "/de/:path*",
+      "has": [{ "type": "host", "value": "vornac.de" }],
+      "destination": "https://www.vornac.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/de",
+      "has": [{ "type": "host", "value": "www.vornac.de" }],
+      "destination": "https://www.vornac.com/",
+      "permanent": true
+    },
+    {
+      "source": "/de/:path*",
+      "has": [{ "type": "host", "value": "www.vornac.de" }],
+      "destination": "https://www.vornac.com/:path*",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "vornac.de" }],
       "destination": "https://www.vornac.com/:path*",
