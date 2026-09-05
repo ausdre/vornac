@@ -11,67 +11,81 @@
       "destination": "https://www.vornac.com/:path*",
       "permanent": true
     },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "vornac.de" }],
+      "destination": "https://www.vornac.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.vornac.de" }],
+      "destination": "https://www.vornac.com/:path*",
+      "permanent": true
+    },
 
-    { "source": "/index.html",     "destination": "/",   "permanent": true },
-    { "source": "/index",          "destination": "/",   "permanent": true },
-    { "source": "/index_de.html",  "destination": "/de", "permanent": true },
-    { "source": "/index_de",       "destination": "/de", "permanent": true },
-    { "source": "/de/",            "destination": "/de", "permanent": true },
+    { "source": "/de",          "destination": "/",        "permanent": true },
+    { "source": "/de/:path*",   "destination": "/:path*",  "permanent": true },
 
-    { "source": "/pentesting.html",     "destination": "/pentesting",     "permanent": true },
-    { "source": "/pentesting_de.html",  "destination": "/de/pentesting",  "permanent": true },
-    { "source": "/pentesting_de",       "destination": "/de/pentesting",  "permanent": true },
+    { "source": "/index.html",     "destination": "/en", "permanent": true },
+    { "source": "/index",          "destination": "/en", "permanent": true },
+    { "source": "/index_de.html",  "destination": "/",   "permanent": true },
+    { "source": "/index_de",       "destination": "/",   "permanent": true },
 
-    { "source": "/about.html",     "destination": "/about",     "permanent": true },
-    { "source": "/about_de.html",  "destination": "/de/about",  "permanent": true },
-    { "source": "/about_de",       "destination": "/de/about",  "permanent": true },
+    { "source": "/pentesting.html",     "destination": "/en/pentesting",     "permanent": true },
+    { "source": "/pentesting_de.html",  "destination": "/pentesting",  "permanent": true },
+    { "source": "/pentesting_de",       "destination": "/pentesting",  "permanent": true },
 
-    { "source": "/customers.html",     "destination": "/customers",     "permanent": true },
-    { "source": "/customers_de.html",  "destination": "/de/customers",  "permanent": true },
-    { "source": "/customers_de",       "destination": "/de/customers",  "permanent": true },
+    { "source": "/about.html",     "destination": "/en/about",     "permanent": true },
+    { "source": "/about_de.html",  "destination": "/about",  "permanent": true },
+    { "source": "/about_de",       "destination": "/about",  "permanent": true },
 
-    { "source": "/apply.html",     "destination": "/apply",     "permanent": true },
-    { "source": "/apply_de.html",  "destination": "/de/apply",  "permanent": true },
-    { "source": "/apply_de",       "destination": "/de/apply",  "permanent": true },
+    { "source": "/customers.html",     "destination": "/en/customers",     "permanent": true },
+    { "source": "/customers_de.html",  "destination": "/customers",  "permanent": true },
+    { "source": "/customers_de",       "destination": "/customers",  "permanent": true },
 
-    { "source": "/legal.html",     "destination": "/legal",     "permanent": true },
-    { "source": "/legal_de.html",  "destination": "/de/legal",  "permanent": true },
-    { "source": "/legal_de",       "destination": "/de/legal",  "permanent": true },
-    { "source": "/privacy.html",   "destination": "/legal",     "permanent": true },
-    { "source": "/privacy",        "destination": "/legal",     "permanent": true },
-    { "source": "/privacy_de.html","destination": "/de/legal",  "permanent": true },
-    { "source": "/privacy_de",     "destination": "/de/legal",  "permanent": true },
+    { "source": "/apply.html",     "destination": "/en/apply",     "permanent": true },
+    { "source": "/apply_de.html",  "destination": "/apply",  "permanent": true },
+    { "source": "/apply_de",       "destination": "/apply",  "permanent": true },
 
-    { "source": "/industries.html",     "destination": "/industries",     "permanent": true },
-    { "source": "/industries_de.html",  "destination": "/de/industries",  "permanent": true },
-    { "source": "/industries_de",       "destination": "/de/industries",  "permanent": true },
+    { "source": "/legal.html",     "destination": "/en/legal",     "permanent": true },
+    { "source": "/legal_de.html",  "destination": "/legal",  "permanent": true },
+    { "source": "/legal_de",       "destination": "/legal",  "permanent": true },
+    { "source": "/privacy.html",   "destination": "/en/legal",     "permanent": true },
+    { "source": "/privacy",        "destination": "/en/legal",  "permanent": true },
+    { "source": "/privacy_de.html","destination": "/legal",     "permanent": true },
+    { "source": "/privacy_de",     "destination": "/legal",  "permanent": true },
 
-    { "source": "/industries-automotive.html",                "destination": "/industries-automotive",                "permanent": true },
-    { "source": "/industries-automotive_de.html",             "destination": "/de/industries-automotive",             "permanent": true },
-    { "source": "/industries-automotive_de",                  "destination": "/de/industries-automotive",             "permanent": true },
+    { "source": "/industries.html",     "destination": "/en/industries",     "permanent": true },
+    { "source": "/industries_de.html",  "destination": "/industries",  "permanent": true },
+    { "source": "/industries_de",       "destination": "/industries",  "permanent": true },
 
-    { "source": "/industries-critical-infrastructure.html",    "destination": "/industries-critical-infrastructure",    "permanent": true },
-    { "source": "/industries-critical-infrastructure_de.html", "destination": "/de/industries-critical-infrastructure", "permanent": true },
-    { "source": "/industries-critical-infrastructure_de",      "destination": "/de/industries-critical-infrastructure", "permanent": true },
+    { "source": "/industries-automotive.html",                "destination": "/en/industries-automotive",                "permanent": true },
+    { "source": "/industries-automotive_de.html",             "destination": "/industries-automotive",             "permanent": true },
+    { "source": "/industries-automotive_de",                  "destination": "/industries-automotive",             "permanent": true },
 
-    { "source": "/industries-enterprise.html",                "destination": "/industries-enterprise",                "permanent": true },
-    { "source": "/industries-enterprise_de.html",             "destination": "/de/industries-enterprise",             "permanent": true },
-    { "source": "/industries-enterprise_de",                  "destination": "/de/industries-enterprise",             "permanent": true },
+    { "source": "/industries-critical-infrastructure.html",    "destination": "/en/industries-critical-infrastructure",    "permanent": true },
+    { "source": "/industries-critical-infrastructure_de.html", "destination": "/industries-critical-infrastructure", "permanent": true },
+    { "source": "/industries-critical-infrastructure_de",      "destination": "/industries-critical-infrastructure", "permanent": true },
 
-    { "source": "/industries-financial-services.html",        "destination": "/industries-financial-services",        "permanent": true },
-    { "source": "/industries-financial-services_de.html",     "destination": "/de/industries-financial-services",     "permanent": true },
-    { "source": "/industries-financial-services_de",          "destination": "/de/industries-financial-services",     "permanent": true },
+    { "source": "/industries-enterprise.html",                "destination": "/en/industries-enterprise",                "permanent": true },
+    { "source": "/industries-enterprise_de.html",             "destination": "/industries-enterprise",             "permanent": true },
+    { "source": "/industries-enterprise_de",                  "destination": "/industries-enterprise",             "permanent": true },
 
-    { "source": "/industries-insurance.html",                 "destination": "/industries-insurance",                 "permanent": true },
-    { "source": "/industries-insurance_de.html",              "destination": "/de/industries-insurance",              "permanent": true },
-    { "source": "/industries-insurance_de",                   "destination": "/de/industries-insurance",              "permanent": true },
+    { "source": "/industries-financial-services.html",        "destination": "/en/industries-financial-services",        "permanent": true },
+    { "source": "/industries-financial-services_de.html",     "destination": "/industries-financial-services",     "permanent": true },
+    { "source": "/industries-financial-services_de",          "destination": "/industries-financial-services",     "permanent": true },
 
-    { "source": "/comcenter.html",    "destination": "/comcenter", "permanent": true },
+    { "source": "/industries-insurance.html",                 "destination": "/en/industries-insurance",                 "permanent": true },
+    { "source": "/industries-insurance_de.html",              "destination": "/industries-insurance",              "permanent": true },
+    { "source": "/industries-insurance_de",                   "destination": "/industries-insurance",              "permanent": true },
 
-    { "source": "/preventive.html",        "destination": "/",   "permanent": true },
-    { "source": "/preventive",             "destination": "/",   "permanent": true },
-    { "source": "/preventive_de.html",     "destination": "/de", "permanent": true },
-    { "source": "/preventive_de",          "destination": "/de", "permanent": true }
+    { "source": "/comcenter.html",    "destination": "/en/comcenter", "permanent": true },
+
+    { "source": "/preventive.html",        "destination": "/en", "permanent": true },
+    { "source": "/preventive",             "destination": "/en", "permanent": true },
+    { "source": "/preventive_de.html",     "destination": "/",   "permanent": true },
+    { "source": "/preventive_de",          "destination": "/",   "permanent": true }
   ],
   "headers": [
     {

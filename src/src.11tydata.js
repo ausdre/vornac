@@ -68,23 +68,26 @@ module.exports = {
     },
 
     /**
-     * Default permalink: emit a flat .html file matching the input path.
-     *   src/index.njk          -> dist/index.html
-     *   src/pentesting.njk     -> dist/pentesting.html
-     *   src/de/index.njk       -> dist/de/index.html
-     *   src/de/pentesting.njk  -> dist/de/pentesting.html
+     * Default permalink: German sources (src/de/*) are emitted at the site
+     * root, English sources (src/*) under /en.
+     *   src/de/index.njk       -> dist/index.html        (/)
+     *   src/de/pentesting.njk  -> dist/pentesting.html   (/pentesting)
+     *   src/index.njk          -> dist/en/index.html     (/en)
+     *   src/pentesting.njk     -> dist/en/pentesting.html (/en/pentesting)
      *
-     * Vercel's cleanUrls: true strips the .html so URLs look like /pentesting
-     * and /de/pentesting at the browser.
+     * Vercel's cleanUrls: true strips the .html at the browser.
      *
-     * Pages can override by setting `permalink:` in their own front-matter.
+     * Pages can override by setting `permalink:` in their own front-matter
+     * (404.html and sitemap.xml do).
      */
     permalink: (data) => {
-      // Honor explicit overrides (e.g. sitemap.xml, robots.txt).
+      // Honor explicit overrides (e.g. sitemap.xml, 404.html).
       if (data.permalink && data.permalink !== "__default__") {
         return data.permalink;
       }
-      return `${data.page.filePathStem}.html`;
+      const stem = data.page.filePathStem;
+      const out = stem.startsWith("/de/") ? stem.slice(3) : `/en${stem}`;
+      return `${out}.html`;
     }
   }
 };

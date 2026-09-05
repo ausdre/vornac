@@ -5,10 +5,10 @@
  * Output: dist/  (static HTML + assets, served by Vercel)
  *
  * URLs:
- *   /            <- src/index.njk
- *   /pentesting  <- src/pentesting.njk        (Vercel cleanUrls strips .html)
- *   /de          <- src/de/index.njk
- *   /de/pentesting <- src/de/pentesting.njk
+ *   /               <- src/de/index.njk         (German is the root locale)
+ *   /pentesting     <- src/de/pentesting.njk    (Vercel cleanUrls strips .html)
+ *   /en             <- src/index.njk
+ *   /en/pentesting  <- src/pentesting.njk
  */
 const { parse: parseHTML, HTMLElement, TextNode } = require("node-html-parser");
 const CROSSLINKS = require("./src/_data/crosslinks.js");
@@ -273,8 +273,9 @@ module.exports = function (eleventyConfig) {
     if (!outputPath || !outputPath.endsWith(".html")) return content;
     if (process.env.NO_CROSSLINK === "1") return content;
 
-    // Locale derived from path (anything under dist/de/** is German).
-    const locale = /(^|\/)dist\/de\//.test(outputPath.replace(/\\/g, "/")) ? "de" : "en";
+    // Locale derived from path (anything under dist/en/** is English,
+    // everything else is German, the root locale).
+    const locale = /(^|\/)dist\/en\//.test(outputPath.replace(/\\/g, "/")) ? "en" : "de";
     const matcher = MATCHERS[locale];
     if (!matcher) return content;
 
@@ -291,7 +292,7 @@ module.exports = function (eleventyConfig) {
     // entirely to avoid 154 self-links per page. Match both pretty-URL
     // forms ("/glossary") and folder-index forms ("/glossary/").
     const selfNormalized = selfHref.replace(/\/$/, "");
-    if (selfNormalized === "/glossary" || selfNormalized === "/de/glossary") return content;
+    if (selfNormalized === "/glossary" || selfNormalized === "/en/glossary") return content;
 
     let root;
     try {

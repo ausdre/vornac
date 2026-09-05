@@ -28,7 +28,9 @@ module.exports = {
 
   socialPreviewImage: "/vornacpentesting43.png",
 
-  // Default and supported locales
-  defaultLocale: "en",
-  locales: ["en", "de"]
+  // Default and supported locales.
+  // German is the root locale (/, /pentesting, ...); English lives under /en.
+  defaultLocale: "de",
+  locales: ["de", "en"],
+  localePrefix: { de: "", en: "/en" }
 };
