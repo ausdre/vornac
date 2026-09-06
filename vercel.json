@@ -6,6 +6,24 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/",
+      "has": [{ "type": "host", "value": "vornac.com" }],
+      "destination": "https://www.vornac.com/",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "vornac.de" }],
+      "destination": "https://www.vornac.com/",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "www.vornac.de" }],
+      "destination": "https://www.vornac.com/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "vornac.com" }],
       "destination": "https://www.vornac.com/:path*",
