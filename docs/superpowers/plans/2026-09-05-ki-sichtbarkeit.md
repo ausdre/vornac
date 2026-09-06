@@ -40,11 +40,11 @@ Werkzeuge in Claude Code: `.mcp.json` im Repo-Root bringt `peec-ai` (https://api
 
 **Files:** alles im Branch, siehe `git diff main --stat`; Details Spec Abschnitt 3.
 
-- [ ] **Step 1: Branch holen.** Entweder liegt er nach dem Teleport/Push schon im Remote (`git fetch && git checkout feat/de-root`), oder aus dem Bundle: `git fetch /pfad/vornac-feat-de-root.bundle feat/de-root:feat/de-root`, oder per Patches: `git checkout -b feat/de-root && git am docs/../0001-*.patch 0002-*.patch 0003-*.patch`.
-- [ ] **Step 2: Bauen.** `npm ci && npm run build`. Erwartung: 143 geschriebene Dateien, `dist/index.html` hat `lang="de"`, `dist/en/index.html` hat `lang="en"`, `dist/404.html` existiert, `dist/robots.txt` und `dist/llms.txt` existieren.
-- [ ] **Step 3: Prüfen.** `grep -rho 'href="/de[^"]*"' dist | wc -l` → 0. `grep -rhoE 'href="/[^"]*/"' dist | grep -v 'href="/"' | wc -l` → 0. `grep -c '<loc>' dist/sitemap.xml` → 139.
-- [ ] **Step 4: Push und PR.** `git push -u origin feat/de-root`, PR gegen `main` mit Titel "Make German the root locale". Vercel baut ein Preview-Deployment.
-- [ ] **Step 5: Preview prüfen** (PREVIEW = Preview-URL aus dem PR):
+- [x] **Step 1: Branch holen.** Entweder liegt er nach dem Teleport/Push schon im Remote (`git fetch && git checkout feat/de-root`), oder aus dem Bundle: `git fetch /pfad/vornac-feat-de-root.bundle feat/de-root:feat/de-root`, oder per Patches: `git checkout -b feat/de-root && git am docs/../0001-*.patch 0002-*.patch 0003-*.patch`.
+- [x] **Step 2: Bauen.** `npm ci && npm run build`. Erwartung: 143 geschriebene Dateien, `dist/index.html` hat `lang="de"`, `dist/en/index.html` hat `lang="en"`, `dist/404.html` existiert, `dist/robots.txt` und `dist/llms.txt` existieren.
+- [x] **Step 3: Prüfen.** `grep -rho 'href="/de[^"]*"' dist | wc -l` → 0. `grep -rhoE 'href="/[^"]*/"' dist | grep -v 'href="/"' | wc -l` → 0. `grep -c '<loc>' dist/sitemap.xml` → 139.
+- [x] **Step 4: Push und PR.** `git push -u origin feat/de-root`, PR gegen `main` mit Titel "Make German the root locale". Vercel baut ein Preview-Deployment.
+- [x] **Step 5: Preview prüfen** (PREVIEW = Preview-URL aus dem PR):
   - `curl -s https://PREVIEW/ | grep -o '<html lang="[a-z]*"'` → de
   - `curl -s https://PREVIEW/en | grep -o '<html lang="[a-z]*"'` → en
   - `curl -sI https://PREVIEW/de/faq | grep -i '^location'` → /faq
@@ -52,7 +52,7 @@ Werkzeuge in Claude Code: `.mcp.json` im Repo-Root bringt `peec-ai` (https://api
   - `curl -s https://PREVIEW/ | grep -o 'hreflang="[^"]*" href="[^"]*"'` → de auf /, en auf /en, x-default auf /en
   - `curl -A "GPTBot" -s https://PREVIEW/ | grep -o '<title>[^<]*'` → deutscher Titel
   - Host-Redirects lassen sich erst in Production prüfen (Preview-Hosts sind vercel.app).
-- [ ] **Step 6: Merge und Production prüfen.** Dieselben Aufrufe gegen https://www.vornac.com, zusätzlich `curl -sI https://www.vornac.de/de/faq | grep -i '^location'` → https://www.vornac.com/faq und `curl -sI https://vornac.de/ | grep -i '^location'` → https://www.vornac.com/.
+- [x] **Step 6: Merge und Production prüfen.** Dieselben Aufrufe gegen https://www.vornac.com, zusätzlich `curl -sI https://www.vornac.de/de/faq | grep -i '^location'` → https://www.vornac.com/faq und `curl -sI https://vornac.de/ | grep -i '^location'` → https://www.vornac.com/. Erledigt am 2026-09-06 (PR #74, main 5f8f60c; Production-Build kam erst mit dem nächsten direkten Push auf main). Befund dabei: `/:path*` mit Host-Bedingung greift auf Vercel nicht für die nackte Root, `vornac.de/` und `vornac.com/` lieferten 200 statt 308. Behoben durch eigene `/`-Regeln je Host (PR fix/apex-root-redirect). JSON-LD-URLs der Bestandsseiten hingen noch am alten Schema, behoben in PR #75.
 - [ ] **Step 7: Nacharbeiten am Deploy-Tag** (Spec Abschnitt 3, Schritt 5): Search Console Sitemap neu einreichen und URL-Prüfung für /, /pentesting, /faq, /glossary, fünf Branchenseiten; Bing Webmaster Tools Property und Sitemap, IndexNow; Google Ads Final URLs und Conversion-Zielseite /thank-you; GA4/GTM page_path-Trigger; Plausible Goals; Leadfeeder Custom Feeds.
 
 ## Task 2: Strukturierte Daten ausbauen (A4)

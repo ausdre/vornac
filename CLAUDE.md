@@ -6,7 +6,8 @@
 
 - Spec mit Befund und Plänen: `docs/superpowers/specs/2026-09-05-ki-sichtbarkeit-design.md`
 - Umsetzungsplan mit Aufgaben, Kennungen (Peec, Vercel) und Messpunkten: `docs/superpowers/plans/2026-09-05-ki-sichtbarkeit.md`
-- Stand: Branch `feat/de-root` ist gebaut und geprüft, aber noch nicht deployt (Task 1 im Plan). Aufgaben in der Reihenfolge des Plans abarbeiten, Checkboxen dort pflegen.
+- Stand: Task 1 (Ablauf A) ist seit 2026-09-06 in Production (PR #74). Offen sind Step 7 (Search Console, Bing, Ads, GA4, Plausible, Leadfeeder) und die Tasks 2 bis 8. Aufgaben in der Reihenfolge des Plans abarbeiten, Checkboxen dort pflegen.
+- Vercel-Hinweis: Redirect-Regeln mit `source: "/:path*"` und Host-Bedingung greifen nicht für die nackte Root `/`; die Root braucht eine eigene Regel je Host (siehe `vercel.json`).
 
 ## URL- und Sprachschema (ab Branch `feat/de-root`)
 
