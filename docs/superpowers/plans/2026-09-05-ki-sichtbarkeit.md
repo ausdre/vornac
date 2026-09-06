@@ -99,7 +99,7 @@ Zitierregeln je Seite (Spec Abschnitt 4): erster Absatz beantwortet die Frage in
 - [ ] `/wissen/dora-tests` (Art. 24 bis 27)
 - [ ] `/wissen/iso-27001-penetrationstest` (A 8.8, A 8.29)
 - [ ] `/wissen/bsi-penetrationstest`
-- [ ] `/ctem` Produktseite CTEM
+- [x] `/ctem` Produktseite CTEM (PR #73, auf das neue Schema gehoben)
 - [ ] `/wissen/bas-vs-automatisierter-pentest`
 - [ ] `/wissen/anbieter-automatisierte-penetrationstests-deutschland` (faire Übersicht mit 10 bis 12 Anbietern)
 - [ ] `/wissen/pentest-as-a-service`

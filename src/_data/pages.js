@@ -23,6 +23,7 @@ const STATIC_PAGES = [
   { key: "index",                              en: `${EN}`,                                     de: "/" },
   { key: "pentesting",                         en: `${EN}/pentesting`,                         de: "/pentesting" },
   { key: "ot-pentesting",                      en: `${EN}/ot-pentesting`,                      de: "/ot-pentesting" },
+  { key: "ctem",                               en: `${EN}/ctem`,                               de: "/ctem" },
   { key: "research",                           en: `${EN}/research`,                           de: "/research" },
   { key: "glossary",                           en: `${EN}/glossary`,                           de: "/glossary" },
   { key: "about",                              en: `${EN}/about`,                              de: "/about" },
