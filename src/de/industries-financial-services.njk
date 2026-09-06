@@ -14,7 +14,7 @@ ogType: website
   "@graph": [
     {
       "@type": "Service",
-      "@id": "https://www.vornac.com/de/industries-financial-services#service",
+      "@id": "{{ pageUrls['industries-financial-services'] | absoluteUrl(site.domain) }}#service",
       "name": "Kontinuierliche Validierung für Banken und Finanzinstitute",
       "serviceType": "Penetration Testing für Finanzdienstleistungen",
       "description": "Kontinuierliches Pentesting für Banken, Zahlungsinstitute und Vermögensverwalter. Operationelle Resilienz nach DORA, in der Tiefe von VAIT und BAIT.",
@@ -30,7 +30,7 @@ ogType: website
         "audienceType": "Banken, Zahlungsinstitute, Vermögensverwalter und Finanzdienstleistungsinstitute"
       },
       "category": "Cybersicherheit / Finanzdienstleistungen",
-      "url": "https://www.vornac.com/de/industries-financial-services",
+      "url": "{{ pageUrls['industries-financial-services'] | absoluteUrl(site.domain) }}",
       "inLanguage": "de",
       "about": [
         { "@type": "Thing", "name": "Digital Operational Resilience Act (DORA)" },
@@ -42,9 +42,9 @@ ogType: website
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.vornac.com/de" },
-        { "@type": "ListItem", "position": 2, "name": "Industrien", "item": "https://www.vornac.com/de/industries" },
-        { "@type": "ListItem", "position": 3, "name": "Finanzdienstleistungen", "item": "https://www.vornac.com/de/industries-financial-services" }
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "{{ pageUrls.index | absoluteUrl(site.domain) }}" },
+        { "@type": "ListItem", "position": 2, "name": "Industrien", "item": "{{ pageUrls['industries'] | absoluteUrl(site.domain) }}" },
+        { "@type": "ListItem", "position": 3, "name": "Finanzdienstleistungen", "item": "{{ pageUrls['industries-financial-services'] | absoluteUrl(site.domain) }}" }
       ]
     }
   ]

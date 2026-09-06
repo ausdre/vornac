@@ -14,7 +14,7 @@ ogType: website
   "@graph": [
     {
       "@type": "Service",
-      "@id": "https://www.vornac.com/de/industries-insurance#service",
+      "@id": "{{ pageUrls['industries-insurance'] | absoluteUrl(site.domain) }}#service",
       "name": "Kontinuierliche DORA-Validierung für Versicherer",
       "serviceType": "Penetration Testing für Versicherungen",
       "description": "DORA-konformes, kontinuierliches Pentesting für Versicherer und Versicherungsgruppen. IKT-Risiko, Vorfall- und Resilienztests, audit-ready.",
@@ -30,7 +30,7 @@ ogType: website
         "audienceType": "Versicherer und Versicherungsgruppen unter DORA"
       },
       "category": "Cybersicherheit / Versicherung",
-      "url": "https://www.vornac.com/de/industries-insurance",
+      "url": "{{ pageUrls['industries-insurance'] | absoluteUrl(site.domain) }}",
       "inLanguage": "de",
       "about": [
         { "@type": "Thing", "name": "Digital Operational Resilience Act (DORA)" },
@@ -41,9 +41,9 @@ ogType: website
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.vornac.com/de" },
-        { "@type": "ListItem", "position": 2, "name": "Industrien", "item": "https://www.vornac.com/de/industries" },
-        { "@type": "ListItem", "position": 3, "name": "Versicherung", "item": "https://www.vornac.com/de/industries-insurance" }
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "{{ pageUrls.index | absoluteUrl(site.domain) }}" },
+        { "@type": "ListItem", "position": 2, "name": "Industrien", "item": "{{ pageUrls['industries'] | absoluteUrl(site.domain) }}" },
+        { "@type": "ListItem", "position": 3, "name": "Versicherung", "item": "{{ pageUrls['industries-insurance'] | absoluteUrl(site.domain) }}" }
       ]
     }
   ]
