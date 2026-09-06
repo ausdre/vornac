@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "peec-ai": {
+      "type": "http",
+      "url": "https://api.peec.ai/mcp"
+    },
+    "vercel": {
+      "type": "http",
+      "url": "https://mcp.vercel.com"
+    }
+  }
+}

@@ -62,7 +62,7 @@
 
 {% set tierLabel = s.tierOne if note.tier == 1 else (s.tierTwo if note.tier == 2 else s.tierThree) %}
 {% set tierClass = "is-tier-1" if note.tier == 1 else ("is-tier-2" if note.tier == 2 else "is-tier-3") %}
-{% set researchBase = "/research/" if locale == "en" else "/de/research/" %}
+{% set researchBase = "/en/research/" if locale == "en" else "/research/" %}
 {% set domainHref = researchBase + note.domain + "/" %}
 
 <article class="rs-note-page {{ tierClass }}">

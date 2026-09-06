@@ -45,7 +45,7 @@ const EXCLUDE_IDS = new Set([
 
 // Manual aliases — short specialist terms that aren't in the glossary
 // but should still cross-link to the relevant research note. The href
-// is locale-substituted ("{loc}" → "" for EN, "/de" for DE).
+// is locale-substituted ("{loc}" → "" for DE (root locale), "/en" for EN).
 //
 // Keep the list curated, not exhaustive: every alias here adds a link
 // candidate to every page on the site, so noise prevention beats
@@ -163,7 +163,7 @@ function buildIndex(locale) {
   // ── Glossary ────────────────────────────────────────────────────
   for (const entry of glossary.sorted) {
     if (EXCLUDE_IDS.has(entry.id)) continue;
-    const hrefBase = locale === "de" ? "/de/glossary" : "/glossary";
+    const hrefBase = locale === "en" ? "/en/glossary" : "/glossary";
     const href = `${hrefBase}#term-${entry.id}`;
     const meta = { href, kind: "glossary", id: entry.id };
 
@@ -194,7 +194,7 @@ function buildIndex(locale) {
   }
 
   // ── Manual aliases (curated specialist terms) ──────────────────
-  const locPrefix = locale === "de" ? "/de" : "";
+  const locPrefix = locale === "en" ? "/en" : "";
   for (const group of MANUAL_ALIASES) {
     const href = group.href.replace("{loc}", locPrefix);
     for (const phrase of group.phrases) {
@@ -209,8 +209,8 @@ function buildIndex(locale) {
 
   // ── Research notes ──────────────────────────────────────────────
   for (const note of research.allNotes) {
-    const href = locale === "de"
-      ? `/de/research/${note.domain}/${note.id}/`
+    const href = locale === "en"
+      ? `/en/research/${note.domain}/${note.id}/`
       : `/research/${note.domain}/${note.id}/`;
     const meta = { href, kind: "research", id: `note-${note.id}` };
 
@@ -253,7 +253,7 @@ function buildDefinitions(locale) {
 
   // ── Glossary definitions (the authoritative source) ───────────
   for (const entry of glossary.sorted) {
-    const hrefBase = locale === "de" ? "/de/glossary" : "/glossary";
+    const hrefBase = locale === "en" ? "/en/glossary" : "/glossary";
     defs[entry.id] = {
       term: glossary.displayTerm(entry, locale),
       snippet: truncate(entry.definition[locale], 280),
@@ -266,8 +266,8 @@ function buildDefinitions(locale) {
     defs[`note-${note.id}`] = {
       term: (note.title && note.title[locale]) || note.id,
       snippet: truncate((note.blurb && note.blurb[locale]) || "", 280),
-      href: locale === "de"
-        ? `/de/research/${note.domain}/${note.id}/`
+      href: locale === "en"
+        ? `/en/research/${note.domain}/${note.id}/`
         : `/research/${note.domain}/${note.id}/`
     };
   }
@@ -276,7 +276,7 @@ function buildDefinitions(locale) {
   // Reverse-resolve each alias href to its research note id, then
   // copy the note's blurb. The popover shows the alias phrase as title
   // and points to the note as "More" destination.
-  const locPrefix = locale === "de" ? "/de" : "";
+  const locPrefix = locale === "en" ? "/en" : "";
   const noteByPath = new Map(
     research.allNotes.map((n) => [
       `${locPrefix}/research/${n.domain}/${n.id}/`,

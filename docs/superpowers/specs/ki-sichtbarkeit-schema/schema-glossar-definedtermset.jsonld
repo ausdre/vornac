@@ -1,0 +1,43 @@
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTermSet",
+  "@id": "https://www.vornac.com/de/glossary#set",
+  "name": "VORNAC Glossar",
+  "description": "Begriffe aus Penetrationstests, Sicherheitsvalidierung und Compliance (NIS2, DORA, KRITIS, TISAX, ISO/IEC 27001).",
+  "inLanguage": "de",
+  "publisher": { "@id": "https://www.vornac.com/#organization" },
+  "hasDefinedTerm": [
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://www.vornac.com/de/glossary#term-assumed-breach-simulation",
+      "name": "Assumed Breach Simulation",
+      "alternateName": ["Assume Breach", "ABS"],
+      "description": "Angriffssimulation, die von einem bereits kompromittierten Zugang im internen Netz ausgeht und prüft, wie weit ein Angreifer von dort kommt: Rechteausweitung, laterale Bewegung, Zugriff auf kritische Systeme und Daten.",
+      "inDefinedTermSet": { "@id": "https://www.vornac.com/de/glossary#set" }
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://www.vornac.com/de/glossary#term-ctem",
+      "name": "Continuous Threat Exposure Management",
+      "alternateName": ["CTEM"],
+      "description": "Programm in fünf Phasen (Scoping, Discovery, Priorisierung, Validierung, Mobilisierung), das die Angriffsfläche eines Unternehmens fortlaufend erfasst, bewertet und die Ausnutzbarkeit der Befunde prüft.",
+      "inDefinedTermSet": { "@id": "https://www.vornac.com/de/glossary#set" }
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://www.vornac.com/de/glossary#term-breach-and-attack-simulation",
+      "name": "Breach and Attack Simulation",
+      "alternateName": ["BAS"],
+      "description": "Automatisierte Prüfung, ob vorhandene Schutzmaßnahmen bekannte Angriffstechniken erkennen und blockieren. Arbeitet mit vordefinierten Szenarien und unterscheidet sich vom Penetrationstest, der unbekannte Angriffspfade sucht und Ausnutzbarkeit belegt.",
+      "inDefinedTermSet": { "@id": "https://www.vornac.com/de/glossary#set" }
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://www.vornac.com/de/glossary#term-pentest-as-a-service",
+      "name": "Pentest as a Service",
+      "alternateName": ["PTaaS"],
+      "description": "Bereitstellung von Penetrationstests als laufender Dienst über eine Plattform statt als einmaliges Projekt: Tests werden nach Bedarf oder Zeitplan ausgelöst, Befunde laufen fortlaufend in ein Portal.",
+      "inDefinedTermSet": { "@id": "https://www.vornac.com/de/glossary#set" }
+    }
+  ]
+}

@@ -153,7 +153,7 @@
 </nav>
 
 {% for d in research.domains %}
-{% set domainHref = ("/research/" + d.id + "/") if locale == "en" else ("/de/research/" + d.id + "/") %}
+{% set domainHref = ("/en/research/" + d.id + "/") if locale == "en" else ("/research/" + d.id + "/") %}
 {% set noteBase = domainHref %}
 <section class="rs-domain" id="domain-{{ d.id }}">
     <div class="rs-domain-inner">
