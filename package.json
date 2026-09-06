@@ -9,7 +9,9 @@
     "build:html": "eleventy",
     "build": "npm run build:css && npm run build:html",
     "clean": "rm -rf dist",
-    "start": "npm run build && python3 serve_local.py"
+    "start": "npm run build && python3 serve_local.py",
+    "test": "node --test \"test/**/*.test.js\"",
+    "attio:backfill": "node scripts/attio-calendar-backfill.js"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.5",

@@ -30,3 +30,7 @@
 - `.mcp.json` bringt `peec-ai` (https://api.peec.ai/mcp) und `vercel` (https://mcp.vercel.com) mit. Beim ersten Start `/mcp` und beide per OAuth freigeben.
 - Peec: Prompt-Set nicht verändern, um Sichtbarkeit zu "verbessern"; Hebel sind Seiten und Drittquellen. Bei `update_prompts` die Systemtags (branding, intentType) immer mitgeben.
 - Vercel-Projekt `vornac` (Team `vornacs-projects`); Preview-Deployments kommen aus dem PR.
+
+## Integration Attio -> Google Kalender
+
+- Attio-Tasks mit Deadline werden per Webhook (`api/attio-calendar-webhook.js`) als Termine in Google Kalender gespiegelt. Logik in `lib/attio-calendar/`, Tests mit `npm test`, Einrichtung und Variablen in `docs/integrations/attio-google-calendar.md`.
