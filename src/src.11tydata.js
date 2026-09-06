@@ -55,8 +55,8 @@ module.exports = {
      * iterating the pages array. Returns the URL in the CURRENT locale,
      * so nav links automatically stay in-language.
      *
-     * Example: on a DE page, pageUrls.pentesting === "/de/pentesting".
-     *          on an EN page, pageUrls.pentesting === "/pentesting".
+     * Example: on a DE page, pageUrls.pentesting === "/pentesting".
+     *          on an EN page, pageUrls.pentesting === "/en/pentesting".
      */
     pageUrls: (data) => {
       const locale = data.page.filePathStem.startsWith("/de/") ? "de" : "en";

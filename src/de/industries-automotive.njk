@@ -14,7 +14,7 @@ ogType: website
   "@graph": [
     {
       "@type": "Service",
-      "@id": "https://www.vornac.com/de/industries-automotive#service",
+      "@id": "{{ pageUrls['industries-automotive'] | absoluteUrl(site.domain) }}#service",
       "name": "Sicherheitsvalidierung für Automotive-Lieferketten",
       "serviceType": "Penetration Testing für Automotive",
       "description": "Kontinuierliches Pentesting für OEMs und Zulieferer in der Automobilindustrie. TISAX-konforme Validierung plus adversariale Tests vernetzter Fahrzeuge, APIs und Binaries.",
@@ -30,7 +30,7 @@ ogType: website
         "audienceType": "Automotive-OEMs und Tier-N-Zulieferer in der europäischen Automobil-Lieferkette"
       },
       "category": "Cybersicherheit / Automotive",
-      "url": "https://www.vornac.com/de/industries-automotive",
+      "url": "{{ pageUrls['industries-automotive'] | absoluteUrl(site.domain) }}",
       "inLanguage": "de",
       "about": [
         { "@type": "Thing", "name": "TISAX-Assessment" },
@@ -42,9 +42,9 @@ ogType: website
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.vornac.com/de" },
-        { "@type": "ListItem", "position": 2, "name": "Industrien", "item": "https://www.vornac.com/de/industries" },
-        { "@type": "ListItem", "position": 3, "name": "Automotive", "item": "https://www.vornac.com/de/industries-automotive" }
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "{{ pageUrls.index | absoluteUrl(site.domain) }}" },
+        { "@type": "ListItem", "position": 2, "name": "Industrien", "item": "{{ pageUrls['industries'] | absoluteUrl(site.domain) }}" },
+        { "@type": "ListItem", "position": 3, "name": "Automotive", "item": "{{ pageUrls['industries-automotive'] | absoluteUrl(site.domain) }}" }
       ]
     }
   ]
