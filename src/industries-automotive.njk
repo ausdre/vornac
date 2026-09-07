@@ -12,9 +12,11 @@ ogType: website
 {
   "@context": "https://schema.org",
   "@graph": [
+    {% include "partials/webpage-node.njk" %},
     {
       "@type": "Service",
       "@id": "{{ pageUrls['industries-automotive'] | absoluteUrl(site.domain) }}#service",
+      "dateModified": "{{ updated }}",
       "name": "Security validation for automotive supply chains",
       "serviceType": "Penetration Testing for Automotive",
       "description": "Continuous penetration testing for automotive OEMs and suppliers. TISAX-aligned validation plus adversarial testing of connected vehicles, APIs, and binaries.",

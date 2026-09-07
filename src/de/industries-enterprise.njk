@@ -12,9 +12,11 @@ ogType: website
 {
   "@context": "https://schema.org",
   "@graph": [
+    {% include "partials/webpage-node.njk" %},
     {
       "@type": "Service",
       "@id": "{{ pageUrls['industries-enterprise'] | absoluteUrl(site.domain) }}#service",
+      "dateModified": "{{ updated }}",
       "name": "NIS2-feste Validierung für wesentliche und wichtige Einrichtungen",
       "serviceType": "Penetration Testing für NIS2-Compliance",
       "description": "NIS2-konformes, kontinuierliches Pentesting für wesentliche und wichtige Einrichtungen. Maßnahmen nach Artikel 21, live in Produktion belegt.",

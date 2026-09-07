@@ -8,6 +8,8 @@
     "build:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
     "build:html": "eleventy",
     "build": "npm run build:css && npm run build:html",
+    "dates": "node scripts/page-dates.js",
+    "dates:check": "node scripts/page-dates.js --check",
     "clean": "rm -rf dist",
     "start": "npm run build && python3 serve_local.py"
   },

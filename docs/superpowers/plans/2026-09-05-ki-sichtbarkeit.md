@@ -59,8 +59,8 @@ Werkzeuge in Claude Code: `.mcp.json` im Repo-Root bringt `peec-ai` (https://api
 
 **Files:** `src/index.njk`, `src/de/index.njk` (Block `extraHead`), `src/glossary.njk`, `src/de/glossary.njk`, `src/_includes/partials/head-meta.njk` (optional gemeinsames Partial), Vorlagen unter `docs/superpowers/specs/ki-sichtbarkeit-schema/`.
 
-- [ ] Organization, WebSite und Service mit Offer aus `schema-organization.jsonld` in beide Startseiten übernehmen; `foundingDate` eintragen (Gartner-Profil nennt 2025, mit André bestätigen); Offer nur, wenn Entscheidung 2 (Preis öffentlich) gefallen ist.
-- [ ] DefinedTermSet aus `schema-glossar-definedtermset.jsonld` im Glossar erzeugen: aus `src/_data/glossary.js` alle Begriffe als `DefinedTerm` mit `@id` auf den bestehenden Anker `#term-<id>` rendern, deutsche Beschreibung als `description`.
+- [ ] Organization, WebSite und Service mit Offer aus `schema-organization.jsonld` in beide Startseiten übernehmen; `foundingDate` eintragen (Gartner-Profil nennt 2025, mit André bestätigen); Offer nur, wenn Entscheidung 2 (Preis öffentlich) gefallen ist. Teilweise erledigt am 2026-09-07 (Peec-Site-Audit): Organization auf den Startseiten mit legalName, Adresse, Telefon, E-Mail und sameAs (LinkedIn, Mastodon, Gartner); Gründer, foundingDate, HRB, memberOf und Offer stehen noch aus.
+- [x] DefinedTermSet aus `schema-glossar-definedtermset.jsonld` im Glossar erzeugen: aus `src/_data/glossary.js` alle Begriffe als `DefinedTerm` mit `@id` auf den bestehenden Anker `#term-<id>` rendern, deutsche Beschreibung als `description`. Erledigt am 2026-09-07 (`partials/glossary-schema.njk`, beide Sprachen).
 - [ ] Neue Begriffe ins Glossar: Continuous Threat Exposure Management (CTEM), Assumed Breach Simulation (ABS), Breach and Attack Simulation (BAS), Pentest as a Service (PTaaS), Adversarial Exposure Validation (AEV), Exposure Validation.
 - [ ] Prüfen mit `npx -y schema-dts` oder dem Rich-Results-Test; keine doppelten `@id`.
 
@@ -68,10 +68,16 @@ Werkzeuge in Claude Code: `.mcp.json` im Repo-Root bringt `peec-ai` (https://api
 
 **Files:** `src/_includes/layouts/base.njk`, `src/_includes/partials/head-meta.njk`, `src/sitemap.njk`, Front-Matter aller Inhaltsseiten, neues Partial `src/_includes/partials/page-meta-line.njk`.
 
-- [ ] Front-Matter-Felder `updated: JJJJ-MM-TT` und `author: andre` (oder `arthur`) einführen; Autorenprofile in `src/_data/site.js` (Name, Rolle "Mitgründer, BSI-qualifizierter Pentester", Link auf /about).
-- [ ] Sichtbare Zeile "Stand: TT.MM.JJJJ · Autor" oberhalb des ersten H2 auf Pentesting, OT-Pentesting, FAQ, Glossar, Branchen, Research-Notizen.
-- [ ] `sitemap.njk`: `lastmod` aus `updated` je Seite statt `page.date` für alle; Research-Notizen aus einem `updated`-Feld in `src/_data/research.js`.
-- [ ] `head-meta.njk`: `article:modified_time` und `article:author` für Seiten mit `updated`.
+- [x] Front-Matter-Felder `published` und `updated` (JJJJ-MM-TT) eingeführt, Standardwerte aus der Git-Historie (`npm run dates` schreibt `src/_data/pageDates.json`); Research-Notizen tragen `published`/`updated` in `src/_data/research.js`. Erledigt am 2026-09-07. Offen: `author`-Feld und Autorenprofile in `site.js`; Research-Notizen nennen bislang die VORNAC GmbH als Autor.
+- [ ] Sichtbare Zeile "Stand: TT.MM.JJJJ · Autor" oberhalb des ersten H2 auf Pentesting, OT-Pentesting, FAQ, Glossar, Branchen. Research-Notizen zeigen seit 2026-09-07 "Veröffentlicht" (und "Stand", sobald abweichend) als `<time>` in der Seitenleiste.
+- [x] `sitemap.njk`: `lastmod` je Seite und Sprache aus `dates.byKey` statt `page.date`. Erledigt am 2026-09-07.
+- [x] `head-meta.njk`: `article:published_time` und `article:modified_time` für Seiten mit `ogType: article`. Erledigt am 2026-09-07; `article:author` folgt mit dem Autorenfeld.
+
+## Task 3a: Peec-Site-Audit, 15 Technical-SEO-Fixes (2026-09-07)
+
+Peec listet unter Actions einen Site-Audit mit 15 Fixes (app.peec.ai/actions/recommendations). Umsetzung im PR "Peec site audit": Datumsmechanik (oben), TechArticle plus BreadcrumbList auf allen 90 Research-Notizen, CollectionPage auf Research-Index und -Domänen, WebPage mit `dateModified` und `dateModified` im Service-Block auf Pentesting, OT-Pentesting und den fünf Branchenseiten, AboutPage, WebPage auf `/legal`, DefinedTermSet im Glossar, Reviews auf `/customers` als Review-Knoten am Service statt als Product (die Product-Auszeichnung hatte Peec die Seite als Produktseite einordnen lassen), `noindex` auf `/en/comcenter`, ein H1 auf `/legal`.
+
+Bewusst nicht umgesetzt: "Jahr in den Titel" (Research-Notizen sind Referenzmaterial, Peec rät bei Evergreen-Seiten selbst ab), `SearchAction` (es gibt keine Site-Suche), und die sechs Produktseiten-Fixes für `/en/customers` (Produktspezifikationen, Verkaufsdaten, Bildunterschriften, sichtbare Brotkrumen, article-Wrapper, `og:type product`), die mit der korrigierten Auszeichnung gegenstandslos sind.
 
 ## Task 4: Atom-Feed (A7)
 

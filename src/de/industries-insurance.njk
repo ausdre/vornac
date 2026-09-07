@@ -12,9 +12,11 @@ ogType: website
 {
   "@context": "https://schema.org",
   "@graph": [
+    {% include "partials/webpage-node.njk" %},
     {
       "@type": "Service",
       "@id": "{{ pageUrls['industries-insurance'] | absoluteUrl(site.domain) }}#service",
+      "dateModified": "{{ updated }}",
       "name": "Kontinuierliche DORA-Validierung für Versicherer",
       "serviceType": "Penetration Testing für Versicherungen",
       "description": "DORA-konformes, kontinuierliches Pentesting für Versicherer und Versicherungsgruppen. IKT-Risiko, Vorfall- und Resilienztests, audit-ready.",

@@ -8,48 +8,7 @@ ogType: website
 
 {% block extraHead %}
 {% include "partials/customers-styles.njk" %}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ pageUrls.index | absoluteUrl(site.domain) }}" },
-        { "@type": "ListItem", "position": 2, "name": "Customers", "item": "{{ pageUrls['customers'] | absoluteUrl(site.domain) }}" }
-      ]
-    },
-    {
-      "@type": "Product",
-      "@id": "{{ pageUrls['pentesting'] | absoluteUrl(site.domain) }}#service",
-      "name": "VORNAC Pentesting",
-      "brand": { "@id": "https://www.vornac.com/#organization" },
-      "review": [
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Michael Müller", "jobTitle": "CEO", "worksFor": { "@type": "Organization", "name": "mbits GmbH" } },
-          "reviewBody": "We build software for hospitals. Security isn't a feature, it's table stakes. Our partners need to hit the same bar we hold ourselves to. VORNAC delivers on both fronts. Instead of one-off engagements, we get continuous testing that matches our release cadence, findings we can ship straight into the backlog, and full visibility into our security posture at any moment. A partner that operates as an extension of our team, and one we recommend to our healthcare customers without hesitation."
-        },
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Nikolai Gulatz", "jobTitle": "CIO", "worksFor": { "@type": "Organization", "name": "Instaffo GmbH" } },
-          "reviewBody": "Test results flow straight into our internal ticketing system. Findings are prioritized by technical severity. Our engineering team works through them as regular development tasks. The exact technical write-ups eliminate long alignment rounds on reproducing the bug."
-        },
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Bernhard Gauß", "jobTitle": "Managing Director", "worksFor": { "@type": "Organization", "name": "IP-Crew GmbH" } },
-          "reviewBody": "VORNAC's licensing is a flat fee. That lets us bake security into every new software module as a fixed line item from day one. Unlimited test runs mean predictable budgets for our mid-market clients. No surprises."
-        },
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Christopher Wesch", "jobTitle": "Managing Director", "worksFor": { "@type": "Organization", "name": "tilko GmbH" } },
-          "reviewBody": "As a Wi-Fi and network specialist, we build the infrastructure our customers run their business on, and that responsibility doesn't end at handover. With VORNAC, we have a partner that probes those networks continuously and autonomously, not once a year. We catch risks before they turn into incidents, and we can show our customers hard evidence that the networks we operate are secure."
-        }
-      ]
-    }
-  ]
-}
-</script>
+{% include "partials/customers-schema.njk" %}
 {% endblock %}
 
 {% block content %}

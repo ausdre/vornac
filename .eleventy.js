@@ -268,6 +268,36 @@ module.exports = function (eleventyConfig) {
     return d.toISOString().slice(0, 10);
   });
 
+  // Human-readable date for the visible "Stand" / "Updated" lines, from a
+  // YYYY-MM-DD string: "2. Juni 2026" (de) or "2 June 2026" (en). Parsed as
+  // UTC noon so no timezone can shift the day.
+  eleventyConfig.addFilter("longDate", function (isoDay, locale) {
+    if (!isoDay) return "";
+    const d = new Date(`${isoDay}T12:00:00Z`);
+    return new Intl.DateTimeFormat(locale === "de" ? "de-DE" : "en-GB", {
+      day: "numeric", month: "long", year: "numeric", timeZone: "UTC"
+    }).format(d);
+  });
+
+  // JSON string for embedding text in hand-written JSON-LD blocks: escapes
+  // quotes, control characters and "</" so the value stays inside its
+  // <script> element. Returns the value WITH surrounding double quotes.
+  eleventyConfig.addFilter("jsonString", function (value) {
+    return JSON.stringify(value == null ? "" : String(value)).replace(/<\//g, "<\\/");
+  });
+
+  // Serialise a data object as a JSON-LD block body (minified, script-safe).
+  // Keys with nothing to say (null, undefined, empty string, empty array)
+  // are dropped so optional fields never surface as empty values.
+  eleventyConfig.addFilter("jsonLd", function (value) {
+    const json = JSON.stringify(value, (key, v) => {
+      if (v === null || v === undefined || v === "") return undefined;
+      if (Array.isArray(v) && v.length === 0) return undefined;
+      return v;
+    });
+    return json.replace(/<\//g, "<\\/");
+  });
+
   // ── Cross-link transform ──────────────────────────────────────────
   // Walks every generated HTML page and auto-links glossary terms +
   // research note titles wherever they appear in body prose. See top

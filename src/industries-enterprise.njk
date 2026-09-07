@@ -12,9 +12,11 @@ ogType: website
 {
   "@context": "https://schema.org",
   "@graph": [
+    {% include "partials/webpage-node.njk" %},
     {
       "@type": "Service",
       "@id": "{{ pageUrls['industries-enterprise'] | absoluteUrl(site.domain) }}#service",
+      "dateModified": "{{ updated }}",
       "name": "NIS2-ready validation for essential and important entities",
       "serviceType": "Penetration Testing for NIS2 Compliance",
       "description": "NIS2-aligned continuous penetration testing for essential and important entities. Article 21 measures, proven on live production, audit-ready evidence.",
