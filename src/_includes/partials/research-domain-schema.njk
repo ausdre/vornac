@@ -1,0 +1,50 @@
+{# JSON-LD for a Research domain page: CollectionPage with the ordered list of
+   its notes, plus the BreadcrumbList that mirrors the visible trail in
+   research-domain-render.njk (Research Index / domain). Included from the
+   extraHead block of both domain templates.
+
+   Inputs in scope: domain, locale, pageUrls, site, canonicalPath, published,
+   updated, description.
+#}
+{% set domainUrl = canonicalPath | absoluteUrl(site.domain) %}
+{% set researchUrl = pageUrls.research | absoluteUrl(site.domain) %}
+{% set items = [] %}
+{% for n in domain.featured.concat(domain.reference).concat(domain.background) %}
+  {% set noteUrl = pageUrls["research-note-" + n.id] | absoluteUrl(site.domain) %}
+  {% set _ = items.push({ "@type": "ListItem", "position": loop.index, "name": n.title[locale], "url": noteUrl }) %}
+{% endfor %}
+{% set ld = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": domainUrl,
+      "url": domainUrl,
+      "name": domain.title[locale],
+      "description": description,
+      "inLanguage": locale,
+      "datePublished": published,
+      "dateModified": updated,
+      "isPartOf": { "@type": "CollectionPage", "@id": researchUrl, "url": researchUrl },
+      "publisher": { "@id": site.organizationId },
+      "mainEntity": {
+        "@type": "ItemList",
+        "@id": domainUrl + "#notes",
+        "name": domain.title[locale],
+        "numberOfItems": domain.count,
+        "itemListOrder": "https://schema.org/ItemListOrderAscending",
+        "itemListElement": items
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": domainUrl + "#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Research Index", "item": researchUrl },
+        { "@type": "ListItem", "position": 2, "name": domain.number + " · " + domain.title[locale], "item": domainUrl }
+      ]
+    },
+    site.organizationLd
+  ]
+} %}
+<script type="application/ld+json">{{ ld | jsonLd | safe }}</script>

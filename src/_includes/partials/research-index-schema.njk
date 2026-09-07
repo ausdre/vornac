@@ -1,0 +1,40 @@
+{# JSON-LD for the Research index: CollectionPage listing the eight domains.
+   No BreadcrumbList here because the page shows no trail. Included from the
+   extraHead block of src/research.njk and src/de/research.njk.
+
+   Inputs in scope: research.domains, locale, pageUrls, site, canonicalPath,
+   published, updated, title, description.
+#}
+{% set indexUrl = canonicalPath | absoluteUrl(site.domain) %}
+{% set items = [] %}
+{% for d in research.domains %}
+  {% set _ = items.push({ "@type": "ListItem", "position": loop.index, "name": d.title[locale], "url": pageUrls["research-" + d.id] | absoluteUrl(site.domain) }) %}
+{% endfor %}
+{% set ld = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": indexUrl,
+      "url": indexUrl,
+      "name": "VORNAC Research",
+      "headline": title,
+      "description": description,
+      "inLanguage": locale,
+      "datePublished": published,
+      "dateModified": updated,
+      "isPartOf": { "@id": site.websiteId },
+      "publisher": { "@id": site.organizationId },
+      "mainEntity": {
+        "@type": "ItemList",
+        "@id": indexUrl + "#domains",
+        "name": "VORNAC Research",
+        "numberOfItems": research.domains.length,
+        "itemListOrder": "https://schema.org/ItemListOrderAscending",
+        "itemListElement": items
+      }
+    },
+    site.organizationLd
+  ]
+} %}
+<script type="application/ld+json">{{ ld | jsonLd | safe }}</script>

@@ -1,0 +1,27 @@
+{#- One WebPage node for a hand-written JSON-LD @graph. Rendered as a bare
+    JSON object (no trailing comma) so the calling template can place it as
+    the first graph entry:
+
+      "@graph": [
+        {% include "partials/webpage-node.njk" %},
+        { "@type": "Service", ... }
+
+    Carries the page's publish and last-modified dates (src.11tydata.js) and
+    points at the page's main entity. Set `webPageMainEntity` before the
+    include to override the default "#service" fragment; set it to false to
+    omit mainEntity. -#}
+{%- set pageAbs = canonicalPath | absoluteUrl(site.domain) -%}
+{%- set mainEntityFragment = webPageMainEntity if webPageMainEntity is defined else "#service" -%}
+{
+      "@type": "WebPage",
+      "@id": "{{ pageAbs }}",
+      "url": "{{ pageAbs }}",
+      "name": {{ title | jsonString | safe }},
+      "description": {{ description | jsonString | safe }},
+      "inLanguage": "{{ locale }}",
+      "datePublished": "{{ published }}",
+      "dateModified": "{{ updated }}",
+      "isPartOf": { "@id": "{{ site.websiteId }}" },
+      "publisher": { "@id": "{{ site.organizationId }}" }{% if mainEntityFragment %},
+      "mainEntity": { "@id": "{{ pageAbs }}{{ mainEntityFragment }}" }{% endif %}
+    }

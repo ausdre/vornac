@@ -1,0 +1,30 @@
+{# Generic JSON-LD for pages that describe the site or the company rather
+   than a service: about, legal and similar. Emits one page node plus the
+   compact Organization node.
+
+   Set before including:
+     schemaType      "WebPage" (default), "AboutPage", "ContactPage", ...
+     schemaAboutOrg  true when the page is about VORNAC itself (about, legal);
+                     adds `about` and `mainEntity` pointing at the Organization
+
+   Inputs in scope: title, description, locale, site, canonicalPath,
+   published, updated (src.11tydata.js).
+#}
+{% set pageAbs = canonicalPath | absoluteUrl(site.domain) %}
+{% set pageType = schemaType if schemaType else "WebPage" %}
+{% set pageNode = {
+  "@type": pageType,
+  "@id": pageAbs,
+  "url": pageAbs,
+  "name": title,
+  "description": description,
+  "inLanguage": locale,
+  "datePublished": published,
+  "dateModified": updated,
+  "isPartOf": { "@id": site.websiteId },
+  "publisher": { "@id": site.organizationId },
+  "about": ({ "@id": site.organizationId } if schemaAboutOrg else null),
+  "mainEntity": ({ "@id": site.organizationId } if schemaAboutOrg else null)
+} %}
+{% set ld = { "@context": "https://schema.org", "@graph": [pageNode, site.organizationLd] } %}
+<script type="application/ld+json">{{ ld | jsonLd | safe }}</script>

@@ -17,6 +17,16 @@
 - `vercel.json`: `trailingSlash: false`. Interne Links werden beim Build ohne Slash geschrieben (Transform in `.eleventy.js`); Vercel leitet `/de/*` auf `/*` und vornac.de auf www.vornac.com um.
 - `robots.txt` und `llms.txt` liegen im Repo-Root und werden per Passthrough kopiert. Jede neue Inhaltsseite kommt in die `llms.txt`.
 
+## Datum und strukturierte Daten (seit PR "Peec site audit")
+
+- Jede Seite hat `published` und `updated` (JJJJ-MM-TT), berechnet in `src/src.11tydata.js`: Front-Matter geht vor, dann der paginierte Datensatz (Research-Notiz oder -Domäne aus `research.js`), dann `src/_data/pageDates.json`. Die JSON kommt aus der Git-Historie (`npm run dates`) und wird mitcommittet; der Build ruft nie `git` und nie die Uhr auf, weil Vercel flach klont und ein Build-Datum jede Seite bei jedem Deploy "aktualisieren" würde.
+- Nach jeder Inhaltsänderung: committen, dann `npm run dates`, JSON mitcommitten. `npm run dates:check` meldet eine veraltete JSON. Research-Notizen tragen ihr Datum selbst: `published`/`updated` je Notiz in `src/_data/research.js`, Standard `RESEARCH_PUBLISHED`/`RESEARCH_UPDATED`.
+- Die Daten speisen `article:published_time`/`article:modified_time` (Seiten mit `ogType: article`), `datePublished`/`dateModified` in allen JSON-LD-Blöcken, die sichtbare Zeile "Veröffentlicht"/"Stand" auf Research-Notizen und `lastmod` in der Sitemap (`dates.byKey`).
+- JSON-LD wird aus Partials erzeugt: `research-note-schema.njk` (TechArticle plus BreadcrumbList, die exakt der sichtbaren Brotkrumenleiste entspricht), `research-domain-schema.njk` und `research-index-schema.njk` (CollectionPage mit ItemList), `customers-schema.njk` (WebPage mit Reviews auf den Service `/pentesting#service`, Texte aus `src/_data/testimonials.js`, kein Product-Typ), `glossary-schema.njk` (DefinedTermSet aus `glossary.js`, `@id` je Begriff auf den Anker `#term-<id>`), `page-schema.njk` (AboutPage/WebPage), `webpage-node.njk` (WebPage-Knoten mit Datum für die handgeschriebenen Service-Graphen). Filter `jsonLd` serialisiert Objekte script-sicher und lässt leere Felder weg; `jsonString` für einzelne Werte in handgeschriebenem JSON.
+- Organization-Knoten: kompakt auf jeder Seite über `site.organizationLd`, vollständig (Adresse, Telefon, sameAs) auf den Startseiten, immer unter `https://www.vornac.com/#organization`. Der Service `#service` wird nur auf `/pentesting` als Service deklariert; andere Seiten referenzieren die `@id`.
+- `comcenter` trägt `noindex, nofollow` und bekommt kein JSON-LD. Eine Site-Suche gibt es nicht, deshalb keine `SearchAction`. Research-Notizen sind Referenzmaterial ohne Jahreszahl im Titel; das bleibt so.
+- Genau ein `<h1>` je Seite; auf `/legal` heißt es "Rechtliches"/"Legal", Impressum und Datenschutzerklärung sind `<h2>`.
+
 ## Regeln für deutsche Inhaltsseiten (`/wissen`, Regelwerke, Vergleiche, Preise)
 
 - Erster Absatz beantwortet die Frage der Überschrift in 40 bis 60 Wörtern. Definitionen in einem Satz, englischer Begriff in Klammern.

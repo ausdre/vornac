@@ -9,6 +9,8 @@ bodyClass: about-page
 
 {% block extraHead %}
 <link rel="stylesheet" href="/about.css">
+{% set schemaType = "AboutPage" %}{% set schemaAboutOrg = true %}
+{% include "partials/page-schema.njk" %}
 {% endblock %}
 
 {% block content %}

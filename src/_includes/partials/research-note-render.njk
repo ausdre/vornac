@@ -12,6 +12,7 @@
      locale               — "en" | "de"
      t                    — i18n table for the current locale
      pageUrls             — per-locale URL lookup
+     published, updated   — YYYY-MM-DD from research.js (via src.11tydata.js)
 #}
 
 {% if locale == "en" %}
@@ -25,6 +26,8 @@
     "metaPhases":      "Engagement phases",
     "metaNoPhases":    "No specific phase",
     "metaDomain":      "Domain",
+    "metaPublished":   "Published",
+    "metaUpdated":     "Updated",
     "siblingsHeading": "Related notes in this domain",
     "noSiblings":      "This is the only note in this domain.",
     "navPrev":         "Previous note",
@@ -47,6 +50,8 @@
     "metaPhases":      "Engagement-Phasen",
     "metaNoPhases":    "Keine spezifische Phase",
     "metaDomain":      "Domain",
+    "metaPublished":   "Veröffentlicht",
+    "metaUpdated":     "Stand",
     "siblingsHeading": "Verwandte Notizen in dieser Domain",
     "noSiblings":      "Dies ist die einzige Notiz in dieser Domain.",
     "navPrev":         "Vorherige Notiz",
@@ -120,6 +125,17 @@
                     <p class="rs-note-side-value rs-note-side-muted">{{ s.metaNoPhases }}</p>
                     {% endif %}
                 </div>
+
+                <div class="rs-note-side-block">
+                    <p class="rs-note-side-label">{{ s.metaPublished }}</p>
+                    <p class="rs-note-side-value"><time datetime="{{ published }}">{{ published | longDate(locale) }}</time></p>
+                </div>
+                {% if updated and updated != published %}
+                <div class="rs-note-side-block">
+                    <p class="rs-note-side-label">{{ s.metaUpdated }}</p>
+                    <p class="rs-note-side-value"><time datetime="{{ updated }}">{{ updated | longDate(locale) }}</time></p>
+                </div>
+                {% endif %}
 
                 <div class="rs-note-side-block rs-note-side-glossary">
                     <p class="rs-note-side-label">{{ s.glossaryEyebrow }}</p>

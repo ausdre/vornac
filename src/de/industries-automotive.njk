@@ -12,9 +12,11 @@ ogType: website
 {
   "@context": "https://schema.org",
   "@graph": [
+    {% include "partials/webpage-node.njk" %},
     {
       "@type": "Service",
       "@id": "{{ pageUrls['industries-automotive'] | absoluteUrl(site.domain) }}#service",
+      "dateModified": "{{ updated }}",
       "name": "Sicherheitsvalidierung für Automotive-Lieferketten",
       "serviceType": "Penetration Testing für Automotive",
       "description": "Kontinuierliches Pentesting für OEMs und Zulieferer in der Automobilindustrie. TISAX-konforme Validierung plus adversariale Tests vernetzter Fahrzeuge, APIs und Binaries.",

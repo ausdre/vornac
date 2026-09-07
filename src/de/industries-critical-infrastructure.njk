@@ -12,9 +12,11 @@ ogType: website
 {
   "@context": "https://schema.org",
   "@graph": [
+    {% include "partials/webpage-node.njk" %},
     {
       "@type": "Service",
       "@id": "{{ pageUrls['industries-critical-infrastructure'] | absoluteUrl(site.domain) }}#service",
+      "dateModified": "{{ updated }}",
       "name": "Resilienztests für KRITIS-Betreiber und kritische Dienstleister",
       "serviceType": "Penetration Testing für kritische Infrastruktur",
       "description": "Kontinuierliches Pentesting für KRITIS-Betreiber und essenzielle Dienstleister. BSI-konforme Validierung für Energie, Verkehr, Gesundheit und OT/IT-Landschaften.",

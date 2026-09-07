@@ -141,6 +141,17 @@ const T = (en, de) => ({ en, de });
  */
 const B = (en, de) => ({ en: en.trim(), de: de.trim() });
 
+/**
+ * Publication dates, YYYY-MM-DD. They feed datePublished and dateModified in
+ * the TechArticle JSON-LD, the article:* meta tags, the visible date on each
+ * note page and the sitemap lastmod. RESEARCH_PUBLISHED is the day the index
+ * went live (commit cfcfade). A note that is edited later gets its own
+ * `updated` field, a note added later its own `published` field; every note
+ * without them uses the defaults. Never derive these from the build time.
+ */
+const RESEARCH_PUBLISHED = "2026-06-02";
+const RESEARCH_UPDATED = "2026-06-02";
+
 const NOTES = [
   // ─────────────────────────────────────────────────────────────
   // 01 — OFFENSIVE TRADECRAFT
@@ -5009,12 +5020,26 @@ function statsFor(notes) {
   };
 }
 
+function latestDate(dates) {
+  return dates.reduce((a, b) => (a > b ? a : b), "");
+}
+
+function notePublished(n) {
+  return n.published || RESEARCH_PUBLISHED;
+}
+
+function noteUpdated(n) {
+  return n.updated || n.published || RESEARCH_UPDATED;
+}
+
 function domainsWithNotes(notes) {
   return DOMAINS.map((d) => {
     const list = notes.filter((n) => n.domain === d.id);
     return {
       ...d,
       count: list.length,
+      published: RESEARCH_PUBLISHED,
+      updated: latestDate([RESEARCH_UPDATED, ...list.map(noteUpdated)]),
       featured: list.filter((n) => n.tier === 1),
       reference: list.filter((n) => n.tier === 2),
       background: list.filter((n) => n.tier === 3)
@@ -5044,6 +5069,12 @@ function allNotesDenormalized(notes) {
       const next = idx < list.length - 1 ? list[idx + 1] : null;
       out.push({
         ...n,
+        published: notePublished(n),
+        updated: noteUpdated(n),
+        phaseLabels: {
+          en: n.phases.map((p) => PHASES[p].en),
+          de: n.phases.map((p) => PHASES[p].de)
+        },
         domainTitle: d.title,
         domainNumber: d.number,
         domainBlurb: d.blurb,
@@ -5069,5 +5100,7 @@ module.exports = {
   phases: PHASES,
   stats: statsFor(NOTES),
   allNotes: allNotesDenormalized(NOTES),
-  noteById: noteByIdMap(NOTES)
+  noteById: noteByIdMap(NOTES),
+  published: RESEARCH_PUBLISHED,
+  updated: latestDate([RESEARCH_UPDATED, ...NOTES.map(noteUpdated)])
 };

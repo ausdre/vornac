@@ -9,6 +9,12 @@ bodyClass: comcenter
 
 {# Comcenter is a demo dashboard — suppress the marketing announcement bar
    and main nav, and use its own slim header instead. #}
+{# Mock data with fictional timestamps: keep it out of search indexes and AI
+   answers. robots.txt already disallows crawling; the meta tag covers
+   engines that reach the page through a link. No JSON-LD on purpose. #}
+{% block extraHead %}
+<meta name="robots" content="noindex, nofollow">
+{% endblock %}
 {% block announcementBar %}{% endblock %}
 {% block siteHeader %}
 <header id="site-header" class="relative sticky top-0 z-40 border-b border-stone-300 backdrop-blur" style="background-color: rgba(245, 242, 237, 0.97);">

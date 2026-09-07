@@ -28,6 +28,21 @@ module.exports = {
 
   socialPreviewImage: "/vornacpentesting43.png",
 
+  // Shared JSON-LD identities. Every page that names the publisher or author
+  // embeds `organizationLd` (a compact node) so the reference resolves on the
+  // page itself; the full Organization record with address, founders and
+  // memberships lives on the homepage under the same @id.
+  organizationId: "https://www.vornac.com/#organization",
+  websiteId: "https://www.vornac.com/#website",
+  organizationLd: {
+    "@type": "Organization",
+    "@id": "https://www.vornac.com/#organization",
+    "name": "VORNAC GmbH",
+    "alternateName": "VORNAC",
+    "url": "https://www.vornac.com/",
+    "logo": { "@type": "ImageObject", "url": "https://www.vornac.com/vornacpentesting43.png" }
+  },
+
   // Default and supported locales.
   // German is the root locale (/, /pentesting, ...); English lives under /en.
   defaultLocale: "de",

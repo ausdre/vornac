@@ -9,6 +9,20 @@
  * English. This means moving a page in or out of src/de/ is enough to
  * flip its locale — no per-file front-matter needed.
  */
+/**
+ * Date lookup for pages that are not paginated: registry entry first (it
+ * carries locale-specific dates), file stem second.
+ */
+function lookupDate(data, field) {
+  const dates = data.dates;
+  if (!dates) return null;
+  const locale = data.page.filePathStem.startsWith("/de/") ? "de" : "en";
+  const fromKey = data.i18nKey && dates.byKey[data.i18nKey] && dates.byKey[data.i18nKey][locale];
+  if (fromKey && fromKey[field]) return fromKey[field];
+  const fromStem = dates.byStem[data.page.filePathStem];
+  return fromStem ? fromStem[field] : null;
+}
+
 module.exports = {
   eleventyComputed: {
     /** "en" | "de" */
@@ -65,6 +79,32 @@ module.exports = {
         out[p.key] = p[locale];
       }
       return out;
+    },
+
+    /**
+     * Publish and last-modified date of THIS page as YYYY-MM-DD strings.
+     *
+     * Resolution order:
+     *   1. `published` / `updated` in the page's own front matter
+     *   2. the paginated record (research note or domain from research.js)
+     *   3. the registry entry in dates.js (git history via pageDates.json)
+     *
+     * Both feed article:published_time / article:modified_time in
+     * head-meta.njk, datePublished / dateModified in the JSON-LD blocks and
+     * lastmod in the sitemap. They never fall back to the build time.
+     */
+    published: (data) => {
+      if (data.published) return data.published;
+      if (data.note && data.note.published) return data.note.published;
+      if (data.domain && data.domain.published) return data.domain.published;
+      return lookupDate(data, "created");
+    },
+
+    updated: (data) => {
+      if (data.updated) return data.updated;
+      if (data.note && data.note.updated) return data.note.updated;
+      if (data.domain && data.domain.updated) return data.domain.updated;
+      return lookupDate(data, "modified");
     },
 
     /**

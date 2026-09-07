@@ -12,9 +12,11 @@ ogType: website
 {
   "@context": "https://schema.org",
   "@graph": [
+    {% include "partials/webpage-node.njk" %},
     {
       "@type": "Service",
       "@id": "{{ pageUrls['industries-financial-services'] | absoluteUrl(site.domain) }}#service",
+      "dateModified": "{{ updated }}",
       "name": "Continuous validation for banks and financial institutions",
       "serviceType": "Penetration Testing for Financial Services",
       "description": "Continuous penetration testing for banks, payment institutions, and asset managers. DORA resilience plus BaFin VAIT and BAIT depth, audit-ready for both.",

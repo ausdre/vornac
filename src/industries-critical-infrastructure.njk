@@ -12,9 +12,11 @@ ogType: website
 {
   "@context": "https://schema.org",
   "@graph": [
+    {% include "partials/webpage-node.njk" %},
     {
       "@type": "Service",
       "@id": "{{ pageUrls['industries-critical-infrastructure'] | absoluteUrl(site.domain) }}#service",
+      "dateModified": "{{ updated }}",
       "name": "Resilience testing for KRITIS and essential services",
       "serviceType": "Penetration Testing for Critical Infrastructure",
       "description": "Continuous penetration testing for KRITIS operators and essential service providers. BSI-aligned validation for energy, transport, healthcare, and OT/IT estates.",

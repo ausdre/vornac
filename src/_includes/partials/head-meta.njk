@@ -4,6 +4,8 @@
      ogImage:         optional, defaults to site.socialPreviewImage
      ogType:          optional, defaults to "website"
      i18nKey:         optional, opts the page into bilingual hreflang from pages.js
+     published:       optional override, YYYY-MM-DD (default: git history, see src.11tydata.js)
+     updated:         optional override, YYYY-MM-DD (default: git history, see src.11tydata.js)
 #}
 <meta charset="UTF-8">
 <title>{{ title }}</title>
@@ -32,6 +34,11 @@
 <meta property="og:description" content="{{ description }}">
 <meta property="og:image" content="{{ (ogImage or site.socialPreviewImage) | absoluteUrl(site.domain) }}">
 <meta property="og:locale" content="{{ 'de_DE' if locale == 'de' else 'en_US' }}">
+{# Machine-readable dates for article pages (research notes, later /wissen).
+   `published` and `updated` come from src/src.11tydata.js: front matter,
+   the paginated record or the git-derived registry, never the build time. #}
+{% if ogType == 'article' and published %}<meta property="article:published_time" content="{{ published }}">{% endif %}
+{% if ogType == 'article' and updated %}<meta property="article:modified_time" content="{{ updated }}">{% endif %}
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ title }}">

@@ -1,0 +1,51 @@
+{# JSON-LD for the glossary: one DefinedTermSet with every term, each @id
+   pointing at the visible anchor (li#term-<id>) rendered by
+   glossary-render.njk. Included from src/glossary.njk and src/de/glossary.njk.
+
+   Inputs in scope: glossary, title, description, locale, site,
+   canonicalPath, published, updated.
+#}
+{% set pageAbs = canonicalPath | absoluteUrl(site.domain) %}
+{% set setId = pageAbs + "#set" %}
+{% set terms = [] %}
+{% for entry in glossary.sortedByLocale[locale] %}
+  {% set _ = terms.push({
+    "@type": "DefinedTerm",
+    "@id": pageAbs + "#term-" + entry.id,
+    "name": glossary.termById[locale][entry.id],
+    "alternateName": (entry.fullForm[locale] if entry.fullForm and entry.fullForm[locale] else null),
+    "description": entry.definition[locale],
+    "termCode": entry.id,
+    "inDefinedTermSet": { "@id": setId }
+  }) %}
+{% endfor %}
+{% set ld = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": pageAbs,
+      "url": pageAbs,
+      "name": title,
+      "description": description,
+      "inLanguage": locale,
+      "datePublished": published,
+      "dateModified": updated,
+      "isPartOf": { "@id": site.websiteId },
+      "publisher": { "@id": site.organizationId },
+      "mainEntity": { "@id": setId }
+    },
+    {
+      "@type": "DefinedTermSet",
+      "@id": setId,
+      "name": ("VORNAC Glossary" if locale == "en" else "VORNAC Glossar"),
+      "description": description,
+      "inLanguage": locale,
+      "url": pageAbs,
+      "publisher": { "@id": site.organizationId },
+      "hasDefinedTerm": terms
+    },
+    site.organizationLd
+  ]
+} %}
+<script type="application/ld+json">{{ ld | jsonLd | safe }}</script>

@@ -12,9 +12,11 @@ ogType: website
 {
   "@context": "https://schema.org",
   "@graph": [
+    {% include "partials/webpage-node.njk" %},
     {
       "@type": "Service",
       "@id": "{{ pageUrls['industries-financial-services'] | absoluteUrl(site.domain) }}#service",
+      "dateModified": "{{ updated }}",
       "name": "Kontinuierliche Validierung für Banken und Finanzinstitute",
       "serviceType": "Penetration Testing für Finanzdienstleistungen",
       "description": "Kontinuierliches Pentesting für Banken, Zahlungsinstitute und Vermögensverwalter. Operationelle Resilienz nach DORA, in der Tiefe von VAIT und BAIT.",

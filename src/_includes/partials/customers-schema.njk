@@ -1,0 +1,59 @@
+{# JSON-LD for the customers page: a WebPage whose main entity is the list
+   of customer quotes, each a Review of the VORNAC Pentesting service that
+   /pentesting declares under the same @id ("...#service"). The page is not
+   a product page, so it carries no Product node (an earlier version did,
+   which made crawlers file it as a product listing).
+
+   Inputs in scope: testimonials, title, description, locale, site,
+   canonicalPath, pageUrls, published, updated.
+#}
+{% set pageAbs = canonicalPath | absoluteUrl(site.domain) %}
+{% set serviceId = (pageUrls.pentesting | absoluteUrl(site.domain)) + "#service" %}
+{% set service = { "@type": "Service", "@id": serviceId, "name": "VORNAC Pentesting", "url": pageUrls.pentesting | absoluteUrl(site.domain), "provider": { "@id": site.organizationId } } %}
+{% set reviews = [] %}
+{% for r in testimonials %}
+  {% set _ = reviews.push({
+    "@type": "Review",
+    "@id": pageAbs + "#review-" + loop.index,
+    "inLanguage": locale,
+    "reviewBody": r.body[locale],
+    "author": { "@type": "Person", "name": r.author, "jobTitle": r.jobTitle[locale], "worksFor": { "@type": "Organization", "name": r.company } },
+    "itemReviewed": { "@id": serviceId }
+  }) %}
+{% endfor %}
+{% set ld = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": pageAbs,
+      "url": pageAbs,
+      "name": title,
+      "description": description,
+      "inLanguage": locale,
+      "datePublished": published,
+      "dateModified": updated,
+      "isPartOf": { "@id": site.websiteId },
+      "publisher": { "@id": site.organizationId },
+      "about": { "@id": serviceId },
+      "mainEntity": {
+        "@type": "ItemList",
+        "@id": pageAbs + "#reviews",
+        "name": ("Customer quotes" if locale == "en" else "Kundenstimmen"),
+        "numberOfItems": testimonials.length,
+        "itemListElement": reviews
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": pageAbs + "#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": ("Home" if locale == "en" else "Startseite"), "item": pageUrls.index | absoluteUrl(site.domain) },
+        { "@type": "ListItem", "position": 2, "name": ("Customers" if locale == "en" else "Kunden"), "item": pageAbs }
+      ]
+    },
+    service,
+    site.organizationLd
+  ]
+} %}
+<script type="application/ld+json">{{ ld | jsonLd | safe }}</script>

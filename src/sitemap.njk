@@ -30,16 +30,21 @@ priorities:
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
-{%- set lastmod = page.date | isoDate -%}
+{#- lastmod per page from dates.js (git history and research.js), never the
+    build date. A registry entry without dates falls back to the newest
+    research date so the value still points at a real edit. -#}
 {%- for entry in pages -%}
   {%- set priority = priorities[entry.key] or "0.5" -%}
+  {%- set entryDates = dates.byKey[entry.key] -%}
+  {%- set lastmodDe = (entryDates.de.modified if entryDates and entryDates.de else research.updated) -%}
+  {%- set lastmodEn = (entryDates.en.modified if entryDates and entryDates.en else research.updated) -%}
   {#- German (root locale) first, then English under /en. x-default stays
       English: it is the fallback for visitors whose language matches
       neither de nor en. -#}
   {%- if entry.de %}
   <url>
     <loc>{{ entry.de | absoluteUrl(site.domain) }}</loc>
-    <lastmod>{{ lastmod }}</lastmod>
+    <lastmod>{{ lastmodDe }}</lastmod>
     <priority>{{ priority }}</priority>
     <xhtml:link rel="alternate" hreflang="de" href="{{ entry.de | absoluteUrl(site.domain) }}" />
     {%- if entry.en %}
@@ -51,7 +56,7 @@ priorities:
   {%- if entry.en %}
   <url>
     <loc>{{ entry.en | absoluteUrl(site.domain) }}</loc>
-    <lastmod>{{ lastmod }}</lastmod>
+    <lastmod>{{ lastmodEn }}</lastmod>
     <priority>{{ priority }}</priority>
     {%- if entry.de %}
     <xhtml:link rel="alternate" hreflang="de" href="{{ entry.de | absoluteUrl(site.domain) }}" />
