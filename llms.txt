@@ -14,7 +14,7 @@ Unternehmen: VORNAC GmbH, Carl-Friedrich-Gauß-Ring 5, 69124 Heidelberg, Deutsch
 - [Pentesting](https://www.vornac.com/pentesting): Ablauf in vier Schritten, Methodik, geprüfte Angriffsfläche, Reportformate
 - [OT-Pentesting](https://www.vornac.com/ot-pentesting): Produktionssicheres Testen für KRITIS, NIS2 und IEC 62443
 - [FAQ](https://www.vornac.com/faq): Antworten zu kontinuierlichem Pentesting, Datenstandort, Reports, DORA, NIS2, KRITIS, TISAX
-- [Glossar](https://www.vornac.com/glossary): 155 Begriffe aus Pentesting, Compliance und Sicherheitsarchitektur
+- [Glossar](https://www.vornac.com/glossary): 162 Begriffe aus Pentesting, Compliance und Sicherheitsarchitektur, darunter CTEM, BAS, PTaaS, AEV und Assumed Breach Simulation
 - [Branchen](https://www.vornac.com/industries): Versicherung, Finanzdienstleister, kritische Infrastruktur, Automotive, Enterprise
 - [Kunden](https://www.vornac.com/customers): Warum CISOs VORNAC wählen
 - [Über uns](https://www.vornac.com/about): Gründer, Standort Heidelberg, Auszeichnungen

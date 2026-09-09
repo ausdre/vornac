@@ -41,9 +41,9 @@ priorities:
   {%- set entryDates = dates.byKey[entry.key] -%}
   {%- set lastmodDe = (entryDates.de.modified if entryDates and entryDates.de else research.updated) -%}
   {%- set lastmodEn = (entryDates.en.modified if entryDates and entryDates.en else research.updated) -%}
-  {#- German (root locale) first, then English under /en. x-default stays
-      English: it is the fallback for visitors whose language matches
-      neither de nor en. -#}
+  {#- German (root locale) first, then English under /en. x-default is the
+      German URL (decision 2026-09-09): visitors whose language matches
+      neither de nor en get the German page, the market is Germany. -#}
   {%- if entry.de %}
   <url>
     <loc>{{ entry.de | absoluteUrl(site.domain) }}</loc>
@@ -52,8 +52,8 @@ priorities:
     <xhtml:link rel="alternate" hreflang="de" href="{{ entry.de | absoluteUrl(site.domain) }}" />
     {%- if entry.en %}
     <xhtml:link rel="alternate" hreflang="en" href="{{ entry.en | absoluteUrl(site.domain) }}" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="{{ entry.en | absoluteUrl(site.domain) }}" />
     {%- endif %}
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ entry.de | absoluteUrl(site.domain) }}" />
   </url>
   {%- endif -%}
   {%- if entry.en %}
@@ -65,7 +65,7 @@ priorities:
     <xhtml:link rel="alternate" hreflang="de" href="{{ entry.de | absoluteUrl(site.domain) }}" />
     {%- endif %}
     <xhtml:link rel="alternate" hreflang="en" href="{{ entry.en | absoluteUrl(site.domain) }}" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="{{ entry.en | absoluteUrl(site.domain) }}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ (entry.de or entry.en) | absoluteUrl(site.domain) }}" />
   </url>
   {%- endif -%}
 {%- endfor %}

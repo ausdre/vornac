@@ -59,10 +59,11 @@ Werkzeuge in Claude Code: `.mcp.json` im Repo-Root bringt `peec-ai` (https://api
 
 **Files:** `src/index.njk`, `src/de/index.njk` (Block `extraHead`), `src/glossary.njk`, `src/de/glossary.njk`, `src/_includes/partials/head-meta.njk` (optional gemeinsames Partial), Vorlagen unter `docs/superpowers/specs/ki-sichtbarkeit-schema/`.
 
-- [ ] Organization, WebSite und Service mit Offer aus `schema-organization.jsonld` in beide Startseiten übernehmen; `foundingDate` eintragen (Gartner-Profil nennt 2025, mit André bestätigen); Offer nur, wenn Entscheidung 2 (Preis öffentlich) gefallen ist. Teilweise erledigt am 2026-09-07 (Peec-Site-Audit): Organization auf den Startseiten mit legalName, Adresse, Telefon, E-Mail und sameAs (LinkedIn, Mastodon, Gartner); Gründer, foundingDate, HRB, memberOf und Offer stehen noch aus.
+- [x] Organization und WebSite auf beiden Startseiten aus `partials/organization-schema.njk`: foundingDate 2025 (bestätigt 2026-09-09), Gründer André Feigenbutz und Arthur Raess (beide Geschäftsführer, Anker `#andre-feigenbutz` und `#arthur-raess` auf /about), HRB 757584 Amtsgericht Mannheim, memberOf TeleTrusT und Allianz für Cyber-Sicherheit, knowsAbout mit den Kategoriebegriffen, sameAs mit LinkedIn, Mastodon, Gartner und Crunchbase (Profil aktualisieren, André). Erledigt am 2026-09-09. Kein Offer: Entscheidung 2 lautet "kein öffentlicher Preis". Der Service auf /pentesting trägt seit 2026-09-09 die Kategoriebegriffe als `serviceType`.
 - [x] DefinedTermSet aus `schema-glossar-definedtermset.jsonld` im Glossar erzeugen: aus `src/_data/glossary.js` alle Begriffe als `DefinedTerm` mit `@id` auf den bestehenden Anker `#term-<id>` rendern, deutsche Beschreibung als `description`. Erledigt am 2026-09-07 (`partials/glossary-schema.njk`, beide Sprachen).
-- [ ] Neue Begriffe ins Glossar: Continuous Threat Exposure Management (CTEM), Assumed Breach Simulation (ABS), Breach and Attack Simulation (BAS), Pentest as a Service (PTaaS), Adversarial Exposure Validation (AEV), Exposure Validation.
-- [ ] Prüfen mit `npx -y schema-dts` oder dem Rich-Results-Test; keine doppelten `@id`.
+- [x] Neue Begriffe ins Glossar: CTEM, Assumed Breach Simulation (ABS), BAS, PTaaS, AEV, Exposure Validation und Automated Penetration Testing (162 Begriffe). Erledigt am 2026-09-09.
+- [ ] Prüfen mit dem Rich-Results-Test nach dem Deploy; keine doppelten `@id` (Build-Prüfung am 2026-09-09: Organization nur auf den Startseiten vollständig, sonst kompakt unter derselben `@id`).
+- [x] x-default zeigt auf die deutsche URL (head-meta.njk und sitemap.njk), Entscheidung vom 2026-09-09; nur `/en/comcenter` ohne deutsche Fassung behält Englisch.
 
 ## Task 3: Datum, Autor, lastmod (A5)
 

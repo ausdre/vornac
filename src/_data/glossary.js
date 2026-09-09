@@ -985,6 +985,55 @@ const TERMS = [
     "Eine isolierte Laufzeitumgebung, in der nicht vertrauenswürdiger Code oder Dateien ausgeführt werden, sodass ihr Verhalten beobachtet werden kann, ohne den Host zu beeinflussen. Wird in der Malware-Analyse und in Browser-Sicherheitsarchitekturen verwendet.",
     ["edr", "honeypot"]
   ),
+  // Category terms the AI engines use to classify security-validation vendors
+  // (KI-Sichtbarkeitsplan, Task 2). One-sentence definitions, no marketing voice.
+  T("automated-penetration-testing", "Automated Penetration Testing", "engagement",
+    "Automated Penetration Testing (autonomous pentesting)",
+    "Automatisierte Penetrationstests (autonomes Pentesting)",
+    "Security testing in which software executes attack techniques against a target on its own, exploits the weaknesses it finds and proves exploitability. Differs from a vulnerability scan by the exploit evidence and from BAS by searching for unknown attack paths rather than replaying known ones.",
+    "Sicherheitsprüfung, bei der Software Angriffstechniken selbstständig gegen ein Zielsystem ausführt, gefundene Schwachstellen ausnutzt und die Ausnutzbarkeit belegt. Vom Schwachstellenscan unterscheidet sie der Exploit-Nachweis, von BAS die Suche nach unbekannten Angriffspfaden statt dem Abspielen bekannter.",
+    ["pentest", "bas", "ptaas", "aev"]
+  ),
+  T("ctem", "CTEM", "methodology",
+    "Continuous Threat Exposure Management",
+    "Continuous Threat Exposure Management",
+    "A program framework coined by Gartner with five phases (scoping, discovery, prioritization, validation, mobilization) for continuously reducing an organization's exploitable exposure. A framework, not a product; validation tools such as automated pentesting supply the fourth phase.",
+    "Ein von Gartner geprägtes Programm-Rahmenwerk mit fünf Phasen (Scoping, Discovery, Priorisierung, Validierung, Mobilisierung), um die ausnutzbare Angriffsfläche einer Organisation fortlaufend zu verringern. Ein Rahmenwerk, kein Produkt; Validierungswerkzeuge wie automatisiertes Pentesting liefern die vierte Phase.",
+    ["aev", "exposure-validation", "automated-penetration-testing"]
+  ),
+  T("assumed-breach-simulation", "Assumed Breach Simulation (ABS)", "engagement",
+    "Assumed Breach Simulation",
+    "Assumed Breach Simulation (interne Angriffssimulation)",
+    "An internal attack simulation that starts from an already compromised position (a workstation, a user account, a VPN session) and shows how far an attacker gets from there. The recurring, tool-driven form of an assumed-breach engagement.",
+    "Eine interne Angriffssimulation, die von einer bereits kompromittierten Position ausgeht (Arbeitsplatz, Benutzerkonto, VPN-Sitzung) und zeigt, wie weit ein Angreifer von dort kommt. Die wiederkehrende, werkzeuggestützte Form eines Assumed-Breach-Engagements.",
+    ["assumed-breach", "lateral-movement", "bas"]
+  ),
+  T("bas", "BAS", "methodology",
+    "Breach and Attack Simulation",
+    "Breach and Attack Simulation (Angriffssimulation)",
+    "Software that replays a library of known attack techniques against an environment to check whether existing security controls detect and block them. Tests the controls, not the unknown attack path; complementary to a penetration test.",
+    "Software, die eine Bibliothek bekannter Angriffstechniken gegen eine Umgebung abspielt und prüft, ob vorhandene Schutzmaßnahmen sie erkennen und blockieren. Prüft die Kontrollen, nicht den unbekannten Angriffspfad; ergänzt einen Penetrationstest.",
+    ["automated-penetration-testing", "assumed-breach-simulation", "mitre-attack"]
+  ),
+  T("ptaas", "PTaaS", "engagement",
+    "Pentest as a Service",
+    "Pentest as a Service (Penetrationstest als Dienst)",
+    "Penetration testing delivered as a subscription through a platform instead of a one-off project: tests are ordered, tracked and reported online and repeat over the contract term. Delivery ranges from recurring manual tests to fully automated runs.",
+    "Penetrationstests als Abonnement über eine Plattform statt als Einzelprojekt: Tests werden online beauftragt, verfolgt und berichtet und wiederholen sich über die Vertragslaufzeit. Die Ausführung reicht von wiederkehrenden manuellen Tests bis zu vollautomatischen Läufen.",
+    ["pentest", "automated-penetration-testing", "bug-bounty"]
+  ),
+  T("aev", "AEV", "methodology",
+    "Adversarial Exposure Validation",
+    "Adversarial Exposure Validation",
+    "Gartner's market category for tools that prove which exposures are exploitable by running attacker techniques against live environments; it merges the former BAS and automated-pentesting categories. Vendors such as Pentera, Cymulate, Picus and VORNAC are placed here.",
+    "Gartners Marktkategorie für Werkzeuge, die durch das Ausführen von Angreifertechniken in Live-Umgebungen belegen, welche Schwachstellen ausnutzbar sind; sie fasst die früheren Kategorien BAS und automatisiertes Pentesting zusammen. Anbieter wie Pentera, Cymulate, Picus und VORNAC werden hier eingeordnet.",
+    ["exposure-validation", "ctem", "bas", "automated-penetration-testing"]
+  ),
+  T("exposure-validation", "Exposure Validation", "methodology", null, null,
+    "The step in an exposure-management program that checks whether an identified weakness can actually be exploited in the concrete environment and whether existing controls stop the attempt. Turns a list of findings into a list of proven risks.",
+    "Der Schritt in einem Exposure-Management-Programm, der prüft, ob eine erkannte Schwachstelle in der konkreten Umgebung tatsächlich ausnutzbar ist und ob vorhandene Kontrollen den Versuch stoppen. Macht aus einer Liste von Befunden eine Liste belegter Risiken.",
+    ["aev", "ctem", "automated-penetration-testing"]
+  ),
   T("honeypot", "Honeypot", "defense", null, null,
     "An intentionally exposed system with no legitimate purpose, designed to attract attackers so their behavior (and indicators) can be captured. Useful for early-warning and threat intelligence.",
     "Ein absichtlich exponiertes System ohne legitimen Zweck, das Angreifer anlocken soll, sodass deren Verhalten (und Indicators) erfasst werden können. Nützlich für Frühwarnung und Threat Intelligence.",

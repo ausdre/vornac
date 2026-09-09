@@ -1,0 +1,123 @@
+{# Full Organization record plus the WebSite node for the two home pages.
+   Every other page embeds the compact node from site.organizationLd under the
+   same @id (https://www.vornac.com/#organization); this is the one place that
+   carries address, founders, register entry, memberships and category terms.
+
+   Facts confirmed 2026-09-09: founded 2025 in Heidelberg, both founders are
+   managing directors, HRB 757584 Amtsgericht Mannheim. No Offer node: the
+   price is not public (decision of 2026-09-09). Service nodes stay on
+   /pentesting and /ot-pentesting; the home page does not redeclare them.
+
+   Inputs in scope: locale, site, pageUrls.
+#}
+{% set orgDescription = {
+  "de": "Kontinuierliche, autonome Penetrationstests und Sicherheitsvalidierung für regulierte Unternehmen. Betrieb und Datenhaltung ausschließlich in Deutschland. Auditfähige Reports für NIS2 (§ 30 BSIG), DORA, KRITIS, TISAX, VAIT/BAIT und ISO/IEC 27001.",
+  "en": "Continuous, autonomous penetration testing and security validation for regulated companies. Operated and hosted exclusively in Germany. Audit-ready reports for NIS2, DORA, KRITIS, TISAX, VAIT/BAIT and ISO/IEC 27001."
+} %}
+{% set siteDescription = {
+  "de": "Kontinuierliche Sicherheitsvalidierung für regulierte Unternehmen in Deutschland.",
+  "en": "Continuous security validation for regulated companies in Germany."
+} %}
+{% set founderTitle = {
+  "de": "Mitgründer und Geschäftsführer",
+  "en": "Co-founder and Managing Director"
+} %}
+{% set aboutUrl = pageUrls.about | absoluteUrl(site.domain) %}
+{% set ld = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": site.organizationId,
+      "name": "VORNAC GmbH",
+      "alternateName": "VORNAC",
+      "legalName": "VORNAC GmbH",
+      "url": site.domain + "/",
+      "logo": { "@type": "ImageObject", "url": site.socialPreviewImage | absoluteUrl(site.domain) },
+      "description": orgDescription[locale],
+      "slogan": "Made & Hosted in Germany",
+      "foundingDate": "2025",
+      "foundingLocation": { "@type": "Place", "name": "Heidelberg, Deutschland" },
+      "founder": [
+        {
+          "@type": "Person",
+          "@id": site.domain + "/about#andre-feigenbutz",
+          "name": "André Feigenbutz",
+          "jobTitle": founderTitle[locale],
+          "url": aboutUrl + "#andre-feigenbutz",
+          "worksFor": { "@id": site.organizationId }
+        },
+        {
+          "@type": "Person",
+          "@id": site.domain + "/about#arthur-raess",
+          "name": "Arthur Raess",
+          "jobTitle": founderTitle[locale],
+          "url": aboutUrl + "#arthur-raess",
+          "worksFor": { "@id": site.organizationId }
+        }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Carl-Friedrich-Gauß-Ring 5",
+        "postalCode": "69124",
+        "addressLocality": "Heidelberg",
+        "addressRegion": "Baden-Württemberg",
+        "addressCountry": "DE"
+      },
+      "telephone": "+49 6221 6479525",
+      "email": site.contact.email,
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "Handelsregister",
+        "value": "HRB 757584, Amtsgericht Mannheim"
+      },
+      "areaServed": { "@type": "Country", "name": "Deutschland" },
+      "knowsLanguage": ["de", "en"],
+      "knowsAbout": [
+        "Automatisierte Penetrationstests",
+        "Automated Penetration Testing",
+        "Kontinuierliche Sicherheitsvalidierung",
+        "Automated Security Validation",
+        "Adversarial Exposure Validation",
+        "Assumed Breach Simulation",
+        "Continuous Threat Exposure Management",
+        "Breach and Attack Simulation",
+        "Pentest as a Service",
+        "NIS2 und § 30 BSIG",
+        "DORA",
+        "TISAX",
+        "KRITIS",
+        "ISO/IEC 27001",
+        "BSI IT-Grundschutz"
+      ],
+      "memberOf": [
+        { "@type": "Organization", "name": "TeleTrusT Bundesverband IT-Sicherheit e.V.", "url": "https://www.teletrust.de/" },
+        { "@type": "Organization", "name": "Allianz für Cyber-Sicherheit (BSI)", "url": "https://www.allianz-fuer-cybersicherheit.de/" }
+      ],
+      "sameAs": [
+        site.contact.linkedin,
+        "https://mastodon.social/@vornac",
+        site.contact.gartner,
+        "https://www.crunchbase.com/organization/vornac-gmbh"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "telephone": "+49 6221 6479525",
+        "email": site.contact.email,
+        "availableLanguage": ["de", "en"],
+        "areaServed": "DE"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": site.websiteId,
+      "url": site.domain + "/",
+      "name": "VORNAC",
+      "description": siteDescription[locale],
+      "publisher": { "@id": site.organizationId },
+      "inLanguage": ["de", "en"]
+    }
+  ]
+} %}
+<script type="application/ld+json">{{ ld | jsonLd | safe }}</script>
