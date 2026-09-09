@@ -33,11 +33,11 @@
   },
   "/de/faq": {
     "created": "2026-07-07",
-    "modified": "2026-07-08"
+    "modified": "2026-09-09"
   },
   "/de/glossary": {
     "created": "2026-06-02",
-    "modified": "2026-09-07"
+    "modified": "2026-09-09"
   },
   "/de/index": {
     "created": "2026-05-27",
@@ -45,27 +45,27 @@
   },
   "/de/industries-automotive": {
     "created": "2026-05-27",
-    "modified": "2026-09-07"
+    "modified": "2026-09-09"
   },
   "/de/industries-critical-infrastructure": {
     "created": "2026-05-27",
-    "modified": "2026-09-07"
+    "modified": "2026-09-09"
   },
   "/de/industries-enterprise": {
     "created": "2026-05-27",
-    "modified": "2026-09-07"
+    "modified": "2026-09-09"
   },
   "/de/industries-financial-services": {
     "created": "2026-05-27",
-    "modified": "2026-09-07"
+    "modified": "2026-09-09"
   },
   "/de/industries-insurance": {
     "created": "2026-05-27",
-    "modified": "2026-09-07"
+    "modified": "2026-09-09"
   },
   "/de/industries": {
     "created": "2026-05-27",
-    "modified": "2026-09-06"
+    "modified": "2026-09-09"
   },
   "/de/legal": {
     "created": "2026-05-27",
@@ -73,11 +73,11 @@
   },
   "/de/ot-pentesting": {
     "created": "2026-08-17",
-    "modified": "2026-09-07"
+    "modified": "2026-09-09"
   },
   "/de/pentesting": {
     "created": "2026-05-27",
-    "modified": "2026-09-07"
+    "modified": "2026-09-09"
   },
   "/de/research-domain": {
     "created": "2026-06-02",
@@ -95,13 +95,25 @@
     "created": "2026-07-31",
     "modified": "2026-09-05"
   },
+  "/de/vergleich/vornac-vs-pentera": {
+    "created": "2026-09-09",
+    "modified": "2026-09-09"
+  },
+  "/de/wissen": {
+    "created": "2026-09-09",
+    "modified": "2026-09-09"
+  },
+  "/de/wissen/nis2-wirksamkeitspruefung": {
+    "created": "2026-09-09",
+    "modified": "2026-09-09"
+  },
   "/faq": {
     "created": "2026-07-07",
-    "modified": "2026-07-08"
+    "modified": "2026-09-09"
   },
   "/glossary": {
     "created": "2026-06-02",
-    "modified": "2026-09-07"
+    "modified": "2026-09-09"
   },
   "/index": {
     "created": "2026-05-27",
@@ -109,27 +121,27 @@
   },
   "/industries-automotive": {
     "created": "2026-05-27",
-    "modified": "2026-09-07"
+    "modified": "2026-09-09"
   },
   "/industries-critical-infrastructure": {
     "created": "2026-05-27",
-    "modified": "2026-09-07"
+    "modified": "2026-09-09"
   },
   "/industries-enterprise": {
     "created": "2026-05-27",
-    "modified": "2026-09-07"
+    "modified": "2026-09-09"
   },
   "/industries-financial-services": {
     "created": "2026-05-27",
-    "modified": "2026-09-07"
+    "modified": "2026-09-09"
   },
   "/industries-insurance": {
     "created": "2026-05-27",
-    "modified": "2026-09-07"
+    "modified": "2026-09-09"
   },
   "/industries": {
     "created": "2026-05-27",
-    "modified": "2026-09-06"
+    "modified": "2026-09-09"
   },
   "/legal": {
     "created": "2026-05-27",
@@ -137,11 +149,11 @@
   },
   "/ot-pentesting": {
     "created": "2026-08-17",
-    "modified": "2026-09-07"
+    "modified": "2026-09-09"
   },
   "/pentesting": {
     "created": "2026-05-27",
-    "modified": "2026-09-07"
+    "modified": "2026-09-09"
   },
   "/research-domain": {
     "created": "2026-06-02",
@@ -157,7 +169,7 @@
   },
   "/sitemap": {
     "created": "2026-05-27",
-    "modified": "2026-09-07"
+    "modified": "2026-09-09"
   },
   "/thank-you": {
     "created": "2026-07-31",
