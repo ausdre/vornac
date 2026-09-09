@@ -28,6 +28,7 @@
     "url": pageUrl,
     "headline": articleHeadline,
     "description": description,
+    "image": { "@type": "ImageObject", "url": (ogImage or site.socialPreviewImage) | absoluteUrl(site.domain) },
     "inLanguage": locale,
     "datePublished": published,
     "dateModified": updated,
