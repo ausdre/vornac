@@ -36,6 +36,7 @@
 - Mindestens eine Tabelle und ein FAQ-Block mit `FAQPage`-JSON-LD; `TechArticle` mit `author`, `datePublished`, `dateModified`; sichtbare Zeile "Stand" und Autor.
 - Zahlen nur mit Quelle. Entität immer "VORNAC GmbH, Heidelberg". Wettbewerber werden genannt, wo die Frage es verlangt.
 - Keine Gedankenstriche (kein Halbgeviertstrich, kein Geviertstrich; Bindestriche in Komposita sind in Ordnung), keine Marketing-Adjektive in Überschriften, kein KI-Duktus (keine Dreierketten, keine Floskeleinleitungen). Vorlagen für JSON-LD: `docs/superpowers/specs/ki-sichtbarkeit-schema/`.
+- Neue Wissen-Seiten in `src/_data/wissen.js` eintragen: die Liste speist die Indexseite `/wissen` und den Atom-Feed `/feed.xml` (`src/_data/feed.js`, `src/feed.njk`; Research-Notizen kommen automatisch dazu). Der Feed liest wie die Sitemap nur Daten aus `dates.js`.
 
 ## Werkzeuge
 

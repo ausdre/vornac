@@ -42,5 +42,6 @@ Unternehmen: VORNAC GmbH, Carl-Friedrich-Gauß-Ring 5, 69124 Heidelberg, Deutsch
 
 ## Optional
 
+- [Atom-Feed](https://www.vornac.com/feed.xml): neue und geänderte Wissen-Seiten und Research-Notizen (Deutsch)
 - [Research](https://www.vornac.com/research): Kuratierter Referenzindex für Offensive Security, 45 Notizen in acht Domänen
 - [Forschungspapier (Englisch, PDF)](https://www.vornac.com/CaseStudy_VORNAC_0526.pdf): Autonomous Penetration Testing in High-Complexity Environments, POMDP-Framework und empirische Auswertung des VORNAC-Agenten, Mai 2026

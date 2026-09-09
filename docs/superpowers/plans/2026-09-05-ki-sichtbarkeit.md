@@ -84,7 +84,7 @@ Bewusst nicht umgesetzt: "Jahr in den Titel" (Research-Notizen sind Referenzmate
 
 **Files:** neues `src/feed.njk` (permalink `/feed.xml`), `head-meta.njk`.
 
-- [ ] Feed über Research-Notizen und künftige Wissen-Seiten (deutsch), sortiert nach `updated`; `<link rel="alternate" type="application/atom+xml">` im Head.
+- [x] Feed über Research-Notizen und Wissen-Seiten (deutsch), sortiert nach `updated`, höchstens 60 Einträge, Daten aus `dates.js` und `research.js` (`src/_data/feed.js`, `src/feed.njk`, `/feed.xml`); `<link rel="alternate" type="application/atom+xml">` im Head; Eintrag in `llms.txt`. Erledigt am 2026-09-09.
 
 ## Task 5: PDFs und Startseite (A8, A9)
 

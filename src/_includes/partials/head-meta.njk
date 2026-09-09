@@ -17,6 +17,9 @@
 {# Mastodon profile verification — invisible, head-only rel="me" link. #}
 <link rel="me" href="https://mastodon.social/@vornac">
 
+{# Atom feed of the German content pages (research notes and Wissen), see src/feed.njk. #}
+<link rel="alternate" type="application/atom+xml" title="VORNAC: Wissen und Research" href="/feed.xml">
+
 {# hreflang: each page declares its i18nKey, we pull both URLs from the registry. #}
 {% if i18nKey %}
   {% for p in pages %}

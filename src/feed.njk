@@ -1,0 +1,33 @@
+---
+permalink: /feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+{#- Atom feed of the German content pages: research notes and Wissen. Entries
+    and dates come from src/_data/feed.js (registry, dates.js, research.js);
+    nothing here reads the clock. Linked from head-meta.njk. -#}
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="de">
+  <title>VORNAC: Wissen und Research</title>
+  <subtitle>Erklärseiten zu NIS2, DORA, TISAX, ISO/IEC 27001 und automatisierten Penetrationstests sowie Research-Notizen zu Offensive Security von der VORNAC GmbH, Heidelberg.</subtitle>
+  <id>{{ site.domain }}/feed.xml</id>
+  <link rel="self" type="application/atom+xml" href="{{ site.domain }}/feed.xml"/>
+  <link rel="alternate" type="text/html" hreflang="de" href="{{ site.domain }}/wissen"/>
+  <updated>{{ feed.updatedAt }}</updated>
+  <author>
+    <name>{{ site.legalName }}</name>
+    <uri>{{ site.domain }}/</uri>
+  </author>
+  <rights>© {{ site.copyrightYear }} {{ site.legalName }}</rights>
+{%- for e in feed.entries %}
+  <entry>
+    <id>{{ e.id }}</id>
+    <title type="text">{{ e.title }}</title>
+    <link rel="alternate" type="text/html" hreflang="de" href="{{ e.url }}"/>
+    <published>{{ e.publishedAt }}</published>
+    <updated>{{ e.updatedAt }}</updated>
+    <category term="{{ e.section }}"/>
+    <summary type="text">{{ e.summary }}</summary>
+    <author><name>{{ site.legalName }}</name></author>
+  </entry>
+{%- endfor %}
+</feed>

@@ -6,12 +6,8 @@ ogType: website
 ---
 {% extends "layouts/base.njk" %}
 
-{#- Every /wissen and /vergleich page, newest change first. Extend this list
-    when a page is added; the registry key is the i18nKey of the template. -#}
-{% set wissenPages = [
-  { key: "wissen-nis2-wirksamkeitspruefung", title: "NIS2: Wirksamkeit der Sicherheitsmaßnahmen belegen (§ 30 BSIG)", blurb: "Was § 30 Abs. 2 Satz 2 Nr. 6 BSIG verlangt, wie das BSI die Wirksamkeitsbewertung liest, was GRC-Werkzeuge abdecken und welchen Nachweis ein kontinuierlicher Penetrationstest liefert.", tag: "NIS2" },
-  { key: "vergleich-vornac-vs-pentera", title: "VORNAC oder Pentera: Vergleich für Unternehmen in Deutschland", blurb: "Anbieter, Testumfang, Betriebsmodell, Datenstandort, Nachweise, Ansprechpartner und Preismodell im Vergleich, mit öffentlichen Quellen und Datum.", tag: "Vergleich" }
-] %}
+{#- Page list from src/_data/wissen.js (shared with the Atom feed). -#}
+{% set wissenPages = wissen.pages %}
 
 {% block extraHead %}
 <link rel="stylesheet" href="/wissen.css">
