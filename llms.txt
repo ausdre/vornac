@@ -27,6 +27,12 @@ Unternehmen: VORNAC GmbH, Carl-Friedrich-Gauß-Ring 5, 69124 Heidelberg, Deutsch
 - [TISAX](https://www.vornac.com/industries-automotive): Automotive-Lieferkette, VDA ISA
 - [NIS2 für Unternehmen](https://www.vornac.com/industries-enterprise)
 
+## Wissen (Erklärseiten, Deutsch)
+
+- [Wissen: Übersicht](https://www.vornac.com/wissen): Regelwerke, Verfahren und Vergleiche mit Gesetzestexten im Wortlaut, Quellen und Stand je Seite
+- [NIS2: Wirksamkeit der Sicherheitsmaßnahmen belegen (§ 30 BSIG)](https://www.vornac.com/wissen/nis2-wirksamkeitspruefung): § 30 Abs. 2 Satz 2 Nr. 5 und 6 BSIG im Wortlaut, BSI-Lesart der Wirksamkeitsbewertung, Abgrenzung zu GRC-Werkzeugen, Zuordnungstabelle Maßnahme und Nachweis, Turnus und Reportinhalt
+- [VORNAC oder Pentera: Vergleich für Unternehmen in Deutschland](https://www.vornac.com/vergleich/vornac-vs-pentera): Anbieter, Testumfang, Betriebsmodell, Datenstandort, Nachweise, Ansprechpartner und Preismodell mit öffentlichen Quellen und Datum
+
 ## English
 
 - [Home](https://www.vornac.com/en)

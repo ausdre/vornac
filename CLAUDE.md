@@ -6,7 +6,7 @@
 
 - Spec mit Befund und Plänen: `docs/superpowers/specs/2026-09-05-ki-sichtbarkeit-design.md`
 - Umsetzungsplan mit Aufgaben, Kennungen (Peec, Vercel) und Messpunkten: `docs/superpowers/plans/2026-09-05-ki-sichtbarkeit.md`
-- Stand: Task 1 (Ablauf A) ist seit 2026-09-06 in Production (PR #74). Offen sind Step 7 (Search Console, Bing, Ads, GA4, Plausible, Leadfeeder) und die Tasks 2 bis 8. Aufgaben in der Reihenfolge des Plans abarbeiten, Checkboxen dort pflegen.
+- Stand: Task 1 (Ablauf A) ist seit 2026-09-06 in Production (PR #74). Task 3 ist seit 2026-09-09 komplett (Stand-Zeile plus Autor auf allen Inhaltsseiten). Aus Task 6 stehen `/wissen`, `/wissen/nis2-wirksamkeitspruefung` und `/vergleich/vornac-vs-pentera` (2026-09-09). Entscheidungen vom 2026-09-09: kein öffentlicher Preis (kein `/preise`, Offer ohne Preis), x-default auf die deutsche Root, BSI-Zertifizierung ist beschlossen, aber nicht erteilt: nirgends "zertifiziert" schreiben. Offen sind Step 7 (Search Console, Bing, Ads, GA4, Plausible, Leadfeeder), der Rest von Task 2 und 6 sowie Task 4, 5, 7, 8. Aufgaben in der Reihenfolge des Plans abarbeiten, Checkboxen dort pflegen.
 - Vercel-Hinweis: Redirect-Regeln mit `source: "/:path*"` und Host-Bedingung greifen nicht für die nackte Root `/`; die Root braucht eine eigene Regel je Host (siehe `vercel.json`).
 
 ## URL- und Sprachschema (ab Branch `feat/de-root`)
@@ -16,6 +16,7 @@
 - Keine automatische Sprachumleitung im Browser. `lang-redirect.njk` speichert nur `?lang=`. Crawler, KI-Engines und Googlebot müssen auf der Root immer Deutsch bekommen.
 - `vercel.json`: `trailingSlash: false`. Interne Links werden beim Build ohne Slash geschrieben (Transform in `.eleventy.js`); Vercel leitet `/de/*` auf `/*` und vornac.de auf www.vornac.com um.
 - `robots.txt` und `llms.txt` liegen im Repo-Root und werden per Passthrough kopiert. Jede neue Inhaltsseite kommt in die `llms.txt`.
+- Wissen-Seiten liegen unter `src/de/wissen/<slug>.njk` (Registry-Schlüssel `wissen-<slug>`) und Vergleiche unter `src/de/vergleich/<slug>.njk` (`vergleich-<slug>`); `dates.js` bildet verschachtelte Stems auf diese Schlüssel ab, `scripts/page-dates.js` liest Unterordner mit. Jede neue Seite zusätzlich in die Liste `wissenPages` in `src/de/wissen.njk` eintragen. Front-Matter je Seite: `author: andre` (Profil in `site.authors`), `ogType: article`, `faq` (Liste aus `q`/`a`, speist den sichtbaren FAQ-Block und die `FAQPage`), optional `about`, `legislation`, `citations`, `breadcrumb`; JSON-LD kommt aus `partials/wissen-schema.njk` (TechArticle mit Person-Autor, FAQPage, BreadcrumbList). Styles in `wissen.css` (Root, Passthrough), die Stand-Zeile (`partials/page-meta-line.njk`, `.v-meta-line`) in `src/input.css`. Der Menüpunkt "Wissen" im Research-Dropdown erscheint nur, wenn die Registry eine URL für die aktuelle Sprache hat.
 
 ## Datum und strukturierte Daten (seit PR "Peec site audit")
 

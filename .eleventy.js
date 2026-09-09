@@ -206,6 +206,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("research.css");
   eleventyConfig.addPassthroughCopy("glossary.css");
   eleventyConfig.addPassthroughCopy("faq.css");
+  eleventyConfig.addPassthroughCopy("wissen.css");
 
   // Hovercard JS for .x-term cross-links (loaded by the crosslink
   // transform when a page contains at least one cross-link).

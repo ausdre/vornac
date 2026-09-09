@@ -43,6 +43,18 @@ module.exports = {
     "logo": { "@type": "ImageObject", "url": "https://www.vornac.com/vornacpentesting43.png" }
   },
 
+  // Named authors for content pages (/wissen, /vergleich). Referenced from
+  // front matter as `author: andre`; rendered by page-meta-line.njk and the
+  // TechArticle `author` node in wissen-schema.njk.
+  authors: {
+    andre: {
+      id: "https://www.vornac.com/about#andre-feigenbutz",
+      name: "André Feigenbutz",
+      jobTitle: { de: "Mitgründer und Geschäftsführer, VORNAC GmbH", en: "Co-founder and Managing Director, VORNAC GmbH" },
+      url: "https://www.vornac.com/about"
+    }
+  },
+
   // Default and supported locales.
   // German is the root locale (/, /pentesting, ...); English lives under /en.
   defaultLocale: "de",

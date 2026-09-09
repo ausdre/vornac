@@ -27,12 +27,14 @@ function stemsForKey(key) {
 const byKey = {};
 
 // Static pages: every template under src/ and src/de/ that carries an i18nKey.
+// Nested templates (src/de/wissen/<slug>.njk, src/de/vergleich/<slug>.njk)
+// map to the registry key `<dir>-<slug>`, matching their i18nKey.
 for (const stem of Object.keys(pageDates)) {
-  const m = stem.match(/^\/(de\/)?([^/]+)$/);
+  const m = stem.match(/^\/(de\/)?(.+)$/);
   if (!m) continue;
   const locale = m[1] ? "de" : "en";
-  const key = m[2];
-  if (key === "research-note" || key === "research-domain" || key === "sitemap" || key === "404") continue;
+  const key = m[2].split("/").join("-");
+  if (key === "research-note" || key === "research-domain" || key === "sitemap" || key === "404" || key === "feed") continue;
   byKey[key] = byKey[key] || {};
   byKey[key][locale] = pageDates[stem];
 }

@@ -68,8 +68,8 @@ Werkzeuge in Claude Code: `.mcp.json` im Repo-Root bringt `peec-ai` (https://api
 
 **Files:** `src/_includes/layouts/base.njk`, `src/_includes/partials/head-meta.njk`, `src/sitemap.njk`, Front-Matter aller Inhaltsseiten, neues Partial `src/_includes/partials/page-meta-line.njk`.
 
-- [x] Front-Matter-Felder `published` und `updated` (JJJJ-MM-TT) eingeführt, Standardwerte aus der Git-Historie (`npm run dates` schreibt `src/_data/pageDates.json`); Research-Notizen tragen `published`/`updated` in `src/_data/research.js`. Erledigt am 2026-09-07. Offen: `author`-Feld und Autorenprofile in `site.js`; Research-Notizen nennen bislang die VORNAC GmbH als Autor.
-- [ ] Sichtbare Zeile "Stand: TT.MM.JJJJ · Autor" oberhalb des ersten H2 auf Pentesting, OT-Pentesting, FAQ, Glossar, Branchen. Research-Notizen zeigen seit 2026-09-07 "Veröffentlicht" (und "Stand", sobald abweichend) als `<time>` in der Seitenleiste.
+- [x] Front-Matter-Felder `published` und `updated` (JJJJ-MM-TT) eingeführt, Standardwerte aus der Git-Historie (`npm run dates` schreibt `src/_data/pageDates.json`); Research-Notizen tragen `published`/`updated` in `src/_data/research.js`. Erledigt am 2026-09-07. `author`-Feld (Schlüssel aus `site.authors`, derzeit `andre`) und Autorenprofil in `site.js` erledigt am 2026-09-09. Research-Notizen nennen weiterhin die VORNAC GmbH als Autor.
+- [x] Sichtbare Zeile "Stand: TT.MM.JJJJ · Autor" (`partials/page-meta-line.njk`) unter der Hero-Subline auf Pentesting, OT-Pentesting, FAQ, Glossar, Branchen-Hub und den fünf Branchenseiten, beide Sprachen, sowie auf jeder Wissen-Seite. Erledigt am 2026-09-09. Research-Notizen zeigen seit 2026-09-07 "Veröffentlicht" (und "Stand", sobald abweichend) als `<time>` in der Seitenleiste.
 - [x] `sitemap.njk`: `lastmod` je Seite und Sprache aus `dates.byKey` statt `page.date`. Erledigt am 2026-09-07.
 - [x] `head-meta.njk`: `article:published_time` und `article:modified_time` für Seiten mit `ogType: article`. Erledigt am 2026-09-07; `article:author` folgt mit dem Autorenfeld.
 
@@ -96,11 +96,11 @@ Bewusst nicht umgesetzt: "Jahr in den Titel" (Research-Notizen sind Referenzmate
 
 Zitierregeln je Seite (Spec Abschnitt 4): erster Absatz beantwortet die Frage in 40 bis 60 Wörtern; Definitionen in einem Satz mit englischem Begriff in Klammern; Rechtsgrundlagen exakt (§ 30 Abs. 2 Satz 2 Nr. 6 BSIG, Art. 24 Abs. 6 und Art. 25, 26 DORA, Anhang A 8.8 und 8.29 ISO/IEC 27001:2022, § 39 BSIG); mindestens eine Tabelle und ein FAQ-Block (FAQPage); Zahlen mit Quelle; Autor und Stand; Entität "VORNAC GmbH, Heidelberg"; 900 bis 1.800 Wörter; Wettbewerber nennen, wo die Frage es verlangt; keine Gedankenstriche.
 
-- [ ] `/wissen/nis2-wirksamkeitspruefung` NIS2: Wirksamkeit der Sicherheitsmaßnahmen belegen (§ 30 BSIG)
-- [ ] `/preise` Preise (nur nach Entscheidung 2)
+- [x] `/wissen/nis2-wirksamkeitspruefung` NIS2: Wirksamkeit der Sicherheitsmaßnahmen belegen (§ 30 BSIG). Erledigt am 2026-09-09, dazu Indexseite `/wissen` (`src/de/wissen.njk`, CollectionPage) und Menüpunkt "Wissen" im Research-Dropdown.
+- [ ] `/preise` Preise: entfällt, Entscheidung 2 vom 2026-09-09 lautet "kein öffentlicher Preis". Offer-Knoten bleiben ohne Preis.
 - [ ] `/wissen/automatisierte-penetrationstests` Definition, Abgrenzung, Auswahlkriterien
 - [ ] `/assumed-breach-simulation` Produktseite ABS
-- [ ] `/vergleich/vornac-vs-pentera` Vergleich, danach Cymulate und Picus
+- [x] `/vergleich/vornac-vs-pentera` Vergleich mit öffentlichen, datierten Quellen. Erledigt am 2026-09-09. Offen: dasselbe Format für Cymulate und Picus.
 - [ ] `/wissen/tisax-penetrationstest`
 - [ ] `/wissen/dora-tests` (Art. 24 bis 27)
 - [ ] `/wissen/iso-27001-penetrationstest` (A 8.8, A 8.29)
@@ -111,7 +111,7 @@ Zitierregeln je Seite (Spec Abschnitt 4): erster Absatz beantwortet die Frage in
 - [ ] `/wissen/pentest-as-a-service`
 - [ ] `/wissen/kritis-nachweise` (§ 39 BSIG)
 - [ ] Whitepaper und Case Study (PDF mit Metadaten plus HTML)
-- [ ] `llms.txt` um jede neue Seite ergänzen; Feed prüft sich mit.
+- [ ] `llms.txt` um jede neue Seite ergänzen (Abschnitt "Wissen" seit 2026-09-09); Feed prüft sich mit.
 
 ## Task 7: Drittquellen (Plan C, kein Code)
 

@@ -2,6 +2,7 @@
 title: "Insurance · Continuous DORA validation | VORNAC"
 description: "DORA-aligned continuous penetration testing for insurance undertakings and groups. ICT risk, incident, and resilience testing, audit-ready."
 i18nKey: industries-insurance
+author: andre
 ogType: website
 ---
 {% extends "layouts/base.njk" %}
@@ -61,6 +62,7 @@ ogType: website
             <span class="ind-hero-framework">DORA</span>
             <h1 class="ind-hero-headline">Continuous validation for insurers under <span class="ind-hero-headline-emph">DORA</span></h1>
             <p class="ind-hero-sub">Insurance undertakings and groups carry binding obligations on ICT risk, incident reporting, and resilience. VORNAC delivers exploit-proven findings, audit-ready for DORA. Continuously. Not once a year.</p>
+            {% include "partials/page-meta-line.njk" %}
             <div class="ind-hero-actions">
                 {% include "partials/hero-demo-button.njk" %}
                 <a href="{{ pageUrls.pentesting }}" class="ind-btn-ghost">How it works</a>

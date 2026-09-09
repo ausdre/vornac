@@ -1,0 +1,16 @@
+{# Visible "Stand: <date> · Autor: <name>" line for content pages.
+
+   Inputs in scope: updated, published (from src/src.11tydata.js), locale, t,
+   site, and optionally `author` from front matter (a key of site.authors,
+   e.g. `author: andre`). Without an author the line shows the date only.
+   The dates are machine-readable through <time datetime>. Styles live in
+   wissen.css (.v-meta-line); pages that include this partial load that file.
+#}
+{% set metaAuthor = site.authors[author] if author else null %}
+<p class="v-meta-line">
+    <span class="v-meta-item"><span class="v-meta-label">{{ t.metaLine.updated }}:</span> <time datetime="{{ updated }}">{{ updated | longDate(locale) }}</time></span>
+    {%- if metaAuthor %}
+    <span class="v-meta-sep" aria-hidden="true">·</span>
+    <span class="v-meta-item"><span class="v-meta-label">{{ t.metaLine.author }}:</span> <a href="{{ metaAuthor.url }}">{{ metaAuthor.name }}</a>, {{ metaAuthor.jobTitle[locale] }}</span>
+    {%- endif %}
+</p>

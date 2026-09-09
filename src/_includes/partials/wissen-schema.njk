@@ -1,0 +1,63 @@
+{# JSON-LD for a /wissen or /vergleich page: TechArticle (with a Person author
+   from site.authors), FAQPage built from the same `faq` list the page renders,
+   a BreadcrumbList that mirrors the visible trail, and the compact
+   Organization node so the publisher reference resolves on the page itself.
+
+   Front matter used: title, headline (optional, defaults to title),
+   description, author (key of site.authors), faq (list of {q, a}),
+   about (optional list of names), legislation (optional list of
+   {name, identifier}), citations (optional list of URLs), breadcrumb
+   (optional label for the page in the trail, defaults to headline).
+   Dates come from published/updated (src/src.11tydata.js), never the build.
+#}
+{% set pageUrl = canonicalPath | absoluteUrl(site.domain) %}
+{% set wissenUrl = pageUrls.wissen | absoluteUrl(site.domain) %}
+{% set homeUrl = pageUrls.index | absoluteUrl(site.domain) %}
+{% set articleHeadline = headline or title %}
+{% set person = site.authors[author] %}
+{% set aboutNodes = [] %}
+{% for a in about %}{% set aboutNodes = (aboutNodes.push({ "@type": "Thing", "name": a }), aboutNodes) %}{% endfor %}
+{% for l in legislation %}{% set aboutNodes = (aboutNodes.push({ "@type": "Legislation", "name": l.name, "legislationIdentifier": l.identifier, "url": l.url }), aboutNodes) %}{% endfor %}
+{% set faqNodes = [] %}
+{% for item in faq %}{% set faqNodes = (faqNodes.push({ "@type": "Question", "name": item.q, "acceptedAnswer": { "@type": "Answer", "text": item.a } }), faqNodes) %}{% endfor %}
+{% set graph = [
+  {
+    "@type": "TechArticle",
+    "@id": pageUrl + "#article",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+    "url": pageUrl,
+    "headline": articleHeadline,
+    "description": description,
+    "inLanguage": locale,
+    "datePublished": published,
+    "dateModified": updated,
+    "author": {
+      "@type": "Person",
+      "@id": person.id,
+      "name": person.name,
+      "jobTitle": person.jobTitle[locale],
+      "url": person.url,
+      "worksFor": { "@id": site.organizationId }
+    },
+    "publisher": { "@id": site.organizationId },
+    "isPartOf": { "@id": site.websiteId },
+    "about": aboutNodes,
+    "citation": citations,
+    "isAccessibleForFree": true
+  },
+  {
+    "@type": "BreadcrumbList",
+    "@id": pageUrl + "#breadcrumb",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": ("Startseite" if locale == "de" else "Home"), "item": homeUrl },
+      { "@type": "ListItem", "position": 2, "name": t.nav.wissen, "item": wissenUrl },
+      { "@type": "ListItem", "position": 3, "name": (breadcrumb or articleHeadline), "item": pageUrl }
+    ]
+  },
+  site.organizationLd
+] %}
+{% if faqNodes.length %}
+{% set graph = (graph.push({ "@type": "FAQPage", "@id": pageUrl + "#faq", "inLanguage": locale, "mainEntity": faqNodes }), graph) %}
+{% endif %}
+{% set ld = { "@context": "https://schema.org", "@graph": graph } %}
+<script type="application/ld+json">{{ ld | jsonLd | safe }}</script>

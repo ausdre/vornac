@@ -18,6 +18,7 @@ module.exports = {
       research: "Research",
       glossary: "Glossary",
       faq: "FAQ",
+      wissen: "Knowledge",
       about: "About",
       company: "Company",
       careers: "Careers",
@@ -88,6 +89,12 @@ module.exports = {
       copyright: "© 2026 VORNAC GmbH. All rights reserved.",
       langLabel: "Language"
     },
+    /** Visible "Stand" line on content pages (partials/page-meta-line.njk). */
+    metaLine: {
+      updated: "Last updated",
+      published: "Published",
+      author: "Author"
+    },
     a11y: {
       siteHome: "VORNAC home",
       langNav: "Language",
@@ -109,6 +116,7 @@ module.exports = {
       research: "Research",
       glossary: "Glossar",
       faq: "FAQ",
+      wissen: "Wissen",
       about: "Über uns",
       company: "Unternehmen",
       careers: "Karriere",
@@ -174,6 +182,11 @@ module.exports = {
       },
       copyright: "© 2026 VORNAC GmbH. Alle Rechte vorbehalten.",
       langLabel: "Sprache"
+    },
+    metaLine: {
+      updated: "Stand",
+      published: "Veröffentlicht",
+      author: "Autor"
     },
     a11y: {
       siteHome: "VORNAC Startseite",
