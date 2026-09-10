@@ -1,0 +1,891 @@
+/* ============================================ */
+/* CTEM page — section-scoped styles             */
+/* ============================================ */
+/* Global tokens (--v-*), .bg-warm utilities,     */
+/* .v-announcement, mobile-menu animations, and   */
+/* the hero-demo pill live in src/input.css.      */
+/* Sibling to ot-pentesting.css: same rhythm,     */
+/* same type scale — re-anchored on Continuous    */
+/* Threat Exposure Management (external attack    */
+/* surface, daily, credentials, NIS2/DORA/ISO).   */
+/* ============================================ */
+
+/* ============================================ */
+/* Hero (white, topology artwork below copy)    */
+/* ============================================ */
+
+.ctem-hero {
+    background: var(--v-bg);
+    font-family: var(--v-sans);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+.ctem-hero-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 100px 40px 64px;
+    text-align: center;
+}
+.ctem-hero-headline {
+    font-family: var(--v-display);
+    font-size: clamp(60px, 8.4vw, 132px);
+    line-height: 0.86;
+    letter-spacing: -0.05em;
+    font-weight: 900;
+    color: var(--v-ink);
+    margin: 0 auto 36px;
+    text-transform: uppercase;
+}
+.ctem-hero-headline span { display: block; }
+.ctem-hero-subline {
+    font-family: var(--v-sans);
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--v-ink-2);
+    max-width: 760px;
+    margin: 0 auto 44px;
+    font-weight: 500;
+}
+.ctem-hero-subline strong {
+    font-weight: 700;
+    color: var(--v-ink);
+}
+.ctem-hero-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.ctem-btn-ghost {
+    color: var(--v-ink);
+    text-decoration: none;
+    font-family: var(--v-sans);
+    font-size: 15px;
+    font-weight: 600;
+    padding: 6px 0;
+    border-bottom: 2px solid var(--v-ink);
+    transition: opacity 0.15s;
+    letter-spacing: -0.005em;
+}
+.ctem-btn-ghost:hover { opacity: 0.65; }
+
+@media (max-width: 768px) {
+    .ctem-hero-inner { padding: 60px 24px 40px; }
+    .ctem-hero-headline { margin-bottom: 26px; letter-spacing: -0.035em; }
+    .ctem-hero-subline { font-size: 16px; margin-bottom: 32px; }
+    .ctem-hero-actions { gap: 18px; }
+}
+
+/* ============================================ */
+/* Topology artwork (three scenes, cross-fade)  */
+/* Line drawing on white: ink nodes and zones,  */
+/* one amber attack path per scene that draws   */
+/* itself in, then carries a travelling pulse.  */
+/* ============================================ */
+
+.ctem-topo {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 40px 100px;
+}
+.ctem-topo-stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1200 / 460;
+}
+.ctem-scene {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    overflow: visible;
+}
+.ctem-scene.is-active { opacity: 1; }
+.ctem-scene text {
+    font-family: var(--v-sans);
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Zones */
+.tz { fill: none; stroke: rgba(14, 17, 22, 0.16); stroke-width: 1; }
+.tz--sub { stroke: rgba(14, 17, 22, 0.14); stroke-dasharray: 3 4; }
+.tzl { font-size: 12.5px; font-weight: 600; fill: var(--v-ink-3); letter-spacing: 0.02em; }
+.tzl--sub { font-size: 11px; }
+
+/* Edges */
+.te { fill: none; stroke: rgba(14, 17, 22, 0.2); stroke-width: 1; }
+.te--dash { stroke-dasharray: 4 4; }
+.tbound { fill: none; stroke: var(--v-ink); stroke-width: 1.25; stroke-dasharray: 6 5; opacity: 0.5; }
+
+/* Nodes */
+.tn {
+    fill: #fff;
+    stroke: var(--v-ink);
+    stroke-width: 1.5;
+    transition: stroke 0.35s ease, fill 0.35s ease;
+}
+.tn--ws { stroke-width: 1.25; fill: rgba(14, 17, 22, 0.06); }
+.tn--atk { fill: var(--v-ink); }
+.tn--core { fill: var(--v-ink); }
+.tl { font-size: 11.5px; font-weight: 500; fill: var(--v-ink-2); }
+.tl--amber { fill: var(--v-amber-deep); font-weight: 600; }
+
+/* Amber halo shown once the path reaches a node (delay via --d) */
+.th {
+    fill: none;
+    stroke: var(--v-amber);
+    stroke-width: 1;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+.is-active .tn.on-path { stroke: var(--v-amber); transition-delay: var(--d, 0s); }
+.is-active .tn--core.on-path { fill: var(--v-amber); transition-delay: var(--d, 0s); }
+.is-active .th.on-path { opacity: 1; transition-delay: var(--d, 0s); }
+
+/* Unknown asset marker (dashed amber ring) */
+.tu { fill: none; stroke: var(--v-amber); stroke-width: 1.25; stroke-dasharray: 3 3; }
+
+/* Leaked-credential glyph next to the attacker */
+.tcred { fill: var(--v-amber-soft); stroke: var(--v-amber); stroke-width: 1.25; }
+.tcred-txt { font-size: 10px; font-weight: 700; fill: var(--v-amber-deep); letter-spacing: 0.12em; }
+
+/* Attack path: draws in, then a pulse travels along it */
+.tp {
+    fill: none;
+    stroke: var(--v-amber);
+    stroke-width: 2.25;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+}
+.is-active .tp { animation: ctem-draw 1.7s cubic-bezier(0.65, 0, 0.35, 1) 0.25s forwards; }
+.tp-pulse {
+    fill: none;
+    stroke: #ffd27a;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 44 956;
+    stroke-dashoffset: 1000;
+    opacity: 0;
+}
+.is-active .tp-pulse { animation: ctem-pulse 2.8s linear 2.1s infinite; }
+
+/* Terminal marker where the path stops (IT/OT boundary) */
+.tstop {
+    fill: none;
+    stroke: var(--v-amber);
+    stroke-width: 3;
+    stroke-linecap: round;
+    opacity: 0;
+    transition: opacity 0.3s ease 1.95s;
+}
+.is-active .tstop { opacity: 1; }
+
+@keyframes ctem-draw { to { stroke-dashoffset: 0; } }
+@keyframes ctem-pulse {
+    from { stroke-dashoffset: 1000; opacity: 1; }
+    to   { stroke-dashoffset: 0;    opacity: 1; }
+}
+
+/* Scene captions, stacked and cross-faded under the drawing */
+.ctem-topo-caps {
+    position: relative;
+    margin: 26px auto 0;
+    min-height: 46px;
+    max-width: 720px;
+    text-align: center;
+}
+.ctem-topo-cap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: 0;
+    font-family: var(--v-sans);
+    font-size: 14.5px;
+    line-height: 1.5;
+    font-weight: 500;
+    color: var(--v-ink-2);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+.ctem-topo-cap.is-active { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+    .ctem-scene { transition: none; }
+    .tp { stroke-dashoffset: 0; }
+    .is-active .tp { animation: none; }
+    .tp-pulse, .is-active .tp-pulse { display: none; }
+    .is-active .tn.on-path,
+    .is-active .tn--core.on-path,
+    .is-active .th.on-path,
+    .tstop { transition-delay: 0s; transition-duration: 0s; }
+    .ctem-topo-cap { transition: none; }
+}
+@media (max-width: 1024px) {
+    .ctem-topo { padding: 0 32px 72px; }
+}
+@media (max-width: 640px) {
+    .ctem-topo { padding: 0 12px 56px; }
+    .ctem-scene text { display: none; }
+    .ctem-topo-caps { min-height: 68px; padding: 0 12px; }
+    .ctem-topo-cap { font-size: 13.5px; }
+}
+
+/* ============================================ */
+/* Results (white, three display words)         */
+/* ============================================ */
+
+.ctem-results {
+    background: var(--v-bg);
+    font-family: var(--v-sans);
+    position: relative;
+    z-index: 1;
+}
+.ctem-results-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 100px 40px 100px;
+}
+.ctem-results-headline {
+    font-family: var(--v-display);
+    font-size: clamp(34px, 4.4vw, 60px);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+    font-weight: 900;
+    color: var(--v-ink);
+    margin: 0 auto 24px;
+    max-width: 940px;
+    text-align: center;
+}
+.ctem-results-headline em { font-style: normal; color: var(--v-amber); }
+.ctem-results-sub {
+    font-family: var(--v-sans);
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--v-ink-2);
+    max-width: 720px;
+    margin: 0 auto;
+    font-weight: 500;
+    text-align: center;
+}
+.ctem-results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    margin-top: 68px;
+}
+.ctem-result { text-align: center; }
+.ctem-result-word {
+    font-family: var(--v-display);
+    font-weight: 900;
+    font-size: clamp(44px, 4.6vw, 72px);
+    line-height: 0.92;
+    letter-spacing: -0.045em;
+    color: var(--v-amber);
+    margin: 0 0 16px;
+}
+.ctem-result-desc {
+    font-family: var(--v-sans);
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--v-ink-2);
+    font-weight: 500;
+    margin: 0 auto;
+    max-width: 340px;
+}
+
+@media (max-width: 1024px) {
+    .ctem-results-inner { padding: 60px 32px 60px; }
+    .ctem-results-grid { gap: 40px; margin-top: 56px; }
+}
+@media (max-width: 768px) {
+    .ctem-results-inner { padding: 48px 24px 48px; }
+    .ctem-results-headline { font-size: clamp(25px, 7vw, 34px); }
+    .ctem-results-sub { font-size: 15px; }
+    .ctem-results-grid { grid-template-columns: 1fr; gap: 36px; margin-top: 40px; }
+    .ctem-result-word { font-size: clamp(40px, 12vw, 56px); }
+}
+
+/* ============================================ */
+/* Compare (white, annual snapshot vs CTEM)     */
+/* ============================================ */
+
+.ctem-compare {
+    background: var(--v-bg);
+    font-family: var(--v-sans);
+    position: relative;
+    z-index: 1;
+}
+.ctem-compare-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 100px 40px 100px;
+}
+.ctem-compare-header {
+    margin: 0 auto 48px;
+    max-width: 940px;
+    text-align: center;
+}
+.ctem-compare-headline {
+    font-family: var(--v-display);
+    font-size: clamp(34px, 4.4vw, 60px);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+    font-weight: 900;
+    color: var(--v-ink);
+    margin: 0 0 24px;
+}
+.ctem-compare-sub {
+    font-family: var(--v-sans);
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--v-ink-2);
+    max-width: 760px;
+    margin: 0 auto;
+    font-weight: 500;
+}
+.ctem-compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: stretch;
+}
+.ctem-compare-card {
+    padding: 36px 36px 40px;
+    display: flex;
+    flex-direction: column;
+}
+.ctem-compare-card--old {
+    background: rgba(28, 25, 23, 0.045);
+    color: var(--v-ink-2);
+    border: 1px solid var(--v-line);
+}
+.ctem-compare-card--new {
+    background: var(--v-bg-dark);
+    color: rgba(255, 255, 255, 0.86);
+    border-top: 3px solid var(--v-amber);
+}
+.ctem-compare-card-head {
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+}
+.ctem-compare-card--old .ctem-compare-card-head { border-bottom-color: var(--v-line); }
+.ctem-compare-card--new .ctem-compare-card-head { border-bottom-color: rgba(255, 255, 255, 0.1); }
+.ctem-compare-card-title {
+    font-size: clamp(20px, 1.8vw, 24px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0;
+    line-height: 1.2;
+}
+.ctem-compare-card--old .ctem-compare-card-title { color: var(--v-ink-2); }
+.ctem-compare-card-logo { height: 26px; width: auto; display: block; }
+.ctem-compare-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-rows: repeat(6, minmax(64px, auto));
+    row-gap: 16px;
+}
+.ctem-compare-row {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 16px;
+    align-items: baseline;
+}
+.ctem-compare-dim {
+    font-family: var(--v-sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    padding-top: 3px;
+}
+.ctem-compare-card--old .ctem-compare-dim { color: var(--v-ink-3); }
+.ctem-compare-card--new .ctem-compare-dim { color: rgba(255, 255, 255, 0.45); }
+.ctem-compare-val {
+    font-size: 15px;
+    line-height: 1.5;
+    letter-spacing: -0.005em;
+    font-weight: 500;
+}
+.ctem-compare-card--old .ctem-compare-val { color: var(--v-ink-2); }
+.ctem-compare-card--new .ctem-compare-val { color: #fff; font-weight: 600; }
+
+@media (max-width: 1024px) {
+    .ctem-compare-inner { padding: 60px 32px 60px; }
+    .ctem-compare-header { margin-bottom: 40px; }
+    .ctem-compare-row { grid-template-columns: 110px 1fr; gap: 14px; }
+    .ctem-compare-val { font-size: 14.5px; }
+}
+@media (max-width: 768px) {
+    .ctem-compare-inner { padding: 48px 24px 48px; }
+    .ctem-compare-header { margin-bottom: 32px; }
+    .ctem-compare-headline { font-size: clamp(25px, 7vw, 34px); }
+    .ctem-compare-sub { font-size: 15px; }
+    .ctem-compare-grid { grid-template-columns: 1fr; gap: 16px; }
+    .ctem-compare-card { padding: 28px 24px 32px; }
+    .ctem-compare-card-head { padding-bottom: 20px; margin-bottom: 20px; min-height: 0; }
+    .ctem-compare-card-title { font-size: 19px; }
+    .ctem-compare-list { grid-template-rows: none; }
+    .ctem-compare-row { grid-template-columns: 1fr; gap: 4px; }
+    .ctem-compare-dim { padding-top: 0; }
+}
+
+/* ============================================ */
+/* Five phases (dark, the single dark section)  */
+/* One amber spine, one dot per phase, no card  */
+/* frames. Roman numerals in display type.      */
+/* ============================================ */
+
+.ctem-phases {
+    background: var(--v-bg-dark);
+    font-family: var(--v-sans);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    color: #fff;
+}
+.ctem-phases ::selection { background: rgba(255, 163, 23, 0.55); color: #fff; }
+.ctem-phases-inner {
+    position: relative;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 104px 40px 108px;
+}
+.ctem-phases-header {
+    max-width: 840px;
+    margin: 0 auto;
+    text-align: center;
+}
+.ctem-phases-headline {
+    font-family: var(--v-display);
+    font-size: clamp(38px, 4.8vw, 66px);
+    line-height: 1.0;
+    letter-spacing: -0.035em;
+    font-weight: 900;
+    color: #fff;
+    margin: 0 auto 22px;
+}
+.ctem-phases-headline em { font-style: normal; color: var(--v-amber); }
+.ctem-phases-sub {
+    font-family: var(--v-sans);
+    font-size: 17px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.66);
+    max-width: 720px;
+    margin: 0 auto;
+    font-weight: 500;
+}
+.ctem-phase-list {
+    list-style: none;
+    margin: 72px auto 0;
+    padding: 0 0 0 44px;
+    max-width: 1040px;
+    position: relative;
+}
+.ctem-phase-list::before {
+    content: '';
+    position: absolute;
+    left: 9px;
+    top: 30px;
+    bottom: 30px;
+    width: 2px;
+    background: linear-gradient(180deg, rgba(255, 163, 23, 0.2), var(--v-amber) 12%, var(--v-amber) 88%, rgba(255, 163, 23, 0.2));
+}
+.ctem-phase {
+    position: relative;
+    display: grid;
+    grid-template-columns: 150px 1fr 230px;
+    gap: 32px;
+    align-items: start;
+    padding: 30px 0 34px;
+}
+.ctem-phase::before {
+    content: '';
+    position: absolute;
+    left: -40px;
+    top: 38px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--v-bg-dark);
+    border: 2px solid var(--v-amber);
+}
+.ctem-phase--validation::before {
+    background: var(--v-amber);
+    box-shadow: 0 0 0 4px rgba(255, 163, 23, 0.18);
+}
+.ctem-phase-tag { display: flex; flex-direction: column; gap: 6px; }
+.ctem-phase-num {
+    font-family: var(--v-display);
+    font-size: 34px;
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    color: #fff;
+}
+.ctem-phase--validation .ctem-phase-num { color: var(--v-amber); }
+.ctem-phase-name {
+    font-family: var(--v-sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: rgba(255, 163, 23, 0.9);
+    line-height: 1.3;
+}
+.ctem-phase-body { min-width: 0; }
+.ctem-phase-title {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: #fff;
+    margin: 0 0 10px;
+    line-height: 1.3;
+}
+.ctem-phase-desc {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.66);
+    margin: 0;
+    font-weight: 500;
+}
+.ctem-phase-posture {
+    font-family: var(--v-sans);
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.62);
+    align-self: start;
+    margin-top: 4px;
+    border-left: 2px solid rgba(255, 163, 23, 0.5);
+    padding-left: 12px;
+}
+.ctem-phase-posture b {
+    display: block;
+    font-weight: 700;
+    color: var(--v-amber);
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    margin-bottom: 3px;
+}
+
+@media (max-width: 1024px) {
+    .ctem-phases-inner { padding: 72px 32px 76px; }
+    .ctem-phase-list { margin-top: 56px; }
+}
+@media (max-width: 820px) {
+    .ctem-phase { grid-template-columns: 110px 1fr; gap: 20px; }
+    .ctem-phase-posture {
+        grid-column: 1 / -1;
+        border-left: none;
+        border-top: 1px solid rgba(255, 163, 23, 0.3);
+        padding-left: 0;
+        padding-top: 10px;
+        margin-top: 0;
+    }
+    .ctem-phase-posture b { display: inline; margin-right: 8px; }
+}
+@media (max-width: 560px) {
+    .ctem-phases-inner { padding: 56px 20px 60px; }
+    .ctem-phases-headline { font-size: clamp(29px, 8.4vw, 40px); }
+    .ctem-phases-sub { font-size: 15px; }
+    .ctem-phase-list { padding-left: 28px; margin-top: 40px; }
+    .ctem-phase-list::before { left: 6px; }
+    .ctem-phase { grid-template-columns: 1fr; gap: 12px; padding: 22px 0 26px; }
+    .ctem-phase::before { left: -27px; top: 30px; }
+    .ctem-phase-tag { flex-direction: row; align-items: baseline; gap: 12px; }
+    .ctem-phase-num { font-size: 28px; }
+}
+
+/* ============================================ */
+/* Offer (white, two frameless columns)         */
+/* ============================================ */
+
+.ctem-offer {
+    background: var(--v-bg);
+    font-family: var(--v-sans);
+    position: relative;
+    z-index: 1;
+}
+.ctem-offer-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 100px 40px 100px;
+}
+.ctem-offer-header {
+    margin: 0 auto;
+    max-width: 880px;
+    text-align: center;
+}
+.ctem-offer-headline {
+    font-family: var(--v-display);
+    font-size: clamp(34px, 4.4vw, 60px);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+    font-weight: 900;
+    color: var(--v-ink);
+    margin: 0 auto 24px;
+}
+.ctem-offer-headline em { font-style: normal; color: var(--v-amber); }
+.ctem-offer-sub {
+    font-family: var(--v-sans);
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--v-ink-2);
+    max-width: 720px;
+    font-weight: 500;
+    margin: 0 auto;
+}
+.ctem-offer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    margin-top: 64px;
+}
+.ctem-plan {
+    border-top: 2px solid var(--v-amber);
+    padding-top: 28px;
+}
+.ctem-plan-name {
+    font-family: var(--v-display);
+    font-size: clamp(30px, 3.2vw, 42px);
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    line-height: 0.95;
+    color: var(--v-ink);
+    margin: 0 0 8px;
+}
+.ctem-plan-tag {
+    font-family: var(--v-sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--v-ink-3);
+    margin: 0 0 26px;
+}
+.ctem-plan-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.ctem-plan-list li {
+    position: relative;
+    padding-left: 22px;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--v-ink-2);
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+.ctem-plan-list li::before {
+    content: '';
+    position: absolute;
+    left: 1px;
+    top: 0.62em;
+    width: 7px;
+    height: 7px;
+    background: var(--v-amber);
+    transform: rotate(45deg);
+}
+.ctem-plan-list li strong { color: var(--v-ink); font-weight: 700; }
+
+@media (max-width: 1024px) {
+    .ctem-offer-inner { padding: 60px 32px 60px; }
+    .ctem-offer-grid { gap: 48px; margin-top: 52px; }
+}
+@media (max-width: 768px) {
+    .ctem-offer-inner { padding: 48px 24px 48px; }
+    .ctem-offer-headline { font-size: clamp(25px, 7vw, 34px); }
+    .ctem-offer-sub { font-size: 15px; }
+    .ctem-offer-grid { grid-template-columns: 1fr; gap: 40px; margin-top: 40px; }
+}
+
+/* ============================================ */
+/* Trust / operated in Germany (white)          */
+/* ============================================ */
+
+.ctem-trust {
+    background: var(--v-bg);
+    font-family: var(--v-sans);
+    position: relative;
+    z-index: 1;
+}
+.ctem-trust-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 100px 40px 100px;
+}
+.ctem-trust-header {
+    max-width: 900px;
+    margin: 0 auto 56px;
+    text-align: center;
+}
+.ctem-trust-headline {
+    font-family: var(--v-display);
+    font-size: clamp(34px, 4.4vw, 60px);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+    font-weight: 900;
+    color: var(--v-ink);
+    margin: 0 auto 24px;
+}
+.ctem-trust-headline em { font-style: normal; color: var(--v-amber); }
+.ctem-trust-sub {
+    font-family: var(--v-sans);
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--v-ink-2);
+    max-width: 720px;
+    font-weight: 500;
+    margin: 0 auto;
+}
+.ctem-badges {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 36px 56px;
+    margin-bottom: 48px;
+}
+.ctem-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+}
+.ctem-badge-img { height: 96px; width: auto; max-width: 100%; object-fit: contain; }
+.ctem-badge-label {
+    font-family: var(--v-sans);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--v-ink);
+    line-height: 1.4;
+    margin: 0;
+}
+.ctem-trust-residency {
+    font-family: var(--v-sans);
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--v-ink-2);
+    text-align: center;
+    margin: 0 auto;
+    max-width: 640px;
+    font-weight: 500;
+}
+.ctem-trust-residency strong { color: var(--v-ink); font-weight: 700; }
+
+@media (max-width: 1024px) {
+    .ctem-trust-inner { padding: 60px 32px 60px; }
+    .ctem-trust-header { margin-bottom: 44px; }
+    .ctem-badges { gap: 32px 40px; }
+    .ctem-badge-img { height: 84px; }
+}
+@media (max-width: 480px) {
+    .ctem-trust-inner { padding: 48px 24px 48px; }
+    .ctem-trust-headline { font-size: clamp(25px, 7vw, 34px); }
+    .ctem-trust-sub { font-size: 15px; }
+    .ctem-badges { gap: 28px 32px; }
+    .ctem-badge-img { height: 74px; }
+}
+
+/* ============================================ */
+/* Closing CTA (dark)                           */
+/* ============================================ */
+
+.ctem-cta {
+    background: var(--v-bg-dark);
+    font-family: var(--v-sans);
+    position: relative;
+    z-index: 1;
+}
+.ctem-cta-inner {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 100px 40px 100px;
+    text-align: center;
+}
+.ctem-cta-headline {
+    font-family: var(--v-display);
+    font-size: clamp(40px, 5.2vw, 76px);
+    line-height: 1.0;
+    letter-spacing: -0.04em;
+    font-weight: 900;
+    color: #fff;
+    margin: 0 auto 36px;
+}
+.ctem-cta-headline em { font-style: normal; color: var(--v-amber); }
+.ctem-cta-sub {
+    font-family: var(--v-sans);
+    font-size: 18px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.68);
+    max-width: 640px;
+    margin: 0 auto 44px;
+    font-weight: 500;
+}
+.ctem-cta-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.ctem-cta-btn-ghost {
+    color: #fff;
+    text-decoration: none;
+    font-family: var(--v-sans);
+    font-size: 15px;
+    font-weight: 600;
+    padding: 6px 0;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    transition: opacity 0.15s, border-color 0.15s;
+    letter-spacing: -0.005em;
+}
+.ctem-cta-btn-ghost:hover { opacity: 0.75; border-bottom-color: #fff; }
+
+@media (max-width: 768px) {
+    .ctem-cta-inner { padding: 60px 24px 60px; }
+    .ctem-cta-headline { margin-bottom: 20px; }
+    .ctem-cta-sub { font-size: 16px; margin-bottom: 36px; }
+    .ctem-cta-actions { gap: 18px; }
+}
+
+/* ============================================ */
+/* Cross-links on this page's dark surfaces     */
+/* The global a.x-term is #000 (input.css); on  */
+/* the dark phases block, the dark compare card */
+/* and the CTA it would vanish. Same treatment  */
+/* as the other dark wrappers listed there.     */
+/* ============================================ */
+
+.ctem-phases a.x-term,
+.ctem-compare-card--new a.x-term,
+.ctem-cta a.x-term {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 163, 23, 0.45);
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+}
+.ctem-phases a.x-term:hover,
+.ctem-phases a.x-term:focus-visible,
+.ctem-compare-card--new a.x-term:hover,
+.ctem-compare-card--new a.x-term:focus-visible,
+.ctem-cta a.x-term:hover,
+.ctem-cta a.x-term:focus-visible {
+    color: var(--v-amber);
+    text-decoration-color: var(--v-amber);
+}

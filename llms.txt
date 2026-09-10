@@ -13,6 +13,7 @@ Unternehmen: VORNAC GmbH, Carl-Friedrich-Gauß-Ring 5, 69124 Heidelberg, Deutsch
 - [Startseite](https://www.vornac.com/): Überblick, Kennzahlen, Vergleich mit Pentera und klassischen VM-, BAS- und EASM-Tools
 - [Pentesting](https://www.vornac.com/pentesting): Ablauf in vier Schritten, Methodik, geprüfte Angriffsfläche, Reportformate
 - [OT-Pentesting](https://www.vornac.com/ot-pentesting): Produktionssicheres Testen für KRITIS, NIS2 und IEC 62443
+- [CTEM](https://www.vornac.com/ctem): Continuous Threat Exposure Management, täglich neu erstelltes Bild der externen Angriffsfläche in fünf Phasen, optional mit Continuous Pentesting als Pauschale
 - [FAQ](https://www.vornac.com/faq): Antworten zu kontinuierlichem Pentesting, Datenstandort, Reports, DORA, NIS2, KRITIS, TISAX
 - [Glossar](https://www.vornac.com/glossary): 155 Begriffe aus Pentesting, Compliance und Sicherheitsarchitektur
 - [Branchen](https://www.vornac.com/industries): Versicherung, Finanzdienstleister, kritische Infrastruktur, Automotive, Enterprise
@@ -31,6 +32,7 @@ Unternehmen: VORNAC GmbH, Carl-Friedrich-Gauß-Ring 5, 69124 Heidelberg, Deutsch
 
 - [Home](https://www.vornac.com/en)
 - [Pentesting](https://www.vornac.com/en/pentesting)
+- [CTEM](https://www.vornac.com/en/ctem)
 - [FAQ](https://www.vornac.com/en/faq)
 - [Glossary](https://www.vornac.com/en/glossary)
 
