@@ -3,6 +3,7 @@ title: "VORNAC CTEM · Continuous Threat Exposure Management. Your external atta
 description: "Continuous Threat Exposure Management by VORNAC: a complete, daily rebuilt picture of your external attack surface, starting from core domains and IP ranges. Subdomains, services, cloud resources, subsidiary systems, leaked employee credentials, rated within 24 hours. Audit documentation for NIS2, DORA and ISO 27001. Optional continuous pentesting across everything discovery finds, as a flat rate. Developed and operated in Germany."
 i18nKey: ctem
 ogType: website
+author: andre
 ---
 {% extends "layouts/base.njk" %}
 
@@ -12,9 +13,11 @@ ogType: website
 {
   "@context": "https://schema.org",
   "@graph": [
+    {% include "partials/webpage-node.njk" %},
     {
       "@type": "Service",
       "@id": "{{ canonicalPath | absoluteUrl(site.domain) }}#service",
+      "dateModified": "{{ updated }}",
       "name": "VORNAC CTEM",
       "serviceType": "Continuous Threat Exposure Management",
       "description": "A complete, daily rebuilt picture of the external attack surface as an attacker sees it, starting from core domains and IP ranges: subdomains, services, cloud resources, subsidiary systems, assets in no inventory, and leaked employee credentials, rated within 24 hours. Produces the continuous vulnerability-management documentation NIS2, DORA and ISO 27001 require. Optional autonomous continuous pentesting across the entire discovered attack surface as a flat rate. Developed and operated in Germany.",

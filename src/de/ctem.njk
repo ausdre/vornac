@@ -3,6 +3,7 @@ title: "VORNAC CTEM · Continuous Threat Exposure Management. Die externe Angrif
 description: "Continuous Threat Exposure Management von VORNAC: ein vollständiges, täglich neu erstelltes Bild der externen Angriffsfläche, ausgehend von Kerndomains und IP-Bereichen. Subdomains, Dienste, Cloud-Ressourcen, Systeme von Tochtergesellschaften, geleakte Zugangsdaten, bewertet innerhalb von 24 Stunden. Nachweise für NIS2, DORA und ISO 27001. Optional Continuous Pentesting über die gesamte gefundene Angriffsfläche, als Pauschale. Entwickelt und betrieben in Deutschland."
 i18nKey: ctem
 ogType: website
+author: andre
 ---
 {% extends "layouts/base.njk" %}
 
@@ -12,9 +13,11 @@ ogType: website
 {
   "@context": "https://schema.org",
   "@graph": [
+    {% include "partials/webpage-node.njk" %},
     {
       "@type": "Service",
       "@id": "{{ canonicalPath | absoluteUrl(site.domain) }}#service",
+      "dateModified": "{{ updated }}",
       "name": "VORNAC CTEM",
       "serviceType": "Continuous Threat Exposure Management",
       "inLanguage": "de",
