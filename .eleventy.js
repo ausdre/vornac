@@ -231,6 +231,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget("./research.css");
   eleventyConfig.addWatchTarget("./glossary.css");
   eleventyConfig.addWatchTarget("./faq.css");
+  eleventyConfig.addWatchTarget("./wissen.css");
 
   // Compiled Tailwind output (built by `npm run build:css` -> dist/output.css)
   // also keep a root copy if someone is serving from project root in legacy mode.
