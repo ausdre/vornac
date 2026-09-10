@@ -1,0 +1,70 @@
+---
+title: "Wissen: Regelwerke, Verfahren und Vergleiche zu kontinuierlichem Pentesting | VORNAC"
+description: "Erklärseiten der VORNAC GmbH, Heidelberg: Was NIS2, DORA, TISAX, ISO/IEC 27001 und BSI-Standards an technischen Nachweisen verlangen, wie automatisierte Penetrationstests funktionieren und wie sich Anbieter unterscheiden."
+i18nKey: wissen
+ogType: website
+---
+{% extends "layouts/base.njk" %}
+
+{#- Page list from src/_data/wissen.js (shared with the Atom feed). -#}
+{% set wissenPages = wissen.pages %}
+
+{% block extraHead %}
+<link rel="stylesheet" href="/wissen.css">
+{% set pageUrl = canonicalPath | absoluteUrl(site.domain) %}
+{% set items = [] %}
+{% for p in wissenPages %}
+  {% set items = (items.push({ "@type": "ListItem", "position": loop.index, "name": p.title, "url": pageUrls[p.key] | absoluteUrl(site.domain) }), items) %}
+{% endfor %}
+{% set ld = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": pageUrl,
+      "url": pageUrl,
+      "name": "Wissen",
+      "description": description,
+      "inLanguage": locale,
+      "datePublished": published,
+      "dateModified": updated,
+      "isPartOf": { "@id": site.websiteId },
+      "publisher": { "@id": site.organizationId },
+      "mainEntity": { "@type": "ItemList", "itemListElement": items }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": pageUrl + "#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": pageUrls.index | absoluteUrl(site.domain) },
+        { "@type": "ListItem", "position": 2, "name": "Wissen", "item": pageUrl }
+      ]
+    },
+    site.organizationLd
+  ]
+} %}
+<script type="application/ld+json">{{ ld | jsonLd | safe }}</script>
+{% endblock %}
+
+{% block content %}
+<section class="ws-hero">
+    <div class="ws-hero-inner">
+        <h1 class="ws-hero-headline">Wissen<span class="ws-period">.</span></h1>
+        <p class="ws-lead" style="text-align:center; max-width: 60ch; margin: 0 auto;">Was Regelwerke an technischen Nachweisen verlangen, wie automatisierte Penetrationstests arbeiten und worin sich Anbieter unterscheiden. Mit Gesetzestexten im Wortlaut, Quellen und Stand je Seite.</p>
+    </div>
+</section>
+
+<section class="ws-list">
+    {% for p in wissenPages %}
+    {% set pageDates = dates.byKey[p.key] %}
+    <article class="ws-list-item">
+        <p class="ws-kicker" style="margin-bottom: 10px;">{{ p.tag }}</p>
+        <h2><a href="{{ pageUrls[p.key] }}">{{ p.title }}</a></h2>
+        <p>{{ p.blurb }}</p>
+        {% if pageDates and pageDates.de %}
+        <p class="v-meta-line"><span class="v-meta-label">{{ t.metaLine.updated }}:</span> <time datetime="{{ pageDates.de.modified }}">{{ pageDates.de.modified | longDate(locale) }}</time></p>
+        {% endif %}
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}

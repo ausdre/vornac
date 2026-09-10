@@ -59,17 +59,18 @@ Werkzeuge in Claude Code: `.mcp.json` im Repo-Root bringt `peec-ai` (https://api
 
 **Files:** `src/index.njk`, `src/de/index.njk` (Block `extraHead`), `src/glossary.njk`, `src/de/glossary.njk`, `src/_includes/partials/head-meta.njk` (optional gemeinsames Partial), Vorlagen unter `docs/superpowers/specs/ki-sichtbarkeit-schema/`.
 
-- [ ] Organization, WebSite und Service mit Offer aus `schema-organization.jsonld` in beide Startseiten übernehmen; `foundingDate` eintragen (Gartner-Profil nennt 2025, mit André bestätigen); Offer nur, wenn Entscheidung 2 (Preis öffentlich) gefallen ist. Teilweise erledigt am 2026-09-07 (Peec-Site-Audit): Organization auf den Startseiten mit legalName, Adresse, Telefon, E-Mail und sameAs (LinkedIn, Mastodon, Gartner); Gründer, foundingDate, HRB, memberOf und Offer stehen noch aus.
+- [x] Organization und WebSite auf beiden Startseiten aus `partials/organization-schema.njk`: foundingDate 2025 (bestätigt 2026-09-09), Gründer André Feigenbutz und Arthur Raess (beide Geschäftsführer, Anker `#andre-feigenbutz` und `#arthur-raess` auf /about), HRB 757584 Amtsgericht Mannheim, memberOf TeleTrusT und Allianz für Cyber-Sicherheit, knowsAbout mit den Kategoriebegriffen, sameAs mit LinkedIn, Mastodon, Gartner und Crunchbase (Profil aktualisieren, André). Erledigt am 2026-09-09. Kein Offer: Entscheidung 2 lautet "kein öffentlicher Preis". Der Service auf /pentesting trägt seit 2026-09-09 die Kategoriebegriffe als `serviceType`.
 - [x] DefinedTermSet aus `schema-glossar-definedtermset.jsonld` im Glossar erzeugen: aus `src/_data/glossary.js` alle Begriffe als `DefinedTerm` mit `@id` auf den bestehenden Anker `#term-<id>` rendern, deutsche Beschreibung als `description`. Erledigt am 2026-09-07 (`partials/glossary-schema.njk`, beide Sprachen).
-- [ ] Neue Begriffe ins Glossar: Continuous Threat Exposure Management (CTEM), Assumed Breach Simulation (ABS), Breach and Attack Simulation (BAS), Pentest as a Service (PTaaS), Adversarial Exposure Validation (AEV), Exposure Validation.
-- [ ] Prüfen mit `npx -y schema-dts` oder dem Rich-Results-Test; keine doppelten `@id`.
+- [x] Neue Begriffe ins Glossar: CTEM, Assumed Breach Simulation (ABS), BAS, PTaaS, AEV, Exposure Validation und Automated Penetration Testing (162 Begriffe). Erledigt am 2026-09-09.
+- [ ] Prüfen mit dem Rich-Results-Test nach dem Deploy; keine doppelten `@id` (Build-Prüfung am 2026-09-09: Organization nur auf den Startseiten vollständig, sonst kompakt unter derselben `@id`).
+- [x] x-default zeigt auf die deutsche URL (head-meta.njk und sitemap.njk), Entscheidung vom 2026-09-09; nur `/en/comcenter` ohne deutsche Fassung behält Englisch.
 
 ## Task 3: Datum, Autor, lastmod (A5)
 
 **Files:** `src/_includes/layouts/base.njk`, `src/_includes/partials/head-meta.njk`, `src/sitemap.njk`, Front-Matter aller Inhaltsseiten, neues Partial `src/_includes/partials/page-meta-line.njk`.
 
-- [x] Front-Matter-Felder `published` und `updated` (JJJJ-MM-TT) eingeführt, Standardwerte aus der Git-Historie (`npm run dates` schreibt `src/_data/pageDates.json`); Research-Notizen tragen `published`/`updated` in `src/_data/research.js`. Erledigt am 2026-09-07. Offen: `author`-Feld und Autorenprofile in `site.js`; Research-Notizen nennen bislang die VORNAC GmbH als Autor.
-- [ ] Sichtbare Zeile "Stand: TT.MM.JJJJ · Autor" oberhalb des ersten H2 auf Pentesting, OT-Pentesting, FAQ, Glossar, Branchen. Research-Notizen zeigen seit 2026-09-07 "Veröffentlicht" (und "Stand", sobald abweichend) als `<time>` in der Seitenleiste.
+- [x] Front-Matter-Felder `published` und `updated` (JJJJ-MM-TT) eingeführt, Standardwerte aus der Git-Historie (`npm run dates` schreibt `src/_data/pageDates.json`); Research-Notizen tragen `published`/`updated` in `src/_data/research.js`. Erledigt am 2026-09-07. `author`-Feld (Schlüssel aus `site.authors`, derzeit `andre`) und Autorenprofil in `site.js` erledigt am 2026-09-09. Research-Notizen nennen weiterhin die VORNAC GmbH als Autor.
+- [x] Sichtbare Zeile "Stand: TT.MM.JJJJ · Autor" (`partials/page-meta-line.njk`) unter der Hero-Subline auf Pentesting, OT-Pentesting, FAQ, Glossar, Branchen-Hub und den fünf Branchenseiten, beide Sprachen, sowie auf jeder Wissen-Seite. Erledigt am 2026-09-09. Research-Notizen zeigen seit 2026-09-07 "Veröffentlicht" (und "Stand", sobald abweichend) als `<time>` in der Seitenleiste.
 - [x] `sitemap.njk`: `lastmod` je Seite und Sprache aus `dates.byKey` statt `page.date`. Erledigt am 2026-09-07.
 - [x] `head-meta.njk`: `article:published_time` und `article:modified_time` für Seiten mit `ogType: article`. Erledigt am 2026-09-07; `article:author` folgt mit dem Autorenfeld.
 
@@ -83,7 +84,7 @@ Bewusst nicht umgesetzt: "Jahr in den Titel" (Research-Notizen sind Referenzmate
 
 **Files:** neues `src/feed.njk` (permalink `/feed.xml`), `head-meta.njk`.
 
-- [ ] Feed über Research-Notizen und künftige Wissen-Seiten (deutsch), sortiert nach `updated`; `<link rel="alternate" type="application/atom+xml">` im Head.
+- [x] Feed über Research-Notizen und Wissen-Seiten (deutsch), sortiert nach `updated`, höchstens 60 Einträge, Daten aus `dates.js` und `research.js` (`src/_data/feed.js`, `src/feed.njk`, `/feed.xml`); `<link rel="alternate" type="application/atom+xml">` im Head; Eintrag in `llms.txt`. Erledigt am 2026-09-09.
 
 ## Task 5: PDFs und Startseite (A8, A9)
 
@@ -96,11 +97,11 @@ Bewusst nicht umgesetzt: "Jahr in den Titel" (Research-Notizen sind Referenzmate
 
 Zitierregeln je Seite (Spec Abschnitt 4): erster Absatz beantwortet die Frage in 40 bis 60 Wörtern; Definitionen in einem Satz mit englischem Begriff in Klammern; Rechtsgrundlagen exakt (§ 30 Abs. 2 Satz 2 Nr. 6 BSIG, Art. 24 Abs. 6 und Art. 25, 26 DORA, Anhang A 8.8 und 8.29 ISO/IEC 27001:2022, § 39 BSIG); mindestens eine Tabelle und ein FAQ-Block (FAQPage); Zahlen mit Quelle; Autor und Stand; Entität "VORNAC GmbH, Heidelberg"; 900 bis 1.800 Wörter; Wettbewerber nennen, wo die Frage es verlangt; keine Gedankenstriche.
 
-- [ ] `/wissen/nis2-wirksamkeitspruefung` NIS2: Wirksamkeit der Sicherheitsmaßnahmen belegen (§ 30 BSIG)
-- [ ] `/preise` Preise (nur nach Entscheidung 2)
+- [x] `/wissen/nis2-wirksamkeitspruefung` NIS2: Wirksamkeit der Sicherheitsmaßnahmen belegen (§ 30 BSIG). Erledigt am 2026-09-09, dazu Indexseite `/wissen` (`src/de/wissen.njk`, CollectionPage) und Menüpunkt "Wissen" im Research-Dropdown.
+- [ ] `/preise` Preise: entfällt, Entscheidung 2 vom 2026-09-09 lautet "kein öffentlicher Preis". Offer-Knoten bleiben ohne Preis.
 - [ ] `/wissen/automatisierte-penetrationstests` Definition, Abgrenzung, Auswahlkriterien
 - [ ] `/assumed-breach-simulation` Produktseite ABS
-- [ ] `/vergleich/vornac-vs-pentera` Vergleich, danach Cymulate und Picus
+- [x] `/vergleich/vornac-vs-pentera` Vergleich mit öffentlichen, datierten Quellen. Erledigt am 2026-09-09. Offen: dasselbe Format für Cymulate und Picus.
 - [ ] `/wissen/tisax-penetrationstest`
 - [ ] `/wissen/dora-tests` (Art. 24 bis 27)
 - [ ] `/wissen/iso-27001-penetrationstest` (A 8.8, A 8.29)
@@ -111,7 +112,7 @@ Zitierregeln je Seite (Spec Abschnitt 4): erster Absatz beantwortet die Frage in
 - [ ] `/wissen/pentest-as-a-service`
 - [ ] `/wissen/kritis-nachweise` (§ 39 BSIG)
 - [ ] Whitepaper und Case Study (PDF mit Metadaten plus HTML)
-- [ ] `llms.txt` um jede neue Seite ergänzen; Feed prüft sich mit.
+- [ ] `llms.txt` um jede neue Seite ergänzen (Abschnitt "Wissen" seit 2026-09-09); Feed prüft sich mit.
 
 ## Task 7: Drittquellen (Plan C, kein Code)
 

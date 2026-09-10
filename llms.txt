@@ -15,7 +15,7 @@ Unternehmen: VORNAC GmbH, Carl-Friedrich-Gauß-Ring 5, 69124 Heidelberg, Deutsch
 - [OT-Pentesting](https://www.vornac.com/ot-pentesting): Produktionssicheres Testen für KRITIS, NIS2 und IEC 62443
 - [CTEM](https://www.vornac.com/ctem): Continuous Threat Exposure Management, täglich neu erstelltes Bild der externen Angriffsfläche in fünf Phasen, optional mit Continuous Pentesting als Pauschale
 - [FAQ](https://www.vornac.com/faq): Antworten zu kontinuierlichem Pentesting, Datenstandort, Reports, DORA, NIS2, KRITIS, TISAX
-- [Glossar](https://www.vornac.com/glossary): 155 Begriffe aus Pentesting, Compliance und Sicherheitsarchitektur
+- [Glossar](https://www.vornac.com/glossary): 162 Begriffe aus Pentesting, Compliance und Sicherheitsarchitektur, darunter CTEM, BAS, PTaaS, AEV und Assumed Breach Simulation
 - [Branchen](https://www.vornac.com/industries): Versicherung, Finanzdienstleister, kritische Infrastruktur, Automotive, Enterprise
 - [Kunden](https://www.vornac.com/customers): Warum CISOs VORNAC wählen
 - [Über uns](https://www.vornac.com/about): Gründer, Standort Heidelberg, Auszeichnungen
@@ -28,6 +28,12 @@ Unternehmen: VORNAC GmbH, Carl-Friedrich-Gauß-Ring 5, 69124 Heidelberg, Deutsch
 - [TISAX](https://www.vornac.com/industries-automotive): Automotive-Lieferkette, VDA ISA
 - [NIS2 für Unternehmen](https://www.vornac.com/industries-enterprise)
 
+## Wissen (Erklärseiten, Deutsch)
+
+- [Wissen: Übersicht](https://www.vornac.com/wissen): Regelwerke, Verfahren und Vergleiche mit Gesetzestexten im Wortlaut, Quellen und Stand je Seite
+- [NIS2: Wirksamkeit der Sicherheitsmaßnahmen belegen (§ 30 BSIG)](https://www.vornac.com/wissen/nis2-wirksamkeitspruefung): § 30 Abs. 2 Satz 2 Nr. 5 und 6 BSIG im Wortlaut, BSI-Lesart der Wirksamkeitsbewertung, Abgrenzung zu GRC-Werkzeugen, Zuordnungstabelle Maßnahme und Nachweis, Turnus und Reportinhalt
+- [VORNAC oder Pentera: Vergleich für Unternehmen in Deutschland](https://www.vornac.com/vergleich/vornac-vs-pentera): Anbieter, Testumfang, Betriebsmodell, Datenstandort, Nachweise, Ansprechpartner und Preismodell mit öffentlichen Quellen und Datum
+
 ## English
 
 - [Home](https://www.vornac.com/en)
@@ -38,5 +44,6 @@ Unternehmen: VORNAC GmbH, Carl-Friedrich-Gauß-Ring 5, 69124 Heidelberg, Deutsch
 
 ## Optional
 
+- [Atom-Feed](https://www.vornac.com/feed.xml): neue und geänderte Wissen-Seiten und Research-Notizen (Deutsch)
 - [Research](https://www.vornac.com/research): Kuratierter Referenzindex für Offensive Security, 45 Notizen in acht Domänen
 - [Forschungspapier (Englisch, PDF)](https://www.vornac.com/CaseStudy_VORNAC_0526.pdf): Autonomous Penetration Testing in High-Complexity Environments, POMDP-Framework und empirische Auswertung des VORNAC-Agenten, Mai 2026

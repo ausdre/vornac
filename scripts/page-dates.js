@@ -2,7 +2,8 @@
 /**
  * Refresh src/_data/pageDates.json from the git history.
  *
- * For every page template under src/ (src/*.njk and src/de/*.njk) the script
+ * For every page template under src/ (including nested content folders such
+ * as src/de/wissen/) the script
  * records two dates, both taken from commits rather than from the file system:
  *
  *   created   date of the commit that added the file (renames followed)
@@ -40,13 +41,21 @@ function isShallow() {
 
 function listTemplates() {
   const out = [];
-  for (const dir of [SRC, path.join(SRC, "de")]) {
-    for (const name of fs.readdirSync(dir)) {
-      if (!name.endsWith(".njk")) continue;
-      const rel = path.relative(ROOT, path.join(dir, name)).replace(/\\/g, "/");
-      out.push(rel);
+  const walk = (dir) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        // Skip Eleventy data and include folders; recurse into content folders
+        // such as src/de/wissen and src/de/vergleich.
+        if (entry.name.startsWith("_")) continue;
+        walk(full);
+        continue;
+      }
+      if (!entry.name.endsWith(".njk")) continue;
+      out.push(path.relative(ROOT, full).replace(/\\/g, "/"));
     }
-  }
+  };
+  walk(SRC);
   return out.sort();
 }
 

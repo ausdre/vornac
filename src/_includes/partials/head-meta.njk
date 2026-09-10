@@ -17,13 +17,17 @@
 {# Mastodon profile verification — invisible, head-only rel="me" link. #}
 <link rel="me" href="https://mastodon.social/@vornac">
 
+{# Atom feed of the German content pages (research notes and Wissen), see src/feed.njk. #}
+<link rel="alternate" type="application/atom+xml" title="VORNAC: Wissen und Research" href="/feed.xml">
+
 {# hreflang: each page declares its i18nKey, we pull both URLs from the registry. #}
 {% if i18nKey %}
   {% for p in pages %}
     {% if p.key == i18nKey %}
       {% if p.en %}<link rel="alternate" hreflang="en" href="{{ p.en | absoluteUrl(site.domain) }}">{% endif %}
       {% if p.de %}<link rel="alternate" hreflang="de" href="{{ p.de | absoluteUrl(site.domain) }}">{% endif %}
-      {% if p.en %}<link rel="alternate" hreflang="x-default" href="{{ p.en | absoluteUrl(site.domain) }}">{% endif %}
+      {# x-default is the German URL (decision 2026-09-09): the market is Germany, so unmatched languages get the German page. #}
+      {% if p.de %}<link rel="alternate" hreflang="x-default" href="{{ p.de | absoluteUrl(site.domain) }}">{% elif p.en %}<link rel="alternate" hreflang="x-default" href="{{ p.en | absoluteUrl(site.domain) }}">{% endif %}
     {% endif %}
   {% endfor %}
 {% endif %}

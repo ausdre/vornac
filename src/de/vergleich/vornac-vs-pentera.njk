@@ -1,0 +1,189 @@
+---
+title: "VORNAC oder Pentera: Vergleich für Unternehmen in Deutschland | VORNAC"
+headline: "VORNAC oder Pentera: Vergleich für Unternehmen in Deutschland"
+breadcrumb: "VORNAC vs. Pentera"
+description: "Sachlicher Vergleich von VORNAC und Pentera: Anbieter, Testumfang, Betriebsmodell, Datenstandort, Nachweise, Ansprechpartner und Preismodell, mit öffentlichen Quellen und Stand vom 9. September 2026."
+i18nKey: vergleich-vornac-vs-pentera
+ogType: article
+author: andre
+about:
+  - "Pentera"
+  - "VORNAC"
+  - "Automatisierte Penetrationstests"
+  - "Automated Security Validation"
+citations:
+  - "https://pentera.io/pentera-platform/"
+  - "https://pentera.io/wp-content/uploads/2025/04/Pentera-Datasheet-Pentera-Platform.pdf"
+  - "https://en.wikipedia.org/wiki/Pentera"
+  - "https://www.capterra.com/p/178964/Pcysys/"
+  - "https://aws.amazon.com/marketplace/pp/prodview-56i5cowyjxcxm"
+faq:
+  - q: "Ist VORNAC eine Pentera-Alternative aus Deutschland?"
+    a: >-
+      Ja, für den Kern beider Angebote: automatisierte Angriffssimulation in produktiven Umgebungen mit Nachweis der Ausnutzbarkeit. Die Unterschiede liegen im Scope-Modell (Pentera arbeitet über die gesamte Unternehmensinfrastruktur, VORNAC je Zielsystem in der Tiefe), im Datenstandort (VORNAC ausschließlich Deutschland) und im Betreuungsmodell (bei VORNAC ist der feste Ansprechpartner ein Pentester). Wer Pentera Resolve als Remediation-Orchestrierung braucht, findet bei VORNAC kein Gegenstück; dafür liefert VORNAC den Wiederholungstest je Befund.
+  - q: "Kann ich Pentera und VORNAC parallel betreiben?"
+    a: >-
+      Ja. Beide Plattformen greifen produktionssicher an und stören sich nicht. In der Praxis übernimmt Pentera dann die breite Validierung interner Netze und VORNAC die tiefe Prüfung einzelner Anwendungen, APIs oder Binaries, deren Daten in Deutschland bleiben müssen. Für Audits zählt am Ende der Report je Zielsystem, nicht die Zahl der Werkzeuge.
+  - q: "Erkennen Auditoren einen automatisierten Penetrationstest als Nachweis an?"
+    a: >-
+      NIS2 (§ 30 BSIG), ISO/IEC 27001 und TISAX schreiben kein Werkzeug vor, sondern verlangen den Nachweis, dass Maßnahmen wirksam sind und Schwachstellen behandelt werden. Entscheidend ist der Report: Scope, Methode, reproduzierbare Befunde, Maßnahmen und Wiederholungstest. Beide Plattformen liefern solche Reports. Für Threat-Led Penetration Tests nach Art. 26 DORA gelten zusätzliche Anforderungen an Tester und Verfahren, die ein Werkzeug allein nicht erfüllt.
+  - q: "Worin unterscheidet sich der Scope am deutlichsten?"
+    a: >-
+      Pentera bringt mit Core, Surface und Cloud eigene Module für interne Netze, externe Angriffsfläche und Cloud-Umgebungen und ist auf die Unternehmensinfrastruktur als Ganzes angelegt. VORNAC lizenziert je Zielsystem und prüft dieses vollständig, mit allen Umgebungen und mit beliebig vielen vom Kunden gestellten Testrollen. Wer fünf Anwendungen in der Tiefe testen will, rechnet bei VORNAC mit fünf Zielsystemen; wer 3.000 Hosts breit validieren will, ist bei Pentera im vorgesehenen Einsatzfeld.
+  - q: "Wo liegen die Daten bei VORNAC?"
+    a: >-
+      Testkonfigurationen, Rohbefunde, Proof-of-Concept-Nachweise, Reports und Audit-Logs werden ausschließlich in deutschen Rechenzentren deutscher Betreiber unter deutscher Jurisdiktion verarbeitet und gespeichert. Es gibt keine Auftragsverarbeiter außerhalb Deutschlands und keinen US-Cloud-Anbieter in der Verarbeitungskette. Bei Pentera ist der Datenstandort für das jeweilige Betriebsmodell vertraglich zu klären; der Anbieter stellt dafür ein Trust Center bereit.
+---
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+<link rel="stylesheet" href="/wissen.css">
+{% include "partials/wissen-schema.njk" %}
+{% endblock %}
+
+{% block content %}
+<section class="ws-hero">
+    <div class="ws-hero-inner">
+        <p class="ws-kicker"><a href="{{ pageUrls.wissen }}">Wissen</a> · Vergleich</p>
+        <h1 class="ws-hero-headline">{{ headline }}</h1>
+        {% include "partials/page-meta-line.njk" %}
+    </div>
+</section>
+
+<section class="ws-body">
+    <div class="ws-body-inner">
+        <p class="ws-lead">Pentera und VORNAC automatisieren Angriffe auf produktive Systeme und belegen, welche Schwachstellen tatsächlich ausnutzbar sind. Pentera ist auf die gesamte Infrastruktur großer Unternehmen angelegt und stammt aus den USA; VORNAC prüft einzelne Zielsysteme in der Tiefe und läuft ausschließlich in deutschen Rechenzentren. Der Vergleich nennt Fakten mit Quelle und Datum, keine Wertungen.</p>
+
+        <h2>Wer hinter den beiden Plattformen steht</h2>
+        <p>Pentera wurde 2015 als Pcysys gegründet, hat seinen Hauptsitz in Boston und beschäftigte Anfang 2025 rund 420 Mitarbeitende; das Unternehmen ist unter anderem in Deutschland, Großbritannien, Israel, Dubai und Singapur vertreten. Die Plattform besteht aus den Modulen Pentera Core (interne Netze), Pentera Surface (externe Angriffsfläche), Pentera Cloud (Cloud-Umgebungen) und Pentera Resolve (Remediation). Dazu bietet Pentera Dienstleistungen an: adversariale Tests durch eigene Experten (SECTOR11) und eine Beratung zum Aufbau eines Validierungsprogramms (Security Validation Advisory).</p>
+        <p>Die VORNAC GmbH wurde 2025 in Heidelberg gegründet und betreibt eine Plattform für kontinuierliche, autonome Penetrationstests. Lizenziert wird je Zielsystem; getestet werden Web-Anwendungen, APIs, Mobile Apps, interne Netze, Cloud-Workloads, Binaries sowie Identity und Access, dazu OT-Umgebungen für KRITIS und Industrie. Betrieb und Datenhaltung liegen ausschließlich in deutschen Rechenzentren deutscher Betreiber. VORNAC ist Mitglied im TeleTrusT Bundesverband IT-Sicherheit e.V. und Partner der Allianz für Cyber-Sicherheit des BSI.</p>
+
+        <h2>Vergleich auf einen Blick</h2>
+        <p>Die Angaben zu Pentera stammen aus den öffentlichen Seiten des Anbieters und aus Anbieterverzeichnissen, abgerufen am 9. September 2026; die Quellen stehen am Ende der Seite. Die Angaben zu VORNAC entsprechen dem Leistungsumfang vom selben Tag.</p>
+        <div class="ws-table-wrap">
+            <table class="ws-table">
+                <caption>Vergleich VORNAC und Pentera. Stand: 9. September 2026. Quellen in eckigen Klammern.</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Kriterium</th>
+                        <th scope="col">Pentera</th>
+                        <th scope="col">VORNAC</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Anbieter und Sitz</td>
+                        <td>Pentera, Hauptsitz Boston (USA), gegründet 2015 als Pcysys, Niederlassungen unter anderem in Deutschland [3]</td>
+                        <td>VORNAC GmbH, Heidelberg, gegründet 2025</td>
+                    </tr>
+                    <tr>
+                        <td>Testumfang</td>
+                        <td>Interne Netze (Core), externe Angriffsfläche (Surface), Cloud-Umgebungen (Cloud), Remediation-Orchestrierung (Resolve) [1]</td>
+                        <td>Je Zielsystem: Web-Anwendungen, APIs, Mobile Apps, interne Netze, Cloud-Workloads, Binaries, Identity und Access; OT-Pentesting</td>
+                    </tr>
+                    <tr>
+                        <td>Scope-Modell</td>
+                        <td>Unternehmensweite Angriffsfläche, verteilte und hybride Umgebungen, agentenlos [2]</td>
+                        <td>Ein Zielsystem vollständig, alle Umgebungen (Produktion, Staging, Entwicklung), unbegrenzt viele vom Kunden gestellte Testrollen</td>
+                    </tr>
+                    <tr>
+                        <td>Betriebsmodell</td>
+                        <td>Laut Anbieterverzeichnissen als Cloud- und On-Premises-Variante verfügbar [4]; Bezug als SaaS über den AWS Marketplace möglich [5]</td>
+                        <td>Cloud-Plattform, Betrieb ausschließlich in deutschen Rechenzentren deutscher Betreiber</td>
+                    </tr>
+                    <tr>
+                        <td>Datenstandort</td>
+                        <td>Auf der Produktseite nicht angegeben; für die KI-Funktionen erklärt Pentera, Daten nicht zu speichern und nicht für das Training von Modellen zu nutzen; Details im Trust Center [1]</td>
+                        <td>Deutschland, keine Auftragsverarbeiter außerhalb Deutschlands, kein US-Cloud-Anbieter in der Verarbeitungskette</td>
+                    </tr>
+                    <tr>
+                        <td>Sicherheit im Produktivbetrieb</td>
+                        <td>Kundenseitige Leitplanken: Drosselung, Impact-Limits, Not-Aus, Nur-Lese-Modi, Audit-Logs je Testaktion [1]</td>
+                        <td>Nicht-destruktive Exploits in der Live-Umgebung, jeder Schritt belegt</td>
+                    </tr>
+                    <tr>
+                        <td>Nachweis je Befund</td>
+                        <td>Attack Map mit der Abfolge erfolgreicher Techniken, Zuordnung zu Angreiferverhalten, Revalidierung nach der Behebung [1]</td>
+                        <td>Reproduzierbarer Proof-of-Concept, Business-Impact, Maßnahmenplan, Wiederholungstest nach der Behebung</td>
+                    </tr>
+                    <tr>
+                        <td>Auslösung</td>
+                        <td>Umfang und Zeitpunkt legt der Kunde fest; Integrationen in SIEM, SOAR, Ticketing und Identity-Systeme [1]</td>
+                        <td>Web-Oberfläche, API, Zeitplan oder CI/CD-Webhook (GitHub Actions, GitLab CI, Jenkins, Azure DevOps, Bitbucket Pipelines, CircleCI); Rückgabe nach Jira</td>
+                    </tr>
+                    <tr>
+                        <td>Zeit bis zum Report</td>
+                        <td>Keine öffentliche Angabe</td>
+                        <td>Zwei bis fünf Stunden vom Start bis zum auditfähigen Report</td>
+                    </tr>
+                    <tr>
+                        <td>Regelwerke im Reporting</td>
+                        <td>PCI DSS, SOC 2, ISO/IEC 27001, NIST, DORA, NIS2, DSGVO, CIS, HIPAA und weitere; Pentera zertifiziert keine Compliance [1]</td>
+                        <td>Ein Report je Testzyklus, verwendbar für NIS2 (§ 30 BSIG), DORA, KRITIS, TISAX, VAIT/BAIT und ISO/IEC 27001</td>
+                    </tr>
+                    <tr>
+                        <td>Nachweise des Anbieters</td>
+                        <td>AICPA SOC 2, ISO/IEC 27001, ISO/IEC 42001, ISO 9001, AWS Qualified Software [1]</td>
+                        <td>TeleTrusT-Mitglied, Zeichen „IT Security made in Germany“, Partner der Allianz für Cyber-Sicherheit (BSI)</td>
+                    </tr>
+                    <tr>
+                        <td>Ansprechpartner</td>
+                        <td>Expertenleistungen als eigene Services: SECTOR11 (Tests durch Pentera-Experten) und Security Validation Advisory [1]</td>
+                        <td>Fester Ansprechpartner ist ein praktizierender Pentester; Triage, Scope-Gespräche und Remediation-Calls laufen direkt mit ihm</td>
+                    </tr>
+                    <tr>
+                        <td>Preismodell</td>
+                        <td>Auf pentera.io ist kein Preis veröffentlicht (Stand 9. September 2026)</td>
+                        <td>Jahreslizenz je Zielsystem mit beliebig häufigen Testläufen, Onboarding inklusive; Angebot nach dem Erstgespräch</td>
+                    </tr>
+                    <tr>
+                        <td>Bewertungen</td>
+                        <td>Gartner Peer Insights: 4,8 von 5 bei 304 Bewertungen, Angabe auf pentera.io [1]</td>
+                        <td>Gartner-Peer-Insights-Profil gelistet, noch ohne veröffentlichte Bewertungen (Stand 9. September 2026)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Wo sich die Ansätze unterscheiden</h2>
+        <p><strong>Breite oder Tiefe.</strong> Pentera ist darauf ausgelegt, eine große, verteilte Infrastruktur laufend zu validieren: Angriffspfade durch interne Netze, Credential-Prüfungen im Active Directory, externe Angriffsfläche und Cloud-Identitäten, orchestriert über eine Oberfläche. VORNAC nimmt ein benanntes Zielsystem und prüft es vollständig, mit den Testrollen des Kunden und in allen Umgebungen. Das eine Modell beantwortet die Frage „Wo kommt ein Angreifer in meinem Netz durch?“, das andere die Frage „Hält diese Anwendung, diese API oder dieses Binary einem Angriff stand?“.</p>
+        <p><strong>Datenstandort.</strong> Für Einrichtungen unter NIS2, DORA oder KRITIS ist der Ort der Datenverarbeitung ein Prüfkriterium für Drittparteienrisiken. Bei VORNAC ist die Antwort fest: Deutschland, ohne US-Cloud-Anbieter in der Verarbeitungskette. Bei Pentera hängt sie vom gewählten Betriebsmodell ab und ist im Vertrag festzuhalten; für die KI-Funktionen erklärt der Anbieter, Daten nicht zu speichern und nicht für das Training von Modellen zu verwenden.</p>
+        <p><strong>Nach dem Befund.</strong> Pentera Resolve bündelt Befunde, dedupliziert sie, verteilt Aufgaben an die Verantwortlichen und prüft nach der Behebung erneut. VORNAC liefert je Befund den Proof-of-Concept, die Einordnung nach Auswirkung und den Maßnahmenplan, übergibt an das Ticketing des Kunden und bestätigt die Behebung mit einem Wiederholungslauf. Wer eine eigene Remediation-Orchestrierung sucht, findet sie bei Pentera; wer die Nachverfolgung bereits in Jira oder einem ISMS-Werkzeug hat, braucht sie nicht doppelt.</p>
+        <p><strong>Betreuung.</strong> Bei Pentera sind Expertenleistungen eigene Services. Bei VORNAC gehört ein Pentester als fester Ansprechpartner zum Modell; er kennt das Zielsystem aus den Läufen und bespricht Befunde direkt mit dem Team.</p>
+
+        <h2>Wann Pentera die passende Wahl ist</h2>
+        <p>Ein Konzern mit tausenden Hosts an mehreren Standorten, der interne Angriffspfade, Passwortqualität im Active Directory und Ransomware-Szenarien laufend gegen seine Schutzmaßnahmen prüfen will, ist im vorgesehenen Einsatzfeld von Pentera. Das gilt ebenso für Sicherheitsteams, die Befunde aus mehreren Quellen in einem Remediation-Prozess mit SLA-Verfolgung zusammenführen wollen, und für Unternehmen, die ein On-Premises-Betriebsmodell mit dem Anbieter vereinbaren.</p>
+
+        <h2>Wann VORNAC die passende Wahl ist</h2>
+        <p>Ein Unternehmen mit 100 bis 2.000 Mitarbeitenden, das eine überschaubare Zahl geschäftskritischer Systeme hat und für NIS2, DORA, TISAX oder ISO/IEC 27001 belegen muss, dass genau diese Systeme einem Angriff standhalten, ist bei VORNAC richtig. Ebenso Einrichtungen, für die der Datenstandort Deutschland Bedingung ist, Teams, die den Test aus der Pipeline auslösen und den Report innerhalb weniger Stunden brauchen, und Unternehmen, die mit einem deutschsprachigen Pentester statt mit einem generischen Support arbeiten wollen. Wie ein Testzyklus abläuft, steht auf der Seite <a href="{{ pageUrls.pentesting }}">Pentesting</a>; welche Nachweise NIS2 verlangt, erklärt die Seite <a href="{{ pageUrls['wissen-nis2-wirksamkeitspruefung'] }}">NIS2: Wirksamkeit der Sicherheitsmaßnahmen belegen</a>.</p>
+
+        <h2>Pentera-Alternative aus Deutschland: Fragen, die Käufer stellen</h2>
+        <div class="ws-faq">
+            {% for item in faq %}
+            <details>
+                <summary>{{ item.q }}</summary>
+                <div class="ws-faq-body"><p>{{ item.a }}</p></div>
+            </details>
+            {% endfor %}
+        </div>
+
+        <div class="ws-sources">
+            <h2>Quellen</h2>
+            <ol>
+                <li>Pentera, The Pentera Platform, <a href="https://pentera.io/pentera-platform/" rel="noopener">pentera.io/pentera-platform</a>, abgerufen am 9. September 2026 (Module, Leitplanken im Produktivbetrieb, Compliance-Zuordnung, Zertifizierungen, Services, Bewertungszahl, Angaben zur Datenverarbeitung durch KI).</li>
+                <li>Pentera, Pentera Platform Datasheet (PDF, April 2025), <a href="https://pentera.io/wp-content/uploads/2025/04/Pentera-Datasheet-Pentera-Platform.pdf" rel="noopener">pentera.io</a>, abgerufen am 9. September 2026 (agentenlose Bereitstellung, verteilte und hybride Umgebungen).</li>
+                <li>Wikipedia, Pentera, <a href="https://en.wikipedia.org/wiki/Pentera" rel="noopener">en.wikipedia.org/wiki/Pentera</a>, abgerufen am 9. September 2026 (Gründung, Hauptsitz, Standorte, Mitarbeitende).</li>
+                <li>Capterra, Pentera, <a href="https://www.capterra.com/p/178964/Pcysys/" rel="noopener">capterra.com</a>, abgerufen am 9. September 2026 (Bereitstellung als Cloud und On-Premises).</li>
+                <li>AWS Marketplace, Pentera, <a href="https://aws.amazon.com/marketplace/pp/prodview-56i5cowyjxcxm" rel="noopener">aws.amazon.com/marketplace</a>, abgerufen am 9. September 2026 (SaaS-Bezug).</li>
+                <li>VORNAC GmbH, <a href="{{ pageUrls.pentesting }}">Pentesting</a> und <a href="{{ pageUrls.faq }}">FAQ</a>, Stand 9. September 2026.</li>
+            </ol>
+            <p class="ws-note">Pentera ist eine Marke des jeweiligen Inhabers. VORNAC steht in keiner Geschäftsbeziehung zu Pentera. Die Angaben zu Pentera beruhen ausschließlich auf öffentlichen Quellen zum genannten Abrufdatum; Hinweise auf veraltete oder unvollständige Angaben nehmen wir unter <a href="mailto:hello@vornac.com">hello@vornac.com</a> entgegen und korrigieren die Seite.</p>
+        </div>
+    </div>
+</section>
+
+<section class="ws-cta">
+    <p>Sie vergleichen gerade Anbieter? In 30 Minuten zeigen wir einen echten Testlauf gegen eines Ihrer Zielsysteme, mit Report.</p>
+    <a href="{{ site.contact.bookDemo }}">Erstgespräch vereinbaren</a>
+</section>
+{% endblock %}

@@ -1,0 +1,392 @@
+/* ============================================ */
+/* Wissen / Vergleich pages and the shared      */
+/* "Stand · Autor" meta line.                    */
+/* ============================================ */
+/* Long-form reference pages: centered head,    */
+/* left-aligned article column, plain tables,   */
+/* no cards and no section borders. Tokens from */
+/* src/input.css.                                */
+/* ============================================ */
+
+/* The shared .v-meta-line rules live in src/input.css because the line also
+   appears on Pentesting, OT-Pentesting, FAQ, Glossary and the industry pages,
+   which do not load this file. */
+
+/* ============================================ */
+/* Head                                         */
+/* ============================================ */
+
+.ws-hero {
+    background: var(--v-bg);
+    position: relative;
+    z-index: 1;
+}
+
+.ws-hero-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 112px 40px 24px;
+    text-align: center;
+}
+
+.ws-kicker {
+    font-family: var(--v-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+    margin: 0 0 18px;
+}
+
+.ws-kicker a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.ws-kicker a:hover { color: var(--v-amber-deep); }
+
+.ws-hero-headline {
+    font-family: var(--v-display);
+    font-size: clamp(40px, 6vw, 76px);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    font-weight: 900;
+    color: var(--v-ink);
+    margin: 0 0 22px;
+    text-wrap: balance;
+}
+
+.ws-hero-headline .ws-period { color: var(--v-amber); }
+
+.ws-hero .v-meta-line {
+    margin-top: 10px;
+}
+
+/* ============================================ */
+/* Article column                               */
+/* ============================================ */
+
+.ws-body {
+    background: var(--v-bg);
+    position: relative;
+    z-index: 1;
+}
+
+.ws-body-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 32px 40px 104px;
+    font-family: var(--v-sans);
+    color: var(--v-ink-2);
+}
+
+.ws-lead {
+    font-size: 19px;
+    line-height: 1.6;
+    font-weight: 500;
+    color: var(--v-ink);
+    margin: 0 0 40px;
+}
+
+.ws-body-inner h2 {
+    font-family: var(--v-display);
+    font-size: clamp(26px, 3.2vw, 34px);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+    color: var(--v-ink);
+    margin: 56px 0 18px;
+}
+
+.ws-body-inner h3 {
+    font-family: var(--v-sans);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--v-ink);
+    margin: 32px 0 10px;
+}
+
+.ws-body-inner p,
+.ws-body-inner li {
+    font-size: 16.5px;
+    line-height: 1.65;
+    font-weight: 500;
+}
+
+.ws-body-inner p { margin: 0 0 18px; }
+
+.ws-body-inner ul,
+.ws-body-inner ol {
+    margin: 0 0 18px;
+    padding-left: 22px;
+}
+
+.ws-body-inner li { margin: 0 0 6px; }
+
+.ws-body-inner a {
+    color: var(--v-amber-deep);
+    text-decoration: none;
+}
+
+.ws-body-inner a:hover { text-decoration: underline; }
+
+.ws-body-inner strong { color: var(--v-ink); }
+
+/* Law text and other quoted passages */
+.ws-quote {
+    margin: 22px 0 26px;
+    padding: 4px 0 4px 22px;
+    border-left: 3px solid var(--v-amber);
+}
+
+.ws-quote p {
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--v-ink);
+    margin: 0 0 10px;
+}
+
+.ws-quote p:last-child { margin-bottom: 0; }
+
+.ws-quote cite,
+.ws-source-note {
+    display: block;
+    font-family: var(--v-mono);
+    font-style: normal;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--v-ink-3);
+    margin-top: 8px;
+}
+
+/* ============================================ */
+/* Tables                                       */
+/* ============================================ */
+
+.ws-table-wrap {
+    overflow-x: auto;
+    margin: 20px 0 30px;
+}
+
+.ws-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14.5px;
+    line-height: 1.5;
+}
+
+.ws-table caption {
+    caption-side: bottom;
+    text-align: left;
+    font-family: var(--v-mono);
+    font-size: 12px;
+    color: var(--v-ink-3);
+    padding-top: 10px;
+}
+
+.ws-table th,
+.ws-table td {
+    text-align: left;
+    vertical-align: top;
+    padding: 12px 14px 12px 0;
+    border-bottom: 1px solid var(--v-line);
+}
+
+.ws-table th {
+    font-family: var(--v-mono);
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+    border-bottom: 1px solid var(--v-rule);
+}
+
+.ws-table td { color: var(--v-ink-2); }
+
+.ws-table td:first-child,
+.ws-table th[scope="row"] {
+    color: var(--v-ink);
+    font-weight: 600;
+    font-family: var(--v-sans);
+    font-size: 14.5px;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.ws-table td.is-yes { color: var(--v-ink); }
+.ws-table td.is-no { color: #FF4B4B; }
+
+/* ============================================ */
+/* FAQ                                          */
+/* ============================================ */
+
+.ws-faq {
+    margin: 10px 0 30px;
+}
+
+.ws-faq details {
+    border-top: 1px solid var(--v-line);
+}
+
+.ws-faq details:last-child {
+    border-bottom: 1px solid var(--v-line);
+}
+
+.ws-faq summary {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--v-ink);
+    padding: 16px 0;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.ws-faq summary::-webkit-details-marker { display: none; }
+
+.ws-faq summary::after {
+    content: '';
+    flex: 0 0 auto;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid var(--v-amber);
+    border-bottom: 2px solid var(--v-amber);
+    transform: rotate(45deg);
+    transition: transform 0.18s ease;
+    margin-top: -4px;
+}
+
+.ws-faq details[open] summary::after {
+    transform: rotate(-135deg);
+    margin-top: 4px;
+}
+
+.ws-faq .ws-faq-body {
+    padding: 0 0 18px;
+}
+
+.ws-faq .ws-faq-body p { margin: 0; font-size: 15.5px; }
+
+/* ============================================ */
+/* Sources and closing block                    */
+/* ============================================ */
+
+.ws-sources {
+    margin-top: 48px;
+    padding-top: 22px;
+    border-top: 1px solid var(--v-line);
+}
+
+.ws-sources h2 {
+    font-size: 15px;
+    font-family: var(--v-mono);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+    margin: 0 0 12px;
+}
+
+.ws-sources ol {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.ws-sources li {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--v-ink-3);
+    word-break: break-word;
+}
+
+.ws-sources li a { color: var(--v-ink-2); }
+
+.ws-note {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--v-ink-3);
+    margin-top: 20px;
+}
+
+.ws-cta {
+    text-align: center;
+    padding: 8px 40px 112px;
+    font-family: var(--v-sans);
+}
+
+.ws-cta p {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--v-ink-2);
+    font-weight: 500;
+    max-width: 56ch;
+    margin: 0 auto 18px;
+}
+
+.ws-cta a {
+    color: var(--v-amber-deep);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.ws-cta a:hover { text-decoration: underline; }
+
+/* ============================================ */
+/* Index list (/wissen)                         */
+/* ============================================ */
+
+.ws-list {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 16px 40px 104px;
+}
+
+.ws-list-item {
+    padding: 26px 0;
+    border-top: 1px solid var(--v-line);
+}
+
+.ws-list-item:last-child { border-bottom: 1px solid var(--v-line); }
+
+.ws-list-item h2 {
+    font-family: var(--v-display);
+    font-size: 28px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+    margin: 0 0 8px;
+}
+
+.ws-list-item h2 a {
+    color: var(--v-ink);
+    text-decoration: none;
+}
+
+.ws-list-item h2 a:hover { color: var(--v-amber-deep); }
+
+.ws-list-item p {
+    font-family: var(--v-sans);
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--v-ink-2);
+    font-weight: 500;
+    margin: 0 0 10px;
+}
+
+/* ============================================ */
+/* Responsive                                   */
+/* ============================================ */
+
+@media (max-width: 640px) {
+    .ws-hero-inner { padding: 96px 24px 16px; }
+    .ws-body-inner { padding: 24px 20px 88px; }
+    .ws-list { padding: 8px 20px 88px; }
+    .ws-lead { font-size: 17.5px; }
+    .ws-body-inner p, .ws-body-inner li { font-size: 15.5px; }
+    .ws-table { font-size: 13.5px; }
+    .ws-cta { padding: 8px 20px 96px; }
+}

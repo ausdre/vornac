@@ -2,6 +2,7 @@
 title: "Enterprise · NIS2-ready validation | VORNAC"
 description: "NIS2-aligned continuous penetration testing for essential and important entities. Article 21 measures, proven on live production, audit-ready evidence."
 i18nKey: industries-enterprise
+author: andre
 ogType: website
 ---
 {% extends "layouts/base.njk" %}
@@ -61,6 +62,7 @@ ogType: website
             <span class="ind-hero-framework">NIS2</span>
             <h1 class="ind-hero-headline">NIS2-ready validation for <span class="ind-hero-headline-emph">essential and important entities</span></h1>
             <p class="ind-hero-sub">The NIS2 Directive obliges thousands of EU organizations to cybersecurity measures. Article 21 requires risk management, incident handling, and effectiveness testing. VORNAC proves what attackers can actually reach. Audit-ready for NIS2.</p>
+            {% include "partials/page-meta-line.njk" %}
             <div class="ind-hero-actions">
                 {% include "partials/hero-demo-button.njk" %}
                 <a href="{{ pageUrls.pentesting }}" class="ind-btn-ghost">How it works</a>

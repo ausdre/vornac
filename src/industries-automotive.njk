@@ -2,6 +2,7 @@
 title: "Automotive · TISAX & continuous validation | VORNAC"
 description: "Continuous penetration testing for automotive OEMs and suppliers. TISAX-aligned validation plus adversarial testing of connected vehicles, APIs, and binaries."
 i18nKey: industries-automotive
+author: andre
 ogType: website
 ---
 {% extends "layouts/base.njk" %}
@@ -61,6 +62,7 @@ ogType: website
             <span class="ind-hero-framework">TISAX</span>
             <h1 class="ind-hero-headline">Security validation for <span class="ind-hero-headline-emph">automotive supply chains</span></h1>
             <p class="ind-hero-sub">OEMs and Tier suppliers must satisfy TISAX and customer audit programs while shipping connected software faster. VORNAC adds continuous, exploit-proven adversarial validation across web, APIs, binaries, and cloud, with evidence your assessors can verify.</p>
+            {% include "partials/page-meta-line.njk" %}
             <div class="ind-hero-actions">
                 {% include "partials/hero-demo-button.njk" %}
                 <a href="{{ pageUrls.pentesting }}#coverage" class="ind-btn-ghost">See coverage</a>

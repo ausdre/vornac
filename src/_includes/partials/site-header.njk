@@ -116,6 +116,13 @@
                     </div>
                     <div class="v-dv-drop-aside">
                         <span class="v-dv-drop-heading">{{ t.navHeadings.glossary }}</span>
+                        {# Wissen exists in German only for now (registry: en: null). #}
+                        {% if pageUrls.wissen %}
+                        <a href="{{ pageUrls.wissen }}" class="v-dv-drop-aside-link{% if i18nKey == 'wissen' or (i18nKey and i18nKey.startsWith('wissen-')) or (i18nKey and i18nKey.startsWith('vergleich-')) %} is-active{% endif %}">
+                            {{ t.nav.wissen }}
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M13 5l7 7-7 7"/></svg>
+                        </a>
+                        {% endif %}
                         <a href="{{ pageUrls.glossary }}" class="v-dv-drop-aside-link{% if i18nKey == 'glossary' %} is-active{% endif %}">
                             {{ t.nav.glossary }}
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -271,6 +278,7 @@
                       {% set dHref = "/" + ("en/" if locale == "en" else "") + "research/" + d.id + "/" %}
                       {{ mobileSub(dHref, d.title[locale], "", i18nKey == ("research-" + d.id)) }}
                     {% endfor %}
+                    {% if pageUrls.wissen %}{{ mobileSub(pageUrls.wissen, t.nav.wissen, t.navHeadings.glossary, i18nKey == 'wissen') }}{% endif %}
                     {{ mobileSub(pageUrls.glossary, t.nav.glossary, t.navHeadings.glossary, i18nKey == 'glossary') }}
                     {{ mobileSub(pageUrls.faq, t.nav.faq, t.navHeadings.glossary, i18nKey == 'faq') }}
                 </ul>

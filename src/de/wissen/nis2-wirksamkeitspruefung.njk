@@ -1,0 +1,200 @@
+---
+title: "NIS2: Wirksamkeit der Sicherheitsmaßnahmen belegen (§ 30 BSIG) | VORNAC"
+headline: "NIS2: Wirksamkeit der Sicherheitsmaßnahmen belegen (§ 30 BSIG)"
+breadcrumb: "NIS2 Wirksamkeitsprüfung"
+description: "Was § 30 Abs. 2 Satz 2 Nr. 6 BSIG von besonders wichtigen und wichtigen Einrichtungen verlangt, wie das BSI die Wirksamkeitsbewertung liest und welchen Nachweis ein kontinuierlicher Penetrationstest liefert."
+i18nKey: wissen-nis2-wirksamkeitspruefung
+ogType: article
+author: andre
+about:
+  - "NIS2"
+  - "Wirksamkeitsbewertung von Risikomanagementmaßnahmen"
+  - "Penetrationstest"
+legislation:
+  - name: "§ 30 BSIG"
+    identifier: "BSIG 2025 § 30"
+    url: "https://www.gesetze-im-internet.de/bsig_2025/__30.html"
+citations:
+  - "https://www.gesetze-im-internet.de/bsig_2025/__30.html"
+  - "https://www.bsi.bund.de/dok/nis-2-wirksamkeit"
+  - "https://www.bsi.bund.de/DE/Themen/Regulierte-Wirtschaft/NIS-2-regulierte-Unternehmen/NIS-2-Infopakete/NIS-2-Risikomanagementmassnahmen/NIS-2-Risikomanagementmassnahmen.html"
+faq:
+  - q: "Verlangt NIS2 einen Penetrationstest?"
+    a: >-
+      Das BSIG schreibt keinen Penetrationstest namentlich vor. § 30 Abs. 2 Satz 2 Nr. 5 verlangt das Management von Schwachstellen, Nr. 6 verlangt Konzepte und Verfahren zur Bewertung der Wirksamkeit der Risikomanagementmaßnahmen. Ein Penetrationstest ist der gängige technische Nachweis dafür, dass Maßnahmen einem realen Angriff standhalten; er füllt beide Anforderungen mit belegbaren Ergebnissen.
+  - q: "Wie oft muss die Wirksamkeit bewertet werden?"
+    a: >-
+      Das Gesetz nennt keine feste Frist. Das BSI beschreibt die Wirksamkeitsbewertung als fortlaufenden Prozess, nicht als einmaliges Ereignis, und verweist auf Kennzahlen, die kontinuierlich überwacht werden. Der Rhythmus muss zum Risiko und zur Änderungsrate der Systeme passen: Nach jedem Release, jeder Infrastrukturänderung und in einem festen Turnus ist eine belastbare Praxis.
+  - q: "Reicht ein Schwachstellenscan als Nachweis der Wirksamkeit?"
+    a: >-
+      Ein Scan listet bekannte Schwachstellen und Fehlkonfigurationen, ohne sie auszunutzen. Er belegt damit, dass ein Problem existieren könnte, nicht, ob eine Maßnahme einem Angriff standhält. Für die Ergebniswirksamkeit im Sinne des BSI braucht es einen Test, der den Angriff tatsächlich durchführt und das Ergebnis dokumentiert.
+  - q: "Ersetzt ein GRC-Tool den technischen Test?"
+    a: >-
+      Nein. GRC-Plattformen ordnen Richtlinien und Kontrollen den Anforderungen zu, sammeln Belege aus angebundenen Systemen und verfolgen Aufgaben. Sie zeigen, dass eine Maßnahme beschrieben und konfiguriert ist. Ob sie unter Angriff hält, prüfen sie nicht, weil sie nichts angreifen. Beides ergänzt sich: Das GRC-Tool hält die Dokumentation, der Penetrationstest liefert den Beleg.
+  - q: "Was muss die Dokumentation der Wirksamkeitsbewertung enthalten?"
+    a: >-
+      § 30 Abs. 1 Satz 3 BSIG verlangt, die Einhaltung der Pflichten zu dokumentieren. Für einen Testlauf gehören dazu Datum und Scope, das Vorgehen, jeder Befund mit Reproduktionsschritten und Bewertung, die abgeleiteten Maßnahmen mit Verantwortlichen sowie das Ergebnis des Wiederholungstests. Aus mehreren Läufen entstehen die Kennzahlen, die das BSI für Reifegrad 4 erwartet.
+  - q: "Gilt das auch für Betreiber kritischer Anlagen?"
+    a: >-
+      Ja. Betreiber kritischer Anlagen sind besonders wichtige Einrichtungen und unterliegen § 30 BSIG in vollem Umfang. Zusätzlich gelten für sie die Nachweispflichten nach § 39 BSIG und die besonderen Anforderungen nach § 31 BSIG; die Wirksamkeitsbewertung fließt dort in die Nachweisprüfung ein.
+---
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+<link rel="stylesheet" href="/wissen.css">
+{% include "partials/wissen-schema.njk" %}
+{% endblock %}
+
+{% block content %}
+<section class="ws-hero">
+    <div class="ws-hero-inner">
+        <p class="ws-kicker"><a href="{{ pageUrls.wissen }}">Wissen</a> · NIS2</p>
+        <h1 class="ws-hero-headline">{{ headline }}</h1>
+        {% include "partials/page-meta-line.njk" %}
+    </div>
+</section>
+
+<section class="ws-body">
+    <div class="ws-body-inner">
+        <p class="ws-lead">NIS2 verpflichtet besonders wichtige und wichtige Einrichtungen nach § 30 Abs. 2 Satz 2 Nr. 6 BSIG zu Konzepten und Verfahren, mit denen sie die Wirksamkeit ihrer Risikomanagementmaßnahmen bewerten. Das BSI beschreibt diese Bewertung als fortlaufenden Prozess, nicht als einmaliges Ereignis. Ein kontinuierlicher Penetrationstest liefert dafür den technischen Nachweis: Er belegt je Zyklus, welche Maßnahmen einem realen Angriff standhalten und welche nicht.</p>
+
+        <h2>Was § 30 BSIG im Wortlaut verlangt</h2>
+        <p>Seit dem 6. Dezember 2025 gilt das BSI-Gesetz in der Fassung des NIS-2-Umsetzungsgesetzes. § 30 regelt die Risikomanagementmaßnahmen. Absatz 1 verlangt wirksame Maßnahmen und ihre Dokumentation, Absatz 2 zählt zehn Mindestbereiche auf. Die Bewertung der Wirksamkeit steht dort als eigener Punkt.</p>
+        <blockquote class="ws-quote">
+            <p>„Besonders wichtige Einrichtungen und wichtige Einrichtungen sind verpflichtet, geeignete, verhältnismäßige und wirksame technische und organisatorische Maßnahmen, die in Absatz 2 konkretisiert werden, zu ergreifen, um Störungen der Verfügbarkeit, Integrität und Vertraulichkeit der informationstechnischen Systeme, Komponenten und Prozesse, die sie für die Erbringung ihrer Dienste nutzen, zu vermeiden und Auswirkungen von Sicherheitsvorfällen möglichst gering zu halten.“</p>
+            <p>„Die Einhaltung der Verpflichtung nach Satz 1 ist durch die Einrichtungen zu dokumentieren.“</p>
+            <cite>§ 30 Abs. 1 Satz 1 und Satz 3 BSIG</cite>
+        </blockquote>
+        <p>Von den zehn Bereichen in Absatz 2 Satz 2 betreffen zwei das Prüfen der eigenen Sicherheit unmittelbar:</p>
+        <blockquote class="ws-quote">
+            <p>„5. Sicherheitsmaßnahmen bei Erwerb, Entwicklung und Wartung von informationstechnischen Systemen, Komponenten und Prozessen, einschließlich Management und Offenlegung von Schwachstellen,“</p>
+            <p>„6. Konzepte und Verfahren zur Bewertung der Wirksamkeit von Risikomanagementmaßnahmen im Bereich der Sicherheit in der Informationstechnik,“</p>
+            <cite>§ 30 Abs. 2 Satz 2 Nr. 5 und Nr. 6 BSIG</cite>
+        </blockquote>
+        <p>Das Wort Penetrationstest kommt in § 30 nicht vor. Das Gesetz schreibt das Ziel vor, nicht das Werkzeug. Für Nr. 6 muss eine Einrichtung zeigen, dass sie die Wirksamkeit ihrer Maßnahmen tatsächlich bewertet, mit einem Konzept und mit Verfahren, die sie im Alltag anwendet. Die Maßnahmen sollen nach Absatz 2 Satz 1 den Stand der Technik einhalten und die einschlägigen europäischen und internationalen Normen berücksichtigen.</p>
+
+        <h2>Wer betroffen ist und wer die Umsetzung verantwortet</h2>
+        <p>Betroffen sind besonders wichtige und wichtige Einrichtungen im Sinne von § 28 BSIG: Betreiber kritischer Anlagen sowie Unternehmen aus den Sektoren der Anlagen 1 und 2 des Gesetzes, sobald sie die dort festgelegten Größenschwellen erreichen. Für die Prüfung der eigenen Betroffenheit stellt das BSI ein Werkzeug bereit; die Registrierung läuft über das BSI-Portal.</p>
+        <p>Die Geschäftsleitung ist nach § 38 BSIG verpflichtet, die Risikomanagementmaßnahmen umzusetzen und ihre Umsetzung zu überwachen, und muss sich dafür regelmäßig schulen lassen. Auf Verlangen des Bundesamts müssen Einrichtungen die Umsetzung nachweisen (§ 61 Abs. 3 BSIG). Für Betreiber kritischer Anlagen kommen die Nachweispflichten nach § 39 BSIG hinzu. Wer die Wirksamkeit seiner Maßnahmen nicht belegen kann, hat im Zweifel keine Antwort auf die Frage, warum eine Maßnahme als wirksam eingestuft wurde.</p>
+
+        <h2>Wie das BSI die Wirksamkeitsbewertung liest</h2>
+        <p>Das BSI hat zu Nr. 6 ein eigenes Infopaket veröffentlicht. Die Kernaussage: Die Bewertung der Wirksamkeit von Sicherheitsmaßnahmen ist kein einmaliges Ereignis, sondern ein fortlaufender Prozess im Sinne des PDCA-Zyklus. Die Wirksamkeitsprüfung ist der Schritt „Check“; erst mit der Umsetzung der Konsequenzen und einer erneuten Prüfung ist der Zyklus geschlossen. Das BSI unterscheidet dabei drei Fragen, die eine Bewertung beantworten muss:</p>
+        <ul>
+            <li><strong>Konzeptionelle Eignung:</strong> Ist die Maßnahme theoretisch geeignet, das Risiko zu senken?</li>
+            <li><strong>Umsetzungstreue:</strong> Wird die Maßnahme wie geplant im Alltag angewendet?</li>
+            <li><strong>Ergebniswirksamkeit:</strong> Führt die Maßnahme zu den gewünschten messbaren Ergebnissen?</li>
+        </ul>
+        <p>Als Vorgehen nennt das BSI Kennzahlen mit Grenzwerten, die kontinuierlich überwacht werden (Ziel ist Reifegrad 4, „messbar“, statt Reifegrad 3, „etabliert“), regelmäßige interne und externe Audits, Berichte an die Unternehmensleitung, die die Ergebnisse selbst bewertet, und einen kontinuierlichen Verbesserungsprozess (Reifegrad 5). Als Beispiele für Kennzahlen führt das BSI die Patch-Quote, Reaktionszeiten auf Vorfälle und Ergebnisse von Phishing-Simulationen an.</p>
+        <p>Wer bereits nach ISO/IEC 27001:2022 arbeitet, findet die Anforderung in den Kapiteln 6.2, 9.1 und 9.3 wieder; im VDA ISA für TISAX in den Kontrollfragen 1.2.1, 1.4.1, 1.5.1, 1.5.2, 1.6.2 und 5.2.6. Das BSI weist zugleich darauf hin, dass die Umsetzung eines dieser Standards nicht automatisch bedeutet, dass § 30 BSIG vollständig erfüllt ist. Der CyberRisikoCheck des BSI deckt die Wirksamkeitsbewertung ausdrücklich nicht ab.</p>
+
+        <h2>Was GRC-Plattformen leisten und wo der technische Nachweis beginnt</h2>
+        <p>Werkzeuge wie Vanta, Kertos, Secfix oder DataGuard ordnen Richtlinien und Kontrollen den Anforderungen zu, sammeln Belege aus angebundenen Systemen und verfolgen Aufgaben bis zur Erledigung. Das deckt die konzeptionelle Eignung ab und einen Teil der Umsetzungstreue: Es zeigt, dass eine Maßnahme beschrieben ist und dass Konfigurationen den Vorgaben entsprechen. Ob die Maßnahme einem Angriff standhält, sagt ein GRC-Tool nicht, denn es greift nichts an.</p>
+        <p>Ein Schwachstellenscanner geht einen Schritt weiter. Er listet bekannte Schwachstellen und Fehlkonfigurationen, nutzt sie aber nicht aus. Der Nachweis der Ergebniswirksamkeit entsteht erst, wenn jemand die Maßnahme unter realen Bedingungen bricht oder daran scheitert. Das ist die Aufgabe eines Penetrationstests (Penetration Test): Er verkettet Schwachstellen zu Angriffspfaden, weist die Ausnutzbarkeit nach und dokumentiert, welche Schutzmaßnahme den Angriff gestoppt hat und welche nicht.</p>
+        <div class="ws-table-wrap">
+            <table class="ws-table">
+                <caption>Die drei Ebenen des BSI und die Werkzeugklassen, die sie belegen. Stand: 9. September 2026.</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Ebene nach BSI</th>
+                        <th scope="col">Leitfrage</th>
+                        <th scope="col">Typischer Beleg</th>
+                        <th scope="col">Werkzeugklasse</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Konzeptionelle Eignung</td>
+                        <td>Passt die Maßnahme zum Risiko?</td>
+                        <td>Risikoanalyse, Richtlinie, Kontrollzuordnung</td>
+                        <td>ISMS, GRC-Plattform</td>
+                    </tr>
+                    <tr>
+                        <td>Umsetzungstreue</td>
+                        <td>Wird die Maßnahme so angewendet wie geplant?</td>
+                        <td>Konfigurationsnachweise, Audit, Stichproben</td>
+                        <td>GRC-Plattform, interne Revision, Schwachstellenscanner</td>
+                    </tr>
+                    <tr>
+                        <td>Ergebniswirksamkeit</td>
+                        <td>Hält die Maßnahme einem Angriff stand?</td>
+                        <td>Belegter Angriffspfad oder belegtes Scheitern, Wiederholungstest</td>
+                        <td>Penetrationstest, kontinuierlich oder als Projekt</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Zuordnung: Maßnahmen nach § 30 Absatz 2 und der Beitrag eines kontinuierlichen Penetrationstests</h2>
+        <p>Nicht jede der zehn Maßnahmen lässt sich technisch testen. Die Tabelle ordnet jeder Maßnahme die Frage zu, die ein Prüfer stellt, und benennt, ob ein kontinuierlicher Penetrationstest dafür einen direkten Beleg liefert, einen mittelbaren oder keinen.</p>
+        <div class="ws-table-wrap">
+            <table class="ws-table">
+                <caption>Zuordnung nach § 30 Abs. 2 Satz 2 BSIG. Einschätzung der VORNAC GmbH, Heidelberg. Stand: 9. September 2026.</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Nr.</th>
+                        <th scope="col">Maßnahme (Kurzform)</th>
+                        <th scope="col">Frage des Prüfers</th>
+                        <th scope="col">Beitrag des Penetrationstests</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Risikoanalyse und Sicherheitskonzepte</td><td>Beruht die Analyse auf realen Angriffspfaden?</td><td>Mittelbar: belegte Angriffspfade als Eingabe für die Risikoanalyse</td></tr>
+                    <tr><td>2</td><td>Bewältigung von Sicherheitsvorfällen</td><td>Werden Angriffsschritte erkannt und behandelt?</td><td>Mittelbar: Testläufe zeigen, ob Erkennung und Reaktion auf reale Techniken anschlagen</td></tr>
+                    <tr><td>3</td><td>Aufrechterhaltung des Betriebs, Backup, Krisenmanagement</td><td>Funktionieren Wiederherstellung und Notfallpläne?</td><td>Keiner; das prüfen Notfallübungen und Wiederherstellungstests</td></tr>
+                    <tr><td>4</td><td>Sicherheit der Lieferkette</td><td>Sind Anbieter und Schnittstellen abgesichert?</td><td>Mittelbar: Tests der eigenen Schnittstellen und Zugänge von Dienstleistern, soweit im Scope</td></tr>
+                    <tr><td>5</td><td>Sichere Beschaffung, Entwicklung und Wartung, Schwachstellenmanagement</td><td>Werden Schwachstellen gefunden, bewertet und geschlossen?</td><td>Direkt: Befunde mit Exploit-Nachweis, Priorisierung nach Auswirkung, Wiederholungstest nach Behebung</td></tr>
+                    <tr><td>6</td><td>Bewertung der Wirksamkeit</td><td>Halten die Maßnahmen einem Angriff stand?</td><td>Direkt: je Lauf ein dokumentierter Beleg der Ergebniswirksamkeit, über Läufe hinweg Kennzahlen</td></tr>
+                    <tr><td>7</td><td>Schulung und Sensibilisierung</td><td>Kennen Beschäftigte die Regeln?</td><td>Keiner; Phishing-Simulationen und Schulungsnachweise sind eigene Verfahren</td></tr>
+                    <tr><td>8</td><td>Kryptografische Verfahren</td><td>Werden Verfahren korrekt eingesetzt?</td><td>Mittelbar: Befunde zu schwachen Protokollen, Zertifikaten und Schlüsselverwaltung im Scope</td></tr>
+                    <tr><td>9</td><td>Personalsicherheit, Zugriffskontrolle, Verwaltung von IKT</td><td>Greifen Berechtigungen und Trennung?</td><td>Direkt: nachgewiesene Rechteausweitung oder deren Scheitern, geprüft mit den Testrollen der Einrichtung</td></tr>
+                    <tr><td>10</td><td>Multi-Faktor-Authentifizierung, gesicherte Kommunikation</td><td>Lassen sich die Verfahren umgehen?</td><td>Direkt: Umgehungsversuche und Fehlkonfigurationen mit Nachweis</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Turnus, Dokumentation und Reportinhalt</h2>
+        <p>Das Gesetz nennt für die Wirksamkeitsbewertung keine Frist. Aus der Lesart des BSI folgt aber ein Maßstab: Kennzahlen, die kontinuierlich überwacht werden, entstehen nicht aus einem Jahrestest. Ein Penetrationstest, der einmal im Jahr als Projekt läuft, liefert einen Messpunkt. Ein Test, der nach jeder relevanten Änderung und zusätzlich in festem Rhythmus läuft, liefert eine Zeitreihe, aus der sich Reifegrad 4 belegen lässt.</p>
+        <p>Für die Dokumentation nach § 30 Abs. 1 Satz 3 hat sich in Prüfungen ein fester Aufbau je Testlauf bewährt:</p>
+        <ul>
+            <li>Datum, Scope und Ausgangslage (extern, authentifiziert, Testrollen)</li>
+            <li>Vorgehen und eingesetzte Techniken, damit ein Prüfer die Methode nachvollziehen kann</li>
+            <li>Jeder Befund mit Reproduktionsschritten, Auswirkung und Einstufung</li>
+            <li>Welche Schutzmaßnahme den Angriff gestoppt hat und welche nicht</li>
+            <li>Abgeleitete Maßnahmen mit Verantwortlichen und Terminen</li>
+            <li>Ergebnis des Wiederholungstests nach der Behebung</li>
+        </ul>
+        <p>Aus mehreren Läufen entstehen die Kennzahlen: Anzahl belegter Angriffspfade je Lauf, Zeit von Befund bis Behebung, Anteil der Befunde, die nach der Behebung erneut auftreten. Diese Zahlen tragen die Management-Berichte, die das BSI verlangt, und sie sind die Grundlage für den kontinuierlichen Verbesserungsprozess.</p>
+
+        <h2>Was VORNAC dazu beiträgt</h2>
+        <p>Die VORNAC GmbH, Heidelberg, betreibt eine Plattform für kontinuierliche, autonome Penetrationstests. Je Zielsystem läuft der Test auf Abruf, nach Zeitplan oder ausgelöst aus der CI/CD-Pipeline in der produktiven Umgebung, mit realen Exploits und ohne destruktive Schritte. Jeder Befund kommt mit reproduzierbarem Proof-of-Concept, Business-Impact und Maßnahmenplan; nach der Behebung prüft ein Wiederholungslauf, ob die Lücke geschlossen ist. Der Report ist so aufgebaut, dass er die oben genannten Punkte für Nr. 5 und Nr. 6 abdeckt und zugleich unter DORA, KRITIS, TISAX, VAIT/BAIT und ISO/IEC 27001 verwendbar bleibt.</p>
+        <p>Betrieb und Datenhaltung liegen ausschließlich in deutschen Rechenzentren deutscher Betreiber; es gibt keinen US-Cloud-Anbieter in der Verarbeitungskette. Fester Ansprechpartner ist ein Pentester, der die Ergebnisse mit dem Team bespricht. Mehr zum Ablauf steht auf der Seite <a href="{{ pageUrls.pentesting }}">Pentesting</a>, zu den Anforderungen wichtiger Einrichtungen auf der Seite <a href="{{ pageUrls['industries-enterprise'] }}">NIS2 für Unternehmen</a>.</p>
+
+        <h2>Häufige Fragen</h2>
+        <div class="ws-faq">
+            {% for item in faq %}
+            <details>
+                <summary>{{ item.q }}</summary>
+                <div class="ws-faq-body"><p>{{ item.a }}</p></div>
+            </details>
+            {% endfor %}
+        </div>
+
+        <div class="ws-sources">
+            <h2>Quellen</h2>
+            <ol>
+                <li>§ 30 BSIG, Risikomanagementmaßnahmen besonders wichtiger Einrichtungen und wichtiger Einrichtungen, Gesetz über das Bundesamt für Sicherheit in der Informationstechnik und über die Sicherheit in der Informationstechnik von Einrichtungen vom 2. Dezember 2025 (BGBl. 2025 I Nr. 301), <a href="https://www.gesetze-im-internet.de/bsig_2025/__30.html" rel="noopener">gesetze-im-internet.de/bsig_2025/__30.html</a>, abgerufen am 9. September 2026.</li>
+                <li>Bundesamt für Sicherheit in der Informationstechnik, #nis2know: Bewertung der Wirksamkeit von Maßnahmen, Stand 2. Juni 2026, <a href="https://www.bsi.bund.de/dok/nis-2-wirksamkeit" rel="noopener">bsi.bund.de/dok/nis-2-wirksamkeit</a>, abgerufen am 9. September 2026.</li>
+                <li>Bundesamt für Sicherheit in der Informationstechnik, #nis2know: NIS-2 Risikomanagementmaßnahmen, <a href="https://www.bsi.bund.de/DE/Themen/Regulierte-Wirtschaft/NIS-2-regulierte-Unternehmen/NIS-2-Infopakete/NIS-2-Risikomanagementmassnahmen/NIS-2-Risikomanagementmassnahmen.html" rel="noopener">bsi.bund.de</a>, abgerufen am 9. September 2026.</li>
+                <li>Bundesamt für Sicherheit in der Informationstechnik, Reife- und Umsetzungsgradbewertung im Rahmen der Nachweisprüfung (RUN), <a href="https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/KRITIS/run.pdf?__blob=publicationFile&amp;v=10" rel="noopener">bsi.bund.de (PDF)</a>.</li>
+                <li>§ 28, § 31, § 38, § 39 und § 61 BSIG, <a href="https://www.gesetze-im-internet.de/bsig_2025/" rel="noopener">gesetze-im-internet.de/bsig_2025</a>, abgerufen am 9. September 2026.</li>
+            </ol>
+            <p class="ws-note">Diese Seite erläutert die Rechtslage aus Sicht eines Anbieters technischer Sicherheitsprüfungen und ersetzt keine Rechtsberatung. Gesetzestexte sind im Wortlaut zitiert; Einschätzungen sind als solche gekennzeichnet.</p>
+        </div>
+    </div>
+</section>
+
+<section class="ws-cta">
+    <p>Sie wollen sehen, wie ein Testlauf gegen eines Ihrer Zielsysteme als Wirksamkeitsnachweis aussieht? Ein Erstgespräch dauert 30 Minuten.</p>
+    <a href="{{ site.contact.bookDemo }}">Erstgespräch vereinbaren</a>
+</section>
+{% endblock %}
