@@ -965,7 +965,10 @@ a.x-term:focus-visible {
 .ind-cta a.x-term,
 .ind-gap-band a.x-term,
 .rs-cta a.x-term,
-.rs-note-page a.x-term {
+.rs-note-page a.x-term,
+.otp-compare-card--new a.x-term,
+.otp-blueprint a.x-term,
+.otp-cta a.x-term {
     color: inherit;
     text-decoration: underline;
     text-decoration-color: rgba(255, 163, 23, 0.45);
@@ -1003,7 +1006,13 @@ a.x-term:focus-visible {
 .rs-cta a.x-term:hover,
 .rs-cta a.x-term:focus-visible,
 .rs-note-page a.x-term:hover,
-.rs-note-page a.x-term:focus-visible {
+.rs-note-page a.x-term:focus-visible,
+.otp-compare-card--new a.x-term:hover,
+.otp-compare-card--new a.x-term:focus-visible,
+.otp-blueprint a.x-term:hover,
+.otp-blueprint a.x-term:focus-visible,
+.otp-cta a.x-term:hover,
+.otp-cta a.x-term:focus-visible {
     color: var(--v-amber);
     text-decoration-color: var(--v-amber);
 }
