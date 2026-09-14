@@ -29,22 +29,6 @@
     text-align: center;
 }
 
-.ws-kicker {
-    font-family: var(--v-mono);
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
-    margin: 0 0 18px;
-}
-
-.ws-kicker a {
-    color: inherit;
-    text-decoration: none;
-}
-
-.ws-kicker a:hover { color: var(--v-amber-deep); }
-
 .ws-hero-headline {
     font-family: var(--v-display);
     font-size: clamp(40px, 6vw, 76px);

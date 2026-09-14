@@ -24,7 +24,7 @@ faq:
       Das BSIG schreibt keinen Penetrationstest namentlich vor. § 30 Abs. 2 Satz 2 Nr. 5 verlangt das Management von Schwachstellen, Nr. 6 verlangt Konzepte und Verfahren zur Bewertung der Wirksamkeit der Risikomanagementmaßnahmen. Ein Penetrationstest ist der gängige technische Nachweis dafür, dass Maßnahmen einem realen Angriff standhalten; er füllt beide Anforderungen mit belegbaren Ergebnissen.
   - q: "Wie oft muss die Wirksamkeit bewertet werden?"
     a: >-
-      Das Gesetz nennt keine feste Frist. Das BSI beschreibt die Wirksamkeitsbewertung als fortlaufenden Prozess, nicht als einmaliges Ereignis, und verweist auf Kennzahlen, die kontinuierlich überwacht werden. Der Rhythmus muss zum Risiko und zur Änderungsrate der Systeme passen: Nach jedem Release, jeder Infrastrukturänderung und in einem festen Turnus ist eine belastbare Praxis.
+      Das Gesetz nennt keine feste Frist. Das BSI beschreibt die Wirksamkeitsbewertung als fortlaufenden Prozess, nicht als einmaliges Ereignis, und verweist auf Kennzahlen, die kontinuierlich überwacht werden. Der Rhythmus muss zum Risiko und zur Änderungsrate der Systeme passen. Belastbar ist ein Lauf nach jeder relevanten Änderung plus ein fester Turnus.
   - q: "Reicht ein Schwachstellenscan als Nachweis der Wirksamkeit?"
     a: >-
       Ein Scan listet bekannte Schwachstellen und Fehlkonfigurationen, ohne sie auszunutzen. Er belegt damit, dass ein Problem existieren könnte, nicht, ob eine Maßnahme einem Angriff standhält. Für die Ergebniswirksamkeit im Sinne des BSI braucht es einen Test, der den Angriff tatsächlich durchführt und das Ergebnis dokumentiert.
@@ -48,7 +48,6 @@ faq:
 {% block content %}
 <section class="ws-hero">
     <div class="ws-hero-inner">
-        <p class="ws-kicker"><a href="{{ pageUrls.wissen }}">Wissen</a> · NIS2</p>
         <h1 class="ws-hero-headline">{{ headline }}</h1>
         {% include "partials/page-meta-line.njk" %}
     </div>

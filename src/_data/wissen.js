@@ -18,7 +18,7 @@ module.exports = {
       key: "wissen-nis2-wirksamkeitspruefung",
       tag: "NIS2",
       title: "NIS2: Wirksamkeit der Sicherheitsmaßnahmen belegen (§ 30 BSIG)",
-      blurb: "Was § 30 Abs. 2 Satz 2 Nr. 6 BSIG verlangt, wie das BSI die Wirksamkeitsbewertung liest, was GRC-Werkzeuge abdecken und welchen Nachweis ein kontinuierlicher Penetrationstest liefert."
+      blurb: "Was § 30 Abs. 2 Satz 2 Nr. 6 BSIG verlangt und welchen Nachweis ein kontinuierlicher Penetrationstest liefert. Mit der Lesart des BSI im Wortlaut."
     }
   ]
 };

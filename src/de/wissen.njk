@@ -50,7 +50,7 @@ ogType: website
 <section class="ws-hero">
     <div class="ws-hero-inner">
         <h1 class="ws-hero-headline">Wissen<span class="ws-period">.</span></h1>
-        <p class="ws-lead" style="text-align:center; max-width: 60ch; margin: 0 auto;">Was Regelwerke an technischen Nachweisen verlangen, wie automatisierte Penetrationstests arbeiten und worin sich Anbieter unterscheiden. Mit Gesetzestexten im Wortlaut, Quellen und Stand je Seite.</p>
+        <p class="ws-lead" style="text-align:center; max-width: 60ch; margin: 0 auto;">Was Regelwerke an technischen Nachweisen verlangen und wie automatisierte Penetrationstests sie liefern. Mit Gesetzestexten im Wortlaut, Quellen und Stand je Seite.</p>
     </div>
 </section>
 
@@ -58,7 +58,6 @@ ogType: website
     {% for p in wissenPages %}
     {% set pageDates = dates.byKey[p.key] %}
     <article class="ws-list-item">
-        <p class="ws-kicker" style="margin-bottom: 10px;">{{ p.tag }}</p>
         <h2><a href="{{ pageUrls[p.key] }}">{{ p.title }}</a></h2>
         <p>{{ p.blurb }}</p>
         {% if pageDates and pageDates.de %}
