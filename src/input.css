@@ -654,38 +654,47 @@ img, video { max-width: 100%; }
 /* On-amber sections (pent-hero) — invert the pill for legible contrast:
    dark border, dark label, dark filled submit button. */
 .pent-hero .v-hero-demo,
+.otp-hero .v-hero-demo,
 .v-hero-demo--on-amber {
     border-color: var(--v-ink);
     background: rgba(14, 17, 22, 0.04);
 }
 .pent-hero .v-hero-demo .v-hero-demo-trigger,
+.otp-hero .v-hero-demo .v-hero-demo-trigger,
 .v-hero-demo--on-amber .v-hero-demo-trigger {
     color: var(--v-ink);
 }
 .pent-hero .v-hero-demo .v-hero-demo-input,
+.otp-hero .v-hero-demo .v-hero-demo-input,
 .v-hero-demo--on-amber .v-hero-demo-input {
     color: var(--v-ink);
 }
 .pent-hero .v-hero-demo .v-hero-demo-sent,
+.otp-hero .v-hero-demo .v-hero-demo-sent,
 .v-hero-demo--on-amber .v-hero-demo-sent {
     color: var(--v-ink);
 }
 .pent-hero .v-hero-demo .v-hero-demo-submit,
+.otp-hero .v-hero-demo .v-hero-demo-submit,
 .v-hero-demo--on-amber .v-hero-demo-submit {
     background: var(--v-ink);
     color: var(--v-amber);
 }
 .pent-hero .v-hero-demo .v-hero-demo-submit:hover,
+.otp-hero .v-hero-demo .v-hero-demo-submit:hover,
 .v-hero-demo--on-amber .v-hero-demo-submit:hover {
     background: #000;
 }
 .pent-hero .v-hero-demo:hover,
 .pent-hero .v-hero-demo.is-open,
+.otp-hero .v-hero-demo:hover,
+.otp-hero .v-hero-demo.is-open,
 .v-hero-demo--on-amber:hover,
 .v-hero-demo--on-amber.is-open {
     background: rgba(14, 17, 22, 0.08);
 }
 .pent-hero .v-hero-demo.is-sent,
+.otp-hero .v-hero-demo.is-sent,
 .v-hero-demo--on-amber.is-sent {
     background: rgba(14, 17, 22, 0.08);
 }
