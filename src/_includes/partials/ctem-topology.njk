@@ -69,9 +69,9 @@
       <text class="tzl" x="500" y="270">{{ L.servers }}</text>
 
       {# edges #}
-      <line class="te" x1="81" y1="226" x2="281" y2="124"/>
-      <line class="te" x1="81" y1="228" x2="281" y2="203"/>
-      <line class="te" x1="81" y1="232" x2="281" y2="278"/>
+      <line class="te te--probe" x1="81" y1="226" x2="281" y2="124"/>
+      <line class="te te--probe" x1="81" y1="228" x2="281" y2="203"/>
+      <line class="te te--probe" x1="81" y1="232" x2="281" y2="278"/>
       <line class="te" x1="81" y1="234" x2="281" y2="356"/>
       <line class="te" x1="299" y1="122" x2="588" y2="334"/>
       <line class="te" x1="299" y1="200" x2="588" y2="336"/>
@@ -85,6 +85,11 @@
       {# attack path: attacker → staging host → database → domain controller #}
       <path class="tp" pathLength="1000" d="M70,230 L290,362 L480,375 H880 V340 H1060"/>
       <path class="tp-pulse" pathLength="1000" d="M70,230 L290,362 L480,375 H880 V340 H1060"/>
+      <defs><filter id="ctemGlow1" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur in="SourceGraphic" stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      <circle class="tring" cx="290" cy="362" r="13"/>
+      <circle class="tring" cx="880" cy="340" r="13"/>
+      <circle class="tring" cx="1060" cy="340" r="15"/>
+      <circle class="tcomet" r="7" filter="url(#ctemGlow1)"/>
 
       {# attacker #}
       <circle class="tn tn--atk" cx="70" cy="230" r="11"/>
@@ -138,9 +143,9 @@
 
       {# edges #}
       <line class="te" x1="81" y1="226" x2="230" y2="134"/>
-      <line class="te" x1="81" y1="224" x2="331" y2="113"/>
-      <line class="te" x1="81" y1="234" x2="241" y2="367"/>
-      <line class="te" x1="81" y1="232" x2="341" y2="298"/>
+      <line class="te te--probe" x1="81" y1="224" x2="331" y2="113"/>
+      <line class="te te--probe" x1="81" y1="234" x2="241" y2="367"/>
+      <line class="te te--probe" x1="81" y1="232" x2="341" y2="298"/>
       <line class="te" x1="252" y1="127" x2="331" y2="112"/>
       <line class="te" x1="252" y1="133" x2="329" y2="163"/>
       <line class="te" x1="243" y1="141" x2="347" y2="291"/>
@@ -156,6 +161,12 @@
       {# attack path: credential → IdP → VPN gateway → file server → domain controller #}
       <path class="tp" pathLength="1000" d="M70,230 L240,130 L350,300 L480,375 H740 V340 H1060"/>
       <path class="tp-pulse" pathLength="1000" d="M70,230 L240,130 L350,300 L480,375 H740 V340 H1060"/>
+      <defs><filter id="ctemGlow2" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur in="SourceGraphic" stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      <circle class="tring" cx="240" cy="130" r="14"/>
+      <circle class="tring" cx="350" cy="300" r="13"/>
+      <circle class="tring" cx="740" cy="340" r="13"/>
+      <circle class="tring" cx="1060" cy="340" r="15"/>
+      <circle class="tcomet" r="7" filter="url(#ctemGlow2)"/>
 
       {# attacker + leaked credential #}
       <text class="tl tl--amber" x="70" y="156" text-anchor="middle">{{ L.cred }}</text>
@@ -221,8 +232,8 @@
       <text class="tl" x="870" y="438" text-anchor="middle">{{ L.boundary }}</text>
 
       {# edges #}
-      <line class="te" x1="81" y1="226" x2="236" y2="124"/>
-      <line class="te" x1="81" y1="230" x2="236" y2="216"/>
+      <line class="te te--probe" x1="81" y1="226" x2="236" y2="124"/>
+      <line class="te te--probe" x1="81" y1="230" x2="236" y2="216"/>
       <line class="te" x1="81" y1="234" x2="236" y2="326"/>
       <line class="te" x1="254" y1="122" x2="468" y2="334"/>
       <line class="te" x1="254" y1="213" x2="464" y2="154"/>
@@ -240,6 +251,11 @@
       <path class="tp" pathLength="1000" d="M70,230 L245,330 L400,375 H610 V340 L870,212"/>
       <path class="tp-pulse" pathLength="1000" d="M70,230 L245,330 L400,375 H610 V340 L870,212"/>
       <line class="tstop" x1="870" y1="197" x2="870" y2="227"/>
+      <defs><filter id="ctemGlow3" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur in="SourceGraphic" stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      <circle class="tring" cx="245" cy="330" r="13"/>
+      <circle class="tring" cx="610" cy="340" r="13"/>
+      <circle class="tring" cx="870" cy="212" r="14"/>
+      <circle class="tcomet" r="7" filter="url(#ctemGlow3)"/>
 
       {# attacker #}
       <circle class="tn tn--atk" cx="70" cy="230" r="11"/>
@@ -294,24 +310,156 @@
 
 <script>
 (function () {
+  function init() {
     var fig = document.querySelector('[data-ctem-topo]');
     if (!fig) return;
     var scenes = Array.prototype.slice.call(fig.querySelectorAll('.ctem-scene'));
     var caps = Array.prototype.slice.call(fig.querySelectorAll('.ctem-topo-cap'));
-    if (scenes.length < 2) return;
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) return;
+    if (reduce || scenes.length < 2) return;
+
+    // With anime.js the scenes are choreographed as a timeline: probes flash
+    // and die, the path draws with a glowing comet head, every node it
+    // reaches ripples, and each scene ends on its own finale. Without
+    // anime.js the original CSS keyframes still run (no .js-anim class).
+    var useAnime = typeof window.anime === 'function';
+    if (useAnime) fig.classList.add('js-anim');
 
     var current = 0;
     var timer = null;
-    var HOLD = 7000;
+    var HOLD = 8200;
+
+    function centerOf(el) {
+        if (el.tagName.toLowerCase() === 'rect') {
+            return { x: +el.getAttribute('x') + (+el.getAttribute('width')) / 2,
+                     y: +el.getAttribute('y') + (+el.getAttribute('height')) / 2 };
+        }
+        return { x: +el.getAttribute('cx'), y: +el.getAttribute('cy') };
+    }
+
+    var sceneData = scenes.map(function (svg) {
+        if (!useAnime) return null;
+        var path = svg.querySelector('.tp');
+        if (!path) return null;
+        var len = path.getTotalLength();
+        var SAMPLES = 240, pts = [];
+        for (var i = 0; i <= SAMPLES; i++) pts.push(path.getPointAtLength(len * i / SAMPLES));
+        function fractionNear(x, y) {
+            var best = 0, bd = Infinity;
+            for (var i = 0; i <= SAMPLES; i++) {
+                var dx = pts[i].x - x, dy = pts[i].y - y, d = dx * dx + dy * dy;
+                if (d < bd) { bd = d; best = i; }
+            }
+            return best / SAMPLES;
+        }
+        var hits = Array.prototype.map.call(svg.querySelectorAll('.on-path, .tring'), function (el) {
+            var c = centerOf(el);
+            return { el: el, f: fractionNear(c.x, c.y), ring: el.classList.contains('tring') };
+        });
+        return {
+            svg: svg, path: path,
+            comet: svg.querySelector('.tcomet'),
+            probes: Array.prototype.slice.call(svg.querySelectorAll('.te--probe')),
+            stop: svg.querySelector('.tstop'),
+            bound: svg.querySelector('.tbound'),
+            hits: hits
+        };
+    });
+
+    var tl = null;
+
+    function resetScene(k) {
+        var d = sceneData[k];
+        if (!d) return;
+        d.svg.classList.remove('drawn');
+        if (tl) { tl.pause(); tl = null; }
+        var targets = [d.path, d.comet].concat(d.probes);
+        d.hits.forEach(function (h) { targets.push(h.el); });
+        if (d.stop) targets.push(d.stop);
+        if (d.bound) targets.push(d.bound);
+        anime.remove(targets);
+        d.path.style.strokeDashoffset = 1000;
+        if (d.comet) { d.comet.style.opacity = 0; d.comet.style.transform = ''; d.comet.setAttribute('r', 5); }
+        if (d.stop) d.stop.style.opacity = '';
+        if (d.bound) d.bound.style.opacity = '';
+        d.probes.forEach(function (p) { p.style.stroke = ''; p.style.opacity = ''; p.style.strokeWidth = ''; });
+        d.hits.forEach(function (h) {
+            if (h.ring) { h.el.style.opacity = 0; h.el.style.transform = ''; }
+            else { h.el.style.stroke = ''; h.el.style.fill = ''; h.el.style.opacity = ''; }
+        });
+    }
+
+    // Inverse of easeInOutSine: the timeline offset at which the draw
+    // animation reaches a given path fraction.
+    function tFor(f) { return Math.acos(1 - 2 * Math.min(Math.max(f, 0), 1)) / Math.PI; }
+
+    function playScene(k) {
+        var d = sceneData[k];
+        if (!d) return;
+        resetScene(k);
+        var DRAW = 1900;
+        var probeStart = 350;
+        var drawStart = probeStart + d.probes.length * 180 + 300;
+        tl = anime.timeline({ autoplay: true });
+
+        // 1 · probes flash amber against hardened systems, then die
+        d.probes.forEach(function (p, i) {
+            var at = probeStart + i * 180;
+            tl.add({ targets: p, stroke: 'rgba(255,163,23,1)', strokeWidth: 2.5, duration: 160, easing: 'linear' }, at)
+              .add({ targets: p, stroke: 'rgba(14,17,22,0.2)', strokeWidth: 1, duration: 460, easing: 'easeOutQuad' }, at + 260);
+        });
+
+        // 2 · the path draws, a glowing comet rides its head
+        tl.add({ targets: d.path, strokeDashoffset: [1000, 0], duration: DRAW, easing: 'easeInOutSine' }, drawStart);
+        if (d.comet) {
+            var pth = anime.path(d.path);
+            tl.add({ targets: d.comet, opacity: [0, 1], duration: 150, easing: 'linear' }, drawStart)
+              .add({ targets: d.comet, translateX: pth('x'), translateY: pth('y'), duration: DRAW, easing: 'easeInOutSine' }, drawStart)
+              .add({ targets: d.comet, opacity: [1, 0], r: [7, 20], duration: 520, easing: 'easeOutQuad' }, drawStart + DRAW);
+        }
+
+        // 3 · every node the comet reaches ripples and lights up
+        d.hits.forEach(function (h) {
+            var at = drawStart + tFor(h.f) * DRAW;
+            if (h.ring) {
+                tl.add({ targets: h.el, opacity: [1, 0], scale: [0.3, 3.1], duration: 850, easing: 'easeOutQuad' }, at);
+            } else if (h.el.classList.contains('th')) {
+                tl.add({ targets: h.el, opacity: [0, 1], strokeWidth: [2.5, 1], duration: 420, easing: 'easeOutQuad' }, at);
+            } else if (h.el.classList.contains('tn--core')) {
+                tl.add({ targets: h.el, fill: '#ffa317', duration: 300, easing: 'easeOutQuad' }, at);
+            } else {
+                tl.add({ targets: h.el, stroke: '#ffa317', strokeWidth: [3.5, 2.25], duration: 420, easing: 'easeOutQuad' }, at);
+            }
+        });
+
+        // 4 · finale: breach ripple at the target, or a hard stop at the boundary
+        var endT = drawStart + DRAW;
+        if (d.stop) {
+            tl.add({ targets: d.stop, opacity: [0, 1], strokeWidth: [3, 5.5, 3], duration: 520, easing: 'easeOutQuad' }, endT - 140)
+              .add({ targets: d.bound, opacity: [0.5, 1, 0.5], duration: 950, easing: 'easeInOutSine' }, endT - 140);
+        } else {
+            var last = d.hits.filter(function (h) { return h.ring; }).sort(function (a, b) { return a.f - b.f; }).pop();
+            if (last) tl.add({ targets: last.el, opacity: [1, 0], scale: [0.3, 3.6], duration: 900, easing: 'easeOutQuad' }, endT + 380);
+        }
+
+        // 5 · hand over to the looping CSS pulse
+        tl.add({ targets: d.svg, duration: 1, begin: function () { d.svg.classList.add('drawn'); } }, endT + 150);
+
+        window.ctemTopoTl = tl; // test hook: lets tooling seek the timeline deterministically
+    }
 
     function show(n) {
         scenes.forEach(function (s, k) { s.classList.toggle('is-active', k === n); });
         caps.forEach(function (c, k) { c.classList.toggle('is-active', k === n); });
         current = n;
+        if (useAnime) playScene(n);
     }
+
+    window.ctemTopoShow = show; // test hook: lets tooling jump to a scene
+
+    var played = false;
     function start() {
+        if (useAnime && !played) { played = true; playScene(current); }
         if (timer) return;
         timer = setInterval(function () { show((current + 1) % scenes.length); }, HOLD);
     }
@@ -334,5 +482,12 @@
         var r = fig.getBoundingClientRect();
         if (r.bottom > 0 && r.top < window.innerHeight) start();
     });
+  }
+
+  if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+  } else {
+      init();
+  }
 })();
 </script>

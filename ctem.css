@@ -194,6 +194,42 @@
     to   { stroke-dashoffset: 0;    opacity: 1; }
 }
 
+/* JS-choreographed mode (anime.js loaded): the timeline drives path,
+   probes, ripples and node lighting; the CSS keyframes hand over. The
+   looping pulse returns once a scene carries .drawn. */
+.js-anim .tp { animation: none !important; stroke-width: 3; }
+.js-anim .tp-pulse { animation: none; }
+.js-anim .ctem-scene.drawn .tp-pulse { animation: ctem-pulse 2.8s linear infinite; }
+.js-anim .tn.on-path { stroke: var(--v-ink); transition: none; }
+.js-anim .tn--core.on-path { fill: var(--v-ink); transition: none; }
+.js-anim .th.on-path { opacity: 0; transition: none; }
+.js-anim .tstop { transition: none; }
+.js-anim .is-active .tstop { opacity: 0; }
+
+/* Comet head riding the drawn path (position via anime.js transform) */
+.tcomet { fill: #ffc35a; opacity: 0; }
+
+/* Ripple ring fired when the comet reaches a node */
+.tring {
+    fill: none;
+    stroke: var(--v-amber);
+    stroke-width: 2.5;
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+/* The unknown asset's dashed ring slowly rotates */
+.tu {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: ctem-spin 16s linear infinite;
+}
+@keyframes ctem-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+    .tu { animation: none; }
+}
+
 /* Scene captions, stacked and cross-faded under the drawing */
 .ctem-topo-caps {
     position: relative;
