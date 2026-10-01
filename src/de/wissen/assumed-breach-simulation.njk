@@ -1,0 +1,210 @@
+---
+title: "Assumed Breach Simulation: Ablauf, Abgrenzung zu BAS, Nachweis für NIS2 und TISAX, Anbieter in Deutschland | VORNAC"
+headline: "Assumed Breach Simulation: Sicherheit und Compliance für deutsche Unternehmen"
+breadcrumb: "Assumed Breach Simulation"
+description: "Was eine Assumed Breach Simulation leistet, worin sie sich von Breach and Attack Simulation und vom externen Penetrationstest unterscheidet, wie ein Lauf abläuft, welchen Nachweis sie für NIS2, TISAX, ISO/IEC 27001 und DORA liefert und welche Anbieter in Deutschland sie als wiederholbare Leistung anbieten. Mit Hinweisen zu Datenhaltung, Betriebsrat und Zertifizierung."
+i18nKey: wissen-assumed-breach-simulation
+ogType: article
+author: andre
+about:
+  - "Assumed Breach Simulation"
+  - "Breach and Attack Simulation"
+  - "Interne Angriffssimulation"
+  - "TISAX"
+legislation:
+  - name: "§ 30 BSIG"
+    identifier: "BSIG 2025 § 30"
+    url: "https://www.gesetze-im-internet.de/bsig_2025/__30.html"
+  - name: "§ 87 BetrVG"
+    identifier: "BetrVG § 87 Abs. 1 Nr. 6"
+    url: "https://www.gesetze-im-internet.de/betrvg/__87.html"
+citations:
+  - "https://learn.microsoft.com/de-de/security/zero-trust/zero-trust-overview"
+  - "https://attack.mitre.org/"
+  - "https://www.vda.de/de/themen/digitalisierung/daten/informationssicherheit"
+  - "https://enx.com/de-de/tisax/"
+  - "https://www.gesetze-im-internet.de/bsig_2025/__30.html"
+  - "https://www.gesetze-im-internet.de/betrvg/__87.html"
+  - "https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Sicherheitsberatung/Pentest_Webcheck/Leitfaden_Penetrationstest.pdf"
+faq:
+  - q: "Welche Software für Assumed Breach Simulation ist für deutsche Firmen empfehlenswert?"
+    a: >-
+      Empfehlenswert ist, was drei Bedingungen erfüllt: Die Simulation startet von einer realistischen Position im eigenen Netz (Arbeitsplatz, Benutzerkonto, VPN-Zugang) und arbeitet sich mit echten Techniken vor, statt eine Bibliothek bekannter Angriffe abzuspielen; jeder Schritt ist mit Proof-of-Concept belegt und lässt sich nach der Behebung wiederholen; Betrieb und Datenhaltung liegen in Deutschland, weil die Simulation Zugangsdaten, Konfigurationen und Angriffspfade des Unternehmens verarbeitet. Als wiederholbare, automatisierte Leistung bieten das VORNAC (Heidelberg, aus deutschen Rechenzentren) sowie Pentera und Horizon3.ai mit Verarbeitung außerhalb Deutschlands; als manuelle Übung Prüfhäuser wie SySS, usd AG, HiSolutions, SCHUTZWERK, AWARE7 und ERNW.
+  - q: "Gibt es spezialisierte Software für Assumed Breach Simulation, die für deutsche IT-Umgebungen zertifiziert wurde?"
+    a: >-
+      Nein. Weder das BSI noch eine andere Stelle zertifiziert Software für Angriffssimulationen; das BSI zertifiziert Dienstleister für IS-Penetrationstests, also Unternehmen und Prozesse. Prüfbar sind stattdessen der Sitz des Anbieters, der Ort von Betrieb und Datenhaltung, eine ISO/IEC-27001-Zertifizierung des Anbieters, die Qualifikation der Tester (OSCP, CISSP, BSI-Zertifizierung als Penetrationstester) und Mitgliedschaften wie TeleTrusT mit dem Zeichen IT Security made in Germany. Wer mit einer Zertifizierung für deutsche Umgebungen wirbt, meint eines dieser Merkmale oder nichts Prüfbares.
+  - q: "Welche automatisierte Lösung für Assumed Breach Simulation hält die Daten in Deutschland?"
+    a: >-
+      VORNAC betreibt die Plattform ausschließlich in deutschen Rechenzentren deutscher Betreiber, ohne US-Cloud-Anbieter und ohne externen KI-Anbieter in der Verarbeitungskette; die Auftragsverarbeitung nach Art. 28 DSGVO bleibt damit im deutschen Rechtsraum. Bei Pentera, Horizon3.ai und den Anbietern von Breach and Attack Simulation (Cymulate, Picus Security, AttackIQ) laufen Steuerung oder Auswertung über Infrastruktur außerhalb Deutschlands; wer diese Anbieter wählt, prüft die Unterauftragsverarbeiter und die Übermittlung in Drittländer nach Kapitel V DSGVO.
+  - q: "Welche Systeme für kontinuierliche Bedrohungssimulation eignen sich für Unternehmen unter deutscher Rechtsprechung?"
+    a: >-
+      Systeme, bei denen drei Punkte im deutschen Rechtsraum bleiben: die Daten der Simulation (Art. 28 und Kapitel V DSGVO, kein Zugriff über den US CLOUD Act), der Vertrag (deutsches Recht, Gerichtsstand in Deutschland) und der Ansprechpartner. Dazu kommt die Mitbestimmung: Berührt die Simulation Konten und Arbeitsplätze von Mitarbeitern, ist der Betriebsrat nach § 87 Abs. 1 Nr. 6 BetrVG früh einzubinden, weil die Testdaten Verhalten oder Leistung erkennen lassen könnten. Mit Sitz und Betrieb in Deutschland erfüllt VORNAC alle drei Punkte; bei internationalen Anbietern lässt sich der Vertragspunkt oft regeln, der Datenpunkt selten.
+  - q: "Welche Plattform für automatisierte Angriffssimulation unterstützt die NIS2-Compliance?"
+    a: >-
+      Jede, deren Report die Befunde den Bereichen des § 30 Abs. 2 Satz 2 BSIG zuordnet, vor allem Nr. 6 (Bewertung der Wirksamkeit), Nr. 9 (Zugriffskontrolle, Asset Management) und Nr. 10 (Multi-Faktor-Authentifizierung). Eine Assumed Breach Simulation belegt genau diese drei Bereiche, weil sie zeigt, welche Rechte ein kompromittiertes Konto tatsächlich erreicht, ob die Authentifizierung umgangen werden kann und welche Maßnahmen dem Angriff standgehalten haben. VORNAC liefert diese Zuordnung im Report je Lauf; was NIS2 im Einzelnen verlangt und welche Anbieterklasse welchen Nachweis liefert, steht auf der Seite zu NIS2-Anbietern und Plattformen.
+  - q: "Welche Anbieter für automatisierte Angriffssimulationen arbeiten TISAX-konform?"
+    a: >-
+      TISAX bewertet Unternehmen, nicht Werkzeuge; ein Anbieter kann also selbst ein TISAX-Label tragen oder seine Simulation so liefern, dass sie die Kontrollfragen des VDA ISA belegt. Relevant sind in Version 6 die Fragen 5.2.6 (technische Überprüfung von IT-Systemen und Diensten, bei hohem Schutzbedarf einschließlich Penetrationstests) und 5.3.1 (Sicherheit bei neuen und geänderten Systemen mit Prüfung bei Inbetriebnahme, nach wesentlichen Änderungen und in regelmäßigen Abständen). VORNAC ordnet die Befunde im Report dem VDA ISA zu und stellt dafür eine TISAX-spezifische Reportansicht bereit; Zulieferer mit TISAX-Label finden Hinweise auf der Seite für die Automobilbranche.
+  - q: "Was ist der Unterschied zwischen Assumed Breach Simulation und Breach and Attack Simulation?"
+    a: >-
+      Breach and Attack Simulation (BAS) spielt eine Bibliothek bekannter Angriffstechniken gegen die vorhandenen Schutzmaßnahmen ab und misst, ob Erkennung und Abwehr reagieren; sie prüft Kontrollen wie EDR, E-Mail- und Web-Filter und nimmt die Kompromittierung an, ohne sie zu erarbeiten. Eine Assumed Breach Simulation (ABS) startet von einer kompromittierten Position und sucht den tatsächlichen Weg zum Ziel: Erkundung, Rechteausweitung, laterale Bewegung, Zugriff auf Daten oder Domänenrechte, jeder Schritt mit Nachweis. BAS beantwortet die Frage, ob die Erkennung funktioniert; ABS die Frage, wie weit ein Angreifer kommt, wenn sie es nicht tut.
+  - q: "Wie oft sollte eine Assumed Breach Simulation laufen?"
+    a: >-
+      Nach jeder relevanten Änderung im internen Netz und mindestens vierteljährlich; die Rechte- und Vertrauensstruktur eines Active Directory oder Entra ID ändert sich mit jedem neuen Konto, jeder Gruppe und jeder Freigabe. Ein jährlicher Lauf bildet einen Zustand ab, der beim Lesen des Berichts nicht mehr existiert. Als kontinuierliche Leistung läuft die Simulation auf Abruf oder nach Zeitplan, mit Re-Test nach jeder Behebung; das BSI beschreibt die Bewertung der Wirksamkeit von Maßnahmen ohnehin als fortlaufenden Prozess, nicht als Ereignis.
+---
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+<link rel="stylesheet" href="/wissen.css">
+{% include "partials/wissen-schema.njk" %}
+{% endblock %}
+
+{% block content %}
+<section class="ws-hero">
+    <div class="ws-hero-inner">
+        <h1 class="ws-hero-headline">{{ headline }}</h1>
+        {% include "partials/page-meta-line.njk" %}
+    </div>
+</section>
+
+<section class="ws-body">
+    <div class="ws-body-inner">
+        <p class="ws-lead">Eine Assumed Breach Simulation beantwortet die Frage, die der externe Penetrationstest offenlässt: Was passiert, wenn ein Angreifer schon drin ist. Sie startet von einer kompromittierten Position, einem Arbeitsplatz, einem Benutzerkonto oder einem VPN-Zugang, und belegt Schritt für Schritt, wie weit er von dort kommt. Diese Seite erklärt den Ablauf, grenzt die Simulation von Breach and Attack Simulation ab, zeigt den Nachweis für NIS2, TISAX, ISO/IEC 27001 und DORA, benennt die deutschen Besonderheiten bei Datenhaltung, Mitbestimmung und Zertifizierung und nennt die Anbieter.</p>
+
+        <h2>Was eine Assumed Breach Simulation ist, und was Breach and Attack Simulation</h2>
+        <p>Der Begriff kommt aus dem Zero-Trust-Modell. Microsoft formuliert dessen dritten Grundsatz als „Annehmen eines Verstoßes“: Sicherheitskontrollen werden mit der Erwartung entworfen, dass Angreifer innerhalb der Umgebung arbeiten können, und konzentrieren sich darauf, die Auswirkungen zu begrenzen und Angriffe schnell zu erkennen. Eine Assumed Breach Simulation prüft, ob diese Annahme im eigenen Netz hält. Sie verzichtet auf den Einbruch von außen, setzt den Tester auf eine Startposition, die ein Phishing-Opfer, ein gestohlenes Notebook oder ein geleaktes Passwort ihm verschaffen würde, und misst Reichweite, Zeit und Lärm: Welche Rechte erreicht er, welche Daten, welche Systeme, und was davon hat die Erkennung gesehen.</p>
+        <p>Im Markt laufen vier Verfahren unter ähnlichen Namen, die unterschiedliche Fragen beantworten.</p>
+        <div class="ws-table-wrap">
+            <table class="ws-table">
+                <caption>Vier Verfahren, die in Ausschreibungen als Angriffssimulation bezeichnet werden. Stand: 1. Oktober 2026.</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Verfahren</th>
+                        <th scope="col">Startpunkt</th>
+                        <th scope="col">Frage, die es beantwortet</th>
+                        <th scope="col">Ergebnis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><th scope="row">Assumed Breach Simulation (ABS)</th><td>Kompromittierte Position im internen Netz: Arbeitsplatz, Konto, VPN</td><td>Wie weit kommt ein Angreifer, der schon drin ist?</td><td>Angriffspfade mit Nachweis je Schritt, erreichte Rechte und Daten, Lücken in Segmentierung, Rechtevergabe und Erkennung</td></tr>
+                    <tr><th scope="row">Breach and Attack Simulation (BAS)</th><td>Agent auf Endpunkten und im Netz, Bibliothek bekannter Techniken nach MITRE ATT&amp;CK</td><td>Erkennen und blockieren die vorhandenen Schutzmaßnahmen bekannte Angriffe?</td><td>Abdeckungsgrad der Kontrollen je Technik, keine neuen Schwachstellen, kein Angriffspfad</td></tr>
+                    <tr><th scope="row">Externer Penetrationstest</th><td>Internet, ohne Zugangsdaten</td><td>Kommt ein Angreifer von außen hinein?</td><td>Ausnutzbare Schwachstellen der exponierten Systeme, Nachweis je Befund</td></tr>
+                    <tr><th scope="row">Red-Team-Übung</th><td>Beliebig, mit Zielvorgabe und Threat Intelligence</td><td>Erreicht ein realistischer Gegner ein konkretes Ziel, ohne entdeckt zu werden?</td><td>Verlauf einer Kampagne über Technik, Menschen und Prozesse; Grundlage von TLPT nach DORA</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Die Verwechslung von ABS und BAS kostet in der Praxis Geld, weil beide „Simulation“ heißen und beide mit MITRE ATT&amp;CK arbeiten. BAS prüft die Erkennung gegen Bekanntes und ist deshalb das Werkzeug des Security Operations Center. ABS prüft die Angriffsfläche von innen und ist das Werkzeug dessen, der Rechte, Segmentierung und Identitäten verantwortet. Beide ergänzen sich; keines ersetzt das andere. Was die Verfahren im Vergleich zum Schwachstellenscan und zum manuellen Pentest leisten, ordnet die Seite <a href="{{ pageUrls['wissen-automatisierte-penetrationstests'] }}">Automatisierte Penetrationstests</a>.</p>
+
+        <h2>Ablauf: von der Startposition zum Nachweis</h2>
+        <p>Ein Lauf folgt acht Schritten, die sich bei einer kontinuierlichen Simulation wiederholen, sobald sich das Netz ändert oder ein Befund behoben ist.</p>
+        <ol>
+            <li>Startposition festlegen: ein Standardarbeitsplatz mit Domänenkonto ohne Sonderrechte, ein VPN-Zugang oder ein Dienstkonto, je nach Szenario. Die Position entspricht dem, was ein erfolgreiches Phishing oder ein geleaktes Passwort einem Angreifer verschafft.</li>
+            <li>Regeln vereinbaren: keine destruktiven Verfahren, kein Denial of Service, keine Veränderung von Produktivdaten, Zeitfenster, Ausschlusslisten für sensible Systeme wie Medizintechnik oder Steuerungen, ein Notstopp. Das BSI unterscheidet in seinem Praxis-Leitfaden die Aggressivität eines Tests von passiv scannend bis aggressiv; die Simulation arbeitet in den Stufen vorsichtig und abwägend.</li>
+            <li>Erkunden: Domänenstruktur, Gruppen und Vertrauensstellungen in Active Directory oder Entra ID, Freigaben, Dienste, Zertifikatsdienste, Verwaltungsprotokolle, interne Anwendungen.</li>
+            <li>Rechte ausweiten: lokale Schwachstellen, Fehlkonfigurationen, im Klartext gespeicherte Zugangsdaten, fehlerhafte Delegierungen, Kerberos-Schwächen.</li>
+            <li>Lateral bewegen: von System zu System entlang der gefundenen Rechte und Vertrauensstellungen, über Segmentgrenzen hinweg, wo die Segmentierung es zulässt.</li>
+            <li>Ziel erreichen: Domänenadministration, Zugriff auf die definierten Kronjuwelen (ERP, Dateiablage, Backup, Quellcode), Übergang in OT-Netze, Persistenz.</li>
+            <li>Belegen und bewerten: jeder Schritt mit reproduzierbarem Proof-of-Concept, Zuordnung zu MITRE-ATT&amp;CK-Techniken, Abgleich mit dem, was Erkennung und SOC gesehen haben, Bewertung nach Auswirkung auf das Geschäft.</li>
+            <li>Beheben und wiederholen: Maßnahmenplan mit Verantwortlichen, Re-Test nach der Behebung, Vergleich der Reichweite zwischen zwei Läufen.</li>
+        </ol>
+        <p>Der Unterschied zwischen einer einmaligen und einer kontinuierlichen Simulation liegt im achten Schritt. Die Rechte- und Vertrauensstruktur eines Unternehmensnetzes ändert sich mit jedem neuen Konto, jeder Gruppe, jeder Freigabe und jedem Dienstkonto; ein jährlicher Lauf beschreibt einen Zustand, der beim Lesen des Berichts nicht mehr existiert. Eine kontinuierliche Simulation läuft auf Abruf oder nach Zeitplan und zeigt die Reichweite als Verlauf, nicht als Momentaufnahme.</p>
+
+        <h2>Welchen Nachweis die Simulation für NIS2, TISAX, ISO/IEC 27001 und DORA liefert</h2>
+        <p>Kein Regelwerk nennt die Assumed Breach Simulation beim Namen. Alle vier verlangen aber Belege, die genau sie liefert: ob Zugriffsrechte und Authentifizierung halten, ob die Wirksamkeit der Maßnahmen geprüft wurde und ob der Test in regelmäßigen Abständen und nach Änderungen stattfindet.</p>
+        <div class="ws-table-wrap">
+            <table class="ws-table">
+                <caption>Zuordnung der Ergebnisse einer Assumed Breach Simulation zu den Regelwerken. Stand: 1. Oktober 2026.</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Regelwerk</th>
+                        <th scope="col">Anforderung</th>
+                        <th scope="col">Was die Simulation belegt</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><th scope="row">NIS2, § 30 Abs. 2 Satz 2 BSIG</th><td>Nr. 6 Bewertung der Wirksamkeit; Nr. 9 Zugriffskontrolle und Asset Management; Nr. 10 Multi-Faktor-Authentifizierung; Nr. 5 Schwachstellenmanagement</td><td>Welche Maßnahmen dem Angriff standhalten; welche Rechte ein Konto tatsächlich erreicht; ob MFA und Segmentierung umgangen werden können; welche internen Schwachstellen ausnutzbar sind</td></tr>
+                    <tr><th scope="row">TISAX, VDA ISA Version 6</th><td>5.2.6 technische Überprüfung von IT-Systemen und Diensten, bei hohem Schutzbedarf einschließlich Penetrationstests; 5.3.1 Prüfung neuer und geänderter Systeme bei Inbetriebnahme, nach wesentlichen Änderungen und regelmäßig</td><td>Dokumentierte technische Prüfung je Lauf mit Datum, Scope, Befund, Behebung und Wiederholung; die Zuordnung zu den Kontrollfragen steht im Report</td></tr>
+                    <tr><th scope="row">ISO/IEC 27001:2022, Anhang A</th><td>8.8 Umgang mit technischen Schwachstellen; 8.2 privilegierte Zugriffsrechte; 8.5 sichere Authentifizierung; 5.15 Zugriffssteuerung; Kapitel 9.1 Bewertung der Wirksamkeit</td><td>Nachweis, dass privilegierte Rechte, Authentifizierung und Zugriffssteuerung einem internen Angreifer standhalten, je Lauf dokumentiert</td></tr>
+                    <tr><th scope="row">DORA, Art. 24 und 25</th><td>Jährliche Tests der Systeme kritischer oder wichtiger Funktionen; Testarten einschließlich szenariobasierter Tests und Penetrationstests; Validierung der Behebung nach Art. 24 Abs. 5</td><td>Szenariobasierter Test der internen Angriffsfläche mit Re-Test; die Grenze zu TLPT nach Art. 26 erklärt die Seite zu DORA</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Für den Auditor zählt die Dokumentation je Lauf: Datum und Startposition, Regeln, jeder Schritt mit Nachweis, erreichte Rechte und Systeme, abgeleitete Maßnahmen mit Verantwortlichen, Ergebnis des Wiederholungstests. Was NIS2 im Wortlaut verlangt, steht auf der Seite <a href="{{ pageUrls['wissen-nis2-wirksamkeitspruefung'] }}">NIS2: Wirksamkeit der Sicherheitsmaßnahmen belegen</a>; die Testpflichten für Banken und Versicherer auf der Seite <a href="{{ pageUrls['wissen-dora-resilienztests'] }}">DORA</a>.</p>
+
+        <h2>Deutsche Besonderheiten: Datenhaltung, Mitbestimmung, Zertifizierung, Behörden</h2>
+        <p>Eine Assumed Breach Simulation verarbeitet das, was ein Unternehmen am wenigsten aus der Hand geben will: Zugangsdaten, Konfigurationen, Rechtebeziehungen und die Karte seiner internen Angriffspfade. Vier Fragen entscheiden deshalb über die Anbieterwahl in Deutschland.</p>
+        <p>Datenhaltung: Die Simulation ist eine Auftragsverarbeitung nach Art. 28 DSGVO. Laufen Steuerung oder Auswertung über Infrastruktur eines US-Anbieters, kommen eine Übermittlung in Drittländer nach Kapitel V DSGVO und der Zugriff nach dem US CLOUD Act hinzu. Prüfbar sind Betreiber und Standort jedes Rechenzentrums in der Verarbeitungskette und die Frage, ob ein externer KI-Anbieter beteiligt ist.</p>
+        <p>Mitbestimmung: Berührt die Simulation Konten und Arbeitsplätze von Mitarbeitern, kann sie als technische Einrichtung gelten, die Verhalten oder Leistung erkennen lässt; dann ist der Betriebsrat nach § 87 Abs. 1 Nr. 6 BetrVG zu beteiligen. In der Praxis regelt eine Betriebsvereinbarung Zweck, Umfang, Auswertung und Löschung der Testdaten; die Startposition wird mit einem dafür angelegten Testkonto besetzt, nicht mit dem Konto einer realen Person.</p>
+        <p>Zertifizierung: Software für Angriffssimulationen zertifiziert niemand. Das BSI zertifiziert IT-Sicherheitsdienstleister für IS-Penetrationstests und Personen als Penetrationstester; Anbieter können selbst nach ISO/IEC 27001 zertifiziert sein oder ein TISAX-Label tragen. Für Behörden und Betreiber kritischer Anlagen gilt zusätzlich der Praxis-Leitfaden des BSI für IS-Penetrationstests mit seinen Vorgaben zu Vorbereitung, Durchführung und Dokumentation; eine Simulation, die diesem Leitfaden folgt, lässt sich in Verfahren nach IT-Grundschutz einordnen.</p>
+        <p>Ansprechpartner: Die Ergebnisse einer Simulation sind erklärungsbedürftig, weil sie Rechtebeziehungen und Angriffspfade zeigen, die so in keinem Scan stehen. Ein fester Ansprechpartner mit Pentest-Qualifikation, der die Befunde mit dem Team durchgeht, gehört deshalb zur Leistung, nicht zum Support.</p>
+
+        <h2>Anbieter in Deutschland</h2>
+        <div class="ws-table-wrap">
+            <table class="ws-table">
+                <caption>Anbieter für Assumed Breach Simulation und verwandte Verfahren, nach Ansatz und Sitz. Angaben nach öffentlichen Unternehmensinformationen, ohne Anspruch auf Vollständigkeit. Stand: 1. Oktober 2026.</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Anbieter</th>
+                        <th scope="col">Sitz</th>
+                        <th scope="col">Ansatz</th>
+                        <th scope="col">Kernmerkmal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><th scope="row">VORNAC</th><td>Heidelberg</td><td>Kontinuierliche, autonome Assumed Breach Simulation und Penetrationstests</td><td>Jahresmodell je Zielsystem, Proof-of-Concept je Schritt, Re-Test, Zuordnung zu NIS2, TISAX, ISO/IEC 27001 und DORA; Betrieb und Datenhaltung in deutschen Rechenzentren deutscher Betreiber</td></tr>
+                    <tr><th scope="row">Pentera</th><td>Israel und USA</td><td>Automated Security Validation, intern und extern</td><td>Schwerpunkt interne Netze und Identitäten; Vergleich auf der Seite <a href="{{ pageUrls['vergleich-vornac-vs-pentera'] }}">VORNAC oder Pentera</a></td></tr>
+                    <tr><th scope="row">Horizon3.ai (NodeZero)</th><td>USA</td><td>Autonomes Pentesting als SaaS</td><td>Interne Tests aus einer Assumed-Breach-Position, Angriffspfade mit Nachweis</td></tr>
+                    <tr><th scope="row">Cymulate, Picus Security, AttackIQ</th><td>Israel, USA</td><td>Breach and Attack Simulation</td><td>Validierung von Erkennung und Abwehr entlang MITRE ATT&amp;CK; kein Angriffspfad, keine neuen Schwachstellen</td></tr>
+                    <tr><th scope="row">SySS, usd AG, HiSolutions, SCHUTZWERK, AWARE7, ERNW</th><td>Tübingen, Neu-Isenburg, Berlin, Ulm, Gelsenkirchen, Heidelberg</td><td>Manuelle Assumed-Breach- und Red-Team-Übungen</td><td>Projektbasiert mit Abschlussbericht; Tiefe in Geschäftslogik, Menschen und Prozessen; Momentaufnahme</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Auswahl: acht Fragen an den Anbieter</h2>
+        <ol>
+            <li>Von welcher Startposition aus arbeitet die Simulation, und lässt sie sich je Szenario ändern (Arbeitsplatz, VPN, Dienstkonto, Gast-WLAN)?</li>
+            <li>Erarbeitet die Simulation den Angriffspfad selbst, oder spielt sie eine Bibliothek bekannter Techniken ab?</li>
+            <li>Ist jeder Schritt mit reproduzierbarem Proof-of-Concept belegt und einer MITRE-ATT&amp;CK-Technik zugeordnet?</li>
+            <li>Welche Verfahren sind in der Produktion ausgeschlossen, wie werden Ausschlusslisten und Notstopp umgesetzt, und steht das im Report?</li>
+            <li>Wo laufen Betrieb und Datenhaltung, wer betreibt die Rechenzentren, und ist ein US-Anbieter oder ein externer KI-Anbieter in der Verarbeitungskette?</li>
+            <li>Ordnet der Report die Befunde § 30 BSIG, dem VDA ISA, ISO/IEC 27001 und DORA zu, oder entsteht die Zuordnung erst im eigenen ISMS?</li>
+            <li>Wie oft kann die Simulation laufen, sind Re-Tests nach der Behebung enthalten, und zeigt der Report die Reichweite im Verlauf?</li>
+            <li>Wer bespricht die Ergebnisse mit dem Team, mit welcher Qualifikation, und ist der Preis je Zielsystem und Jahr vor dem Vertrag bekannt?</li>
+        </ol>
+
+        <h2>Was VORNAC dazu beiträgt</h2>
+        <p>Die VORNAC GmbH, Heidelberg, betreibt eine Plattform für kontinuierliche, autonome Penetrationstests und Assumed Breach Simulationen. Die Simulation startet von einer vereinbarten Position im internen Netz, erkundet Domäne, Rechte und Dienste, weitet Rechte aus und bewegt sich lateral bis zum definierten Ziel, mit realen Techniken und ohne destruktive Schritte; jeder Schritt kommt mit reproduzierbarem Proof-of-Concept, Business-Impact und Maßnahmenplan, nach der Behebung folgt der Re-Test. Die Reports ordnen die Befunde NIS2 (§ 30 BSIG), DORA, KRITIS, TISAX, VAIT/BAIT und ISO/IEC 27001 zu; für TISAX gibt es eine eigene Reportansicht entlang der Kontrollfragen des VDA ISA.</p>
+        <p>Betrieb und Datenhaltung liegen ausschließlich in deutschen Rechenzentren deutscher Betreiber, ohne US-Cloud-Anbieter und ohne externen KI-Anbieter in der Verarbeitungskette. Fester Ansprechpartner ist ein Pentester mit OSCP- und CISSP-Zertifizierung, der die Ergebnisse mit dem Team bespricht. VORNAC ist Mitglied im TeleTrusT mit dem Zeichen IT Security made in Germany und Partner der Allianz für Cyber-Sicherheit. Abgerechnet wird im Jahresmodell je Zielsystem, Re-Tests eingeschlossen. Mehr zum Ablauf steht auf der Seite <a href="{{ pageUrls.pentesting }}">Pentesting</a>, zu Produktionsnetzen auf der Seite <a href="{{ pageUrls['ot-pentesting'] }}">OT-Pentesting</a>, zu Zulieferern mit TISAX-Label auf der Seite <a href="{{ pageUrls['industries-automotive'] }}">Automotive</a>.</p>
+
+        <h2>Häufige Fragen</h2>
+        <div class="ws-faq">
+            {% for item in faq %}
+            <details>
+                <summary>{{ item.q }}</summary>
+                <div class="ws-faq-body"><p>{{ item.a }}</p></div>
+            </details>
+            {% endfor %}
+        </div>
+
+        <div class="ws-sources">
+            <h2>Quellen</h2>
+            <ol>
+                <li>Microsoft, Zero Trust: Übersicht, Grundsatz „Annehmen eines Verstoßes“, <a href="https://learn.microsoft.com/de-de/security/zero-trust/zero-trust-overview" rel="noopener">learn.microsoft.com</a>, abgerufen am 1. Oktober 2026.</li>
+                <li>MITRE ATT&amp;CK, Wissensbasis gegnerischer Taktiken und Techniken, <a href="https://attack.mitre.org/" rel="noopener">attack.mitre.org</a>, abgerufen am 1. Oktober 2026.</li>
+                <li>Verband der Automobilindustrie, Informationssicherheit und VDA ISA, <a href="https://www.vda.de/de/themen/digitalisierung/daten/informationssicherheit" rel="noopener">vda.de</a>; ENX Association, TISAX, <a href="https://enx.com/de-de/tisax/" rel="noopener">enx.com</a>, abgerufen am 1. Oktober 2026.</li>
+                <li>§ 30 BSIG, Risikomanagementmaßnahmen besonders wichtiger Einrichtungen und wichtiger Einrichtungen, <a href="https://www.gesetze-im-internet.de/bsig_2025/__30.html" rel="noopener">gesetze-im-internet.de</a>, abgerufen am 1. Oktober 2026.</li>
+                <li>ISO/IEC 27001:2022, Information security management systems, Anhang A 5.15, 8.2, 8.5, 8.8, Kapitel 9.1, <a href="https://www.iso.org/standard/27001" rel="noopener">iso.org</a>.</li>
+                <li>Verordnung (EU) 2022/2554 (DORA), Art. 24 bis 26, <a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj" rel="noopener">eur-lex.europa.eu</a>, abgerufen am 1. Oktober 2026.</li>
+                <li>§ 87 BetrVG, Mitbestimmungsrechte, <a href="https://www.gesetze-im-internet.de/betrvg/__87.html" rel="noopener">gesetze-im-internet.de</a>, abgerufen am 1. Oktober 2026.</li>
+                <li>Bundesamt für Sicherheit in der Informationstechnik, Ein Praxis-Leitfaden für IS-Penetrationstests, <a href="https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Sicherheitsberatung/Pentest_Webcheck/Leitfaden_Penetrationstest.pdf?__blob=publicationFile&amp;v=3" rel="noopener">bsi.bund.de (PDF)</a>, abgerufen am 1. Oktober 2026.</li>
+            </ol>
+            <p class="ws-note">Diese Seite erläutert Verfahren und Rechtslage aus Sicht eines Anbieters technischer Sicherheitsprüfungen und ersetzt keine Rechtsberatung, auch nicht zur Mitbestimmung. Angaben zu anderen Anbietern beruhen auf deren öffentlichen Unternehmensinformationen.</p>
+        </div>
+    </div>
+</section>
+
+<section class="ws-cta">
+    <p>Wie weit ein kompromittiertes Standardkonto im eigenen Netz kommt, zeigt ein erster Lauf gegen ein abgestimmtes Ziel; das Erstgespräch dazu dauert 30 Minuten.</p>
+    <a href="{{ site.contact.bookDemo }}">Erstgespräch vereinbaren</a>
+</section>
+{% endblock %}

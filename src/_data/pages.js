@@ -43,6 +43,9 @@ const STATIC_PAGES = [
   { key: "wissen-nis2-wirksamkeitspruefung",   en: null,                                       de: "/wissen/nis2-wirksamkeitspruefung" },
   { key: "wissen-automatisierte-penetrationstests", en: null,                                  de: "/wissen/automatisierte-penetrationstests" },
   { key: "wissen-nis2-anbieter",               en: null,                                       de: "/wissen/nis2-anbieter" },
+  { key: "wissen-dora-resilienztests",         en: null,                                       de: "/wissen/dora-resilienztests" },
+  { key: "wissen-assumed-breach-simulation",   en: null,                                       de: "/wissen/assumed-breach-simulation" },
+  { key: "wissen-ctem-in-der-praxis",          en: null,                                       de: "/wissen/ctem-in-der-praxis" },
   { key: "vergleich-vornac-vs-pentera",        en: null,                                       de: "/vergleich/vornac-vs-pentera" }
 ];
 
