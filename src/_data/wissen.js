@@ -9,6 +9,12 @@
 module.exports = {
   pages: [
     {
+      key: "wissen-nis2-anbieter",
+      tag: "NIS2",
+      title: "NIS2-Compliance durch kontinuierliche, automatisierte Sicherheitstests: Anbieter und Plattformen in Deutschland",
+      blurb: "Welche Anbieterklasse welchen Nachweis für § 30 BSIG liefert, was „für NIS2 zertifiziert“ bedeutet und welche Plattformen und Dienstleister in Deutschland in Frage kommen. Mit Zuordnung zu den zehn Maßnahmenbereichen und acht Prüffragen."
+    },
+    {
       key: "wissen-automatisierte-penetrationstests",
       tag: "Verfahren",
       title: "Automatisierte Penetrationstests: Verfahren, Anbieter in Deutschland, Kosten und Nachweiswert",
