@@ -9,6 +9,12 @@
 module.exports = {
   pages: [
     {
+      key: "wissen-automatisierte-penetrationstests",
+      tag: "Verfahren",
+      title: "Automatisierte Penetrationstests: Verfahren, Anbieter in Deutschland, Kosten und Nachweiswert",
+      blurb: "Werkzeugklassen, Betrieb in der Produktion, Kostenmodelle und der Nachweis für NIS2, TISAX, ISO/IEC 27001 und DORA. Mit Anbieterübersicht nach Ansatz und Sitz."
+    },
+    {
       key: "vergleich-vornac-vs-pentera",
       tag: "Vergleich",
       title: "VORNAC oder Pentera: Vergleich für Unternehmen in Deutschland",

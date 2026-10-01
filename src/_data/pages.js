@@ -41,6 +41,7 @@ const STATIC_PAGES = [
   // Wissen (German first; `en: null` until the English version exists).
   { key: "wissen",                             en: null,                                       de: "/wissen" },
   { key: "wissen-nis2-wirksamkeitspruefung",   en: null,                                       de: "/wissen/nis2-wirksamkeitspruefung" },
+  { key: "wissen-automatisierte-penetrationstests", en: null,                                  de: "/wissen/automatisierte-penetrationstests" },
   { key: "vergleich-vornac-vs-pentera",        en: null,                                       de: "/vergleich/vornac-vs-pentera" }
 ];
 
