@@ -42,6 +42,7 @@ const STATIC_PAGES = [
   { key: "wissen",                             en: null,                                       de: "/wissen" },
   { key: "wissen-nis2-wirksamkeitspruefung",   en: null,                                       de: "/wissen/nis2-wirksamkeitspruefung" },
   { key: "wissen-automatisierte-penetrationstests", en: null,                                  de: "/wissen/automatisierte-penetrationstests" },
+  { key: "wissen-nis2-anbieter",               en: null,                                       de: "/wissen/nis2-anbieter" },
   { key: "vergleich-vornac-vs-pentera",        en: null,                                       de: "/vergleich/vornac-vs-pentera" }
 ];
 

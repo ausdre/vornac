@@ -1,0 +1,36 @@
+{# Wissen teaser: the three newest explainer pages from src/_data/wissen.js,
+   placed above the final CTA of the German product pages (Startseite,
+   /pentesting, /ot-pentesting, /ctem). Purpose: in-content links with
+   descriptive anchor text from the most-crawled pages into /wissen, so the
+   explainer pages get discovered without waiting for the nav dropdown
+   (decision 2026-10-01, KI-Sichtbarkeit: Maßnahme 15).
+
+   German only: the registry has no English counterpart for /wissen yet. #}
+{% if locale == 'de' and pageUrls.wissen %}
+<section class="v-wissen-teaser bg-warm py-16 px-4 sm:px-6 border-t border-stone-200" aria-labelledby="wissen-teaser-heading" data-no-crosslink>
+    <div class="max-w-content mx-auto">
+        <p class="text-[12px] uppercase tracking-[0.22em] font-display text-amber-700" style="font-weight: 900;">Wissen</p>
+        <h2 id="wissen-teaser-heading" class="font-heading text-2xl sm:text-3xl font-bold text-stone-900 mt-2 max-w-3xl">
+            Was Regelwerke verlangen und wie automatisierte Penetrationstests den Nachweis liefern
+        </h2>
+        <div class="grid gap-6 sm:grid-cols-3 mt-8">
+            {% for p in wissen.pages.slice(0, 3) %}
+            {% set teaserDates = dates.byKey[p.key] %}
+            <article class="flex flex-col rounded-lg2 border border-stone-200 bg-white p-6">
+                <p class="text-[11px] uppercase tracking-[0.18em] text-stone-500 font-bold">{{ p.tag }}</p>
+                <h3 class="font-heading text-lg font-bold leading-snug mt-2">
+                    <a href="{{ pageUrls[p.key] }}" class="hover:text-amber-700 transition-colors">{{ p.title }}</a>
+                </h3>
+                <p class="text-sm leading-relaxed text-stone-600 mt-3 flex-1">{{ p.blurb }}</p>
+                {% if teaserDates and teaserDates.de %}
+                <p class="text-xs text-stone-500 mt-4">{{ t.metaLine.updated }}: <time datetime="{{ teaserDates.de.modified }}">{{ teaserDates.de.modified | longDate(locale) }}</time></p>
+                {% endif %}
+            </article>
+            {% endfor %}
+        </div>
+        <p class="mt-8">
+            <a href="{{ pageUrls.wissen }}" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.16em] text-stone-900 hover:text-amber-700 transition-colors">Alle Erklärseiten im Wissensbereich <span aria-hidden="true">&rarr;</span></a>
+        </p>
+    </div>
+</section>
+{% endif %}

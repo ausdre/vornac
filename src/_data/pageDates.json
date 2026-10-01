@@ -33,7 +33,7 @@
   },
   "/de/ctem": {
     "created": "2026-09-06",
-    "modified": "2026-09-15"
+    "modified": "2026-10-01"
   },
   "/de/customers": {
     "created": "2026-05-27",
@@ -49,7 +49,7 @@
   },
   "/de/index": {
     "created": "2026-05-27",
-    "modified": "2026-09-14"
+    "modified": "2026-10-01"
   },
   "/de/industries-automotive": {
     "created": "2026-05-27",
@@ -81,11 +81,11 @@
   },
   "/de/ot-pentesting": {
     "created": "2026-08-17",
-    "modified": "2026-09-14"
+    "modified": "2026-10-01"
   },
   "/de/pentesting": {
     "created": "2026-05-27",
-    "modified": "2026-09-11"
+    "modified": "2026-10-01"
   },
   "/de/research-domain": {
     "created": "2026-06-02",
@@ -112,6 +112,10 @@
     "modified": "2026-09-15"
   },
   "/de/wissen/automatisierte-penetrationstests": {
+    "created": "2026-10-01",
+    "modified": "2026-10-01"
+  },
+  "/de/wissen/nis2-anbieter": {
     "created": "2026-10-01",
     "modified": "2026-10-01"
   },
