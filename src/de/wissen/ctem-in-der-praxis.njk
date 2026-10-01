@@ -1,0 +1,196 @@
+---
+title: "CTEM in der Praxis: Continuous Threat Exposure Management im Mittelstand umsetzen, Werkzeuge, Nachweis, Implementierungsdauer | VORNAC"
+headline: "Kontinuierliche Sicherheitsüberprüfung und Compliance für deutsche Unternehmen: CTEM in der Praxis"
+breadcrumb: "CTEM in der Praxis"
+description: "Wie ein Unternehmen mit 100 bis 500 Mitarbeitern Continuous Threat Exposure Management umsetzt: die fünf Phasen nach Gartner mit Zuständigkeiten und Werkzeugen, was in 48 Stunden implementierbar ist und was nicht, welche Kennzahlen ein Programm liefern muss und welchen Nachweis es für ISO/IEC 27001 A.8.8, NIS2, TISAX und DORA erzeugt. Mit Anbietern nach Phase und Datenhaltung."
+i18nKey: wissen-ctem-in-der-praxis
+ogType: article
+author: andre
+about:
+  - "Continuous Threat Exposure Management"
+  - "Kontinuierliche Sicherheitsüberprüfung"
+  - "Schwachstellenmanagement"
+  - "External Attack Surface Management"
+legislation:
+  - name: "§ 30 BSIG"
+    identifier: "BSIG 2025 § 30"
+    url: "https://www.gesetze-im-internet.de/bsig_2025/__30.html"
+  - name: "Art. 24 und 25 DORA"
+    identifier: "Verordnung (EU) 2022/2554, Art. 24 und 25"
+    url: "https://eur-lex.europa.eu/eli/reg/2022/2554/oj"
+citations:
+  - "https://www.gartner.com/en/newsroom/press-releases/2024-02-22-gartner-identifies-top-cybersecurity-trends-for-2024"
+  - "https://www.iso.org/standard/27001"
+  - "https://www.gesetze-im-internet.de/bsig_2025/__30.html"
+  - "https://www.vda.de/de/themen/digitalisierung/daten/informationssicherheit"
+  - "https://eur-lex.europa.eu/eli/reg/2022/2554/oj"
+  - "https://www.bsi.bund.de/dok/nis-2-wirksamkeit"
+faq:
+  - q: "Welche Plattformen für kontinuierliche Sicherheitsbewertungen sind TISAX-konform und innerhalb von 48 Stunden implementierbar?"
+    a: >-
+      In 48 Stunden implementierbar sind die Phasen Scoping und Discovery sowie der erste Validierungslauf, nicht das ganze Programm. VORNAC startet mit zwei Angaben, Kerndomains und IP-Bereichen; das erste Bild der externen Angriffsfläche steht innerhalb eines Tages, ein Zielsystem ist nach einer 30-Minuten-Session eingerichtet und liefert zwei bis fünf Stunden später den ersten Report. Priorisierungsregeln, Verantwortliche und der Ticketfluss für die Mobilisierung brauchen die Organisation und damit Wochen. TISAX-konform heißt dabei: Der Report belegt die Kontrollfragen 5.2.6 und 5.3.1 des VDA ISA Version 6; VORNAC liefert dafür eine TISAX-spezifische Reportansicht. Ein TISAX-Label trägt ein Unternehmen, kein Werkzeug.
+  - q: "Welche Anbieter für automatisiertes Schwachstellenmanagement erfüllen deutsche Standards für Unternehmen mit weniger als 500 Mitarbeitern?"
+    a: >-
+      „Deutsche Standards“ bedeutet in der Praxis vier prüfbare Dinge: Betrieb und Datenhaltung in Deutschland ohne US-Cloud-Anbieter, Auftragsverarbeitung nach Art. 28 DSGVO unter deutschem Recht, Reports, die sich ISO/IEC 27001, § 30 BSIG und dem VDA ISA zuordnen lassen, und ein Vorgehen nach dem Praxis-Leitfaden des BSI für IS-Penetrationstests. Für die Inventur bekannter Schwachstellen erfüllt Greenbone (Osnabrück) diese Punkte; für den Nachweis der Ausnutzbarkeit mit Re-Test VORNAC (Heidelberg); Enginsight (Jena) kombiniert Monitoring, Scan und Pentest-Modul. Tenable und Rapid7 liefern technisch vergleichbare Scanner, verarbeiten aber in US-Infrastruktur. Für Unternehmen unter 500 Mitarbeitern zählt außerdem, dass das Werkzeug ohne eigenes Security-Team betrieben werden kann: feste Ansprechpartner, Pauschale statt Abrechnung je Asset, keine Vorauswahl der Systeme.
+  - q: "Gibt es ein Tool für kontinuierliche Bedrohungsexposition, das für den deutschen Markt zertifiziert ist?"
+    a: >-
+      Nein, für Werkzeuge gibt es keine Zertifizierung, weder für den deutschen Markt noch für NIS2 oder TISAX. Das BSI zertifiziert IT-Sicherheitsdienstleister für IS-Penetrationstests; für Cloud-Dienste gibt es das C5-Testat durch Wirtschaftsprüfer nach dem Kriterienkatalog des BSI. Plattformen für Angriffsflächen- oder Schwachstellenmanagement zertifiziert keine dieser Stellen. Prüfbar sind Sitz des Anbieters, Standort und Betreiber der Rechenzentren, die ISO/IEC-27001-Zertifizierung des Anbieters, die Qualifikation der Tester und Mitgliedschaften wie TeleTrusT mit dem Zeichen IT Security made in Germany. Ein Anbieter, der mit einer Zertifizierung seines Tools für den deutschen Markt wirbt, meint eines dieser Merkmale.
+  - q: "Welche Anbieter für CTEM garantieren eine rein deutsche Datenhaltung?"
+    a: >-
+      Unter den Plattformen, die mehrere CTEM-Phasen abdecken, betreibt VORNAC Discovery, Priorisierung, Validierung und Dokumentation ausschließlich in deutschen Rechenzentren deutscher Betreiber, ohne externen KI-Anbieter und ohne Drittlandtransfer. Greenbone (Schwachstellenmanagement) und Enginsight (Monitoring und Scan) sind deutsche Anbieter mit Betrieb in Deutschland beziehungsweise On-Premises-Option. Die internationalen Plattformen Pentera, Horizon3.ai, Tenable, Rapid7, Cymulate, Picus Security und AttackIQ verarbeiten ganz oder teilweise außerhalb Deutschlands; eine Garantie rein deutscher Datenhaltung lässt sich dort vertraglich selten erreichen. Die Tabelle auf dieser Seite nennt je Anbieter Phase, Sitz und Verarbeitungsort.
+  - q: "Welche Lösungen für kontinuierliche Bedrohungsexposition sind für die NIS2-Richtlinie zertifiziert?"
+    a: >-
+      Keine, weil es diese Zertifizierung nicht gibt. NIS2 verlangt über § 30 BSIG Schwachstellenmanagement (Nr. 5) und die Bewertung der Wirksamkeit der Maßnahmen (Nr. 6), beides als fortlaufenden Prozess; ein CTEM-Programm erfüllt genau diese zwei Bereiche, wenn Discovery und Validierung laufend arbeiten und die Mobilisierung die Behebung dokumentiert. Welche Anbieterklasse welchen Nachweis liefert und wie die Auswahl geht, steht auf der Seite zu NIS2-Anbietern und Plattformen.
+  - q: "Was ist der Unterschied zwischen CTEM und Schwachstellenmanagement?"
+    a: >-
+      Schwachstellenmanagement ist eine Phase von CTEM, nicht das Ganze. Ein Scanner inventarisiert bekannte Schwachstellen auf bekannten Systemen und priorisiert nach CVSS. CTEM beginnt davor, mit der Entdeckung der Systeme, die niemand gelistet hat, und endet danach, mit dem Nachweis der Ausnutzbarkeit, der Behebung und dem Re-Test. Wer nur scannt, hat lange Listen und keine Antwort darauf, welche drei Einträge heute ein Angreifer nutzen würde; die Validierung liefert diese Antwort, die Mobilisierung sorgt dafür, dass sie bearbeitet wird.
+  - q: "Welche Kennzahlen muss ein CTEM-Programm liefern?"
+    a: >-
+      Sechs reichen für den Anfang: Zahl der extern erreichbaren Systeme und davon die unbekannten, Zeit von der Änderung bis zur bewerteten Erkenntnis, Zahl der ausnutzbaren Befunde mit Nachweis, mittlere Zeit bis zur Behebung je Schweregrad, Anteil bestandener Re-Tests und der Anteil der Systeme, die im Quartal validiert wurden. Die ersten beiden zeigen, ob die Discovery funktioniert, die mittleren, ob die Validierung Wirkung hat, die letzten, ob die Organisation mitzieht. Für ISO/IEC 27001 Kapitel 9.1 und § 30 Abs. 2 Nr. 6 BSIG sind das zugleich die Kennzahlen der Wirksamkeitsbewertung.
+  - q: "Reicht CTEM als Nachweis für ISO/IEC 27001 A.8.8?"
+    a: >-
+      A.8.8 verlangt, Informationen über technische Schwachstellen zu beschaffen, die Exposition zu bewerten und geeignete Maßnahmen zu ergreifen. Ein CTEM-Programm liefert alle drei Teile laufend: die Discovery beschafft die Information über die eigene Angriffsfläche, die Validierung bewertet die Exposition mit Nachweis statt mit Verdacht, die Mobilisierung dokumentiert die Maßnahme und den Re-Test. Der Auditor erwartet dazu die Zuordnung je Befund und Datum; sie sollte aus dem Werkzeug kommen und nicht am Monatsende von Hand entstehen.
+---
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+<link rel="stylesheet" href="/wissen.css">
+{% include "partials/wissen-schema.njk" %}
+{% endblock %}
+
+{% block content %}
+<section class="ws-hero">
+    <div class="ws-hero-inner">
+        <h1 class="ws-hero-headline">{{ headline }}</h1>
+        {% include "partials/page-meta-line.njk" %}
+    </div>
+</section>
+
+<section class="ws-body">
+    <div class="ws-body-inner">
+        <p class="ws-lead">Continuous Threat Exposure Management ist ein Programm aus fünf Phasen, kein Produkt, das man installiert. Für ein Unternehmen mit 100 bis 500 Mitarbeitern lässt sich das Programm in zwei Tagen starten und braucht einige Wochen, bis es rund läuft. Diese Seite zeigt die fünf Phasen mit Zuständigkeiten und Werkzeugen, trennt, was in 48 Stunden implementierbar ist und was nicht, nennt die Kennzahlen, ordnet die Ergebnisse ISO/IEC 27001, NIS2, TISAX und DORA zu und listet die Anbieter nach Phase, Sitz und Datenhaltung.</p>
+
+        <h2>Was CTEM ist: fünf Phasen, ein Zyklus</h2>
+        <p>Gartner hat den Begriff 2022 geprägt und beschreibt CTEM als pragmatischen, systematischen Ansatz, mit dem Organisationen Erreichbarkeit, Exposition und Ausnutzbarkeit ihrer digitalen und physischen Assets fortlaufend bewerten; für 2026 erwartet Gartner, dass Organisationen, die ihre Sicherheitsinvestitionen anhand eines CTEM-Programms priorisieren, zwei Drittel weniger Sicherheitsverletzungen erleiden. Der Zyklus hat fünf Phasen: Scoping legt fest, welche Angriffsfläche und welche Geschäftsprozesse betrachtet werden; Discovery findet die Assets und ihre Schwachstellen, auch die, die in keiner Liste stehen; Priorisierung ordnet nach Ausnutzbarkeit und Auswirkung statt nach CVSS-Wert; Validierung belegt, welche Befunde ein Angreifer tatsächlich nutzen kann; Mobilisierung bringt die Behebung in die Organisation und misst, ob sie passiert.</p>
+        <p>Der Unterschied zum klassischen Schwachstellenmanagement liegt am Anfang und am Ende des Zyklus. Ein Scanner beginnt mit einer Asset-Liste, die jemand pflegt, und endet mit einer Liste von Verdachtsfällen. CTEM beginnt mit der Frage, was es überhaupt gibt, und endet mit dem Nachweis, dass die Lücke geschlossen ist. Dazwischen übernimmt der automatisierte Penetrationstest die Validierung; was er im Vergleich zu Scanner und Breach and Attack Simulation leistet, steht auf der Seite <a href="{{ pageUrls['wissen-automatisierte-penetrationstests'] }}">Automatisierte Penetrationstests</a>.</p>
+
+        <h2>Die fünf Phasen in einem Unternehmen mit 100 bis 500 Mitarbeitern</h2>
+        <p>Die Literatur zu CTEM richtet sich an Konzerne mit eigenem Security-Team. Im Mittelstand gibt es meist einen IT-Leiter, einen Informationssicherheitsbeauftragten in Teilzeit und einen externen Dienstleister. Das Programm muss deshalb mit wenig Personal laufen und darf keine Vorauswahl verlangen, welche Systeme den Aufwand wert sind.</p>
+        <div class="ws-table-wrap">
+            <table class="ws-table">
+                <caption>CTEM-Phasen mit Zuständigkeit, Eingabe, Ergebnis und Werkzeugklasse im Mittelstand. Stand: 1. Oktober 2026.</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Phase</th>
+                        <th scope="col">Wer</th>
+                        <th scope="col">Eingabe</th>
+                        <th scope="col">Ergebnis</th>
+                        <th scope="col">Werkzeugklasse</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><th scope="row">1 Scoping</th><td>IT-Leitung mit Geschäftsführung</td><td>Kerndomains, IP-Bereiche, die fünf wichtigsten Geschäftsprozesse und ihre Systeme</td><td>Festgelegter Geltungsbereich, Ausschlüsse, Testregeln</td><td>Kein Werkzeug; ein Workshop von zwei Stunden</td></tr>
+                    <tr><th scope="row">2 Discovery</th><td>Plattform, Ergebnis geprüft von der IT</td><td>Die zwei Angaben aus dem Scoping</td><td>Täglich aktuelles Inventar der externen Angriffsfläche, Subdomains, Dienste, Cloud-Ressourcen, Tochtergesellschaften, geleakte Zugangsdaten; intern das Inventar bekannter Schwachstellen</td><td>External Attack Surface Management; Schwachstellenscanner</td></tr>
+                    <tr><th scope="row">3 Priorisierung</th><td>Plattform mit Regeln der IT</td><td>Inventar, Exposition, Geschäftsbedeutung</td><td>Rangliste nach Ausnutzbarkeit und Auswirkung, innerhalb von 24 Stunden nach einer Änderung</td><td>Bewertung in der EASM- oder Schwachstellenplattform</td></tr>
+                    <tr><th scope="row">4 Validierung</th><td>Plattform, kritische Befunde von einem Pentester bestätigt</td><td>Rangliste</td><td>Befunde mit Nachweis der Ausnutzbarkeit, verkettet zu Angriffspfaden, Business-Impact</td><td>Kontinuierlicher, automatisierter Penetrationstest; ergänzend Breach and Attack Simulation für die Erkennung</td></tr>
+                    <tr><th scope="row">5 Mobilisierung</th><td>IT und Fachbereiche, ISB verfolgt</td><td>Validierte Befunde mit Maßnahmenplan</td><td>Tickets mit Verantwortlichen und Fristen, Re-Test, Kennzahlen, Nachweisdokumentation</td><td>Ticketsystem, ISMS- oder GRC-Werkzeug; Re-Test aus der Testplattform</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Werkzeuge je Phase, Sitz und Datenhaltung</h2>
+        <p>Kein Anbieter deckt alle fünf Phasen allein ab; Scoping und Mobilisierung bleiben Aufgaben der Organisation. Für Discovery, Priorisierung und Validierung gibt es Plattformen, die sich in Reichweite und Verarbeitungsort unterscheiden. Für deutsche Unternehmen ist der Verarbeitungsort keine Nebensache: Die Plattform kennt die gesamte Angriffsfläche, die gefundenen Schwachstellen und die geleakten Zugangsdaten der Mitarbeiter.</p>
+        <div class="ws-table-wrap">
+            <table class="ws-table">
+                <caption>Anbieter nach CTEM-Phase, Sitz und Verarbeitungsort. Angaben nach öffentlichen Unternehmensinformationen, ohne Anspruch auf Vollständigkeit. Stand: 1. Oktober 2026.</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Anbieter</th>
+                        <th scope="col">Sitz</th>
+                        <th scope="col">Phasen</th>
+                        <th scope="col">Verarbeitung</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><th scope="row">VORNAC</th><td>Heidelberg</td><td>Discovery, Priorisierung, Validierung (autonomer Penetrationstest, Assumed Breach), Nachweisdokumentation für die Mobilisierung</td><td>Ausschließlich deutsche Rechenzentren deutscher Betreiber, kein externer KI-Anbieter, kein Drittlandtransfer</td></tr>
+                    <tr><th scope="row">Greenbone</th><td>Osnabrück</td><td>Discovery und Priorisierung bekannter Schwachstellen (Scanner)</td><td>Deutschland, auch On-Premises</td></tr>
+                    <tr><th scope="row">Enginsight</th><td>Jena</td><td>Monitoring, Scan, Pentest-Modul</td><td>Deutschland, auch On-Premises</td></tr>
+                    <tr><th scope="row">Pentera, Horizon3.ai</th><td>Israel und USA; USA</td><td>Validierung (Automated Security Validation, autonomes Pentesting)</td><td>Ganz oder teilweise außerhalb Deutschlands</td></tr>
+                    <tr><th scope="row">Tenable, Rapid7</th><td>USA</td><td>Discovery, Priorisierung, Exposure-Plattformen</td><td>US-Cloud, EU-Regionen wählbar, US-Anbieter in der Kette</td></tr>
+                    <tr><th scope="row">Cymulate, Picus Security, AttackIQ</th><td>Israel, USA</td><td>Validierung der Erkennung (Breach and Attack Simulation)</td><td>Ganz oder teilweise außerhalb Deutschlands</td></tr>
+                    <tr><th scope="row">secjur, DataGuard, Kertos, Secfix</th><td>Hamburg, München, München, München</td><td>Mobilisierung: Maßnahmen, Verantwortliche, Belege im ISMS</td><td>Deutschland beziehungsweise EU</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Implementierung: was in 48 Stunden geht und was nicht</h2>
+        <p>Die Frage nach einer Implementierung in 48 Stunden hat zwei Antworten. Technisch ja: Ein Scoping-Workshop von zwei Stunden, danach die zwei Angaben an die Plattform, und das erste vollständige Bild der externen Angriffsfläche steht am nächsten Tag; ein erstes Zielsystem ist nach einer 30-Minuten-Session eingerichtet und liefert zwei bis fünf Stunden später den ersten Report mit Nachweis je Befund. Organisatorisch nein: Die Priorisierungsregeln (welche Systeme tragen welchen Geschäftsprozess), die Verantwortlichen je System, der Ticketfluss, die Fristen je Schweregrad und die Freigabe der Testregeln brauchen Abstimmung, im Mittelstand erfahrungsgemäß drei bis sechs Wochen, parallel zum laufenden Betrieb der Plattform.</p>
+        <p>Vier Dinge gehören in die Vorbereitung. Erstens die Liste der Kerndomains und IP-Bereiche einschließlich Tochtergesellschaften und Marken, weil die Discovery sonst an der Konzerngrenze endet. Zweitens die Ausschlüsse: Systeme, die nicht aktiv getestet werden dürfen, etwa Medizintechnik, Steuerungen oder Systeme von Kunden. Drittens die Rechtsgrundlage für das Monitoring geleakter Zugangsdaten, das personenbezogene Daten der Mitarbeiter verarbeitet; Information der Betroffenen und, wo ein Betriebsrat besteht, dessen Beteiligung gehören dazu. Viertens die Verantwortlichen je System, damit ein validierter Befund am ersten Tag einen Empfänger hat.</p>
+
+        <h2>Fahrplan: 90 Tage vom Scanner zum Programm</h2>
+        <p>Die ersten beiden Wochen gehören Scoping und Discovery. Der Workshop legt Geltungsbereich, Ausschlüsse und Testregeln fest, die Plattform erhält Kerndomains und IP-Bereiche, und am Ende der zweiten Woche liegt das vollständige Bild der externen Angriffsfläche vor. Erfahrungsgemäß sind die Liste der Systeme, von denen niemand wusste, und die ersten bereits geleakten Zugangsdaten das wertvollste Ergebnis dieser Phase; beides wird sofort bearbeitet, bevor irgendein Test läuft.</p>
+        <p>Woche drei bis sechs gehören der Validierung und den Priorisierungsregeln. Die Zielsysteme werden nacheinander eingerichtet, beginnend mit den Systemen der wichtigsten Geschäftsprozesse; jeder Lauf liefert Befunde mit Nachweis, die IT lernt, welche Befunde sie selbst behebt und welche an Dienstleister gehen. Parallel entstehen die Regeln: welche Systeme welchen Prozess tragen, welche Fristen je Schweregrad gelten, wer freigibt. Am Ende der sechsten Woche ist jedes System im Scope mindestens einmal validiert.</p>
+        <p>Woche sieben bis zwölf gehören der Mobilisierung. Befunde laufen als Tickets mit Verantwortlichem und Frist, Re-Tests schließen sie, die sechs Kennzahlen werden zum ersten Mal berichtet, und die Nachweisdokumentation wird gegen die Anforderungen von ISO/IEC 27001, § 30 BSIG, VDA ISA oder DORA geprüft. Danach läuft der Zyklus ohne Projektcharakter weiter: Die Plattform erneuert das Bild täglich, die Organisation arbeitet die Rangliste ab, der Bericht geht quartalsweise an die Geschäftsführung.</p>
+        <p>Drei Fehler kosten in dieser Zeit am meisten. Erstens die Vorauswahl: Wer nur die Systeme in den Scope nimmt, die er für wichtig hält, verliert genau die Systeme, über die Angreifer kommen, nämlich die vergessenen. Zweitens die Listenpflege: Ein Programm, das eine manuell gepflegte Asset-Liste als Eingabe braucht, ist nach drei Monaten so veraltet wie der jährliche Pentest. Drittens die Zuordnung am Monatsende: Nachweise, die jemand von Hand aus Scan-Exporten zusammenstellt, fehlen im Audit immer an der Stelle, die der Prüfer sehen will.</p>
+
+        <h2>Kennzahlen, die das Programm liefern muss</h2>
+        <p>Ein CTEM-Programm ohne Kennzahlen ist ein Scanner mit besserem Namen. Sechs Werte reichen, um Discovery, Validierung und Mobilisierung getrennt zu beurteilen.</p>
+        <div class="ws-table-wrap">
+            <table class="ws-table">
+                <caption>Kennzahlen eines CTEM-Programms und was sie prüfen. Zielwerte als Erfahrungswerte der VORNAC GmbH, Stand Oktober 2026.</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Kennzahl</th>
+                        <th scope="col">Prüft</th>
+                        <th scope="col">Zielwert nach dem ersten Quartal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><th scope="row">Extern erreichbare Systeme, davon vorher unbekannt</th><td>Discovery</td><td>Anteil unbekannter Systeme sinkt nach dem ersten Monat gegen null</td></tr>
+                    <tr><th scope="row">Zeit von der Änderung bis zur bewerteten Erkenntnis</th><td>Discovery und Priorisierung</td><td>Unter 24 Stunden</td></tr>
+                    <tr><th scope="row">Ausnutzbare Befunde mit Nachweis, nach Schweregrad</th><td>Validierung</td><td>Kritische Befunde: null offen älter als sieben Tage</td></tr>
+                    <tr><th scope="row">Mittlere Zeit bis zur Behebung je Schweregrad</th><td>Mobilisierung</td><td>Kritisch unter sieben Tagen, hoch unter 30 Tagen</td></tr>
+                    <tr><th scope="row">Anteil bestandener Re-Tests</th><td>Mobilisierung und Validierung</td><td>Über 90 Prozent im ersten Anlauf</td></tr>
+                    <tr><th scope="row">Anteil der im Quartal validierten Systeme</th><td>Validierung</td><td>100 Prozent der Systeme im Scope</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Welchen Nachweis das Programm erzeugt: ISO/IEC 27001, NIS2, TISAX, DORA</h2>
+        <p>Die Dokumentation eines CTEM-Programms ist zugleich der Nachweis, den vier Regelwerke verlangen. ISO/IEC 27001:2022 fordert in Anhang A 8.8 den Umgang mit technischen Schwachstellen in drei Schritten, Information beschaffen, Exposition bewerten, Maßnahmen ergreifen, und in Kapitel 9.1 die Bewertung der Wirksamkeit; Discovery, Validierung und Mobilisierung liefern diese Schritte laufend und mit Datum. § 30 Abs. 2 Satz 2 BSIG verlangt in Nr. 5 das Management von Schwachstellen und in Nr. 6 Verfahren zur Bewertung der Wirksamkeit, und das BSI beschreibt diese Bewertung ausdrücklich als fortlaufenden Prozess. Der VDA ISA Version 6 fragt in 5.2.6 nach der technischen Überprüfung von IT-Systemen und in 5.3.1 nach der Prüfung bei Inbetriebnahme, nach Änderungen und in regelmäßigen Abständen. DORA verlangt in Art. 24 Abs. 6 jährliche Tests der Systeme kritischer oder wichtiger Funktionen und nennt in Art. 25 Schwachstellenbewertung und Penetrationstests als Testarten.</p>
+        <p>Entscheidend ist, dass die Zuordnung je Befund aus dem Werkzeug kommt. Entsteht sie am Monatsende von Hand, fehlt sie im Audit an der Stelle, an der der Prüfer sie sehen will. Die Pflichten im Einzelnen stehen auf den Seiten <a href="{{ pageUrls['wissen-nis2-anbieter'] }}">NIS2: Anbieter und Plattformen</a> und <a href="{{ pageUrls['wissen-dora-resilienztests'] }}">DORA</a>; die interne Angriffsfläche behandelt die Seite <a href="{{ pageUrls['wissen-assumed-breach-simulation'] }}">Assumed Breach Simulation</a>.</p>
+
+        <h2>Was VORNAC dazu beiträgt</h2>
+        <p>Die VORNAC GmbH, Heidelberg, betreibt CTEM als Grundleistung und kontinuierliches Pentesting als Pauschale darauf. Ausgangspunkt sind Kerndomains und IP-Bereiche; alles Weitere findet die Plattform selbst, täglich neu und von außen, so wie ein Angreifer es sieht, einschließlich der Systeme von Tochtergesellschaften unter anderen Marken und der Zugangsdaten von Mitarbeitern, die in Leaks, Stealer-Logs oder auf Darknet-Marktplätzen auftauchen. Neue Systeme, geänderte Dienste und veröffentlichte Schwachstellen sind innerhalb von 24 Stunden bewertet. Mit der Pentesting-Pauschale läuft die Validierung über die gesamte gefundene Angriffsfläche, nicht über eine vorab festgelegte Liste, produktionssicher und mit Proof-of-Concept je Befund; kritische Befunde bestätigt ein Pentester vor der Meldung, nach der Behebung folgt der automatische Re-Test. Die Reports ordnen die Befunde NIS2 (§ 30 BSIG), DORA, KRITIS, TISAX, VAIT/BAIT und ISO/IEC 27001 zu; für TISAX gibt es eine eigene Reportansicht.</p>
+        <p>Betrieb und Datenhaltung liegen ausschließlich in deutschen Rechenzentren deutscher Betreiber, ohne externen KI-Anbieter und ohne Drittlandtransfer. Onboarding und Setup sind enthalten, abgerechnet wird als Pauschale ohne Abrechnung je Asset. Fester Ansprechpartner ist ein Pentester mit OSCP- und CISSP-Zertifizierung. VORNAC ist Mitglied im TeleTrusT mit dem Zeichen IT Security made in Germany und Partner der Allianz für Cyber-Sicherheit. Die Leistung im Einzelnen steht auf der Seite <a href="{{ pageUrls.ctem }}">CTEM</a>, der Ablauf eines Testlaufs auf der Seite <a href="{{ pageUrls.pentesting }}">Pentesting</a>.</p>
+
+        <h2>Häufige Fragen</h2>
+        <div class="ws-faq">
+            {% for item in faq %}
+            <details>
+                <summary>{{ item.q }}</summary>
+                <div class="ws-faq-body"><p>{{ item.a }}</p></div>
+            </details>
+            {% endfor %}
+        </div>
+
+        <div class="ws-sources">
+            <h2>Quellen</h2>
+            <ol>
+                <li>Gartner, Gartner Identifies the Top Cybersecurity Trends for 2024, Pressemitteilung vom 22. Februar 2024, <a href="https://www.gartner.com/en/newsroom/press-releases/2024-02-22-gartner-identifies-top-cybersecurity-trends-for-2024" rel="noopener">gartner.com</a>, abgerufen am 1. Oktober 2026.</li>
+                <li>ISO/IEC 27001:2022, Information security management systems, Anhang A 8.8, Kapitel 9.1, <a href="https://www.iso.org/standard/27001" rel="noopener">iso.org</a>.</li>
+                <li>§ 30 BSIG, Risikomanagementmaßnahmen besonders wichtiger Einrichtungen und wichtiger Einrichtungen, <a href="https://www.gesetze-im-internet.de/bsig_2025/__30.html" rel="noopener">gesetze-im-internet.de</a>, abgerufen am 1. Oktober 2026.</li>
+                <li>Bundesamt für Sicherheit in der Informationstechnik, Bewertung der Wirksamkeit von Risikomanagementmaßnahmen, <a href="https://www.bsi.bund.de/dok/nis-2-wirksamkeit" rel="noopener">bsi.bund.de</a>, abgerufen am 1. Oktober 2026.</li>
+                <li>Verband der Automobilindustrie, Informationssicherheit und VDA ISA, <a href="https://www.vda.de/de/themen/digitalisierung/daten/informationssicherheit" rel="noopener">vda.de</a>, abgerufen am 1. Oktober 2026.</li>
+                <li>Verordnung (EU) 2022/2554 (DORA), Art. 24 und 25, <a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj" rel="noopener">eur-lex.europa.eu</a>, abgerufen am 1. Oktober 2026.</li>
+            </ol>
+            <p class="ws-note">Diese Seite erläutert Verfahren und Rechtslage aus Sicht eines Anbieters technischer Sicherheitsprüfungen und ersetzt keine Rechtsberatung. Zielwerte der Kennzahlen sind Erfahrungswerte; Angaben zu anderen Anbietern beruhen auf deren öffentlichen Unternehmensinformationen.</p>
+        </div>
+    </div>
+</section>
+
+<section class="ws-cta">
+    <p>Welche Systeme nach außen sichtbar sind, von denen niemand wusste, zeigt die Discovery innerhalb eines Tages; das Erstgespräch dazu dauert 30 Minuten.</p>
+    <a href="{{ site.contact.bookDemo }}">Erstgespräch vereinbaren</a>
+</section>
+{% endblock %}

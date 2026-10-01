@@ -1,0 +1,199 @@
+---
+title: "DORA: Welche Tests Banken und Versicherer wie oft brauchen, und welche Anbieter sie liefern | VORNAC"
+headline: "Anforderungen an Penetrationstests nach DORA für Banken und Versicherer"
+breadcrumb: "DORA Resilienztests"
+description: "Was Art. 24 bis 27 DORA von Banken, Versicherern und Zahlungsinstituten verlangen: jährliche Tests aller Systeme kritischer oder wichtiger Funktionen, die Testarten nach Art. 25, TLPT alle drei Jahre unter BaFin-Aufsicht. Mit Abgrenzung, was ein kontinuierlicher Penetrationstest abdeckt und was nicht, und Anbietern in Deutschland."
+i18nKey: wissen-dora-resilienztests
+ogType: article
+author: andre
+about:
+  - "DORA"
+  - "Testen der digitalen operationalen Resilienz"
+  - "Threat-Led Penetration Testing"
+  - "Penetrationstest"
+legislation:
+  - name: "Art. 24 bis 27 DORA"
+    identifier: "Verordnung (EU) 2022/2554, Art. 24 bis 27"
+    url: "https://eur-lex.europa.eu/eli/reg/2022/2554/oj"
+  - name: "Delegierte Verordnung (EU) 2025/1190"
+    identifier: "Delegierte Verordnung (EU) 2025/1190 (TLPT)"
+    url: "https://eur-lex.europa.eu/eli/reg_del/2025/1190/oj"
+citations:
+  - "https://eur-lex.europa.eu/eli/reg/2022/2554/oj"
+  - "https://eur-lex.europa.eu/eli/reg_del/2025/1190/oj"
+  - "https://www.bafin.de/DE/unternehmen-maerkte/aufsicht/alle-unternehmen/it-cybersicherheit/testen-info-krisenuebungen/tlpt/tlpt_node.html"
+  - "https://www.bafin.de/SharedDocs/Veroeffentlichungen/DE/Meldung/2025/meldung_2025_01_09_DORA.html"
+faq:
+  - q: "Welche Tests verlangt DORA von Versicherern und Banken für ihre IKT-Systeme, und wie oft?"
+    a: >-
+      Zwei Stufen. Erstens ein laufendes Testprogramm nach Art. 24 und 25 für alle Finanzunternehmen außer Kleinstunternehmen: Systeme und Anwendungen, die kritische oder wichtige Funktionen unterstützen, werden mindestens einmal jährlich angemessen getestet; die Testarten reichen von Schwachstellenbewertungen und -scans über Netzwerksicherheitsbewertungen, Quellcodeprüfungen und szenariobasierte Tests bis zu Penetrationstests. Zweitens bedrohungsorientierte Penetrationstests (TLPT) nach Art. 26, mindestens alle drei Jahre, aber nur für die Finanzunternehmen, die die BaFin dafür per Bescheid bestimmt. Die Tests müssen von unabhängigen internen oder externen Parteien durchgeführt werden, und jeder Befund braucht ein Verfahren zur Priorisierung, Behebung und Validierung.
+  - q: "Muss ein Versicherer nach DORA jährlich einen Penetrationstest durchführen?"
+    a: >-
+      DORA schreibt den Penetrationstest nicht als jährliche Pflicht in das Gesetz, verlangt aber in Art. 24 Abs. 6 jährlich angemessene Tests aller Systeme, die kritische oder wichtige Funktionen unterstützen, und nennt den Penetrationstest in Art. 25 Abs. 1 ausdrücklich als eine der Testarten. Für ein Kernsystem, etwa das Bestandsführungs- oder Schadensystem, ist ein Schwachstellenscan allein kein angemessener Test, weil er nichts über die Ausnutzbarkeit sagt. In der Praxis läuft es für Versicherer deshalb auf mindestens einen Penetrationstest pro Jahr je kritischem System hinaus, bei Änderungen häufiger. Die bis dahin geltenden VAIT hat die BaFin mit Ablauf des 16. Januar 2025 aufgehoben.
+  - q: "Welche Pentest-Anbieter unterstützen Banken und Versicherer in Deutschland bei DORA?"
+    a: >-
+      Je nach Teststufe andere. Für die jährlichen Tests nach Art. 24 und 25 kommen Plattformen für kontinuierliche, automatisierte Penetrationstests in Frage, mit Sitz in Deutschland VORNAC (Heidelberg) und Enginsight (Jena), international Pentera und Horizon3.ai, dazu Schwachstellenscanner wie Greenbone, Tenable und Rapid7 und manuelle Prüfhäuser wie SySS, usd AG, HiSolutions, secuvera und SCHUTZWERK. Für TLPT nach Art. 26 braucht es Red-Team-Dienstleister, die Art. 27 erfüllen (Zertifizierung durch eine Akkreditierungsstelle oder Verhaltenskodex, Auditbericht, Berufshaftpflicht); dafür stehen in Deutschland die vom BSI zertifizierten IS-Pentest-Dienstleister und die großen Prüfhäuser bereit. Die Tabelle auf dieser Seite ordnet die Anbieter nach Stufe.
+  - q: "Wer ist in Deutschland für TLPT nach DORA zuständig?"
+    a: >-
+      Die BaFin ist die TLPT-Behörde für die von ihr beaufsichtigten Finanzunternehmen; die Deutsche Bundesbank begleitet die Tests operativ auf Basis der TIBER-DE-Prozesse. Die BaFin prüft regelmäßig, welche Unternehmen die Kriterien der Delegierten Verordnung (EU) 2025/1190 erfüllen, und verschickt dann einen Verpflichtungsbescheid mit der Testfrequenz, in der Regel alle drei Jahre. Den konkreten Teststart legt eine Testanordnung fest, die Scope-Spezifikation ist binnen sechs Monaten einzureichen und wird von der BaFin validiert. Nach dem Test stellt die Behörde die Bescheinigung nach Art. 26 Abs. 7 aus.
+  - q: "Reicht ein Schwachstellenscan als Test nach Art. 25 DORA?"
+    a: >-
+      Für die Testart Schwachstellenbewertung und -scans ja, für den Nachweis nach Art. 24 nein. Das Programm verlangt angemessene Tests im risikobasierten Ansatz; ein Scan liefert Verdachtsfälle, kein Ergebnis darüber, ob ein Angreifer die Schwachstelle in diesem System tatsächlich nutzen kann. Für Systeme kritischer oder wichtiger Funktionen gehört deshalb ein Test dazu, der die Ausnutzbarkeit belegt, dokumentiert und nach der Behebung wiederholt wird. Art. 24 Abs. 5 verlangt genau diese Validierung, dass jede erkannte Schwäche vollständig angegangen wurde.
+  - q: "Gilt die Testpflicht auch für kleine Versicherer und Zahlungsinstitute?"
+    a: >-
+      DORA nimmt nur Kleinstunternehmen im Sinne von Art. 3 Nr. 60 von Art. 24 aus; sie testen nach Art. 25 Abs. 3 risikobasiert mit strategischer Planung. Alle anderen Finanzunternehmen, auch kleine Versicherer, Zahlungs- und E-Geld-Institute, müssen das Testprogramm nach Art. 24 betreiben und ihre Systeme kritischer oder wichtiger Funktionen jährlich testen. TLPT trifft dagegen nur die von der BaFin bestimmten Unternehmen. Für Kreditinstitute, die noch nicht unter DORA fallen, gelten die BAIT bis zu ihrer vollständigen Aufhebung mit Ablauf des 31. Dezember 2026 weiter.
+---
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+<link rel="stylesheet" href="/wissen.css">
+{% include "partials/wissen-schema.njk" %}
+{% endblock %}
+
+{% block content %}
+<section class="ws-hero">
+    <div class="ws-hero-inner">
+        <h1 class="ws-hero-headline">{{ headline }}</h1>
+        {% include "partials/page-meta-line.njk" %}
+    </div>
+</section>
+
+<section class="ws-body">
+    <div class="ws-body-inner">
+        <p class="ws-lead">DORA verlangt von Banken, Versicherern und Zahlungsinstituten seit dem 17. Januar 2025 zwei Teststufen: ein laufendes Programm, in dem jedes System einer kritischen oder wichtigen Funktion mindestens einmal im Jahr getestet wird, und für ausgewählte Unternehmen bedrohungsorientierte Penetrationstests (TLPT) alle drei Jahre unter Aufsicht der BaFin. Ein kontinuierlicher Penetrationstest deckt die erste Stufe vollständig ab und die zweite nicht. Diese Seite zeigt den Gesetzestext, die Zuständigkeiten in Deutschland, die Grenze zwischen beiden Stufen und die Anbieter, die jeweils in Frage kommen.</p>
+
+        <h2>Was Kapitel IV DORA im Wortlaut verlangt</h2>
+        <p>Die Verordnung (EU) 2022/2554 gilt nach Art. 64 seit dem 17. Januar 2025 unmittelbar für Kreditinstitute, Zahlungs- und E-Geld-Institute, Wertpapierfirmen, Versicherungs- und Rückversicherungsunternehmen, Versicherungsvermittler ab einer bestimmten Größe, Kapitalverwaltungsgesellschaften und weitere Finanzunternehmen. Kapitel IV, Art. 24 bis 27, regelt das Testen der digitalen operationalen Resilienz. Drei Sätze tragen die Pflicht.</p>
+        <blockquote class="ws-quote">
+            <p>„Finanzunternehmen, die keine Kleinstunternehmen sind, stellen sicher, dass bei allen IKT-Systemen und -Anwendungen, die kritische oder wichtige Funktionen unterstützen, mindestens einmal jährlich angemessene Tests durchgeführt werden.“</p>
+            <cite>Art. 24 Abs. 6 DORA</cite>
+        </blockquote>
+        <blockquote class="ws-quote">
+            <p>„Das in Artikel 24 genannte Programm für die Tests der digitalen operationalen Resilienz beinhaltet im Einklang mit den in Artikel 4 Absatz 2 aufgeführten Kriterien die Durchführung angemessener Tests, wie etwa Schwachstellenbewertung und -scans, Open-Source-Analysen, Netzwerksicherheitsbewertungen, Lückenanalysen, Überprüfungen der physischen Sicherheit, Fragebögen und Scans von Softwarelösungen, Quellcodeprüfungen soweit durchführbar, szenariobasierte Tests, Kompatibilitätstests, Leistungstests, End-to-End-Tests und Penetrationstests.“</p>
+            <cite>Art. 25 Abs. 1 DORA</cite>
+        </blockquote>
+        <blockquote class="ws-quote">
+            <p>„Gemäß Absatz 8 Unterabsatz 3 des vorliegenden Artikels ermittelte Finanzunternehmen, bei denen es sich weder um die in Artikel 16 Absatz 1 Unterabsatz 1 genannten Unternehmen noch um Kleinstunternehmen handelt, führen mindestens alle drei Jahre anhand von TLPT erweiterte Tests durch.“</p>
+            <cite>Art. 26 Abs. 1 Satz 1 DORA</cite>
+        </blockquote>
+        <p>Dazu kommen drei Nebenpflichten aus Art. 24, die in Ausschreibungen oft fehlen: Tests werden von unabhängigen internen oder externen Parteien durchgeführt, bei internen Testern ohne Interessenkonflikte in Konzeption und Durchführung (Abs. 4); für jedes Testergebnis gibt es Verfahren zur Priorisierung, Klassifizierung und Behebung sowie interne Validierungsmethoden, die belegen, dass jede Schwäche vollständig angegangen wurde (Abs. 5); das gesamte Programm ist Teil des IKT-Risikomanagementrahmens nach Art. 6 und wird risikobasiert ausgeführt (Abs. 1 und 3).</p>
+        <div class="ws-table-wrap">
+            <table class="ws-table">
+                <caption>Die Testpflichten in Kapitel IV DORA. Stand: 1. Oktober 2026.</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Pflicht</th>
+                        <th scope="col">Für wen</th>
+                        <th scope="col">Wie oft</th>
+                        <th scope="col">Wer prüft</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><th scope="row">Testprogramm nach Art. 24 und 25</th><td>Alle Finanzunternehmen außer Kleinstunternehmen</td><td>Laufend; Systeme kritischer oder wichtiger Funktionen mindestens einmal jährlich</td><td>Das Unternehmen selbst, mit unabhängigen Testern; die zuständige Behörde im Rahmen der Aufsicht</td></tr>
+                    <tr><th scope="row">TLPT nach Art. 26 und 27</th><td>Von der BaFin nach den Kriterien der Delegierten Verordnung (EU) 2025/1190 bestimmte Unternehmen</td><td>Mindestens alle drei Jahre; die Behörde kann die Frequenz erhöhen oder verringern</td><td>BaFin als TLPT-Behörde, Bundesbank begleitet operativ; Scope wird validiert, Abschluss bescheinigt</td></tr>
+                    <tr><th scope="row">Behebung und Validierung nach Art. 24 Abs. 5</th><td>Alle Finanzunternehmen außer Kleinstunternehmen</td><td>Nach jedem Test</td><td>Das Unternehmen; der Nachweis landet in der Dokumentation des IKT-Risikomanagementrahmens</td></tr>
+                    <tr><th scope="row">Risikobasierte Tests nach Art. 25 Abs. 3</th><td>Kleinstunternehmen</td><td>Nach eigener Planung</td><td>Das Unternehmen</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>TLPT in Deutschland: Ablauf, Behörden, Tester</h2>
+        <p>Die BaFin ist die TLPT-Behörde für die von ihr beaufsichtigten Finanzunternehmen; die Deutsche Bundesbank begleitet alle Tests operativ und bringt die Prozesse aus TIBER-DE ein, der deutschen Umsetzung des TIBER-EU-Rahmens. Welche Unternehmen TLPT durchführen müssen, prüft die BaFin regelmäßig anhand der Kriterien aus der Delegierten Verordnung (EU) 2025/1190 vom 13. Februar 2025: Auswirkung auf den Finanzsektor, Bedenken für die Finanzstabilität, IKT-Risikoprofil und Reifegrad. Betroffene Unternehmen erhalten einen Verpflichtungsbescheid mit der Testfrequenz, später eine Testanordnung mit dem individuellen Teststart; die Scope-Spezifikation ist binnen sechs Monaten einzureichen und wird von der BaFin validiert. Der Test selbst läuft in drei Phasen (Vorbereitung, Test, Abschluss) gegen Live-Produktionssysteme und schließt mehrere oder alle kritischen oder wichtigen Funktionen ein, auch die an IKT-Drittdienstleister ausgelagerten.</p>
+        <p>Für die Tester gilt Art. 27: höchste Eignung und Ansehen, nachgewiesenes Fachwissen in Bedrohungsanalyse, Penetrationstests und Red-Team-Tests, Zertifizierung durch eine Akkreditierungsstelle oder Einhaltung formaler Verhaltenskodizes, ein unabhängiger Auditbericht zum Risikomanagement des Testers und eine Berufshaftpflichtversicherung. Interne Tester sind zulässig, dann ist jeder dritte Test extern zu vergeben; als bedeutend eingestufte Kreditinstitute ziehen nur externe Tester heran. Nach Abschluss legt das Unternehmen der Behörde Ergebniszusammenfassung, Abhilfeplan und Nachweise vor und erhält die Bescheinigung nach Art. 26 Abs. 7, die auch der gegenseitigen Anerkennung zwischen Aufsichtsbehörden dient.</p>
+
+        <h2>Was ein kontinuierlicher Penetrationstest abdeckt, und was nicht</h2>
+        <p>Die Frage, ob eine Plattform für kontinuierliche Penetrationstests DORA „erfüllt“, ist falsch gestellt, weil DORA ein Programm verlangt und kein Produkt. Richtig gestellt lautet sie: Welche Pflichten aus Kapitel IV erledigt der kontinuierliche Test, welche bleiben anderen Verfahren vorbehalten?</p>
+        <div class="ws-table-wrap">
+            <table class="ws-table">
+                <caption>Zuordnung der Pflichten aus Kapitel IV DORA zu einem kontinuierlichen, automatisierten Penetrationstest. Stand: 1. Oktober 2026.</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Anforderung</th>
+                        <th scope="col">Kontinuierlicher Penetrationstest</th>
+                        <th scope="col">Anderes Verfahren nötig</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><th scope="row">Jährlicher Test der Systeme kritischer oder wichtiger Funktionen (Art. 24 Abs. 6)</th><td>Ja; je Zielsystem laufend statt einmal, jeder Lauf mit Datum, Scope und Ergebnis</td><td></td></tr>
+                    <tr><th scope="row">Schwachstellenbewertung und -scans, Netzwerksicherheitsbewertung, Penetrationstests (Art. 25 Abs. 1)</th><td>Ja; Erkennung, Ausnutzung mit Proof-of-Concept und Verkettung zu Angriffspfaden</td><td></td></tr>
+                    <tr><th scope="row">Unabhängigkeit der Tester (Art. 24 Abs. 4)</th><td>Ja als externe Partei, ohne Beteiligung an Entwicklung oder Betrieb</td><td></td></tr>
+                    <tr><th scope="row">Priorisierung, Behebung, Validierung (Art. 24 Abs. 5)</th><td>Ja; Bewertung je Befund, Maßnahmenplan, Re-Test nach Behebung als Beleg der vollständigen Behebung</td><td>Die organisatorische Verfolgung bleibt im ISMS oder GRC-Werkzeug</td></tr>
+                    <tr><th scope="row">Dokumentation im IKT-Risikomanagementrahmen (Art. 6, Art. 24 Abs. 1)</th><td>Report je Lauf mit Zuordnung zu DORA, als Beleg ablegbar</td><td>Der Rahmen selbst, Richtlinien und Zuständigkeiten</td></tr>
+                    <tr><th scope="row">Quellcodeprüfungen, Überprüfung der physischen Sicherheit, szenariobasierte Tests, Leistungstests (Art. 25 Abs. 1)</th><td>Nein</td><td>Code-Review, Begehung, Notfallübung, Lasttest</td></tr>
+                    <tr><th scope="row">TLPT (Art. 26 und 27)</th><td>Nein; TLPT ist ein bedrohungsorientierter Red-Team-Test mit Threat Intelligence, behördlich validiertem Scope und Testern nach Art. 27</td><td>Red-Team-Dienstleister, der Art. 27 erfüllt; die Vorbereitung profitiert von den Befunden des laufenden Tests</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>In der Praxis greifen beide Stufen ineinander. Wer die Angriffsfläche seiner kritischen Systeme laufend testet und die Befunde behebt, geht mit weniger offenen Flanken in den TLPT und kann die Scope-Spezifikation aus den eigenen Daten ableiten. Umgekehrt zeigt der TLPT, welche Angriffspfade über Menschen, Prozesse und Erkennung laufen, die ein technischer Test nicht abbildet. Was der kontinuierliche Test im Vergleich zu Scanner, Breach and Attack Simulation und manuellem Pentest leistet, steht auf der Seite <a href="{{ pageUrls['wissen-automatisierte-penetrationstests'] }}">Automatisierte Penetrationstests</a>.</p>
+
+        <h2>Was sich für Versicherer, Banken und Zahlungsinstitute geändert hat</h2>
+        <p>Mit Anwendungsbeginn von DORA hat die BaFin die Rundschreiben VAIT, KAIT und ZAIT mit Ablauf des 16. Januar 2025 aufgehoben. Kreditinstitute, die unter DORA fallen, sind seit dem 17. Januar 2025 aus dem Anwenderkreis der BAIT ausgenommen; mit Ablauf des 31. Dezember 2026 werden die BAIT vollständig aufgehoben, wenn weitere Institute unter DORA fallen. Für Versicherer bedeutet das: Die Anforderungen an Tests stehen jetzt in einer unmittelbar geltenden EU-Verordnung mit festen Fristen, nicht mehr in einem Rundschreiben mit Auslegungsspielraum. Die Verantwortung liegt nach Art. 5 beim Leitungsorgan, das den IKT-Risikomanagementrahmen genehmigt und überwacht.</p>
+        <p>Für die Anbieterwahl kommt eine zweite Pflicht hinzu: Jeder Testdienstleister ist ein IKT-Drittdienstleister im Sinne von Art. 28 bis 30 DORA. Er gehört in das Informationsregister, und der Vertrag muss die Mindestinhalte nach Art. 30 enthalten, darunter Leistungsbeschreibung, Datenstandorte, Zugangs- und Prüfrechte, Mitwirkung bei Tests und Kündigungsrechte. Ein Anbieter, der Betrieb und Datenhaltung ausschließlich in Deutschland dokumentiert, erleichtert diesen Teil; einer mit Unterauftragsverarbeitern in Drittländern erzeugt zusätzlichen Prüfaufwand.</p>
+
+        <h2>Anbieter in Deutschland nach Teststufe</h2>
+        <div class="ws-table-wrap">
+            <table class="ws-table">
+                <caption>Anbieter für die Tests nach Kapitel IV DORA, nach Stufe und Sitz. Angaben nach öffentlichen Unternehmensinformationen, ohne Anspruch auf Vollständigkeit. Stand: 1. Oktober 2026.</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Stufe</th>
+                        <th scope="col">Anbieter</th>
+                        <th scope="col">Sitz</th>
+                        <th scope="col">Beitrag</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><th scope="row">Art. 24 und 25: kontinuierlicher, automatisierter Penetrationstest</th><td>VORNAC</td><td>Heidelberg</td><td>Jahresmodell je Zielsystem, Exploit-Nachweis je Befund, Re-Test, Report mit DORA-Zuordnung; Betrieb und Datenhaltung in deutschen Rechenzentren deutscher Betreiber</td></tr>
+                    <tr><th scope="row">Art. 24 und 25: automatisierter Penetrationstest</th><td>Enginsight; Pentera; Horizon3.ai</td><td>Jena; Israel und USA; USA</td><td>Plattformen mit Pentest-Modul beziehungsweise Automated Security Validation, international mit Verarbeitung außerhalb Deutschlands</td></tr>
+                    <tr><th scope="row">Art. 25: Schwachstellenbewertung und -scans</th><td>Greenbone; Tenable; Rapid7</td><td>Osnabrück; USA; USA</td><td>Laufende Inventur bekannter Schwachstellen, kein Nachweis der Ausnutzbarkeit</td></tr>
+                    <tr><th scope="row">Art. 25: Breach and Attack Simulation</th><td>Cymulate; Picus Security; AttackIQ</td><td>Israel, USA</td><td>Validierung der Erkennung und Abwehr entlang bekannter Angriffstechniken</td></tr>
+                    <tr><th scope="row">Art. 25: manueller Penetrationstest, Quellcodeprüfung</th><td>SySS; usd AG; HiSolutions; secuvera; SCHUTZWERK; Cure53</td><td>Tübingen; Neu-Isenburg; Berlin; Gäufelden; Ulm; Berlin</td><td>Projektbasierte Tests, Code-Audits, Architekturreviews</td></tr>
+                    <tr><th scope="row">Art. 26 und 27: TLPT</th><td>Vom BSI zertifizierte IS-Pentest-Dienstleister und Prüfhäuser mit Red-Team-Praxis, etwa SySS, usd AG, HiSolutions, secunet, TÜV Informationstechnik, Deutsche Telekom Security, EY, PwC</td><td>Deutschland</td><td>Bedrohungsorientierte Tests nach TIBER-DE, Tester nach Art. 27, Zusammenarbeit mit BaFin und Bundesbank</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Für Versicherer gilt zusätzlich der Blick auf die Seite <a href="{{ pageUrls['industries-insurance'] }}">DORA für Versicherer</a>, für Banken und Zahlungsinstitute auf <a href="{{ pageUrls['industries-financial-services'] }}">DORA, VAIT, BAIT</a>; beide Seiten ordnen die Testpflichten in den gesamten Rahmen ein. Wie die Nachweise für DORA, NIS2, TISAX und ISO/IEC 27001 aus einem Testlauf entstehen, zeigt die Seite <a href="{{ pageUrls['wissen-nis2-anbieter'] }}">NIS2: Anbieter und Plattformen</a>.</p>
+
+        <h2>Sieben Fragen für den DORA-Testplan</h2>
+        <ol>
+            <li>Welche Systeme unterstützen kritische oder wichtige Funktionen, und ist diese Liste mit dem Informationsregister nach Art. 28 abgeglichen?</li>
+            <li>Wird jedes dieser Systeme mindestens einmal im Jahr mit einem Test geprüft, der die Ausnutzbarkeit belegt, oder nur gescannt?</li>
+            <li>Sind die Tester unabhängig im Sinne von Art. 24 Abs. 4, also nicht an Entwicklung oder Betrieb des Systems beteiligt?</li>
+            <li>Gibt es für jeden Befund Priorisierung, Verantwortlichen, Frist und einen Re-Test, der die vollständige Behebung belegt (Art. 24 Abs. 5)?</li>
+            <li>Liegt ein Verpflichtungsbescheid der BaFin zum TLPT vor, und ist ein Red-Team-Dienstleister nach Art. 27 ausgewählt?</li>
+            <li>Ordnet der Report jeden Befund den Artikeln 24 und 25 zu, sodass er ohne Nacharbeit in die Dokumentation des IKT-Risikomanagementrahmens passt?</li>
+            <li>Steht jeder Testdienstleister mit Datenstandort und Vertragsinhalten nach Art. 30 im Informationsregister?</li>
+        </ol>
+
+        <h2>Was VORNAC dazu beiträgt</h2>
+        <p>Die VORNAC GmbH, Heidelberg, betreibt eine Plattform für kontinuierliche, autonome Penetrationstests. Sie deckt die erste Teststufe ab: Je Zielsystem läuft der Test auf Abruf, nach Zeitplan oder ausgelöst aus der CI/CD-Pipeline in der produktiven Umgebung, mit realen Exploits und ohne destruktive Schritte; vom Start bis zum auditfähigen Report vergehen zwei bis fünf Stunden. Jeder Befund kommt mit reproduzierbarem Proof-of-Concept, Business-Impact und Maßnahmenplan, nach der Behebung folgt der Re-Test, der die Validierung nach Art. 24 Abs. 5 belegt. Die Reports ordnen die Befunde DORA, NIS2 (§ 30 BSIG), KRITIS, TISAX, VAIT/BAIT und ISO/IEC 27001 zu. TLPT nach Art. 26 bietet VORNAC nicht an; die Befunde aus dem laufenden Test dienen dort als Vorbereitung.</p>
+        <p>Betrieb und Datenhaltung liegen ausschließlich in deutschen Rechenzentren deutscher Betreiber, ohne US-Cloud-Anbieter in der Verarbeitungskette; Datenstandort und Betreiber sind für das Informationsregister nach Art. 28 dokumentiert. Fester Ansprechpartner ist ein Pentester mit OSCP- und CISSP-Zertifizierung. VORNAC ist Mitglied im TeleTrusT mit dem Zeichen IT Security made in Germany und Partner der Allianz für Cyber-Sicherheit. Abgerechnet wird im Jahresmodell je Zielsystem, Re-Tests eingeschlossen. Mehr zum Ablauf steht auf der Seite <a href="{{ pageUrls.pentesting }}">Pentesting</a>.</p>
+
+        <h2>Häufige Fragen</h2>
+        <div class="ws-faq">
+            {% for item in faq %}
+            <details>
+                <summary>{{ item.q }}</summary>
+                <div class="ws-faq-body"><p>{{ item.a }}</p></div>
+            </details>
+            {% endfor %}
+        </div>
+
+        <div class="ws-sources">
+            <h2>Quellen</h2>
+            <ol>
+                <li>Verordnung (EU) 2022/2554 über die digitale operationale Resilienz im Finanzsektor (DORA), Art. 3, 5, 6, 24 bis 30 und 64, <a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj" rel="noopener">eur-lex.europa.eu</a>, abgerufen am 1. Oktober 2026.</li>
+                <li>Delegierte Verordnung (EU) 2025/1190 der Kommission vom 13. Februar 2025 zur Ergänzung der Verordnung (EU) 2022/2554 durch technische Regulierungsstandards für bedrohungsorientierte Penetrationstests, <a href="https://eur-lex.europa.eu/eli/reg_del/2025/1190/oj" rel="noopener">eur-lex.europa.eu</a>, abgerufen am 1. Oktober 2026.</li>
+                <li>Bundesanstalt für Finanzdienstleistungsaufsicht, Testen der digitalen operationalen Resilienz und TLPT, <a href="https://www.bafin.de/DE/unternehmen-maerkte/aufsicht/alle-unternehmen/it-cybersicherheit/testen-info-krisenuebungen/tlpt/tlpt_node.html" rel="noopener">bafin.de</a>, abgerufen am 1. Oktober 2026.</li>
+                <li>Bundesanstalt für Finanzdienstleistungsaufsicht, DORA kommt: Änderungen bei den aufsichtlichen Anforderungen an die IT, Meldung vom 9. Januar 2025, <a href="https://www.bafin.de/SharedDocs/Veroeffentlichungen/DE/Meldung/2025/meldung_2025_01_09_DORA.html" rel="noopener">bafin.de</a>, abgerufen am 1. Oktober 2026.</li>
+            </ol>
+            <p class="ws-note">Diese Seite erläutert die Rechtslage aus Sicht eines Anbieters technischer Sicherheitsprüfungen und ersetzt keine Rechtsberatung. Angaben zu anderen Anbietern beruhen auf deren öffentlichen Unternehmensinformationen.</p>
+        </div>
+    </div>
+</section>
+
+<section class="ws-cta">
+    <p>Welche Systeme kritischer Funktionen heute ungetestet sind und wie der jährliche Nachweis nach Art. 24 aus einem laufenden Test entsteht, zeigt ein Erstgespräch: 30 Minuten.</p>
+    <a href="{{ site.contact.bookDemo }}">Erstgespräch vereinbaren</a>
+</section>
+{% endblock %}

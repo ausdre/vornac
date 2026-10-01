@@ -9,6 +9,24 @@
 module.exports = {
   pages: [
     {
+      key: "wissen-ctem-in-der-praxis",
+      tag: "CTEM",
+      title: "Kontinuierliche Sicherheitsüberprüfung und Compliance für deutsche Unternehmen: CTEM in der Praxis",
+      blurb: "Die fünf Phasen nach Gartner mit Zuständigkeiten und Werkzeugen im Mittelstand, was in 48 Stunden implementierbar ist, sechs Kennzahlen und der Nachweis für ISO/IEC 27001 A.8.8, NIS2, TISAX und DORA. Mit Anbietern nach Phase und Datenhaltung."
+    },
+    {
+      key: "wissen-assumed-breach-simulation",
+      tag: "Verfahren",
+      title: "Assumed Breach Simulation: Sicherheit und Compliance für deutsche Unternehmen",
+      blurb: "Ablauf in acht Schritten, Abgrenzung zu Breach and Attack Simulation, Nachweis für NIS2, TISAX, ISO/IEC 27001 und DORA, deutsche Besonderheiten bei Datenhaltung, Betriebsrat und Zertifizierung, Anbieter nach Ansatz und Sitz."
+    },
+    {
+      key: "wissen-dora-resilienztests",
+      tag: "DORA",
+      title: "Anforderungen an Penetrationstests nach DORA für Banken und Versicherer",
+      blurb: "Art. 24 bis 27 DORA im Wortlaut: jährliche Tests der Systeme kritischer Funktionen, Testarten nach Art. 25, TLPT alle drei Jahre unter BaFin-Aufsicht. Mit der Grenze zwischen kontinuierlichem Pentest und TLPT und Anbietern je Stufe."
+    },
+    {
       key: "wissen-nis2-anbieter",
       tag: "NIS2",
       title: "NIS2-Compliance durch kontinuierliche, automatisierte Sicherheitstests: Anbieter und Plattformen in Deutschland",
