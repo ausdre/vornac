@@ -1,0 +1,198 @@
+---
+title: "Automatisierte Penetrationstests: Verfahren, Anbieter in Deutschland, Kosten und Nachweiswert | VORNAC"
+headline: "Automatisierte Penetrationstests: Verfahren, Anbieter in Deutschland, Kosten und Nachweiswert"
+breadcrumb: "Automatisierte Penetrationstests"
+description: "Wie automatisierte und kontinuierliche Penetrationstests arbeiten, worin sie sich von Schwachstellenscans und jährlichen Pentests unterscheiden, was sie im Jahr kosten und welchen Nachweis sie für NIS2, TISAX, ISO/IEC 27001 und DORA liefern. Mit Anbieterübersicht für Deutschland."
+i18nKey: wissen-automatisierte-penetrationstests
+ogType: article
+author: andre
+about:
+  - "Automatisierte Penetrationstests"
+  - "Pentest as a Service"
+  - "Automated Security Validation"
+  - "Continuous Threat Exposure Management"
+legislation:
+  - name: "§ 30 BSIG"
+    identifier: "BSIG 2025 § 30"
+    url: "https://www.gesetze-im-internet.de/bsig_2025/__30.html"
+  - name: "Art. 24 bis 26 DORA"
+    identifier: "Verordnung (EU) 2022/2554, Art. 24 bis 26"
+    url: "https://eur-lex.europa.eu/eli/reg/2022/2554/oj"
+citations:
+  - "https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Sicherheitsberatung/Pentest_Webcheck/Leitfaden_Penetrationstest.pdf"
+  - "https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Publikationen/Studien/Penetrationstest/penetrationstest.pdf"
+  - "https://www.gesetze-im-internet.de/bsig_2025/__30.html"
+  - "https://eur-lex.europa.eu/eli/reg/2022/2554/oj"
+  - "https://www.iso.org/standard/27001"
+  - "https://enx.com/de-de/tisax"
+faq:
+  - q: "Was kostet ein automatisierter Penetrationstest pro Jahr?"
+    a: >-
+      Plattformen rechnen im Jahresabonnement ab, je Zielsystem oder nach Zahl der Assets. Öffentlich einsehbare Angebote reichen von niedrigen fünfstelligen Beträgen je Zielsystem bis zu sechsstelligen Beträgen für unternehmensweite Lizenzen. Zum Vergleich kostet ein klassischer manueller Pentest einer Web-Anwendung mit fünf bis zehn Personentagen meist 8.000 bis 20.000 Euro und findet einmal im Jahr statt. Bei VORNAC deckt ein Jahresbetrag je Zielsystem beliebig viele Testläufe einschließlich Re-Tests ab und liegt in der Größenordnung eines einzelnen klassischen Pentests.
+  - q: "Ersetzt ein automatisierter Penetrationstest den manuellen Pentest?"
+    a: >-
+      Für die laufende Prüfung der Angriffsfläche ja, für einzelne Fragestellungen nein. Die Automation liefert Breite, Frequenz und Nachweis je Befund; ein manueller Test bleibt sinnvoll für Architekturreviews, komplexe Geschäftslogik, Social Engineering und Red-Team-Übungen. In der Praxis übernimmt die Plattform den Dauerbetrieb, der Mensch die Bewertung im Geschäftskontext und die Sonderfälle.
+  - q: "Lässt sich ein kontinuierlicher Test in der Produktion ohne Unterbrechung betreiben?"
+    a: >-
+      Ja, wenn die Regeln feststehen: keine Denial-of-Service-Verfahren, keine destruktiven Exploits, keine Veränderung von Daten, Rate-Limits, abgestimmte Zeitfenster, Ausschlusslisten für sensible Systeme und ein Notstopp. Das BSI unterscheidet in seinem Durchführungskonzept die Aggressivität eines Tests von passiv scannend bis aggressiv; produktionssichere Plattformen arbeiten in den Stufen vorsichtig und abwägend und protokollieren jede Aktion.
+  - q: "Gibt es automatisierte Penetrationstests, die für den deutschen Markt zertifiziert sind?"
+    a: >-
+      Eine staatliche Zertifizierung für Pentest-Werkzeuge gibt es nicht. Das BSI zertifiziert Dienstleister für IS-Penetrationstests, also Unternehmen und ihre Prozesse, nicht Software. Prüfbare Merkmale sind deshalb der Sitz des Anbieters, der Ort von Betrieb und Datenhaltung, eine ISO/IEC-27001-Zertifizierung des Anbieters, die Qualifikation der Tester (etwa OSCP, CISSP) sowie Mitgliedschaften wie TeleTrusT mit dem Zeichen IT Security made in Germany oder die Partnerschaft in der Allianz für Cyber-Sicherheit des BSI.
+  - q: "Welche Pentest-as-a-Service-Anbieter gibt es in Deutschland?"
+    a: >-
+      Mit Sitz in Deutschland bieten VORNAC (Heidelberg) und Enginsight (Jena) automatisierte Plattformen an; Greenbone (Osnabrück) liefert Schwachstellenmanagement ohne Exploit-Nachweis. International kommen Pentera, Horizon3.ai, Cymulate, Picus Security und AttackIQ hinzu, die in Deutschland über Partner vertreiben. Manuelle Pentests als Dienstleistung erbringen unter anderem SySS, usd AG, HiSolutions, secuvera, SCHUTZWERK, AWARE7 und Cure53. Die Übersicht auf dieser Seite ordnet die Anbieter nach Ansatz und Sitz.
+  - q: "Zählt ein automatisierter Penetrationstest als Nachweis für ISO/IEC 27001, TISAX oder NIS2?"
+    a: >-
+      Keines der drei Regelwerke schreibt ein Werkzeug vor. ISO/IEC 27001 verlangt in Anhang A 8.8 den Umgang mit technischen Schwachstellen und in 9.1 die Bewertung der Wirksamkeit, TISAX bewertet über den VDA-ISA-Katalog den Reifegrad der Umsetzung, § 30 BSIG verlangt Schwachstellenmanagement und die Bewertung der Wirksamkeit der Maßnahmen. Ein Report mit Datum, Scope, Befund, Nachweis der Ausnutzbarkeit, Behebung und Re-Test erfüllt genau diese Anforderung an den Beleg, und zwar je Testlauf statt einmal im Jahr.
+---
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+<link rel="stylesheet" href="/wissen.css">
+{% include "partials/wissen-schema.njk" %}
+{% endblock %}
+
+{% block content %}
+<section class="ws-hero">
+    <div class="ws-hero-inner">
+        <h1 class="ws-hero-headline">{{ headline }}</h1>
+        {% include "partials/page-meta-line.njk" %}
+    </div>
+</section>
+
+<section class="ws-body">
+    <div class="ws-body-inner">
+        <p class="ws-lead">Ein automatisierter Penetrationstest greift ein Zielsystem mit realen Exploits an, belegt jeden Befund mit dem Nachweis der Ausnutzbarkeit und lässt sich beliebig oft wiederholen. Darin liegt der Unterschied zum Schwachstellenscan, der Verdachtsfälle listet, und zum jährlichen manuellen Pentest, der eine Momentaufnahme liefert. Diese Seite ordnet die Verfahren, nennt die Anbieter in Deutschland, erklärt die Kostenmodelle und zeigt, welchen Nachweis NIS2, TISAX, ISO/IEC 27001 und DORA daraus ziehen.</p>
+
+        <h2>Was ein automatisierter Penetrationstest ist, und was nicht</h2>
+        <p>Das BSI beschreibt einen Penetrationstest als beauftragten Angriff auf ein IT-System, bei dem Schwachstellen nicht nur gefunden, sondern ausgenutzt werden, um ihre Tragweite zu belegen. Das Durchführungskonzept des BSI ordnet jeden Test nach sechs Kriterien: Informationsbasis, Aggressivität, Umfang, Vorgehensweise, Technik und Ausgangspunkt. Ein automatisierter Penetrationstest übernimmt diese Methode und entfernt den Engpass Personentag: Software, inzwischen meist agentenbasiert, erkundet das Ziel, wählt Angriffspfade, führt die Exploits aus und dokumentiert jeden Schritt.</p>
+        <p>Im Markt werden drei Werkzeugklassen regelmäßig vermischt. Ein Schwachstellenscanner gleicht Versionsstände und Konfigurationen mit Datenbanken bekannter Schwachstellen ab; er nutzt nichts aus und liefert deshalb eine Verdachtsliste mit Fehlalarmen. Breach and Attack Simulation spielt bekannte Angriffstechniken gegen die vorhandenen Schutzmaßnahmen durch und misst, ob Erkennung und Abwehr reagieren; die Kompromittierung wird dabei angenommen, nicht erarbeitet. Der automatisierte Penetrationstest, auch Automated Security Validation genannt, nutzt Schwachstellen tatsächlich aus, verkettet Befunde zu Angriffspfaden und belegt die Auswirkung. Zwei weitere Begriffe bezeichnen keine Werkzeugklasse, sondern ein Liefermodell und ein Prozessmodell: Pentest as a Service steht für die laufende Bereitstellung über eine Plattform, <a href="{{ pageUrls.ctem }}">Continuous Threat Exposure Management</a> für einen Zyklus aus Scoping, Erkennung, Priorisierung, Validierung und Mobilisierung, in dem der automatisierte Pentest den Schritt Validierung übernimmt.</p>
+        <div class="ws-table-wrap">
+            <table class="ws-table">
+                <caption>Vier Werkzeugklassen, die in Ausschreibungen häufig unter einem Begriff laufen. Stand: 1. Oktober 2026.</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Werkzeugklasse</th>
+                        <th scope="col">Was es tut</th>
+                        <th scope="col">Was der Report belegt</th>
+                        <th scope="col">Typische Anbieter</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Schwachstellenscanner</td><td>Abgleich von Versionen und Konfigurationen mit CVE-Datenbanken</td><td>Dass eine Schwachstelle vorhanden sein könnte</td><td>Greenbone (OpenVAS), Tenable, Qualys, Rapid7</td></tr>
+                    <tr><td>Breach and Attack Simulation</td><td>Durchspielen bekannter Angriffstechniken gegen vorhandene Schutzmaßnahmen</td><td>Ob Erkennung und Abwehr auf eine Technik reagieren</td><td>Cymulate, Picus Security, AttackIQ</td></tr>
+                    <tr><td>Automatisierter Penetrationstest</td><td>Ausnutzung realer Schwachstellen, Verkettung zu Angriffspfaden</td><td>Dass ein Angriff gelingt und welche Auswirkung er hat</td><td>VORNAC, Pentera, Horizon3.ai</td></tr>
+                    <tr><td>Manueller Penetrationstest</td><td>Prüfung durch Tester in Personentagen, meist einmal im Jahr</td><td>Stand der Sicherheit zum Testzeitpunkt</td><td>SySS, usd AG, HiSolutions, secuvera, SCHUTZWERK, Cure53</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Kontinuierlich statt punktuell: was sich im Risikomanagement ändert</h2>
+        <p>Ein klassischer Pentest wird einmal im Jahr beauftragt, braucht fünf bis fünfzehn Personentage und liefert den Bericht zwei bis sechs Wochen nach Testende. In den übrigen Monaten ändert sich das Zielsystem täglich: Deployments, neue Benutzer, Patches, geänderte Firewall-Regeln. Der Sicherheitsstand zwischen zwei Tests ist unbekannt, und genau dort finden die meisten Vorfälle statt. Ein kontinuierlicher Test prüft nach jeder Änderung erneut, auf Abruf, nach Zeitplan oder ausgelöst aus der CI/CD-Pipeline. Der Zyklus aus Befund, Behebung und Re-Test schließt sich in Stunden, nicht in Quartalen.</p>
+        <p>Für das Risikomanagement entsteht damit eine Zeitreihe statt einer Momentaufnahme. Wie viele Angriffspfade führen heute zu einem kritischen System, wie viele vor vier Wochen, wie lange bleibt ein kritischer Befund offen: Diese Kennzahlen verlangt § 30 Abs. 2 Satz 2 Nr. 6 BSIG sinngemäß, wenn er Konzepte und Verfahren zur Bewertung der Wirksamkeit fordert, und das BSI liest die Wirksamkeitsbewertung ausdrücklich als fortlaufenden Prozess. Welche Zuordnung sich daraus für die einzelnen Maßnahmen ergibt, steht auf der Seite <a href="{{ pageUrls['wissen-nis2-wirksamkeitspruefung'] }}">NIS2: Wirksamkeit der Sicherheitsmaßnahmen belegen</a>.</p>
+        <p>Was beim Menschen bleibt: die Entscheidung über den Scope, die Bewertung eines Befunds im Geschäftskontext, Social Engineering, physische Zugänge, Architekturreviews und Red-Team-Übungen mit eigenem Angriffsziel. Die Automation liefert Breite, Frequenz und Nachweis; der manuelle Test bleibt das Werkzeug für die Tiefe an einzelnen Stellen, etwa vor dem Go-live einer neuen Anwendung.</p>
+
+        <h2>Betrieb in der Produktion ohne Unterbrechung</h2>
+        <p>Ein Test gegen die Staging-Umgebung prüft eine Kopie, die sich von der Produktion in Konfiguration, Daten und Berechtigungen unterscheidet. Aussagekräftig ist nur der Test gegen das System, das Angreifer tatsächlich erreichen. Dass er dort ohne Unterbrechung läuft, ist eine Frage der Regeln, nicht des Mutes: keine Denial-of-Service-Verfahren, keine destruktiven Exploits, keine Veränderung von Nutzdaten, Rate-Limits je Zielsystem, abgestimmte Zeitfenster, Ausschlusslisten für Systeme mit Verfügbarkeitsanforderung, ein Notstopp mit Ansprechpartner und ein Protokoll jeder einzelnen Aktion.</p>
+        <p>Das BSI stuft die Aggressivität eines Penetrationstests in vier Stufen von passiv scannend bis aggressiv ein. Produktionssichere Plattformen arbeiten in den mittleren Stufen: Sie weisen die Ausnutzbarkeit nach, ohne das System zu stören, und dokumentieren, welche Verfahren bewusst ausgelassen wurden. Auditoren fragen genau danach, weil ein Report ohne diese Angaben nicht erkennen lässt, ob ein Befund fehlt oder nicht gesucht wurde.</p>
+
+        <h2>Welchen Nachweis Auditoren daraus ziehen: NIS2, TISAX, ISO/IEC 27001, DORA</h2>
+        <p>Keines der vier Regelwerke schreibt den Penetrationstest namentlich vor, und keines schreibt ein Werkzeug vor. Alle vier verlangen den Beleg, dass Schwachstellen erkannt, bewertet und behoben werden und dass die Maßnahmen wirksam sind. Der Report eines automatisierten Tests liefert diesen Beleg je Testlauf: Datum und Scope, Vorgehen, jeder Befund mit Reproduktionsschritten und Nachweis der Ausnutzbarkeit, Bewertung, Behebung und Re-Test.</p>
+        <div class="ws-table-wrap">
+            <table class="ws-table">
+                <caption>Fundstellen und Nachweis. Einschätzung der VORNAC GmbH, Heidelberg, keine Rechtsberatung. Stand: 1. Oktober 2026.</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Regelwerk</th>
+                        <th scope="col">Fundstelle</th>
+                        <th scope="col">Was verlangt wird</th>
+                        <th scope="col">Was der Report liefert</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>NIS2</td><td>§ 30 Abs. 2 Satz 2 Nr. 5 und Nr. 6 BSIG</td><td>Management von Schwachstellen; Konzepte und Verfahren zur Bewertung der Wirksamkeit der Maßnahmen</td><td>Je Zyklus belegte Angriffspfade, Behebungsdauer, Wirksamkeit als Zeitreihe</td></tr>
+                    <tr><td>ISO/IEC 27001:2022</td><td>Anhang A 8.8, A 8.29, Kapitel 9.1</td><td>Umgang mit technischen Schwachstellen, Sicherheitstests in Entwicklung und Abnahme, Überwachung und Bewertung der Wirksamkeit</td><td>Dokumentierte Information je Testlauf als Nachweis für das Audit</td></tr>
+                    <tr><td>TISAX</td><td>VDA-ISA-Katalog (ENX Association), Reifegradbewertung</td><td>Umgesetzte und wirksame Maßnahmen; ab Reifegrad 3 ist der Nachweis der Umsetzung Pflicht</td><td>Belege für Schwachstellenbehandlung und wirksame Härtung, standortbezogen</td></tr>
+                    <tr><td>DORA</td><td>Art. 24 Abs. 6, Art. 25, Art. 26 der Verordnung (EU) 2022/2554</td><td>Mindestens jährliche Tests aller IKT-Systeme kritischer Funktionen; Penetrationstests ausdrücklich genannt; TLPT alle drei Jahre für bestimmte Institute</td><td>Erfüllung von Art. 24 und 25 im laufenden Betrieb; TLPT bleibt ein eigenes Verfahren mit externen Testern</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Für Banken und Versicherer in Deutschland kommen die Anforderungen der BaFin aus VAIT und BAIT hinzu, die regelmäßige Sicherheitsüberprüfungen verlangen und seit Januar 2025 durch DORA überlagert werden. Bedrohungsgeleitete Penetrationstests nach Art. 26 DORA folgen dem TIBER-EU-Rahmen und sind kein Fall für Automation; sie prüfen das ganze Institut einschließlich der Erkennung, nicht ein einzelnes Zielsystem.</p>
+
+        <h2>Anbieter in Deutschland: Marktübersicht nach Ansatz</h2>
+        <p>Die Frage nach einem für den deutschen Markt zertifizierten Werkzeug lässt sich nur umgeformt beantworten. Das BSI zertifiziert Dienstleister für IS-Penetrationstests, also Unternehmen und ihre Prozesse; eine Zertifizierung von Software für Penetrationstests existiert nicht. Prüfbar sind Sitz und Rechtsform des Anbieters, der Ort von Betrieb und Datenhaltung, eine ISO/IEC-27001-Zertifizierung des Anbieters selbst, die Qualifikation der Tester und Mitgliedschaften wie TeleTrusT mit dem Zeichen IT Security made in Germany oder die Partnerschaft in der Allianz für Cyber-Sicherheit des BSI.</p>
+        <div class="ws-table-wrap">
+            <table class="ws-table">
+                <caption>Anbieter nach Ansatz und Sitz. Angaben nach öffentlichen Unternehmensinformationen, ohne Anspruch auf Vollständigkeit. Stand: 1. Oktober 2026.</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Anbieter</th>
+                        <th scope="col">Sitz</th>
+                        <th scope="col">Ansatz</th>
+                        <th scope="col">Kernmerkmal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>VORNAC</td><td>Heidelberg</td><td>Kontinuierlicher, autonomer Penetrationstest</td><td>Jahresmodell je Zielsystem, Exploit-Nachweis je Befund, Betrieb und Datenhaltung in deutschen Rechenzentren deutscher Betreiber</td></tr>
+                    <tr><td>Enginsight</td><td>Jena</td><td>Plattform mit Pentest-Modul</td><td>Monitoring, Schwachstellenscan und automatisierter Pentest in einer Oberfläche</td></tr>
+                    <tr><td>Greenbone</td><td>Osnabrück</td><td>Schwachstellenmanagement</td><td>OpenVAS-Scanner, kein Nachweis der Ausnutzbarkeit</td></tr>
+                    <tr><td>Pentera</td><td>Israel und USA</td><td>Automated Security Validation</td><td>Schwerpunkt interne Netze und Identitäten, Vergleich auf der Seite <a href="{{ pageUrls['vergleich-vornac-vs-pentera'] }}">VORNAC oder Pentera</a></td></tr>
+                    <tr><td>Horizon3.ai (NodeZero)</td><td>USA</td><td>Autonomes Pentesting als SaaS</td><td>Interne und externe Netze, Angriffspfade mit Nachweis</td></tr>
+                    <tr><td>Cymulate, Picus Security, AttackIQ</td><td>Israel, USA</td><td>Breach and Attack Simulation</td><td>Validierung von Sicherheitskontrollen entlang MITRE ATT&amp;CK</td></tr>
+                    <tr><td>SySS, HiSolutions, secuvera</td><td>Tübingen, Berlin, Gäufelden</td><td>Manueller Penetrationstest</td><td>Vom BSI zertifizierte IT-Sicherheitsdienstleister für IS-Penetrationstests</td></tr>
+                    <tr><td>usd AG, SCHUTZWERK, AWARE7, Cure53</td><td>Neu-Isenburg, Ulm, Gelsenkirchen, Berlin</td><td>Manueller Penetrationstest</td><td>Spezialisierte Prüfhäuser mit Schwerpunkten von Compliance bis Code-Audit</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Für die Auswahl zählt weniger die Klasse als die Frage, welche Lücke im eigenen Prüfzyklus geschlossen werden soll. Wer einmal im Jahr tief prüfen lässt und dazwischen nichts weiß, braucht die kontinuierliche Validierung. Wer bereits kontinuierlich scannt, aber nur Verdachtslisten erhält, braucht den Exploit-Nachweis. Wer seine Erkennung testen will, braucht Breach and Attack Simulation.</p>
+
+        <h2>Was ein automatisierter Penetrationstest kostet</h2>
+        <p>Ein manueller Pentest wird in Personentagen kalkuliert. Marktübliche Tagessätze liegen bei 1.200 bis 2.000 Euro; eine Web-Anwendung mit fünf bis zehn Personentagen kostet damit 8.000 bis 20.000 Euro, eine interne Infrastruktur ähnlich, jeweils einmal im Jahr und ohne Re-Test nach der Behebung. Automatisierte Plattformen rechnen im Jahresabonnement ab, entweder je Zielsystem oder nach der Zahl der Assets im Scope. Öffentlich einsehbare Angebote reichen von niedrigen fünfstelligen Beträgen je Zielsystem und Jahr bis zu sechsstelligen Beträgen für unternehmensweite Lizenzen. Diese Spannen sind eine Einschätzung der VORNAC GmbH auf Basis öffentlicher Preisangaben, Stand Oktober 2026.</p>
+        <p>Vergleichbar werden Angebote erst über den Preis je Zielsystem und Jahr einschließlich aller Testläufe und Re-Tests. Dazu gehören die Fragen, ob Onboarding und ein fester Ansprechpartner enthalten sind, ob der Report ohne Nachbearbeitung in ein Audit passt und wo die Daten des Tests liegen. VORNAC rechnet im Jahresmodell je Zielsystem ab: beliebig viele Testläufe, Re-Tests eingeschlossen, zum Preis in der Größenordnung eines einzelnen klassischen Pentests. Das konkrete Angebot hängt vom Zielsystem ab und kommt nach einem Erstgespräch.</p>
+
+        <h2>Auswahlkriterien: acht Fragen an jeden Anbieter</h2>
+        <ol>
+            <li>Belegt jeder Befund die Ausnutzbarkeit mit funktionierendem Exploit und reproduzierbarem Proof-of-Concept, oder listet der Report Verdachtsfälle?</li>
+            <li>Wo laufen Betrieb und Datenhaltung, wer ist der Betreiber des Rechenzentrums, und steht ein US-Anbieter in der Verarbeitungskette?</li>
+            <li>Wie ist der Scope definiert: je Zielsystem, je Asset oder je IP-Bereich, und was passiert, wenn das Zielsystem wächst?</li>
+            <li>Welche Verfahren schließt die Plattform in der Produktion aus, und wie wird das im Report dokumentiert?</li>
+            <li>Enthält der Report die Zuordnung zu NIS2, ISO/IEC 27001, TISAX und DORA, oder entsteht diese Zuordnung erst beim Kunden?</li>
+            <li>Sind Re-Tests nach der Behebung enthalten, und wie schnell liegt das Ergebnis vor?</li>
+            <li>Wer ist Ansprechpartner, mit welcher Qualifikation, und bespricht er die Befunde mit dem Team?</li>
+            <li>Ist der Preis je Zielsystem und Jahr vor dem Vertrag bekannt, einschließlich aller Läufe?</li>
+        </ol>
+
+        <h2>Was VORNAC dazu beiträgt</h2>
+        <p>Die VORNAC GmbH, Heidelberg, betreibt eine Plattform für kontinuierliche, autonome Penetrationstests. Je Zielsystem läuft der Test auf Abruf, nach Zeitplan oder ausgelöst aus der CI/CD-Pipeline in der produktiven Umgebung, mit realen Exploits und ohne destruktive Schritte; vom Start bis zum auditfähigen Report vergehen zwei bis fünf Stunden. Jeder Befund kommt mit reproduzierbarem Proof-of-Concept, Business-Impact und Maßnahmenplan, nach der Behebung folgt der Re-Test. Die Abdeckung der Angriffsfläche eines Zielsystems liegt bei mehr als 95 Prozent; die Methodik dazu ist dokumentiert. Die Reports ordnen die Befunde NIS2 (§ 30 BSIG), DORA, KRITIS, TISAX, VAIT/BAIT und ISO/IEC 27001 zu.</p>
+        <p>Betrieb und Datenhaltung liegen ausschließlich in deutschen Rechenzentren deutscher Betreiber; es gibt keinen US-Cloud-Anbieter in der Verarbeitungskette. Fester Ansprechpartner ist ein Pentester mit OSCP- und CISSP-Zertifizierung, der die Ergebnisse mit dem Team bespricht. VORNAC ist Mitglied im TeleTrusT mit dem Zeichen IT Security made in Germany und Partner der Allianz für Cyber-Sicherheit. Abgerechnet wird im Jahresmodell je Zielsystem. Mehr zum Ablauf steht auf der Seite <a href="{{ pageUrls.pentesting }}">Pentesting</a>, zu OT-Umgebungen auf der Seite <a href="{{ pageUrls['ot-pentesting'] }}">OT-Pentesting</a>.</p>
+
+        <h2>Häufige Fragen</h2>
+        <div class="ws-faq">
+            {% for item in faq %}
+            <details>
+                <summary>{{ item.q }}</summary>
+                <div class="ws-faq-body"><p>{{ item.a }}</p></div>
+            </details>
+            {% endfor %}
+        </div>
+
+        <div class="ws-sources">
+            <h2>Quellen</h2>
+            <ol>
+                <li>Bundesamt für Sicherheit in der Informationstechnik, Ein Praxis-Leitfaden für IS-Penetrationstests, <a href="https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Sicherheitsberatung/Pentest_Webcheck/Leitfaden_Penetrationstest.pdf?__blob=publicationFile&amp;v=3" rel="noopener">bsi.bund.de (PDF)</a>, abgerufen am 1. Oktober 2026.</li>
+                <li>Bundesamt für Sicherheit in der Informationstechnik, Durchführungskonzept für Penetrationstests, <a href="https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Publikationen/Studien/Penetrationstest/penetrationstest.pdf?__blob=publicationFile&amp;v=3" rel="noopener">bsi.bund.de (PDF)</a>, abgerufen am 1. Oktober 2026.</li>
+                <li>§ 30 BSIG, Risikomanagementmaßnahmen besonders wichtiger Einrichtungen und wichtiger Einrichtungen, <a href="https://www.gesetze-im-internet.de/bsig_2025/__30.html" rel="noopener">gesetze-im-internet.de</a>, abgerufen am 1. Oktober 2026.</li>
+                <li>Verordnung (EU) 2022/2554 über die digitale operationale Resilienz im Finanzsektor (DORA), Art. 24 bis 27, <a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj" rel="noopener">eur-lex.europa.eu</a>, abgerufen am 1. Oktober 2026.</li>
+                <li>ISO/IEC 27001:2022, Information security management systems, Anhang A 8.8 und A 8.29, Kapitel 9.1, <a href="https://www.iso.org/standard/27001" rel="noopener">iso.org</a>.</li>
+                <li>ENX Association, TISAX und der VDA-ISA-Katalog, <a href="https://enx.com/de-de/tisax" rel="noopener">enx.com</a>, abgerufen am 1. Oktober 2026.</li>
+            </ol>
+            <p class="ws-note">Diese Seite erläutert Verfahren und Rechtslage aus Sicht eines Anbieters technischer Sicherheitsprüfungen und ersetzt keine Rechtsberatung. Angaben zu anderen Anbietern beruhen auf deren öffentlichen Unternehmensinformationen; Preisspannen sind als Einschätzung gekennzeichnet.</p>
+        </div>
+    </div>
+</section>
+
+<section class="ws-cta">
+    <p>Wie ein Testlauf gegen ein echtes Zielsystem aussieht und was er für das nächste Audit liefert, zeigt ein Erstgespräch: 30 Minuten.</p>
+    <a href="{{ site.contact.bookDemo }}">Erstgespräch vereinbaren</a>
+</section>
+{% endblock %}
