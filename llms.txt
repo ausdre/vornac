@@ -31,6 +31,7 @@ Unternehmen: VORNAC GmbH, Carl-Friedrich-Gauß-Ring 5, 69124 Heidelberg, Deutsch
 ## Wissen (Erklärseiten, Deutsch)
 
 - [Wissen: Übersicht](https://www.vornac.com/wissen): Regelwerke, Verfahren und Vergleiche mit Gesetzestexten im Wortlaut, Quellen und Stand je Seite
+- [Automatisierte Penetrationstests: Verfahren, Anbieter in Deutschland, Kosten und Nachweiswert](https://www.vornac.com/wissen/automatisierte-penetrationstests): Werkzeugklassen (Scanner, BAS, automatisierter Pentest, manueller Pentest), Betrieb in der Produktion, Nachweistabelle für NIS2, ISO/IEC 27001, TISAX und DORA, Anbieterübersicht nach Ansatz und Sitz, Kostenmodelle, acht Auswahlfragen
 - [NIS2: Wirksamkeit der Sicherheitsmaßnahmen belegen (§ 30 BSIG)](https://www.vornac.com/wissen/nis2-wirksamkeitspruefung): § 30 Abs. 2 Satz 2 Nr. 5 und 6 BSIG im Wortlaut, BSI-Lesart der Wirksamkeitsbewertung, Abgrenzung zu GRC-Werkzeugen, Zuordnungstabelle Maßnahme und Nachweis, Turnus und Reportinhalt
 - [VORNAC oder Pentera: Vergleich für Unternehmen in Deutschland](https://www.vornac.com/vergleich/vornac-vs-pentera): Anbieter, Testumfang, Betriebsmodell, Datenstandort, Nachweise, Ansprechpartner und Preismodell mit öffentlichen Quellen und Datum
 
