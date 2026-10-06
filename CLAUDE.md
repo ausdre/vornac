@@ -7,6 +7,7 @@
 - Spec mit Befund und Plänen: `docs/superpowers/specs/2026-09-05-ki-sichtbarkeit-design.md`
 - Umsetzungsplan mit Aufgaben, Kennungen (Peec, Vercel) und Messpunkten: `docs/superpowers/plans/2026-09-05-ki-sichtbarkeit.md`
 - Stand: Task 1 (Ablauf A) ist seit 2026-09-06 in Production (PR #74). Task 3 ist seit 2026-09-09 komplett (Stand-Zeile plus Autor auf allen Inhaltsseiten). Aus Task 6 stehen `/wissen`, `/wissen/nis2-wirksamkeitspruefung` und `/vergleich/vornac-vs-pentera` (2026-09-09). Entscheidungen vom 2026-09-09: kein öffentlicher Preis (kein `/preise`, Offer ohne Preis), x-default auf die deutsche Root, BSI-Zertifizierung ist beschlossen, aber nicht erteilt: nirgends "zertifiziert" schreiben. Offen sind Step 7 (Search Console, Bing, Ads, GA4, Plausible, Leadfeeder), der Rest von Task 2 und 6 sowie Task 4, 5, 7, 8. Aufgaben in der Reihenfolge des Plans abarbeiten, Checkboxen dort pflegen.
+- Alternative-Seiten (Landingpages für die Wettbewerber-Ads, Pentera, Horizon3, Cymulate, Picus, XBOW, Fleuret): Plan mit Seitenaufbau, UWG-Checkliste und Steckbriefen in `docs/superpowers/plans/2026-10-06-alternative-seiten.md`; die fünf Entscheidungen dort fallen vor Task 1.
 - Vercel-Hinweis: Redirect-Regeln mit `source: "/:path*"` und Host-Bedingung greifen nicht für die nackte Root `/`; die Root braucht eine eigene Regel je Host (siehe `vercel.json`).
 
 ## URL- und Sprachschema (ab Branch `feat/de-root`)
