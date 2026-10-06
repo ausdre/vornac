@@ -12,7 +12,7 @@
 
 ## Entscheidungen, die vor Task 1 fallen müssen
 
-Vorschlag jeweils zuerst, die Alternative dahinter. Solange nichts anderes entschieden ist, wird der Vorschlag umgesetzt.
+Entschieden von André am 2026-10-06: Nr. 1 bis 4 jeweils der Vorschlag (URL-Schema `<name>-alternative` mit Umzug der Pentera-Seite, kein öffentlicher Preis, Hub `/vergleich`, Reihenfolge Pentera, Horizon3, Cymulate, Picus, XBOW, Fleuret). Nr. 5 bleibt beim Vorschlag, solange nichts anderes gesagt wird.
 
 | Nr. | Frage | Vorschlag | Alternative |
 | --- | --- | --- | --- |
