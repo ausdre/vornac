@@ -103,9 +103,13 @@
     "created": "2026-07-31",
     "modified": "2026-09-14"
   },
+  "/de/vergleich": {
+    "created": "2026-09-09",
+    "modified": "2026-10-09"
+  },
   "/de/vergleich/pentera-alternative": {
     "created": "2026-09-09",
-    "modified": "2026-09-15"
+    "modified": "2026-10-09"
   },
   "/de/wissen": {
     "created": "2026-09-09",
@@ -113,11 +117,11 @@
   },
   "/de/wissen/assumed-breach-simulation": {
     "created": "2026-10-01",
-    "modified": "2026-10-01"
+    "modified": "2026-10-09"
   },
   "/de/wissen/automatisierte-penetrationstests": {
     "created": "2026-10-01",
-    "modified": "2026-10-01"
+    "modified": "2026-10-09"
   },
   "/de/wissen/ctem-in-der-praxis": {
     "created": "2026-10-01",
@@ -129,7 +133,7 @@
   },
   "/de/wissen/nis2-anbieter": {
     "created": "2026-10-01",
-    "modified": "2026-10-01"
+    "modified": "2026-10-09"
   },
   "/de/wissen/nis2-wirksamkeitspruefung": {
     "created": "2026-09-09",
@@ -201,7 +205,7 @@
   },
   "/sitemap": {
     "created": "2026-05-27",
-    "modified": "2026-09-11"
+    "modified": "2026-10-09"
   },
   "/thank-you": {
     "created": "2026-07-31",
