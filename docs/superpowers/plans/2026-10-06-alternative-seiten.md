@@ -163,4 +163,6 @@ Die Angaben zu Wettbewerbern veralten. Jedes Quartal: Quellen neu abrufen, Abruf
 
 ## Stand 2026-10-09
 
+Ergänzung (Entscheidung André, 2026-10-09): Jede Seite sagt, dass VORNAC günstiger ist als der jeweilige Wettbewerber, mit dem Angebot nach dem Erstgespräch als Beleg (Preislogik-Zelle, FAQ, Abschnitt "Wann VORNAC passt"); ein Betrag bleibt unveröffentlicht. VORNAC-Reports sind auf Deutsch, das steht in der Nachweisformat-Zelle jeder Seite.
+
 Alle sechs Seiten, der Hub `/vergleich`, Navigation, Footer, Teaser-Filter und Querverweise sind im PR ausdre/vornac#85 umgesetzt (Build 160 Dateien, Sitemap 155 URLs, jede Seite von mindestens drei Seiten außerhalb von `/vergleich/` verlinkt, Pentera-Seite von mindestens sieben). Quellen je Seite mit Abrufdatum 9. Oktober 2026. Offen: Task 8 (finale URLs in Google Ads, Search Console, Peec-Messung nach vier Wochen) und die Quartalspflege.
