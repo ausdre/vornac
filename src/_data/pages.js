@@ -27,6 +27,7 @@ const STATIC_PAGES = [
   { key: "research",                           en: `${EN}/research`,                           de: "/research" },
   { key: "glossary",                           en: `${EN}/glossary`,                           de: "/glossary" },
   { key: "about",                              en: `${EN}/about`,                              de: "/about" },
+  { key: "press",                              en: `${EN}/press`,                              de: "/presse" },
   { key: "customers",                          en: `${EN}/customers`,                          de: "/customers" },
   { key: "apply",                              en: `${EN}/apply`,                              de: "/apply" },
   { key: "industries",                         en: `${EN}/industries`,                         de: "/industries" },

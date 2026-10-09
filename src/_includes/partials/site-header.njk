@@ -37,7 +37,7 @@
    own aria-current on the matching dropdown link. #}
 {% macro dropTrigger(linkKey, label) %}
   {% set isExact = (i18nKey == linkKey) %}
-  {% set isChild = (linkKey == 'research' and i18nKey and 'research' in i18nKey and not isExact) or (linkKey == 'industries' and i18nKey and 'industries' in i18nKey and not isExact) %}
+  {% set isChild = (linkKey == 'research' and i18nKey and 'research' in i18nKey and not isExact) or (linkKey == 'industries' and i18nKey and 'industries' in i18nKey and not isExact) or (linkKey == 'about' and i18nKey == 'press') %}
   {% set isActive = isExact or isChild %}
   <a href="{{ pageUrls[linkKey] }}" class="v-dv-link v-dv-drop-trigger{% if isActive %} is-active{% endif %}"{% if isExact %} aria-current="page"{% endif %}>
     {{ label }}
@@ -152,6 +152,7 @@
                     <ul class="v-dv-drop-list">
                         <li><a href="{{ pageUrls.about }}#{{ t.aboutAnchors.company }}" class="v-dv-drop-link"><span class="v-dv-drop-link-label">{{ t.nav.company }}</span></a></li>
                         <li><a href="{{ pageUrls.about }}#{{ t.aboutAnchors.careers }}" class="v-dv-drop-link"><span class="v-dv-drop-link-label">{{ t.nav.careers }}</span></a></li>
+                        <li><a href="{{ pageUrls.press }}" class="v-dv-drop-link{% if i18nKey == 'press' %} is-active{% endif %}"{% if i18nKey == 'press' %} aria-current="page"{% endif %}><span class="v-dv-drop-link-label">{{ t.nav.press }}</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -299,6 +300,7 @@
                 <ul class="v-dv-msubs" id="mnav-about" hidden>
                     {{ mobileSub(pageUrls.about + "#" + t.aboutAnchors.company, t.nav.company, "", false) }}
                     {{ mobileSub(pageUrls.about + "#" + t.aboutAnchors.careers, t.nav.careers, "", false) }}
+                    {{ mobileSub(pageUrls.press, t.nav.press, "", i18nKey == 'press') }}
                 </ul>
             </div>
 

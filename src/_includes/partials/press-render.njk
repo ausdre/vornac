@@ -1,0 +1,232 @@
+{# Press page body, shared by src/de/press.njk and src/press.njk.
+   Data from src/_data/press.js; strings from press.ui[locale].
+   Inputs in scope: locale, press, pageUrls, site. #}
+{% set ui = press.ui[locale] %}
+
+{#- Thumbnail tile for a linked item: outlet or award mark contained on a
+    soft tile, or a page/article image cropped to it. -#}
+{% macro thumb(item, href, cls) %}
+  {% if item.thumb %}
+    {% if href %}<a class="ps-thumb ps-thumb--{{ item.thumbKind or 'logo' }}{% if cls %} {{ cls }}{% endif %}" href="{{ href }}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">{% else %}<div class="ps-thumb ps-thumb--{{ item.thumbKind or 'logo' }}{% if cls %} {{ cls }}{% endif %}" aria-hidden="true">{% endif %}
+      <img src="{{ item.thumb }}" alt="" loading="lazy" decoding="async">
+    {% if href %}</a>{% else %}</div>{% endif %}
+  {% endif %}
+{% endmacro %}
+
+<main class="press-page">
+
+    <section class="ps-hero">
+        <div class="ps-hero-inner">
+            <h1 class="ps-hero-headline">{{ ui.h1 }}<span class="ps-period">.</span></h1>
+        </div>
+    </section>
+
+    {% if press.awards.length %}
+    <section class="ps-section" id="auszeichnungen">
+        <div class="ps-section-inner">
+            <header class="ps-head">
+                <h2 class="ps-headline">{{ ui.awardsHeading }}</h2>
+                <p class="ps-sub">{{ ui.awardsSub }}</p>
+            </header>
+            <div class="ps-awards" data-no-crosslink>
+                {% for a in press.awards %}
+                <article class="ps-award">
+                    {% if a.logo %}
+                    {% if a.url %}<a class="ps-award-logo" href="{{ a.url }}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">{% else %}<div class="ps-award-logo">{% endif %}
+                        <img src="{{ a.logo }}" alt="{{ a.logoAlt }}" loading="lazy" decoding="async">
+                    {% if a.url %}</a>{% else %}</div>{% endif %}
+                    {% else %}
+                    <div class="ps-award-logo ps-award-logo--year" aria-hidden="true"><span>{{ a.year }}</span></div>
+                    {% endif %}
+                    <div>
+                        <h3 class="ps-award-title">{% if a.url %}<a href="{{ a.url }}" target="_blank" rel="noopener">{{ a.title[locale] }}</a>{% else %}{{ a.title[locale] }}{% endif %}</h3>
+                        <p class="ps-award-by">{{ a.by[locale] }}{% if a.dateLabel[locale] %} · <time datetime="{{ a.date }}">{{ a.dateLabel[locale] }}</time>{% endif %}</p>
+                        <p class="ps-award-text">{{ a.text[locale] }}</p>
+                        {% if a.url %}<a class="ps-link" href="{{ a.url }}" target="_blank" rel="noopener">{{ a.linkLabel[locale] if a.linkLabel else ui.awardLink }}</a>{% endif %}
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if press.coverage.length %}
+    <section class="ps-section" id="pressespiegel">
+        <div class="ps-section-inner">
+            <header class="ps-head">
+                <h2 class="ps-headline">{{ ui.coverageHeading }}</h2>
+                <p class="ps-sub">{{ ui.coverageSub }}</p>
+            </header>
+            <div class="ps-list" data-no-crosslink>
+                {% for c in press.coverage %}
+                {% set href = c.url if c.url else c.pdf %}
+                <article class="ps-item">
+                    {{ thumb(c, href) }}
+                    <div class="ps-item-body">
+                        <p class="ps-item-meta ps-item-meta--top"><time datetime="{{ c.date }}">{{ c.dateLabel[locale] }}</time><span class="ps-dot" aria-hidden="true">·</span>{{ press.types[c.type][locale] }}</p>
+                        <p class="ps-item-outlet">{{ c.outlet }}</p>
+                        <h3 class="ps-item-title">{% if href %}<a href="{{ href }}" target="_blank" rel="noopener"{% if c.lang and c.lang != locale %} hreflang="{{ c.lang }}"{% endif %}>{{ c.title }}</a>{% else %}{{ c.title }}{% endif %}</h3>
+                        {% if c.summary %}<p class="ps-item-text">{{ c.summary[locale] }}</p>{% endif %}
+                        {% if c.author or c.cite or c.note or (c.pdf and c.url) %}
+                        <p class="ps-item-meta">{% if c.author %}{{ ui.by }} {{ c.author }}{% endif %}{% if c.cite %}{% if c.author %}<span class="ps-dot" aria-hidden="true">·</span>{% endif %}{{ c.cite[locale] }}{% endif %}{% if c.note %}<span class="ps-dot" aria-hidden="true">·</span>{{ c.note[locale] }}{% endif %}{% if c.pdf and c.url %}<span class="ps-dot" aria-hidden="true">·</span><a href="{{ c.pdf }}" target="_blank" rel="noopener">{{ ui.coveragePdf }}</a>{% endif %}</p>
+                        {% endif %}
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if press.publications.length %}
+    <section class="ps-section" id="veroeffentlichungen">
+        <div class="ps-section-inner">
+            <header class="ps-head">
+                <h2 class="ps-headline">{{ ui.publicationsHeading }}</h2>
+                <p class="ps-sub">{{ ui.publicationsSub }}</p>
+            </header>
+            <div class="ps-list" data-no-crosslink>
+                {% for p in press.publications %}
+                <article class="ps-item">
+                    {{ thumb(p, p.url) }}
+                    <div class="ps-item-body">
+                        <p class="ps-item-meta ps-item-meta--top"><time datetime="{{ p.date }}">{{ p.dateLabel[locale] }}</time><span class="ps-dot" aria-hidden="true">·</span>{{ press.types[p.type][locale] }}</p>
+                        <h3 class="ps-item-title"><a href="{{ p.url }}" target="_blank" rel="noopener"{% if p.lang and p.lang != locale %} hreflang="{{ p.lang }}"{% endif %}>{{ p.title }}</a></h3>
+                        <p class="ps-item-meta">{% if p.author %}{{ ui.by }} {{ p.author }}{% endif %}{% if p.note %}<span class="ps-dot" aria-hidden="true">·</span>{{ p.note[locale] }}{% endif %}</p>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <section class="ps-section" id="unternehmen">
+        <div class="ps-section-inner">
+            <header class="ps-head">
+                <h2 class="ps-headline">{{ ui.profileHeading }}</h2>
+                <p class="ps-sub">{{ ui.profileSub }}</p>
+            </header>
+            <div class="ps-profile">
+                <div>
+                    <div class="ps-boiler">
+                        <p class="ps-block-label">{{ ui.boilerLong }}</p>
+                        <p id="ps-boiler-long" data-no-crosslink>{{ press.boilerplate[locale].long }}</p>
+                        <button type="button" class="ps-copy" data-copy="ps-boiler-long" data-copied="{{ ui.copied }}">{{ ui.copy }}</button>
+                    </div>
+                    <div class="ps-boiler">
+                        <p class="ps-block-label">{{ ui.boilerShort }}</p>
+                        <p id="ps-boiler-short" data-no-crosslink>{{ press.boilerplate[locale].short }}</p>
+                        <button type="button" class="ps-copy" data-copy="ps-boiler-short" data-copied="{{ ui.copied }}">{{ ui.copy }}</button>
+                    </div>
+                </div>
+                <div>
+                    <p class="ps-block-label">{{ ui.factsHeading }}</p>
+                    <dl class="ps-facts" data-no-crosslink>
+                        {% for f in press.facts %}
+                        <dt>{{ f.label[locale] }}</dt>
+                        <dd>{{ f.value[locale] }}</dd>
+                        {% endfor %}
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ps-section" id="presse-kit">
+        <div class="ps-section-inner">
+            <header class="ps-head">
+                <h2 class="ps-headline">{{ ui.kitHeading }}</h2>
+                <p class="ps-sub">{{ ui.kitSub }}</p>
+            </header>
+            <div class="ps-kit">
+                {% for k in press.kit %}
+                <div class="ps-kit-item">
+                    <a class="ps-thumb ps-thumb--{{ 'cover' if k.preview == 'cover' or k.preview == 'photo' else 'logo' }} ps-thumb--{{ k.preview }}" href="{{ k.file }}" download tabindex="-1" aria-hidden="true">
+                        {% if k.preview == 'photo' %}
+                        <picture>{% if k.webp %}<source type="image/webp" srcset="{{ k.webp }}">{% endif %}<img src="{{ k.file }}" alt="" loading="lazy" decoding="async"></picture>
+                        {% elif k.preview == 'cover' %}
+                        <img src="{{ k.thumb }}" alt="" loading="lazy" decoding="async">
+                        {% else %}
+                        <img src="{{ k.file }}" alt="" loading="lazy" decoding="async">
+                        {% endif %}
+                    </a>
+                    <div>
+                        <p class="ps-kit-label">{{ k.label[locale] }}</p>
+                        <p class="ps-kit-meta">{{ k.format }}</p>
+                    </div>
+                    <a class="ps-link" href="{{ k.file }}" download>{{ ui.download }}</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="ps-section" id="gespraechspartner">
+        <div class="ps-section-inner">
+            <header class="ps-head">
+                <h2 class="ps-headline">{{ ui.speakersHeading }}</h2>
+                <p class="ps-sub">{{ ui.speakersSub }}</p>
+            </header>
+            <div class="ps-speakers">
+                <div class="ps-speakers-photo">
+                    <picture>
+                        <source type="image/webp" srcset="/founders-group.webp">
+                        <img src="/founders-group.jpg" alt="{{ ui.speakersPhotoAlt }}" width="800" height="800" loading="lazy" decoding="async">
+                    </picture>
+                </div>
+                <div>
+                    {% for s in press.speakers %}
+                    <div class="ps-speaker">
+                        <p class="ps-speaker-name"><a href="{{ pageUrls.about }}#{{ s.id }}">{{ s.name }}</a></p>
+                        <p class="ps-speaker-role">{{ s.role[locale] }}</p>
+                    </div>
+                    {% endfor %}
+                    <a class="ps-link" href="mailto:{{ press.contact.email }}">{{ ui.speakersMail }}</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ps-section ps-contact-section" id="pressekontakt">
+        <div class="ps-section-inner">
+            <header class="ps-head">
+                <h2 class="ps-headline">{{ ui.contactHeading }}</h2>
+                <p class="ps-sub">{{ ui.contactLead }}</p>
+            </header>
+            <div class="ps-contact">
+                <p class="ps-contact-name">{{ press.contact.name }}</p>
+                {% if press.contact.role[locale] %}<p class="ps-contact-role">{{ press.contact.role[locale] }}, VORNAC GmbH</p>{% endif %}
+                <p class="ps-contact-links">
+                    <a href="mailto:{{ press.contact.email }}">{{ press.contact.email }}</a>
+                    <a href="tel:{{ press.contact.phone | replace(' ', '') }}">{{ press.contact.phoneDisplay }}</a>
+                </p>
+                <a class="ps-contact-btn" href="mailto:{{ press.contact.email }}">
+                    {{ ui.contactCta }}
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<script>
+(function () {
+    var buttons = document.querySelectorAll('.ps-copy[data-copy]');
+    if (!buttons.length || !navigator.clipboard) return;
+    buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var src = document.getElementById(btn.getAttribute('data-copy'));
+            if (!src) return;
+            var label = btn.textContent;
+            navigator.clipboard.writeText(src.textContent.trim()).then(function () {
+                btn.textContent = btn.getAttribute('data-copied');
+                btn.classList.add('is-copied');
+                setTimeout(function () { btn.textContent = label; btn.classList.remove('is-copied'); }, 1600);
+            });
+        });
+    });
+})();
+</script>
