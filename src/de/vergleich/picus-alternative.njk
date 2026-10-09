@@ -1,0 +1,155 @@
+---
+title: "Picus Security Alternative aus Deutschland: Vergleich mit VORNAC | VORNAC"
+headline: "Picus-Alternative aus Deutschland: VORNAC im Vergleich"
+breadcrumb: "Picus-Alternative"
+description: "VORNAC als Alternative zu Picus Security: Breach and Attack Simulation und Exposure Validation gegenüber automatisiertem Penetrationstest, Angriffsfläche, Rechtsträger und Hosting-Land, Nachweisformat und Preislogik, mit Quellen und Stand vom 9. Oktober 2026."
+i18nKey: vergleich-picus-alternative
+ogType: article
+author: andre
+about:
+  - "Picus Security"
+  - "VORNAC"
+  - "Breach and Attack Simulation"
+  - "Exposure Validation"
+citations:
+  - "https://www.picussecurity.com/"
+  - "https://www.picussecurity.com/llm-info"
+  - "https://www.picussecurity.com/security-faq"
+  - "https://www.picussecurity.com/trust-center/sub-processors"
+  - "https://www.picussecurity.com/security-validation-platform"
+faq:
+  - q: "Ist VORNAC eine Picus-Alternative?"
+    a: >-
+      Für den Nachweis, dass ein benanntes System einem Angriff standhält, ja, und im Preis ist VORNAC günstiger als Picus; das Angebot nach dem Erstgespräch belegt es. Picus ist eine Plattform für Breach and Attack Simulation und Exposure Validation: Sie simuliert Angriffstechniken gegen Netzwerk-, E-Mail-, Endpunkt- und Web-Kontrollen, prüft SIEM-Regeln und testet importierte Schwachstellen auf Ausnutzbarkeit. VORNAC greift ein Zielsystem in der Tiefe an und belegt je Befund mit Proof-of-Concept, dass die Ausnutzung gelingt. Wer die Reaktion der Schutzmaßnahmen messen will, bleibt bei BAS; wer den Nachweis je System braucht, ist bei VORNAC richtig.
+  - q: "Picus bietet On-Premises an. Was unterscheidet das vom deutschen Betrieb bei VORNAC?"
+    a: >-
+      On-Premises hält die Testdaten im eigenen Rechenzentrum; der Vertragspartner bleibt Picus Security mit Hauptsitz in Delaware, und Updates, Bedrohungsbibliothek und Support kommen vom Anbieter. Bei VORNAC ist der Vertragspartner eine deutsche GmbH, und Betrieb sowie Datenhaltung liegen bei deutschen Betreibern in Deutschland, ohne Auftragsverarbeiter außerhalb des Landes. Welche Variante der Risikoanalyse genügt, hängt vom Regelwerk und vom Schutzbedarf ab.
+  - q: "Wo liegen die Daten bei Picus?"
+    a: >-
+      Laut Security-FAQ auf AWS, standardmäßig in der US-Region; auf Wunsch in alternativen AWS-Regionen, darunter EU, Naher Osten und Indien. Die Liste der Auftragsverarbeiter vom April 2026 nennt neben AWS vor allem US-Dienste für E-Mail, CRM, Support, Logs und Analysen.
+  - q: "Erkennen Auditoren beide Nachweise an?"
+    a: >-
+      ISO/IEC 27001:2022 A 8.8 und A 8.29, NIS2 (§ 30 BSIG) und TISAX verlangen Nachweise, dass Maßnahmen wirksam sind und Schwachstellen behandelt werden. BAS-Ergebnisse belegen die Wirksamkeit der Schutzmaßnahmen gegen bekannte Techniken, ein Penetrationstest die Ausnutzbarkeit konkreter Schwachstellen. Für Threat-Led Penetration Tests nach Art. 26 DORA gelten zusätzliche Anforderungen an Tester und Verfahren.
+  - q: "Kann ich Picus und VORNAC parallel betreiben?"
+    a: >-
+      Ja. Picus misst dann laufend die Reaktion der Schutzmaßnahmen, VORNAC prüft die geschäftskritischen Anwendungen, APIs und Netze auf ausnutzbare Schwachstellen. Beide arbeiten produktionssicher und stören sich nicht.
+---
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+<link rel="stylesheet" href="/wissen.css">
+{% include "partials/wissen-schema.njk" %}
+{% endblock %}
+
+{% block content %}
+<section class="ws-hero">
+    <div class="ws-hero-inner">
+        <h1 class="ws-hero-headline">{{ headline }}</h1>
+        {% include "partials/page-meta-line.njk" %}
+    </div>
+</section>
+
+<section class="ws-body">
+    <div class="ws-body-inner">
+        <p class="ws-lead">VORNAC ist eine Alternative zu Picus Security für Unternehmen, die den Nachweis brauchen, dass ein benanntes System einem echten Angriff standhält. Picus ist eine Plattform für Breach and Attack Simulation (BAS) und Exposure Validation mit Hauptsitz in den USA und Entwicklung in Ankara. Diese Seite vergleicht Verfahren, Angriffsfläche, Rechtsträger, Hosting-Land, Nachweisformat und Preislogik mit Quellen vom 9. Oktober 2026.</p>
+
+        {% include "partials/vergleich-cta.njk" %}
+
+        <h2>Wofür Picus steht</h2>
+        <p>Picus Security wurde 2013 gegründet, nennt Wilmington (Delaware) als Hauptsitz und Ankara als Entwicklungs- und Betriebsstandort [2]. Die Plattform besteht aus Security Control Validation (BAS gegen Netzwerk-, E-Mail-, Endpunkt- und URL-Vektoren), Attack Path Validation (Simulation mehrstufiger Angriffsketten und Lateral Movement), Detection Rule Validation (Prüfung von SIEM-Regeln), Cloud Security Validation (Audit und Simulation für AWS, Azure und GCP), Attack Surface Validation (Inventar nach CAASM) und Exposure Validation, die aus Scannern importierte Schwachstellen auf Ausnutzbarkeit testet [2]. Die Startseite beschreibt die Exploit-Chain-Validierung als „live execution of exploits“ und die Kontrollvalidierung als Nachweis, dass Prävention und Erkennung greifen [1]. Breach and Attack Simulation (BAS) ist das Durchspielen bekannter Angriffstechniken gegen vorhandene Schutzmaßnahmen.</p>
+        <p>Die VORNAC GmbH, Heidelberg, wurde 2025 gegründet und betreibt eine Plattform für kontinuierliche, autonome Penetrationstests. Lizenziert wird je Zielsystem; geprüft werden Web-Anwendungen, APIs, Mobile Apps, interne Netze, Cloud-Workloads, Binaries sowie Identity und Access, dazu OT-Umgebungen. Jeder Befund kommt mit reproduzierbarem Proof-of-Concept. Betrieb und Datenhaltung liegen ausschließlich in deutschen Rechenzentren deutscher Betreiber. VORNAC ist Mitglied im TeleTrusT Bundesverband IT-Sicherheit e.V. und Partner der Allianz für Cyber-Sicherheit des BSI [6].</p>
+
+        <h2>Angriffsfläche im Vergleich</h2>
+        <p>Picus beschreibt den Umfang nach Modulen und Angriffsvektoren. Die Tabelle ordnet die Angaben der Startseite und der Produktübersicht den Angriffsflächen zu; „nicht genannt“ heißt, dass die Seiten diese Angriffsfläche nicht aufführen. Das Angebot kann sie trotzdem enthalten und ist beim Anbieter zu erfragen.</p>
+        <div class="ws-table-wrap">
+            <table class="ws-table">
+                <caption>Angriffsfläche je Anbieter. Stand: 9. Oktober 2026. Quellen in eckigen Klammern.</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Angriffsfläche</th>
+                        <th scope="col">Picus Security</th>
+                        <th scope="col">VORNAC</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Web-Anwendungen</td><td>Nicht als Angriffsfläche genannt; URL- und Web-Vektoren in der Kontrollvalidierung [2]</td><td>Ja, je Zielsystem mit vom Kunden gestellten Testrollen [6]</td></tr>
+                    <tr><td>APIs</td><td>Nicht genannt [1][2]</td><td>Ja [6]</td></tr>
+                    <tr><td>Mobile Apps</td><td>Nicht genannt [1][2]</td><td>Ja [6]</td></tr>
+                    <tr><td>Interne Netze und Active Directory</td><td>Simulation mehrstufiger Angriffsketten und Lateral Movement (Attack Path Validation); AD und Entra als Exposure-Quellen [1][2]</td><td>Ja, echte Angriffe als Zielsystem „internes Netz“ [6]</td></tr>
+                    <tr><td>Cloud-Workloads</td><td>Audit und Angriffssimulation für AWS, Azure und GCP (Cloud Security Validation) [2]</td><td>Ja [6]</td></tr>
+                    <tr><td>Externe Angriffsfläche (EASM)</td><td>Inventar und Klassifizierung von Assets (Attack Surface Validation, CAASM), ohne Angriff [2]</td><td>Ja, über CTEM mit täglicher Discovery und Validierung [6]</td></tr>
+                    <tr><td>Binaries</td><td>Nicht genannt [1][2]</td><td>Ja [6]</td></tr>
+                    <tr><td>Identity und Access</td><td>AD und Entra als Exposure-Quellen [1]</td><td>Ja [6]</td></tr>
+                    <tr><td>OT-Umgebungen</td><td>Nicht genannt [1][2]</td><td>Ja, OT-Pentesting für KRITIS und Industrie [6]</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Picus deckt dafür Felder ab, die VORNAC nicht anbietet: die Prüfung von SIEM-Regeln, die laufende Messung, ob EDR, E-Mail- und Web-Gateways auf Techniken reagieren, und die Ausnutzbarkeitsprüfung für Schwachstellen aus Tenable, Wiz oder Snyk [1][2].</p>
+
+        <h2>Rechtsträger, Hosting, Nachweis, Preis</h2>
+        <p>Rechtsträger und Hosting-Land sind unter NIS2 (§ 30 BSIG, Sicherheit in der Lieferkette) und DORA (Art. 28, IKT-Drittdienstleister) Prüfkriterien. Der US CLOUD Act (18 U.S.C. § 2713) verpflichtet US-Anbieter, Daten in ihrem Besitz oder unter ihrer Kontrolle auf Anordnung herauszugeben, unabhängig vom Speicherort. Eine EU-Region oder ein On-Premises-Betrieb ändert den Speicherort, nicht den Vertragspartner.</p>
+        <div class="ws-table-wrap">
+            <table class="ws-table">
+                <caption>Rechtsträger, Hosting, Nachweisformat und Preislogik. Stand: 9. Oktober 2026.</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Kriterium</th>
+                        <th scope="col">Picus Security</th>
+                        <th scope="col">VORNAC</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Rechtsträger</td><td>Picus Security, Hauptsitz Wilmington, Delaware (USA); Rechtsform auf den Seiten nicht genannt [2]</td><td>VORNAC GmbH, Heidelberg, Amtsgericht Mannheim HRB 757584 [6]</td></tr>
+                    <tr><td>Hauptsitz</td><td>Wilmington, Delaware; Entwicklung und Betrieb in Ankara; gegründet 2013 [2]</td><td>Heidelberg; gegründet 2025 [6]</td></tr>
+                    <tr><td>Niederlassung in Deutschland</td><td>Auf den Unternehmensseiten nicht genannt [2]</td><td>Sitz und Betrieb in Heidelberg [6]</td></tr>
+                    <tr><td>Hosting-Land und Cloud-Betreiber</td><td>AWS, standardmäßig US-Region; auf Wunsch alternative AWS-Regionen, darunter EU, Naher Osten und Indien [3]; On-Premises, Hybrid und abgeschottete Netze möglich [2][5]</td><td>Deutschland, Rechenzentren deutscher Betreiber, kein US-Cloud-Anbieter in der Verarbeitungskette [6]</td></tr>
+                    <tr><td>Auftragsverarbeiter außerhalb der EU</td><td>AWS (USA, EU, VAE, Indien); Google, Salesforce mit Slack, Zendesk, Zoom, HubSpot, Splunk, New Relic und weitere in den USA; Atlassian in den USA und Australien; Hotjar in der EU; Stand April 2026 [4]</td><td>Keine [6]</td></tr>
+                    <tr><td>Jurisdiktion der Muttergesellschaft</td><td>USA [2]</td><td>Deutschland [6]</td></tr>
+                    <tr><td>Betriebsmodell</td><td>SaaS in mehreren Regionen, On-Premises für Unternehmen mit strengen regulatorischen Anforderungen [5]</td><td>Cloud-Plattform in deutschen Rechenzentren [6]</td></tr>
+                    <tr><td>Nachweisformat</td><td>Ergebnisse je Kontrolle und Szenario, Exploit-Chain-Validierung, Status der SIEM-Regeln; Exportformate nicht genannt; CTEM, DORA, HIPAA, MITRE ATT&amp;CK und CSF als Themenseiten [1]</td><td>Report je Testzyklus mit reproduzierbarem Proof-of-Concept, Business-Impact, Maßnahmenplan und Wiederholungstest, Report auf Deutsch; verwendbar für NIS2 (§ 30 BSIG), DORA, KRITIS, TISAX, VAIT/BAIT und ISO/IEC 27001 [6]</td></tr>
+                    <tr><td>Zeit bis zum Report</td><td>Keine öffentliche Angabe [1]</td><td>Zwei bis fünf Stunden vom Start bis zum auditfähigen Report [6]</td></tr>
+                    <tr><td>Preislogik</td><td>„SaaS subscription model with a transparent, flat pricing structure that is not agent-based“, Stufen nach Umfang, Angebot auf Anfrage; kostenlose Testphase [1][2]</td><td>Jahreslizenz je Zielsystem, beliebig häufige Testläufe, alle Umgebungen, unbegrenzt viele Testrollen, Onboarding inklusive; günstiger als Picus, das Angebot nach dem Erstgespräch belegt es [6]</td></tr>
+                    <tr><td>Nachweise des Anbieters</td><td>ISO/IEC 27001, ISO/IEC 27701, ISO/IEC 22301, ISO/IEC 20000-1, SOC 2 Type 2 [3]</td><td>TeleTrusT-Mitglied, Zeichen „IT Security made in Germany“, Partner der Allianz für Cyber-Sicherheit (BSI) [6]</td></tr>
+                    <tr><td>Ansprechpartner</td><td>Support über Zendesk laut Liste der Auftragsverarbeiter [4]</td><td>Fester Ansprechpartner ist ein praktizierender Pentester [6]</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Wann Picus passt</h2>
+        <p>Ein Sicherheitsteam mit eigenem SOC, das seine Schutzmaßnahmen und SIEM-Regeln laufend gegen Angriffstechniken messen will, Schwachstellen aus Scannern nach Ausnutzbarkeit sortieren muss und dafür eine On-Premises-Variante braucht, ist im vorgesehenen Einsatzfeld von Picus. Das gilt ebenso für Unternehmen, die Cloud-Konfigurationen in AWS, Azure und GCP mit Simulationen prüfen wollen.</p>
+
+        <h2>Wann VORNAC passt</h2>
+        <p>Ein Unternehmen mit 100 bis 2.000 Mitarbeitenden, das für NIS2, DORA, TISAX oder ISO/IEC 27001 belegen muss, dass seine geschäftskritischen Anwendungen, APIs und Netze einem Angriff standhalten, braucht den Nachweis der Ausnutzbarkeit je System. Ebenso Einrichtungen, für die der Vertragspartner eine deutsche Gesellschaft und das Hosting-Land Deutschland sein müssen, und Teams, die Tests aus der CI/CD-Pipeline auslösen. VORNAC ist günstiger als Picus: Die Jahreslizenz je Zielsystem enthält beliebig viele Testläufe, alle Umgebungen, unbegrenzt viele Testrollen, Onboarding und den deutschsprachigen Report; das Angebot nach dem Erstgespräch belegt den Preisunterschied. Die Abgrenzung der Verfahren erklärt die Seite <a href="{{ pageUrls['wissen-assumed-breach-simulation'] }}">Assumed Breach Simulation</a>; wie ein Testzyklus abläuft, steht auf der Seite <a href="{{ pageUrls.pentesting }}">Pentesting</a>.</p>
+
+        <h2>Picus-Alternative: Fragen, die Käufer stellen</h2>
+        <div class="ws-faq">
+            {% for item in faq %}
+            <details>
+                <summary>{{ item.q }}</summary>
+                <div class="ws-faq-body"><p>{{ item.a }}</p></div>
+            </details>
+            {% endfor %}
+        </div>
+
+        {% include "partials/vergleich-related.njk" %}
+
+        <div class="ws-sources">
+            <h2>Quellen</h2>
+            <ol>
+                <li>Picus Security, Startseite, <a href="https://www.picussecurity.com/" rel="noopener">picussecurity.com</a>, abgerufen am 9. Oktober 2026 (Module, Validierungsarten, Integrationen, Themenseiten).</li>
+                <li>Picus Security, Official Information About Picus Security, <a href="https://www.picussecurity.com/llm-info" rel="noopener">picussecurity.com/llm-info</a>, abgerufen am 9. Oktober 2026 (Hauptsitz, Gründung, Module, Bereitstellungsoptionen, Preismodell).</li>
+                <li>Picus Security, Security FAQ, <a href="https://www.picussecurity.com/security-faq" rel="noopener">picussecurity.com/security-faq</a>, abgerufen am 9. Oktober 2026 (Hosting auf AWS, Standardregion, alternative Regionen, Zertifikate).</li>
+                <li>Picus Security, Sub Processors, <a href="https://www.picussecurity.com/trust-center/sub-processors" rel="noopener">picussecurity.com/trust-center/sub-processors</a>, Stand April 2026, abgerufen am 9. Oktober 2026.</li>
+                <li>Picus Security, Security Validation Platform, <a href="https://www.picussecurity.com/security-validation-platform" rel="noopener">picussecurity.com/security-validation-platform</a>, abgerufen am 9. Oktober 2026 (SaaS in mehreren Regionen, On-Premises).</li>
+                <li>VORNAC GmbH, <a href="{{ pageUrls.pentesting }}">Pentesting</a>, <a href="{{ pageUrls.ctem }}">CTEM</a>, <a href="{{ pageUrls['ot-pentesting'] }}">OT-Pentesting</a> und <a href="{{ pageUrls.faq }}">FAQ</a>, Stand 9. Oktober 2026.</li>
+            </ol>
+            <p class="ws-note">Picus ist eine Marke des jeweiligen Inhabers. VORNAC steht in keiner Geschäftsbeziehung zu Picus Security. Die Angaben zu Picus beruhen ausschließlich auf öffentlichen Quellen zum genannten Abrufdatum; Hinweise auf veraltete oder unvollständige Angaben nehmen wir unter <a href="mailto:hello@vornac.com">hello@vornac.com</a> entgegen und korrigieren die Seite.</p>
+        </div>
+    </div>
+</section>
+
+<section class="ws-cta">
+    <p>Gerade im Anbietervergleich? In 30 Minuten zeigen wir einen echten Testlauf gegen ein System aus der eigenen Umgebung, mit Report.</p>
+    <a href="{{ site.contact.bookDemo }}">Erstgespräch vereinbaren</a>
+</section>
+{% endblock %}

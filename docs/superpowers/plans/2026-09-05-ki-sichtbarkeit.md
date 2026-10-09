@@ -101,7 +101,7 @@ Zitierregeln je Seite (Spec Abschnitt 4): erster Absatz beantwortet die Frage in
 - [ ] `/preise` Preise: entfällt, Entscheidung 2 vom 2026-09-09 lautet "kein öffentlicher Preis". Offer-Knoten bleiben ohne Preis.
 - [ ] `/wissen/automatisierte-penetrationstests` Definition, Abgrenzung, Auswahlkriterien
 - [ ] `/assumed-breach-simulation` Produktseite ABS
-- [x] `/vergleich/vornac-vs-pentera` Vergleich mit öffentlichen, datierten Quellen. Erledigt am 2026-09-09. Offen: dasselbe Format für Cymulate und Picus.
+- [x] `/vergleich/vornac-vs-pentera` Vergleich mit öffentlichen, datierten Quellen. Erledigt am 2026-09-09. Cymulate, Picus, Horizon3, XBOW und Fleuret sowie der Umbau der Pentera-Seite laufen seit 2026-10-06 im eigenen Plan `2026-10-06-alternative-seiten.md`.
 - [ ] `/wissen/tisax-penetrationstest`
 - [ ] `/wissen/dora-tests` (Art. 24 bis 27)
 - [ ] `/wissen/iso-27001-penetrationstest` (A 8.8, A 8.29)

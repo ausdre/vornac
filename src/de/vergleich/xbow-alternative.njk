@@ -1,0 +1,152 @@
+---
+title: "XBOW Alternative aus Deutschland: Vergleich mit VORNAC | VORNAC"
+headline: "XBOW-Alternative aus Deutschland: VORNAC im Vergleich"
+breadcrumb: "XBOW-Alternative"
+description: "VORNAC als Alternative zu XBOW: Angriffsfläche, Rechtsträger und Hosting-Land, Nachweisformat und Preislogik im Vergleich, mit öffentlichen Quellen und Stand vom 9. Oktober 2026."
+i18nKey: vergleich-xbow-alternative
+ogType: article
+author: andre
+about:
+  - "XBOW"
+  - "VORNAC"
+  - "Autonome Penetrationstests"
+  - "KI-Pentesting"
+citations:
+  - "https://xbow.com/"
+  - "https://xbow.com/platform"
+  - "https://xbow.com/pricing"
+  - "https://xbow.com/news/xbow-raises-120m-to-scale"
+faq:
+  - q: "Ist VORNAC eine XBOW-Alternative?"
+    a: >-
+      Ja, für Web-Anwendungen und APIs arbeiten beide mit demselben Anspruch: autonome Angriffe mit Nachweis je Befund. Der Unterschied liegt in der Angriffsfläche (XBOW nennt Anwendungen und APIs, VORNAC zusätzlich interne Netze, Cloud, Binaries, Identity und OT), im Rechtsträger (XBOW USA Inc. in Seattle gegenüber einer GmbH in Heidelberg) und im Hosting (XBOW nennt keine Region, VORNAC deutsche Rechenzentren deutscher Betreiber).
+  - q: "XBOW testet Web-Anwendungen. Was ist mit APIs, internen Netzen und Binaries?"
+    a: >-
+      XBOW beschreibt auf der Startseite Anwendungen und APIs, die per URL als Ziel angegeben werden, mit Zugangsdaten für authentifizierte Tests. Interne Netze, Cloud-Workloads, Binaries und OT nennt XBOW nicht. VORNAC prüft diese Angriffsflächen je Zielsystem und liefert für jedes denselben Report.
+  - q: "Wo liegen die Daten bei XBOW?"
+    a: >-
+      XBOW schreibt, die Bereitstellung richte sich nach den Anforderungen des Kunden an Datentrennung, Datenstandort und Compliance, nennt aber keine Region und keine Liste der Auftragsverarbeiter; ein Trust Center ist verlinkt. Der Rechtsträger ist XBOW USA Inc. Bei VORNAC verarbeiten ausschließlich deutsche Betreiber in Deutschland.
+  - q: "Was kostet XBOW im Vergleich zu VORNAC?"
+    a: >-
+      XBOW nennt auf der Preisseite keine Beträge: „usage-based pricing that scales with your coverage“, Angebot auf Anfrage, Bezug auch über die Marketplaces von AWS, Google, Oracle und Microsoft. VORNAC lizenziert je Zielsystem für zwölf Monate mit beliebig häufigen Läufen, allen Umgebungen, unbegrenzt vielen Testrollen und deutschsprachigem Report und ist günstiger als XBOW; das Angebot folgt nach dem Erstgespräch und belegt den Unterschied.
+  - q: "Erkennen Auditoren beide Reports an?"
+    a: >-
+      NIS2 (§ 30 BSIG), ISO/IEC 27001:2022 (A 8.8, A 8.29) und TISAX schreiben kein Werkzeug vor, sondern verlangen den Nachweis wirksamer Maßnahmen und behandelter Schwachstellen. XBOW beschreibt Befunde mit Angriffspfad, funktionierendem Exploit und Protokoll, VORNAC mit reproduzierbarem Proof-of-Concept, Business-Impact, Maßnahmenplan und Wiederholungstest. Für Threat-Led Penetration Tests nach Art. 26 DORA gelten zusätzliche Anforderungen an Tester und Verfahren.
+---
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+<link rel="stylesheet" href="/wissen.css">
+{% include "partials/wissen-schema.njk" %}
+{% endblock %}
+
+{% block content %}
+<section class="ws-hero">
+    <div class="ws-hero-inner">
+        <h1 class="ws-hero-headline">{{ headline }}</h1>
+        {% include "partials/page-meta-line.njk" %}
+    </div>
+</section>
+
+<section class="ws-body">
+    <div class="ws-body-inner">
+        <p class="ws-lead">VORNAC ist eine XBOW-Alternative aus Deutschland für Unternehmen, die neben Web-Anwendungen und APIs auch interne Netze, Cloud-Workloads und Binaries prüfen und einen deutschen Vertragspartner mit Hosting in Deutschland brauchen. XBOW ist ein autonomer Pentester für Anwendungen aus Seattle. Diese Seite vergleicht Angriffsfläche, Rechtsträger, Hosting-Land, Nachweisformat und Preislogik mit Quellen vom 9. Oktober 2026.</p>
+
+        {% include "partials/vergleich-cta.njk" %}
+
+        <h2>Wofür XBOW steht</h2>
+        <p>XBOW wurde im Januar 2024 von Oege de Moor gegründet, dem Schöpfer von GitHub Copilot, hat seinen Sitz in Seattle und meldete im März 2026 eine Series C über 120 Millionen US-Dollar bei einer Bewertung von mehr als einer Milliarde US-Dollar [4]. Das Produkt wird auf eine URL gerichtet, erkundet Anwendungen und APIs selbständig, verkettet Schwachstellen zu Angriffspfaden und versucht, jede Kette zu beweisen, bevor ein Befund das Team erreicht; jeder Befund kommt mit Angriffspfad, funktionierendem Exploit, einem Protokoll der Entscheidungen und einer Anleitung zur Behebung [1]. Den Umfang legt der Kunde fest, jede Aktion wird protokolliert; die Startseite nennt den ersten Platz auf HackerOne, „14,000+ zero days“ und „150+ customers“ als eigene Angaben [1].</p>
+        <p>Die VORNAC GmbH, Heidelberg, wurde 2025 gegründet und betreibt eine Plattform für kontinuierliche, autonome Penetrationstests. Lizenziert wird je Zielsystem; geprüft werden Web-Anwendungen, APIs, Mobile Apps, interne Netze, Cloud-Workloads, Binaries sowie Identity und Access, dazu OT-Umgebungen. Betrieb und Datenhaltung liegen ausschließlich in deutschen Rechenzentren deutscher Betreiber. VORNAC ist Mitglied im TeleTrusT Bundesverband IT-Sicherheit e.V. und Partner der Allianz für Cyber-Sicherheit des BSI [5].</p>
+
+        <h2>Angriffsfläche im Vergleich</h2>
+        <p>Die Angaben zu XBOW stammen von der Startseite und der Plattformseite des Anbieters, abgerufen am 9. Oktober 2026. „Nicht genannt“ heißt: Die Seiten führen diese Angriffsfläche nicht auf; das Angebot kann sie trotzdem enthalten und ist beim Anbieter zu erfragen.</p>
+        <div class="ws-table-wrap">
+            <table class="ws-table">
+                <caption>Angriffsfläche je Anbieter. Stand: 9. Oktober 2026. Quellen in eckigen Klammern.</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Angriffsfläche</th>
+                        <th scope="col">XBOW</th>
+                        <th scope="col">VORNAC</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Web-Anwendungen</td><td>Ja, Kern des Produkts, Ziel per URL, authentifiziert mit Zugangsdaten [1][2]</td><td>Ja, je Zielsystem mit vom Kunden gestellten Testrollen [5]</td></tr>
+                    <tr><td>APIs</td><td>Ja, „applications and APIs“, API-Spezifikationen als Eingabe [1][2]</td><td>Ja [5]</td></tr>
+                    <tr><td>Mobile Apps</td><td>Nicht genannt [1][2]</td><td>Ja [5]</td></tr>
+                    <tr><td>Interne Netze und Active Directory</td><td>Nicht genannt [1][2]</td><td>Ja, als Zielsystem „internes Netz“ [5]</td></tr>
+                    <tr><td>Cloud-Workloads</td><td>Nicht genannt [1][2]</td><td>Ja [5]</td></tr>
+                    <tr><td>Externe Angriffsfläche (EASM)</td><td>Nicht genannt; der Umfang wird vom Kunden als Ziel vorgegeben [2]</td><td>Ja, über CTEM mit täglicher Discovery [5]</td></tr>
+                    <tr><td>Binaries</td><td>Nicht genannt [1][2]</td><td>Ja [5]</td></tr>
+                    <tr><td>Identity und Access</td><td>Nicht als eigene Angriffsfläche genannt; Zugangsdaten als Kontext für authentifizierte Tests [2]</td><td>Ja [5]</td></tr>
+                    <tr><td>OT-Umgebungen</td><td>Nicht genannt [1][2]</td><td>Ja, OT-Pentesting für KRITIS und Industrie [5]</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Rechtsträger, Hosting, Nachweis, Preis</h2>
+        <p>Rechtsträger und Hosting-Land sind unter NIS2 (§ 30 BSIG, Sicherheit in der Lieferkette) und DORA (Art. 28, IKT-Drittdienstleister) Prüfkriterien. Der US CLOUD Act (18 U.S.C. § 2713) verpflichtet US-Anbieter, Daten in ihrem Besitz oder unter ihrer Kontrolle auf Anordnung herauszugeben, unabhängig vom Speicherort.</p>
+        <div class="ws-table-wrap">
+            <table class="ws-table">
+                <caption>Rechtsträger, Hosting, Nachweisformat und Preislogik. Stand: 9. Oktober 2026.</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Kriterium</th>
+                        <th scope="col">XBOW</th>
+                        <th scope="col">VORNAC</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Rechtsträger</td><td>XBOW USA Inc. [1]</td><td>VORNAC GmbH, Heidelberg, Amtsgericht Mannheim HRB 757584 [5]</td></tr>
+                    <tr><td>Hauptsitz</td><td>Seattle, USA; gegründet Januar 2024 [4]</td><td>Heidelberg; gegründet 2025 [5]</td></tr>
+                    <tr><td>Niederlassung in Deutschland</td><td>Nicht genannt [1][4]</td><td>Sitz und Betrieb in Heidelberg [5]</td></tr>
+                    <tr><td>Hosting-Land und Cloud-Betreiber</td><td>„Deployment aligned to your data separation, residency, and compliance requirements“; Region und Cloud-Betreiber nicht genannt [2]</td><td>Deutschland, Rechenzentren deutscher Betreiber, kein US-Cloud-Anbieter in der Verarbeitungskette [5]</td></tr>
+                    <tr><td>Auftragsverarbeiter außerhalb der EU</td><td>Keine öffentliche Liste gefunden; Trust Center verlinkt [2]</td><td>Keine [5]</td></tr>
+                    <tr><td>Jurisdiktion der Muttergesellschaft</td><td>USA [1][4]</td><td>Deutschland [5]</td></tr>
+                    <tr><td>Betriebsmodell</td><td>Nicht genannt; Bezug auch über die Marketplaces von AWS, Google, Oracle und Microsoft [3]</td><td>Cloud-Plattform in deutschen Rechenzentren [5]</td></tr>
+                    <tr><td>Nachweisformat</td><td>Je Befund Angriffspfad, funktionierender Exploit, Protokoll der Entscheidungen und Taktiken, Anleitung zur Behebung; Reporting „board- and auditor-ready“; Exportformate nicht genannt; unterstützte Rahmenwerke mit Logos SOC 2, ISO 27001, ISO 42001, HIPAA, DSGVO [1][2]</td><td>Report je Testzyklus mit reproduzierbarem Proof-of-Concept, Business-Impact, Maßnahmenplan und Wiederholungstest, Report auf Deutsch; verwendbar für NIS2 (§ 30 BSIG), DORA, KRITIS, TISAX, VAIT/BAIT und ISO/IEC 27001 [5]</td></tr>
+                    <tr><td>Zeit bis zum Report</td><td>Keine öffentliche Angabe [1]</td><td>Zwei bis fünf Stunden vom Start bis zum auditfähigen Report [5]</td></tr>
+                    <tr><td>Preislogik</td><td>„Usage-based pricing that scales with your coverage, not a fixed annual engagement“; keine Beträge, Angebot auf Anfrage [3]</td><td>Jahreslizenz je Zielsystem, beliebig häufige Testläufe, alle Umgebungen, unbegrenzt viele Testrollen, Onboarding inklusive; günstiger als XBOW, das Angebot nach dem Erstgespräch belegt es [5]</td></tr>
+                    <tr><td>Nachweise des Anbieters</td><td>Die Plattformseite nennt SOC 2, ISO 27001, PCI DSS und NIS 2 als Anforderungen, an denen sich die Bereitstellung ausrichtet, ohne eine eigene Zertifizierung zu beanspruchen; Trust Center verlinkt [2]</td><td>TeleTrusT-Mitglied, Zeichen „IT Security made in Germany“, Partner der Allianz für Cyber-Sicherheit (BSI) [5]</td></tr>
+                    <tr><td>Ansprechpartner</td><td>Nicht genannt; die Plattformseite erwähnt eine Prüfung, bevor Befunde sichtbar werden, ohne zu sagen, wer sie vornimmt [2]</td><td>Fester Ansprechpartner ist ein praktizierender Pentester [5]</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Wann XBOW passt</h2>
+        <p>Ein Software-Unternehmen mit vielen öffentlich erreichbaren Web-Anwendungen, das diese laufend aus der Pipeline heraus angreifen lassen will, keine internen Netze oder Binaries im Scope hat und über ein bestehendes Cloud-Marketplace-Budget einkauft, ist im vorgesehenen Einsatzfeld von XBOW. Das gilt ebenso für Teams, die ein nutzungsbasiertes Preismodell je Abdeckung einem Festpreis je System vorziehen.</p>
+
+        <h2>Wann VORNAC passt</h2>
+        <p>Ein Unternehmen mit 100 bis 2.000 Mitarbeitenden, dessen geschäftskritische Systeme nicht nur Web-Anwendungen sind, sondern auch APIs, interne Netze, Cloud-Workloads, Binaries oder OT, und das für NIS2, DORA, TISAX oder ISO/IEC 27001 für jedes davon denselben Report braucht, ist bei VORNAC richtig. Ebenso Einrichtungen, für die der Vertragspartner eine deutsche Gesellschaft und das Hosting-Land Deutschland sein müssen, und Unternehmen, die mit einem deutschsprachigen Pentester arbeiten wollen. VORNAC ist günstiger als XBOW: Die Jahreslizenz je Zielsystem enthält beliebig viele Testläufe, alle Umgebungen, unbegrenzt viele Testrollen, Onboarding und den deutschsprachigen Report; das Angebot nach dem Erstgespräch belegt den Preisunterschied. Wie ein Testzyklus abläuft, steht auf der Seite <a href="{{ pageUrls.pentesting }}">Pentesting</a>; welche Nachweise NIS2 verlangt, erklärt die Seite <a href="{{ pageUrls['wissen-nis2-wirksamkeitspruefung'] }}">NIS2: Wirksamkeit der Sicherheitsmaßnahmen belegen</a>.</p>
+
+        <h2>XBOW-Alternative: Fragen, die Käufer stellen</h2>
+        <div class="ws-faq">
+            {% for item in faq %}
+            <details>
+                <summary>{{ item.q }}</summary>
+                <div class="ws-faq-body"><p>{{ item.a }}</p></div>
+            </details>
+            {% endfor %}
+        </div>
+
+        {% include "partials/vergleich-related.njk" %}
+
+        <div class="ws-sources">
+            <h2>Quellen</h2>
+            <ol>
+                <li>XBOW, Startseite, <a href="https://xbow.com/" rel="noopener">xbow.com</a>, abgerufen am 9. Oktober 2026 (Testumfang, Nachweis je Befund, Rechtsträger im Footer, eigene Leistungsangaben).</li>
+                <li>XBOW, Platform, <a href="https://xbow.com/platform" rel="noopener">xbow.com/platform</a>, abgerufen am 9. Oktober 2026 (Scope-Festlegung, Bereitstellung, Rahmenwerke, Prüfung vor Veröffentlichung von Befunden).</li>
+                <li>XBOW, Pricing, <a href="https://xbow.com/pricing" rel="noopener">xbow.com/pricing</a>, abgerufen am 9. Oktober 2026 (Preislogik, Marketplaces).</li>
+                <li>XBOW, Pressemitteilung „XBOW Raises $120M to Scale“, <a href="https://xbow.com/news/xbow-raises-120m-to-scale" rel="noopener">xbow.com/news</a>, 18. März 2026, abgerufen am 9. Oktober 2026 (Sitz, Gründung, Gründer, Finanzierung).</li>
+                <li>VORNAC GmbH, <a href="{{ pageUrls.pentesting }}">Pentesting</a>, <a href="{{ pageUrls.ctem }}">CTEM</a>, <a href="{{ pageUrls['ot-pentesting'] }}">OT-Pentesting</a> und <a href="{{ pageUrls.faq }}">FAQ</a>, Stand 9. Oktober 2026.</li>
+            </ol>
+            <p class="ws-note">XBOW ist eine Marke des jeweiligen Inhabers. VORNAC steht in keiner Geschäftsbeziehung zu XBOW. Die Angaben zu XBOW beruhen ausschließlich auf öffentlichen Quellen zum genannten Abrufdatum; Hinweise auf veraltete oder unvollständige Angaben nehmen wir unter <a href="mailto:hello@vornac.com">hello@vornac.com</a> entgegen und korrigieren die Seite.</p>
+        </div>
+    </div>
+</section>
+
+<section class="ws-cta">
+    <p>Gerade im Anbietervergleich? In 30 Minuten zeigen wir einen echten Testlauf gegen ein System aus der eigenen Umgebung, mit Report.</p>
+    <a href="{{ site.contact.bookDemo }}">Erstgespräch vereinbaren</a>
+</section>
+{% endblock %}

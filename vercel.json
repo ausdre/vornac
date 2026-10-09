@@ -66,6 +66,8 @@
       "permanent": true
     },
 
+    { "source": "/vergleich/vornac-vs-pentera", "destination": "/vergleich/pentera-alternative", "permanent": true },
+
     { "source": "/de",          "destination": "/",        "permanent": true },
     { "source": "/de/:path*",   "destination": "/:path*",  "permanent": true },
 

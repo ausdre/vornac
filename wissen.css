@@ -319,6 +319,53 @@
 
 .ws-cta a:hover { text-decoration: underline; }
 
+/* CTA under the lead of a /vergleich page (partials/vergleich-cta.njk) */
+.ws-cta-top {
+    text-align: center;
+    margin: 28px 0 40px;
+}
+
+.ws-cta-top p {
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--v-ink-2);
+    font-weight: 500;
+    max-width: 52ch;
+    margin: 0 auto 12px;
+}
+
+.ws-cta-top a {
+    color: var(--v-amber-deep);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.ws-cta-top a:hover { text-decoration: underline; }
+
+/* "Weitere Vergleiche" (partials/vergleich-related.njk) */
+.ws-related {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px;
+}
+
+.ws-related li {
+    padding: 10px 0;
+    border-top: 1px solid var(--v-line-soft);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.ws-related li:last-child { border-bottom: 1px solid var(--v-line-soft); }
+
+.ws-related a {
+    color: var(--v-ink);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.ws-related a:hover { color: var(--v-amber-deep); }
+
 /* ============================================ */
 /* Index list (/wissen)                         */
 /* ============================================ */
