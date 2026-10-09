@@ -8,6 +8,8 @@
  * is "logo" (outlet or award mark, contained on a soft tile) or "cover" (a
  * page or article image, cropped to the tile). PDF covers are rendered once
  * with pdftoppm (first page, 60 dpi) and committed as press-thumb-*.jpg.
+ * Award marks: award-eurocloud.svg (eurocloud.de, 2026-10-09) and
+ * award-wirtschaftswoche.png (award.wiwo.de, 2026-10-09).
  *
  * Coverage entries: `date` is YYYY-MM-DD, YYYY-MM or YYYY; the label per
  * locale is derived below. `type` is one of the keys in `types`. `url` is
@@ -154,8 +156,8 @@ const awards = withDates([
     },
     url: "https://de.linkedin.com/posts/arthurraess_wer-sorgt-f%C3%BCr-die-beste-disruption-in-deutschland-activity-7514202003955318785-PFto",
     linkLabel: { de: "Zum Beitrag auf LinkedIn", en: "Post on LinkedIn" },
-    logo: "",
-    logoAlt: "EuroCloud Award"
+    logo: "/award-eurocloud.svg",
+    logoAlt: "EuroCloud Deutschland_eco e.V."
   },
   {
     year: "2026",
@@ -167,22 +169,8 @@ const awards = withDates([
       en: "Finalist in the Cybersecurity category, awarded the rating Excellent. Fraunhofer ISI is the award's scientific partner."
     },
     url: "https://award.wiwo.de/bot/gewinner-2026/",
-    logo: "",
-    logoAlt: "WirtschaftsWoche Best of Technology"
-  },
-  {
-    year: "2026",
-    date: "2026-06-25",
-    title: { de: "TeleTrusT-Innovationspreis 2026", en: "TeleTrusT Innovation Award 2026" },
-    by: { de: "Nominierung, Bundesverband IT-Sicherheit e.V.", en: "Nomination, IT Security Association Germany" },
-    text: {
-      de: "Nominiert für den Innovationspreis des Bundesverbands IT-Sicherheit, verliehen beim TeleTrusT-Empfang am 25. Juni 2026 in Berlin.",
-      en: "Nominated for the innovation award of the IT Security Association Germany, presented at the TeleTrusT reception in Berlin on 25 June 2026."
-    },
-    url: "https://www.teletrust.de/teletrust-innovationspreis/teletrust-innovationspreis-2026/",
-    linkLabel: { de: "Zur Nominiertenliste", en: "Nominees" },
-    logo: "/TeleTrusT-Mitgliedslogo.webp",
-    logoAlt: "TeleTrusT Bundesverband IT-Sicherheit e.V."
+    logo: "/award-wirtschaftswoche.png",
+    logoAlt: "WirtschaftsWoche"
   }
 ]);
 
