@@ -29,7 +29,7 @@ Eigene Veröffentlichung (Abschnitt "Eigene Veröffentlichungen"): Forschungspap
 - Konsequenz für die Seite: nicht "gewonnen", sondern "Finalist in der Kategorie Cybersecurity, ausgezeichnet mit dem Prädikat Exzellent". Die Computerwoche schreibt "mit dem Award 'Best of Technology 2026' ausgezeichnet", das ist der belastbare Rahmen. Datum der Verleihung: Anfang September 2026 (laut Computerwoche), ein genaues Datum nennt die Award-Seite nicht; auf der Seite steht "September 2026".
 - Die Award-Seite hat kein Preisträger-Siegel. Das VORNAC-Logo dort: https://award.wiwo.de/bot/wp-content/uploads/sites/22/2026/07/vornac.png
 
-**TeleTrusT-Innovationspreis 2026, Nominierung** (auf der Seite eingetragen, leicht zu entfernen)
+**TeleTrusT-Innovationspreis 2026, Nominierung** (nicht auf der Seite, Entscheidung vom 09.10.2026)
 - https://www.teletrust.de/teletrust-innovationspreis/teletrust-innovationspreis-2026/ : VORNAC in der Nominiertenliste, Preisträger Alpha Strike Labs. Verleihung beim TeleTrusT-Empfang am 25.06.2026 in Berlin.
 
 ## 3. Gefunden, aber nicht eingetragen (deine Entscheidung)
@@ -62,11 +62,11 @@ Northdata (HRB 757584, Eintragung 06.03.2026), online-handelsregister.de, handel
 - Presseportale (presseportal, pressebox, openPR): keine Pressemitteilung von VORNAC.
 - Englischsprachige Presse: die Nachlese konnte diesen Winkel nicht laufen lassen (Suchkontingent erschöpft). Bei Bedarf separat nachholen.
 
-## 6. Was ich von dir brauche
+## 6. Entscheidungen vom 09.10.2026
 
-1. WiWo-Wortlaut freigeben: "Finalist in der Kategorie Cybersecurity, ausgezeichnet mit dem Prädikat Exzellent" (statt "gewonnen").
-2. EuroCloud: sobald es eine Gewinnerseite oder Pressemitteilung gibt, den Link schicken. Bis dahin verweist die Seite auf den LinkedIn-Post.
-3. Award-Logos als Datei: EuroCloud Award oder EuroCloud Deutschland, WirtschaftsWoche Best of Technology. Alternativ erlaubst du mir den Download: `eurocloud_logo.svg` von https://www.eurocloud.de/wp-content/uploads/sites/3/2023/01/eurocloud_logo.svg und `WIRTSCHAFTSWOCHE.png` von https://award.wiwo.de/bot/wp-content/uploads/sites/22/2022/09/WIRTSCHAFTSWOCHE.png (Größen unbekannt, Bildmarken Dritter).
-4. Der Computerwoche-BrandPost vom 11.06.2026: auf die Seite (mit Hinweis "Anzeige") oder weglassen?
-5. CSO-Online-Link und weitere RNZ-Beiträge, falls vorhanden.
-6. Telefonnummer im German-Pavilion-Eintrag (7358329) stimmt nicht mit der Website überein.
+1. WiWo-Wortlaut freigegeben: "Finalist in der Kategorie Cybersecurity, ausgezeichnet mit dem Prädikat Exzellent".
+2. EuroCloud: sobald es eine Gewinnerseite oder Pressemitteilung gibt, den Link in `press.js` tauschen. Bis dahin verweist die Seite auf den LinkedIn-Post.
+3. Award-Logos liegen im Repo-Root: `award-eurocloud.svg` (eurocloud.de) und `award-wirtschaftswoche.png` (award.wiwo.de), beide am 09.10.2026 mit Freigabe geladen.
+4. Computerwoche-BrandPost vom 11.06.2026: nicht auf der Seite (Link tot).
+5. CSO Online: bleibt draußen.
+6. Telefonnummer: die Website führt seit dem 25.08.2026 die neue Nummer 06221 6479525; der German-Pavilion-Eintrag trägt noch die alte. Auf der Site ist nichts zu ändern.
