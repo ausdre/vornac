@@ -11,7 +11,10 @@
    Dates come from published/updated (src/src.11tydata.js), never the build.
 #}
 {% set pageUrl = canonicalPath | absoluteUrl(site.domain) %}
-{% set wissenUrl = pageUrls.wissen | absoluteUrl(site.domain) %}
+{% set isVergleich = i18nKey and i18nKey.startsWith('vergleich-') %}
+{% set sectionKey = 'vergleich' if isVergleich else 'wissen' %}
+{% set wissenUrl = pageUrls[sectionKey] | absoluteUrl(site.domain) %}
+{% set sectionName = t.nav.vergleich if isVergleich else t.nav.wissen %}
 {% set homeUrl = pageUrls.index | absoluteUrl(site.domain) %}
 {% set articleHeadline = headline or title %}
 {% set person = site.authors[author] %}
@@ -51,7 +54,7 @@
     "@id": pageUrl + "#breadcrumb",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": ("Startseite" if locale == "de" else "Home"), "item": homeUrl },
-      { "@type": "ListItem", "position": 2, "name": t.nav.wissen, "item": wissenUrl },
+      { "@type": "ListItem", "position": 2, "name": sectionName, "item": wissenUrl },
       { "@type": "ListItem", "position": 3, "name": (breadcrumb or articleHeadline), "item": pageUrl }
     ]
   },

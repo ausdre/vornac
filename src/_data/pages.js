@@ -46,7 +46,9 @@ const STATIC_PAGES = [
   { key: "wissen-dora-resilienztests",         en: null,                                       de: "/wissen/dora-resilienztests" },
   { key: "wissen-assumed-breach-simulation",   en: null,                                       de: "/wissen/assumed-breach-simulation" },
   { key: "wissen-ctem-in-der-praxis",          en: null,                                       de: "/wissen/ctem-in-der-praxis" },
-  { key: "vergleich-vornac-vs-pentera",        en: null,                                       de: "/vergleich/vornac-vs-pentera" }
+  // Vergleiche (German only): hub plus one page per competitor keyword.
+  { key: "vergleich",                          en: null,                                       de: "/vergleich" },
+  { key: "vergleich-pentera-alternative",      en: null,                                       de: "/vergleich/pentera-alternative" }
 ];
 
 const RESEARCH_DOMAIN_PAGES = research.domains.map((d) => ({

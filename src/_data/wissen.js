@@ -5,9 +5,13 @@
  * i18nKey of the template; `title` and `blurb` feed the index page
  * (src/de/wissen.njk) and the Atom feed (src/feed.njk). Newest page first.
  * Dates come from dates.js at render time, never from here.
+ *
+ * Tag "Vergleich" marks the competitor pages under /vergleich. They stay in
+ * `pages` (index /wissen and feed), and are also exposed as `comparisons`
+ * for the /vergleich hub; `explainers` is everything else (product-page
+ * teaser).
  */
-module.exports = {
-  pages: [
+const pages = [
     {
       key: "wissen-ctem-in-der-praxis",
       tag: "CTEM",
@@ -39,7 +43,7 @@ module.exports = {
       blurb: "Werkzeugklassen, Betrieb in der Produktion, Kostenmodelle und der Nachweis für NIS2, TISAX, ISO/IEC 27001 und DORA. Mit Anbieterübersicht nach Ansatz und Sitz."
     },
     {
-      key: "vergleich-vornac-vs-pentera",
+      key: "vergleich-pentera-alternative",
       tag: "Vergleich",
       title: "VORNAC oder Pentera: Vergleich für Unternehmen in Deutschland",
       blurb: "Anbieter, Testumfang, Betriebsmodell, Datenstandort, Nachweise, Ansprechpartner und Preismodell im Vergleich, mit öffentlichen Quellen und Datum."
@@ -50,5 +54,10 @@ module.exports = {
       title: "NIS2: Wirksamkeit der Sicherheitsmaßnahmen belegen (§ 30 BSIG)",
       blurb: "Was § 30 Abs. 2 Satz 2 Nr. 6 BSIG verlangt und welchen Nachweis ein kontinuierlicher Penetrationstest liefert. Mit der Lesart des BSI im Wortlaut."
     }
-  ]
+  ];
+
+module.exports = {
+  pages,
+  comparisons: pages.filter((p) => p.tag === "Vergleich"),
+  explainers: pages.filter((p) => p.tag !== "Vergleich")
 };

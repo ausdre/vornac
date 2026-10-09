@@ -1,0 +1,13 @@
+{# "Weitere Vergleiche": links to the other /vergleich pages, from
+   src/_data/wissen.js (tag "Vergleich"), the current page excluded. #}
+{% set others = [] %}
+{% for p in wissen.comparisons %}{% if p.key != i18nKey %}{% set others = (others.push(p), others) %}{% endif %}{% endfor %}
+{% if others.length %}
+<h2>Weitere Vergleiche</h2>
+<ul class="ws-related">
+    {% for p in others %}
+    <li><a href="{{ pageUrls[p.key] }}">{{ p.title }}</a></li>
+    {% endfor %}
+    <li><a href="{{ pageUrls.vergleich }}">Alle Vergleiche</a></li>
+</ul>
+{% endif %}
