@@ -87,6 +87,10 @@
     "created": "2026-05-27",
     "modified": "2026-10-01"
   },
+  "/de/press": {
+    "created": "2026-10-09",
+    "modified": "2026-10-09"
+  },
   "/de/research-domain": {
     "created": "2026-06-02",
     "modified": "2026-09-07"
@@ -187,6 +191,10 @@
     "created": "2026-05-27",
     "modified": "2026-09-11"
   },
+  "/press": {
+    "created": "2026-10-09",
+    "modified": "2026-10-09"
+  },
   "/research-domain": {
     "created": "2026-06-02",
     "modified": "2026-09-07"
@@ -201,7 +209,7 @@
   },
   "/sitemap": {
     "created": "2026-05-27",
-    "modified": "2026-09-11"
+    "modified": "2026-10-09"
   },
   "/thank-you": {
     "created": "2026-07-31",
