@@ -1,7 +1,8 @@
 /* VORNAC Press page (/presse, /en/press) */
 /* White ground, no section bands, no cards, no rules: sections are       */
 /* separated by whitespace. Heads are centered, structured content (lists, */
-/* definition list, downloads) stays left-aligned. Tokens as in about.css. */
+/* definition list, downloads) stays left-aligned. Every linked item has a */
+/* visual on a soft tile. Tokens as in about.css.                          */
 
 :root {
     --v-bg:        #ffffff;
@@ -24,14 +25,14 @@
 .press-page { font-family: var(--v-sans); background: var(--v-bg); }
 
 /* ============================================ */
-/* Hero with press contact                      */
+/* Hero                                         */
 /* ============================================ */
 
 .ps-hero { background: var(--v-bg); position: relative; z-index: 1; }
 .ps-hero-inner {
     max-width: 820px;
     margin: 0 auto;
-    padding: 112px 40px 64px;
+    padding: 112px 40px 24px;
     text-align: center;
 }
 .ps-hero-headline {
@@ -41,57 +42,9 @@
     letter-spacing: -0.035em;
     font-weight: 900;
     color: var(--v-ink);
-    margin: 0 0 26px;
+    margin: 0;
 }
 .ps-hero-headline .ps-period { color: var(--v-amber); }
-.ps-hero-lead {
-    font-size: 17.5px;
-    line-height: 1.6;
-    color: var(--v-ink-2);
-    font-weight: 500;
-    max-width: 60ch;
-    margin: 0 auto 56px;
-}
-
-.ps-contact { display: grid; justify-items: center; gap: 4px; }
-.ps-contact-heading {
-    font-family: var(--v-mono);
-    font-size: 11.5px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
-    margin: 0 0 10px;
-}
-.ps-contact-name {
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    color: var(--v-ink);
-    margin: 0;
-}
-.ps-contact-role {
-    font-size: 14.5px;
-    color: var(--v-ink-3);
-    margin: 0;
-}
-.ps-contact-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px 32px;
-    margin-top: 16px;
-    font-family: var(--v-mono);
-    font-size: 14.5px;
-    letter-spacing: 0.01em;
-}
-.ps-contact-links a {
-    color: var(--v-ink);
-    text-decoration: none;
-    border-bottom: 1.5px solid var(--v-amber);
-    padding-bottom: 2px;
-    transition: color 0.15s;
-}
-.ps-contact-links a:hover { color: var(--v-amber-deep); }
 
 /* ============================================ */
 /* Section scaffold                             */
@@ -141,6 +94,51 @@
 .ps-link:hover { color: var(--v-amber-deep); }
 
 /* ============================================ */
+/* Thumbnails (shared by lists and press kit)   */
+/* ============================================ */
+
+.ps-thumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 168px;
+    aspect-ratio: 3 / 2;
+    background: var(--v-line-soft);
+    overflow: hidden;
+    flex: 0 0 auto;
+}
+.ps-thumb img,
+.ps-thumb picture { display: block; }
+.ps-thumb--logo img {
+    max-width: 68%;
+    max-height: 46%;
+    width: auto;
+    height: auto;
+    filter: grayscale(1);
+    opacity: 0.8;
+    transition: filter 0.2s, opacity 0.2s;
+}
+.ps-item:hover .ps-thumb--logo img,
+.ps-kit-item:hover .ps-thumb--logo img { filter: none; opacity: 1; }
+.ps-thumb--cover { background: var(--v-line-soft); }
+.ps-thumb--cover img,
+.ps-thumb--cover picture {
+    width: 100%;
+    height: 100%;
+}
+.ps-thumb--cover img {
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.35s ease;
+}
+.ps-item:hover .ps-thumb--cover img,
+.ps-kit-item:hover .ps-thumb--cover img { transform: scale(1.03); }
+.ps-thumb--light { background: var(--v-line-soft); }
+.ps-thumb--dark { background: var(--v-bg-dark); }
+.ps-thumb--light img,
+.ps-thumb--dark img { filter: none; opacity: 1; }
+
+/* ============================================ */
 /* Awards                                       */
 /* ============================================ */
 
@@ -148,28 +146,40 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 48px 72px;
-    max-width: 960px;
+    max-width: 980px;
     margin: 0 auto;
 }
 .ps-award {
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    gap: 0 24px;
+    grid-template-columns: 148px minmax(0, 1fr);
+    gap: 0 28px;
     align-items: start;
 }
-.ps-award-year {
+.ps-award-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 148px;
+    aspect-ratio: 1 / 1;
+    background: var(--v-line-soft);
+    overflow: hidden;
+}
+.ps-award-logo img {
+    display: block;
+    max-width: 78%;
+    max-height: 78%;
+    width: auto;
+    height: auto;
+}
+.ps-award-logo--year span {
     font-family: var(--v-display);
-    font-size: 64px;
-    line-height: 0.86;
+    font-size: 56px;
+    line-height: 1;
     font-weight: 900;
     letter-spacing: -0.03em;
     color: var(--v-ink);
-    padding-top: 2px;
 }
-.ps-award-year::after {
-    content: '.';
-    color: var(--v-amber);
-}
+.ps-award-logo--year span::after { content: '.'; color: var(--v-amber); }
 .ps-award-title {
     font-size: 22px;
     font-weight: 700;
@@ -178,6 +188,8 @@
     color: var(--v-ink);
     margin: 0 0 6px;
 }
+.ps-award-title a { color: inherit; text-decoration: none; }
+.ps-award-title a:hover { color: var(--v-amber-deep); }
 .ps-award-by {
     font-family: var(--v-mono);
     font-size: 12px;
@@ -201,21 +213,21 @@
     max-width: 920px;
     margin: 0 auto;
     display: grid;
-    gap: 34px;
+    gap: 40px;
 }
 .ps-item {
     display: grid;
-    grid-template-columns: 170px minmax(0, 1fr);
-    gap: 0 28px;
-    align-items: baseline;
+    grid-template-columns: 168px minmax(0, 1fr);
+    gap: 0 32px;
+    align-items: start;
 }
-.ps-item-date {
+.ps-item-body { padding-top: 2px; }
+.ps-item-meta--top {
     font-family: var(--v-mono);
     font-size: 12.5px;
     letter-spacing: 0.04em;
     color: var(--v-ink-3);
-    white-space: nowrap;
-    padding-top: 4px;
+    margin: 0 0 10px;
 }
 .ps-item-outlet {
     font-size: 12.5px;
@@ -243,7 +255,7 @@
     background-position: 0 100%;
     transition: background-size 0.22s ease;
 }
-.ps-item-title a:hover,
+.ps-item:hover .ps-item-title a,
 .ps-item-title a:focus-visible { background-size: 100% 2px; outline: none; }
 .ps-item-meta {
     font-size: 14px;
@@ -257,7 +269,7 @@
     border-bottom: 1px solid var(--v-line);
 }
 .ps-item-meta a:hover { color: var(--v-amber-deep); border-bottom-color: var(--v-amber); }
-.ps-item-meta .ps-dot { padding: 0 8px; }
+.ps-dot { padding: 0 8px; }
 
 /* ============================================ */
 /* Profile: boilerplate and facts               */
@@ -333,37 +345,12 @@
 }
 .ps-kit-item {
     display: grid;
-    grid-template-columns: 140px minmax(0, 1fr) auto;
-    gap: 0 28px;
+    grid-template-columns: 168px minmax(0, 1fr) auto;
+    gap: 0 32px;
     align-items: center;
 }
-.ps-kit-preview {
-    width: 140px;
-    height: 76px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--v-bg);
-    overflow: hidden;
-}
-.ps-kit-preview--light { background: var(--v-line-soft); }
-.ps-kit-preview--dark { background: var(--v-bg-dark); }
-.ps-kit-preview img {
-    display: block;
-    max-width: 104px;
-    max-height: 40px;
-    width: auto;
-    height: auto;
-}
-.ps-kit-preview--photo img {
-    max-width: none;
-    max-height: none;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.ps-kit-preview--doc { background: var(--v-line-soft); }
-.ps-kit-preview--doc svg { width: 26px; height: 26px; color: var(--v-ink-3); }
+.ps-kit-item .ps-thumb { width: 168px; aspect-ratio: 3 / 2; }
+.ps-kit-item .ps-thumb--logo img { max-width: 62%; max-height: 42%; }
 .ps-kit-label {
     font-size: 17px;
     font-weight: 600;
@@ -405,6 +392,8 @@
     color: var(--v-ink);
     margin: 0 0 2px;
 }
+.ps-speaker-name a { color: inherit; text-decoration: none; }
+.ps-speaker-name a:hover { color: var(--v-amber-deep); }
 .ps-speaker-role {
     font-size: 14.5px;
     color: var(--v-ink-3);
@@ -412,36 +401,52 @@
 }
 
 /* ============================================ */
-/* Closing contact                              */
+/* Press contact (closing section)              */
 /* ============================================ */
 
-.ps-close {
+.ps-contact-section .ps-section-inner { padding-bottom: 128px; }
+.ps-contact-section .ps-head { margin-bottom: 40px; }
+.ps-contact {
+    display: grid;
+    justify-items: center;
+    gap: 4px;
     text-align: center;
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 72px 40px 128px;
 }
-.ps-close-headline {
-    font-family: var(--v-display);
-    font-size: clamp(34px, 4.4vw, 56px);
-    font-weight: 900;
-    letter-spacing: -0.035em;
-    line-height: 1.04;
+.ps-contact-name {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.012em;
     color: var(--v-ink);
-    margin: 0 auto 20px;
+    margin: 0;
 }
-.ps-close-sub {
-    font-size: 17px;
-    line-height: 1.55;
-    color: var(--v-ink-2);
-    font-weight: 500;
-    margin: 0 auto 32px;
-    max-width: 52ch;
+.ps-contact-role {
+    font-size: 14.5px;
+    color: var(--v-ink-3);
+    margin: 0;
 }
-.ps-close-btn {
+.ps-contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 32px;
+    margin: 18px 0 0;
+    font-family: var(--v-mono);
+    font-size: 14.5px;
+    letter-spacing: 0.01em;
+}
+.ps-contact-links a {
+    color: var(--v-ink);
+    text-decoration: none;
+    border-bottom: 1.5px solid var(--v-amber);
+    padding-bottom: 2px;
+    transition: color 0.15s;
+}
+.ps-contact-links a:hover { color: var(--v-amber-deep); }
+.ps-contact-btn {
     display: inline-flex;
     align-items: center;
     gap: 10px;
+    margin-top: 32px;
     padding: 15px 26px;
     background: var(--v-bg-dark);
     color: #fff;
@@ -450,7 +455,7 @@
     font-weight: 600;
     transition: background 0.15s, color 0.15s;
 }
-.ps-close-btn:hover { background: var(--v-amber); color: var(--v-bg-dark); }
+.ps-contact-btn:hover { background: var(--v-amber); color: var(--v-bg-dark); }
 
 /* ============================================ */
 /* Responsive                                   */
@@ -464,16 +469,16 @@
     .ps-section-inner { padding: 56px 32px; }
 }
 @media (max-width: 640px) {
-    .ps-hero-inner { padding: 80px 24px 48px; }
+    .ps-hero-inner { padding: 80px 24px 16px; }
     .ps-section-inner { padding: 48px 24px; }
-    .ps-close { padding: 48px 24px 96px; }
-    .ps-item { grid-template-columns: 1fr; gap: 6px 0; }
-    .ps-item-date { padding-top: 0; }
-    .ps-award { grid-template-columns: 1fr; gap: 10px 0; }
-    .ps-award-year { font-size: 48px; }
-    .ps-kit-item { grid-template-columns: 110px minmax(0, 1fr); gap: 8px 18px; }
-    .ps-kit-preview { width: 110px; height: 64px; }
-    .ps-kit-preview img { max-width: 84px; max-height: 32px; }
-    .ps-kit-item .ps-link { grid-column: 2; justify-self: start; }
+    .ps-contact-section .ps-section-inner { padding-bottom: 96px; }
+    .ps-item { grid-template-columns: 1fr; gap: 14px 0; }
+    .ps-thumb,
+    .ps-kit-item .ps-thumb { width: 100%; max-width: 240px; }
+    .ps-award { grid-template-columns: 1fr; gap: 14px 0; }
+    .ps-award-logo { width: 120px; }
+    .ps-award-logo--year span { font-size: 44px; }
+    .ps-kit-item { grid-template-columns: 1fr; gap: 10px 0; }
+    .ps-kit-item .ps-thumb { max-width: 200px; }
     .ps-contact-links { flex-direction: column; gap: 10px; }
 }

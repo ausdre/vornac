@@ -2,21 +2,22 @@
    Data from src/_data/press.js; strings from press.ui[locale].
    Inputs in scope: locale, press, pageUrls, site. #}
 {% set ui = press.ui[locale] %}
+
+{#- Thumbnail tile for a linked item: outlet or award mark contained on a
+    soft tile, or a page/article image cropped to it. -#}
+{% macro thumb(item, href, cls) %}
+  {% if item.thumb %}
+    {% if href %}<a class="ps-thumb ps-thumb--{{ item.thumbKind or 'logo' }}{% if cls %} {{ cls }}{% endif %}" href="{{ href }}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">{% else %}<div class="ps-thumb ps-thumb--{{ item.thumbKind or 'logo' }}{% if cls %} {{ cls }}{% endif %}" aria-hidden="true">{% endif %}
+      <img src="{{ item.thumb }}" alt="" loading="lazy" decoding="async">
+    {% if href %}</a>{% else %}</div>{% endif %}
+  {% endif %}
+{% endmacro %}
+
 <main class="press-page">
 
     <section class="ps-hero">
         <div class="ps-hero-inner">
             <h1 class="ps-hero-headline">{{ ui.h1 }}<span class="ps-period">.</span></h1>
-            <p class="ps-hero-lead">{{ ui.lead }}</p>
-            <div class="ps-contact" id="pressekontakt">
-                <p class="ps-contact-heading">{{ ui.contactHeading }}</p>
-                <p class="ps-contact-name">{{ press.contact.name }}</p>
-                {% if press.contact.role[locale] %}<p class="ps-contact-role">{{ press.contact.role[locale] }}</p>{% endif %}
-                <p class="ps-contact-links">
-                    <a href="mailto:{{ press.contact.email }}">{{ press.contact.email }}</a>
-                    <a href="tel:{{ press.contact.phone | replace(' ', '') }}">{{ press.contact.phoneDisplay }}</a>
-                </p>
-            </div>
         </div>
     </section>
 
@@ -30,10 +31,16 @@
             <div class="ps-awards">
                 {% for a in press.awards %}
                 <article class="ps-award">
-                    <div class="ps-award-year" aria-hidden="true">{{ a.year }}</div>
+                    {% if a.logo %}
+                    {% if a.url %}<a class="ps-award-logo" href="{{ a.url }}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">{% else %}<div class="ps-award-logo">{% endif %}
+                        <img src="{{ a.logo }}" alt="{{ a.logoAlt }}" loading="lazy" decoding="async">
+                    {% if a.url %}</a>{% else %}</div>{% endif %}
+                    {% else %}
+                    <div class="ps-award-logo ps-award-logo--year" aria-hidden="true"><span>{{ a.year }}</span></div>
+                    {% endif %}
                     <div>
-                        <h3 class="ps-award-title">{{ a.title[locale] }}</h3>
-                        <p class="ps-award-by">{{ a.by[locale] }}{% if a.dateLabel[locale] and a.date.length > 4 %} · <time datetime="{{ a.date }}">{{ a.dateLabel[locale] }}</time>{% endif %}</p>
+                        <h3 class="ps-award-title">{% if a.url %}<a href="{{ a.url }}" target="_blank" rel="noopener">{{ a.title[locale] }}</a>{% else %}{{ a.title[locale] }}{% endif %}</h3>
+                        <p class="ps-award-by">{{ a.by[locale] }}{% if a.dateLabel[locale] %} · <time datetime="{{ a.date }}">{{ a.dateLabel[locale] }}</time>{% endif %}</p>
                         <p class="ps-award-text">{{ a.text[locale] }}</p>
                         {% if a.url %}<a class="ps-link" href="{{ a.url }}" target="_blank" rel="noopener">{{ ui.awardLink }}</a>{% endif %}
                     </div>
@@ -53,12 +60,16 @@
             </header>
             <div class="ps-list">
                 {% for c in press.coverage %}
+                {% set href = c.url if c.url else c.pdf %}
                 <article class="ps-item">
-                    <time class="ps-item-date" datetime="{{ c.date }}">{{ c.dateLabel[locale] }}</time>
-                    <div>
+                    {{ thumb(c, href) }}
+                    <div class="ps-item-body">
+                        <p class="ps-item-meta ps-item-meta--top"><time datetime="{{ c.date }}">{{ c.dateLabel[locale] }}</time><span class="ps-dot" aria-hidden="true">·</span>{{ press.types[c.type][locale] }}</p>
                         <p class="ps-item-outlet">{{ c.outlet }}</p>
-                        <h3 class="ps-item-title">{% if c.url %}<a href="{{ c.url }}" target="_blank" rel="noopener"{% if c.lang and c.lang != locale %} hreflang="{{ c.lang }}"{% endif %}>{{ c.title }}</a>{% elif c.pdf %}<a href="{{ c.pdf }}" target="_blank" rel="noopener">{{ c.title }}</a>{% else %}{{ c.title }}{% endif %}</h3>
-                        <p class="ps-item-meta">{{ press.types[c.type][locale] }}{% if c.author %}<span class="ps-dot" aria-hidden="true">·</span>{{ ui.by }} {{ c.author }}{% endif %}{% if c.cite %}<span class="ps-dot" aria-hidden="true">·</span>{{ c.cite }}{% endif %}{% if c.pdf and c.url %}<span class="ps-dot" aria-hidden="true">·</span><a href="{{ c.pdf }}" target="_blank" rel="noopener">{{ ui.coveragePdf }}</a>{% endif %}</p>
+                        <h3 class="ps-item-title">{% if href %}<a href="{{ href }}" target="_blank" rel="noopener"{% if c.lang and c.lang != locale %} hreflang="{{ c.lang }}"{% endif %}>{{ c.title }}</a>{% else %}{{ c.title }}{% endif %}</h3>
+                        {% if c.author or c.cite or (c.pdf and c.url) %}
+                        <p class="ps-item-meta">{% if c.author %}{{ ui.by }} {{ c.author }}{% endif %}{% if c.cite %}{% if c.author %}<span class="ps-dot" aria-hidden="true">·</span>{% endif %}{{ c.cite[locale] }}{% endif %}{% if c.pdf and c.url %}<span class="ps-dot" aria-hidden="true">·</span><a href="{{ c.pdf }}" target="_blank" rel="noopener">{{ ui.coveragePdf }}</a>{% endif %}</p>
+                        {% endif %}
                     </div>
                 </article>
                 {% endfor %}
@@ -77,9 +88,9 @@
             <div class="ps-list">
                 {% for p in press.publications %}
                 <article class="ps-item">
-                    <time class="ps-item-date" datetime="{{ p.date }}">{{ p.dateLabel[locale] }}</time>
-                    <div>
-                        <p class="ps-item-outlet">{{ press.types[p.type][locale] }}</p>
+                    {{ thumb(p, p.url) }}
+                    <div class="ps-item-body">
+                        <p class="ps-item-meta ps-item-meta--top"><time datetime="{{ p.date }}">{{ p.dateLabel[locale] }}</time><span class="ps-dot" aria-hidden="true">·</span>{{ press.types[p.type][locale] }}</p>
                         <h3 class="ps-item-title"><a href="{{ p.url }}" target="_blank" rel="noopener"{% if p.lang and p.lang != locale %} hreflang="{{ p.lang }}"{% endif %}>{{ p.title }}</a></h3>
                         <p class="ps-item-meta">{% if p.author %}{{ ui.by }} {{ p.author }}{% endif %}{% if p.note %}<span class="ps-dot" aria-hidden="true">·</span>{{ p.note[locale] }}{% endif %}</p>
                     </div>
@@ -131,15 +142,15 @@
             <div class="ps-kit">
                 {% for k in press.kit %}
                 <div class="ps-kit-item">
-                    <div class="ps-kit-preview ps-kit-preview--{{ k.preview }}" aria-hidden="true">
+                    <a class="ps-thumb ps-thumb--{{ 'cover' if k.preview == 'cover' or k.preview == 'photo' else 'logo' }} ps-thumb--{{ k.preview }}" href="{{ k.file }}" download tabindex="-1" aria-hidden="true">
                         {% if k.preview == 'photo' %}
                         <picture>{% if k.webp %}<source type="image/webp" srcset="{{ k.webp }}">{% endif %}<img src="{{ k.file }}" alt="" loading="lazy" decoding="async"></picture>
-                        {% elif k.preview == 'doc' %}
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>
+                        {% elif k.preview == 'cover' %}
+                        <img src="{{ k.thumb }}" alt="" loading="lazy" decoding="async">
                         {% else %}
                         <img src="{{ k.file }}" alt="" loading="lazy" decoding="async">
                         {% endif %}
-                    </div>
+                    </a>
                     <div>
                         <p class="ps-kit-label">{{ k.label[locale] }}</p>
                         <p class="ps-kit-meta">{{ k.format }}</p>
@@ -167,7 +178,7 @@
                 <div>
                     {% for s in press.speakers %}
                     <div class="ps-speaker">
-                        <p class="ps-speaker-name"><a href="{{ pageUrls.about }}#{{ s.id }}" style="color:inherit;text-decoration:none;">{{ s.name }}</a></p>
+                        <p class="ps-speaker-name"><a href="{{ pageUrls.about }}#{{ s.id }}">{{ s.name }}</a></p>
                         <p class="ps-speaker-role">{{ s.role[locale] }}</p>
                     </div>
                     {% endfor %}
@@ -177,13 +188,25 @@
         </div>
     </section>
 
-    <section class="ps-close">
-        <h2 class="ps-close-headline">{{ ui.closeHeadline }}</h2>
-        <p class="ps-close-sub">{{ ui.closeSub }}</p>
-        <a class="ps-close-btn" href="mailto:{{ press.contact.email }}">
-            {{ ui.closeCta }}
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
+    <section class="ps-section ps-contact-section" id="pressekontakt">
+        <div class="ps-section-inner">
+            <header class="ps-head">
+                <h2 class="ps-headline">{{ ui.contactHeading }}</h2>
+                <p class="ps-sub">{{ ui.contactLead }}</p>
+            </header>
+            <div class="ps-contact">
+                <p class="ps-contact-name">{{ press.contact.name }}</p>
+                {% if press.contact.role[locale] %}<p class="ps-contact-role">{{ press.contact.role[locale] }}, VORNAC GmbH</p>{% endif %}
+                <p class="ps-contact-links">
+                    <a href="mailto:{{ press.contact.email }}">{{ press.contact.email }}</a>
+                    <a href="tel:{{ press.contact.phone | replace(' ', '') }}">{{ press.contact.phoneDisplay }}</a>
+                </p>
+                <a class="ps-contact-btn" href="mailto:{{ press.contact.email }}">
+                    {{ ui.contactCta }}
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
+        </div>
     </section>
 
 </main>

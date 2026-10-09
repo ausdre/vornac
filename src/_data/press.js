@@ -1,8 +1,13 @@
 /**
- * Press page (/presse, /en/press): contact, awards, coverage, boilerplate,
- * facts and the press kit. One source for both locales; the templates
- * src/de/press.njk and src/press.njk render it through
- * partials/press-render.njk and partials/press-schema.njk.
+ * Press page (/presse, /en/press): awards, coverage, publications,
+ * boilerplate, facts, press kit, speakers and the press contact. One source
+ * for both locales; the templates src/de/press.njk and src/press.njk render
+ * it through partials/press-render.njk and partials/press-schema.njk.
+ *
+ * Every linked item carries a visual: `thumb` is an image path, `thumbKind`
+ * is "logo" (outlet or award mark, contained on a soft tile) or "cover" (a
+ * page or article image, cropped to the tile). PDF covers are rendered once
+ * with pdftoppm (first page, 60 dpi) and committed as press-thumb-*.jpg.
  *
  * Coverage entries: `date` is YYYY-MM-DD, YYYY-MM or YYYY; the label per
  * locale is derived below. `type` is one of the keys in `types`. `url` is
@@ -16,15 +21,24 @@
 const PHONE = "+49 6221 6479525";
 const PHONE_DISPLAY = "+49 6221 647 95 25";
 
+/** Outlet marks already in the repo (also used in the homepage trust band). */
+const LOGOS = {
+  computerwoche: "/logo_cw.svg",
+  cio: "/logo_cio.png",
+  cso: "/logo_cso.png",
+  rnz: "/logo_rnz.png"
+};
+
 const types = {
-  artikel:      { de: "Artikel",        en: "Article" },
-  fachbeitrag:  { de: "Fachbeitrag",    en: "Trade-journal article" },
-  interview:    { de: "Interview",      en: "Interview" },
-  erwaehnung:   { de: "Erwähnung",      en: "Mention" },
-  auszeichnung: { de: "Auszeichnung",   en: "Award" },
+  artikel:      { de: "Artikel",          en: "Article" },
+  fachbeitrag:  { de: "Fachbeitrag",      en: "Trade-journal article" },
+  interview:    { de: "Interview",        en: "Interview" },
+  erwaehnung:   { de: "Erwähnung",        en: "Mention" },
+  auszeichnung: { de: "Auszeichnung",     en: "Award" },
   paper:        { de: "Forschungspapier", en: "Research paper" },
-  podcast:      { de: "Podcast",        en: "Podcast" },
-  video:        { de: "Video",          en: "Video" }
+  podcast:      { de: "Podcast",          en: "Podcast" },
+  video:        { de: "Video",            en: "Video" },
+  post:         { de: "Beitrag",          en: "Post" }
 };
 
 /** "2026-09" -> { de: "September 2026", en: "September 2026" }, "2026-09-12" -> full date. */
@@ -44,7 +58,9 @@ function dateLabel(date) {
   return out;
 }
 
-const coverage = [
+const withDates = (list) => list.map((x) => Object.assign({}, x, { dateLabel: dateLabel(x.date) }));
+
+const coverage = withDates([
   {
     date: "2026-09",
     outlet: "et Energiewirtschaftliche Tagesfragen",
@@ -53,12 +69,14 @@ const coverage = [
     pdf: "/vornac-et-fachbeitrag-messpunkt-steuerpunkt-2026.pdf",
     type: "fachbeitrag",
     author: "Arthur Raess",
-    cite: "76. Jg. (2026), Heft 9, S. 27 bis 29",
-    lang: "de"
+    cite: { de: "76. Jg. (2026), Heft 9, S. 27 bis 29", en: "Vol. 76 (2026), No. 9, pp. 27 to 29" },
+    lang: "de",
+    thumb: "/press-thumb-et-2026-09.jpg",
+    thumbKind: "cover"
   }
-].map((c) => Object.assign({}, c, { dateLabel: dateLabel(c.date) }));
+]);
 
-const awards = [
+const awards = withDates([
   {
     year: "2026",
     date: "2026-10-08",
@@ -68,7 +86,9 @@ const awards = [
       de: "Auszeichnung des EuroCloud Deutschland_eco e.V. für die Plattform für kontinuierliche, autonome Penetrationstests.",
       en: "Awarded by EuroCloud Deutschland_eco e.V. for the platform for continuous, autonomous penetration testing."
     },
-    url: ""
+    url: "",
+    logo: "",
+    logoAlt: "EuroCloud Deutschland Award"
   },
   {
     year: "2026",
@@ -79,11 +99,13 @@ const awards = [
       de: "Preis der WirtschaftsWoche für Technologieunternehmen aus Deutschland.",
       en: "WirtschaftsWoche award for technology companies from Germany."
     },
-    url: ""
+    url: "",
+    logo: "",
+    logoAlt: "WirtschaftsWoche Best of Technology"
   }
-].map((a) => Object.assign({}, a, { dateLabel: dateLabel(a.date) }));
+]);
 
-const publications = [
+const publications = withDates([
   {
     date: "2026-05",
     title: "Autonomous Penetration Testing in High-Complexity Environments: A POMDP Framework and Empirical Evaluation of the VORNAC Agent",
@@ -91,9 +113,11 @@ const publications = [
     url: "/CaseStudy_VORNAC_0526.pdf",
     type: "paper",
     lang: "en",
-    note: { de: "Englisch, PDF", en: "English, PDF" }
+    note: { de: "Englisch, PDF", en: "English, PDF" },
+    thumb: "/press-thumb-paper-2026-05.jpg",
+    thumbKind: "cover"
   }
-].map((p) => Object.assign({}, p, { dateLabel: dateLabel(p.date) }));
+]);
 
 const kit = [
   { file: "/logo-vornac-black.svg", label: { de: "Logo, schwarz", en: "Logo, black" }, format: "SVG", preview: "light" },
@@ -101,14 +125,16 @@ const kit = [
   { file: "/V_BLACK.svg", label: { de: "Bildmarke V, schwarz", en: "V mark, black" }, format: "SVG", preview: "light" },
   { file: "/V.svg", label: { de: "Bildmarke V, weiß", en: "V mark, white" }, format: "SVG", preview: "dark" },
   { file: "/founders-group.jpg", label: { de: "Gründer André Feigenbutz und Arthur Raess", en: "Founders André Feigenbutz and Arthur Raess" }, format: "JPG, 1024 × 1024 px", preview: "photo", webp: "/founders-group.webp" },
-  { file: "/CaseStudy_VORNAC_0526.pdf", label: { de: "Forschungspapier zum VORNAC-Agenten (Mai 2026)", en: "Research paper on the VORNAC agent (May 2026)" }, format: "PDF, 0,3 MB", preview: "doc" },
-  { file: "/vornac-et-fachbeitrag-messpunkt-steuerpunkt-2026.pdf", label: { de: "Fachbeitrag in der et, Heft 9/2026", en: "Trade-journal article in et, issue 9/2026" }, format: "PDF, 0,5 MB", preview: "doc" }
+  { file: "/CaseStudy_VORNAC_0526.pdf", label: { de: "Forschungspapier zum VORNAC-Agenten (Mai 2026)", en: "Research paper on the VORNAC agent (May 2026)" }, format: "PDF, 0,3 MB", preview: "cover", thumb: "/press-thumb-paper-2026-05.jpg" },
+  { file: "/vornac-et-fachbeitrag-messpunkt-steuerpunkt-2026.pdf", label: { de: "Fachbeitrag in der et, Heft 9/2026", en: "Trade-journal article in et, issue 9/2026" }, format: "PDF, 0,5 MB", preview: "cover", thumb: "/press-thumb-et-2026-09.jpg" }
 ];
 
 module.exports = {
+  logos: LOGOS,
+
   contact: {
     name: "Angelina Deibert",
-    role: { de: "", en: "" },
+    role: { de: "Founders Associate", en: "Founders Associate" },
     email: "presse@vornac.com",
     phone: PHONE,
     phoneDisplay: PHONE_DISPLAY
@@ -160,14 +186,11 @@ module.exports = {
   ui: {
     de: {
       h1: "Presse",
-      lead: "Hier finden Journalistinnen und Journalisten den Pressekontakt der VORNAC GmbH, Heidelberg, Berichte und Fachbeiträge über das Unternehmen, Auszeichnungen, ein Kurzprofil mit Fakten zum Kopieren sowie Logos und Fotos zum Download. Für Interviews mit den Gründern und Hintergrundgespräche zu kontinuierlichen Penetrationstests schreiben Sie an presse@vornac.com.",
-      contactHeading: "Pressekontakt",
       awardsHeading: "Auszeichnungen",
       awardsSub: "Preise, die VORNAC für die Plattform erhalten hat, mit Veranstalter und Datum.",
       awardLink: "Zur Preisträgerseite",
       coverageHeading: "Pressespiegel",
       coverageSub: "Berichte, Interviews und Fachbeiträge über VORNAC in Fach- und Wirtschaftsmedien, neueste zuerst.",
-      coverageLink: "Beitrag lesen",
       coveragePdf: "PDF",
       by: "von",
       publicationsHeading: "Eigene Veröffentlichungen",
@@ -186,20 +209,17 @@ module.exports = {
       speakersSub: "Die Gründer stehen für Interviews, Hintergrundgespräche und Gastbeiträge zur Verfügung.",
       speakersPhotoAlt: "André Feigenbutz und Arthur Raess, Gründer von VORNAC",
       speakersMail: "Interview anfragen",
-      closeHeadline: "Sie recherchieren zu kontinuierlichen Penetrationstests?",
-      closeSub: "Wir antworten in der Regel am selben Werktag und vermitteln Gesprächspartner, Zahlen und Hintergrund.",
-      closeCta: "presse@vornac.com schreiben"
+      contactHeading: "Pressekontakt",
+      contactLead: "Journalistinnen und Journalisten erreichen uns unter presse@vornac.com. Wir vermitteln Interviews mit den Gründern, Hintergrundgespräche zu kontinuierlichen Penetrationstests, Zahlen und Bildmaterial und antworten in der Regel am selben Werktag.",
+      contactCta: "presse@vornac.com schreiben"
     },
     en: {
       h1: "Press",
-      lead: "This page gives journalists the press contact of VORNAC GmbH, Heidelberg, coverage and trade-journal articles about the company, awards, a company profile with facts ready to copy, and logos and photos for download. For interviews with the founders and background briefings on continuous penetration testing, write to presse@vornac.com.",
-      contactHeading: "Press contact",
       awardsHeading: "Awards",
       awardsSub: "Prizes VORNAC has received for the platform, with the awarding body and date.",
       awardLink: "Winners page",
       coverageHeading: "Coverage",
       coverageSub: "Reports, interviews and trade-journal articles about VORNAC in specialist and business media, newest first.",
-      coverageLink: "Read the article",
       coveragePdf: "PDF",
       by: "by",
       publicationsHeading: "Our publications",
@@ -218,9 +238,9 @@ module.exports = {
       speakersSub: "The founders are available for interviews, background briefings and guest articles.",
       speakersPhotoAlt: "André Feigenbutz and Arthur Raess, founders of VORNAC",
       speakersMail: "Request an interview",
-      closeHeadline: "Researching continuous penetration testing?",
-      closeSub: "We usually reply on the same working day and provide speakers, figures and background.",
-      closeCta: "Write to presse@vornac.com"
+      contactHeading: "Press contact",
+      contactLead: "Journalists can reach us at presse@vornac.com. We arrange interviews with the founders, background briefings on continuous penetration testing, figures and images, and usually reply on the same working day.",
+      contactCta: "Write to presse@vornac.com"
     }
   }
 };
