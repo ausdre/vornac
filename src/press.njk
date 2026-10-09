@@ -1,0 +1,17 @@
+---
+title: "Press · Press contact, coverage and press kit | VORNAC"
+description: "Press contact of VORNAC GmbH, Heidelberg, coverage and trade-journal articles about the company, awards, company profile with facts, and logos and founder photo for download."
+i18nKey: press
+ogType: website
+bodyClass: press-page-body
+---
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+<link rel="stylesheet" href="/press.css">
+{% include "partials/press-schema.njk" %}
+{% endblock %}
+
+{% block content %}
+{% include "partials/press-render.njk" %}
+{% endblock %}

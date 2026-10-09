@@ -1,0 +1,18 @@
+---
+title: "Presse · Pressekontakt, Pressespiegel und Presse-Kit | VORNAC"
+description: "Pressekontakt der VORNAC GmbH, Heidelberg, Berichte und Fachbeiträge über das Unternehmen, Auszeichnungen, Kurzprofil mit Fakten sowie Logos und Gründerfoto zum Download."
+i18nKey: press
+permalink: /presse.html
+ogType: website
+bodyClass: press-page-body
+---
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+<link rel="stylesheet" href="/press.css">
+{% include "partials/press-schema.njk" %}
+{% endblock %}
+
+{% block content %}
+{% include "partials/press-render.njk" %}
+{% endblock %}

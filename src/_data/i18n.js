@@ -23,6 +23,7 @@ module.exports = {
       about: "About",
       company: "Company",
       careers: "Careers",
+      press: "Press",
       bookDemo: "Book Demo",
       contact: "Contact"
     },
@@ -122,6 +123,7 @@ module.exports = {
       about: "Über uns",
       company: "Unternehmen",
       careers: "Karriere",
+      press: "Presse",
       bookDemo: "Demo buchen",
       contact: "Kontakt"
     },

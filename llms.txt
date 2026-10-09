@@ -19,6 +19,7 @@ Unternehmen: VORNAC GmbH, Carl-Friedrich-Gauß-Ring 5, 69124 Heidelberg, Deutsch
 - [Branchen](https://www.vornac.com/industries): Versicherung, Finanzdienstleister, kritische Infrastruktur, Automotive, Enterprise
 - [Kunden](https://www.vornac.com/customers): Warum CISOs VORNAC wählen
 - [Über uns](https://www.vornac.com/about): Gründer, Standort Heidelberg, Auszeichnungen
+- [Presse](https://www.vornac.com/presse): Pressekontakt, Auszeichnungen, Pressespiegel mit Berichten und Fachbeiträgen, Kurzprofil und Fakten zum Zitieren, Logos und Gründerfoto zum Download
 
 ## Regelwerke
 
@@ -45,6 +46,7 @@ Unternehmen: VORNAC GmbH, Carl-Friedrich-Gauß-Ring 5, 69124 Heidelberg, Deutsch
 - [Pentesting](https://www.vornac.com/en/pentesting)
 - [CTEM](https://www.vornac.com/en/ctem)
 - [FAQ](https://www.vornac.com/en/faq)
+- [Press](https://www.vornac.com/en/press)
 - [Glossary](https://www.vornac.com/en/glossary)
 
 ## Optional

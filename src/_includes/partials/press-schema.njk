@@ -1,0 +1,71 @@
+{# JSON-LD for the press page: a WebPage about the Organization whose main
+   entity is the list of coverage items, plus the Organization node with the
+   press contact point and the awards. The full Organization record stays on
+   the home pages (partials/organization-schema.njk); this node only adds
+   what the press page is about.
+
+   Inputs in scope: title, description, locale, site, canonicalPath,
+   published, updated, press, pageUrls. #}
+{% set pageAbs = canonicalPath | absoluteUrl(site.domain) %}
+{% set items = [] %}
+{% for c in press.coverage %}
+  {% set itemUrl = c.url if c.url else (c.pdf | absoluteUrl(site.domain) if c.pdf else "") %}
+  {% if itemUrl %}
+  {% set items = (items.push({
+    "@type": "ListItem",
+    "position": loop.index,
+    "item": {
+      "@type": ("ScholarlyArticle" if c.type == "fachbeitrag" or c.type == "paper" else "NewsArticle"),
+      "headline": c.title,
+      "url": itemUrl,
+      "datePublished": c.date,
+      "inLanguage": c.lang,
+      "author": ({ "@type": "Person", "name": c.author } if c.author else null),
+      "publisher": { "@type": "Organization", "name": c.outlet },
+      "about": { "@id": site.organizationId }
+    }
+  }), items) %}
+  {% endif %}
+{% endfor %}
+{% set awardNames = [] %}
+{% for a in press.awards %}
+  {% set awardNames = (awardNames.push(a.by[locale] + ": " + a.title[locale]), awardNames) %}
+{% endfor %}
+{% set orgNode = {
+  "@type": "Organization",
+  "@id": site.organizationId,
+  "name": site.organizationLd.name,
+  "alternateName": site.organizationLd.alternateName,
+  "url": site.organizationLd.url,
+  "logo": site.organizationLd.logo,
+  "award": awardNames,
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "press",
+    "name": press.contact.name,
+    "email": press.contact.email,
+    "telephone": press.contact.phone,
+    "availableLanguage": ["de", "en"]
+  }
+} %}
+{% set ld = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": pageAbs,
+      "url": pageAbs,
+      "name": title,
+      "description": description,
+      "inLanguage": locale,
+      "datePublished": published,
+      "dateModified": updated,
+      "isPartOf": { "@id": site.websiteId },
+      "publisher": { "@id": site.organizationId },
+      "about": { "@id": site.organizationId },
+      "mainEntity": ({ "@type": "ItemList", "itemListElement": items } if items.length else { "@id": site.organizationId })
+    },
+    orgNode
+  ]
+} %}
+<script type="application/ld+json">{{ ld | jsonLd | safe }}</script>
