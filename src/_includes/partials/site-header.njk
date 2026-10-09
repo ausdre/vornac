@@ -118,8 +118,15 @@
                         <span class="v-dv-drop-heading">{{ t.navHeadings.glossary }}</span>
                         {# Wissen exists in German only for now (registry: en: null). #}
                         {% if pageUrls.wissen %}
-                        <a href="{{ pageUrls.wissen }}" class="v-dv-drop-aside-link{% if i18nKey == 'wissen' or (i18nKey and i18nKey.startsWith('wissen-')) or (i18nKey and i18nKey.startsWith('vergleich-')) %} is-active{% endif %}">
+                        <a href="{{ pageUrls.wissen }}" class="v-dv-drop-aside-link{% if i18nKey == 'wissen' or (i18nKey and i18nKey.startsWith('wissen-')) %} is-active{% endif %}">
                             {{ t.nav.wissen }}
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M13 5l7 7-7 7"/></svg>
+                        </a>
+                        {% endif %}
+                        {# Vergleiche: one page per competitor keyword, German only (registry: en: null). #}
+                        {% if pageUrls.vergleich %}
+                        <a href="{{ pageUrls.vergleich }}" class="v-dv-drop-aside-link{% if i18nKey == 'vergleich' or (i18nKey and i18nKey.startsWith('vergleich-')) %} is-active{% endif %}">
+                            {{ t.nav.vergleich }}
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M13 5l7 7-7 7"/></svg>
                         </a>
                         {% endif %}

@@ -1,0 +1,74 @@
+---
+title: "Vergleiche: VORNAC gegenüber Pentera, Horizon3, Cymulate, Picus, XBOW und Fleuret | VORNAC"
+description: "Vergleichsseiten der VORNAC GmbH, Heidelberg: Angriffsfläche, Rechtsträger und Hosting-Land, Nachweisformat und Preislogik je Anbieter, mit öffentlichen Quellen und Stand je Seite."
+i18nKey: vergleich
+ogType: website
+---
+{% extends "layouts/base.njk" %}
+
+{#- Page list from src/_data/wissen.js (tag "Vergleich"), shared with /wissen and the Atom feed. -#}
+{% set comparisonPages = wissen.comparisons %}
+
+{% block extraHead %}
+<link rel="stylesheet" href="/wissen.css">
+{% set pageUrl = canonicalPath | absoluteUrl(site.domain) %}
+{% set items = [] %}
+{% for p in comparisonPages %}
+  {% set items = (items.push({ "@type": "ListItem", "position": loop.index, "name": p.title, "url": pageUrls[p.key] | absoluteUrl(site.domain) }), items) %}
+{% endfor %}
+{% set ld = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": pageUrl,
+      "url": pageUrl,
+      "name": "Vergleiche",
+      "description": description,
+      "inLanguage": locale,
+      "datePublished": published,
+      "dateModified": updated,
+      "isPartOf": { "@id": site.websiteId },
+      "publisher": { "@id": site.organizationId },
+      "mainEntity": { "@type": "ItemList", "itemListElement": items }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": pageUrl + "#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": pageUrls.index | absoluteUrl(site.domain) },
+        { "@type": "ListItem", "position": 2, "name": "Vergleiche", "item": pageUrl }
+      ]
+    },
+    site.organizationLd
+  ]
+} %}
+<script type="application/ld+json">{{ ld | jsonLd | safe }}</script>
+{% endblock %}
+
+{% block content %}
+<section class="ws-hero">
+    <div class="ws-hero-inner">
+        <h1 class="ws-hero-headline">Vergleiche<span class="ws-period">.</span></h1>
+        <p class="ws-lead" style="text-align:center; max-width: 60ch; margin: 0 auto;">Wie sich VORNAC von Pentera, Horizon3, Cymulate, Picus, XBOW und Fleuret unterscheidet: Angriffsfläche, Rechtsträger und Hosting-Land, Nachweisformat und Preislogik je Anbieter. Nur öffentliche Quellen, jede Angabe mit Abrufdatum.</p>
+    </div>
+</section>
+
+<section class="ws-list">
+    {% for p in comparisonPages %}
+    {% set pageDates = dates.byKey[p.key] %}
+    <article class="ws-list-item">
+        <h2><a href="{{ pageUrls[p.key] }}">{{ p.title }}</a></h2>
+        <p>{{ p.blurb }}</p>
+        {% if pageDates and pageDates.de %}
+        <p class="v-meta-line"><span class="v-meta-label">{{ t.metaLine.updated }}:</span> <time datetime="{{ pageDates.de.modified }}">{{ pageDates.de.modified | longDate(locale) }}</time></p>
+        {% endif %}
+    </article>
+    {% endfor %}
+</section>
+
+<section class="ws-cta">
+    <p>Die Angaben zu anderen Anbietern beruhen auf deren öffentlichen Seiten zum genannten Abrufdatum. Hinweise auf veraltete Angaben nehmen wir unter <a href="mailto:hello@vornac.com">hello@vornac.com</a> entgegen.</p>
+    <a href="{{ site.contact.bookDemo }}">Erstgespräch vereinbaren</a>
+</section>
+{% endblock %}
