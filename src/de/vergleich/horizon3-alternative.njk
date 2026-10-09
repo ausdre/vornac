@@ -1,0 +1,161 @@
+---
+title: "Horizon3 Alternative aus Deutschland: NodeZero im Vergleich mit VORNAC | VORNAC"
+headline: "Horizon3-Alternative aus Deutschland: VORNAC im Vergleich"
+breadcrumb: "Horizon3-Alternative"
+description: "VORNAC als Alternative zu Horizon3.ai und NodeZero: Angriffsfläche, Rechtsträger und Hosting-Land, Nachweisformat und Preislogik im Vergleich, mit öffentlichen Quellen und Stand vom 9. Oktober 2026."
+i18nKey: vergleich-horizon3-alternative
+ogType: article
+author: andre
+about:
+  - "Horizon3.ai"
+  - "NodeZero"
+  - "VORNAC"
+  - "Autonome Penetrationstests"
+citations:
+  - "https://horizon3.ai/"
+  - "https://horizon3.ai/pricing/"
+  - "https://docs.horizon3.ai/quickstart/network_requirements/"
+  - "https://horizon3.ai/news/press-release/horizon3-earns-cyber-essentials-certification-covering-nodezero-eu-network/"
+  - "https://trust.horizon3.ai/"
+  - "https://horizon3.ai/about-us/"
+  - "https://www.northdata.com/Horizon3%20AI,%20Europe%20GmbH,%20M%C3%BCnchen/Amtsgericht%20Frankfurt%20am%20Main%20HRB%20127737"
+  - "https://aws.amazon.com/marketplace/pp/prodview-l4tou5vhpvarm"
+faq:
+  - q: "Ist VORNAC eine Alternative zu Horizon3 und NodeZero?"
+    a: >-
+      Ja, im Verfahren liegen beide am nächsten beieinander: autonome Angriffe mit Angriffspfaden, Nachweis der Ausnutzbarkeit und Wiederholungstest nach der Behebung. Die Unterschiede liegen im Scope-Modell (NodeZero arbeitet netzwerkweit nach Assets, VORNAC je Zielsystem in der Tiefe), im Rechtsträger (Horizon3.ai, Inc. in San Francisco mit einer deutschen Tochtergesellschaft gegenüber einer GmbH in Heidelberg) und im Hosting (EU-Instanz eines US-Anbieters auf AWS gegenüber deutschen Rechenzentren deutscher Betreiber).
+  - q: "NodeZero läuft in einer EU-Instanz. Reicht das für NIS2 und DORA?"
+    a: >-
+      Das entscheidet die eigene Risikoanalyse, nicht das Werkzeug. § 30 Abs. 2 Satz 2 Nr. 4 BSIG verlangt Sicherheit in der Lieferkette, Art. 28 DORA regelt das Risiko durch IKT-Drittdienstleister. Prüfkriterien sind Vertragspartner, Speicherort, Auftragsverarbeiter und die Jurisdiktion der Muttergesellschaft. Horizon3 betreibt laut eigener Pressemitteilung einen EU-Standort in Deutschland auf einem AWS-EU-Netz; Vertragspartner und Inhaber des Cyber-Essentials-Zertifikats ist Horizon3.ai, Inc. (USA). Bei VORNAC sind Vertragspartner, Betreiber und Speicherort deutsch.
+  - q: "Was kostet NodeZero im Vergleich zu VORNAC?"
+    a: >-
+      Horizon3 nennt auf der eigenen Preisseite keine Beträge, listet die Pakete aber auf dem AWS Marketplace: Core 25.000 US-Dollar, Pro 32.500 US-Dollar und Elite 42.500 US-Dollar je 500 Assets und zwölf Monate, Web-Anwendungen als Zusatz für 10.000 US-Dollar, Flex 15.000 US-Dollar für einen einmaligen Test mit 1.000 Assets (Stand 9. Oktober 2026). VORNAC lizenziert je Zielsystem für zwölf Monate mit beliebig häufigen Läufen; das Angebot folgt nach dem Erstgespräch.
+  - q: "Erkennen Auditoren beide Reports an?"
+    a: >-
+      NIS2, ISO/IEC 27001:2022 (A 8.8, A 8.29) und TISAX schreiben kein Werkzeug vor, sondern verlangen den Nachweis wirksamer Maßnahmen und behandelter Schwachstellen. Beide Plattformen liefern Befunde mit Angriffspfad, Nachweis und Wiederholungstest. Für Threat-Led Penetration Tests nach Art. 26 DORA gelten zusätzliche Anforderungen an Tester und Verfahren, die ein Werkzeug allein nicht erfüllt.
+  - q: "Kann ich NodeZero und VORNAC parallel betreiben?"
+    a: >-
+      Ja. NodeZero prüft dann das interne Netz in der Breite, VORNAC die benannten Anwendungen, APIs oder Binaries in der Tiefe, mit Datenhaltung in Deutschland. Beide arbeiten produktionssicher und stören sich nicht.
+---
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+<link rel="stylesheet" href="/wissen.css">
+{% include "partials/wissen-schema.njk" %}
+{% endblock %}
+
+{% block content %}
+<section class="ws-hero">
+    <div class="ws-hero-inner">
+        <h1 class="ws-hero-headline">{{ headline }}</h1>
+        {% include "partials/page-meta-line.njk" %}
+    </div>
+</section>
+
+<section class="ws-body">
+    <div class="ws-body-inner">
+        <p class="ws-lead">VORNAC ist eine Alternative zu Horizon3.ai und NodeZero für Unternehmen, die einzelne Zielsysteme in der Tiefe prüfen und einen deutschen Vertragspartner mit Hosting in Deutschland brauchen. NodeZero testet Netze nach Assets in der Breite und kommt von einem US-Anbieter mit EU-Instanz. Diese Seite vergleicht Angriffsfläche, Rechtsträger, Hosting-Land, Nachweisformat und Preislogik mit Quellen vom 9. Oktober 2026.</p>
+
+        {% include "partials/vergleich-cta.njk" %}
+
+        <h2>Wofür Horizon3 steht</h2>
+        <p>Horizon3.ai wurde 2019 von Snehal Antani und Anthony Pillitiere gegründet, hat seinen Hauptsitz in San Francisco und beschreibt sich als „100% made in the USA“ [6]. Das Produkt NodeZero führt autonome Penetrationstests in internen und externen Netzen, in Cloud- und Kubernetes-Umgebungen und im Active Directory aus, ohne Agenten; Befunde kommen als Angriffspfad mit Nachweis, Fix Actions nach Auswirkung und einer Wiederholungsprüfung per „1-Click Verify“ [1]. Für die Tests im eigenen Netz installiert der Kunde einen NodeZero-Host (OVA oder Ubuntu); die Steuerung läuft über eine Portal-Instanz in den USA, der EU oder Australien [3]. Pakete sind Flex, Core, Pro und Elite, Web-Anwendungen kommen als Zusatzmodul dazu [2].</p>
+        <p>Die VORNAC GmbH, Heidelberg, wurde 2025 gegründet und betreibt eine Plattform für kontinuierliche, autonome Penetrationstests. Lizenziert wird je Zielsystem; geprüft werden Web-Anwendungen, APIs, Mobile Apps, interne Netze, Cloud-Workloads, Binaries sowie Identity und Access, dazu OT-Umgebungen. Betrieb und Datenhaltung liegen ausschließlich in deutschen Rechenzentren deutscher Betreiber. VORNAC ist Mitglied im TeleTrusT Bundesverband IT-Sicherheit e.V. und Partner der Allianz für Cyber-Sicherheit des BSI [9].</p>
+
+        <h2>Angriffsfläche im Vergleich</h2>
+        <p>Die Angaben zu NodeZero stammen von der Startseite und der Paketübersicht des Anbieters, abgerufen am 9. Oktober 2026. „Nicht genannt“ heißt: Die Seiten führen diese Angriffsfläche nicht auf; das Angebot kann sie trotzdem enthalten und ist beim Anbieter zu erfragen.</p>
+        <div class="ws-table-wrap">
+            <table class="ws-table">
+                <caption>Angriffsfläche je Anbieter. Stand: 9. Oktober 2026. Quellen in eckigen Klammern.</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Angriffsfläche</th>
+                        <th scope="col">Horizon3 (NodeZero)</th>
+                        <th scope="col">VORNAC</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Web-Anwendungen</td><td>Ja, als Zusatzmodul NodeZero WebApp (episodisch oder kontinuierlich je lizenzierter App) [2]</td><td>Ja, je Zielsystem mit vom Kunden gestellten Testrollen [9]</td></tr>
+                    <tr><td>APIs</td><td>Nicht ausdrücklich genannt [1][2]</td><td>Ja [9]</td></tr>
+                    <tr><td>Mobile Apps</td><td>Nicht genannt [1][2]</td><td>Ja [9]</td></tr>
+                    <tr><td>Interne Netze und Active Directory</td><td>Ja, Kern des Produkts: internes Pentesting, Active Directory Audit, Angriffspfade [1][2]</td><td>Ja, als Zielsystem „internes Netz“ [9]</td></tr>
+                    <tr><td>Cloud-Workloads</td><td>Ja, Cloud- und Kubernetes-Pentesting [2]</td><td>Ja [9]</td></tr>
+                    <tr><td>Externe Angriffsfläche (EASM)</td><td>Ja, externes Pentesting und External Asset Discovery [2]</td><td>Ja, über CTEM mit täglicher Discovery [9]</td></tr>
+                    <tr><td>Binaries</td><td>Nicht genannt [1][2]</td><td>Ja [9]</td></tr>
+                    <tr><td>Identity und Access</td><td>Ja, Identity Security Validation [1]</td><td>Ja [9]</td></tr>
+                    <tr><td>OT-Umgebungen</td><td>Nicht genannt [1][2]</td><td>Ja, OT-Pentesting für KRITIS und Industrie [9]</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>NodeZero führt zusätzlich Phishing-Impact-Tests und eine Prüfung der Endpoint-Schutzmaßnahmen auf [2], die bei VORNAC nicht Teil des Angebots sind.</p>
+
+        <h2>Rechtsträger, Hosting, Nachweis, Preis</h2>
+        <p>Rechtsträger und Hosting-Land sind unter NIS2 (§ 30 BSIG, Sicherheit in der Lieferkette) und DORA (Art. 28, IKT-Drittdienstleister) Prüfkriterien. Der US CLOUD Act (18 U.S.C. § 2713) verpflichtet US-Anbieter, Daten in ihrem Besitz oder unter ihrer Kontrolle auf Anordnung herauszugeben, unabhängig vom Speicherort. Eine EU-Instanz ändert den Speicherort, nicht den Vertragspartner.</p>
+        <div class="ws-table-wrap">
+            <table class="ws-table">
+                <caption>Rechtsträger, Hosting, Nachweisformat und Preislogik. Stand: 9. Oktober 2026.</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Kriterium</th>
+                        <th scope="col">Horizon3 (NodeZero)</th>
+                        <th scope="col">VORNAC</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Rechtsträger</td><td>Horizon3.ai, Inc., USA [4][6]</td><td>VORNAC GmbH, Heidelberg, Amtsgericht Mannheim HRB 757584 [9]</td></tr>
+                    <tr><td>Hauptsitz</td><td>San Francisco; gegründet 2019 [6]</td><td>Heidelberg; gegründet 2025 [9]</td></tr>
+                    <tr><td>Niederlassung in Deutschland</td><td>Horizon3 AI, Europe GmbH, Amtsgericht Frankfurt am Main HRB 127737, Geschäftsanschrift München, eingetragen Juni 2022, Stammkapital 25.000 Euro [7]</td><td>Sitz und Betrieb in Heidelberg [9]</td></tr>
+                    <tr><td>Hosting-Land und Cloud-Betreiber</td><td>Portal-Instanzen in den USA, der EU (portal.horizon3ai.eu) und Australien [3]; EU-Standort in Deutschland auf einem AWS-EU-Netz laut Pressemitteilung vom 22. September 2026 [4]; der NodeZero-Host für interne Tests läuft im Netz des Kunden [3]</td><td>Deutschland, Rechenzentren deutscher Betreiber, kein US-Cloud-Anbieter in der Verarbeitungskette [9]</td></tr>
+                    <tr><td>Auftragsverarbeiter außerhalb der EU</td><td>Keine öffentliche Liste gefunden; das Trust Center nennt SOC 2 Type II und DSGVO, ohne Liste der Auftragsverarbeiter [5]</td><td>Keine [9]</td></tr>
+                    <tr><td>Jurisdiktion der Muttergesellschaft</td><td>USA [6]</td><td>Deutschland [9]</td></tr>
+                    <tr><td>Betriebsmodell</td><td>SaaS-Portal plus Host im Kundennetz; auf dem AWS Marketplace als SaaS gelistet [3][8]</td><td>Cloud-Plattform in deutschen Rechenzentren [9]</td></tr>
+                    <tr><td>Nachweisformat</td><td>Angriffspfad mit Nachweis je Befund, Fix Actions nach Auswirkung, 1-Click Verify mit Vorher-nachher-Vergleich, Trend-Dashboard; Exportformate nicht genannt; Zuordnung zu PCI DSS und NIS2 als Themenseiten [1]</td><td>Report je Testzyklus mit reproduzierbarem Proof-of-Concept, Business-Impact, Maßnahmenplan und Wiederholungstest; verwendbar für NIS2 (§ 30 BSIG), DORA, KRITIS, TISAX, VAIT/BAIT und ISO/IEC 27001 [9]</td></tr>
+                    <tr><td>Zeit bis zum Report</td><td>Keine öffentliche Angabe [1]</td><td>Zwei bis fünf Stunden vom Start bis zum auditfähigen Report [9]</td></tr>
+                    <tr><td>Preislogik</td><td>Pakete Flex, Core, Pro, Elite ohne Preis auf horizon3.ai [2]; AWS Marketplace, zwölf Monate je 500 Assets: Core 25.000 USD, Pro 32.500 USD, Elite 42.500 USD; WebApp 10.000 USD; Flex 15.000 USD einmalig für 1.000 Assets [8]</td><td>Jahreslizenz je Zielsystem, beliebig häufige Testläufe, alle Umgebungen, unbegrenzt viele Testrollen, Onboarding inklusive; Angebot nach dem Erstgespräch [9]</td></tr>
+                    <tr><td>Nachweise des Anbieters</td><td>SOC 2 Type II [5]; Cyber Essentials Plus für das „NodeZero AWS EU network“ und Heimnetze der Mitarbeitenden, ausgestellt am 22. September 2026 auf Horizon3.ai, Inc., ohne andere Bereitstellungen und ohne Kunden-Hosts [4]</td><td>TeleTrusT-Mitglied, Zeichen „IT Security made in Germany“, Partner der Allianz für Cyber-Sicherheit (BSI) [9]</td></tr>
+                    <tr><td>Ansprechpartner</td><td>Premium Support als Zusatzpaket auf dem AWS Marketplace [8]</td><td>Fester Ansprechpartner ist ein praktizierender Pentester [9]</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Wann Horizon3 passt</h2>
+        <p>Ein Unternehmen mit hunderten bis tausenden Hosts, das sein internes Netz, das Active Directory und die Cloud-Umgebung regelmäßig als Ganzes angreifen lassen will und die Befunde nach Assets zählt, ist im vorgesehenen Einsatzfeld von NodeZero. Das gilt ebenso für Teams, die Phishing-Auswirkung und Endpoint-Schutz im selben Werkzeug messen wollen, und für Unternehmen, die über den AWS Marketplace mit bestehendem Cloud-Budget einkaufen.</p>
+
+        <h2>Wann VORNAC passt</h2>
+        <p>Ein Unternehmen mit 100 bis 2.000 Mitarbeitenden, das eine überschaubare Zahl geschäftskritischer Anwendungen, APIs oder Binaries hat und für NIS2, DORA, TISAX oder ISO/IEC 27001 belegen muss, dass genau diese Systeme standhalten, ist bei VORNAC richtig. Ebenso Einrichtungen, die einen deutschen Vertragspartner und das Hosting-Land Deutschland in der Lieferkette brauchen, Teams, die Tests aus der CI/CD-Pipeline auslösen, und Unternehmen, die mit einem deutschsprachigen Pentester arbeiten wollen. Wie ein Testzyklus abläuft, steht auf der Seite <a href="{{ pageUrls.pentesting }}">Pentesting</a>; die Werkzeugklassen ordnet die Seite <a href="{{ pageUrls['wissen-automatisierte-penetrationstests'] }}">Automatisierte Penetrationstests</a> ein.</p>
+
+        <h2>Horizon3-Alternative: Fragen, die Käufer stellen</h2>
+        <div class="ws-faq">
+            {% for item in faq %}
+            <details>
+                <summary>{{ item.q }}</summary>
+                <div class="ws-faq-body"><p>{{ item.a }}</p></div>
+            </details>
+            {% endfor %}
+        </div>
+
+        {% include "partials/vergleich-related.njk" %}
+
+        <div class="ws-sources">
+            <h2>Quellen</h2>
+            <ol>
+                <li>Horizon3.ai, Startseite, <a href="https://horizon3.ai/" rel="noopener">horizon3.ai</a>, abgerufen am 9. Oktober 2026 (Testumfang, Nachweisformat, Produktionssicherheit, Compliance-Themenseiten).</li>
+                <li>Horizon3.ai, NodeZero Packages, <a href="https://horizon3.ai/pricing/" rel="noopener">horizon3.ai/pricing</a>, abgerufen am 9. Oktober 2026 (Pakete, WebApp-Zusatzmodul, keine Preisangabe).</li>
+                <li>Horizon3.ai, Network Requirements, <a href="https://docs.horizon3.ai/quickstart/network_requirements/" rel="noopener">docs.horizon3.ai</a>, abgerufen am 9. Oktober 2026 (Portal-Instanzen US, EU, AU; NodeZero-Host im Kundennetz).</li>
+                <li>Horizon3.ai, Pressemitteilung „Horizon3 Earns Cyber Essentials Certification“, <a href="https://horizon3.ai/news/press-release/horizon3-earns-cyber-essentials-certification-covering-nodezero-eu-network/" rel="noopener">horizon3.ai/news</a>, abgerufen am 9. Oktober 2026 (EU-Standort in Deutschland, AWS-EU-Netz, Zertifikatsinhaber, Scope).</li>
+                <li>Horizon3.ai, Trust Center, <a href="https://trust.horizon3.ai/" rel="noopener">trust.horizon3.ai</a>, abgerufen am 9. Oktober 2026 (SOC 2 Type II, DSGVO, CMMC 2.0).</li>
+                <li>Horizon3.ai, About Us, <a href="https://horizon3.ai/about-us/" rel="noopener">horizon3.ai/about-us</a>, abgerufen am 9. Oktober 2026 (Gründung, Gründer, Hauptsitz).</li>
+                <li>North Data, Horizon3 AI, Europe GmbH, Amtsgericht Frankfurt am Main HRB 127737, <a href="https://www.northdata.com/Horizon3%20AI,%20Europe%20GmbH,%20M%C3%BCnchen/Amtsgericht%20Frankfurt%20am%20Main%20HRB%20127737" rel="noopener">northdata.com</a>, abgerufen am 9. Oktober 2026 (Registergericht, Anschrift, Eintragung, Stammkapital).</li>
+                <li>AWS Marketplace, Horizon3.ai NodeZero Platform, <a href="https://aws.amazon.com/marketplace/pp/prodview-l4tou5vhpvarm" rel="noopener">aws.amazon.com/marketplace</a>, abgerufen am 9. Oktober 2026 (Paketpreise je 500 Assets und zwölf Monate, Bereitstellung).</li>
+                <li>VORNAC GmbH, <a href="{{ pageUrls.pentesting }}">Pentesting</a>, <a href="{{ pageUrls.ctem }}">CTEM</a>, <a href="{{ pageUrls['ot-pentesting'] }}">OT-Pentesting</a> und <a href="{{ pageUrls.faq }}">FAQ</a>, Stand 9. Oktober 2026.</li>
+            </ol>
+            <p class="ws-note">Horizon3 und NodeZero sind Marken des jeweiligen Inhabers. VORNAC steht in keiner Geschäftsbeziehung zu Horizon3.ai. Die Angaben zu Horizon3 beruhen ausschließlich auf öffentlichen Quellen zum genannten Abrufdatum; Hinweise auf veraltete oder unvollständige Angaben nehmen wir unter <a href="mailto:hello@vornac.com">hello@vornac.com</a> entgegen und korrigieren die Seite.</p>
+        </div>
+    </div>
+</section>
+
+<section class="ws-cta">
+    <p>Gerade im Anbietervergleich? In 30 Minuten zeigen wir einen echten Testlauf gegen ein System aus der eigenen Umgebung, mit Report.</p>
+    <a href="{{ site.contact.bookDemo }}">Erstgespräch vereinbaren</a>
+</section>
+{% endblock %}

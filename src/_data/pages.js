@@ -48,7 +48,12 @@ const STATIC_PAGES = [
   { key: "wissen-ctem-in-der-praxis",          en: null,                                       de: "/wissen/ctem-in-der-praxis" },
   // Vergleiche (German only): hub plus one page per competitor keyword.
   { key: "vergleich",                          en: null,                                       de: "/vergleich" },
-  { key: "vergleich-pentera-alternative",      en: null,                                       de: "/vergleich/pentera-alternative" }
+  { key: "vergleich-pentera-alternative",      en: null,                                       de: "/vergleich/pentera-alternative" },
+  { key: "vergleich-horizon3-alternative",     en: null,                                       de: "/vergleich/horizon3-alternative" },
+  { key: "vergleich-cymulate-alternative",     en: null,                                       de: "/vergleich/cymulate-alternative" },
+  { key: "vergleich-picus-alternative",        en: null,                                       de: "/vergleich/picus-alternative" },
+  { key: "vergleich-xbow-alternative",         en: null,                                       de: "/vergleich/xbow-alternative" },
+  { key: "vergleich-fleuret-alternative",      en: null,                                       de: "/vergleich/fleuret-alternative" }
 ];
 
 const RESEARCH_DOMAIN_PAGES = research.domains.map((d) => ({

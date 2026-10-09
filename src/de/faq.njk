@@ -118,6 +118,14 @@ ogType: website
         "@type": "Answer",
         "text": "Pentests lassen sich aus jedem CI/CD-System per Webhook auslösen, bei Commit, Merge, Deploy oder nach Zeitplan. Unterstützt werden GitHub Actions, GitLab CI, Jenkins, Azure DevOps, Bitbucket Pipelines, CircleCI. Befunde werden ins Ticketing-System zurückgegeben (z.B. Jira), mit Schweregrad, reproduzierbarem Proof-of-Concept und Remediation-Hinweisen, sodass Entwicklungsteams sie wie reguläre Development-Tickets bearbeiten. Ergebnis: validierte Sicherheitsrückmeldung im gleichen Pipeline-Lauf, der ohnehin den Code ausliefert. Kein separates Engagement-Scoping, keine Berater-Kalenderabstimmung."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Worin unterscheidet sich VORNAC von Pentera, Horizon3 oder Cymulate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pentera und Horizon3 (NodeZero) validieren die Infrastruktur als Ganzes nach Assets, VORNAC prüft je Zielsystem in der Tiefe mit Testrollen des Kunden und in allen Umgebungen. Cymulate und Picus sind Plattformen für Breach and Attack Simulation: Sie messen, ob Schutzmaßnahmen auf bekannte Techniken reagieren, VORNAC belegt mit Proof-of-Concept, dass ein Angriff auf ein konkretes System gelingt. Vertragspartner bei VORNAC ist eine deutsche GmbH, Betrieb und Datenhaltung liegen bei deutschen Betreibern in Deutschland. Die Vergleichsseiten nennen je Anbieter Angriffsfläche, Rechtsträger, Hosting-Land, Nachweisformat und Preislogik mit Quellen und Datum."
+      }
     }
   ]
 }
@@ -197,6 +205,11 @@ ogType: website
         <details class="faq-item" id="ci-cd">
             <summary>Wie integriert sich VORNAC in CI/CD-Pipelines?</summary>
             <div class="faq-item-body">Pentests lassen sich aus jedem CI/CD-System per Webhook auslösen, bei Commit, Merge, Deploy oder nach Zeitplan. Unterstützt werden GitHub Actions, GitLab CI, Jenkins, Azure DevOps, Bitbucket Pipelines, CircleCI. Befunde werden ins Ticketing-System zurückgegeben (Jira), mit Schweregrad, reproduzierbarem Proof-of-Concept und Remediation-Hinweisen, sodass Entwicklungsteams sie wie reguläre Development-Tickets bearbeiten. Ergebnis: validierte Sicherheitsrückmeldung im gleichen Pipeline-Lauf, der ohnehin den Code ausliefert. Kein separates Engagement-Scoping, keine Berater-Kalenderabstimmung.</div>
+        </details>
+
+        <details class="faq-item" id="vergleich">
+            <summary>Worin unterscheidet sich VORNAC von Pentera, Horizon3 oder Cymulate?</summary>
+            <div class="faq-item-body">Pentera und Horizon3 (NodeZero) validieren die Infrastruktur als Ganzes nach Assets, VORNAC prüft je Zielsystem in der Tiefe mit Testrollen des Kunden und in allen Umgebungen. Cymulate und Picus sind Plattformen für Breach and Attack Simulation: Sie messen, ob Schutzmaßnahmen auf bekannte Techniken reagieren, VORNAC belegt mit Proof-of-Concept, dass ein Angriff auf ein konkretes System gelingt. Vertragspartner bei VORNAC ist eine deutsche GmbH, Betrieb und Datenhaltung liegen bei deutschen Betreibern in Deutschland. Die Vergleichsseiten nennen je Anbieter Angriffsfläche, Rechtsträger, Hosting-Land, Nachweisformat und Preislogik mit Quellen und Datum. Alle Vergleiche: <a href="{{ pageUrls.vergleich }}">Vergleichsseiten</a>.</div>
         </details>
 
         <p class="faq-cta">Frage hier nicht beantwortet? <a href="{{ site.contact.bookDemo }}" target="_blank" rel="noopener">30-Minuten-Erstgespräch buchen</a>.</p>
