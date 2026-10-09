@@ -49,7 +49,7 @@ Front-Matter wie `src/de/vergleich/vornac-vs-pentera.njk`: `title`, `headline`, 
 8. **H2 "<Wettbewerber>-Alternative: Fragen, die Käufer stellen":** fünf FAQ-Einträge aus `faq` (sichtbar als `<details>`, gleichzeitig `FAQPage`). Pflichtfragen: "Ist VORNAC eine <Wettbewerber>-Alternative?", "Wo liegen die Daten?", "Erkennen Auditoren den Report an?", "Kann ich beides parallel betreiben?", eine wettbewerberspezifische Frage.
 9. **Quellen** (nummeriert, mit Abrufdatum) und Markenhinweis, dann **CTA unten** (`ws-cta`).
 
-Jede Seite zusätzlich: Eintrag in `src/_data/pages.js` (`en: null`), in `src/_data/wissen.js` (Tag "Vergleich", speist `/wissen` und `/feed.xml`), in `src/sitemap.njk` (`priorities`, 0.8), in `llms.txt` (Abschnitt Wissen), Link aus der Anbietertabelle auf `/wissen/automatisierte-penetrationstests` (Zeile des Wettbewerbers, Muster Pentera) und aus `/wissen/nis2-anbieter`, wo der Wettbewerber genannt ist. Nach dem Commit `npm run dates`, JSON mitcommitten.
+Jede Seite zusätzlich: Eintrag in `src/_data/pages.js` (`en: null`), in `src/_data/wissen.js` (Tag "Vergleich", speist `/wissen` und `/feed.xml`), in `src/sitemap.njk` (`priorities`, 0.8), in `llms.txt` (Abschnitt Wissen), Link aus der Anbietertabelle auf `/wissen/automatisierte-penetrationstests` (Zeile des Wettbewerbers, Muster Pentera) und aus `/wissen/nis2-anbieter`, wo der Wettbewerber genannt ist; vollständige Liste der Verlinkungen in Task 7. Nach dem Commit `npm run dates`, JSON mitcommitten.
 
 ## Recherche je Wettbewerber (Steckbrief vor dem Schreiben)
 
@@ -72,6 +72,7 @@ Vorab-Befund vom 2026-10-06 (noch gegen Primärquellen zu prüfen):
 
 **Files:** `wissen.css`, `src/_includes/partials/wissen-schema.njk`, `src/_data/pages.js`, `src/_data/wissen.js`, `src/sitemap.njk`, `vercel.json`, optional `src/de/vergleich.njk` (Hub, Entscheidung 4).
 
+- [ ] Navigation, Footer, Teaser-Filter und Hub aus Task 7 (Punkte 1 bis 4) gehören in diesen Task, damit die erste Seite verlinkt live geht.
 - [ ] CTA-Block oben als Partial `src/_includes/partials/vergleich-cta.njk` (Satz plus Button auf `site.contact.bookDemo`), Klasse in `wissen.css`, zentriert wie `ws-cta`, kein Rahmen, kein grauer Hintergrund.
 - [ ] Brotkrumen: wenn Entscheidung 4 "Hub", dann in `wissen-schema.njk` Ebene 2 für `vergleich-*`-Seiten auf `/vergleich` statt `/wissen` zeigen (Variable `t.nav.vergleich` in `i18n.js`), sichtbare Brotkrumenleiste und JSON-LD müssen übereinstimmen. Hub-Seite `src/de/vergleich.njk` mit CollectionPage nach dem Muster `src/de/wissen.njk`, Liste aus `wissen.js` gefiltert auf Tag "Vergleich".
 - [ ] Pentera-Seite auf die neue URL ziehen (Entscheidung 1): Datei umbenennen, `i18nKey` und Registry-Schlüssel ändern, Redirect `/vergleich/vornac-vs-pentera` → `/vergleich/pentera-alternative` in `vercel.json`, Links in `src/de/wissen/automatisierte-penetrationstests.njk`, `src/de/wissen/nis2-anbieter.njk`, `llms.txt`, `sitemap.njk` (`priorities`), `wissen.js`, `pageDates.json` (Schlüssel wandert mit, `npm run dates` prüft).
@@ -130,10 +131,27 @@ Vorab-Befund vom 2026-10-06 (noch gegen Primärquellen zu prüfen):
 - [ ] FAQ-Zusatzfrage: "Fleuret hostet in Frankreich. Gilt das für deutsche Aufsichten als gleichwertig?" Antwort: DSGVO ja, Prüfkriterium ist der Auftragsverarbeiter und die Vertragskette, ohne Rechtsberatung.
 - [ ] Eintragungen, Commit, `npm run dates`.
 
-## Task 7: Verlinkung, Ads, Messung
+## Task 7: Verlinkung (Navigation, Footer, Teaser, Querverweise)
 
-- [ ] Startseite: Abschnitt "Deshalb wählen Kunden VORNAC statt Pentera und Scannern" (`src/de/index.njk`) bekommt einen Link auf den Hub oder die Pentera-Seite.
-- [ ] `llms.txt`: alle sechs Seiten im Abschnitt Wissen, Hub ebenfalls.
+Eine Seite, die nur in Sitemap und llms.txt steht, wird weder von Googlebot gewichtet noch von den Engines gefunden. Jede der sechs Seiten muss über mindestens drei interne Wege erreichbar sein: Navigation, Hub und Fließtext. Die Punkte 1 bis 4 gehören zu Task 0, damit sie mit der ersten Seite live gehen; der Rest je Seite.
+
+**Files:** `src/_includes/partials/site-header.njk`, `site-footer.njk`, `wissen-teaser.njk`, `src/_data/i18n.js`, `src/de/index.njk`, `src/de/pentesting.njk`, `src/de/faq.njk`, `src/de/wissen.njk`, die vier Wissen-Seiten mit Anbieternennung, neues Partial `vergleich-related.njk`.
+
+- [ ] **Header:** Research-Dropdown, Spalte `v-dv-drop-aside`, neuer Eintrag "Vergleiche" zwischen Wissen und Glossar, nur wenn `pageUrls.vergleich` existiert (Muster Wissen). `t.nav.vergleich` in `i18n.js` (de "Vergleiche", en "Comparisons"). `is-active` für `vergleich` und `vergleich-*` wandert vom Wissen-Link auf den neuen Eintrag.
+- [ ] **Footer:** Eintrag "Vergleiche" hinter Wissen in der Seitenliste, gleiche Bedingung.
+- [ ] **Wissen-Teaser auf den Produktseiten** (`wissen-teaser.njk`, eingebunden auf Startseite, Pentesting, OT-Pentesting, CTEM): zeigt die drei neuesten Einträge aus `wissen.js`. Sechs neue Vergleiche würden die Erklärseiten dort verdrängen. Teaser filtert auf Tag ungleich "Vergleich"; die Vergleiche bekommen auf `/pentesting` und der Startseite stattdessen einen eigenen Satz mit Link auf den Hub (siehe nächste Punkte).
+- [ ] **Hub `/vergleich`:** listet alle Seiten mit Tag "Vergleich" aus `wissen.js`, mit Stand je Seite aus `dates.byKey`. `/wissen` listet sie weiterhin mit (eine Quelle, zwei Ansichten).
+- [ ] **Startseite:** Abschnitt "Deshalb wählen Kunden VORNAC statt Pentera und Scannern" (`src/de/index.njk`, Zeile 324) bekommt unter der Tabelle einen Satz mit Link auf die Pentera-Seite und den Hub ("Ausführliche Vergleiche mit Pentera, Horizon3, Cymulate, Picus, XBOW und Fleuret").
+- [ ] **`/pentesting`:** ein Absatz im Abschnitt Methodik oder vor dem Teaser: "Wie sich VORNAC von Pentera, Horizon3 und BAS-Plattformen unterscheidet, steht auf den Vergleichsseiten" mit Link auf den Hub.
+- [ ] **FAQ:** neue Frage "Worin unterscheidet sich VORNAC von Pentera, Horizon3 oder Cymulate?" in `src/de/faq.njk` (sichtbar und im FAQPage-JSON), Antwort in drei Sätzen mit Link auf den Hub.
+- [ ] **Querverweise je Seite** (Partial `vergleich-related.njk`, vor den Quellen): "Weitere Vergleiche" mit den anderen fünf Seiten aus `wissen.js` (Tag "Vergleich", eigene Seite ausgeschlossen), dazu die zwei passenden Wissen-Seiten als feste Links im Fließtext (Pentera und Horizon3: `wissen-automatisierte-penetrationstests`; Cymulate und Picus: `wissen-assumed-breach-simulation`; XBOW und Fleuret: `wissen-nis2-wirksamkeitspruefung` und `wissen-dora-resilienztests`).
+- [ ] **Wissen-Seiten mit Anbieternennung:** in `automatisierte-penetrationstests.njk` (Anbietertabelle Zeilen 139 bis 141: Pentera verlinkt schon, Horizon3, Cymulate, Picus ergänzen, XBOW und Fleuret als neue Zeilen), `nis2-anbieter.njk`, `assumed-breach-simulation.njk`, `ctem-in-der-praxis.njk` und `dora-resilienztests.njk` jede Nennung eines der sechs Anbieter einmal je Seite auf die Vergleichsseite verlinken.
+- [ ] **Brotkrumen:** sichtbare Leiste und `BreadcrumbList` auf `Startseite › Vergleiche › <Seite>` (Task 0), Hub mit `Startseite › Vergleiche`.
+- [ ] **`llms.txt`:** Hub und alle sechs Seiten im Abschnitt Wissen; Sitemap-Priorität 0.8 je Seite, Hub 0.8.
+- [ ] **Prüfung nach dem Build:** `grep -o 'href="/vergleich/[^"]*"' dist/**/*.html | sort | uniq -c` zeigt je Vergleichsseite mindestens drei verweisende Seiten außerhalb von `/vergleich/`; kein Link auf die alte Pentera-URL (`grep -r 'vornac-vs-pentera' dist | wc -l` → 0).
+
+## Task 8: Ads, Search Console, Messung
+
 - [ ] Google Ads (André, Entscheidung 5): finale URLs je Anzeigengruppe, Sitelinks auf Hub und `pageUrls.pentesting`, Anzeigentexte ohne fremde Marke. Conversion-Ziel bleibt `/thank-you`; der Button "Erstgespräch vereinbaren" führt auf zeeg.me, dort gibt es derzeit kein Conversion-Tracking (siehe Tracking-Stack-Notiz), das ist ein offener Punkt aus Step 7 des KI-Sichtbarkeit-Plans.
 - [ ] Search Console: URL-Prüfung je Seite nach dem Deploy, Rich-Results-Test für FAQPage und TechArticle.
 - [ ] Peec: Prompt "Pentera-Alternativen aus Deutschland" ist im Set; `get_url_report` nach vier Wochen zeigt, ob die Seiten zitiert werden. Prompt-Set nicht verändern.
