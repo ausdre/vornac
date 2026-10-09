@@ -193,7 +193,7 @@ const kit = [
   { file: "/logo-vornac-white.svg", label: { de: "Logo, weiß", en: "Logo, white" }, format: "SVG", preview: "dark" },
   { file: "/V_BLACK.svg", label: { de: "Bildmarke V, schwarz", en: "V mark, black" }, format: "SVG", preview: "light" },
   { file: "/V.svg", label: { de: "Bildmarke V, weiß", en: "V mark, white" }, format: "SVG", preview: "dark" },
-  { file: "/founders-group.jpg", label: { de: "Gründer André Feigenbutz und Arthur Raess", en: "Founders André Feigenbutz and Arthur Raess" }, format: "JPG, 1024 × 1024 px", preview: "photo", webp: "/founders-group.webp" },
+  { file: "/founders-award-print.jpg", label: { de: "Gründer André Feigenbutz und Arthur Raess", en: "Founders André Feigenbutz and Arthur Raess" }, format: "JPG, 4000 × 2913 px, 1,1 MB", preview: "photo", webp: "/founders-award.webp" },
   { file: "/CaseStudy_VORNAC_0526.pdf", label: { de: "Forschungspapier zum VORNAC-Agenten (Mai 2026)", en: "Research paper on the VORNAC agent (May 2026)" }, format: "PDF, 0,3 MB", preview: "cover", thumb: "/press-thumb-paper-2026-05.jpg" },
   { file: "/vornac-et-fachbeitrag-messpunkt-steuerpunkt-2026.pdf", label: { de: "Fachbeitrag in der et, Heft 9/2026", en: "Trade-journal article in et, issue 9/2026" }, format: "PDF, 0,5 MB", preview: "cover", thumb: "/press-thumb-et-2026-09.jpg" }
 ];
