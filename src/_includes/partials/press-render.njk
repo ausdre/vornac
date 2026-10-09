@@ -28,7 +28,7 @@
                 <h2 class="ps-headline">{{ ui.awardsHeading }}</h2>
                 <p class="ps-sub">{{ ui.awardsSub }}</p>
             </header>
-            <div class="ps-awards">
+            <div class="ps-awards" data-no-crosslink>
                 {% for a in press.awards %}
                 <article class="ps-award">
                     {% if a.logo %}
@@ -42,7 +42,7 @@
                         <h3 class="ps-award-title">{% if a.url %}<a href="{{ a.url }}" target="_blank" rel="noopener">{{ a.title[locale] }}</a>{% else %}{{ a.title[locale] }}{% endif %}</h3>
                         <p class="ps-award-by">{{ a.by[locale] }}{% if a.dateLabel[locale] %} · <time datetime="{{ a.date }}">{{ a.dateLabel[locale] }}</time>{% endif %}</p>
                         <p class="ps-award-text">{{ a.text[locale] }}</p>
-                        {% if a.url %}<a class="ps-link" href="{{ a.url }}" target="_blank" rel="noopener">{{ ui.awardLink }}</a>{% endif %}
+                        {% if a.url %}<a class="ps-link" href="{{ a.url }}" target="_blank" rel="noopener">{{ a.linkLabel[locale] if a.linkLabel else ui.awardLink }}</a>{% endif %}
                     </div>
                 </article>
                 {% endfor %}
@@ -58,7 +58,7 @@
                 <h2 class="ps-headline">{{ ui.coverageHeading }}</h2>
                 <p class="ps-sub">{{ ui.coverageSub }}</p>
             </header>
-            <div class="ps-list">
+            <div class="ps-list" data-no-crosslink>
                 {% for c in press.coverage %}
                 {% set href = c.url if c.url else c.pdf %}
                 <article class="ps-item">
@@ -67,8 +67,9 @@
                         <p class="ps-item-meta ps-item-meta--top"><time datetime="{{ c.date }}">{{ c.dateLabel[locale] }}</time><span class="ps-dot" aria-hidden="true">·</span>{{ press.types[c.type][locale] }}</p>
                         <p class="ps-item-outlet">{{ c.outlet }}</p>
                         <h3 class="ps-item-title">{% if href %}<a href="{{ href }}" target="_blank" rel="noopener"{% if c.lang and c.lang != locale %} hreflang="{{ c.lang }}"{% endif %}>{{ c.title }}</a>{% else %}{{ c.title }}{% endif %}</h3>
-                        {% if c.author or c.cite or (c.pdf and c.url) %}
-                        <p class="ps-item-meta">{% if c.author %}{{ ui.by }} {{ c.author }}{% endif %}{% if c.cite %}{% if c.author %}<span class="ps-dot" aria-hidden="true">·</span>{% endif %}{{ c.cite[locale] }}{% endif %}{% if c.pdf and c.url %}<span class="ps-dot" aria-hidden="true">·</span><a href="{{ c.pdf }}" target="_blank" rel="noopener">{{ ui.coveragePdf }}</a>{% endif %}</p>
+                        {% if c.summary %}<p class="ps-item-text">{{ c.summary[locale] }}</p>{% endif %}
+                        {% if c.author or c.cite or c.note or (c.pdf and c.url) %}
+                        <p class="ps-item-meta">{% if c.author %}{{ ui.by }} {{ c.author }}{% endif %}{% if c.cite %}{% if c.author %}<span class="ps-dot" aria-hidden="true">·</span>{% endif %}{{ c.cite[locale] }}{% endif %}{% if c.note %}<span class="ps-dot" aria-hidden="true">·</span>{{ c.note[locale] }}{% endif %}{% if c.pdf and c.url %}<span class="ps-dot" aria-hidden="true">·</span><a href="{{ c.pdf }}" target="_blank" rel="noopener">{{ ui.coveragePdf }}</a>{% endif %}</p>
                         {% endif %}
                     </div>
                 </article>
@@ -85,7 +86,7 @@
                 <h2 class="ps-headline">{{ ui.publicationsHeading }}</h2>
                 <p class="ps-sub">{{ ui.publicationsSub }}</p>
             </header>
-            <div class="ps-list">
+            <div class="ps-list" data-no-crosslink>
                 {% for p in press.publications %}
                 <article class="ps-item">
                     {{ thumb(p, p.url) }}

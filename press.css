@@ -144,33 +144,34 @@
 
 .ps-awards {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 48px 72px;
-    max-width: 980px;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    max-width: 920px;
     margin: 0 auto;
 }
 .ps-award {
     display: grid;
-    grid-template-columns: 148px minmax(0, 1fr);
-    gap: 0 28px;
+    grid-template-columns: 168px minmax(0, 1fr);
+    gap: 0 32px;
     align-items: start;
 }
 .ps-award-logo {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 148px;
-    aspect-ratio: 1 / 1;
+    width: 168px;
+    aspect-ratio: 3 / 2;
     background: var(--v-line-soft);
     overflow: hidden;
 }
 .ps-award-logo img {
     display: block;
-    max-width: 78%;
-    max-height: 78%;
+    max-width: 70%;
+    max-height: 62%;
     width: auto;
     height: auto;
 }
+.ps-award-text { max-width: 60ch; }
 .ps-award-logo--year span {
     font-family: var(--v-display);
     font-size: 56px;
@@ -257,6 +258,13 @@
 }
 .ps-item:hover .ps-item-title a,
 .ps-item-title a:focus-visible { background-size: 100% 2px; outline: none; }
+.ps-item-text {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--v-ink-2);
+    margin: 0 0 8px;
+    max-width: 62ch;
+}
 .ps-item-meta {
     font-size: 14px;
     line-height: 1.5;
@@ -462,7 +470,6 @@
 /* ============================================ */
 
 @media (max-width: 900px) {
-    .ps-awards { grid-template-columns: 1fr; gap: 40px; }
     .ps-profile { grid-template-columns: 1fr; gap: 48px; }
     .ps-speakers { grid-template-columns: 1fr; gap: 32px; }
     .ps-speakers-photo { max-width: 320px; }
@@ -476,7 +483,7 @@
     .ps-thumb,
     .ps-kit-item .ps-thumb { width: 100%; max-width: 240px; }
     .ps-award { grid-template-columns: 1fr; gap: 14px 0; }
-    .ps-award-logo { width: 120px; }
+    .ps-award-logo { width: 100%; max-width: 240px; }
     .ps-award-logo--year span { font-size: 44px; }
     .ps-kit-item { grid-template-columns: 1fr; gap: 10px 0; }
     .ps-kit-item .ps-thumb { max-width: 200px; }

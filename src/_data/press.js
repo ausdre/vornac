@@ -60,19 +60,85 @@ function dateLabel(date) {
 
 const withDates = (list) => list.map((x) => Object.assign({}, x, { dateLabel: dateLabel(x.date) }));
 
+/* Sources checked 2026-10-09 (see docs/presse-recherche-2026-10-09.md). */
 const coverage = withDates([
   {
-    date: "2026-09",
+    date: "2026-09-25",
+    outlet: "CIO",
+    title: "Wenn der KI-Agent zum Pentester wird",
+    url: "https://www.cio.de/article/4225545/wenn-der-ki-agent-zum-pentester-wird-2.html",
+    type: "artikel",
+    author: "Manfred Bremmer",
+    summary: {
+      de: "Analyse zu kontinuierlichem Pentesting mit KI: Arthur Raess zur Snapshot-Falle des Jahres-Pentests, Betrieb auf deutscher Infrastruktur, Nachweise für NIS2 und DORA.",
+      en: "Analysis of continuous AI-driven pentesting: Arthur Raess on the snapshot trap of the annual pentest, operation on German infrastructure, evidence for NIS2 and DORA."
+    },
+    lang: "de",
+    thumb: LOGOS.cio,
+    thumbKind: "logo"
+  },
+  {
+    date: "2026-09-18",
+    outlet: "Computerwoche",
+    title: "Wenn der KI-Agent zum Pentester wird",
+    url: "https://www.computerwoche.de/article/4222687/wenn-der-ki-agent-zum-pentester-wird.html",
+    type: "artikel",
+    author: "Manfred Bremmer",
+    summary: {
+      de: "Feature über den Ansatz von VORNAC: statt punktueller Sicherheitstests kontinuierliches Pentesting mit einem eigenen Modell ohne externe KI-Dienste, aus deutscher Cloud oder On-Premises.",
+      en: "Feature on VORNAC's approach: continuous pentesting with a proprietary model and no external AI services, from a German cloud or on premises, instead of point-in-time tests."
+    },
+    lang: "de",
+    thumb: LOGOS.computerwoche,
+    thumbKind: "logo"
+  },
+  {
+    date: "2026-09-04",
     outlet: "et Energiewirtschaftliche Tagesfragen",
     title: "Vom Messpunkt zum Steuerpunkt: Die neue Angriffsfläche der Verteilnetze",
-    url: "",
+    url: "https://emagazin.et-magazin.de/de/profiles/cb1a7fd451c4/editions/c586a5a226acd313c7a6",
     pdf: "/vornac-et-fachbeitrag-messpunkt-steuerpunkt-2026.pdf",
     type: "fachbeitrag",
     author: "Arthur Raess",
     cite: { de: "76. Jg. (2026), Heft 9, S. 27 bis 29", en: "Vol. 76 (2026), No. 9, pp. 27 to 29" },
+    summary: {
+      de: "Warum § 14a EnWG den Netzanschluss vom Messpunkt zum Steuerpunkt macht, wo hinter dem Smart-Meter-Gateway die Angriffsfläche entsteht und weshalb jährliche Penetrationstests den Wirksamkeitsnachweis nicht mehr erbringen.",
+      en: "Why section 14a of the German Energy Industry Act turns the grid connection from a metering point into a control point, where the attack surface behind the smart meter gateway emerges and why annual penetration tests no longer provide proof of effectiveness."
+    },
     lang: "de",
     thumb: "/press-thumb-et-2026-09.jpg",
     thumbKind: "cover"
+  },
+  {
+    date: "2026-06-05",
+    outlet: "Computerwoche",
+    title: "IT-Security und KI: Warum es auf die Governance ankommt",
+    url: "https://www.computerwoche.de/article/4178603/it-security-und-ki-warum-es-auf-die-governance-ankommt.html",
+    type: "artikel",
+    author: "Florian Stocker",
+    summary: {
+      de: "Nachbericht zum Roundtable IT- und Cloud Security 2026 mit André Feigenbutz zum offensiven Einsatz von KI und ihrer wachsenden Rolle im Blue Teaming.",
+      en: "Report on the IT and Cloud Security 2026 roundtable with André Feigenbutz on the offensive use of AI and its growing role in blue teaming."
+    },
+    lang: "de",
+    thumb: LOGOS.computerwoche,
+    thumbKind: "logo"
+  },
+  {
+    date: "2026-04-12",
+    outlet: "Rhein-Neckar-Zeitung",
+    title: "Ihr KI-Agent ist so kreativ wie ein Hacker",
+    url: "https://www.rnz.de/region/heidelberg_artikel,-Heidelberg-Ihr-KI-Agent-ist-so-kreativ-wie-ein-Hacker-_arid,2214253.html",
+    type: "artikel",
+    author: "Alexander Wenisch",
+    summary: {
+      de: "Porträt des Heidelberger Unternehmens: Arthur Raess und André Feigenbutz trainieren ihren Agenten auf Verhalten statt auf Wissen, mit 20 Jahren Erfahrung aus der Hacker- und IT-Szene.",
+      en: "Profile of the Heidelberg company: Arthur Raess and André Feigenbutz train their agent on behaviour rather than knowledge, drawing on 20 years in the hacker and IT scene."
+    },
+    note: { de: "RNZ+", en: "RNZ+ (paywall)" },
+    lang: "de",
+    thumb: LOGOS.rnz,
+    thumbKind: "logo"
   }
 ]);
 
@@ -80,28 +146,43 @@ const awards = withDates([
   {
     year: "2026",
     date: "2026-10-08",
-    title: { de: "Beste Disruption 2026", en: "Best Disruption 2026" },
-    by: { de: "EuroCloud Deutschland Award", en: "EuroCloud Deutschland Award" },
+    title: { de: "Beste Disruption", en: "Best Disruption" },
+    by: { de: "EuroCloud Award 2026", en: "EuroCloud Award 2026" },
     text: {
-      de: "Auszeichnung des EuroCloud Deutschland_eco e.V. für die Plattform für kontinuierliche, autonome Penetrationstests.",
-      en: "Awarded by EuroCloud Deutschland_eco e.V. for the platform for continuous, autonomous penetration testing."
+      de: "Sieger der Kategorie Beste Disruption beim EuroCloud Summit 2026 in Köln, gewählt von den Teilnehmenden des Summits nach der Top-3-Nominierung. Veranstalter ist der EuroCloud Deutschland_eco e.V.",
+      en: "Winner of the Best Disruption category at the EuroCloud Summit 2026 in Cologne, elected by the summit participants after a top-three nomination. Organised by EuroCloud Deutschland_eco e.V."
     },
-    url: "",
+    url: "https://de.linkedin.com/posts/arthurraess_wer-sorgt-f%C3%BCr-die-beste-disruption-in-deutschland-activity-7514202003955318785-PFto",
+    linkLabel: { de: "Zum Beitrag auf LinkedIn", en: "Post on LinkedIn" },
     logo: "",
-    logoAlt: "EuroCloud Deutschland Award"
+    logoAlt: "EuroCloud Award"
   },
   {
     year: "2026",
-    date: "2026",
+    date: "2026-09",
     title: { de: "Best of Technology 2026", en: "Best of Technology 2026" },
-    by: { de: "WirtschaftsWoche", en: "WirtschaftsWoche" },
+    by: { de: "WirtschaftsWoche, Kategorie Cybersecurity", en: "WirtschaftsWoche, Cybersecurity category" },
     text: {
-      de: "Preis der WirtschaftsWoche für Technologieunternehmen aus Deutschland.",
-      en: "WirtschaftsWoche award for technology companies from Germany."
+      de: "Finalist in der Kategorie Cybersecurity, ausgezeichnet mit dem Prädikat Exzellent. Wissenschaftlicher Partner des Awards ist das Fraunhofer ISI.",
+      en: "Finalist in the Cybersecurity category, awarded the rating Excellent. Fraunhofer ISI is the award's scientific partner."
     },
-    url: "",
+    url: "https://award.wiwo.de/bot/gewinner-2026/",
     logo: "",
     logoAlt: "WirtschaftsWoche Best of Technology"
+  },
+  {
+    year: "2026",
+    date: "2026-06-25",
+    title: { de: "TeleTrusT-Innovationspreis 2026", en: "TeleTrusT Innovation Award 2026" },
+    by: { de: "Nominierung, Bundesverband IT-Sicherheit e.V.", en: "Nomination, IT Security Association Germany" },
+    text: {
+      de: "Nominiert für den Innovationspreis des Bundesverbands IT-Sicherheit, verliehen beim TeleTrusT-Empfang am 25. Juni 2026 in Berlin.",
+      en: "Nominated for the innovation award of the IT Security Association Germany, presented at the TeleTrusT reception in Berlin on 25 June 2026."
+    },
+    url: "https://www.teletrust.de/teletrust-innovationspreis/teletrust-innovationspreis-2026/",
+    linkLabel: { de: "Zur Nominiertenliste", en: "Nominees" },
+    logo: "/TeleTrusT-Mitgliedslogo.webp",
+    logoAlt: "TeleTrusT Bundesverband IT-Sicherheit e.V."
   }
 ]);
 
