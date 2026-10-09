@@ -68,89 +68,89 @@ Vorab-Befund vom 2026-10-06 (noch gegen Primärquellen zu prüfen):
 
 ---
 
-## Task 0: Gerüst für alle sechs Seiten
+## Task 0: Gerüst für alle sechs Seiten (erledigt 2026-10-09)
 
 **Files:** `wissen.css`, `src/_includes/partials/wissen-schema.njk`, `src/_data/pages.js`, `src/_data/wissen.js`, `src/sitemap.njk`, `vercel.json`, optional `src/de/vergleich.njk` (Hub, Entscheidung 4).
 
-- [ ] Navigation, Footer, Teaser-Filter und Hub aus Task 7 (Punkte 1 bis 4) gehören in diesen Task, damit die erste Seite verlinkt live geht.
-- [ ] CTA-Block oben als Partial `src/_includes/partials/vergleich-cta.njk` (Satz plus Button auf `site.contact.bookDemo`), Klasse in `wissen.css`, zentriert wie `ws-cta`, kein Rahmen, kein grauer Hintergrund.
-- [ ] Brotkrumen: wenn Entscheidung 4 "Hub", dann in `wissen-schema.njk` Ebene 2 für `vergleich-*`-Seiten auf `/vergleich` statt `/wissen` zeigen (Variable `t.nav.vergleich` in `i18n.js`), sichtbare Brotkrumenleiste und JSON-LD müssen übereinstimmen. Hub-Seite `src/de/vergleich.njk` mit CollectionPage nach dem Muster `src/de/wissen.njk`, Liste aus `wissen.js` gefiltert auf Tag "Vergleich".
-- [ ] Pentera-Seite auf die neue URL ziehen (Entscheidung 1): Datei umbenennen, `i18nKey` und Registry-Schlüssel ändern, Redirect `/vergleich/vornac-vs-pentera` → `/vergleich/pentera-alternative` in `vercel.json`, Links in `src/de/wissen/automatisierte-penetrationstests.njk`, `src/de/wissen/nis2-anbieter.njk`, `llms.txt`, `sitemap.njk` (`priorities`), `wissen.js`, `pageDates.json` (Schlüssel wandert mit, `npm run dates` prüft).
-- [ ] Build-Prüfung: `npm run build`, dann `grep -rho 'href="/de[^"]*"' dist | wc -l` → 0, `grep -c '<loc>' dist/sitemap.xml` steigt um die Zahl der neuen Seiten, kein doppeltes `@id` in den JSON-LD-Blöcken (`grep -o '"@id":"[^"]*"' dist/vergleich/*.html | sort | uniq -d`).
+- [x] Navigation, Footer, Teaser-Filter und Hub aus Task 7 (Punkte 1 bis 4) gehören in diesen Task, damit die erste Seite verlinkt live geht.
+- [x] CTA-Block oben als Partial `src/_includes/partials/vergleich-cta.njk` (Satz plus Button auf `site.contact.bookDemo`), Klasse in `wissen.css`, zentriert wie `ws-cta`, kein Rahmen, kein grauer Hintergrund.
+- [x] Brotkrumen: wenn Entscheidung 4 "Hub", dann in `wissen-schema.njk` Ebene 2 für `vergleich-*`-Seiten auf `/vergleich` statt `/wissen` zeigen (Variable `t.nav.vergleich` in `i18n.js`), sichtbare Brotkrumenleiste und JSON-LD müssen übereinstimmen. Hub-Seite `src/de/vergleich.njk` mit CollectionPage nach dem Muster `src/de/wissen.njk`, Liste aus `wissen.js` gefiltert auf Tag "Vergleich".
+- [x] Pentera-Seite auf die neue URL ziehen (Entscheidung 1): Datei umbenennen, `i18nKey` und Registry-Schlüssel ändern, Redirect `/vergleich/vornac-vs-pentera` → `/vergleich/pentera-alternative` in `vercel.json`, Links in `src/de/wissen/automatisierte-penetrationstests.njk`, `src/de/wissen/nis2-anbieter.njk`, `llms.txt`, `sitemap.njk` (`priorities`), `wissen.js`, `pageDates.json` (Schlüssel wandert mit, `npm run dates` prüft).
+- [x] Build-Prüfung: `npm run build`, dann `grep -rho 'href="/de[^"]*"' dist | wc -l` → 0, `grep -c '<loc>' dist/sitemap.xml` steigt um die Zahl der neuen Seiten, kein doppeltes `@id` in den JSON-LD-Blöcken (`grep -o '"@id":"[^"]*"' dist/vergleich/*.html | sort | uniq -d`).
 
-## Task 1: Pentera (Umbau der bestehenden Seite)
+## Task 1: Pentera (Umbau der bestehenden Seite) (erledigt 2026-10-09)
 
 **Files:** `src/de/vergleich/pentera-alternative.njk` (vormals `vornac-vs-pentera.njk`).
 
-- [ ] Steckbrief aktualisieren: alle fünf Quellen neu abrufen, Abrufdatum auf den Tag der Bearbeitung setzen, Gartner-Bewertungszahl neu lesen, deutsche Gesellschaft (Pentera Security GmbH oder Vertrieb über Partner) im Handelsregister prüfen.
-- [ ] Tabelle 1 (Angriffsfläche) neu aufbauen; die bisherigen Zeilen "Testumfang" und "Scope-Modell" gehen darin auf. Tabelle 2 aus den restlichen bestehenden Zeilen plus Rechtsträger, Niederlassung, Jurisdiktion.
-- [ ] H1 und Title auf das neue Schema, Lead neu (40 bis 60 Wörter), Abschnitte "Wann Pentera passt" und "Wann VORNAC passt" übernehmen, FAQ um die Frage "Pentera hat eine deutsche Niederlassung, wo liegen die Daten?" ergänzen.
-- [ ] Commit, `npm run dates`, JSON committen. Anzeigentext-Vorschlag (zwei Varianten) in den PR-Text.
+- [x] Steckbrief aktualisieren: alle fünf Quellen neu abrufen, Abrufdatum auf den Tag der Bearbeitung setzen, Gartner-Bewertungszahl neu lesen, deutsche Gesellschaft (Pentera Security GmbH oder Vertrieb über Partner) im Handelsregister prüfen.
+- [x] Tabelle 1 (Angriffsfläche) neu aufbauen; die bisherigen Zeilen "Testumfang" und "Scope-Modell" gehen darin auf. Tabelle 2 aus den restlichen bestehenden Zeilen plus Rechtsträger, Niederlassung, Jurisdiktion.
+- [x] H1 und Title auf das neue Schema, Lead neu (40 bis 60 Wörter), Abschnitte "Wann Pentera passt" und "Wann VORNAC passt" übernehmen, FAQ um die Frage "Pentera hat eine deutsche Niederlassung, wo liegen die Daten?" ergänzen.
+- [x] Commit, `npm run dates`, JSON committen. Anzeigentext-Vorschlag (zwei Varianten) in den PR-Text.
 
-## Task 2: Horizon3.ai (NodeZero)
+## Task 2: Horizon3.ai (NodeZero) (erledigt 2026-10-09)
 
 **Files:** `src/de/vergleich/horizon3-alternative.njk`.
 
-- [ ] Steckbrief: horizon3.ai (Produkt, Trust Center, Pressemitteilung Cyber Essentials vom 2026-09-22, docs.horizon3.ai Netzwerkanforderungen und EU-Endpunkt), Handelsregister für eine deutsche oder europäische Gesellschaft, Preisseite.
-- [ ] Besonderheit im Text: Horizon3 ist der engste Nachbar im Verfahren (autonomer Pentest mit Angriffspfaden und Nachweis). Unterschied sachlich: Scope-Modell (Netzwerkweit gegen Zielsystem), Rechtsträger USA mit EU-Bereitstellung in Deutschland gegen deutsche GmbH mit deutschem Betreiber, fester Pentester als Ansprechpartner. Die EU-Bereitstellung korrekt wiedergeben, nicht verschweigen.
-- [ ] FAQ-Zusatzfrage: "NodeZero läuft in einer EU-Region. Reicht das für NIS2 und DORA?" Antwort mit § 30 BSIG (Lieferkette) und Art. 28 DORA (IKT-Drittdienstleister), ohne Rechtsberatung.
-- [ ] Eintragungen, Commit, `npm run dates`.
+- [x] Steckbrief: horizon3.ai (Produkt, Trust Center, Pressemitteilung Cyber Essentials vom 2026-09-22, docs.horizon3.ai Netzwerkanforderungen und EU-Endpunkt), Handelsregister für eine deutsche oder europäische Gesellschaft, Preisseite.
+- [x] Besonderheit im Text: Horizon3 ist der engste Nachbar im Verfahren (autonomer Pentest mit Angriffspfaden und Nachweis). Unterschied sachlich: Scope-Modell (Netzwerkweit gegen Zielsystem), Rechtsträger USA mit EU-Bereitstellung in Deutschland gegen deutsche GmbH mit deutschem Betreiber, fester Pentester als Ansprechpartner. Die EU-Bereitstellung korrekt wiedergeben, nicht verschweigen.
+- [x] FAQ-Zusatzfrage: "NodeZero läuft in einer EU-Region. Reicht das für NIS2 und DORA?" Antwort mit § 30 BSIG (Lieferkette) und Art. 28 DORA (IKT-Drittdienstleister), ohne Rechtsberatung.
+- [x] Eintragungen, Commit, `npm run dates`.
 
-## Task 3: Cymulate
+## Task 3: Cymulate (erledigt 2026-10-09)
 
 **Files:** `src/de/vergleich/cymulate-alternative.njk`.
 
-- [ ] Steckbrief: cymulate.com (Plattform, Trust Center, Datenstandort, Module), Handelsregister (Cymulate GmbH?), G2/Capterra nur für Betriebsmodell.
-- [ ] Besonderheit: BAS gegen automatisierten Pentest. Erster Absatz erklärt den Unterschied (Validierung von Schutzmaßnahmen entlang ATT&CK gegen Nachweis der Ausnutzbarkeit je Zielsystem), damit Nr. 1 UWG erfüllt ist. Link auf `/wissen/assumed-breach-simulation` (Abgrenzung ABS, BAS) und, sobald vorhanden, `/wissen/bas-vs-automatisierter-pentest`.
-- [ ] FAQ-Zusatzfrage: "Ersetzt BAS den Penetrationstest für ISO/IEC 27001 A 8.29?"
-- [ ] Eintragungen, Commit, `npm run dates`.
+- [x] Steckbrief: cymulate.com (Plattform, Trust Center, Datenstandort, Module), Handelsregister (Cymulate GmbH?), G2/Capterra nur für Betriebsmodell.
+- [x] Besonderheit: BAS gegen automatisierten Pentest. Erster Absatz erklärt den Unterschied (Validierung von Schutzmaßnahmen entlang ATT&CK gegen Nachweis der Ausnutzbarkeit je Zielsystem), damit Nr. 1 UWG erfüllt ist. Link auf `/wissen/assumed-breach-simulation` (Abgrenzung ABS, BAS) und, sobald vorhanden, `/wissen/bas-vs-automatisierter-pentest`.
+- [x] FAQ-Zusatzfrage: "Ersetzt BAS den Penetrationstest für ISO/IEC 27001 A 8.29?"
+- [x] Eintragungen, Commit, `npm run dates`.
 
-## Task 4: Picus Security
+## Task 4: Picus Security (erledigt 2026-10-09)
 
 **Files:** `src/de/vergleich/picus-alternative.njk`.
 
-- [ ] Steckbrief: picussecurity.com (Plattform, On-Premises-Option, Datenstandort), Handelsregister, Wikipedia (Gründung, Sitz).
-- [ ] Besonderheit wie Cymulate (BAS); On-Premises-Option als Tatsache nennen, das ist ein Punkt für Picus. Texte nicht aus der Cymulate-Seite kopieren: andere Zusatzfrage ("Picus bietet On-Premises an. Was unterscheidet das vom deutschen Betrieb bei VORNAC?").
-- [ ] Eintragungen, Commit, `npm run dates`.
+- [x] Steckbrief: picussecurity.com (Plattform, On-Premises-Option, Datenstandort), Handelsregister, Wikipedia (Gründung, Sitz).
+- [x] Besonderheit wie Cymulate (BAS); On-Premises-Option als Tatsache nennen, das ist ein Punkt für Picus. Texte nicht aus der Cymulate-Seite kopieren: andere Zusatzfrage ("Picus bietet On-Premises an. Was unterscheidet das vom deutschen Betrieb bei VORNAC?").
+- [x] Eintragungen, Commit, `npm run dates`.
 
-## Task 5: XBOW
+## Task 5: XBOW (erledigt 2026-10-09)
 
 **Files:** `src/de/vergleich/xbow-alternative.njk`.
 
-- [ ] Steckbrief: xbow.com (Produkt, Preisseite, Sicherheits- oder Trust-Seite, Datenregionen), Pressemeldungen zur Finanzierung für Sitz und Gründung.
-- [ ] Besonderheit: XBOW prüft Web-Anwendungen von außen, VORNAC je Zielsystem mit Testrollen und in allen Umgebungen. Tabelle 1 zeigt den Unterschied ohne Wertung. Preislogik: frühere Listenpreise nur mit datierter Quelle (Archiv-Link), sonst "auf Anfrage (Stand)".
-- [ ] FAQ-Zusatzfrage: "XBOW testet Web-Anwendungen. Was ist mit APIs, internen Netzen und Binaries?"
-- [ ] Eintragungen, Commit, `npm run dates`.
+- [x] Steckbrief: xbow.com (Produkt, Preisseite, Sicherheits- oder Trust-Seite, Datenregionen), Pressemeldungen zur Finanzierung für Sitz und Gründung.
+- [x] Besonderheit: XBOW prüft Web-Anwendungen von außen, VORNAC je Zielsystem mit Testrollen und in allen Umgebungen. Tabelle 1 zeigt den Unterschied ohne Wertung. Preislogik: frühere Listenpreise nur mit datierter Quelle (Archiv-Link), sonst "auf Anfrage (Stand)".
+- [x] FAQ-Zusatzfrage: "XBOW testet Web-Anwendungen. Was ist mit APIs, internen Netzen und Binaries?"
+- [x] Eintragungen, Commit, `npm run dates`.
 
-## Task 6: Fleuret AI
+## Task 6: Fleuret AI (erledigt 2026-10-09)
 
 **Files:** `src/de/vergleich/fleuret-alternative.njk`.
 
-- [ ] Steckbrief: fleuret.ai (FAQ, Preisseite, Impressum oder Mentions légales für SAS und SIREN), eu-startups.com für die Finanzierung vom Oktober 2026.
-- [ ] Besonderheit: EU-Anbieter mit französischem Hosting (Scaleway). Der Unterschied liegt nicht in "EU gegen USA", sondern in Angriffsfläche (Fleuret ohne AD, Mobile, Cloud laut eigener FAQ), Jurisdiktion und Sprache des Reports (Deutsch gegen Englisch, prüfen), Ansprechpartner. Preislogik je Test gegen Jahreslizenz je Zielsystem.
-- [ ] FAQ-Zusatzfrage: "Fleuret hostet in Frankreich. Gilt das für deutsche Aufsichten als gleichwertig?" Antwort: DSGVO ja, Prüfkriterium ist der Auftragsverarbeiter und die Vertragskette, ohne Rechtsberatung.
-- [ ] Eintragungen, Commit, `npm run dates`.
+- [x] Steckbrief: fleuret.ai (FAQ, Preisseite, Impressum oder Mentions légales für SAS und SIREN), eu-startups.com für die Finanzierung vom Oktober 2026.
+- [x] Besonderheit: EU-Anbieter mit französischem Hosting (Scaleway). Der Unterschied liegt nicht in "EU gegen USA", sondern in Angriffsfläche (Fleuret ohne AD, Mobile, Cloud laut eigener FAQ), Jurisdiktion und Sprache des Reports (Deutsch gegen Englisch, prüfen), Ansprechpartner. Preislogik je Test gegen Jahreslizenz je Zielsystem.
+- [x] FAQ-Zusatzfrage: "Fleuret hostet in Frankreich. Gilt das für deutsche Aufsichten als gleichwertig?" Antwort: DSGVO ja, Prüfkriterium ist der Auftragsverarbeiter und die Vertragskette, ohne Rechtsberatung.
+- [x] Eintragungen, Commit, `npm run dates`.
 
-## Task 7: Verlinkung (Navigation, Footer, Teaser, Querverweise)
+## Task 7: Verlinkung (Navigation, Footer, Teaser, Querverweise) (erledigt 2026-10-09)
 
 Eine Seite, die nur in Sitemap und llms.txt steht, wird weder von Googlebot gewichtet noch von den Engines gefunden. Jede der sechs Seiten muss über mindestens drei interne Wege erreichbar sein: Navigation, Hub und Fließtext. Die Punkte 1 bis 4 gehören zu Task 0, damit sie mit der ersten Seite live gehen; der Rest je Seite.
 
 **Files:** `src/_includes/partials/site-header.njk`, `site-footer.njk`, `wissen-teaser.njk`, `src/_data/i18n.js`, `src/de/index.njk`, `src/de/pentesting.njk`, `src/de/faq.njk`, `src/de/wissen.njk`, die vier Wissen-Seiten mit Anbieternennung, neues Partial `vergleich-related.njk`.
 
-- [ ] **Header:** Research-Dropdown, Spalte `v-dv-drop-aside`, neuer Eintrag "Vergleiche" zwischen Wissen und Glossar, nur wenn `pageUrls.vergleich` existiert (Muster Wissen). `t.nav.vergleich` in `i18n.js` (de "Vergleiche", en "Comparisons"). `is-active` für `vergleich` und `vergleich-*` wandert vom Wissen-Link auf den neuen Eintrag.
-- [ ] **Footer:** Eintrag "Vergleiche" hinter Wissen in der Seitenliste, gleiche Bedingung.
-- [ ] **Wissen-Teaser auf den Produktseiten** (`wissen-teaser.njk`, eingebunden auf Startseite, Pentesting, OT-Pentesting, CTEM): zeigt die drei neuesten Einträge aus `wissen.js`. Sechs neue Vergleiche würden die Erklärseiten dort verdrängen. Teaser filtert auf Tag ungleich "Vergleich"; die Vergleiche bekommen auf `/pentesting` und der Startseite stattdessen einen eigenen Satz mit Link auf den Hub (siehe nächste Punkte).
-- [ ] **Hub `/vergleich`:** listet alle Seiten mit Tag "Vergleich" aus `wissen.js`, mit Stand je Seite aus `dates.byKey`. `/wissen` listet sie weiterhin mit (eine Quelle, zwei Ansichten).
-- [ ] **Startseite:** Abschnitt "Deshalb wählen Kunden VORNAC statt Pentera und Scannern" (`src/de/index.njk`, Zeile 324) bekommt unter der Tabelle einen Satz mit Link auf die Pentera-Seite und den Hub ("Ausführliche Vergleiche mit Pentera, Horizon3, Cymulate, Picus, XBOW und Fleuret").
-- [ ] **`/pentesting`:** ein Absatz im Abschnitt Methodik oder vor dem Teaser: "Wie sich VORNAC von Pentera, Horizon3 und BAS-Plattformen unterscheidet, steht auf den Vergleichsseiten" mit Link auf den Hub.
-- [ ] **FAQ:** neue Frage "Worin unterscheidet sich VORNAC von Pentera, Horizon3 oder Cymulate?" in `src/de/faq.njk` (sichtbar und im FAQPage-JSON), Antwort in drei Sätzen mit Link auf den Hub.
-- [ ] **Querverweise je Seite** (Partial `vergleich-related.njk`, vor den Quellen): "Weitere Vergleiche" mit den anderen fünf Seiten aus `wissen.js` (Tag "Vergleich", eigene Seite ausgeschlossen), dazu die zwei passenden Wissen-Seiten als feste Links im Fließtext (Pentera und Horizon3: `wissen-automatisierte-penetrationstests`; Cymulate und Picus: `wissen-assumed-breach-simulation`; XBOW und Fleuret: `wissen-nis2-wirksamkeitspruefung` und `wissen-dora-resilienztests`).
-- [ ] **Wissen-Seiten mit Anbieternennung:** in `automatisierte-penetrationstests.njk` (Anbietertabelle Zeilen 139 bis 141: Pentera verlinkt schon, Horizon3, Cymulate, Picus ergänzen, XBOW und Fleuret als neue Zeilen), `nis2-anbieter.njk`, `assumed-breach-simulation.njk`, `ctem-in-der-praxis.njk` und `dora-resilienztests.njk` jede Nennung eines der sechs Anbieter einmal je Seite auf die Vergleichsseite verlinken.
-- [ ] **Brotkrumen:** sichtbare Leiste und `BreadcrumbList` auf `Startseite › Vergleiche › <Seite>` (Task 0), Hub mit `Startseite › Vergleiche`.
-- [ ] **`llms.txt`:** Hub und alle sechs Seiten im Abschnitt Wissen; Sitemap-Priorität 0.8 je Seite, Hub 0.8.
-- [ ] **Prüfung nach dem Build:** `grep -o 'href="/vergleich/[^"]*"' dist/**/*.html | sort | uniq -c` zeigt je Vergleichsseite mindestens drei verweisende Seiten außerhalb von `/vergleich/`; kein Link auf die alte Pentera-URL (`grep -r 'vornac-vs-pentera' dist | wc -l` → 0).
+- [x] **Header:** Research-Dropdown, Spalte `v-dv-drop-aside`, neuer Eintrag "Vergleiche" zwischen Wissen und Glossar, nur wenn `pageUrls.vergleich` existiert (Muster Wissen). `t.nav.vergleich` in `i18n.js` (de "Vergleiche", en "Comparisons"). `is-active` für `vergleich` und `vergleich-*` wandert vom Wissen-Link auf den neuen Eintrag.
+- [x] **Footer:** Eintrag "Vergleiche" hinter Wissen in der Seitenliste, gleiche Bedingung.
+- [x] **Wissen-Teaser auf den Produktseiten** (`wissen-teaser.njk`, eingebunden auf Startseite, Pentesting, OT-Pentesting, CTEM): zeigt die drei neuesten Einträge aus `wissen.js`. Sechs neue Vergleiche würden die Erklärseiten dort verdrängen. Teaser filtert auf Tag ungleich "Vergleich"; die Vergleiche bekommen auf `/pentesting` und der Startseite stattdessen einen eigenen Satz mit Link auf den Hub (siehe nächste Punkte).
+- [x] **Hub `/vergleich`:** listet alle Seiten mit Tag "Vergleich" aus `wissen.js`, mit Stand je Seite aus `dates.byKey`. `/wissen` listet sie weiterhin mit (eine Quelle, zwei Ansichten).
+- [x] **Startseite:** Abschnitt "Deshalb wählen Kunden VORNAC statt Pentera und Scannern" (`src/de/index.njk`, Zeile 324) bekommt unter der Tabelle einen Satz mit Link auf die Pentera-Seite und den Hub ("Ausführliche Vergleiche mit Pentera, Horizon3, Cymulate, Picus, XBOW und Fleuret").
+- [x] **`/pentesting`:** ein Absatz im Abschnitt Methodik oder vor dem Teaser: "Wie sich VORNAC von Pentera, Horizon3 und BAS-Plattformen unterscheidet, steht auf den Vergleichsseiten" mit Link auf den Hub.
+- [x] **FAQ:** neue Frage "Worin unterscheidet sich VORNAC von Pentera, Horizon3 oder Cymulate?" in `src/de/faq.njk` (sichtbar und im FAQPage-JSON), Antwort in drei Sätzen mit Link auf den Hub.
+- [x] **Querverweise je Seite** (Partial `vergleich-related.njk`, vor den Quellen): "Weitere Vergleiche" mit den anderen fünf Seiten aus `wissen.js` (Tag "Vergleich", eigene Seite ausgeschlossen), dazu die zwei passenden Wissen-Seiten als feste Links im Fließtext (Pentera und Horizon3: `wissen-automatisierte-penetrationstests`; Cymulate und Picus: `wissen-assumed-breach-simulation`; XBOW und Fleuret: `wissen-nis2-wirksamkeitspruefung` und `wissen-dora-resilienztests`).
+- [x] **Wissen-Seiten mit Anbieternennung:** in `automatisierte-penetrationstests.njk` (Anbietertabelle Zeilen 139 bis 141: Pentera verlinkt schon, Horizon3, Cymulate, Picus ergänzen, XBOW und Fleuret als neue Zeilen), `nis2-anbieter.njk`, `assumed-breach-simulation.njk`, `ctem-in-der-praxis.njk` und `dora-resilienztests.njk` jede Nennung eines der sechs Anbieter einmal je Seite auf die Vergleichsseite verlinken.
+- [x] **Brotkrumen:** `BreadcrumbList` im JSON-LD (wie auf den Wissen-Seiten ohne sichtbare Leiste) auf `Startseite › Vergleiche › <Seite>` (Task 0), Hub mit `Startseite › Vergleiche`.
+- [x] **`llms.txt`:** Hub und alle sechs Seiten im Abschnitt Wissen; Sitemap-Priorität 0.8 je Seite, Hub 0.8.
+- [x] **Prüfung nach dem Build:** `grep -o 'href="/vergleich/[^"]*"' dist/**/*.html | sort | uniq -c` zeigt je Vergleichsseite mindestens drei verweisende Seiten außerhalb von `/vergleich/`; kein Link auf die alte Pentera-URL (`grep -r 'vornac-vs-pentera' dist | wc -l` → 0).
 
-## Task 8: Ads, Search Console, Messung
+## Task 8: Ads, Search Console, Messung (offen, nach dem Merge)
 
 - [ ] Google Ads (André, Entscheidung 5): finale URLs je Anzeigengruppe, Sitelinks auf Hub und `pageUrls.pentesting`, Anzeigentexte ohne fremde Marke. Conversion-Ziel bleibt `/thank-you`; der Button "Erstgespräch vereinbaren" führt auf zeeg.me, dort gibt es derzeit kein Conversion-Tracking (siehe Tracking-Stack-Notiz), das ist ein offener Punkt aus Step 7 des KI-Sichtbarkeit-Plans.
 - [ ] Search Console: URL-Prüfung je Seite nach dem Deploy, Rich-Results-Test für FAQPage und TechArticle.
@@ -160,3 +160,7 @@ Eine Seite, die nur in Sitemap und llms.txt steht, wird weder von Googlebot gewi
 ## Pflege
 
 Die Angaben zu Wettbewerbern veralten. Jedes Quartal: Quellen neu abrufen, Abrufdatum setzen, `npm run dates`. Hinweise von Wettbewerbern unter hello@vornac.com werden innerhalb einer Woche eingearbeitet, auch das steht auf jeder Seite.
+
+## Stand 2026-10-09
+
+Alle sechs Seiten, der Hub `/vergleich`, Navigation, Footer, Teaser-Filter und Querverweise sind im PR ausdre/vornac#85 umgesetzt (Build 160 Dateien, Sitemap 155 URLs, jede Seite von mindestens drei Seiten außerhalb von `/vergleich/` verlinkt, Pentera-Seite von mindestens sieben). Quellen je Seite mit Abrufdatum 9. Oktober 2026. Offen: Task 8 (finale URLs in Google Ads, Search Console, Peec-Messung nach vier Wochen) und die Quartalspflege.
