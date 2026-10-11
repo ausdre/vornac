@@ -26,7 +26,12 @@ module.exports = {
     favicon: "/V_BLACK.svg"
   },
 
-  socialPreviewImage: "/vornacpentesting43.png",
+  // Open-Graph/Twitter preview: 1200x630, white background, the V monogram
+  // from the favicon centred so a square crop (Slack, iMessage) still shows
+  // the V. The 2000x700 wordmark cropped to "RN." in Slack, hence this file.
+  socialPreviewImage: "/vornac-og.png",
+  socialPreviewWidth: 1200,
+  socialPreviewHeight: 630,
 
   // Shared JSON-LD identities. Every page that names the publisher or author
   // embeds `organizationLd` (a compact node) so the reference resolves on the
