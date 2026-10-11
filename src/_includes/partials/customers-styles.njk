@@ -78,7 +78,7 @@
     .logo-wall-headline em { font-style: normal; color: var(--v-amber); }
     .logo-grid {
         display: grid;
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: 1px;
         background: var(--v-line);
         border: 1px solid var(--v-line);
@@ -117,7 +117,7 @@
     }
     @media (max-width: 1024px) {
         .logo-wall-inner { padding: 60px 32px 60px; }
-        .logo-grid { grid-template-columns: repeat(3, 1fr); }
+        .logo-grid { grid-template-columns: repeat(4, 1fr); }
     }
     @media (max-width: 640px) {
         .logo-wall-inner { padding: 48px 20px 48px; }
@@ -133,6 +133,9 @@
             min-height: 88px;
         }
         .logo-cell img { max-height: 44px; }
+        /* 15 logos on a 2-column grid leave one orphan cell; let it span
+           the row so no grey gap shows at the end of the grid. */
+        .logo-cell:last-child:nth-child(odd) { grid-column: span 2; }
     }
 
     .quotes {
