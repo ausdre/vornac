@@ -9,7 +9,7 @@
      scrolls away with the page.
    - A sticky burger slides down from the top with a subtle animation once you
      scroll past ~1.5 viewport heights; it opens the full-screen overlay menu.
-   - Keeps the announcement bar and the run-in → collapse-to-V logo intro.
+   - Keeps the announcement bar and the run-in logo intro (full wordmark at rest).
 
    Positioning + colour adaptation + sticky-burger reveal live in the script
    below. Menu open/close (shared by both burgers) lives in site-scripts.njk.
@@ -182,7 +182,7 @@
 
 {# Sticky logo — fixed; the script keeps it over the spacer, then pinned near
    the top. Inline SVG so the intro can animate the V mark + each ORNAC letter
-   (run in from the right, hold as VORNAC, then vanish to the V monogram). #}
+   (run in from the right, then rest as the full VORNAC wordmark). #}
 <a href="{{ pageUrls.index }}" class="v-dv-logo" aria-label="{{ t.a11y.siteHome }}">
     <svg class="nav-logo-svg" viewBox="0 0 1448 208" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" aria-hidden="true" focusable="false">
         <defs>
@@ -910,13 +910,13 @@
         .v-dv-msub { transition: none; }
     }
 
-    /* ── Logo intro (run-in → collapse to the V monogram) ────────────────
-       The full VORNAC run-in only plays on the very first visit (gated by
-       the `vornac_logo_intro_played` localStorage flag, set after the first
+    /* ── Logo intro (run-in, then the full VORNAC wordmark stays) ─────────
+       The run-in only plays on the very first visit (gated by the
+       `vornac_logo_intro_played` localStorage flag, set after the first
        playthrough). On every subsequent page load — including after browser
        restarts — the body carries `.logo-intro-played` from an inline script
-       in `head-meta.njk`, which skips the animation and keeps only the
-       V mark visible (ORNAC stays at its end-state of hidden + translated). */
+       in `head-meta.njk`, which skips the animation; the full wordmark is
+       the resting state either way. */
     .nav-logo-svg .v-logo-mark,
     .nav-logo-svg .v-logo-letter { transform-box: fill-box; }
     .nav-logo-svg .v-logo-letter { will-change: transform, opacity; }
@@ -926,24 +926,17 @@
             animation: vLogoMarkIn .7s cubic-bezier(.86, 0, .07, 1) both;
         }
         body:not(.logo-intro-played) .nav-logo-svg .v-logo-letter {
-            animation: vLogoLetter 2.6s cubic-bezier(.86, 0, .07, 1) both;
+            animation: vLogoLetter .6s cubic-bezier(.86, 0, .07, 1) both;
             animation-delay: calc(.25s + var(--i, 0) * .13s);
         }
-    }
-    /* Subsequent visits: lock to V-only state. */
-    body.logo-intro-played .nav-logo-svg .v-logo-letter {
-        opacity: 0;
-        transform: translateX(-150px);
     }
     @keyframes vLogoMarkIn {
         0%   { opacity: 0; transform: translateX(-26px); }
         100% { opacity: 1; transform: translateX(0); }
     }
     @keyframes vLogoLetter {
-        0%        { opacity: 0; transform: translateX(170px); }
-        14%       { opacity: 1; transform: translateX(0); }
-        52%       { opacity: 1; transform: translateX(0); }
-        72%, 100% { opacity: 0; transform: translateX(-150px); }
+        0%   { opacity: 0; transform: translateX(170px); }
+        100% { opacity: 1; transform: translateX(0); }
     }
 </style>
 
@@ -969,9 +962,9 @@
         var last = letters[letters.length - 1];
         if (last) {
             last.addEventListener('animationend', mark, { once: true });
-            /* Safety net — set after the full 2.6s + delays even if the event
+            /* Safety net — set after the full .6s + delays even if the event
                doesn't fire (e.g. tab inactive during the animation window). */
-            setTimeout(mark, 3600);
+            setTimeout(mark, 1600);
         } else {
             mark();
         }
