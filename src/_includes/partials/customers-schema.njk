@@ -14,7 +14,7 @@
 {% for r in testimonials %}
   {% set _ = reviews.push({
     "@type": "Review",
-    "@id": pageAbs + "#review-" + loop.index,
+    "@id": pageAbs + "#quote-" + r.id,
     "inLanguage": locale,
     "reviewBody": r.body[locale],
     "author": { "@type": "Person", "name": r.author, "jobTitle": r.jobTitle[locale], "worksFor": { "@type": "Organization", "name": r.company } },

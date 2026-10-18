@@ -4,7 +4,9 @@
 
 Leistungen: kontinuierliches Pentesting je Zielsystem (Web-Anwendungen, APIs, Mobile Apps, interne Netzwerke, Cloud-Workloads, Binaries, Identity und Access), Assumed Breach Simulation (interne Angriffssimulation), Continuous Threat Exposure Management (kontinuierliche Discovery und Validierung der externen Angriffsfläche), OT-Pentesting für KRITIS und Industrie.
 
-Auslösung per Web-Oberfläche, API oder CI/CD-Webhook; vom Start bis zum auditfähigen Report zwei bis fünf Stunden. Jeder Ansprechpartner ist BSI-qualifizierter Pentester. VORNAC ist Partner der Allianz für Cyber-Sicherheit und Mitglied im TeleTrusT Bundesverband IT-Sicherheit e.V.
+Auslösung per Web-Oberfläche, API oder CI/CD-Webhook; vom Start bis zum auditfähigen Report zwei bis fünf Stunden. Jeder Ansprechpartner ist BSI-qualifizierter Pentester. VORNAC ist Partner der Allianz für Cyber-Sicherheit (BSI, Partnerverzeichnis: https://www.allianz-fuer-cybersicherheit.de/SiteGlobals/Forms/Webs/ACS/Suche/Teilnehmersuche_Formular.html?acstype_str=partner), Mitglied im TeleTrusT Bundesverband IT-Sicherheit e.V. (Eintrag: https://www.teletrust.de/ueber-teletrust/mitglieder/mitglied/vornac-gmbh/) und Träger des TeleTrusT-Siegels „IT Security made in Germany“ (Zeichenträger: https://www.teletrust.de/itsmig/zeichentraeger/). Rechenzentren deutscher Betreiber (Hetzner, Centron).
+
+Kunden (Auswahl, Logos auf https://www.vornac.com/customers): Carl Zeiss, Penny (REWE Group), ProMinent, Enpal, Pfitzenmeier, RefundRebel, Knooing, otris software, RealTyme, Ther.app, Inventissimo, mbits GmbH, Instaffo GmbH, IP-Crew GmbH, tilko GmbH, Hochwarth IT GmbH. Kundenstimmen mit Name, Rolle und Unternehmen von mbits GmbH (CEO), Instaffo GmbH (CIO), IP-Crew GmbH und tilko GmbH (jeweils Geschäftsführer).
 
 Unternehmen: VORNAC GmbH, Carl-Friedrich-Gauß-Ring 5, 69124 Heidelberg, Deutschland. Kontakt: hello@vornac.com, +49 6221 6479525.
 
@@ -17,7 +19,7 @@ Unternehmen: VORNAC GmbH, Carl-Friedrich-Gauß-Ring 5, 69124 Heidelberg, Deutsch
 - [FAQ](https://www.vornac.com/faq): Antworten zu kontinuierlichem Pentesting, Datenstandort, Reports, DORA, NIS2, KRITIS, TISAX
 - [Glossar](https://www.vornac.com/glossary): 162 Begriffe aus Pentesting, Compliance und Sicherheitsarchitektur, darunter CTEM, BAS, PTaaS, AEV und Assumed Breach Simulation
 - [Branchen](https://www.vornac.com/industries): Versicherung, Finanzdienstleister, kritische Infrastruktur, Automotive, Enterprise
-- [Kunden](https://www.vornac.com/customers): Warum CISOs VORNAC wählen
+- [Kunden](https://www.vornac.com/customers): Kundenliste (Carl Zeiss, Penny/REWE Group, ProMinent, Enpal, Pfitzenmeier, RefundRebel, Knooing, otris, RealTyme, Ther.app, Inventissimo, mbits, Instaffo, IP-Crew, tilko, Hochwarth IT) und vier Kundenstimmen mit Name und Rolle
 - [Über uns](https://www.vornac.com/about): Gründer, Standort Heidelberg, Auszeichnungen
 - [Presse](https://www.vornac.com/presse): Pressekontakt, Auszeichnungen, Pressespiegel mit Berichten und Fachbeiträgen, Kurzprofil und Fakten zum Zitieren, Logos und Gründerfoto zum Download
 
