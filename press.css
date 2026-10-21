@@ -192,11 +192,9 @@
 .ps-award-title a { color: inherit; text-decoration: none; }
 .ps-award-title a:hover { color: var(--v-amber-deep); }
 .ps-award-by {
-    font-family: var(--v-mono);
-    font-size: 12px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--v-ink-2);
     margin: 0 0 12px;
 }
 .ps-award-text {
@@ -224,10 +222,9 @@
 }
 .ps-item-body { padding-top: 2px; }
 .ps-item-meta--top {
-    font-family: var(--v-mono);
-    font-size: 12.5px;
-    letter-spacing: 0.04em;
-    color: var(--v-ink-3);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--v-ink-2);
     margin: 0 0 10px;
 }
 .ps-item-outlet {
@@ -367,10 +364,9 @@
     margin: 0 0 3px;
 }
 .ps-kit-meta {
-    font-family: var(--v-mono);
-    font-size: 12px;
-    letter-spacing: 0.03em;
-    color: var(--v-ink-3);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--v-ink-2);
     margin: 0;
 }
 
