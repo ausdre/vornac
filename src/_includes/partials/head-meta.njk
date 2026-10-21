@@ -37,6 +37,10 @@
 <meta property="og:title" content="{{ title }}">
 <meta property="og:description" content="{{ description }}">
 <meta property="og:image" content="{{ (ogImage or site.socialPreviewImage) | absoluteUrl(site.domain) }}">
+{% if not ogImage %}<meta property="og:image:width" content="{{ site.socialPreviewWidth }}">
+<meta property="og:image:height" content="{{ site.socialPreviewHeight }}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="VORNAC">{% endif %}
 <meta property="og:locale" content="{{ 'de_DE' if locale == 'de' else 'en_US' }}">
 {# Machine-readable dates for article pages (research notes, later /wissen).
    `published` and `updated` come from src/src.11tydata.js: front matter,
