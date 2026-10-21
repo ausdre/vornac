@@ -1,7 +1,7 @@
 {
   "/404": {
     "created": "2026-07-31",
-    "modified": "2026-09-05"
+    "modified": "2026-10-21"
   },
   "/about": {
     "created": "2026-05-27",
@@ -9,7 +9,7 @@
   },
   "/apply": {
     "created": "2026-05-27",
-    "modified": "2026-07-31"
+    "modified": "2026-10-21"
   },
   "/comcenter": {
     "created": "2026-05-27",
@@ -29,7 +29,7 @@
   },
   "/de/apply": {
     "created": "2026-05-27",
-    "modified": "2026-07-31"
+    "modified": "2026-10-21"
   },
   "/de/ctem": {
     "created": "2026-09-06",
@@ -105,7 +105,7 @@
   },
   "/de/thank-you": {
     "created": "2026-07-31",
-    "modified": "2026-09-14"
+    "modified": "2026-10-21"
   },
   "/de/vergleich": {
     "created": "2026-09-09",
@@ -237,6 +237,6 @@
   },
   "/thank-you": {
     "created": "2026-07-31",
-    "modified": "2026-07-31"
+    "modified": "2026-10-21"
   }
 }
