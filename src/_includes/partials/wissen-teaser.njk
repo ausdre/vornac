@@ -12,7 +12,7 @@
 {% if locale == 'de' and pageUrls.wissen %}
 <section class="v-wissen-teaser bg-warm py-16 px-4 sm:px-6 border-t border-stone-200" aria-labelledby="wissen-teaser-heading" data-no-crosslink>
     <div class="max-w-content mx-auto">
-        <p class="text-[12px] uppercase tracking-[0.22em] font-display text-amber-700" style="font-weight: 900;">Wissen</p>
+        <p class="text-[15px] text-amber-700 font-semibold">Wissen</p>
         <h2 id="wissen-teaser-heading" class="font-heading text-2xl sm:text-3xl font-bold text-stone-900 mt-2 max-w-3xl">
             Was Regelwerke verlangen und wie automatisierte Penetrationstests den Nachweis liefern
         </h2>
@@ -20,7 +20,7 @@
             {% for p in wissen.explainers.slice(0, 3) %}
             {% set teaserDates = dates.byKey[p.key] %}
             <article class="flex flex-col rounded-lg2 border border-stone-200 bg-white p-6">
-                <p class="text-[11px] uppercase tracking-[0.18em] text-stone-500 font-bold">{{ p.tag }}</p>
+                <p class="text-sm text-stone-600 font-semibold">{{ p.tag }}</p>
                 <h3 class="font-heading text-lg font-bold leading-snug mt-2">
                     <a href="{{ pageUrls[p.key] }}" class="hover:text-amber-700 transition-colors">{{ p.title }}</a>
                 </h3>
@@ -32,7 +32,7 @@
             {% endfor %}
         </div>
         <p class="mt-8">
-            <a href="{{ pageUrls.wissen }}" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.16em] text-stone-900 hover:text-amber-700 transition-colors">Alle Erklärseiten im Wissensbereich <span aria-hidden="true">&rarr;</span></a>
+            <a href="{{ pageUrls.wissen }}" class="inline-flex items-center gap-2 text-[15px] font-semibold text-stone-900 hover:text-amber-700 transition-colors">Alle Erklärseiten im Wissensbereich <span aria-hidden="true">&rarr;</span></a>
         </p>
     </div>
 </section>
