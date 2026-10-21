@@ -15,7 +15,7 @@
     --v-amber-deep:#cc8200;
     --v-display: 'Saira Condensed', 'Archivo', system-ui, -apple-system, sans-serif;
     --v-sans:    'Archivo', system-ui, -apple-system, sans-serif;
-    --v-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    --v-mono:    'Archivo', system-ui, -apple-system, sans-serif;
 }
 
 #site-header { z-index: 100; }

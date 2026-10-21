@@ -32,7 +32,7 @@ module.exports = {
         display: ['"Saira Condensed"', '"Archivo"', 'system-ui', 'sans-serif'],
         heading: ['"Archivo"', 'system-ui', 'sans-serif'],
         body: ['"Archivo"', 'system-ui', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+        mono: ['"Archivo"', 'system-ui', 'sans-serif'],
       },
       maxWidth: {
         content: '72rem', // 1152px

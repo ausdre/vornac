@@ -470,7 +470,7 @@ img, video { max-width: 100%; }
 /* ----------------------------------------
  * Brutalist enterprise design tokens
  * Type stack: Archivo (body + mid-display) + Saira Condensed (billboard display)
- *             + JetBrains Mono (regulator-credible data accents)
+ *             (mono accents retired 2026-10-21: --v-mono now resolves to Archivo)
  * Surfaces:   clean white + faint stone band + printed-ink dark
  * Rules:      hard ink hairlines, amber as precision accent only
  * -------------------------------------- */
@@ -505,7 +505,7 @@ img, video { max-width: 100%; }
        Use --v-mono for compliance frameworks, timestamps, signed evidence. */
     --v-display:    'Saira Condensed', 'Archivo', system-ui, -apple-system, sans-serif;
     --v-sans:       'Archivo', system-ui, -apple-system, sans-serif;
-    --v-mono:       'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    --v-mono:       'Archivo', system-ui, -apple-system, sans-serif;
 }
 
 .v-footer {
@@ -1075,7 +1075,7 @@ a.x-term:focus-visible {
 .x-term-popover-body:empty { display: none; }
 .x-term-popover-more {
     display: inline-block;
-    font-family: var(--v-mono, ui-monospace, "JetBrains Mono", monospace);
+    font-family: var(--v-mono, "Archivo", system-ui, sans-serif);
     font-size: 11px;
     font-weight: 600;
     letter-spacing: .06em;
