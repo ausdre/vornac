@@ -144,11 +144,8 @@
 }
 .ind-hub-row-fw {
     display: block;
-    font-family: var(--v-mono);
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
     color: var(--v-amber-deep);
     margin-bottom: 10px;
 }
@@ -248,11 +245,8 @@
 .ind-hero-breadcrumb a:hover { color: var(--v-amber-deep); border-bottom-color: var(--v-amber); }
 .ind-hero-framework {
     display: inline-block;
-    font-family: var(--v-mono);
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
     color: var(--v-bg-dark);
     background: var(--v-amber);
     padding: 6px 12px;

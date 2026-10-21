@@ -1075,11 +1075,8 @@ a.x-term:focus-visible {
 .x-term-popover-body:empty { display: none; }
 .x-term-popover-more {
     display: inline-block;
-    font-family: var(--v-mono, "Archivo", system-ui, sans-serif);
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: .06em;
-    text-transform: uppercase;
     color: var(--v-amber-deep);
     text-decoration: none;
     border-bottom: 1px solid transparent;
@@ -1104,11 +1101,9 @@ a.x-term:focus-visible {
 
 .v-meta-line {
     margin: 18px 0 0;
-    font-family: var(--v-mono);
-    font-size: 12.5px;
+    font-size: 14px;
     line-height: 1.7;
-    letter-spacing: 0.02em;
-    color: var(--v-ink-3);
+    color: var(--v-ink-2);
 }
 
 .v-meta-line .v-meta-label {

@@ -29,12 +29,9 @@
 }
 
 .rs-hero-eyebrow {
-    font-family: var(--v-mono);
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
+    color: var(--v-ink-2);
     margin: 0 0 32px;
     display: inline-flex;
     align-items: center;
@@ -75,10 +72,8 @@
 
 .rs-hero-glossary {
     margin: 0 auto 56px;
-    font-family: var(--v-mono);
-    font-size: 12px;
-    letter-spacing: 0.06em;
-    color: var(--v-ink-3);
+    font-size: 14px;
+    color: var(--v-ink-2);
 }
 
 .rs-hero-glossary-link {
@@ -121,12 +116,9 @@
 
 .rs-stat-label {
     margin-top: 10px;
-    font-family: var(--v-mono);
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
+    color: var(--v-ink-2);
 }
 
 @media (max-width: 720px) {
@@ -165,12 +157,9 @@
 }
 
 .rs-filter-label {
-    font-family: var(--v-mono);
-    font-size: 10.5px;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
+    color: var(--v-ink-2);
 }
 
 .rs-tier-toggles {
@@ -186,11 +175,8 @@
     appearance: none;
     border: 0;
     background: transparent;
-    font-family: var(--v-mono);
-    font-size: 10.5px;
+    font-size: 12px;
     font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
     color: var(--v-ink-2);
     padding: 7px 14px;
     border-radius: 999px;
@@ -210,9 +196,7 @@
     align-items: center;
     gap: 8px;
     flex-wrap: wrap;
-    font-family: var(--v-mono);
-    font-size: 10.5px;
-    letter-spacing: 0.14em;
+    font-size: 12px;
 }
 
 .rs-domain-jump a {
@@ -229,7 +213,7 @@
 }
 @media (max-width: 640px) {
     .rs-filter-inner { padding: 12px 18px; }
-    .rs-tier-toggle { padding: 6px 10px; font-size: 10px; }
+    .rs-tier-toggle { padding: 6px 10px; font-size: 12px; }
 }
 
 /* ============================================ */
@@ -262,7 +246,6 @@
 }
 
 .rs-domain-num {
-    font-family: var(--v-mono);
     font-size: clamp(48px, 7vw, 88px);
     font-weight: 700;
     line-height: 0.9;
@@ -296,11 +279,8 @@
     align-self: end;
     padding-bottom: 12px;
     text-align: right;
-    font-family: var(--v-mono);
-    font-size: 11px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
+    font-size: 14px;
+    color: var(--v-ink-2);
 }
 
 .rs-domain-count strong {
@@ -336,12 +316,9 @@
 /* ============================================ */
 
 .rs-sub-label {
-    font-family: var(--v-mono);
-    font-size: 10.5px;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
+    color: var(--v-ink-2);
     margin: 0 0 28px;
     display: inline-flex;
     align-items: center;
@@ -382,12 +359,9 @@
 .rs-note-featured:hover { background: rgba(255, 163, 23, 0.04); }
 
 .rs-note-meta {
-    font-family: var(--v-mono);
-    font-size: 10.5px;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
+    color: var(--v-ink-2);
     line-height: 1.6;
     padding-top: 8px;
     display: flex;
@@ -397,10 +371,8 @@
 }
 
 .rs-note-meta-line {
-    font-family: var(--v-mono);
-    font-size: 10.5px;
-    letter-spacing: 0.16em;
-    color: var(--v-ink-3);
+    font-size: 14px;
+    color: var(--v-ink-2);
 }
 
 .rs-tier-badge {
@@ -408,10 +380,8 @@
     padding: 3px 8px 4px;
     background: var(--v-ink);
     color: #ffffff;
-    font-family: var(--v-mono);
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 700;
-    letter-spacing: 0.16em;
     margin-bottom: 6px;
 }
 
@@ -457,10 +427,8 @@
 }
 
 .rs-phase-chip {
-    font-family: var(--v-mono);
-    font-size: 10.5px;
+    font-size: 12px;
     font-weight: 500;
-    letter-spacing: 0.06em;
     color: var(--v-ink-2);
     padding: 3px 9px 4px;
     border: 1px solid var(--v-line);
@@ -505,11 +473,8 @@
 .rs-note-ref:hover { background: rgba(255, 163, 23, 0.04); }
 
 .rs-ref-meta {
-    font-family: var(--v-mono);
-    font-size: 10px;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
     color: var(--v-amber-deep);
     margin-bottom: 8px;
 }
@@ -541,10 +506,8 @@
 }
 
 .rs-ref-phase {
-    font-family: var(--v-mono);
-    font-size: 10px;
-    letter-spacing: 0.06em;
-    color: var(--v-ink-3);
+    font-size: 12px;
+    color: var(--v-ink-2);
     padding: 2px 7px 3px;
     border: 1px solid var(--v-line-soft);
     border-radius: 999px;
@@ -604,11 +567,8 @@
 }
 
 .rs-bg-phases {
-    font-family: var(--v-mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
+    font-size: 12px;
+    color: var(--v-ink-2);
     white-space: nowrap;
 }
 
@@ -618,7 +578,7 @@
         gap: 6px;
         padding: 16px 0;
     }
-    .rs-bg-phases { font-size: 9.5px; }
+    .rs-bg-phases { font-size: 12px; }
 }
 
 /* ============================================ */
@@ -641,11 +601,8 @@
 }
 
 .rs-method-eyebrow {
-    font-family: var(--v-mono);
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
     color: var(--v-amber);
     margin-bottom: 18px;
 }
@@ -707,9 +664,7 @@
 
 .rs-method-glossary {
     margin-top: 28px;
-    font-family: var(--v-mono);
-    font-size: 12px;
-    letter-spacing: 0.06em;
+    font-size: 14px;
     color: rgba(255, 255, 255, 0.56);
 }
 
@@ -761,11 +716,8 @@
 }
 
 .rs-cta-eyebrow {
-    font-family: var(--v-mono);
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
     color: rgba(14, 17, 22, 0.6);
     margin-bottom: 14px;
 }
@@ -842,12 +794,9 @@
 }
 
 .rs-breadcrumb {
-    font-family: var(--v-mono);
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
+    color: var(--v-ink-2);
     margin-bottom: 40px;
     display: flex;
     align-items: center;
@@ -872,11 +821,8 @@
 .rs-breadcrumb-now { color: var(--v-ink); }
 
 .rs-domain-hero-eyebrow {
-    font-family: var(--v-mono);
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
     color: var(--v-amber-deep);
     margin: 0 0 24px;
     display: inline-flex;
@@ -901,7 +847,6 @@
 }
 
 .rs-domain-hero-num {
-    font-family: var(--v-mono);
     font-size: clamp(72px, 10vw, 144px);
     line-height: 0.85;
     color: var(--v-amber);
@@ -999,12 +944,9 @@
 .rs-domain-nav-link.is-empty { background: transparent; cursor: default; }
 
 .rs-domain-nav-label {
-    font-family: var(--v-mono);
-    font-size: 10.5px;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
+    color: var(--v-ink-2);
 }
 
 .rs-domain-nav-title {
@@ -1027,12 +969,9 @@
 
 .rs-domain-nav-back {
     justify-self: center;
-    font-family: var(--v-mono);
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
+    color: var(--v-ink-2);
     text-decoration: none;
     padding: 10px 20px;
     border: 1px solid var(--v-line);
@@ -1083,9 +1022,8 @@
 }
 
 .rs-domain-titleblock .rs-domain-arrow {
-    font-family: var(--v-mono);
     font-size: 14px;
-    color: var(--v-ink-3);
+    color: var(--v-ink-2);
     transition: color 140ms ease, transform 140ms ease;
 }
 
@@ -1118,12 +1056,9 @@
 }
 
 .rs-note-hero-meta {
-    font-family: var(--v-mono);
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
+    color: var(--v-ink-2);
     margin: 0 0 28px;
     display: flex;
     align-items: center;
@@ -1192,12 +1127,9 @@
 }
 
 .rs-note-section-heading {
-    font-family: var(--v-mono);
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
+    color: var(--v-ink-2);
     margin: 0 0 22px;
 }
 
@@ -1264,10 +1196,9 @@
 }
 
 .rs-note-body ul li::marker { color: var(--v-amber); }
-.rs-note-body ol li::marker { color: var(--v-ink-3); font-family: var(--v-mono); font-size: 0.9em; }
+.rs-note-body ol li::marker { color: var(--v-ink-2); font-size: 0.9em; }
 
 .rs-note-body code {
-    font-family: var(--v-mono);
     font-size: 0.88em;
     background: var(--v-line-soft);
     color: var(--v-ink);
@@ -1302,11 +1233,8 @@
 }
 
 .rs-note-body .rs-rule strong {
-    font-family: var(--v-mono);
-    font-size: 10.5px;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
     color: var(--v-amber-deep);
     display: block;
     margin-bottom: 4px;
@@ -1333,12 +1261,9 @@
 }
 
 .rs-note-side-label {
-    font-family: var(--v-mono);
-    font-size: 10.5px;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
+    color: var(--v-ink-2);
     margin: 0 0 12px;
 }
 
@@ -1373,11 +1298,8 @@
 }
 
 .rs-note-side-glossary-link {
-    font-family: var(--v-mono);
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
     color: var(--v-ink);
     text-decoration: none;
     display: inline-flex;
@@ -1435,12 +1357,9 @@
 
 .rs-note-siblings-tier {
     display: block;
-    font-family: var(--v-mono);
-    font-size: 10px;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
+    color: var(--v-ink-2);
     margin-bottom: 8px;
 }
 
@@ -1506,9 +1425,8 @@
 }
 
 .rs-note-link-arrow {
-    font-family: var(--v-mono);
-    font-size: 13px;
-    color: var(--v-ink-3);
+    font-size: 14px;
+    color: var(--v-ink-2);
     transition: color 140ms ease, transform 140ms ease;
 }
 

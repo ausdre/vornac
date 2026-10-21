@@ -26,12 +26,9 @@
 }
 
 .gl-hero-eyebrow {
-    font-family: var(--v-mono);
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
+    color: var(--v-ink-2);
     margin: 0 0 32px;
     display: inline-flex;
     align-items: center;
@@ -89,12 +86,9 @@
 
 .gl-stat-label {
     margin-top: 10px;
-    font-family: var(--v-mono);
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
+    color: var(--v-ink-2);
 }
 
 @media (max-width: 720px) {
@@ -137,12 +131,9 @@
 }
 
 .gl-controls-label {
-    font-family: var(--v-mono);
-    font-size: 10.5px;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
+    color: var(--v-ink-2);
     flex-shrink: 0;
 }
 
@@ -160,11 +151,8 @@
     border: 1px solid var(--v-line);
     background: #ffffff;
     color: var(--v-ink-2);
-    font-family: var(--v-mono);
-    font-size: 10.5px;
+    font-size: 12px;
     font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
     padding: 5px 12px 6px;
     border-radius: 999px;
     cursor: pointer;
@@ -189,10 +177,8 @@
 }
 
 .gl-az a {
-    font-family: var(--v-mono);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 600;
-    letter-spacing: 0.04em;
     color: var(--v-ink-2);
     text-decoration: none;
     padding: 4px 7px;
@@ -254,11 +240,8 @@
 
 .gl-letter-meta {
     padding-bottom: 10px;
-    font-family: var(--v-mono);
-    font-size: 10.5px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
+    font-size: 14px;
+    color: var(--v-ink-2);
 }
 
 @media (max-width: 720px) {
@@ -312,21 +295,16 @@
 }
 
 .gl-entry-full {
-    font-family: var(--v-mono);
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.45;
-    color: var(--v-ink-3);
-    letter-spacing: 0.02em;
+    color: var(--v-ink-2);
     margin: 0;
 }
 
 .gl-entry-cat {
     display: inline-block;
-    font-family: var(--v-mono);
-    font-size: 10px;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
     color: var(--v-amber-deep);
     margin-top: 4px;
     align-self: flex-start;
@@ -345,10 +323,8 @@
 }
 
 .gl-entry-see {
-    font-family: var(--v-mono);
-    font-size: 11px;
-    letter-spacing: 0.04em;
-    color: var(--v-ink-3);
+    font-size: 14px;
+    color: var(--v-ink-2);
     margin: 0;
 }
 
@@ -430,11 +406,8 @@
 }
 
 .gl-method-eyebrow {
-    font-family: var(--v-mono);
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
     color: var(--v-amber);
     margin-bottom: 18px;
 }
@@ -510,11 +483,8 @@
 }
 
 .gl-cta-eyebrow {
-    font-family: var(--v-mono);
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
     color: rgba(14, 17, 22, 0.6);
     margin-bottom: 14px;
 }
