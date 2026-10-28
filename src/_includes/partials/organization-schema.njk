@@ -1,15 +1,19 @@
-{# Full Organization record plus the WebSite node for the two home pages.
-   Every other page embeds the compact node from site.organizationLd under the
-   same @id (https://www.vornac.com/#organization); this is the one place that
-   carries address, founders, register entry, memberships and category terms.
+{# Full Organization record plus the WebSite node, rendered on every page by
+   layouts/base.njk (pages opt out with `organizationSchema: false` in their
+   front matter; only the comcenter does). This is the single definition of
+   https://www.vornac.com/#organization and https://www.vornac.com/#website:
+   every other JSON-LD block on a page references the two @ids and must not
+   redeclare them, so each page carries exactly one Organization node and an
+   agent that fetches a single page gets the complete record (address,
+   founders, register entry, memberships, awards, contact points, sameAs).
 
    Facts confirmed 2026-09-09: founded 2025 in Heidelberg, both founders are
    managing directors, HRB 757584 Amtsgericht Mannheim. No Offer node: the
    price is not public (decision of 2026-09-09). Service nodes stay on
-   /pentesting, /ot-pentesting, /ctem and the industries pages; the home
-   page does not redeclare them.
+   /pentesting, /ot-pentesting, /ctem and the industries pages; this record
+   does not redeclare them.
 
-   Inputs in scope: locale, site, pageUrls.
+   Inputs in scope: locale, site, pageUrls, press (awards and press contact).
 #}
 {% set orgDescription = {
   "de": "Kontinuierliche, autonome Penetrationstests und Sicherheitsvalidierung für regulierte Unternehmen. Betrieb und Datenhaltung ausschließlich in Deutschland. Auditfähige Reports für NIS2 (§ 30 BSIG), DORA, KRITIS, TISAX, VAIT/BAIT und ISO/IEC 27001.",
@@ -24,6 +28,15 @@
   "en": "Co-founder and Managing Director"
 } %}
 {% set aboutUrl = pageUrls.about | absoluteUrl(site.domain) %}
+{# Awards: the TeleTrusT seal plus every prize listed in press.js, so the
+   press page does not need an Organization node of its own. #}
+{% set awardNames = [({
+  "de": "IT Security made in Germany (TeleTrusT-Vertrauenszeichen)",
+  "en": "IT Security made in Germany (TeleTrusT trust seal)"
+})[locale]] %}
+{% for a in press.awards %}
+  {% set awardNames = (awardNames.push(a.by[locale] + ": " + a.title[locale]), awardNames) %}
+{% endfor %}
 {% set ld = {
   "@context": "https://schema.org",
   "@graph": [
@@ -91,7 +104,7 @@
         "ISO/IEC 27001",
         "BSI IT-Grundschutz"
       ],
-      "award": "IT Security made in Germany (TeleTrusT-Vertrauenszeichen)",
+      "award": awardNames,
       "memberOf": [
         { "@type": "Organization", "name": "TeleTrusT Bundesverband IT-Sicherheit e.V.", "url": "https://www.teletrust.de/" },
         { "@type": "Organization", "name": "Allianz für Cyber-Sicherheit (BSI)", "url": "https://www.allianz-fuer-cybersicherheit.de/" }
@@ -102,14 +115,24 @@
         site.contact.gartner,
         "https://www.crunchbase.com/organization/vornac-gmbh"
       ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "sales",
-        "telephone": "+49 6221 6479525",
-        "email": site.contact.email,
-        "availableLanguage": ["de", "en"],
-        "areaServed": "DE"
-      }
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "telephone": "+49 6221 6479525",
+          "email": site.contact.email,
+          "availableLanguage": ["de", "en"],
+          "areaServed": "DE"
+        },
+        {
+          "@type": "ContactPoint",
+          "contactType": "press",
+          "name": press.contact.name,
+          "telephone": press.contact.phone,
+          "email": press.contact.email,
+          "availableLanguage": ["de", "en"]
+        }
+      ]
     },
     {
       "@type": "WebSite",

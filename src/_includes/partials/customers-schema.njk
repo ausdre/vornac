@@ -52,8 +52,7 @@
         { "@type": "ListItem", "position": 2, "name": ("Customers" if locale == "en" else "Kunden"), "item": pageAbs }
       ]
     },
-    service,
-    site.organizationLd
+    service
   ]
 } %}
 <script type="application/ld+json">{{ ld | jsonLd | safe }}</script>

@@ -22,6 +22,10 @@
      extraHead    — additional <head> content (page-specific styles, JSON-LD)
      content      — main body HTML
      extraBodyEnd — additional scripts before </body>
+
+   Front-matter switches:
+     organizationSchema: false — skip the site-wide Organization/WebSite
+                                 JSON-LD (only the comcenter does this)
 #}
 <!DOCTYPE html>
 <html lang="{{ t.htmlLang }}" class="scroll-smooth">
@@ -32,6 +36,10 @@
     {% include "partials/google-tag.njk" %}
     {% include "partials/head-meta.njk" %}
     {% include "partials/head-fonts.njk" %}
+    {# Organization identity on every page (Peec check page.organization_schema):
+       the full record and the WebSite node, see partials/organization-schema.njk.
+       Pages opt out with `organizationSchema: false` in their front matter. #}
+    {% if organizationSchema !== false %}{% include "partials/organization-schema.njk" %}{% endif %}
 
     {% block extraHead %}{% endblock %}
 </head>
