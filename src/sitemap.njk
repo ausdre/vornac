@@ -45,6 +45,8 @@ priorities:
     build date. A registry entry without dates falls back to the newest
     research date so the value still points at a real edit. -#}
 {%- for entry in pages -%}
+  {#- noindex entries (comcenter) are disallowed in robots.txt and carry meta noindex; a sitemap must not list them. -#}
+  {%- if not entry.noindex -%}
   {%- set priority = priorities[entry.key] or "0.5" -%}
   {%- set entryDates = dates.byKey[entry.key] -%}
   {%- set lastmodDe = (entryDates.de.modified if entryDates and entryDates.de else research.updated) -%}
@@ -75,6 +77,7 @@ priorities:
     <xhtml:link rel="alternate" hreflang="en" href="{{ entry.en | absoluteUrl(site.domain) }}" />
     <xhtml:link rel="alternate" hreflang="x-default" href="{{ (entry.de or entry.en) | absoluteUrl(site.domain) }}" />
   </url>
+  {%- endif -%}
   {%- endif -%}
 {%- endfor %}
 </urlset>
