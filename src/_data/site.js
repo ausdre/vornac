@@ -28,20 +28,12 @@ module.exports = {
 
   socialPreviewImage: "/vornacpentesting43.png",
 
-  // Shared JSON-LD identities. Every page that names the publisher or author
-  // embeds `organizationLd` (a compact node) so the reference resolves on the
-  // page itself; the full Organization record with address, founders and
-  // memberships lives on the homepage under the same @id.
+  // Shared JSON-LD identities. The Organization and WebSite nodes are defined
+  // once, in partials/organization-schema.njk, which layouts/base.njk renders
+  // on every page. Page-level JSON-LD only references these two @ids
+  // (publisher, provider, isPartOf, about) and never redeclares the nodes.
   organizationId: "https://www.vornac.com/#organization",
   websiteId: "https://www.vornac.com/#website",
-  organizationLd: {
-    "@type": "Organization",
-    "@id": "https://www.vornac.com/#organization",
-    "name": "VORNAC GmbH",
-    "alternateName": "VORNAC",
-    "url": "https://www.vornac.com/",
-    "logo": { "@type": "ImageObject", "url": "https://www.vornac.com/vornacpentesting43.png" }
-  },
 
   // Named authors for content pages (/wissen, /vergleich). Referenced from
   // front matter as `author: andre`; rendered by page-meta-line.njk and the
