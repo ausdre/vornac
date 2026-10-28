@@ -7,7 +7,8 @@
     "dev:html": "eleventy --serve --port=8081",
     "build:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
     "build:html": "eleventy",
-    "build": "npm run build:css && npm run build:html",
+    "build:md": "node scripts/markdown-twins.js",
+    "build": "npm run build:css && npm run build:html && npm run build:md",
     "dates": "node scripts/page-dates.js",
     "dates:check": "node scripts/page-dates.js --check",
     "clean": "rm -rf dist",
@@ -20,7 +21,9 @@
     "node-html-parser": "^7.1.0",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.5.6",
-    "tailwindcss": "^3.4.19"
+    "tailwindcss": "^3.4.19",
+    "turndown": "^7.2.4",
+    "turndown-plugin-gfm": "^1.0.2"
   },
   "description": "",
   "main": "postcss.config.js",

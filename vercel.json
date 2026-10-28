@@ -132,7 +132,47 @@
     { "source": "/preventive_de.html",     "destination": "/",   "permanent": true },
     { "source": "/preventive_de",          "destination": "/",   "permanent": true }
   ],
+  "rewrites": [
+    { "source": "/.md", "destination": "/index.md" },
+
+    { "source": "/", "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }], "destination": "/index.md" },
+    { "source": "/:path((?!en/comcenter$|thank-you$|en/thank-you$)[^.]+)", "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }], "destination": "/:path.md" }
+  ],
   "headers": [
+    {
+      "source": "/",
+      "headers": [
+        { "key": "Vary", "value": "Accept" },
+        { "key": "Link", "value": "<https://www.vornac.com/index.md>; rel=\"alternate\"; type=\"text/markdown\"" }
+      ]
+    },
+    {
+      "source": "/:path((?!en/comcenter$|thank-you$|en/thank-you$)[^.]+)",
+      "headers": [
+        { "key": "Vary", "value": "Accept" },
+        { "key": "Link", "value": "<https://www.vornac.com/:path.md>; rel=\"alternate\"; type=\"text/markdown\"" }
+      ]
+    },
+    {
+      "source": "/index.md",
+      "headers": [
+        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" },
+        { "key": "Link", "value": "<https://www.vornac.com/>; rel=\"canonical\"" }
+      ]
+    },
+    {
+      "source": "/:path((?!index\\.md$)[^.]+)\\.md",
+      "headers": [
+        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" },
+        { "key": "Link", "value": "<https://www.vornac.com/:path>; rel=\"canonical\"" }
+      ]
+    },
+    {
+      "source": "/llms-full.txt",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" }
+      ]
+    },
     {
       "source": "/(.*)\\.(png|jpg|jpeg|webp|svg|gif|ico|avif)",
       "headers": [

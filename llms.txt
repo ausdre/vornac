@@ -10,6 +10,8 @@ Kunden (Auswahl, Logos auf https://www.vornac.com/customers): Carl Zeiss, Penny 
 
 Unternehmen: VORNAC GmbH, Carl-Friedrich-Gauß-Ring 5, 69124 Heidelberg, Deutschland. Kontakt: hello@vornac.com, +49 6221 6479525.
 
+Maschinenlesbar: Jede Seite liegt als Markdown unter ihrer URL mit der Endung .md (Startseite: https://www.vornac.com/index.md, zum Beispiel https://www.vornac.com/pentesting.md) und wird bei `Accept: text/markdown` direkt als Markdown ausgeliefert. Der Volltext aller Seiten steht in https://www.vornac.com/llms-full.txt.
+
 ## Kernseiten (Deutsch)
 
 - [Startseite](https://www.vornac.com/): Überblick, Kennzahlen, Vergleich mit Pentera und klassischen VM-, BAS- und EASM-Tools

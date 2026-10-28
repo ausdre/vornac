@@ -64,6 +64,21 @@ module.exports = {
     },
 
     /**
+     * Site path of this page's Markdown twin (scripts/markdown-twins.js
+     * writes one for every sitemap URL after the build): the canonical path
+     * plus ".md", the root as /index.md. null for pages outside the registry
+     * (404, thank-you) and for registry entries marked noindex (comcenter),
+     * which the sitemap skips as well.
+     */
+    markdownTwin: (data) => {
+      if (!data.i18nKey) return null;
+      const locale = data.page.filePathStem.startsWith("/de/") ? "de" : "en";
+      const entry = data.pages.find((p) => p.key === data.i18nKey);
+      if (!entry || entry.noindex || !entry[locale]) return null;
+      return entry[locale] === "/" ? "/index.md" : `${entry[locale]}.md`;
+    },
+
+    /**
      * Per-locale URL lookup table keyed by i18nKey.
      * Lets templates write `{{ pageUrls.pentesting }}` instead of
      * iterating the pages array. Returns the URL in the CURRENT locale,

@@ -38,7 +38,8 @@ const STATIC_PAGES = [
   { key: "industries-insurance",               en: `${EN}/industries-insurance`,               de: "/industries-insurance" },
   { key: "faq",                                en: `${EN}/faq`,                                de: "/faq" },
   { key: "legal",                              en: `${EN}/legal`,                              de: "/legal" },
-  { key: "comcenter",                          en: `${EN}/comcenter`,                     de: null },
+  // noindex: the comcenter is a demo dashboard (robots Disallow, meta noindex); it stays out of the sitemap and gets no Markdown twin.
+  { key: "comcenter",                          en: `${EN}/comcenter`,                     de: null, noindex: true },
   // Wissen (German first; `en: null` until the English version exists).
   { key: "wissen",                             en: null,                                       de: "/wissen" },
   { key: "wissen-nis2-wirksamkeitspruefung",   en: null,                                       de: "/wissen/nis2-wirksamkeitspruefung" },
