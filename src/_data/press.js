@@ -15,7 +15,7 @@
  * locale is derived below. `type` is one of the keys in `types`. `url` is
  * the public source; `pdf` an optional local copy. Newest first.
  *
- * Facts confirmed in the repo: founded 2025 in Heidelberg, HRB 757584
+ * Facts confirmed in the repo: founded 2026 in Heidelberg (corrected 2026-11-10, previously 2025), HRB 757584
  * Amtsgericht Mannheim, both founders are managing directors (see
  * partials/organization-schema.njk and /legal).
  */
@@ -225,17 +225,17 @@ module.exports = {
   boilerplate: {
     de: {
       short: "VORNAC GmbH, Heidelberg: Plattform für kontinuierliche, autonome Penetrationstests mit auditfähigen Nachweisen für regulierte Unternehmen, betrieben ausschließlich in deutschen Rechenzentren.",
-      long: "Die VORNAC GmbH mit Sitz in Heidelberg entwickelt eine Plattform für kontinuierliche, autonome Penetrationstests. Ein KI-gestützter Agent prüft produktive Systeme mit realen Angriffstechniken, verkettet Schwachstellen zu Angriffspfaden und liefert innerhalb von Stunden auditfähige Berichte mit reproduzierbarem Nachweis. Betrieb und Datenhaltung erfolgen ausschließlich in deutschen Rechenzentren. Kunden sind regulierte Unternehmen, die Nachweise nach NIS2, DORA, KRITIS, TISAX und ISO/IEC 27001 erbringen müssen. VORNAC wurde 2025 von André Feigenbutz und Arthur Raess gegründet, ist Mitglied im TeleTrusT Bundesverband IT-Sicherheit e.V. und Partner der Allianz für Cyber-Sicherheit des BSI."
+      long: "Die VORNAC GmbH mit Sitz in Heidelberg entwickelt eine Plattform für kontinuierliche, autonome Penetrationstests. Ein KI-gestützter Agent prüft produktive Systeme mit realen Angriffstechniken, verkettet Schwachstellen zu Angriffspfaden und liefert innerhalb von Stunden auditfähige Berichte mit reproduzierbarem Nachweis. Betrieb und Datenhaltung erfolgen ausschließlich in deutschen Rechenzentren. Kunden sind regulierte Unternehmen, die Nachweise nach NIS2, DORA, KRITIS, TISAX und ISO/IEC 27001 erbringen müssen. VORNAC wurde 2026 von André Feigenbutz und Arthur Raess gegründet, ist Mitglied im TeleTrusT Bundesverband IT-Sicherheit e.V. und Partner der Allianz für Cyber-Sicherheit des BSI."
     },
     en: {
       short: "VORNAC GmbH, Heidelberg: platform for continuous, autonomous penetration testing with audit-ready evidence for regulated companies, operated exclusively in German data centres.",
-      long: "VORNAC GmbH, based in Heidelberg, develops a platform for continuous, autonomous penetration testing. An AI-driven agent tests production systems with real attack techniques, chains vulnerabilities into attack paths and delivers audit-ready reports with reproducible evidence within hours. Operation and data storage take place exclusively in German data centres. Customers are regulated companies that have to provide evidence under NIS2, DORA, KRITIS, TISAX and ISO/IEC 27001. VORNAC was founded in 2025 by André Feigenbutz and Arthur Raess, is a member of TeleTrusT Bundesverband IT-Sicherheit e.V. and a partner of the BSI's Alliance for Cyber Security."
+      long: "VORNAC GmbH, based in Heidelberg, develops a platform for continuous, autonomous penetration testing. An AI-driven agent tests production systems with real attack techniques, chains vulnerabilities into attack paths and delivers audit-ready reports with reproducible evidence within hours. Operation and data storage take place exclusively in German data centres. Customers are regulated companies that have to provide evidence under NIS2, DORA, KRITIS, TISAX and ISO/IEC 27001. VORNAC was founded in 2026 by André Feigenbutz and Arthur Raess, is a member of TeleTrusT Bundesverband IT-Sicherheit e.V. and a partner of the BSI's Alliance for Cyber Security."
     }
   },
 
   facts: [
     { label: { de: "Unternehmen", en: "Company" }, value: { de: "VORNAC GmbH", en: "VORNAC GmbH" } },
-    { label: { de: "Gründung", en: "Founded" }, value: { de: "2025 in Heidelberg", en: "2025 in Heidelberg, Germany" } },
+    { label: { de: "Gründung", en: "Founded" }, value: { de: "2026 in Heidelberg", en: "2026 in Heidelberg, Germany" } },
     { label: { de: "Gründer und Geschäftsführer", en: "Founders and managing directors" }, value: { de: "André Feigenbutz, Arthur Raess", en: "André Feigenbutz, Arthur Raess" } },
     { label: { de: "Sitz", en: "Registered office" }, value: { de: "Carl-Friedrich-Gauß-Ring 5, 69124 Heidelberg", en: "Carl-Friedrich-Gauß-Ring 5, 69124 Heidelberg" } },
     { label: { de: "Handelsregister", en: "Commercial register" }, value: { de: "HRB 757584, Amtsgericht Mannheim", en: "HRB 757584, Amtsgericht Mannheim" } },
