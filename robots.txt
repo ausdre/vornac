@@ -1,64 +1,127 @@
 # robots.txt für www.vornac.com
-# Stand: 2026-09-05. Wird per Passthrough-Copy (.eleventy.js) nach dist/ kopiert.
+# Stand: 2026-11-12. Wird per Passthrough-Copy (.eleventy.js) nach dist/ kopiert.
+#
+# Nutzungssignale (Entscheidung 2026-11-12): Suche, KI-Antworten und KI-Training
+# sind erlaubt. Content-Signal folgt contentsignals.org, Content-Usage dem
+# IETF-Entwurf AIPREF (Labels train-ai und search). Beide Zeilen stehen in jeder
+# Gruppe, weil ein Crawler mit eigener Gruppe die Gruppe "*" nicht liest (RFC 9309).
+#
+# /en/comcenter ist ein Mock-Dashboard mit fiktiven Zeitstempeln und soll nicht in
+# Suchindizes oder KI-Antworten landen. KI-Crawler und alle nicht genannten Bots
+# dürfen die Seite nicht abrufen. Googlebot, Bingbot und Applebot dürfen sie
+# abrufen, damit sie das noindex der Seite lesen; ein Disallow würde es verbergen.
 
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
 Allow: /
-# Mock-Dashboard mit fiktiven Zeitstempeln, soll nicht in Suchindizes oder KI-Antworten landen
 Disallow: /en/comcenter
 
 # KI-Crawler und Antwortmaschinen ausdrücklich zugelassen
 User-agent: GPTBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
 Allow: /
+Disallow: /en/comcenter
 
 User-agent: OAI-SearchBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
 Allow: /
+Disallow: /en/comcenter
 
 User-agent: ChatGPT-User
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
 Allow: /
+Disallow: /en/comcenter
 
 User-agent: PerplexityBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
 Allow: /
+Disallow: /en/comcenter
 
 User-agent: Perplexity-User
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
 Allow: /
+Disallow: /en/comcenter
 
 User-agent: ClaudeBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
 Allow: /
+Disallow: /en/comcenter
 
 User-agent: Claude-SearchBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
 Allow: /
+Disallow: /en/comcenter
 
 User-agent: Claude-User
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
 Allow: /
+Disallow: /en/comcenter
 
 User-agent: Google-Extended
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
 Allow: /
+Disallow: /en/comcenter
 
+User-agent: Applebot-Extended
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Amazonbot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: meta-externalagent
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: DuckAssistBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: YouBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: MistralAI-User
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+# Suchcrawler: ohne Disallow, sie lesen das noindex von /en/comcenter
 User-agent: Googlebot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
 Allow: /
 
 User-agent: Bingbot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
 Allow: /
 
 User-agent: Applebot
-Allow: /
-
-User-agent: Applebot-Extended
-Allow: /
-
-User-agent: Amazonbot
-Allow: /
-
-User-agent: meta-externalagent
-Allow: /
-
-User-agent: DuckAssistBot
-Allow: /
-
-User-agent: YouBot
-Allow: /
-
-User-agent: MistralAI-User
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
 Allow: /
 
 Sitemap: https://www.vornac.com/sitemap.xml
