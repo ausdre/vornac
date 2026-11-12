@@ -59,6 +59,12 @@ Maschinenlesbar: Jede Seite liegt als Markdown unter ihrer URL mit der Endung .m
 - [Press](https://www.vornac.com/en/press)
 - [Glossary](https://www.vornac.com/en/glossary)
 
+## Für Agenten
+
+- [Agent Skills](https://www.vornac.com/.well-known/agent-skills/index.json): Index nach Agent Skills Discovery mit zwei Skills (Englisch), Website als Markdown lesen und eine Pentest-Anfrage vorbereiten
+- [ARD-Manifest](https://www.vornac.com/.well-known/ard.json): maschinenlesbare Liste der Agenten-Ressourcen dieser Domain
+- [auth.md](https://www.vornac.com/auth.md): Zugang zur Plattform (Englisch), keine Selbstregistrierung für Agenten, Tests nur mit Vertrag
+
 ## Optional
 
 - [Atom-Feed](https://www.vornac.com/feed.xml): neue und geänderte Wissen-Seiten und Research-Notizen (Deutsch)

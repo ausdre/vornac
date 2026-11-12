@@ -188,6 +188,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("*.eps");
   eleventyConfig.addPassthroughCopy("robots.txt");
   eleventyConfig.addPassthroughCopy("llms.txt");
+  // Agent discovery: skills and security.txt live in well-known/ (no leading
+  // dot in the repo) and are served from /.well-known/. After the build,
+  // scripts/agent-discovery.js adds the skills index and the ARD manifest.
+  // auth.md tells agents how access to the platform works.
+  eleventyConfig.addPassthroughCopy({ "well-known": ".well-known" });
+  eleventyConfig.addPassthroughCopy("auth.md");
   // IndexNow key file (Bing, Yandex, Naver): must be served at the site root.
   eleventyConfig.addPassthroughCopy("c125bccae38be4eb0e8ba482cff3b8b0.txt");
 
