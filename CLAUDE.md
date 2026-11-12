@@ -40,6 +40,16 @@
 - Keine Gedankenstriche (kein Halbgeviertstrich, kein Geviertstrich; Bindestriche in Komposita sind in Ordnung), keine Marketing-Adjektive in Überschriften, kein KI-Duktus (keine Dreierketten, keine Floskeleinleitungen). Vorlagen für JSON-LD: `docs/superpowers/specs/ki-sichtbarkeit-schema/`.
 - Neue Wissen-Seiten in `src/_data/wissen.js` eintragen: die Liste speist die Indexseite `/wissen` und den Atom-Feed `/feed.xml` (`src/_data/feed.js`, `src/feed.njk`; Research-Notizen kommen automatisch dazu). Der Feed liest wie die Sitemap nur Daten aus `dates.js`.
 
+## Agent-Discovery (seit 2026-11-12, Peec Agent Readiness Level 4)
+
+- Quellen sind `well-known/` (ohne führenden Punkt, Passthrough nach `/.well-known/`) und `auth.md` im Repo-Root. Die Skills liegen unter `well-known/agent-skills/<name>/SKILL.md` (Englisch, Front-Matter `name` und `description`, Ordnername gleich `name`). `npm run build` ruft zuletzt `scripts/agent-discovery.js` auf: Es liest die Kopien in `dist/` und schreibt den Index `/.well-known/agent-skills/index.json` (Agent Skills Discovery v0.2.0, Digest ist der SHA-256 der ausgelieferten Datei) und das ARD-Manifest `/.well-known/ard.json` (ARD v0.91, ein Eintrag je Skill). Ein neuer Skill braucht den Ordner mit `SKILL.md` und einen Datensatz in `ARD` im Skript, sonst bricht der Build ab. `head-meta.njk` verweist per `<link rel="ard">` auf das Manifest, die `llms.txt` führt alles unter "Für Agenten".
+- Skills wiederholen keine Claims, sie verweisen auf Seiten. Neue Einstiegsseiten in die Tabelle von `vornac-content-access` eintragen.
+- `auth.md` beschreibt den echten Zugangsweg (Erstgespräch, Vertrag, Konten legt VORNAC im Onboarding an, API-Tokens erzeugen und widerrufen Kunden im Portal) und sagt ausdrücklich, dass das auth.md-Protokoll nicht implementiert ist. Den Host des Kundenportals nicht nennen.
+- Entscheidungen André 2026-11-12: API-Katalog (`/.well-known/api-catalog`) und ein öffentlicher MCP-Server sind zurückgestellt. OAuth-Metadaten und eine A2A-Karte gibt es erst, wenn ein echter Dienst dahinter steht; keine Datei veröffentlichen, die etwas ankündigt, das nicht existiert.
+- `well-known/security.txt` (RFC 9116): Kontakt security@vornac.com. `Expires` muss weniger als ein Jahr voraus liegen und vor Ablauf erneuert werden (aktuell 2027-10-31).
+- `robots.txt`: `Content-Signal` und `Content-Usage` stehen in jeder Gruppe, weil ein Crawler mit eigener Gruppe die Gruppe `*` nicht liest (RFC 9309); KI-Training ist erlaubt (Entscheidung 2026-11-12). `/en/comcenter` ist für KI-Crawler und nicht genannte Bots gesperrt; Googlebot, Bingbot und Applebot dürfen die Seite abrufen, damit sie deren `noindex` lesen. Einen neuen Bot immer mit vollständiger Gruppe eintragen.
+- `vercel.json` setzt Content-Type, CORS und Cache für `/.well-known/*` und `/auth.md`; die allgemeine `.md`-Regel der Markdown-Zwillinge (`Link: rel="canonical"`) nimmt `auth.md` aus.
+
 ## Werkzeuge
 
 - `.mcp.json` bringt `peec-ai` (https://api.peec.ai/mcp) und `vercel` (https://mcp.vercel.com) mit. Beim ersten Start `/mcp` und beide per OAuth freigeben.

@@ -26,6 +26,10 @@
    thank-you) and for noindex pages (comcenter). #}
 {% if markdownTwin %}<link rel="alternate" type="text/markdown" href="{{ markdownTwin | absoluteUrl(site.domain) }}">{% endif %}
 
+{# Agentic Resource Discovery: manifest of the agent resources on this domain
+   (the agent skills), written after the build by scripts/agent-discovery.js. #}
+<link rel="ard" href="/.well-known/ard.json">
+
 {# hreflang: each page declares its i18nKey, we pull both URLs from the registry. #}
 {% if i18nKey %}
   {% for p in pages %}
