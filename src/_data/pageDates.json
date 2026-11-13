@@ -53,7 +53,7 @@
   },
   "/de/industries-automotive": {
     "created": "2026-05-27",
-    "modified": "2026-09-11"
+    "modified": "2026-11-13"
   },
   "/de/industries-critical-infrastructure": {
     "created": "2026-05-27",
@@ -162,6 +162,10 @@
   "/de/wissen/nis2-wirksamkeitspruefung": {
     "created": "2026-09-09",
     "modified": "2026-09-15"
+  },
+  "/de/wissen/tisax-penetrationstests": {
+    "created": "2026-11-13",
+    "modified": "2026-11-13"
   },
   "/faq": {
     "created": "2026-07-07",
