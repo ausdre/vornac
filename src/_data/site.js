@@ -26,7 +26,13 @@ module.exports = {
     favicon: "/V_BLACK.svg"
   },
 
-  socialPreviewImage: "/vornacpentesting43.png",
+  // Link preview (og:image / twitter:image) on every page: the V monogram
+  // from the favicon on a white 1200x630 canvas. Pages may override with
+  // `ogImage` in their front matter.
+  socialPreviewImage: "/og-vornac.png",
+  // Organization logo in the JSON-LD (wordmark, kept separate from the
+  // link preview so the knowledge-graph logo stays the full wordmark).
+  organizationLogo: "/vornacpentesting43.png",
 
   // Shared JSON-LD identities. The Organization and WebSite nodes are defined
   // once, in partials/organization-schema.njk, which layouts/base.njk renders
