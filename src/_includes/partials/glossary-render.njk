@@ -13,14 +13,11 @@
 
 {% if locale == "en" %}
 {% set s = {
-    "eyebrow":         "VORNAC Glossary · Bilingual reference",
     "headlineMain":    "The Glossary",
     "subline":         "Definitions for the security, compliance, and pentest vocabulary used across the VORNAC site. One or two sentences per term, no marketing voice, EN and DE in lockstep.",
     "statTotal":       "Terms",
     "statCategory":    "Categories",
     "statLetters":     "Letters covered",
-    "statBilingual":   "EN and DE",
-    "bilingualValue":  "1 : 1",
     "controlsCat":     "Filter by category",
     "controlsAz":      "Jump to letter",
     "filterAll":       "All",
@@ -40,14 +37,11 @@
 } %}
 {% else %}
 {% set s = {
-    "eyebrow":         "VORNAC Glossar · Zweisprachige Referenz",
     "headlineMain":    "Das Glossar",
     "subline":         "Definitionen für die Sicherheits-, Compliance- und Pentest-Begriffe, die auf der VORNAC-Site verwendet werden. Ein bis zwei Sätze pro Begriff, ohne Marketing-Stimme, EN und DE im Gleichschritt.",
     "statTotal":       "Begriffe",
     "statCategory":    "Kategorien",
     "statLetters":     "Buchstaben abgedeckt",
-    "statBilingual":   "EN und DE",
-    "bilingualValue":  "1 : 1",
     "controlsCat":     "Nach Kategorie filtern",
     "controlsAz":      "Zum Buchstaben springen",
     "filterAll":       "Alle",
@@ -84,7 +78,6 @@
 
 <section class="gl-hero">
     <div class="gl-hero-inner">
-        <div class="gl-hero-eyebrow">{{ s.eyebrow }}</div>
         <h1 class="gl-hero-headline">{{ s.headlineMain }}<span class="gl-period">.</span></h1>
         <p class="gl-hero-subline">{{ s.subline }}</p>
         <div class="gl-hero-stats">
@@ -99,10 +92,6 @@
             <div>
                 <div class="gl-stat-num">{{ glStats.letters }}</div>
                 <div class="gl-stat-label">{{ s.statLetters }}</div>
-            </div>
-            <div>
-                <div class="gl-stat-num">{{ s.bilingualValue }}</div>
-                <div class="gl-stat-label">{{ s.statBilingual }}</div>
             </div>
         </div>
     </div>
