@@ -1,7 +1,7 @@
 {
   "/404": {
     "created": "2026-07-31",
-    "modified": "2026-10-21"
+    "modified": "2026-11-19"
   },
   "/about": {
     "created": "2026-05-27",
@@ -9,7 +9,7 @@
   },
   "/apply": {
     "created": "2026-05-27",
-    "modified": "2026-11-03"
+    "modified": "2026-11-19"
   },
   "/comcenter": {
     "created": "2026-05-27",
@@ -21,7 +21,7 @@
   },
   "/customers": {
     "created": "2026-05-27",
-    "modified": "2026-10-18"
+    "modified": "2026-11-19"
   },
   "/de/about": {
     "created": "2026-05-27",
@@ -29,7 +29,7 @@
   },
   "/de/apply": {
     "created": "2026-05-27",
-    "modified": "2026-11-03"
+    "modified": "2026-11-19"
   },
   "/de/ctem": {
     "created": "2026-09-06",
@@ -37,7 +37,7 @@
   },
   "/de/customers": {
     "created": "2026-05-27",
-    "modified": "2026-10-18"
+    "modified": "2026-11-19"
   },
   "/de/faq": {
     "created": "2026-07-07",
@@ -105,7 +105,7 @@
   },
   "/de/thank-you": {
     "created": "2026-07-31",
-    "modified": "2026-10-21"
+    "modified": "2026-11-19"
   },
   "/de/vergleich": {
     "created": "2026-09-09",
@@ -177,7 +177,7 @@
   },
   "/index": {
     "created": "2026-05-27",
-    "modified": "2026-10-28"
+    "modified": "2026-11-19"
   },
   "/industries-automotive": {
     "created": "2026-05-27",
@@ -237,6 +237,6 @@
   },
   "/thank-you": {
     "created": "2026-07-31",
-    "modified": "2026-10-21"
+    "modified": "2026-11-19"
   }
 }

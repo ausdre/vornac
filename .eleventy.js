@@ -112,6 +112,65 @@ function escapeHtml(s) {
     .replace(/"/g, "&quot;");
 }
 
+// ── Wordmark helpers ─────────────────────────────────────────────────
+// Brand rule (2026-11-19): wherever the name VORNAC appears as visible
+// text it is shown as the logo, never in plain letters. The `wordmark`
+// transform (registered below) wraps each visible occurrence in
+// <span class="v-wm">VORNAC</span>; src/input.css paints the wordmark over
+// the span. The text itself stays in the DOM, so search engines, screen
+// readers, copy and paste and the Markdown twins still read "VORNAC".
+//
+// Matched: the upper-case name as a word of its own ("VORNAC",
+// "VORNAC-Reports", "VORNAC's"). Not matched: e-mail addresses, domains
+// and file names (lower case, or glued to "@", ".", "/", "_").
+const WORDMARK_RE = /(?<![A-Za-z0-9@./_])VORNAC(?![A-Za-z0-9_])/g;
+
+// Tags whose text is never shown as running text, or cannot hold markup.
+const WORDMARK_SKIP_TAGS = new Set([
+  "script", "style", "noscript", "template", "title", "textarea",
+  "select", "option", "svg", "math", "code", "pre", "kbd"
+]);
+
+// Walk a parsed DOM and wrap the name in every eligible text node.
+// Opt out for a subtree with the attribute `data-no-wordmark`.
+function walkAndMark(node) {
+  if (!node || !node.childNodes) return;
+
+  for (const child of [...node.childNodes]) {
+    if (child instanceof HTMLElement) {
+      const tag = (child.rawTagName || "").toLowerCase();
+      if (WORDMARK_SKIP_TAGS.has(tag)) continue;
+      if (child.classList && (child.classList.contains("v-wm") || child.classList.contains("v-wm-run"))) continue;
+      if (child.hasAttribute && child.hasAttribute("data-no-wordmark")) continue;
+      walkAndMark(child);
+    } else if (child instanceof TextNode) {
+      // Work on the RAW text and insert the span without re-encoding, so
+      // every entity around the name (&nbsp;, &sect;, quotes) survives
+      // byte for byte. The name itself contains nothing to escape.
+      const raw = child.rawText;
+      if (!raw || raw.indexOf("VORNAC") === -1) continue;
+      WORDMARK_RE.lastIndex = 0;
+      if (!WORDMARK_RE.test(raw)) continue;
+      WORDMARK_RE.lastIndex = 0;
+      // The whole text node goes into one wrapper (.v-wm-run). Where the
+      // parent is a flex or grid container (FAQ summaries, eyebrows, links
+      // with an icon), the text was a single anonymous item; splitting it
+      // into text + span + text would turn it into three items.
+      const html =
+        '<span class="v-wm-run">' +
+        raw.replace(WORDMARK_RE, '<span class="v-wm">VORNAC</span>') +
+        "</span>";
+
+      const parent = child.parentNode;
+      if (!parent) continue;
+      const idx = parent.childNodes.indexOf(child);
+      if (idx < 0) continue;
+      const placeholder = parseHTML(html);
+      parent.childNodes.splice(idx, 1, ...placeholder.childNodes);
+    }
+  }
+}
+
 // Apply phrase matches to a single text fragment. Returns the new HTML
 // string, or null if no link was inserted.
 function linkifyText(text, matcher, state) {
@@ -378,6 +437,29 @@ module.exports = function (eleventyConfig) {
       }
     }
 
+    return root.toString();
+  });
+
+  // ── Wordmark transform ────────────────────────────────────────────
+  // Shows the name VORNAC as the logo wherever it appears as visible text
+  // (see the wordmark helpers at the top of this file). Registered after
+  // the cross-link transform so glossary matching still sees plain text.
+  // Set NO_WORDMARK=1 to build without it.
+  eleventyConfig.addTransform("wordmark", function (content, outputPath) {
+    if (!outputPath || !outputPath.endsWith(".html")) return content;
+    if (process.env.NO_WORDMARK === "1") return content;
+    if (content.indexOf("VORNAC") === -1) return content;
+
+    let root;
+    try {
+      root = parseHTML(content, { lowerCaseTagName: false, comment: true });
+    } catch (e) {
+      return content;
+    }
+
+    const body = root.querySelector("body");
+    if (!body) return content;
+    walkAndMark(body);
     return root.toString();
   });
 

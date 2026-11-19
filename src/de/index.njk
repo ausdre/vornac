@@ -15,12 +15,9 @@ permalink: /index.html
 <link rel="stylesheet" href="/pentesting.css" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="/pentesting.css"></noscript>
 
-{# Hero phrase over the amber band: keep it plain ink (amber-on-amber won't
-   read). DE phrase is long, so it may wrap naturally. #}
+{# The hero phrase (.v-amber-mark) is set as amber type on an ink plate, see
+   "Amber on light grounds" in src/input.css. #}
 <style>
-    .v-hero-headline .v-amber-mark {
-        display: inline;
-    }
     /* German compound nouns (e.g. Sicherheitsvalidierung) only need
        hyphenation to fit on narrow screens; on desktop they wrap cleanly at
        spaces, so scope hyphenation to mobile. lang="de" enables the dictionary. */
@@ -40,7 +37,8 @@ permalink: /index.html
             <span class="v-amber-mark">Sicherheitsvalidierung.</span><br>
         </h1>
         <p class="v-hero-subline v-reveal" data-reveal-delay="2">
-            Die Ära punktueller, manueller Pentests neigt sich dem Ende zu. VORNAC validiert kontinuierlich und autonom und beweist, was ein Angreifer tatsächlich ausnutzen kann. So entsteht ein belastbares, jederzeit auditfähiges Maß an Cyber-Resilienz.
+            <span class="v-hero-subline-lead">Die Ära punktueller, manueller Pentests neigt sich dem Ende zu.</span>
+            VORNAC validiert kontinuierlich und autonom und beweist, was ein Angreifer tatsächlich ausnutzen kann. So entsteht ein belastbares, jederzeit auditfähiges Maß an Cyber-Resilienz.
         </p>
         <div class="v-hero-actions v-reveal" data-reveal-delay="3">
             <form class="v-hero-demo" id="hero-demo-form" data-sent-label="{{ t.heroDemo.sent }}" action="https://formspree.io/f/meoyrzog" method="POST">

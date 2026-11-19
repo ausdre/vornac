@@ -15,11 +15,8 @@ permalink: /en/index.html
 <link rel="stylesheet" href="/pentesting.css" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="/pentesting.css"></noscript>
 
-{# Hero phrase over the amber band: keep it plain ink (amber-on-amber won't
-   read). Inline so it wraps naturally on small screens. #}
-<style>
-    .v-hero-headline .v-amber-mark { display: inline; }
-</style>
+{# The hero phrase (.v-amber-mark) is set as amber type on an ink plate, see
+   "Amber on light grounds" in src/input.css. #}
 
 {% include "partials/home-motion-head.njk" %}
 {% endblock %}
