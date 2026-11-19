@@ -69,10 +69,11 @@
    CSS changes if the cache policy ever regresses. #}
 <link rel="stylesheet" href="/output.css?v=2">
 
-{# Logo intro gate — read once, sync, before <body> renders so the run-in
-   is skipped on subsequent visits and the full VORNAC wordmark is painted
-   at rest from the first frame. The flag is set the first time the intro
-   plays through (see site-header.njk). #}
+{# Logo intro gate — read once, sync, before <body> renders so the CSS
+   selector `body.logo-intro-played .v-logo-letter { opacity: 0 }` is
+   applied on first paint and the ORNAC letters never flash on subsequent
+   visits. The flag is set the first time the intro plays through (see
+   site-header.njk). #}
 <script>
 (function () {
     try {
@@ -86,8 +87,8 @@
     /* Mirror the body-class gate onto the documentElement so the inline
        script above can apply it before <body> exists. Both targets work. */
     html.logo-intro-played .nav-logo-svg .v-logo-letter {
-        opacity: 1 !important;
-        transform: none !important;
+        opacity: 0 !important;
+        transform: translateX(-150px) !important;
         animation: none !important;
     }
     html.logo-intro-played .nav-logo-svg .v-logo-mark {

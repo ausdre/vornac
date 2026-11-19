@@ -44,7 +44,7 @@ ogType: website
                 <div id="apply-error" class="hidden mb-8 border-4 border-red-600 bg-red-50 p-5 sm:p-6" role="alert">
                     <p class="font-bold text-red-700 mb-2">Übermittlung fehlgeschlagen</p>
                     <p class="text-stone-800">Deine Bewerbung wurde <strong>nicht</strong> gesendet. Bitte versuche es erneut oder schreib uns an
-                        <a href="mailto:{{ site.contact.email }}" class="text-amber-600 hover:text-amber-700 font-bold underline">{{ site.contact.email }}</a>.</p>
+                        <a href="mailto:{{ site.contact.email }}" class="v-link">{{ site.contact.email }}</a>.</p>
                 </div>
 
                 <form id="apply-form" action="https://formspree.io/f/meoyrzog" method="POST" class="space-y-8">
@@ -113,7 +113,7 @@ ogType: website
                         <input type="checkbox" name="privacy" required id="privacy"
                                class="mt-1 w-6 h-6 border-2 border-stone-900 accent-amber-500 cursor-pointer" />
                         <label for="privacy" class="text-sm text-stone-700 leading-relaxed">
-                            Ich habe die <a href="{{ pageUrls.legal }}" class="text-amber-600 hover:text-amber-700 font-bold underline">Datenschutzerklärung</a> zur Kenntnis genommen und bin mit der Verarbeitung meiner Daten einverstanden. *
+                            Ich habe die <a href="{{ pageUrls.legal }}" class="v-link">Datenschutzerklärung</a> zur Kenntnis genommen und bin mit der Verarbeitung meiner Daten einverstanden. *
                         </label>
                     </div>
 

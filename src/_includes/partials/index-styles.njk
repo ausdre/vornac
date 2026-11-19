@@ -98,11 +98,12 @@
         font-weight: 900;
         color: var(--v-ink);
         margin: 0 auto 48px;
-        max-width: 20ch;
+        max-width: 22ch;
         overflow-wrap: break-word;
     }
-    /* On the white hero the emphasized phrase carries the single amber accent. */
-    .v-hero-headline .v-amber-mark { color: var(--v-amber-deep); }
+    /* On the white hero the emphasized phrase carries the single amber accent:
+       amber type on an ink plate (see "Amber on light grounds" in src/input.css). */
+    .v-hero-headline .v-amber-mark { color: var(--v-amber); }
     .v-hero-headline .v-hero-lead {
         font-size: larger;
     }
@@ -115,6 +116,10 @@
         margin: 0 auto 56px;
         font-weight: 400;
     }
+    /* The opening sentence keeps a line to itself, so the sentence that starts
+       with the logo begins the next line and the logo never ends a line.
+       A block span, not a <br>: the Markdown twin keeps one paragraph. */
+    .v-hero-subline-lead { display: block; }
     .v-hero-actions {
         display: flex;
         align-items: center;
@@ -395,7 +400,7 @@
         color: var(--v-ink);
         margin: 0 0 28px;
     }
-    .v-howwe-headline .v-howwe-emph { color: var(--v-amber-deep); }
+    .v-howwe-headline .v-howwe-emph { color: var(--v-amber); }
     .v-howwe-sub {
         font-size: 19px;
         line-height: 1.6;
@@ -492,7 +497,7 @@
         color: var(--v-ink);
         margin: 0 auto 36px;
     }
-    .v-sov-headline .v-sov-emph { color: var(--v-amber-deep); font-weight: 500; }
+    .v-sov-headline .v-sov-emph { color: var(--v-amber); font-weight: 500; }
     .v-sov-subline {
         font-family: var(--v-sans);
         font-size: 17px;
@@ -974,7 +979,30 @@
         }
         .v-comp-table tbody td:nth-of-type(1)::before { content: "Classical tools (VM · BAS · EASM)"; }
         .v-comp-table tbody td:nth-of-type(2)::before { content: "Pentera"; }
-        .v-comp-table tbody td:nth-of-type(3)::before { content: "VORNAC"; color: var(--v-amber); }
+        /* The name is shown as the logo here too (see .v-wm in src/input.css). */
+        .v-comp-table tbody td:nth-of-type(3)::before {
+            content: "VORNAC";
+            color: var(--v-amber);
+            width: 4.8em;
+            height: 0.69em;
+            width: calc(1cap * 6.9615);
+            height: 1cap;
+            width: calc(round(1cap, 1px) * 6.9615);
+            height: round(1cap, 1px);
+            overflow: hidden;
+            white-space: nowrap;
+            text-indent: 100%;
+            background-color: currentColor;
+            -webkit-mask: url("/logo-vornac-black.svg") left bottom / contain no-repeat;
+            mask: url("/logo-vornac-black.svg") left bottom / contain no-repeat;
+            /* Drawn at the logo's own width on whole pixels, as in .v-wm. */
+            -webkit-mask-size: min(100%, 4.8em) auto;
+            mask-size: min(100%, 4.8em) auto;
+            -webkit-mask-size: min(100%, calc(1cap * 6.9615)) auto;
+            mask-size: min(100%, calc(1cap * 6.9615)) auto;
+            -webkit-mask-size: min(100%, calc(round(1cap, 1px) * 6.9615)) auto;
+            mask-size: min(100%, calc(round(1cap, 1px) * 6.9615)) auto;
+        }
 
         .v-comp-table tbody td.v-comp-col-vornac {
             box-shadow: none;
@@ -1081,7 +1109,7 @@
     .pent-contact--final .pent-contact-headline-emph {
         font-family: var(--v-display);
         font-weight: 500;
-        color: var(--v-amber-deep);
+        color: var(--v-amber);
         text-transform: uppercase;
         letter-spacing: -0.02em;
         white-space: nowrap;
