@@ -1303,3 +1303,52 @@ a.x-term:focus-visible {
 
 /* The confirmation tick on the amber tint is a graphic, it needs 3:1. */
 :root .pent-thankyou-icon { color: var(--v-ink); }
+
+/* ----------------------------------------
+ * The name as the logo
+ *
+ * Brand rule (2026-11-19): wherever VORNAC appears in text it is shown as
+ * the logo, never in plain letters. The `wordmark` transform in .eleventy.js
+ * wraps each visible occurrence in <span class="v-wm">VORNAC</span>. The span
+ * keeps its text for search engines, screen readers and copy and paste, and
+ * paints the wordmark over it: the real logo file as a mask, so the fade in
+ * the V is the logo's own. It takes the colour of the surrounding text (ink,
+ * white, or amber on an ink plate) and stands on the baseline at cap height.
+ *
+ * In print, in forced-colours mode and without mask support the plain text
+ * shows instead.
+ * -------------------------------------- */
+/* Both spans must stay untouched by page rules written for "any span in
+   this headline" (several heroes set `span { display: block }`, some
+   labels colour or resize their spans). `all: unset` hands every inherited
+   property through from the surrounding text and resets the rest. */
+.v-wm-run,
+.v-wm { all: unset !important; }
+
+@media screen and (forced-colors: none) {
+    @supports ((mask-image: url("")) or (-webkit-mask-image: url(""))) {
+        .v-wm {
+            display: inline-block !important;
+            /* The logo is 1448 x 208. Fallback first: cap height is about 0.69em
+               in both Archivo and Saira Condensed. */
+            width: 4.8em !important;
+            height: 0.69em !important;
+            width: calc(1cap * 6.9615) !important;
+            height: 1cap !important;
+            vertical-align: baseline !important;
+            overflow: hidden !important;
+            white-space: nowrap !important;
+            text-indent: 100% !important;
+            background-color: currentColor !important;
+            /* `contain` keeps the logo's proportions if a narrow column caps
+               the width: it gets smaller, it is never squeezed. */
+            max-width: 100% !important;
+            -webkit-mask: url("/logo-vornac-black.svg") left bottom / contain no-repeat !important;
+            mask: url("/logo-vornac-black.svg") left bottom / contain no-repeat !important;
+        }
+    }
+}
+
+/* The logo is wider than the name set in Saira Condensed. Balance the one
+   headline where that leaves a single word on the first line. */
+:root .about-contact-headline { text-wrap: balance; }

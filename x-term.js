@@ -60,6 +60,13 @@
       .replace(/"/g, "&quot;");
   }
 
+  // The name is shown as the logo wherever it appears (see .v-wm in
+  // src/input.css). Hovercard text is inserted here, after the build-time
+  // wordmark transform has run, so it is wrapped at this point.
+  function markName(html) {
+    return html.replace(/(^|[^A-Za-z0-9@./_])VORNAC(?![A-Za-z0-9_])/g, '$1<span class="v-wm">VORNAC</span>');
+  }
+
   function isDeLocale() {
     return location.pathname.indexOf("/de/") === 0 || location.pathname === "/de";
   }
@@ -71,9 +78,9 @@
     if (!def) return;
     var p = ensurePopover();
     p.innerHTML =
-      '<div class="x-term-popover-title">' + escapeHtml(def.term) + "</div>" +
+      '<div class="x-term-popover-title">' + markName(escapeHtml(def.term)) + "</div>" +
       (def.snippet
-        ? '<div class="x-term-popover-body">' + escapeHtml(def.snippet) + "</div>"
+        ? '<div class="x-term-popover-body">' + markName(escapeHtml(def.snippet)) + "</div>"
         : "") +
       '<a class="x-term-popover-more" href="' + escapeHtml(def.href) + '">' +
         MORE_LABEL +

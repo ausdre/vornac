@@ -975,7 +975,21 @@
         }
         .v-comp-table tbody td:nth-of-type(1)::before { content: "Classical tools (VM · BAS · EASM)"; }
         .v-comp-table tbody td:nth-of-type(2)::before { content: "Pentera"; }
-        .v-comp-table tbody td:nth-of-type(3)::before { content: "VORNAC"; color: var(--v-amber); }
+        /* The name is shown as the logo here too (see .v-wm in src/input.css). */
+        .v-comp-table tbody td:nth-of-type(3)::before {
+            content: "VORNAC";
+            color: var(--v-amber);
+            width: 4.8em;
+            height: 0.69em;
+            width: calc(1cap * 6.9615);
+            height: 1cap;
+            overflow: hidden;
+            white-space: nowrap;
+            text-indent: 100%;
+            background-color: currentColor;
+            -webkit-mask: url("/logo-vornac-black.svg") left bottom / contain no-repeat;
+            mask: url("/logo-vornac-black.svg") left bottom / contain no-repeat;
+        }
 
         .v-comp-table tbody td.v-comp-col-vornac {
             box-shadow: none;
