@@ -15,12 +15,9 @@ permalink: /index.html
 <link rel="stylesheet" href="/pentesting.css" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="/pentesting.css"></noscript>
 
-{# Hero phrase over the amber band: keep it plain ink (amber-on-amber won't
-   read). DE phrase is long, so it may wrap naturally. #}
+{# The hero phrase (.v-amber-mark) is set as amber type on an ink plate, see
+   "Amber on light grounds" in src/input.css. #}
 <style>
-    .v-hero-headline .v-amber-mark {
-        display: inline;
-    }
     /* German compound nouns (e.g. Sicherheitsvalidierung) only need
        hyphenation to fit on narrow screens; on desktop they wrap cleanly at
        spaces, so scope hyphenation to mobile. lang="de" enables the dictionary. */

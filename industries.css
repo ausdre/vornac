@@ -262,7 +262,7 @@
     margin: 0 auto 32px;
     max-width: 840px;
 }
-.ind-hero-headline-emph { color: var(--v-amber-deep); }
+.ind-hero-headline-emph { color: var(--v-amber); }
 .ind-hero-sub {
     font-size: 18px;
     line-height: 1.55;

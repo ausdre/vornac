@@ -524,7 +524,8 @@ img, video { max-width: 100%; }
 
 /* ----------------------------------------
  * Hero "Book a demo" pill (all pages via the hero-demo-button partial)
- * Amber-outline pill that morphs into an inline email-capture on hover
+ * Amber-filled button with an ink label (9.5:1) that morphs into an inline
+ * email-capture (white field, ink border, amber submit) on hover
  * (desktop) or tap (mobile, .is-open via JS). Submits to Formspree.
  * -------------------------------------- */
 .v-hero-demo {
@@ -534,9 +535,9 @@ img, video { max-width: 100%; }
     width: 248px;
     height: 54px;
     border: 1px solid var(--v-amber);
-    background: transparent;
+    background: var(--v-amber);
     overflow: hidden;
-    transition: width 0.42s cubic-bezier(0.22, 1, 0.36, 1), background 0.2s ease, box-shadow 0.2s ease;
+    transition: width 0.42s cubic-bezier(0.22, 1, 0.36, 1), background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     vertical-align: middle;
 }
 .v-hero-demo-trigger {
@@ -550,7 +551,7 @@ img, video { max-width: 100%; }
     width: 100%;
     background: transparent;
     border: none;
-    color: var(--v-amber-deep);
+    color: var(--v-bg-dark);
     font-family: var(--v-sans);
     font-size: 15px;
     font-weight: 600;
@@ -600,7 +601,8 @@ img, video { max-width: 100%; }
 .v-hero-demo:hover,
 .v-hero-demo.is-open {
     width: 392px;
-    background: rgba(255, 163, 23, 0.06);
+    background: #ffffff;
+    border-color: var(--v-ink);
 }
 .v-hero-demo:hover .v-hero-demo-trigger,
 .v-hero-demo.is-open .v-hero-demo-trigger {
@@ -619,7 +621,7 @@ img, video { max-width: 100%; }
     align-items: center;
     justify-content: center;
     gap: 10px;
-    color: var(--v-amber-deep);
+    color: var(--v-bg-dark);
     font-family: var(--v-sans);
     font-size: 15px;
     font-weight: 600;
@@ -632,7 +634,7 @@ img, video { max-width: 100%; }
    pointer-events: none also keeps :hover from re-expanding it. */
 .v-hero-demo.is-sent {
     pointer-events: none;
-    background: rgba(255, 163, 23, 0.06);
+    background: var(--v-amber);
 }
 .v-hero-demo.is-sent .v-hero-demo-trigger,
 .v-hero-demo.is-sent .v-hero-demo-reveal {
@@ -651,52 +653,41 @@ img, video { max-width: 100%; }
     .v-hero-demo.is-open { width: min(100%, 340px); }
 }
 
-/* On-amber sections (pent-hero) — invert the pill for legible contrast:
-   dark border, dark label, dark filled submit button. */
-.pent-hero .v-hero-demo,
-.otp-hero .v-hero-demo,
+/* On amber grounds (pentesting and OT heroes, glossary and research CTA
+   bands) the button inverts: ink fill, amber label, ink submit. */
+:is(.pent-hero, .otp-hero, .gl-cta, .rs-cta) .v-hero-demo,
 .v-hero-demo--on-amber {
     border-color: var(--v-ink);
-    background: rgba(14, 17, 22, 0.04);
+    background: var(--v-ink);
 }
-.pent-hero .v-hero-demo .v-hero-demo-trigger,
-.otp-hero .v-hero-demo .v-hero-demo-trigger,
-.v-hero-demo--on-amber .v-hero-demo-trigger {
-    color: var(--v-ink);
+:is(.pent-hero, .otp-hero, .gl-cta, .rs-cta) .v-hero-demo .v-hero-demo-trigger,
+.v-hero-demo--on-amber .v-hero-demo-trigger,
+:is(.pent-hero, .otp-hero, .gl-cta, .rs-cta) .v-hero-demo .v-hero-demo-sent,
+.v-hero-demo--on-amber .v-hero-demo-sent {
+    color: var(--v-amber);
 }
-.pent-hero .v-hero-demo .v-hero-demo-input,
-.otp-hero .v-hero-demo .v-hero-demo-input,
+:is(.pent-hero, .otp-hero, .gl-cta, .rs-cta) .v-hero-demo .v-hero-demo-input,
 .v-hero-demo--on-amber .v-hero-demo-input {
     color: var(--v-ink);
 }
-.pent-hero .v-hero-demo .v-hero-demo-sent,
-.otp-hero .v-hero-demo .v-hero-demo-sent,
-.v-hero-demo--on-amber .v-hero-demo-sent {
-    color: var(--v-ink);
-}
-.pent-hero .v-hero-demo .v-hero-demo-submit,
-.otp-hero .v-hero-demo .v-hero-demo-submit,
+:is(.pent-hero, .otp-hero, .gl-cta, .rs-cta) .v-hero-demo .v-hero-demo-submit,
 .v-hero-demo--on-amber .v-hero-demo-submit {
     background: var(--v-ink);
     color: var(--v-amber);
 }
-.pent-hero .v-hero-demo .v-hero-demo-submit:hover,
-.otp-hero .v-hero-demo .v-hero-demo-submit:hover,
+:is(.pent-hero, .otp-hero, .gl-cta, .rs-cta) .v-hero-demo .v-hero-demo-submit:hover,
 .v-hero-demo--on-amber .v-hero-demo-submit:hover {
     background: #000;
 }
-.pent-hero .v-hero-demo:hover,
-.pent-hero .v-hero-demo.is-open,
-.otp-hero .v-hero-demo:hover,
-.otp-hero .v-hero-demo.is-open,
+:is(.pent-hero, .otp-hero, .gl-cta, .rs-cta) .v-hero-demo:hover,
+:is(.pent-hero, .otp-hero, .gl-cta, .rs-cta) .v-hero-demo.is-open,
 .v-hero-demo--on-amber:hover,
 .v-hero-demo--on-amber.is-open {
-    background: rgba(14, 17, 22, 0.08);
+    background: #ffffff;
 }
-.pent-hero .v-hero-demo.is-sent,
-.otp-hero .v-hero-demo.is-sent,
+:is(.pent-hero, .otp-hero, .gl-cta, .rs-cta) .v-hero-demo.is-sent,
 .v-hero-demo--on-amber.is-sent {
-    background: rgba(14, 17, 22, 0.08);
+    background: var(--v-ink);
 }
 
 /* ----------------------------------------
@@ -943,11 +934,15 @@ a.x-term {
     color: #000000;
     text-decoration: none;
     cursor: pointer;
-    transition: color .15s ease;
+    transition: color .15s ease, background-color .15s ease, box-shadow .15s ease;
 }
 a.x-term:hover,
 a.x-term:focus-visible {
-    color: var(--v-amber-deep);
+    /* Ink on an amber fill, like .v-link. The box-shadow widens the fill
+       without moving the surrounding copy. */
+    color: var(--v-ink);
+    background: var(--v-amber);
+    box-shadow: 0 0 0 0.14em var(--v-amber);
     outline: none;
 }
 @media print {
@@ -1023,6 +1018,8 @@ a.x-term:focus-visible {
 .otp-cta a.x-term:hover,
 .otp-cta a.x-term:focus-visible {
     color: var(--v-amber);
+    background: none;
+    box-shadow: none;
     text-decoration-color: var(--v-amber);
 }
 
@@ -1129,3 +1126,180 @@ a.x-term:focus-visible {
     .v-meta-line .v-meta-sep { display: none; }
     .v-meta-line .v-meta-item { display: block; }
 }
+
+/* ----------------------------------------
+ * Amber on light grounds
+ *
+ * #ffa317 reaches 2.0:1 on white. It stays the brand colour, but it does not
+ * carry type on a light ground. Amber type always sits on ink; on light
+ * grounds amber becomes a surface with ink type on it.
+ *
+ *   .v-schild       emphasis in headlines: amber type on an ink plate (9.5:1)
+ *   .v-link         links in running copy: ink type on an amber fill (9.5:1)
+ *   .v-arrow-link   standalone links: ink type, arrow on an amber square
+ *   .v-tag          labels: ink type on an amber fill (9.5:1)
+ *
+ * Each pattern is a class for new markup. The selector lists map the existing
+ * page-specific classes onto it. They start with `:root` so they win over the
+ * page stylesheets, which load after output.css.
+ *
+ * Exception by decision of 2026-11-19: large standalone figures and display
+ * words (stats, step numerals, glossary letters, the breach price) keep amber
+ * type on white.
+ * -------------------------------------- */
+
+/* Emphasis in headlines: an ink plate, two corners cut like the wordmark. */
+.v-schild,
+:root :is(.about-company-headline, .about-contact-headline,
+          .ctem-results-headline, .ctem-offer-headline, .ctem-trust-headline,
+          .logo-wall-headline, .quotes-headline,
+          .otp-anchor-headline, .otp-steps-headline, .otp-scope-headline,
+          .otp-sector-headline, .otp-oblig-headline, .otp-standards-headline) em,
+:root :is(.ind-hub-headline-emph, .ind-hero-headline-emph,
+          .compare-headline-emph, .steps-headline-emph,
+          .scope-headline-emph, .certs-headline-emph),
+:root .v-hero-headline .v-amber-mark,
+:root .v-howwe-headline .v-howwe-emph,
+:root .v-sov-headline .v-sov-emph,
+:root .pent-contact--final .pent-contact-headline-emph {
+    display: inline-block;
+    box-sizing: border-box;
+    max-width: 100%;
+    margin: 0.06em 0;
+    padding: 0.02em 0.3em 0.08em;
+    background: var(--v-bg-dark);
+    color: var(--v-amber);
+    font-style: normal;
+    line-height: 1.04;
+    text-wrap: balance;
+    clip-path: polygon(0.24em 0, 100% 0, 100% calc(100% - 0.24em), calc(100% - 0.24em) 100%, 0 100%, 0 0.24em);
+}
+
+/* Links in running copy: ink type on an amber fill; the fill turns ink on
+   hover and focus. Auto-linked glossary terms (.x-term) keep their quiet
+   style inside these containers and only take the fill on hover. */
+.v-link,
+:root :is(.prose, .faq-item-body, .faq-cta, .compare-more, .otp-sector-links, .ws-body-inner) a:not(.x-term),
+:root a.x-term-popover-more:not(.x-term) {
+    padding: 0.05em 0.28em 0.1em;
+    border: 0;
+    background: var(--v-amber);
+    color: var(--v-ink);
+    font-weight: 600;
+    text-decoration: none;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+.v-link:hover,
+.v-link:focus-visible,
+:root :is(.prose, .faq-item-body, .faq-cta, .compare-more, .otp-sector-links, .ws-body-inner) a:not(.x-term):hover,
+:root :is(.prose, .faq-item-body, .faq-cta, .compare-more, .otp-sector-links, .ws-body-inner) a:not(.x-term):focus-visible,
+:root a.x-term-popover-more:not(.x-term):hover,
+:root a.x-term-popover-more:not(.x-term):focus-visible {
+    border: 0;
+    background: var(--v-ink);
+    color: var(--v-amber);
+    text-decoration: none;
+}
+.v-link:focus-visible,
+:root :is(.prose, .faq-item-body, .faq-cta, .compare-more, .otp-sector-links, .ws-body-inner) a:not(.x-term):focus-visible {
+    outline: 2px solid var(--v-ink);
+    outline-offset: 2px;
+}
+:root :is(.prose, .faq-item-body, .faq-cta, .compare-more, .otp-sector-links, .ws-body-inner) a.x-term {
+    color: #000000;
+    font-weight: inherit;
+    text-decoration: none;
+}
+
+/* Standalone links: ink type, the arrow sits on an amber square. Declared
+   after .v-link so a call-to-action inside running copy takes this form. */
+.v-arrow-link,
+:root :is(.ws-cta, .ws-cta-top) a:not(.x-term),
+:root a.otp-press-link:not(.x-term),
+:root a.rs-hero-glossary-link:not(.x-term) {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--v-ink);
+    font-weight: 700;
+    text-decoration: none;
+}
+.v-arrow-link::after,
+:root :is(.ws-cta, .ws-cta-top) a:not(.x-term)::after,
+:root a.otp-press-link:not(.x-term)::after,
+:root a.rs-hero-glossary-link:not(.x-term)::after {
+    content: "";
+    flex: none;
+    width: 28px;
+    height: 28px;
+    background: var(--v-amber) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230e1116' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / 14px 14px no-repeat;
+    transition: transform 0.2s ease;
+}
+.v-arrow-link:hover,
+.v-arrow-link:focus-visible,
+:root :is(.ws-cta, .ws-cta-top) a:not(.x-term):hover,
+:root :is(.ws-cta, .ws-cta-top) a:not(.x-term):focus-visible,
+:root a.otp-press-link:not(.x-term):hover,
+:root a.otp-press-link:not(.x-term):focus-visible,
+:root a.rs-hero-glossary-link:not(.x-term):hover,
+:root a.rs-hero-glossary-link:not(.x-term):focus-visible {
+    border: 0;
+    background: none;
+    color: var(--v-ink);
+    text-decoration: none;
+}
+.v-arrow-link:hover::after,
+.v-arrow-link:focus-visible::after,
+:root :is(.ws-cta, .ws-cta-top) a:not(.x-term):hover::after,
+:root :is(.ws-cta, .ws-cta-top) a:not(.x-term):focus-visible::after,
+:root a.otp-press-link:not(.x-term):hover::after,
+:root a.otp-press-link:not(.x-term):focus-visible::after,
+:root a.rs-hero-glossary-link:not(.x-term):hover::after,
+:root a.rs-hero-glossary-link:not(.x-term):focus-visible::after {
+    transform: translateX(3px);
+}
+/* This link brings its own inline arrow; the amber square replaces it. */
+:root a.rs-hero-glossary-link svg { display: none; }
+@media (prefers-reduced-motion: reduce) {
+    .v-arrow-link::after,
+    :root :is(.ws-cta, .ws-cta-top) a:not(.x-term)::after,
+    :root a.otp-press-link:not(.x-term)::after,
+    :root a.rs-hero-glossary-link:not(.x-term)::after { transition: none; }
+}
+
+/* Labels: ink type on an amber fill, set like the announcement tag. */
+.v-tag,
+:root :is(.gl-entry-cat, .ind-hub-row-fw, .otp-sector-kritis, .otp-oblig-duty-name,
+          .step-number, .rs-ref-meta, .rs-domain-hero-eyebrow),
+:root .rs-note-siblings-tier[data-tier="1"],
+:root .rs-note-page.is-tier-1 .rs-note-hero-tier,
+:root .rs-note-body .rs-rule strong {
+    width: fit-content;
+    padding: 3px 8px;
+    background: var(--v-amber);
+    color: var(--v-bg-dark);
+    font-family: var(--v-sans);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    line-height: 1.35;
+    text-transform: uppercase;
+}
+.v-tag,
+:root .rs-note-page.is-tier-1 .rs-note-hero-tier { display: inline-block; }
+/* Legal citations keep their case: "§8a BSIG" must not become "§8A". */
+:root .otp-oblig-duty-name {
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    text-transform: none;
+}
+/* The eyebrow's leading rule would sit inside the fill. */
+:root .rs-domain-hero-eyebrow::before { content: none; }
+
+/* The confirmation tick on the amber tint is a graphic, it needs 3:1. */
+:root .pent-thankyou-icon { color: var(--v-ink); }

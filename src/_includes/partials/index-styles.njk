@@ -98,11 +98,12 @@
         font-weight: 900;
         color: var(--v-ink);
         margin: 0 auto 48px;
-        max-width: 20ch;
+        max-width: 22ch;
         overflow-wrap: break-word;
     }
-    /* On the white hero the emphasized phrase carries the single amber accent. */
-    .v-hero-headline .v-amber-mark { color: var(--v-amber-deep); }
+    /* On the white hero the emphasized phrase carries the single amber accent:
+       amber type on an ink plate (see "Amber on light grounds" in src/input.css). */
+    .v-hero-headline .v-amber-mark { color: var(--v-amber); }
     .v-hero-headline .v-hero-lead {
         font-size: larger;
     }
@@ -395,7 +396,7 @@
         color: var(--v-ink);
         margin: 0 0 28px;
     }
-    .v-howwe-headline .v-howwe-emph { color: var(--v-amber-deep); }
+    .v-howwe-headline .v-howwe-emph { color: var(--v-amber); }
     .v-howwe-sub {
         font-size: 19px;
         line-height: 1.6;
@@ -492,7 +493,7 @@
         color: var(--v-ink);
         margin: 0 auto 36px;
     }
-    .v-sov-headline .v-sov-emph { color: var(--v-amber-deep); font-weight: 500; }
+    .v-sov-headline .v-sov-emph { color: var(--v-amber); font-weight: 500; }
     .v-sov-subline {
         font-family: var(--v-sans);
         font-size: 17px;
@@ -1081,7 +1082,7 @@
     .pent-contact--final .pent-contact-headline-emph {
         font-family: var(--v-display);
         font-weight: 500;
-        color: var(--v-amber-deep);
+        color: var(--v-amber);
         text-transform: uppercase;
         letter-spacing: -0.02em;
         white-space: nowrap;
