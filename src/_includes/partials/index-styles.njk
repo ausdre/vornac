@@ -116,6 +116,10 @@
         margin: 0 auto 56px;
         font-weight: 400;
     }
+    /* The opening sentence keeps a line to itself, so the sentence that starts
+       with the logo begins the next line and the logo never ends a line.
+       A block span, not a <br>: the Markdown twin keeps one paragraph. */
+    .v-hero-subline-lead { display: block; }
     .v-hero-actions {
         display: flex;
         align-items: center;
