@@ -1329,22 +1329,38 @@ a.x-term:focus-visible {
     @supports ((mask-image: url("")) or (-webkit-mask-image: url(""))) {
         .v-wm {
             display: inline-block !important;
-            /* The logo is 1448 x 208. Fallback first: cap height is about 0.69em
-               in both Archivo and Saira Condensed. */
+            /* The logo is 1448 x 208. Three tiers, weakest first: cap height is
+               about 0.69em in both Archivo and Saira Condensed; `1cap` is the
+               exact cap height; `round()` sets it on whole pixels, so the logo
+               has the same height wherever it lands on the pixel grid. */
             width: 4.8em !important;
             height: 0.69em !important;
             width: calc(1cap * 6.9615) !important;
             height: 1cap !important;
+            width: calc(round(1cap, 1px) * 6.9615) !important;
+            height: round(1cap, 1px) !important;
             vertical-align: baseline !important;
             overflow: hidden !important;
             white-space: nowrap !important;
             text-indent: 100% !important;
             background-color: currentColor !important;
-            /* `contain` keeps the logo's proportions if a narrow column caps
-               the width: it gets smaller, it is never squeezed. */
             max-width: 100% !important;
             -webkit-mask: url("/logo-vornac-black.svg") left bottom / contain no-repeat !important;
             mask: url("/logo-vornac-black.svg") left bottom / contain no-repeat !important;
+            /* The mask is drawn at the logo's own width, not at `contain`.
+               Browsers fit `contain` to the box after snapping the box to the
+               pixel grid: a 13.7px logo came out 13px or 14px high depending
+               on its position, and the smaller one left a gap of 5px to 7px
+               before the next word. `min(100%, ...)` still lets the logo
+               shrink in a column narrower than itself, and `auto` keeps its
+               proportions: it gets smaller, it is never squeezed. Same three
+               tiers as the box; `contain` above stays the last fallback. */
+            -webkit-mask-size: min(100%, 4.8em) auto !important;
+            mask-size: min(100%, 4.8em) auto !important;
+            -webkit-mask-size: min(100%, calc(1cap * 6.9615)) auto !important;
+            mask-size: min(100%, calc(1cap * 6.9615)) auto !important;
+            -webkit-mask-size: min(100%, calc(round(1cap, 1px) * 6.9615)) auto !important;
+            mask-size: min(100%, calc(round(1cap, 1px) * 6.9615)) auto !important;
         }
     }
 }

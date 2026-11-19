@@ -987,12 +987,21 @@
             height: 0.69em;
             width: calc(1cap * 6.9615);
             height: 1cap;
+            width: calc(round(1cap, 1px) * 6.9615);
+            height: round(1cap, 1px);
             overflow: hidden;
             white-space: nowrap;
             text-indent: 100%;
             background-color: currentColor;
             -webkit-mask: url("/logo-vornac-black.svg") left bottom / contain no-repeat;
             mask: url("/logo-vornac-black.svg") left bottom / contain no-repeat;
+            /* Drawn at the logo's own width on whole pixels, as in .v-wm. */
+            -webkit-mask-size: min(100%, 4.8em) auto;
+            mask-size: min(100%, 4.8em) auto;
+            -webkit-mask-size: min(100%, calc(1cap * 6.9615)) auto;
+            mask-size: min(100%, calc(1cap * 6.9615)) auto;
+            -webkit-mask-size: min(100%, calc(round(1cap, 1px) * 6.9615)) auto;
+            mask-size: min(100%, calc(round(1cap, 1px) * 6.9615)) auto;
         }
 
         .v-comp-table tbody td.v-comp-col-vornac {
