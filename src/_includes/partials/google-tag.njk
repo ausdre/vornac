@@ -16,9 +16,10 @@
   guard — so Google sets no _gcl_*/_ga* cookies without consent.
   consent-banner.njk collects the choice and stores it under
   'vornac_consent_v1' in localStorage; a stored "granted" is re-applied here
-  on every pageview, before the config calls. Leadfeeder reads the same key
-  and is gated on it too (see partials/leadfeeder.njk); Plausible is not,
-  because it is cookieless and stores nothing on the device.
+  on every pageview, before the config calls. Leadfeeder and HubSpot read the
+  same key and are gated on it too (see partials/leadfeeder.njk and
+  partials/hubspot.njk); Plausible is not, because it is cookieless and
+  stores nothing on the device.
 
   Google Tag Manager ({{ site.analytics.gtmContainerId }}) loads between the
   consent defaults and the gtag.js loader: after the defaults because GTM
