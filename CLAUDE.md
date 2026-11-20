@@ -58,6 +58,13 @@
 - Hero-Unterzeile der deutschen Startseite: Der erste Satz steht als `<span class="v-hero-subline-lead">` in eigener Zeile, damit das Logo und der Rest seines Satzes gemeinsam beginnen (Wunsch André 2026-11-19). Blockspan statt `<br>`, damit der Markdown-Zwilling ein Absatz bleibt.
 - Glossar-Hero: keine Zeile über der Überschrift und keine Kennzahl "1 : 1 / EN und DE" (Entscheidung André 2026-11-19).
 
+## Tracking und Consent: HubSpot (seit 2026-11-20)
+
+- Der HubSpot-Tracking-Code (Portal 149809135, EU-Rechenzentrum, URL in `site.analytics.hubspotScript`) steht in `partials/hubspot.njk` und ist das letzte Include vor `</body>` in `layouts/base.njk`, also auf jeder Seite. Er wird wie Leadfeeder erst nach "Alle akzeptieren" geladen (Schlüssel `vornac_consent_v1`); ohne Einwilligung geht keine Anfrage an HubSpot. Das Tag steht deshalb nicht im Seitenquelltext, und HubSpots Prüfung "Validate your tracking code" kann einen Fehlschlag melden. Prüfen: Cookies akzeptieren, dann im Netzwerk-Tab nach `149809135.js` und `__ptq.gif` suchen.
+- HubSpots eigenes Cookie-Banner ist per `window.disableHubSpotCookieBanner` abgeschaltet, die Einwilligung geht per `setHubSpotConsent` an HubSpot. Freigegeben ist nur die Kategorie `analytics`. Chat (`functionality`) und Werbe-Pixel (`advertisement`) nur zusammen mit dem Abschnitt "HubSpot" auf `/legal` in beiden Sprachen freischalten.
+- `consent-banner.njk` ruft `window.__vornacHubspot.load()` und `.purge()` auf. Beim Widerruf und bei jedem Seitenaufruf ohne Einwilligung löscht das Partial die HubSpot-Cookies selbst.
+- Der Abschnitt "HubSpot" auf `/legal` beschreibt HubSpot als Auftragsverarbeiter. Das stimmt nur, solange in HubSpot "Intent data access" aus ist (Settings, Tracking & Analytics, Tracking Code, Advanced Tracking) und die Erfassung fremder Formulare ("Non-HubSpot Forms") nicht läuft. Ändert sich eins davon, den Abschnitt anpassen.
+
 ## Werkzeuge
 
 - `.mcp.json` bringt `peec-ai` (https://api.peec.ai/mcp) und `vercel` (https://mcp.vercel.com) mit. Beim ersten Start `/mcp` und beide per OAuth freigeben.
