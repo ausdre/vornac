@@ -16,7 +16,12 @@ module.exports = {
 
   analytics: {
     plausibleScript: "https://plausible.io/js/pa-OqjHdWkljhzM3AXJtXHXl.js",
-    gtmContainerId: "GTM-MKJX4W2J"
+    gtmContainerId: "GTM-MKJX4W2J",
+    // HubSpot tracking code (marketing analytics), portal 149809135. The
+    // js-eu1 host is HubSpot's EU data centre; a portal in another region
+    // would have a different host. Loaded by partials/hubspot.njk, after
+    // consent only.
+    hubspotScript: "https://js-eu1.hs-scripts.com/149809135.js"
   },
 
   // Logo paths (live at site root via passthrough copy)

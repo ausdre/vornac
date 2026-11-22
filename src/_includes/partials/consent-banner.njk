@@ -1,28 +1,31 @@
 {# Cookie consent modal — Consent Mode v2 companion to google-tag.njk.
 
    Rendered hidden; the script shows it on its own only when no choice is
-   stored under 'vornac_consent_v1' (the same key google-tag.njk, leadfeeder.njk
-   and the form scripts read). The modal is blocking: a full-viewport backdrop
-   sits over the page and scrolling is locked until the visitor picks one of
-   the two options.
+   stored under 'vornac_consent_v1' (the same key google-tag.njk, leadfeeder.njk,
+   hubspot.njk and the form scripts read). The modal is blocking: a
+   full-viewport backdrop sits over the page and scrolling is locked until
+   the visitor picks one of the two options.
 
    What each choice actually does:
      "Accept all"      → all four Google consent signals flip to granted via
-                         gtag('consent','update'), and Leadfeeder is injected
-                         for the first time.
+                         gtag('consent','update'), and Leadfeeder and the
+                         HubSpot tracking code are injected for the first
+                         time.
      "Essential only"  → the four signals are explicitly re-denied (matters
                          when an earlier "granted" is being withdrawn),
                          Leadfeeder's persistent _lfa identifier is purged,
-                         and the _ga* / _gcl* / _gac_* cookies and local
-                         storage entries a previous "Accept all" wrote are
-                         deleted. Leadfeeder is never loaded.
+                         the HubSpot cookies are purged, and the _ga* /
+                         _gcl* / _gac_* cookies and local storage entries a
+                         previous "Accept all" wrote are deleted. Leadfeeder
+                         and HubSpot are never loaded.
 
    Withdrawal has to be as easy as consent (§ 25 TDDDG / Art. 7(3) GDPR), so
    the footer carries a "Cookie settings" control: any element with
    [data-consent-reopen] re-opens this modal, on every page including /legal.
 
    Plausible is not gated here — it is cookieless and stores nothing on the
-   device, so § 25 TDDDG does not bite. Leadfeeder is gated; it used not to be. #}
+   device, so § 25 TDDDG does not bite. Leadfeeder is gated; it used not to be.
+   HubSpot has been gated since it was added (partials/hubspot.njk). #}
 <div class="v-consent" id="consent-banner" role="dialog" aria-modal="true" aria-labelledby="consent-title" hidden>
     <div class="v-consent-card" tabindex="-1">
         <h2 class="v-consent-title" id="consent-title">{{ t.consent.title }}</h2>
@@ -99,6 +102,10 @@
         if (window.__vornacLeadfeeder) {
             if (granted) window.__vornacLeadfeeder.load();
             else window.__vornacLeadfeeder.purge();
+        }
+        if (window.__vornacHubspot) {
+            if (granted) window.__vornacHubspot.load();
+            else window.__vornacHubspot.purge();
         }
         if (!granted) purgeGoogleStorage();
         close();
