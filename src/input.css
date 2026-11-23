@@ -416,6 +416,34 @@ img, video { max-width: 100%; }
    header is also transparent at top-of-page, so there's nothing to blur. */
 
 /* ----------------------------------------
+ * The brand face: VORNAC Display
+ *
+ * Drawn from the logo. It has capitals, digits and basic punctuation only:
+ * lowercase letters show the capital forms, and % & € @ # § · are missing
+ * (a missing character falls back to the next family in the stack). It runs
+ * about 1.7 times as wide as Saira Condensed, so it is for figures, index
+ * letters and short acronyms, never for sentences or headlines. Where it is
+ * used (decision 2026-11-23): see CLAUDE.md, "Eigene Schrift".
+ *
+ * Self-hosted like the other faces, but declared here and stored in
+ * fonts/brand/: scripts/fetch_google_fonts.py rewrites fonts/fonts.css and
+ * deletes every fonts/*.woff2 when it runs. Font files are cached as
+ * immutable for a year (vercel.json), so a new version of the face needs a
+ * new file name, here and in partials/head-fonts.njk.
+ *
+ * Every rule that uses the face sets font-weight: 400. The face has one
+ * weight, and an inherited 600 or more would make the browser smear a
+ * synthetic bold over it.
+ * -------------------------------------- */
+@font-face {
+    font-family: 'VORNAC Display';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/brand/vornac-display-400-v0.100.woff2') format('woff2');
+}
+
+/* ----------------------------------------
  * Brutalist enterprise design tokens
  * Type stack: Archivo (body + mid-display) + Saira Condensed (billboard display)
  *             (mono accents retired 2026-10-21: --v-mono now resolves to Archivo)
@@ -454,6 +482,11 @@ img, video { max-width: 100%; }
     --v-display:    'Saira Condensed', 'Archivo', system-ui, -apple-system, sans-serif;
     --v-sans:       'Archivo', system-ui, -apple-system, sans-serif;
     --v-mono:       'Archivo', system-ui, -apple-system, sans-serif;
+    /* Use --v-wordmark for figures and index letters in the brand face (see
+       "The brand face" above). Until the file has loaded, and for characters
+       the face lacks, the display stack behind it shows. Where the text
+       around it is Archivo, write 'VORNAC Display', var(--v-sans) instead. */
+    --v-wordmark:   'VORNAC Display', 'Saira Condensed', 'Archivo', system-ui, -apple-system, sans-serif;
 }
 
 .v-footer {
