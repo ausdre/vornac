@@ -245,12 +245,15 @@
     margin-bottom: 56px;
 }
 
+/* The domain numbers in the brand face, VORNAC Display (decision
+   2026-11-23), as tall as the Archivo figures they replace. */
 .rs-domain-num {
-    font-size: clamp(48px, 7vw, 88px);
-    font-weight: 700;
+    font-family: 'VORNAC Display', var(--v-sans);
+    font-size: clamp(46px, 6.7vw, 84px);
+    font-weight: 400;
     line-height: 0.9;
     color: var(--v-amber);
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
 }
 
 .rs-domain-titleblock { padding-bottom: 8px; }
@@ -301,7 +304,7 @@
         gap: 18px;
         align-items: start;
     }
-    .rs-domain-num { font-size: 56px; }
+    .rs-domain-num { font-size: 54px; }
     .rs-domain-count {
         align-self: start;
         text-align: left;
@@ -846,12 +849,14 @@
     text-align: center;
 }
 
+/* Brand face, as tall as the Archivo figure it replaces (see .rs-domain-num). */
 .rs-domain-hero-num {
-    font-size: clamp(72px, 10vw, 144px);
+    font-family: 'VORNAC Display', var(--v-sans);
+    font-size: clamp(70px, 9.66vw, 139px);
     line-height: 0.85;
     color: var(--v-amber);
     font-weight: 400;
-    letter-spacing: -0.03em;
+    letter-spacing: 0;
 }
 
 .rs-domain-hero-title {
@@ -890,7 +895,7 @@
     .rs-domain-hero-grid {
         gap: 16px;
     }
-    .rs-domain-hero-num { font-size: 80px; }
+    .rs-domain-hero-num { font-size: 77px; }
     .rs-domain-hero-stats {
         grid-template-columns: repeat(2, 1fr);
         gap: 24px;
