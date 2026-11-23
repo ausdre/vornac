@@ -17,7 +17,15 @@
         left it only bought FOUT.
      2. The two faces that paint above the fold are preloaded so they download
         in parallel with the CSS instead of after it.
-     3. `font-display: swap` lives in every @font-face in fonts.css. #}
+     3. `font-display: swap` lives in every @font-face in fonts.css.
+
+   A third face, VORNAC Display (the brand face, drawn from the logo), sets
+   figures, index letters and the audit line on a few page types only. Its
+   @font-face is in src/input.css and its file in fonts/brand/, both out of
+   reach of the script above. Pages that use it carry `brandFont` (computed in
+   src/src.11tydata.js) and preload it here, so the figures do not start in
+   the fallback face. The file name is the same as in src/input.css. #}
 <link rel="preload" href="/fonts/archivo-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/saira-condensed-900-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/fonts/fonts.css">
+{% if brandFont %}<link rel="preload" href="/fonts/brand/vornac-display-400-v0.100.woff2" as="font" type="font/woff2" crossorigin>
+{% endif %}<link rel="stylesheet" href="/fonts/fonts.css">
