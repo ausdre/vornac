@@ -12,7 +12,7 @@
       "permanent": false
     },
     {
-      "source": "/:path((?!de$|de/|en/comcenter$|thank-you$|en/thank-you$)[^.]+)",
+      "source": "/:path((?!de$|de/|en/comcenter$|thank-you$|en/thank-you$|gewinnspiel2026/teilnahmebedingungen$)[^.]+)",
       "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],
       "destination": "/:path.md",
       "permanent": false
@@ -157,7 +157,7 @@
       ]
     },
     {
-      "source": "/:path((?!en/comcenter$|thank-you$|en/thank-you$)[^.]+)",
+      "source": "/:path((?!en/comcenter$|thank-you$|en/thank-you$|gewinnspiel2026/teilnahmebedingungen$)[^.]+)",
       "headers": [
         { "key": "Vary", "value": "Accept" },
         { "key": "Link", "value": "<https://www.vornac.com/:path.md>; rel=\"alternate\"; type=\"text/markdown\"" }
