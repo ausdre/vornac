@@ -8,7 +8,7 @@ Website of VORNAC GmbH, Heidelberg: continuous, autonomous, AI-driven penetratio
 
 - **Surfaces:** clean white (`--v-bg`) with printed-ink dark sections (`--v-bg-dark`). Sections are separated by whitespace, not by borders or grey bands.
 - **Accent:** amber `#ffa317` (`--v-amber`), used sparingly.
-- **Type:** Saira Condensed for display, Archivo for everything else. Both are self-hosted from `fonts/`. No monospace.
+- **Type:** Saira Condensed for display, Archivo for everything else. VORNAC Display, the brand face drawn from the logo, sets figures, index letters and the acronyms of the audit line. All three are self-hosted from `fonts/`. No monospace.
 - **Tokens:** CSS variables under `:root` in `src/input.css`; Tailwind extensions in `tailwind.config.js`.
 
 Working conventions for design and content live in `AGENTS.md` and `CLAUDE.md`.
@@ -29,6 +29,7 @@ src/_data/              Site data, URL registry, translations
 src/input.css           Global styles and design tokens
 *.css                   Page stylesheets, copied as they are
 fonts/                  Self-hosted webfonts and fonts.css
+fonts/brand/            The brand face, VORNAC Display
 scripts/                Build helpers
 ```
 
