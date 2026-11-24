@@ -172,7 +172,7 @@ module.exports = {
       sent: "Anfrage gesendet"
     },
     footer: {
-      tagline: "Autonome Sicherheitsvalidierung auf Enterprise-Niveau – für kontinuierliche Absicherung und Compliance.",
+      tagline: "Autonome Sicherheitsvalidierung auf Enterprise-Niveau für kontinuierliche Absicherung und Compliance.",
       navHeading: "Navigation",
       // FIX: current DE site renders "Legal" in English. German label is "Rechtliches".
       legalHeading: "Rechtliches",

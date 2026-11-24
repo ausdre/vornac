@@ -78,7 +78,6 @@
         align-items: center;
         gap: 12px;
         font-size: 14px;
-        font-weight: 700;
         color: var(--v-amber);
         margin-bottom: 40px;
         font-weight: 500;
@@ -98,11 +97,12 @@
         font-weight: 900;
         color: var(--v-ink);
         margin: 0 auto 48px;
-        max-width: 20ch;
+        max-width: 22ch;
         overflow-wrap: break-word;
     }
-    /* On the white hero the emphasized phrase carries the single amber accent. */
-    .v-hero-headline .v-amber-mark { color: var(--v-amber-deep); }
+    /* On the white hero the emphasized phrase carries the single amber accent:
+       amber type on an ink plate (see "Amber on light grounds" in src/input.css). */
+    .v-hero-headline .v-amber-mark { color: var(--v-amber); }
     .v-hero-headline .v-hero-lead {
         font-size: larger;
     }
@@ -115,6 +115,10 @@
         margin: 0 auto 56px;
         font-weight: 400;
     }
+    /* The opening sentence keeps a line to itself, so the sentence that starts
+       with the logo begins the next line and the logo never ends a line.
+       A block span, not a <br>: the Markdown twin keeps one paragraph. */
+    .v-hero-subline-lead { display: block; }
     .v-hero-actions {
         display: flex;
         align-items: center;
@@ -137,6 +141,20 @@
         line-height: 1.5;
         color: var(--v-ink-2);
     }
+    /* The frameworks in the brand face (decision 2026-11-23), all in ink,
+       linked to the glossary or not. Set a sixth smaller because the face
+       runs wide and has capitals only: 12.5px next to the 15px label. The
+       separators stay outside the names, in Archivo and in the grey of the
+       label. The zeros of 27001 carry the slash of the face. */
+    .v-hero-trust-name {
+        font-family: 'VORNAC Display', var(--v-sans);
+        font-weight: 400;
+        font-size: 0.8333em;
+        letter-spacing: 0.02em;
+        color: var(--v-ink);
+        white-space: nowrap;
+    }
+    .v-hero-trust-name a.x-term { color: inherit; }
     /* Thin outline primary (Palantir-restrained). Homepage-scoped: .v-btn-primary
        is used only on the EN/DE homepage. Hero overrides this to an amber outline. */
     .v-btn-primary {
@@ -303,7 +321,17 @@
         white-space: nowrap;
     }
     .v-stats.is-dark .v-stat-number { color: #fff; }
-    .v-stat-num { display: inline-block; }
+    /* The figures in the brand face (decision 2026-11-23). It runs about 1.7
+       times as wide as Saira Condensed, so a figure is set at 0.8 of the
+       size of its row: 96px where Saira stood at 120px. Prefix, unit and
+       label keep their faces. The brand face has no percent sign. */
+    .v-stat-num,
+    .v-stat-range {
+        font-family: var(--v-wordmark);
+        font-weight: 400;
+        letter-spacing: 0;
+    }
+    .v-stat-num { display: inline-block; font-size: 0.8em; }
     .v-stat-prefix + .v-stat-num { margin-left: 14px; }
     .v-stat-prefix {
         font-family: var(--v-sans);
@@ -315,20 +343,20 @@
         text-transform: lowercase;
     }
     .v-stat-range {
-        font-weight: 700;
-        font-size: 0.46em;
-        letter-spacing: -0.02em;
+        font-size: 0.37em;
         color: rgba(0, 0, 0, 0.32);
-        margin-left: 0.02em;
+        margin-left: 0.08em;
     }
     .v-stats.is-dark .v-stat-range { color: rgba(255, 255, 255, 0.40); }
+    /* Units stay in Saira Condensed and shrink with the figures: on the dark
+       band 52px beside a 96px figure, where 60px stood beside 120px. */
     .v-stat-unit {
         font-weight: 800;
-        font-size: 0.62em;
-        margin-left: 0.04em;
+        font-size: 0.53em;
+        margin-left: 0.08em;
         color: var(--v-amber);
     }
-    .v-stats.is-dark .v-stat-unit { font-size: 0.5em; margin-left: 0.06em; }
+    .v-stats.is-dark .v-stat-unit { font-size: 0.43em; margin-left: 0.1em; }
     .v-stat-rule {
         display: none;
     }
@@ -395,7 +423,7 @@
         color: var(--v-ink);
         margin: 0 0 28px;
     }
-    .v-howwe-headline .v-howwe-emph { color: var(--v-amber-deep); }
+    .v-howwe-headline .v-howwe-emph { color: var(--v-amber); }
     .v-howwe-sub {
         font-size: 19px;
         line-height: 1.6;
@@ -417,14 +445,16 @@
         align-items: start;
     }
     .v-howwe-row:last-child { border-bottom: none; }
+    /* Step numbers in the brand face (decision 2026-11-23): 44px where
+       Saira Condensed stood at 49px. */
     .v-howwe-num {
-        font-family: var(--v-display);
-        font-size: clamp(36px, 3.8vw, 56px);
-        font-weight: 900;
+        font-family: var(--v-wordmark);
+        font-size: clamp(33px, 3.44vw, 51px);
+        font-weight: 400;
         line-height: 1;
         color: var(--v-amber);
-        letter-spacing: -0.04em;
-        padding-top: 4px;
+        letter-spacing: 0;
+        padding-top: 2px;
     }
     .v-howwe-title {
         font-family: var(--v-display);
@@ -492,7 +522,7 @@
         color: var(--v-ink);
         margin: 0 auto 36px;
     }
-    .v-sov-headline .v-sov-emph { color: var(--v-amber-deep); font-weight: 500; }
+    .v-sov-headline .v-sov-emph { color: var(--v-amber); font-weight: 500; }
     .v-sov-subline {
         font-family: var(--v-sans);
         font-size: 17px;
@@ -974,7 +1004,30 @@
         }
         .v-comp-table tbody td:nth-of-type(1)::before { content: "Classical tools (VM · BAS · EASM)"; }
         .v-comp-table tbody td:nth-of-type(2)::before { content: "Pentera"; }
-        .v-comp-table tbody td:nth-of-type(3)::before { content: "VORNAC"; color: var(--v-amber); }
+        /* The name is shown as the logo here too (see .v-wm in src/input.css). */
+        .v-comp-table tbody td:nth-of-type(3)::before {
+            content: "VORNAC";
+            color: var(--v-amber);
+            width: 4.8em;
+            height: 0.69em;
+            width: calc(1cap * 6.9615);
+            height: 1cap;
+            width: calc(round(1cap, 1px) * 6.9615);
+            height: round(1cap, 1px);
+            overflow: hidden;
+            white-space: nowrap;
+            text-indent: 100%;
+            background-color: currentColor;
+            -webkit-mask: url("/logo-vornac-black.svg") left bottom / contain no-repeat;
+            mask: url("/logo-vornac-black.svg") left bottom / contain no-repeat;
+            /* Drawn at the logo's own width on whole pixels, as in .v-wm. */
+            -webkit-mask-size: min(100%, 4.8em) auto;
+            mask-size: min(100%, 4.8em) auto;
+            -webkit-mask-size: min(100%, calc(1cap * 6.9615)) auto;
+            mask-size: min(100%, calc(1cap * 6.9615)) auto;
+            -webkit-mask-size: min(100%, calc(round(1cap, 1px) * 6.9615)) auto;
+            mask-size: min(100%, calc(round(1cap, 1px) * 6.9615)) auto;
+        }
 
         .v-comp-table tbody td.v-comp-col-vornac {
             box-shadow: none;
@@ -1081,7 +1134,7 @@
     .pent-contact--final .pent-contact-headline-emph {
         font-family: var(--v-display);
         font-weight: 500;
-        color: var(--v-amber-deep);
+        color: var(--v-amber);
         text-transform: uppercase;
         letter-spacing: -0.02em;
         white-space: nowrap;

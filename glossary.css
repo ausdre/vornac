@@ -25,23 +25,6 @@
     text-align: center;
 }
 
-.gl-hero-eyebrow {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--v-ink-2);
-    margin: 0 0 32px;
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-}
-
-.gl-hero-eyebrow::before {
-    content: '';
-    width: 22px;
-    height: 1px;
-    background: var(--v-amber);
-}
-
 .gl-hero-headline {
     font-family: var(--v-display);
     font-size: clamp(56px, 9vw, 128px);
@@ -69,7 +52,7 @@
 
 .gl-hero-stats {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 32px;
     padding-top: 40px;
     border-top: 1px solid var(--v-line);
@@ -93,10 +76,7 @@
 
 @media (max-width: 720px) {
     .gl-hero-inner { padding: 88px 22px 48px; }
-    .gl-hero-stats {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
-    }
+    .gl-hero-stats { gap: 16px; }
 }
 
 /* ============================================ */
@@ -229,13 +209,15 @@
     margin-bottom: 16px;
 }
 
+/* The index letters in the brand face, VORNAC Display (decision 2026-11-23):
+   84px where Saira Condensed stood at 96px, because the face runs wider. */
 .gl-letter {
-    font-family: var(--v-display);
-    font-size: clamp(56px, 8vw, 96px);
+    font-family: var(--v-wordmark);
+    font-size: clamp(49px, 7vw, 84px);
     line-height: 0.9;
-    font-weight: 900;
+    font-weight: 400;
     color: var(--v-amber);
-    letter-spacing: -0.04em;
+    letter-spacing: 0;
 }
 
 .gl-letter-meta {
@@ -250,7 +232,7 @@
         grid-template-columns: 1fr;
         gap: 8px;
     }
-    .gl-letter { font-size: 56px; }
+    .gl-letter { font-size: 49px; }
     .gl-letter-meta { padding-bottom: 0; }
 }
 

@@ -56,7 +56,10 @@ const STATIC_PAGES = [
   { key: "vergleich-cymulate-alternative",     en: null,                                       de: "/vergleich/cymulate-alternative" },
   { key: "vergleich-picus-alternative",        en: null,                                       de: "/vergleich/picus-alternative" },
   { key: "vergleich-xbow-alternative",         en: null,                                       de: "/vergleich/xbow-alternative" },
-  { key: "vergleich-fleuret-alternative",      en: null,                                       de: "/vergleich/fleuret-alternative" }
+  { key: "vergleich-fleuret-alternative",      en: null,                                       de: "/vergleich/fleuret-alternative" },
+  // Giveaway terms (German only): Teilnahmebedingungen of the 2026 Christmas giveaway on LinkedIn.
+  // noindex: a legal text linked from the giveaway post only (meta noindex); it stays out of the sitemap and gets no Markdown twin.
+  { key: "gewinnspiel2026-teilnahmebedingungen", en: null,                                     de: "/gewinnspiel2026/teilnahmebedingungen", noindex: true }
 ];
 
 const RESEARCH_DOMAIN_PAGES = research.domains.map((d) => ({

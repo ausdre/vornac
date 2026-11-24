@@ -9,11 +9,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'vornac-black': '#020308',
         'vornac-gold': '#ffa317',
-        'vornac-grey-dark': '#111317',
-        'vornac-grey-top': '#1C1E23',
-        'vornac-grey-light': '#C0C3C8',
         'vornac-red': '#FF4B4B',
         amber: {
           50:  '#fff7e9',
@@ -39,7 +35,7 @@ module.exports = {
       },
       boxShadow: {
         soft: '0 18px 45px rgba(0,0,0,0.45)',
-        'glow-gold': '0 0 40px rgba(255, 163, 38, 0.15)',
+        'glow-gold': '0 0 40px rgba(255, 163, 23, 0.15)',
       },
       borderRadius: {
         lg2: '1rem',

@@ -15,11 +15,8 @@ permalink: /en/index.html
 <link rel="stylesheet" href="/pentesting.css" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="/pentesting.css"></noscript>
 
-{# Hero phrase over the amber band: keep it plain ink (amber-on-amber won't
-   read). Inline so it wraps naturally on small screens. #}
-<style>
-    .v-hero-headline .v-amber-mark { display: inline; }
-</style>
+{# The hero phrase (.v-amber-mark) is set as amber type on an ink plate, see
+   "Amber on light grounds" in src/input.css. #}
 
 {% include "partials/home-motion-head.njk" %}
 {% endblock %}
@@ -67,7 +64,7 @@ permalink: /en/index.html
         </div>
         <p class="v-hero-trust v-reveal" data-reveal-delay="4">
             <span class="v-hero-trust-label">Audit-ready for</span>
-            <span class="v-hero-trust-list">NIS2 &middot; DORA &middot; VAIT/BAIT &middot; KRITIS &middot; TISAX &middot; ISO/IEC&nbsp;27001</span>
+            <span class="v-hero-trust-list"><span class="v-hero-trust-name">NIS2</span> &middot; <span class="v-hero-trust-name">DORA</span> &middot; <span class="v-hero-trust-name">VAIT/BAIT</span> &middot; <span class="v-hero-trust-name">KRITIS</span> &middot; <span class="v-hero-trust-name">TISAX</span> &middot; <span class="v-hero-trust-name">ISO/IEC&nbsp;27001</span></span>
         </p>
     </div>
 </section>

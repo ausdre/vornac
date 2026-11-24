@@ -65,5 +65,9 @@
 
     {% block extraBodyEnd %}{% endblock %}
 
+    {# HubSpot tracking code. HubSpot wants it directly before </body>, on
+       every page. Consent-gated like Leadfeeder: see the partial. #}
+    {% include "partials/hubspot.njk" %}
+
 </body>
 </html>
