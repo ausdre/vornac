@@ -73,6 +73,12 @@
 - `consent-banner.njk` ruft `window.__vornacHubspot.load()` und `.purge()` auf. Beim Widerruf und bei jedem Seitenaufruf ohne Einwilligung löscht das Partial die HubSpot-Cookies selbst.
 - Der Abschnitt "HubSpot" auf `/legal` beschreibt HubSpot als Auftragsverarbeiter. Das stimmt nur, solange in HubSpot "Intent data access" aus ist (Settings, Tracking & Analytics, Tracking Code, Advanced Tracking) und die Erfassung fremder Formulare ("Non-HubSpot Forms") nicht läuft. Ändert sich eins davon, den Abschnitt anpassen.
 
+## Weihnachtsgewinnspiel 2026: Teilnahmebedingungen (seit 2026-11-23)
+
+- `/gewinnspiel2026/teilnahmebedingungen` (`src/de/gewinnspiel2026/teilnahmebedingungen.njk`, Registry-Schlüssel `gewinnspiel2026-teilnahmebedingungen`, nur Deutsch) trägt den Rechtstext des Gewinnspiels auf LinkedIn (30. November bis 20. Dezember 2026) im Wortlaut des Drive-Dokuments "Teilnahmebedingungen Weihnachtsgewinnspiel VORNAC" im Ordner "Gewinnspiel Weihnachten 2026". Den Text nur zusammen mit dem Dokument ändern; die Zeile "Stand" am Ende gehört zum Dokument und kommt nicht aus `pageDates.json`.
+- Die Seite wird nur aus dem Gewinnspiel-Beitrag verlinkt und ist auf `noindex` gestellt, damit vor dem Start nichts über Suchmaschinen, Sitemap oder `llms-full.txt` auffindbar ist (Voreinstellung der Umsetzung, keine Entscheidung von André): meta `noindex` im Template, `noindex: true` in der Registry (keine Sitemap, kein Markdown-Zwilling), kein Eintrag in `llms.txt`, kein Link in Navigation oder Footer. `vercel.json` nimmt den Pfad aus den beiden Markdown-Regeln aus (Redirect bei `Accept: text/markdown` und `Link`-Header), wie bei comcenter und thank-you. Soll die Seite indexierbar werden, alle drei Stellen zurücknehmen.
+- `data-no-crosslink` am Textblock hält die automatischen Glossar-Links aus dem Rechtstext heraus. Der Gewinn kann laut Abschnitt 5 bis 31. März 2027 eingelöst werden; die Seite vorher nicht ohne Rücksprache entfernen.
+
 ## Werkzeuge
 
 - `.mcp.json` bringt `peec-ai` (https://api.peec.ai/mcp) und `vercel` (https://mcp.vercel.com) mit. Beim ersten Start `/mcp` und beide per OAuth freigeben.
