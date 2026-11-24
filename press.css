@@ -17,7 +17,7 @@
     --v-amber-deep:#cc8200;
     --v-display: 'Saira Condensed', 'Archivo', system-ui, -apple-system, sans-serif;
     --v-sans:    'Archivo', system-ui, -apple-system, sans-serif;
-    --v-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    --v-mono:    'Archivo', system-ui, -apple-system, sans-serif;
 }
 
 #site-header { z-index: 100; }
@@ -81,10 +81,7 @@
 
 .ps-link {
     display: inline-block;
-    font-family: var(--v-mono);
-    font-size: 12.5px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    font-size: 14px;
     color: var(--v-ink);
     text-decoration: none;
     border-bottom: 1.5px solid var(--v-amber);
@@ -192,11 +189,9 @@
 .ps-award-title a { color: inherit; text-decoration: none; }
 .ps-award-title a:hover { color: var(--v-amber-deep); }
 .ps-award-by {
-    font-family: var(--v-mono);
-    font-size: 12px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--v-ink-2);
     margin: 0 0 12px;
 }
 .ps-award-text {
@@ -224,17 +219,14 @@
 }
 .ps-item-body { padding-top: 2px; }
 .ps-item-meta--top {
-    font-family: var(--v-mono);
-    font-size: 12.5px;
-    letter-spacing: 0.04em;
-    color: var(--v-ink-3);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--v-ink-2);
     margin: 0 0 10px;
 }
 .ps-item-outlet {
-    font-size: 12.5px;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
     color: var(--v-ink);
     margin: 0 0 6px;
 }
@@ -291,11 +283,8 @@
     margin: 0 auto;
 }
 .ps-block-label {
-    font-family: var(--v-mono);
-    font-size: 11.5px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
+    font-size: 14px;
+    color: var(--v-ink-2);
     margin: 0 0 14px;
 }
 .ps-boiler + .ps-boiler { margin-top: 40px; }
@@ -311,10 +300,7 @@
     background: none;
     border: 0;
     padding: 0 0 2px;
-    font-family: var(--v-mono);
-    font-size: 12.5px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    font-size: 14px;
     color: var(--v-ink);
     border-bottom: 1.5px solid var(--v-amber);
     cursor: pointer;
@@ -325,11 +311,8 @@
 
 .ps-facts { margin: 0; }
 .ps-facts dt {
-    font-family: var(--v-mono);
-    font-size: 11.5px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
+    font-size: 14px;
+    color: var(--v-ink-2);
     margin: 0 0 4px;
 }
 .ps-facts dd {
@@ -367,10 +350,9 @@
     margin: 0 0 3px;
 }
 .ps-kit-meta {
-    font-family: var(--v-mono);
-    font-size: 12px;
-    letter-spacing: 0.03em;
-    color: var(--v-ink-3);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--v-ink-2);
     margin: 0;
 }
 
@@ -438,9 +420,7 @@
     justify-content: center;
     gap: 10px 32px;
     margin: 18px 0 0;
-    font-family: var(--v-mono);
     font-size: 14.5px;
-    letter-spacing: 0.01em;
 }
 .ps-contact-links a {
     color: var(--v-ink);

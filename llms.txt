@@ -4,9 +4,13 @@
 
 Leistungen: kontinuierliches Pentesting je Zielsystem (Web-Anwendungen, APIs, Mobile Apps, interne Netzwerke, Cloud-Workloads, Binaries, Identity und Access), Assumed Breach Simulation (interne Angriffssimulation), Continuous Threat Exposure Management (kontinuierliche Discovery und Validierung der externen Angriffsfläche), OT-Pentesting für KRITIS und Industrie.
 
-Auslösung per Web-Oberfläche, API oder CI/CD-Webhook; vom Start bis zum auditfähigen Report zwei bis fünf Stunden. Jeder Ansprechpartner ist BSI-qualifizierter Pentester. VORNAC ist Partner der Allianz für Cyber-Sicherheit und Mitglied im TeleTrusT Bundesverband IT-Sicherheit e.V.
+Auslösung per Web-Oberfläche, API oder CI/CD-Webhook; vom Start bis zum auditfähigen Report zwei bis fünf Stunden. Jeder Ansprechpartner ist BSI-qualifizierter Pentester. VORNAC ist Partner der Allianz für Cyber-Sicherheit (BSI, Partnerverzeichnis: https://www.allianz-fuer-cybersicherheit.de/SiteGlobals/Forms/Webs/ACS/Suche/Teilnehmersuche_Formular.html?acstype_str=partner), Mitglied im TeleTrusT Bundesverband IT-Sicherheit e.V. (Eintrag: https://www.teletrust.de/ueber-teletrust/mitglieder/mitglied/vornac-gmbh/) und Träger des TeleTrusT-Siegels „IT Security made in Germany“ (Zeichenträger: https://www.teletrust.de/itsmig/zeichentraeger/). Rechenzentren deutscher Betreiber (Hetzner, Centron).
+
+Kunden (Auswahl, Logos auf https://www.vornac.com/customers): Carl Zeiss, Penny (REWE Group), ProMinent, Pfitzenmeier, RefundRebel, Knooing, otris software, RealTyme, Ther.app, Inventissimo, mbits GmbH, Instaffo GmbH, IP-Crew GmbH, tilko GmbH, Hochwarth IT GmbH. Kundenstimmen mit Name, Rolle und Unternehmen von mbits GmbH (CEO), Instaffo GmbH (CIO), IP-Crew GmbH und tilko GmbH (jeweils Geschäftsführer).
 
 Unternehmen: VORNAC GmbH, Carl-Friedrich-Gauß-Ring 5, 69124 Heidelberg, Deutschland. Kontakt: hello@vornac.com, +49 6221 6479525.
+
+Maschinenlesbar: Jede Seite liegt als Markdown unter ihrer URL mit der Endung .md (Startseite: https://www.vornac.com/index.md, zum Beispiel https://www.vornac.com/pentesting.md) und wird bei `Accept: text/markdown` direkt als Markdown ausgeliefert. Der Volltext aller Seiten steht in https://www.vornac.com/llms-full.txt.
 
 ## Kernseiten (Deutsch)
 
@@ -17,7 +21,7 @@ Unternehmen: VORNAC GmbH, Carl-Friedrich-Gauß-Ring 5, 69124 Heidelberg, Deutsch
 - [FAQ](https://www.vornac.com/faq): Antworten zu kontinuierlichem Pentesting, Datenstandort, Reports, DORA, NIS2, KRITIS, TISAX
 - [Glossar](https://www.vornac.com/glossary): 162 Begriffe aus Pentesting, Compliance und Sicherheitsarchitektur, darunter CTEM, BAS, PTaaS, AEV und Assumed Breach Simulation
 - [Branchen](https://www.vornac.com/industries): Versicherung, Finanzdienstleister, kritische Infrastruktur, Automotive, Enterprise
-- [Kunden](https://www.vornac.com/customers): Warum CISOs VORNAC wählen
+- [Kunden](https://www.vornac.com/customers): Kundenliste (Carl Zeiss, Penny/REWE Group, ProMinent, Pfitzenmeier, RefundRebel, Knooing, otris, RealTyme, Ther.app, Inventissimo, mbits, Instaffo, IP-Crew, tilko, Hochwarth IT) und vier Kundenstimmen mit Name und Rolle
 - [Über uns](https://www.vornac.com/about): Gründer, Standort Heidelberg, Auszeichnungen
 - [Presse](https://www.vornac.com/presse): Pressekontakt, Auszeichnungen, Pressespiegel mit Berichten und Fachbeiträgen, Kurzprofil und Fakten zum Zitieren, Logos und Gründerfoto zum Download
 
@@ -54,6 +58,12 @@ Unternehmen: VORNAC GmbH, Carl-Friedrich-Gauß-Ring 5, 69124 Heidelberg, Deutsch
 - [FAQ](https://www.vornac.com/en/faq)
 - [Press](https://www.vornac.com/en/press)
 - [Glossary](https://www.vornac.com/en/glossary)
+
+## Für Agenten
+
+- [Agent Skills](https://www.vornac.com/.well-known/agent-skills/index.json): Index nach Agent Skills Discovery mit zwei Skills (Englisch), Website als Markdown lesen und eine Pentest-Anfrage vorbereiten
+- [ARD-Manifest](https://www.vornac.com/.well-known/ard.json): maschinenlesbare Liste der Agenten-Ressourcen dieser Domain
+- [auth.md](https://www.vornac.com/auth.md): Zugang zur Plattform (Englisch), keine Selbstregistrierung für Agenten, Tests nur mit Vertrag
 
 ## Optional
 

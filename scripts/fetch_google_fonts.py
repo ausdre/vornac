@@ -3,7 +3,7 @@
 
 vornac.com must not open a connection to Google before the visitor has
 consented (§ 25 TDDDG / GDPR — the LG München "Google Fonts" line of cases),
-so the three brand families are served from our own origin instead of
+so the two brand families are served from our own origin instead of
 fonts.googleapis.com / fonts.gstatic.com.
 
 This script regenerates that local copy:
@@ -33,7 +33,6 @@ import urllib.request
 FAMILIES = [
     "Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,900",
     "Saira+Condensed:wght@500;600;700;800;900",
-    "JetBrains+Mono:wght@400;500;700",
 ]
 SUBSETS = {"latin", "latin-ext"}
 

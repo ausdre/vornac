@@ -1,0 +1,136 @@
+{#
+  HubSpot tracking code: marketing analytics for HubSpot portal 149809135
+  (EU data centre, "eu1").
+
+  HubSpot's install instruction is one static tag on every page, directly
+  before </body>:
+
+    <script type="text/javascript" id="hs-script-loader" async defer
+            src="//js-eu1.hs-scripts.com/149809135.js"></script>
+
+  This partial sits at that position (last include in layouts/base.njk, so
+  on every page) and creates exactly that element, but only after consent.
+
+  CONSENT-GATED, same rule and same switch as leadfeeder.njk. The tracking
+  code writes visitor identifiers to the device (__hstc and hubspotutk for
+  six months, __hssc for 30 minutes, __hssrc for the session) and sends them
+  to HubSpot with every hit. That is storage/access on the visitor's terminal
+  equipment for a non-essential purpose, so § 25(1) TDDDG requires prior
+  consent. The loader is therefore requested only once 'vornac_consent_v1'
+  is "granted": on a stored choice at page load, or the moment the visitor
+  clicks "Accept all" in consent-banner.njk. Without consent no request
+  goes to HubSpot at all.
+
+  Consent hand-over to HubSpot (cookie banner API on developers.hubspot.com):
+    window.disableHubSpotCookieBanner = true
+        Our modal is the only consent UI. HubSpot's own banner must never
+        stack on top of it, whatever is configured in the portal. HubSpot
+        requires the flag to be set before its banner code loads.
+    _hsp.push(['setHubSpotConsent', {...}])
+        Tells the tracking code that consent exists. HubSpot does not
+        persist this value itself, so it is re-sent on every pageview from
+        the stored choice.
+  Only the "analytics" category is released. "functionality" (HubSpot chat)
+  and "advertisement" (ad pixels HubSpot can install through this loader)
+  stay false: neither is in use and neither is described in the privacy
+  policy. Releasing one means changing it here and on /legal together.
+
+  Withdrawal ("Essential only" after an earlier "Accept all"): consent is
+  re-sent as false, HubSpot is asked to drop its cookies
+  (revokeCookieConsent), and the cookies are deleted here as well, so the
+  result does not depend on HubSpot's code. The same sweep runs on every
+  pageview without a stored "granted".
+
+  The __vornacLangRedirect check mirrors head-analytics.njk, leadfeeder.njk
+  and google-tag.njk. Nothing sets that flag since the automatic language
+  redirect was removed (see lang-redirect.njk); the check stays so that all
+  trackers behave alike should a redirect ever come back.
+
+  Good to know when checking the installation: the tag is not in the page
+  source and HubSpot's "Validate your tracking code" tool can report a
+  failure, exactly as with a tag manager, because the tag only exists in the
+  DOM after consent. To verify, accept cookies and look for 149809135.js and
+  __ptq.gif in the network tab.
+#}
+<script>
+(function () {
+    var KEY = 'vornac_consent_v1';
+    var SRC = {{ site.analytics.hubspotScript | dump | safe }};
+    var loaded = false;
+
+    // Everything the tracking code keeps first-party: visitor and session
+    // cookies (__hstc, __hssc, __hssrc, hubspotutk), HubSpot's own
+    // consent-state cookies (__hs_*), chat cookies, and its web storage
+    // entries.
+    var COOKIES = /^(__hs|hubspotutk$|messagesUtk$|hs-messages-)/;
+    var STORAGE = /^(__hs|__hmpl$|hublytics_events_)/;
+
+    function sendConsent(granted) {
+        var hsp = window._hsp = window._hsp || [];
+        hsp.push(['setHubSpotConsent', {
+            analytics: granted,
+            advertisement: false,
+            functionality: false
+        }]);
+    }
+
+    function load() {
+        window.disableHubSpotCookieBanner = true;
+        sendConsent(true);
+        if (loaded) return;
+        loaded = true;
+        // HubSpot's embed tag, attribute for attribute.
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.id = 'hs-script-loader';
+        s.async = true;
+        s.defer = true;
+        s.src = SRC;
+        document.body.appendChild(s);
+    }
+
+    function sweep() {
+        var root = location.hostname.replace(/^www\./, '');
+        var domains = ['', '; domain=' + root, '; domain=.' + root];
+        document.cookie.split(';').forEach(function (pair) {
+            var name = pair.split('=')[0].trim();
+            if (!COOKIES.test(name)) return;
+            domains.forEach(function (d) {
+                document.cookie = name + '=; Max-Age=0; path=/' + d;
+            });
+        });
+        ['localStorage', 'sessionStorage'].forEach(function (area) {
+            try {
+                var store = window[area];
+                Object.keys(store).forEach(function (name) {
+                    if (STORAGE.test(name)) store.removeItem(name);
+                });
+            } catch (e) {}
+        });
+    }
+
+    function purge() {
+        if (loaded) {
+            // HubSpot is on the page: withdraw consent there too, then sweep
+            // a second time in case its code writes once more on the way out.
+            sendConsent(false);
+            window._hsp.push(['revokeCookieConsent']);
+            setTimeout(sweep, 1000);
+        }
+        sweep();
+    }
+
+    // consent-banner.njk drives these when the visitor makes or changes a choice.
+    window.__vornacHubspot = { load: load, purge: purge };
+
+    var stored = null;
+    try { stored = localStorage.getItem(KEY); } catch (e) {}
+
+    if (stored !== 'granted') {
+        purge();
+        return;
+    }
+    if (window.__vornacLangRedirect) return;
+    load();
+})();
+</script>

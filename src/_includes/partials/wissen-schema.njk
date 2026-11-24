@@ -57,8 +57,7 @@
       { "@type": "ListItem", "position": 2, "name": sectionName, "item": wissenUrl },
       { "@type": "ListItem", "position": 3, "name": (breadcrumb or articleHeadline), "item": pageUrl }
     ]
-  },
-  site.organizationLd
+  }
 ] %}
 {% if faqNodes.length %}
 {% set graph = (graph.push({ "@type": "FAQPage", "@id": pageUrl + "#faq", "inLanguage": locale, "mainEntity": faqNodes }), graph) %}

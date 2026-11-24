@@ -16,7 +16,12 @@ module.exports = {
 
   analytics: {
     plausibleScript: "https://plausible.io/js/pa-OqjHdWkljhzM3AXJtXHXl.js",
-    gtmContainerId: "GTM-MKJX4W2J"
+    gtmContainerId: "GTM-MKJX4W2J",
+    // HubSpot tracking code (marketing analytics), portal 149809135. The
+    // js-eu1 host is HubSpot's EU data centre; a portal in another region
+    // would have a different host. Loaded by partials/hubspot.njk, after
+    // consent only.
+    hubspotScript: "https://js-eu1.hs-scripts.com/149809135.js"
   },
 
   // Logo paths (live at site root via passthrough copy)
@@ -26,27 +31,20 @@ module.exports = {
     favicon: "/V_BLACK.svg"
   },
 
-  // Open-Graph/Twitter preview: 1200x630, white background, the V monogram
-  // from the favicon centred so a square crop (Slack, iMessage) still shows
-  // the V. The 2000x700 wordmark cropped to "RN." in Slack, hence this file.
-  socialPreviewImage: "/vornac-og.png",
-  socialPreviewWidth: 1200,
-  socialPreviewHeight: 630,
+  // Link preview (og:image / twitter:image) on every page: the V monogram
+  // from the favicon on a white 1200x630 canvas. Pages may override with
+  // `ogImage` in their front matter.
+  socialPreviewImage: "/og-vornac.png",
+  // Organization logo in the JSON-LD (wordmark, kept separate from the
+  // link preview so the knowledge-graph logo stays the full wordmark).
+  organizationLogo: "/vornacpentesting43.png",
 
-  // Shared JSON-LD identities. Every page that names the publisher or author
-  // embeds `organizationLd` (a compact node) so the reference resolves on the
-  // page itself; the full Organization record with address, founders and
-  // memberships lives on the homepage under the same @id.
+  // Shared JSON-LD identities. The Organization and WebSite nodes are defined
+  // once, in partials/organization-schema.njk, which layouts/base.njk renders
+  // on every page. Page-level JSON-LD only references these two @ids
+  // (publisher, provider, isPartOf, about) and never redeclares the nodes.
   organizationId: "https://www.vornac.com/#organization",
   websiteId: "https://www.vornac.com/#website",
-  organizationLd: {
-    "@type": "Organization",
-    "@id": "https://www.vornac.com/#organization",
-    "name": "VORNAC GmbH",
-    "alternateName": "VORNAC",
-    "url": "https://www.vornac.com/",
-    "logo": { "@type": "ImageObject", "url": "https://www.vornac.com/vornacpentesting43.png" }
-  },
 
   // Named authors for content pages (/wissen, /vergleich). Referenced from
   // front matter as `author: andre`; rendered by page-meta-line.njk and the

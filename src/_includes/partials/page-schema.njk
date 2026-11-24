@@ -1,6 +1,6 @@
 {# Generic JSON-LD for pages that describe the site or the company rather
-   than a service: about, legal and similar. Emits one page node plus the
-   compact Organization node.
+   than a service: about, legal and similar. Emits one page node; the
+   Organization it references comes from layouts/base.njk.
 
    Set before including:
      schemaType      "WebPage" (default), "AboutPage", "ContactPage", ...
@@ -26,5 +26,5 @@
   "about": ({ "@id": site.organizationId } if schemaAboutOrg else null),
   "mainEntity": ({ "@id": site.organizationId } if schemaAboutOrg else null)
 } %}
-{% set ld = { "@context": "https://schema.org", "@graph": [pageNode, site.organizationLd] } %}
+{% set ld = { "@context": "https://schema.org", "@graph": [pageNode] } %}
 <script type="application/ld+json">{{ ld | jsonLd | safe }}</script>

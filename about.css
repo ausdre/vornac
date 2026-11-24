@@ -15,7 +15,7 @@
     --v-amber-deep:#cc8200;
     --v-display: 'Saira Condensed', 'Archivo', system-ui, -apple-system, sans-serif;
     --v-sans:    'Archivo', system-ui, -apple-system, sans-serif;
-    --v-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    --v-mono:    'Archivo', system-ui, -apple-system, sans-serif;
 }
 
 #site-header { z-index: 100; }
@@ -85,7 +85,7 @@
 }
 .about-company-headline em {
     font-style: normal;
-    color: var(--v-amber-deep);
+    color: var(--v-amber);
 }
 .about-company-text {
     font-size: 17px;
@@ -117,11 +117,9 @@
     object-fit: cover;
 }
 .about-founders-caption {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
+    color: var(--v-ink-2);
     margin: 0;
 }
 
@@ -190,21 +188,17 @@
     margin-bottom: 24px;
 }
 .about-job-tag {
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
+    color: var(--v-ink-2);
     padding: 5px 10px;
     background: transparent;
     border: 1px solid var(--v-line);
 }
 .about-job-block-title {
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--v-ink-3);
+    color: var(--v-ink-2);
     margin: 0 0 10px;
 }
 .about-job-list {

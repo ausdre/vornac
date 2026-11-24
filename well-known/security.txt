@@ -1,0 +1,6 @@
+# Sicherheitsmeldungen an die VORNAC GmbH, Heidelberg
+# Security reports to VORNAC GmbH, Heidelberg, Germany
+Contact: mailto:security@vornac.com
+Expires: 2027-10-31T23:00:00Z
+Preferred-Languages: de, en
+Canonical: https://www.vornac.com/.well-known/security.txt

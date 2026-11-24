@@ -152,7 +152,7 @@
 
 /* Leaked-credential glyph next to the attacker */
 .tcred { fill: var(--v-amber-soft); stroke: var(--v-amber); stroke-width: 1.25; }
-.tcred-txt { font-size: 10px; font-weight: 700; fill: var(--v-amber-deep); letter-spacing: 0.12em; }
+.tcred-txt { font-size: 12px; font-weight: 700; fill: var(--v-amber-deep); }
 
 /* Attack path: draws in, then a pulse travels along it */
 .tp {

@@ -38,7 +38,8 @@ const STATIC_PAGES = [
   { key: "industries-insurance",               en: `${EN}/industries-insurance`,               de: "/industries-insurance" },
   { key: "faq",                                en: `${EN}/faq`,                                de: "/faq" },
   { key: "legal",                              en: `${EN}/legal`,                              de: "/legal" },
-  { key: "comcenter",                          en: `${EN}/comcenter`,                     de: null },
+  // noindex: the comcenter is a demo dashboard (robots Disallow, meta noindex); it stays out of the sitemap and gets no Markdown twin.
+  { key: "comcenter",                          en: `${EN}/comcenter`,                     de: null, noindex: true },
   // Wissen (German first; `en: null` until the English version exists).
   { key: "wissen",                             en: null,                                       de: "/wissen" },
   { key: "wissen-nis2-wirksamkeitspruefung",   en: null,                                       de: "/wissen/nis2-wirksamkeitspruefung" },
@@ -54,7 +55,10 @@ const STATIC_PAGES = [
   { key: "vergleich-cymulate-alternative",     en: null,                                       de: "/vergleich/cymulate-alternative" },
   { key: "vergleich-picus-alternative",        en: null,                                       de: "/vergleich/picus-alternative" },
   { key: "vergleich-xbow-alternative",         en: null,                                       de: "/vergleich/xbow-alternative" },
-  { key: "vergleich-fleuret-alternative",      en: null,                                       de: "/vergleich/fleuret-alternative" }
+  { key: "vergleich-fleuret-alternative",      en: null,                                       de: "/vergleich/fleuret-alternative" },
+  // Giveaway terms (German only): Teilnahmebedingungen of the 2026 Christmas giveaway on LinkedIn.
+  // noindex: a legal text linked from the giveaway post only (meta noindex); it stays out of the sitemap and gets no Markdown twin.
+  { key: "gewinnspiel2026-teilnahmebedingungen", en: null,                                     de: "/gewinnspiel2026/teilnahmebedingungen", noindex: true }
 ];
 
 const RESEARCH_DOMAIN_PAGES = research.domains.map((d) => ({

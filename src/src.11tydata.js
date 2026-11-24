@@ -36,6 +36,18 @@ module.exports = {
     },
 
     /**
+     * true on the page types that set text in the brand face, VORNAC Display:
+     * the homepage (figures, step numbers, audit line), the glossary (index
+     * letters) and the research index and domain pages (domain numbers).
+     * partials/head-fonts.njk preloads the face there. A page type that
+     * starts to use the face belongs in this list.
+     */
+    brandFont: (data) => {
+      const stem = data.page.filePathStem.replace(/^\/de\//, "/");
+      return ["/index", "/glossary", "/research", "/research-domain"].includes(stem);
+    },
+
+    /**
      * URL of this page's counterpart in the other locale.
      * Pages opt in by declaring `i18nKey: "<page-key>"` in front-matter.
      * Returns null for single-locale pages (e.g. comcenter).
@@ -61,6 +73,21 @@ module.exports = {
       const locale = data.page.filePathStem.startsWith("/de/") ? "de" : "en";
       const entry = data.pages.find((p) => p.key === data.i18nKey);
       return entry ? entry[locale] : data.page.filePathStem;
+    },
+
+    /**
+     * Site path of this page's Markdown twin (scripts/markdown-twins.js
+     * writes one for every sitemap URL after the build): the canonical path
+     * plus ".md", the root as /index.md. null for pages outside the registry
+     * (404, thank-you) and for registry entries marked noindex (comcenter),
+     * which the sitemap skips as well.
+     */
+    markdownTwin: (data) => {
+      if (!data.i18nKey) return null;
+      const locale = data.page.filePathStem.startsWith("/de/") ? "de" : "en";
+      const entry = data.pages.find((p) => p.key === data.i18nKey);
+      if (!entry || entry.noindex || !entry[locale]) return null;
+      return entry[locale] === "/" ? "/index.md" : `${entry[locale]}.md`;
     },
 
     /**

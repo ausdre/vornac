@@ -46,7 +46,7 @@
         --v-amber-soft:#fff3d8;
         --v-display: 'Saira Condensed', 'Archivo', system-ui, -apple-system, sans-serif;
         --v-sans:    'Archivo', system-ui, -apple-system, sans-serif;
-        --v-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+        --v-mono:    'Archivo', system-ui, -apple-system, sans-serif;
     }
 
     /* Homepage body — white. Other pages share this default via input.css. */
@@ -77,15 +77,11 @@
         display: inline-flex;
         align-items: center;
         gap: 12px;
-        font-size: 12.5px;
-        font-weight: 700;
-        letter-spacing: 0.22em;
-        text-transform: uppercase;
+        font-size: 14px;
         color: var(--v-amber);
         margin-bottom: 40px;
-        font-family: var(--v-mono);
         font-weight: 500;
-        font-size: 12px;
+        font-size: 14px;
     }
     .v-hero-kicker::before {
         content: '';
@@ -101,11 +97,12 @@
         font-weight: 900;
         color: var(--v-ink);
         margin: 0 auto 48px;
-        max-width: 20ch;
+        max-width: 22ch;
         overflow-wrap: break-word;
     }
-    /* On the white hero the emphasized phrase carries the single amber accent. */
-    .v-hero-headline .v-amber-mark { color: var(--v-amber-deep); }
+    /* On the white hero the emphasized phrase carries the single amber accent:
+       amber type on an ink plate (see "Amber on light grounds" in src/input.css). */
+    .v-hero-headline .v-amber-mark { color: var(--v-amber); }
     .v-hero-headline .v-hero-lead {
         font-size: larger;
     }
@@ -118,6 +115,10 @@
         margin: 0 auto 56px;
         font-weight: 400;
     }
+    /* The opening sentence keeps a line to itself, so the sentence that starts
+       with the logo begins the next line and the logo never ends a line.
+       A block span, not a <br>: the Markdown twin keeps one paragraph. */
+    .v-hero-subline-lead { display: block; }
     .v-hero-actions {
         display: flex;
         align-items: center;
@@ -135,22 +136,25 @@
         margin: 88px auto 0;
         max-width: 740px;
         font-family: var(--v-sans);
-        font-size: 11.5px;
-        font-weight: 700;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
+        font-size: 15px;
+        font-weight: 500;
         line-height: 1.5;
-    }
-    .v-hero-trust-label {
         color: var(--v-ink-2);
     }
-    .v-hero-trust-list {
-        font-family: var(--v-mono);
-        color: var(--v-ink-3);
-        font-weight: 500;
-        letter-spacing: 0.06em;
-        font-size: 11px;
+    /* The frameworks in the brand face (decision 2026-11-23), all in ink,
+       linked to the glossary or not. Set a sixth smaller because the face
+       runs wide and has capitals only: 12.5px next to the 15px label. The
+       separators stay outside the names, in Archivo and in the grey of the
+       label. The zeros of 27001 carry the slash of the face. */
+    .v-hero-trust-name {
+        font-family: 'VORNAC Display', var(--v-sans);
+        font-weight: 400;
+        font-size: 0.8333em;
+        letter-spacing: 0.02em;
+        color: var(--v-ink);
+        white-space: nowrap;
     }
+    .v-hero-trust-name a.x-term { color: inherit; }
     /* Thin outline primary (Palantir-restrained). Homepage-scoped: .v-btn-primary
        is used only on the EN/DE homepage. Hero overrides this to an amber outline. */
     .v-btn-primary {
@@ -221,9 +225,9 @@
         .v-hero-demo { width: 232px; height: 52px; }
         .v-hero-demo.is-open { width: min(100%, 340px); }
         .v-hero-subline { font-size: 17px; margin-bottom: 44px; }
-        .v-hero-kicker { margin-bottom: 28px; font-size: 11px; }
+        .v-hero-kicker { margin-bottom: 28px; font-size: 14px; }
         .v-hero-trust { margin-top: 56px; }
-        .v-hero-trust { padding-top: 20px; gap: 10px 14px; margin-bottom: 0; font-size: 10.5px; }
+        .v-hero-trust { padding-top: 20px; gap: 10px 14px; margin-bottom: 0; font-size: 14px; }
     }
 
     /* Stats band */
@@ -245,11 +249,8 @@
         display: inline-flex;
         align-items: center;
         gap: 12px;
-        font-family: var(--v-mono);
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 500;
-        letter-spacing: 0.22em;
-        text-transform: uppercase;
         color: var(--v-amber-deep);
         margin: 0 0 72px;
     }
@@ -320,7 +321,17 @@
         white-space: nowrap;
     }
     .v-stats.is-dark .v-stat-number { color: #fff; }
-    .v-stat-num { display: inline-block; }
+    /* The figures in the brand face (decision 2026-11-23). It runs about 1.7
+       times as wide as Saira Condensed, so a figure is set at 0.8 of the
+       size of its row: 96px where Saira stood at 120px. Prefix, unit and
+       label keep their faces. The brand face has no percent sign. */
+    .v-stat-num,
+    .v-stat-range {
+        font-family: var(--v-wordmark);
+        font-weight: 400;
+        letter-spacing: 0;
+    }
+    .v-stat-num { display: inline-block; font-size: 0.8em; }
     .v-stat-prefix + .v-stat-num { margin-left: 14px; }
     .v-stat-prefix {
         font-family: var(--v-sans);
@@ -332,20 +343,20 @@
         text-transform: lowercase;
     }
     .v-stat-range {
-        font-weight: 700;
-        font-size: 0.46em;
-        letter-spacing: -0.02em;
+        font-size: 0.37em;
         color: rgba(0, 0, 0, 0.32);
-        margin-left: 0.02em;
+        margin-left: 0.08em;
     }
     .v-stats.is-dark .v-stat-range { color: rgba(255, 255, 255, 0.40); }
+    /* Units stay in Saira Condensed and shrink with the figures: on the dark
+       band 52px beside a 96px figure, where 60px stood beside 120px. */
     .v-stat-unit {
         font-weight: 800;
-        font-size: 0.62em;
-        margin-left: 0.04em;
+        font-size: 0.53em;
+        margin-left: 0.08em;
         color: var(--v-amber);
     }
-    .v-stats.is-dark .v-stat-unit { font-size: 0.5em; margin-left: 0.06em; }
+    .v-stats.is-dark .v-stat-unit { font-size: 0.43em; margin-left: 0.1em; }
     .v-stat-rule {
         display: none;
     }
@@ -412,7 +423,7 @@
         color: var(--v-ink);
         margin: 0 0 28px;
     }
-    .v-howwe-headline .v-howwe-emph { color: var(--v-amber-deep); }
+    .v-howwe-headline .v-howwe-emph { color: var(--v-amber); }
     .v-howwe-sub {
         font-size: 19px;
         line-height: 1.6;
@@ -434,14 +445,16 @@
         align-items: start;
     }
     .v-howwe-row:last-child { border-bottom: none; }
+    /* Step numbers in the brand face (decision 2026-11-23): 44px where
+       Saira Condensed stood at 49px. */
     .v-howwe-num {
-        font-family: var(--v-display);
-        font-size: clamp(36px, 3.8vw, 56px);
-        font-weight: 900;
+        font-family: var(--v-wordmark);
+        font-size: clamp(33px, 3.44vw, 51px);
+        font-weight: 400;
         line-height: 1;
         color: var(--v-amber);
-        letter-spacing: -0.04em;
-        padding-top: 4px;
+        letter-spacing: 0;
+        padding-top: 2px;
     }
     .v-howwe-title {
         font-family: var(--v-display);
@@ -494,11 +507,8 @@
         display: inline-flex;
         align-items: center;
         gap: 12px;
-        font-family: var(--v-mono);
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 500;
-        letter-spacing: 0.22em;
-        text-transform: uppercase;
         color: var(--v-amber-deep);
         margin-bottom: 36px;
     }
@@ -512,7 +522,7 @@
         color: var(--v-ink);
         margin: 0 auto 36px;
     }
-    .v-sov-headline .v-sov-emph { color: var(--v-amber-deep); font-weight: 500; }
+    .v-sov-headline .v-sov-emph { color: var(--v-amber); font-weight: 500; }
     .v-sov-subline {
         font-family: var(--v-sans);
         font-size: 17px;
@@ -630,11 +640,10 @@
     }
     .v-trust-label {
         text-align: center;
-        font-size: 11.5px;
+        font-size: 15px;
         font-weight: 700;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: var(--v-ink-3);
+        
+        color: var(--v-ink-2);
         margin: 0 0 36px;
     }
     .v-trust-lanes {
@@ -716,11 +725,8 @@
         display: inline-flex;
         align-items: center;
         gap: 12px;
-        font-family: var(--v-mono);
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 500;
-        letter-spacing: 0.22em;
-        text-transform: uppercase;
         color: var(--v-amber);
         margin: 0 0 32px;
     }
@@ -780,11 +786,8 @@
     .v-comp-table thead th {
         text-align: left;
         padding: 22px 26px;
-        font-family: var(--v-mono);
         font-size: 14px;
         font-weight: 700;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
         color: rgba(255, 255, 255, 0.82);
         background: transparent;
         border-bottom: 1px solid var(--v-line-dark);
@@ -792,8 +795,8 @@
     }
     .v-comp-table thead th:first-child {
         min-width: 240px;
-        font-size: 11px;
-        letter-spacing: 0.08em;
+        font-size: 14px;
+        
         color: rgba(255, 255, 255, 0.55);
     }
     .v-comp-col-sub {
@@ -875,9 +878,7 @@
         align-items: center;
         gap: 7px;
         font-weight: 700;
-        font-size: 11px;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
+        font-size: 14px;
         padding: 0;
         line-height: 1;
         margin-bottom: 12px;
@@ -996,17 +997,37 @@
         .v-comp-table tbody tr td:last-child { border-bottom: 0; }
         .v-comp-table tbody td::before {
             display: block;
-            font-family: var(--v-mono);
-            font-size: 10px;
+            font-size: 12px;
             font-weight: 700;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
             color: rgba(255, 255, 255, 0.35);
             margin-bottom: 10px;
         }
         .v-comp-table tbody td:nth-of-type(1)::before { content: "Classical tools (VM · BAS · EASM)"; }
         .v-comp-table tbody td:nth-of-type(2)::before { content: "Pentera"; }
-        .v-comp-table tbody td:nth-of-type(3)::before { content: "VORNAC"; color: var(--v-amber); }
+        /* The name is shown as the logo here too (see .v-wm in src/input.css). */
+        .v-comp-table tbody td:nth-of-type(3)::before {
+            content: "VORNAC";
+            color: var(--v-amber);
+            width: 4.8em;
+            height: 0.69em;
+            width: calc(1cap * 6.9615);
+            height: 1cap;
+            width: calc(round(1cap, 1px) * 6.9615);
+            height: round(1cap, 1px);
+            overflow: hidden;
+            white-space: nowrap;
+            text-indent: 100%;
+            background-color: currentColor;
+            -webkit-mask: url("/logo-vornac-black.svg") left bottom / contain no-repeat;
+            mask: url("/logo-vornac-black.svg") left bottom / contain no-repeat;
+            /* Drawn at the logo's own width on whole pixels, as in .v-wm. */
+            -webkit-mask-size: min(100%, 4.8em) auto;
+            mask-size: min(100%, 4.8em) auto;
+            -webkit-mask-size: min(100%, calc(1cap * 6.9615)) auto;
+            mask-size: min(100%, calc(1cap * 6.9615)) auto;
+            -webkit-mask-size: min(100%, calc(round(1cap, 1px) * 6.9615)) auto;
+            mask-size: min(100%, calc(round(1cap, 1px) * 6.9615)) auto;
+        }
 
         .v-comp-table tbody td.v-comp-col-vornac {
             box-shadow: none;
@@ -1032,11 +1053,8 @@
         display: inline-flex;
         align-items: center;
         gap: 12px;
-        font-family: var(--v-mono);
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 500;
-        letter-spacing: 0.22em;
-        text-transform: uppercase;
         color: var(--v-amber-deep);
         margin: 0 0 36px;
     }
@@ -1101,10 +1119,8 @@
     }
     .pent-contact--final .pent-contact-eyebrow {
         margin-bottom: 32px;
-        font-family: var(--v-mono);
         font-weight: 500;
-        font-size: 12px;
-        letter-spacing: 0.22em;
+        font-size: 14px;
     }
     .pent-contact--final .pent-contact-headline {
         font-family: var(--v-display);
@@ -1118,7 +1134,7 @@
     .pent-contact--final .pent-contact-headline-emph {
         font-family: var(--v-display);
         font-weight: 500;
-        color: var(--v-amber-deep);
+        color: var(--v-amber);
         text-transform: uppercase;
         letter-spacing: -0.02em;
         white-space: nowrap;

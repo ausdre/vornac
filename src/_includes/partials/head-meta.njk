@@ -20,6 +20,16 @@
 {# Atom feed of the German content pages (research notes and Wissen), see src/feed.njk. #}
 <link rel="alternate" type="application/atom+xml" title="VORNAC: Wissen und Research" href="/feed.xml">
 
+{# Markdown twin for AI agents (scripts/markdown-twins.js writes it for every
+   sitemap URL): `markdownTwin` from src.11tydata.js is the page URL plus
+   ".md" (the root: /index.md), null for pages outside the registry (404,
+   thank-you) and for noindex pages (comcenter). #}
+{% if markdownTwin %}<link rel="alternate" type="text/markdown" href="{{ markdownTwin | absoluteUrl(site.domain) }}">{% endif %}
+
+{# Agentic Resource Discovery: manifest of the agent resources on this domain
+   (the agent skills), written after the build by scripts/agent-discovery.js. #}
+<link rel="ard" href="/.well-known/ard.json">
+
 {# hreflang: each page declares its i18nKey, we pull both URLs from the registry. #}
 {% if i18nKey %}
   {% for p in pages %}
@@ -37,9 +47,9 @@
 <meta property="og:title" content="{{ title }}">
 <meta property="og:description" content="{{ description }}">
 <meta property="og:image" content="{{ (ogImage or site.socialPreviewImage) | absoluteUrl(site.domain) }}">
-{% if not ogImage %}<meta property="og:image:width" content="{{ site.socialPreviewWidth }}">
-<meta property="og:image:height" content="{{ site.socialPreviewHeight }}">
-<meta property="og:image:type" content="image/png">
+{% if not ogImage %}<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="VORNAC">{% endif %}
 <meta property="og:locale" content="{{ 'de_DE' if locale == 'de' else 'en_US' }}">
 {# Machine-readable dates for article pages (research notes, later /wissen).

@@ -6,9 +6,13 @@
  *
  * Reviews carry no rating on purpose: the page shows none, and a rating in
  * the markup that readers cannot see would be a policy violation.
+ *
+ * `id` is the anchor of the quote card on the page (#quote-<id>); the logo
+ * cell of the same company links to it and the Review @id uses it.
  */
 module.exports = [
   {
+    id: "mbits",
     author: "Michael Müller",
     jobTitle: { en: "CEO", de: "CEO" },
     company: "mbits GmbH",
@@ -18,6 +22,7 @@ module.exports = [
     }
   },
   {
+    id: "instaffo",
     author: "Nikolai Gulatz",
     jobTitle: { en: "CIO", de: "CIO" },
     company: "Instaffo GmbH",
@@ -27,6 +32,7 @@ module.exports = [
     }
   },
   {
+    id: "ipcrew",
     author: "Bernhard Gauß",
     jobTitle: { en: "Managing Director", de: "Geschäftsführer" },
     company: "IP-Crew GmbH",
@@ -36,6 +42,7 @@ module.exports = [
     }
   },
   {
+    id: "tilko",
     author: "Christopher Wesch",
     jobTitle: { en: "Managing Director", de: "Geschäftsführer" },
     company: "tilko GmbH",

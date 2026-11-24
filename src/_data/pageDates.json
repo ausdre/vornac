@@ -1,19 +1,19 @@
 {
   "/404": {
     "created": "2026-07-31",
-    "modified": "2026-09-05"
+    "modified": "2026-11-19"
   },
   "/about": {
     "created": "2026-05-27",
-    "modified": "2026-09-09"
+    "modified": "2026-11-12"
   },
   "/apply": {
     "created": "2026-05-27",
-    "modified": "2026-07-31"
+    "modified": "2026-11-19"
   },
   "/comcenter": {
     "created": "2026-05-27",
-    "modified": "2026-09-07"
+    "modified": "2026-10-28"
   },
   "/ctem": {
     "created": "2026-09-06",
@@ -21,15 +21,15 @@
   },
   "/customers": {
     "created": "2026-05-27",
-    "modified": "2026-10-02"
+    "modified": "2026-11-20"
   },
   "/de/about": {
     "created": "2026-05-27",
-    "modified": "2026-09-09"
+    "modified": "2026-11-12"
   },
   "/de/apply": {
     "created": "2026-05-27",
-    "modified": "2026-07-31"
+    "modified": "2026-11-19"
   },
   "/de/ctem": {
     "created": "2026-09-06",
@@ -37,11 +37,15 @@
   },
   "/de/customers": {
     "created": "2026-05-27",
-    "modified": "2026-10-02"
+    "modified": "2026-11-20"
   },
   "/de/faq": {
     "created": "2026-07-07",
     "modified": "2026-10-09"
+  },
+  "/de/gewinnspiel2026/teilnahmebedingungen": {
+    "created": "2026-11-23",
+    "modified": "2026-11-23"
   },
   "/de/glossary": {
     "created": "2026-06-02",
@@ -49,7 +53,7 @@
   },
   "/de/index": {
     "created": "2026-05-27",
-    "modified": "2026-10-09"
+    "modified": "2026-11-23"
   },
   "/de/industries-automotive": {
     "created": "2026-05-27",
@@ -77,7 +81,7 @@
   },
   "/de/legal": {
     "created": "2026-05-27",
-    "modified": "2026-09-07"
+    "modified": "2026-11-22"
   },
   "/de/ot-pentesting": {
     "created": "2026-08-17",
@@ -105,39 +109,39 @@
   },
   "/de/thank-you": {
     "created": "2026-07-31",
-    "modified": "2026-09-14"
+    "modified": "2026-11-19"
   },
   "/de/vergleich": {
     "created": "2026-09-09",
-    "modified": "2026-10-09"
+    "modified": "2026-10-28"
   },
   "/de/vergleich/cymulate-alternative": {
     "created": "2026-10-09",
-    "modified": "2026-10-09"
+    "modified": "2026-11-10"
   },
   "/de/vergleich/fleuret-alternative": {
     "created": "2026-10-09",
-    "modified": "2026-10-09"
+    "modified": "2026-11-10"
   },
   "/de/vergleich/horizon3-alternative": {
     "created": "2026-10-09",
-    "modified": "2026-10-09"
+    "modified": "2026-11-10"
   },
   "/de/vergleich/pentera-alternative": {
     "created": "2026-10-09",
-    "modified": "2026-10-09"
+    "modified": "2026-11-10"
   },
   "/de/vergleich/picus-alternative": {
     "created": "2026-10-09",
-    "modified": "2026-10-09"
+    "modified": "2026-11-10"
   },
   "/de/vergleich/xbow-alternative": {
     "created": "2026-10-09",
-    "modified": "2026-10-09"
+    "modified": "2026-11-10"
   },
   "/de/wissen": {
     "created": "2026-09-09",
-    "modified": "2026-09-15"
+    "modified": "2026-10-28"
   },
   "/de/wissen/assumed-breach-simulation": {
     "created": "2026-10-01",
@@ -177,7 +181,7 @@
   },
   "/index": {
     "created": "2026-05-27",
-    "modified": "2026-10-02"
+    "modified": "2026-11-23"
   },
   "/industries-automotive": {
     "created": "2026-05-27",
@@ -205,7 +209,7 @@
   },
   "/legal": {
     "created": "2026-05-27",
-    "modified": "2026-09-07"
+    "modified": "2026-11-22"
   },
   "/ot-pentesting": {
     "created": "2026-08-17",
@@ -233,10 +237,10 @@
   },
   "/sitemap": {
     "created": "2026-05-27",
-    "modified": "2026-10-09"
+    "modified": "2026-10-28"
   },
   "/thank-you": {
     "created": "2026-07-31",
-    "modified": "2026-07-31"
+    "modified": "2026-11-19"
   }
 }

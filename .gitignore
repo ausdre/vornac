@@ -50,3 +50,7 @@ somedata/
 
 # Visual brainstorming companion (superpowers)
 .superpowers/
+
+# Python bytecode
+__pycache__/
+*.pyc
