@@ -1,10 +1,16 @@
 # robots.txt für www.vornac.com
-# Stand: 2026-11-12. Wird per Passthrough-Copy (.eleventy.js) nach dist/ kopiert.
+# Stand: 2026-11-25. Wird per Passthrough-Copy (.eleventy.js) nach dist/ kopiert.
 #
 # Nutzungssignale (Entscheidung 2026-11-12): Suche, KI-Antworten und KI-Training
 # sind erlaubt. Content-Signal folgt contentsignals.org, Content-Usage dem
 # IETF-Entwurf AIPREF (Labels train-ai und search). Beide Zeilen stehen in jeder
 # Gruppe, weil ein Crawler mit eigener Gruppe die Gruppe "*" nicht liest (RFC 9309).
+#
+# KI-Bots (Entscheidung 2026-11-25): Jeder bekannte KI-Crawler, KI-Suchbot, Abruf
+# im Nutzerauftrag und KI-Agent ist namentlich zugelassen. Die Namen stammen aus
+# den Crawler-Dokumentationen der Betreiber und aus öffentlichen
+# Bot-Verzeichnissen, Abruf 2026-11-25. Wer hier nicht steht, fällt unter die
+# Gruppe "*" und ist ebenfalls zugelassen.
 #
 # /en/comcenter ist ein Mock-Dashboard mit fiktiven Zeitstempeln und soll nicht in
 # Suchindizes oder KI-Antworten landen. KI-Crawler und alle nicht genannten Bots
@@ -17,7 +23,9 @@ Content-Usage: train-ai=y, search=y
 Allow: /
 Disallow: /en/comcenter
 
-# KI-Crawler und Antwortmaschinen ausdrücklich zugelassen
+# KI-Crawler, KI-Suche, Abrufe im Nutzerauftrag und KI-Agenten: ausdrücklich zugelassen
+
+# OpenAI
 User-agent: GPTBot
 Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Content-Usage: train-ai=y, search=y
@@ -36,18 +44,19 @@ Content-Usage: train-ai=y, search=y
 Allow: /
 Disallow: /en/comcenter
 
-User-agent: PerplexityBot
+User-agent: OAI-AdsBot
 Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Content-Usage: train-ai=y, search=y
 Allow: /
 Disallow: /en/comcenter
 
-User-agent: Perplexity-User
+User-agent: ChatGPT Agent
 Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Content-Usage: train-ai=y, search=y
 Allow: /
 Disallow: /en/comcenter
 
+# Anthropic
 User-agent: ClaudeBot
 Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Content-Usage: train-ai=y, search=y
@@ -66,30 +75,307 @@ Content-Usage: train-ai=y, search=y
 Allow: /
 Disallow: /en/comcenter
 
+User-agent: Claude-Code
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: anthropic-ai
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Claude-Web
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+# Perplexity
+User-agent: PerplexityBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Perplexity-User
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+# Google (Googlebot steht unten bei den Suchcrawlern)
 User-agent: Google-Extended
 Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Content-Usage: train-ai=y, search=y
 Allow: /
 Disallow: /en/comcenter
 
+User-agent: GoogleOther
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: GoogleOther-Image
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: GoogleOther-Video
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Google-CloudVertexBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: CloudVertexBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Google-Agent
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: GoogleAgent-Mariner
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Gemini-Deep-Research
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Google-GeminiNotebook
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Google-NotebookLM
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Google-Gemini-CLI
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+# Microsoft (Copilot nutzt den Index von Bingbot, siehe Suchcrawler)
+User-agent: AzureAI-SearchBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+# Apple (Applebot steht unten bei den Suchcrawlern)
 User-agent: Applebot-Extended
 Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Content-Usage: train-ai=y, search=y
 Allow: /
 Disallow: /en/comcenter
 
-User-agent: Amazonbot
-Content-Signal: search=yes, ai-input=yes, ai-train=yes
-Content-Usage: train-ai=y, search=y
-Allow: /
-Disallow: /en/comcenter
-
+# Meta
 User-agent: meta-externalagent
 Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Content-Usage: train-ai=y, search=y
 Allow: /
 Disallow: /en/comcenter
 
+User-agent: meta-externalfetcher
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: meta-webindexer
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: FacebookBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+# Amazon
+User-agent: Amazonbot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Amzn-SearchBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Amzn-User
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: NovaAct
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: AmazonBuyForMe
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+# Mistral
+User-agent: MistralAI-User
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: MistralAI-Index
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: MistralAI-Training
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+# xAI
+User-agent: GrokBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: xAI-Grok
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Grok-DeepSearch
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+# DeepSeek
+User-agent: DeepSeekBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+# Cohere
+User-agent: cohere-ai
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: cohere-training-data-crawler
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+# ByteDance
+User-agent: Bytespider
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: TikTokSpider
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Trae
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+# Weitere Modellanbieter
+User-agent: ChatGLM-Spider
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: PanguBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: PetalBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: YandexAdditional
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: YandexAdditionalBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: SBIntuitionsBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: WRTNBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Kangaroo Bot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+# KI-Suche und Antwortdienste
 User-agent: DuckAssistBot
 Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Content-Usage: train-ai=y, search=y
@@ -102,7 +388,358 @@ Content-Usage: train-ai=y, search=y
 Allow: /
 Disallow: /en/comcenter
 
-User-agent: MistralAI-User
+User-agent: kagi-fetcher
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: PhindBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: LinerBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: iAskBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: iaskspider
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Poggio-Citations
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Timpibot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Anomura
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: AddSearchBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: atlassian-bot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Channel3Bot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Cloudflare-AutoRAG
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: ZanistaBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Aranet-SearchBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: QualifiedBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: KlaviyoAIBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: bigsur.ai
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: quillbot.com
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+# Such- und Daten-APIs für KI-Anwendungen
+User-agent: Bravebot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: ExaBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: ExaSearchBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: ExaUser
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: TavilyBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: LinkupBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: ShapBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Shap-User
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: FirecrawlAgent
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Crawl4AI
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: ApifyBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: ApifyWebsiteContentCrawler
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Diffbot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Diffbot-User
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Brightbot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Spider
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+# KI-Agenten und Coding-Agenten
+User-agent: Manus-User
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: TwinAgent
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Devin
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: opencode
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+# Trainingsdaten und Korpora
+User-agent: CCBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: AI2Bot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Ai2Bot-Dolma
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: AI2Bot-DeepResearchEval
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: omgili
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: omgilibot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Webzio-Extended
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: ImagesiftBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: SemrushBot-OCOB
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: img2dataset
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: laion-huggingface-processor
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Cotoyogi
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: ICC-Crawler
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: LCC
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: Datenbank Crawler
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: netEstate Imprint Crawler
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: imageSpider
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: KunatoCrawler
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: TerraCotta
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: VelenPublicWebCrawler
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Usage: train-ai=y, search=y
+Allow: /
+Disallow: /en/comcenter
+
+User-agent: MyCentralAIScraperBot
 Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Content-Usage: train-ai=y, search=y
 Allow: /
