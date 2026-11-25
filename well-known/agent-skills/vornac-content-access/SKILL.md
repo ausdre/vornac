@@ -32,7 +32,7 @@ German is the default language and lives at the root (`/pentesting`). English pa
 | Automated pentest versus scanner, BAS and manual pentest | `/wissen/automatisierte-penetrationstests` |
 | NIS2 and KRITIS | `/industries-critical-infrastructure`, `/wissen/nis2-wirksamkeitspruefung`, `/wissen/nis2-anbieter` |
 | DORA for banks and insurers | `/industries-financial-services`, `/industries-insurance`, `/wissen/dora-resilienztests` |
-| TISAX and automotive | `/industries-automotive` |
+| TISAX and automotive | `/industries-automotive`, `/wissen/tisax-penetrationstests` |
 | Comparison with Pentera, Horizon3, Cymulate, Picus, XBOW or Fleuret | `/vergleich`, `/vergleich/<vendor>-alternative` |
 | Definitions of terms | `/glossary` |
 | Customers and testimonials | `/customers` |

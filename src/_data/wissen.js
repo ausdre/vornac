@@ -13,6 +13,12 @@
  */
 const pages = [
     {
+      key: "wissen-tisax-penetrationstests",
+      tag: "TISAX",
+      title: "TISAX und Penetrationstests: Was der VDA ISA verlangt und was kontinuierliche Sicherheitsvalidierung belegt",
+      blurb: "Die Kontrollfragen 5.2.5, 5.2.6 und 5.3.1 nach Schutzbedarf, die Änderungen durch den VDA ISA2027 für ab dem 1. Januar 2027 bestellte Assessments, die Grenze zwischen Testplattform und Assessment, der Testanbieter als Lieferant nach 6.1.1 und der Bezug zu NIS2."
+    },
+    {
       key: "wissen-ctem-in-der-praxis",
       tag: "CTEM",
       title: "Kontinuierliche Sicherheitsüberprüfung und Compliance für deutsche Unternehmen: CTEM in der Praxis",
