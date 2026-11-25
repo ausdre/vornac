@@ -46,6 +46,7 @@ faq:
 {% endblock %}
 
 {% block content %}
+<article>
 <section class="ws-hero">
     <div class="ws-hero-inner">
         <h1 class="ws-hero-headline">{{ headline }}</h1>
@@ -191,9 +192,10 @@ faq:
         </div>
     </div>
 </section>
+</article>
 
-<section class="ws-cta">
+<aside class="ws-cta">
     <p>Wie ein Testlauf gegen ein echtes Zielsystem als Wirksamkeitsnachweis aussieht, zeigt ein Erstgespräch: 30 Minuten.</p>
     <a href="{{ site.contact.bookDemo }}">Erstgespräch vereinbaren</a>
-</section>
+</aside>
 {% endblock %}

@@ -1,8 +1,12 @@
 {# "Weitere Vergleiche": links to the other /vergleich pages, from
-   src/_data/wissen.js (tag "Vergleich"), the current page excluded. #}
+   src/_data/wissen.js (tag "Vergleich"), the current page excluded. Wrapped
+   in an <aside>: related links, not part of the article copy. The wrapper
+   carries no styles; the margins of the heading and the list collapse
+   through it. #}
 {% set others = [] %}
 {% for p in wissen.comparisons %}{% if p.key != i18nKey %}{% set others = (others.push(p), others) %}{% endif %}{% endfor %}
 {% if others.length %}
+<aside>
 <h2>Weitere Vergleiche</h2>
 <ul class="ws-related">
     {% for p in others %}
@@ -10,4 +14,5 @@
     {% endfor %}
     <li><a href="{{ pageUrls.vergleich }}">Alle Vergleiche</a></li>
 </ul>
+</aside>
 {% endif %}

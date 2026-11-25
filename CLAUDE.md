@@ -39,6 +39,7 @@
 - Zahlen nur mit Quelle. Entität immer "VORNAC GmbH, Heidelberg". Wettbewerber werden genannt, wo die Frage es verlangt.
 - Keine Gedankenstriche (kein Halbgeviertstrich, kein Geviertstrich; Bindestriche in Komposita sind in Ordnung), keine Marketing-Adjektive in Überschriften, kein KI-Duktus (keine Dreierketten, keine Floskeleinleitungen). Vorlagen für JSON-LD: `docs/superpowers/specs/ki-sichtbarkeit-schema/`.
 - Neue Wissen-Seiten in `src/_data/wissen.js` eintragen: die Liste speist die Indexseite `/wissen` und den Atom-Feed `/feed.xml` (`src/_data/feed.js`, `src/feed.njk`; Research-Notizen kommen automatisch dazu). Der Feed liest wie die Sitemap nur Daten aus `dates.js`.
+- Gerüst jeder Wissen- und Vergleichsseite (Peec-Site-Audit, `semantic_html`): ein `<article>` umschließt `ws-hero` und `ws-body`, von der Überschrift bis zu den Quellen. Was nicht zum Text gehört, steht in einem `<aside>`: der Schluss-CTA als `<aside class="ws-cta">` nach dem `</article>`, der CTA unter dem Lead (`vergleich-cta.njk`) und "Weitere Vergleiche" (`vergleich-related.njk`) an ihrer Stelle im Lesefluss. So erkennt eine Engine, die die Seite zitiert, wo der Text beginnt und endet, und zieht keinen Werbetext mit. Die Wrapper tragen keine Styles; neue Seiten übernehmen das Gerüst unverändert.
 
 ## Agent-Discovery (seit 2026-11-12, Peec Agent Readiness Level 4)
 

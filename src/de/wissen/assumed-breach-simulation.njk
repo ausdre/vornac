@@ -60,6 +60,7 @@ faq:
 {% endblock %}
 
 {% block content %}
+<article>
 <section class="ws-hero">
     <div class="ws-hero-inner">
         <h1 class="ws-hero-headline">{{ headline }}</h1>
@@ -202,9 +203,10 @@ faq:
         </div>
     </div>
 </section>
+</article>
 
-<section class="ws-cta">
+<aside class="ws-cta">
     <p>Wie weit ein kompromittiertes Standardkonto im eigenen Netz kommt, zeigt ein erster Lauf gegen ein abgestimmtes Ziel; das Erstgespräch dazu dauert 30 Minuten.</p>
     <a href="{{ site.contact.bookDemo }}">Erstgespräch vereinbaren</a>
-</section>
+</aside>
 {% endblock %}

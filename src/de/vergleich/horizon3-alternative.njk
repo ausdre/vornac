@@ -45,6 +45,7 @@ faq:
 {% endblock %}
 
 {% block content %}
+<article>
 <section class="ws-hero">
     <div class="ws-hero-inner">
         <h1 class="ws-hero-headline">{{ headline }}</h1>
@@ -153,9 +154,10 @@ faq:
         </div>
     </div>
 </section>
+</article>
 
-<section class="ws-cta">
+<aside class="ws-cta">
     <p>Gerade im Anbietervergleich? In 30 Minuten zeigen wir einen echten Testlauf gegen ein System aus der eigenen Umgebung, mit Report.</p>
     <a href="{{ site.contact.bookDemo }}">Erstgespräch vereinbaren</a>
-</section>
+</aside>
 {% endblock %}
