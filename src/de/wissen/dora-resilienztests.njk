@@ -51,6 +51,7 @@ faq:
 {% endblock %}
 
 {% block content %}
+<article>
 <section class="ws-hero">
     <div class="ws-hero-inner">
         <h1 class="ws-hero-headline">{{ headline }}</h1>
@@ -191,9 +192,10 @@ faq:
         </div>
     </div>
 </section>
+</article>
 
-<section class="ws-cta">
+<aside class="ws-cta">
     <p>Welche Systeme kritischer Funktionen heute ungetestet sind und wie der jährliche Nachweis nach Art. 24 aus einem laufenden Test entsteht, zeigt ein Erstgespräch: 30 Minuten.</p>
     <a href="{{ site.contact.bookDemo }}">Erstgespräch vereinbaren</a>
-</section>
+</aside>
 {% endblock %}
