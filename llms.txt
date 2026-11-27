@@ -24,6 +24,7 @@ Maschinenlesbar: Jede Seite liegt als Markdown unter ihrer URL mit der Endung .m
 - [Kunden](https://www.vornac.com/customers): Kundenliste (Carl Zeiss, Penny/REWE Group, ProMinent, Pfitzenmeier, RefundRebel, Knooing, otris, RealTyme, Ther.app, Inventissimo, mbits, Instaffo, IP-Crew, tilko, Hochwarth IT) und vier Kundenstimmen mit Name und Rolle
 - [Über uns](https://www.vornac.com/about): Gründer, Standort Heidelberg, Auszeichnungen
 - [Presse](https://www.vornac.com/presse): Pressekontakt, Auszeichnungen, Pressespiegel mit Berichten und Fachbeiträgen, Kurzprofil und Fakten zum Zitieren, Logos und Gründerfoto zum Download
+- [Schwachstelle melden](https://www.vornac.com/security): Meldeweg für Sicherheitslücken in Produkten und Diensten von VORNAC, Kontakt security@vornac.com, Zusagen von VORNAC und Regeln für die Offenlegung
 
 ## Regelwerke
 
@@ -58,6 +59,7 @@ Maschinenlesbar: Jede Seite liegt als Markdown unter ihrer URL mit der Endung .m
 - [FAQ](https://www.vornac.com/en/faq)
 - [Press](https://www.vornac.com/en/press)
 - [Glossary](https://www.vornac.com/en/glossary)
+- [Report a vulnerability](https://www.vornac.com/en/security)
 
 ## Für Agenten
 

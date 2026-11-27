@@ -1,0 +1,74 @@
+---
+title: "Report a vulnerability · VORNAC"
+description: "Report a security vulnerability in a VORNAC product or service: contact, what to include, what VORNAC commits to and the rules for disclosure."
+i18nKey: security
+ogType: website
+---
+{# Report a vulnerability: how to report security vulnerabilities in VORNAC
+   products and services.
+
+   The text follows the Drive document "Website Schwachstelle melden: Texte
+   und Aufgaben" (as of 24 November 2026) word for word. Change it only
+   together with the document; the German version is src/de/security.njk.
+
+   well-known/security.txt names this page as a Policy. If the path changes,
+   change the file as well.
+
+   `data-no-crosslink` on the text block keeps the automatic glossary links
+   out of the policy text. #}
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+{% include "partials/prose-styles.njk" %}
+{% set schemaType = "WebPage" %}{% set schemaAboutOrg = true %}
+{% include "partials/page-schema.njk" %}
+{% endblock %}
+
+{% block content %}
+<main class="relative z-10 py-16 lg:py-24">
+    <div class="mx-auto max-w-3xl px-4 prose" data-no-crosslink>
+
+        <h1 class="text-4xl lg:text-5xl mb-10 lg:mb-14">Report a vulnerability</h1>
+
+        <p class="text-lg">Security is our core business, and that includes our own products. If you have found a potential security vulnerability in a VORNAC product or service, we would like to hear from you.</p>
+
+        <div class="mt-12 space-y-12">
+
+            <section id="report" class="space-y-4">
+                <h2 class="text-2xl lg:text-3xl">How to report a vulnerability</h2>
+                <p>Email <strong><a href="mailto:security@vornac.com">security@vornac.com</a></strong> and describe as precisely as possible:</p>
+                <ul class="list-disc space-y-3 pl-6">
+                    <li>which product or service is affected, including the version if known</li>
+                    <li>what you found and what impact the vulnerability may have</li>
+                    <li>how we can reproduce the issue (steps, screenshots, proof of concept)</li>
+                    <li>how we can reach you if we have questions</li>
+                </ul>
+            </section>
+
+            <section id="commitments" class="space-y-4">
+                <h2 class="text-2xl lg:text-3xl">What you can expect from us</h2>
+                <ul class="list-disc space-y-3 pl-6">
+                    <li>We confirm receipt of your report within 2 business days.</li>
+                    <li>We review every report and keep you informed of our progress.</li>
+                    <li>We fix confirmed vulnerabilities as quickly as possible and inform affected customers.</li>
+                    <li>If you wish, we will credit you as the finder once the issue has been fixed.</li>
+                    <li>We will not take legal action against anyone who reports a vulnerability in good faith and in line with these rules.</li>
+                </ul>
+            </section>
+
+            <section id="rules" class="space-y-4">
+                <h2 class="text-2xl lg:text-3xl">What we ask of you</h2>
+                <ul class="list-disc space-y-3 pl-6">
+                    <li>Do not publish details of the vulnerability until we have fixed it, or agree on a date with us.</li>
+                    <li>Do not access, modify or delete other people's data, and do not disrupt our customers' systems.</li>
+                    <li>Only test as far as necessary to demonstrate the vulnerability.</li>
+                </ul>
+            </section>
+
+        </div>
+
+        <p class="mt-12">Thank you for helping make VORNAC and our customers more secure.</p>
+
+    </div>
+</main>
+{% endblock %}

@@ -37,6 +37,7 @@ German is the default language and lives at the root (`/pentesting`). English pa
 | Definitions of terms | `/glossary` |
 | Customers and testimonials | `/customers` |
 | Company facts, founders, press contact | `/about`, `/presse` |
+| Reporting a security vulnerability in a VORNAC product or service | `/security` |
 | Reference notes on offensive security | `/research` |
 
 The table lists entry points. For anything else, start from `llms.txt`.
