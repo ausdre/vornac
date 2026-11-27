@@ -1,15 +1,18 @@
 ---
 title: "Report a vulnerability · VORNAC"
-description: "Report a security vulnerability in a VORNAC product or service: contact, what to include, what VORNAC commits to and the rules for disclosure."
+description: "Report a vulnerability in a VORNAC product or service: contact, what a report should contain, what VORNAC commits to and the rules of coordinated disclosure."
 i18nKey: security
 ogType: website
 ---
-{# Report a vulnerability: how to report security vulnerabilities in VORNAC
-   products and services.
+{# Report a vulnerability: how to report vulnerabilities in VORNAC products
+   and services.
 
-   The text follows the Drive document "Website Schwachstelle melden: Texte
-   und Aufgaben" (as of 24 November 2026) word for word. Change it only
-   together with the document; the German version is src/de/security.njk.
+   Content and commitments come from the Drive document "Website
+   Schwachstelle melden: Texte und Aufgaben" (as of 24 November 2026). The
+   wording was set by André on 2026-11-27: the register of the TLPT
+   statements, written for information security officers and security
+   leads. Do not change commitments or rules without asking; the German
+   version is src/de/security.njk.
 
    well-known/security.txt names this page as a Policy. If the path changes,
    change the file as well.
@@ -30,44 +33,44 @@ ogType: website
 
         <h1 class="text-4xl lg:text-5xl mb-10 lg:mb-14">Report a vulnerability</h1>
 
-        <p class="text-lg">Security is our core business, and that includes our own products. If you have found a potential security vulnerability in a VORNAC product or service, we would like to hear from you.</p>
+        <p class="text-lg">Report vulnerabilities in VORNAC products and services by email to <a href="mailto:security@vornac.com">security@vornac.com</a>. Coordinated vulnerability disclosure applies: details of a vulnerability are published only once it has been fixed or on a date agreed with VORNAC. VORNAC acknowledges every report within two business days.</p>
 
         <div class="mt-12 space-y-12">
 
             <section id="report" class="space-y-4">
-                <h2 class="text-2xl lg:text-3xl">How to report a vulnerability</h2>
-                <p>Email <strong><a href="mailto:security@vornac.com">security@vornac.com</a></strong> and describe as precisely as possible:</p>
+                <h2 class="text-2xl lg:text-3xl">What a report should contain</h2>
+                <p>A report should contain:</p>
                 <ul class="list-disc space-y-3 pl-6">
-                    <li>which product or service is affected, including the version if known</li>
-                    <li>what you found and what impact the vulnerability may have</li>
-                    <li>how we can reproduce the issue (steps, screenshots, proof of concept)</li>
-                    <li>how we can reach you if we have questions</li>
+                    <li>the affected product or service, including the version if known</li>
+                    <li>a description of the vulnerability and its potential impact</li>
+                    <li>the steps to reproduce it, where possible with screenshots or a proof of concept</li>
+                    <li>a contact for follow-up questions</li>
                 </ul>
             </section>
 
             <section id="commitments" class="space-y-4">
-                <h2 class="text-2xl lg:text-3xl">What you can expect from us</h2>
+                <h2 class="text-2xl lg:text-3xl">What VORNAC commits to</h2>
                 <ul class="list-disc space-y-3 pl-6">
-                    <li>We confirm receipt of your report within 2 business days.</li>
-                    <li>We review every report and keep you informed of our progress.</li>
-                    <li>We fix confirmed vulnerabilities as quickly as possible and inform affected customers.</li>
-                    <li>If you wish, we will credit you as the finder once the issue has been fixed.</li>
-                    <li>We will not take legal action against anyone who reports a vulnerability in good faith and in line with these rules.</li>
+                    <li>acknowledgement of receipt within two business days</li>
+                    <li>review of every report, with updates on progress</li>
+                    <li>a fix for confirmed vulnerabilities as quickly as possible, and notice to affected customers</li>
+                    <li>on request, credit as the finder of the vulnerability once it has been fixed</li>
+                    <li>no legal action against anyone who reports a vulnerability in good faith and in line with the rules on this page</li>
                 </ul>
             </section>
 
             <section id="rules" class="space-y-4">
-                <h2 class="text-2xl lg:text-3xl">What we ask of you</h2>
+                <h2 class="text-2xl lg:text-3xl">Rules for reporters</h2>
                 <ul class="list-disc space-y-3 pl-6">
-                    <li>Do not publish details of the vulnerability until we have fixed it, or agree on a date with us.</li>
-                    <li>Do not access, modify or delete other people's data, and do not disrupt our customers' systems.</li>
-                    <li>Only test as far as necessary to demonstrate the vulnerability.</li>
+                    <li>Do not publish details of the vulnerability before it has been fixed, unless a date has been agreed with VORNAC.</li>
+                    <li>Do not access, modify or delete other people's data, and do not disrupt customer systems.</li>
+                    <li>Test only as far as necessary to demonstrate the vulnerability.</li>
                 </ul>
             </section>
 
         </div>
 
-        <p class="mt-12">Thank you for helping make VORNAC and our customers more secure.</p>
+        <p class="mt-12">The contact address is also published in machine-readable form in <a href="/.well-known/security.txt">security.txt</a> under RFC 9116.</p>
 
     </div>
 </main>
