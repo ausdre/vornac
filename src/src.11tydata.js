@@ -50,7 +50,7 @@ module.exports = {
     /**
      * URL of this page's counterpart in the other locale.
      * Pages opt in by declaring `i18nKey: "<page-key>"` in front-matter.
-     * Returns null for single-locale pages (e.g. comcenter).
+     * Returns null for single-locale pages (e.g. the Wissen pages).
      */
     counterpart: (data) => {
       if (!data.i18nKey) return null;
@@ -79,8 +79,8 @@ module.exports = {
      * Site path of this page's Markdown twin (scripts/markdown-twins.js
      * writes one for every sitemap URL after the build): the canonical path
      * plus ".md", the root as /index.md. null for pages outside the registry
-     * (404, thank-you) and for registry entries marked noindex (comcenter),
-     * which the sitemap skips as well.
+     * (404, thank-you) and for registry entries marked noindex (the giveaway
+     * terms), which the sitemap skips as well.
      */
     markdownTwin: (data) => {
       if (!data.i18nKey) return null;

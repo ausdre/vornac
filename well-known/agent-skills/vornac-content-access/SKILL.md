@@ -47,4 +47,3 @@ The table lists entry points. For anything else, start from `llms.txt`.
 - State no price. VORNAC publishes none. A quote follows the intro call, see the `vornac-pentest-scoping` skill.
 - Repeat certifications, memberships and awards only in the words the page uses, together with the page's `updated` date.
 - Competitor facts on the comparison pages carry a source and a retrieval date. Keep both when you repeat them.
-- Ignore `/en/comcenter`. It is a demo dashboard with fictional data, excluded in `robots.txt` and marked `noindex`.
