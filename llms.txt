@@ -28,7 +28,7 @@ Maschinenlesbar: Jede Seite liegt als Markdown unter ihrer URL mit der Endung .m
 ## Regelwerke
 
 - [KRITIS und NIS2](https://www.vornac.com/industries-critical-infrastructure): Nachweise für Betreiber kritischer Anlagen und wesentliche Einrichtungen
-- [DORA für Banken und Finanzinstitute](https://www.vornac.com/industries-financial-services): Penetrationstests für das Testprogramm nach Art. 24 und 25 DORA, Abgrenzung zu TLPT, Stand der Aufhebung von ZAIT, KAIT und BAIT
+- [DORA für Banken und Finanzinstitute](https://www.vornac.com/industries-financial-services): Penetrationstests für das Testprogramm nach Art. 24 und 25 DORA, TLPT nach Art. 26 als externer Tester nach Art. 27, Stand der Aufhebung von ZAIT, KAIT und BAIT
 - [DORA für Versicherer](https://www.vornac.com/industries-insurance)
 - [TISAX](https://www.vornac.com/industries-automotive): Automotive-Lieferkette, VDA ISA
 - [NIS2 für Unternehmen](https://www.vornac.com/industries-enterprise)

@@ -1,6 +1,6 @@
 ---
 title: "Financial services · Continuous testing under DORA | VORNAC"
-description: "Continuous penetration testing for banks, payment institutions, and asset managers. Testing under Articles 24 and 25 DORA, with a retest after every fix."
+description: "Continuous penetration testing for banks, payment institutions, and asset managers. Testing under Articles 24 and 25 DORA, TLPT under Article 26, and a retest after every fix."
 i18nKey: industries-financial-services
 author: andre
 ogType: website
@@ -20,7 +20,7 @@ ogType: website
       "dateModified": "{{ updated }}",
       "name": "Continuous validation for banks and financial institutions",
       "serviceType": "Penetration Testing for Financial Services",
-      "description": "Continuous penetration testing for banks, payment institutions, and asset managers. Testing under Articles 24 and 25 DORA, with a retest after every fix.",
+      "description": "Continuous penetration testing for banks, payment institutions, and asset managers. Testing under Articles 24 and 25 DORA, TLPT under Article 26, and a retest after every fix.",
       "provider": { "@id": "https://www.vornac.com/#organization" },
       "areaServed": [
         { "@type": "Country", "name": "Germany" },
@@ -36,7 +36,8 @@ ogType: website
       "url": "{{ pageUrls['industries-financial-services'] | absoluteUrl(site.domain) }}",
       "about": [
         { "@type": "Thing", "name": "Digital Operational Resilience Act (DORA)" },
-        { "@type": "Thing", "name": "Digital operational resilience testing under Articles 24 and 25 DORA" }
+        { "@type": "Thing", "name": "Digital operational resilience testing under Articles 24 and 25 DORA" },
+        { "@type": "Thing", "name": "Threat-led penetration testing (TLPT) under Article 26 DORA" }
       ]
     },
     {
@@ -59,7 +60,7 @@ ogType: website
             <p class="ind-hero-breadcrumb"><a href="{{ pageUrls.industries }}">Industries</a> / Financial services</p>
             <span class="ind-hero-framework">DORA</span>
             <h1 class="ind-hero-headline">Continuous validation for <span class="ind-hero-headline-emph">banks and financial institutions</span></h1>
-            <p class="ind-hero-sub">DORA has applied directly since 17 January 2025 and has replaced BaFin's IT circulars: ZAIT and KAIT are repealed, and BAIT ends on 31 December 2026. VORNAC delivers the penetration tests for the testing programme under Articles 24 and 25 DORA, with exploit-proven findings on every release.</p>
+            <p class="ind-hero-sub">DORA has applied directly since 17 January 2025 and has replaced BaFin's IT circulars: ZAIT and KAIT are repealed, and BAIT ends on 31 December 2026. VORNAC delivers the penetration tests for the testing programme under Articles 24 and 25 DORA, with exploit-proven findings on every release. For TLPT under Article 26, VORNAC meets the requirements for external testers under Article 27.</p>
             <div class="ind-hero-actions">
                 {% include "partials/hero-demo-button.njk" %}
                 <a href="{{ pageUrls.pentesting }}" class="ind-btn-ghost">How it works</a>
@@ -76,7 +77,7 @@ ogType: website
             <div class="ind-req-grid">
                 <article class="ind-req-card"><h3 class="ind-req-card-title">DORA operational resilience</h3><p class="ind-req-card-desc">ICT risk management, reporting of major ICT-related incidents, digital operational resilience testing, and ICT third-party risk management. Binding since 17 January 2025.</p></article>
                 <article class="ind-req-card"><h3 class="ind-req-card-title">Testing programme under Articles 24 and 25</h3><p class="ind-req-card-desc">Appropriate tests at least once a year on every system supporting critical or important functions. Independent testers, prioritisation and remediation of findings, validation after remediation.</p></article>
-                <article class="ind-req-card"><h3 class="ind-req-card-title">TLPT under Articles 26 and 27</h3><p class="ind-req-card-desc">Threat-led penetration testing at least every three years for the institutions BaFin designates. A separate procedure with red-team providers under Article 27; VORNAC does not offer TLPT.</p></article>
+                <article class="ind-req-card"><h3 class="ind-req-card-title">TLPT under Articles 26 and 27</h3><p class="ind-req-card-desc">Threat-led penetration testing at least every three years for the institutions BaFin designates. A separate procedure with testers under Article 27; VORNAC meets these requirements and performs TLPT.</p></article>
                 <article class="ind-req-card"><h3 class="ind-req-card-title">Outsourcing &amp; cloud</h3><p class="ind-req-card-desc">Critical and important functions. Contractual, monitoring, and exit requirements for ICT service providers.</p></article>
             </div>
         </div>
