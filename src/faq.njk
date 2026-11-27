@@ -1,6 +1,6 @@
 ---
 title: "FAQ · DORA, NIS2, KRITIS, TISAX and continuous pentesting | VORNAC"
-description: "Answers to the questions CISOs and compliance leads ask before running continuous pentesting under DORA, NIS2, KRITIS, BaFin VAIT/BAIT, and TISAX."
+description: "Answers to the questions CISOs and compliance leads ask before running continuous pentesting under DORA, NIS2, KRITIS, and TISAX."
 i18nKey: faq
 author: andre
 ogType: website
@@ -43,7 +43,7 @@ ogType: website
       "name": "What reports does VORNAC deliver for audits?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Every test cycle produces a single audit-ready report that is admissible under all relevant European frameworks: TISAX, KRITIS, NIS2, DORA, BaFin VAIT/BAIT, ISO/IEC 27001. No separate per-framework export, no re-formatting. The report goes straight into the audit binder."
+        "text": "Every test cycle produces one audit-ready report that maps the findings to NIS2, DORA, KRITIS, TISAX and ISO/IEC 27001. No separate per-framework export, no re-formatting. The report goes straight into the audit binder."
       }
     },
     {
@@ -80,10 +80,10 @@ ogType: website
     },
     {
       "@type": "Question",
-      "name": "What are BaFin VAIT and BAIT?",
+      "name": "What are VAIT and BAIT, and do they still apply?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "VAIT (Versicherungsaufsichtliche Anforderungen an die IT) and BAIT (Bankaufsichtliche Anforderungen an die IT) are the German Federal Financial Supervisory Authority's (BaFin) circulars that translate broader IT-governance principles into concrete supervisory expectations for insurers (VAIT) and banks/financial-services institutions (BAIT). They cover IT strategy, IT governance, information-risk management, identity and access management, IT projects, IT operations, outsourcing, and IT continuity. Since DORA's entry into force, VAIT/BAIT continue to apply as the German national specification layered on top of the EU framework."
+        "text": "VAIT (Versicherungsaufsichtliche Anforderungen an die IT) and BAIT (Bankaufsichtliche Anforderungen an die IT) are the German Federal Financial Supervisory Authority's (BaFin) circulars that translate broader IT-governance principles into concrete supervisory expectations for insurers (VAIT) and banks/financial-services institutions (BAIT). They cover IT strategy, IT governance, information-risk management, identity and access management, IT projects, IT operations, outsourcing, and IT continuity. BaFin repealed VAIT, together with KAIT and ZAIT, at the end of 16 January 2025 because DORA has covered these requirements since 17 January 2025. BAIT has since applied only to institutions outside the scope of DORA and will be repealed in full at the end of 31 December 2026."
       }
     },
     {
@@ -91,7 +91,7 @@ ogType: website
       "name": "What is TLPT and when is it required?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Threat-Led Penetration Testing (TLPT) is an intelligence-driven red-team exercise on a financial entity's live production systems, scoped against realistic adversary tradecraft. Under DORA and the TIBER-EU framework, TLPT is mandatory for designated financial entities (typically banks, insurers and market-infrastructure providers above a supervisory materiality threshold) at least every three years. Tests must be conducted by independent, accredited testers; the scope, threat intelligence, and results are reviewed by the competent authority (in Germany: BaFin / Deutsche Bundesbank)."
+        "text": "TLPT (threat-led penetration testing) is a red-team test against a financial entity's live production systems that mimics the tactics, techniques and procedures of real-life threat actors. Under Article 26 DORA it is mandatory at least every three years, but only for the financial entities BaFin identifies under the criteria of Delegated Regulation (EU) 2025/1190. BaFin is the TLPT authority, and Deutsche Bundesbank supports the tests operationally on the basis of the TIBER-DE processes; the scope, the threat intelligence report and the red team test plan need the authority's approval. VORNAC meets the requirements for external testers under Article 27 DORA and Article 7 of Delegated Regulation (EU) 2025/1190 and provides the red team in a TLPT; the financial entity's control team receives the supporting evidence during provider selection. Continuous penetration testing is part of the testing programme under Articles 24 and 25 DORA, and its findings help prepare for a TLPT."
       }
     },
     {
@@ -150,7 +150,7 @@ ogType: website
 
         <details class="faq-item" id="audit-reports">
             <summary>What reports does VORNAC deliver for audits?</summary>
-            <div class="faq-item-body">Every test cycle produces a single audit-ready report that is admissible under all relevant European frameworks: TISAX, KRITIS, NIS2, DORA, BaFin VAIT/BAIT, ISO/IEC 27001. No separate per-framework export, no re-formatting. The report goes straight into the audit binder.</div>
+            <div class="faq-item-body">Every test cycle produces one audit-ready report that maps the findings to NIS2, DORA, KRITIS, TISAX and ISO/IEC 27001. No separate per-framework export, no re-formatting. The report goes straight into the audit binder.</div>
         </details>
 
         <details class="faq-item" id="nis2">
@@ -174,13 +174,13 @@ ogType: website
         </details>
 
         <details class="faq-item" id="vait-bait">
-            <summary>What are BaFin VAIT and BAIT?</summary>
-            <div class="faq-item-body">VAIT (Versicherungsaufsichtliche Anforderungen an die IT) and BAIT (Bankaufsichtliche Anforderungen an die IT) are the German Federal Financial Supervisory Authority's (BaFin) circulars that translate broader IT-governance principles into concrete supervisory expectations for insurers (VAIT) and banks/financial-services institutions (BAIT). They cover IT strategy, IT governance, information-risk management, identity and access management, IT projects, IT operations, outsourcing, and IT continuity. Since DORA's entry into force, VAIT/BAIT continue to apply as the German national specification layered on top of the EU framework.</div>
+            <summary>What are VAIT and BAIT, and do they still apply?</summary>
+            <div class="faq-item-body">VAIT (Versicherungsaufsichtliche Anforderungen an die IT) and BAIT (Bankaufsichtliche Anforderungen an die IT) are the German Federal Financial Supervisory Authority's (BaFin) circulars that translate broader IT-governance principles into concrete supervisory expectations for insurers (VAIT) and banks/financial-services institutions (BAIT). They cover IT strategy, IT governance, information-risk management, identity and access management, IT projects, IT operations, outsourcing, and IT continuity. BaFin repealed VAIT, together with KAIT and ZAIT, at the end of 16 January 2025 because DORA has covered these requirements since 17 January 2025. BAIT has since applied only to institutions outside the scope of DORA and will be repealed in full at the end of 31 December 2026.</div>
         </details>
 
         <details class="faq-item" id="tlpt">
             <summary>What is TLPT and when is it required?</summary>
-            <div class="faq-item-body">Threat-Led Penetration Testing (TLPT) is an intelligence-driven red-team exercise on a financial entity's live production systems, scoped against realistic adversary tradecraft. Under DORA and the TIBER-EU framework, TLPT is mandatory for designated financial entities (typically banks, insurers and market-infrastructure providers above a supervisory materiality threshold) at least every three years. Tests must be conducted by independent, accredited testers; the scope, threat intelligence, and results are reviewed by the competent authority (in Germany: BaFin / Deutsche Bundesbank).</div>
+            <div class="faq-item-body">TLPT (threat-led penetration testing) is a red-team test against a financial entity's live production systems that mimics the tactics, techniques and procedures of real-life threat actors. Under Article 26 DORA it is mandatory at least every three years, but only for the financial entities BaFin identifies under the criteria of Delegated Regulation (EU) 2025/1190. BaFin is the TLPT authority, and Deutsche Bundesbank supports the tests operationally on the basis of the TIBER-DE processes; the scope, the threat intelligence report and the red team test plan need the authority's approval. VORNAC meets the requirements for external testers under Article 27 DORA and Article 7 of Delegated Regulation (EU) 2025/1190 and provides the red team in a TLPT; the financial entity's control team receives the supporting evidence during provider selection. Continuous penetration testing is part of the testing programme under Articles 24 and 25 DORA, and its findings help prepare for a TLPT.</div>
         </details>
 
         <details class="faq-item" id="cost">

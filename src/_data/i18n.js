@@ -52,7 +52,7 @@ module.exports = {
         tag rendered as a small caption next to the link, mirroring /industries. */
     industriesNav: [
       { key: "industries-insurance",               label: "Insurance",              fw: "DORA" },
-      { key: "industries-financial-services",      label: "Financial services",     fw: "DORA · VAIT · BAIT" },
+      { key: "industries-financial-services",      label: "Financial services",     fw: "DORA" },
       { key: "industries-critical-infrastructure", label: "Critical infrastructure", fw: "KRITIS · NIS2" },
       { key: "industries-automotive",              label: "Automotive",             fw: "TISAX" },
       { key: "industries-enterprise",              label: "Enterprise",             fw: "NIS2" }
@@ -148,7 +148,7 @@ module.exports = {
     navResearchHome: "Research-Übersicht",
     industriesNav: [
       { key: "industries-insurance",               label: "Versicherung",            fw: "DORA" },
-      { key: "industries-financial-services",      label: "Finanzdienstleistungen",  fw: "DORA · VAIT · BAIT" },
+      { key: "industries-financial-services",      label: "Finanzdienstleistungen",  fw: "DORA" },
       { key: "industries-critical-infrastructure", label: "Kritische Infrastruktur", fw: "KRITIS · NIS2" },
       { key: "industries-automotive",              label: "Automotive",              fw: "TISAX" },
       { key: "industries-enterprise",              label: "Enterprise",              fw: "NIS2" }

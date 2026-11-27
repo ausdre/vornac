@@ -36,7 +36,8 @@ ogType: website
       "url": "{{ pageUrls['industries-insurance'] | absoluteUrl(site.domain) }}",
       "about": [
         { "@type": "Thing", "name": "Digital Operational Resilience Act (DORA)" },
-        { "@type": "Thing", "name": "Threat-Led Penetration Testing (TLPT)" },
+        { "@type": "Thing", "name": "Digital operational resilience testing under Articles 24 and 25 DORA" },
+        { "@type": "Thing", "name": "Threat-led penetration testing (TLPT) under Article 26 DORA" },
         { "@type": "Thing", "name": "ICT risk management" }
       ]
     },
@@ -86,7 +87,7 @@ ogType: website
                 </article>
                 <article class="ind-req-card">
                     <h3 class="ind-req-card-title">Digital operational resilience testing</h3>
-                    <p class="ind-req-card-desc">Threat-led penetration testing (TLPT) and resilience testing on critical ICT systems, with results that supervisors can verify.</p>
+                    <p class="ind-req-card-desc">Appropriate tests at least once a year on every system supporting critical or important functions (Articles 24 and 25). For insurers designated by BaFin, TLPT at least every three years in addition (Article 26).</p>
                 </article>
                 <article class="ind-req-card">
                     <h3 class="ind-req-card-title">Third-party ICT risk</h3>
@@ -126,8 +127,8 @@ ogType: website
                 <li class="ind-help-item">
                     <span class="ind-help-num">2</span>
                     <div>
-                        <h3 class="ind-help-title">TLPT-ready evidence</h3>
-                        <p class="ind-help-desc">Real attack chains across your live environment, not theoretical CVE lists. Proof-of-concept for every finding, cryptographically signed.</p>
+                        <h3 class="ind-help-title">Red team for TLPT</h3>
+                        <p class="ind-help-desc">VORNAC meets the requirements for external testers under Article 27 DORA and provides the red team in a TLPT. Continuous testing shows beforehand which attack chains work in your live environment, with a proof-of-concept for every finding, cryptographically signed.</p>
                     </div>
                 </li>
                 <li class="ind-help-item">
@@ -145,7 +146,7 @@ ogType: website
         <div class="ind-related-inner">
             <p class="ind-related-title">Also relevant</p>
             <div class="ind-related-links">
-                <a href="{{ pageUrls['industries-financial-services'] }}" class="ind-related-link">Financial services (DORA · VAIT)</a>
+                <a href="{{ pageUrls['industries-financial-services'] }}" class="ind-related-link">Financial services (DORA)</a>
                 <a href="{{ pageUrls['industries-enterprise'] }}" class="ind-related-link">Enterprise (NIS2)</a>
                 <a href="{{ pageUrls.pentesting }}" class="ind-related-link">VORNAC Pentesting</a>
             </div>

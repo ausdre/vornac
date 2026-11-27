@@ -1,6 +1,6 @@
 # VORNAC
 
-> VORNAC GmbH (Heidelberg) betreibt eine Plattform für kontinuierliche, autonome Penetrationstests (Automated Security Validation, Pentest as a Service) für regulierte Unternehmen in Deutschland. Die Tests laufen in produktiven Umgebungen mit realen Exploits; jeder Befund kommt mit reproduzierbarem Proof-of-Concept, Business-Impact und Maßnahmenplan. Betrieb und Datenhaltung ausschließlich in deutschen Rechenzentren deutscher Betreiber, kein US-Cloud-Anbieter, kein CLOUD Act. Reports sind auditfähig für NIS2 (§ 30 BSIG), DORA, KRITIS, TISAX, VAIT/BAIT und ISO/IEC 27001.
+> VORNAC GmbH (Heidelberg) betreibt eine Plattform für kontinuierliche, autonome Penetrationstests (Automated Security Validation, Pentest as a Service) für regulierte Unternehmen in Deutschland. Die Tests laufen in produktiven Umgebungen mit realen Exploits; jeder Befund kommt mit reproduzierbarem Proof-of-Concept, Business-Impact und Maßnahmenplan. Betrieb und Datenhaltung ausschließlich in deutschen Rechenzentren deutscher Betreiber, kein US-Cloud-Anbieter, kein CLOUD Act. Reports sind auditfähig für NIS2 (§ 30 BSIG), DORA, KRITIS, TISAX und ISO/IEC 27001.
 
 Leistungen: kontinuierliches Pentesting je Zielsystem (Web-Anwendungen, APIs, Mobile Apps, interne Netzwerke, Cloud-Workloads, Binaries, Identity und Access), Assumed Breach Simulation (interne Angriffssimulation), Continuous Threat Exposure Management (kontinuierliche Discovery und Validierung der externen Angriffsfläche), OT-Pentesting für KRITIS und Industrie.
 
@@ -28,7 +28,7 @@ Maschinenlesbar: Jede Seite liegt als Markdown unter ihrer URL mit der Endung .m
 ## Regelwerke
 
 - [KRITIS und NIS2](https://www.vornac.com/industries-critical-infrastructure): Nachweise für Betreiber kritischer Anlagen und wesentliche Einrichtungen
-- [DORA, VAIT, BAIT](https://www.vornac.com/industries-financial-services): Tests der digitalen operationalen Resilienz für Finanzdienstleister
+- [DORA für Banken und Finanzinstitute](https://www.vornac.com/industries-financial-services): Penetrationstests für das Testprogramm nach Art. 24 und 25 DORA, Red Team für TLPT nach Art. 26 (VORNAC erfüllt die Anforderungen an externe Tester nach Art. 27), Stand der Aufhebung von ZAIT, KAIT und BAIT
 - [DORA für Versicherer](https://www.vornac.com/industries-insurance)
 - [TISAX](https://www.vornac.com/industries-automotive): Automotive-Lieferkette, VDA ISA
 - [NIS2 für Unternehmen](https://www.vornac.com/industries-enterprise)
