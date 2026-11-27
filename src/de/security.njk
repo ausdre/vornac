@@ -1,0 +1,74 @@
+---
+title: "Schwachstelle melden · VORNAC"
+description: "Sicherheitslücke in einem Produkt oder Dienst von VORNAC melden: Kontakt, nötige Angaben, Zusagen von VORNAC und Regeln für die Offenlegung."
+i18nKey: security
+ogType: website
+---
+{# Schwachstelle melden: Meldeweg für Sicherheitslücken in Produkten und
+   Diensten von VORNAC.
+
+   Text im Wortlaut des Drive-Dokuments "Website Schwachstelle melden: Texte
+   und Aufgaben" (Stand 24.11.2026). Den Text nur zusammen mit dem Dokument
+   ändern; die englische Fassung liegt in src/security.njk.
+
+   Die Adresse der Seite steht als Policy in well-known/security.txt. Ändert
+   sich der Pfad, die Datei mit ändern.
+
+   `data-no-crosslink` am Textblock hält die automatischen Glossar-Links aus
+   dem Regeltext heraus. #}
+{% extends "layouts/base.njk" %}
+
+{% block extraHead %}
+{% include "partials/prose-styles.njk" %}
+{% set schemaType = "WebPage" %}{% set schemaAboutOrg = true %}
+{% include "partials/page-schema.njk" %}
+{% endblock %}
+
+{% block content %}
+<main class="relative z-10 py-16 lg:py-24">
+    <div class="mx-auto max-w-3xl px-4 prose" data-no-crosslink>
+
+        <h1 class="text-4xl lg:text-5xl mb-10 lg:mb-14">Schwachstelle melden</h1>
+
+        <p class="text-lg">Sicherheit ist unser Kerngeschäft, auch bei unseren eigenen Produkten. Wenn du eine mögliche Sicherheitslücke in einem Produkt oder Dienst von VORNAC gefunden hast, freuen wir uns über deinen Hinweis.</p>
+
+        <div class="mt-12 space-y-12">
+
+            <section id="report" class="space-y-4">
+                <h2 class="text-2xl lg:text-3xl">So meldest du uns eine Schwachstelle</h2>
+                <p>Schreib an <strong><a href="mailto:security@vornac.com">security@vornac.com</a></strong> und beschreib möglichst genau:</p>
+                <ul class="list-disc space-y-3 pl-6">
+                    <li>welches Produkt oder welcher Dienst betroffen ist, mit Version, falls bekannt</li>
+                    <li>was du gefunden hast und welche Auswirkungen die Lücke haben kann</li>
+                    <li>wie wir das Problem nachvollziehen können (Schritte, Screenshots, Proof of Concept)</li>
+                    <li>wie wir dich für Rückfragen erreichen</li>
+                </ul>
+            </section>
+
+            <section id="commitments" class="space-y-4">
+                <h2 class="text-2xl lg:text-3xl">Was du von uns erwarten kannst</h2>
+                <ul class="list-disc space-y-3 pl-6">
+                    <li>Wir bestätigen den Eingang deiner Meldung innerhalb von 2 Werktagen.</li>
+                    <li>Wir prüfen jeden Hinweis und halten dich über den Stand auf dem Laufenden.</li>
+                    <li>Wir beheben bestätigte Lücken so schnell wie möglich und informieren betroffene Kunden.</li>
+                    <li>Wenn du möchtest, nennen wir dich nach der Behebung als Finder der Lücke.</li>
+                    <li>Wir gehen nicht rechtlich gegen Personen vor, die uns eine Lücke in gutem Glauben und nach diesen Regeln melden.</li>
+                </ul>
+            </section>
+
+            <section id="rules" class="space-y-4">
+                <h2 class="text-2xl lg:text-3xl">Unsere Bitte an dich</h2>
+                <ul class="list-disc space-y-3 pl-6">
+                    <li>Veröffentliche Details zur Lücke erst, nachdem wir sie behoben haben, oder sprich den Zeitpunkt mit uns ab.</li>
+                    <li>Greif nicht auf Daten anderer zu, verändere oder lösche keine Daten und beeinträchtige keine Systeme unserer Kunden.</li>
+                    <li>Teste nur so weit, wie es nötig ist, um die Lücke nachzuweisen.</li>
+                </ul>
+            </section>
+
+        </div>
+
+        <p class="mt-12">Vielen Dank, dass du hilfst, VORNAC und unsere Kunden sicherer zu machen.</p>
+
+    </div>
+</main>
+{% endblock %}

@@ -38,6 +38,8 @@ const STATIC_PAGES = [
   { key: "industries-insurance",               en: `${EN}/industries-insurance`,               de: "/industries-insurance" },
   { key: "faq",                                en: `${EN}/faq`,                                de: "/faq" },
   { key: "legal",                              en: `${EN}/legal`,                              de: "/legal" },
+  // Vulnerability reporting: the Policy URLs in well-known/security.txt point here.
+  { key: "security",                           en: `${EN}/security`,                           de: "/security" },
   // Wissen (German first; `en: null` until the English version exists).
   { key: "wissen",                             en: null,                                       de: "/wissen" },
   { key: "wissen-nis2-wirksamkeitspruefung",   en: null,                                       de: "/wissen/nis2-wirksamkeitspruefung" },

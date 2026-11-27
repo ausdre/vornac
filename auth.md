@@ -32,4 +32,4 @@ A penetration test runs only under a signed contract and only against systems th
 
 ## Contact
 
-VORNAC GmbH, Carl-Friedrich-Gauß-Ring 5, 69124 Heidelberg, Germany. hello@vornac.com, +49 6221 6479525. Security reports: https://www.vornac.com/.well-known/security.txt
+VORNAC GmbH, Carl-Friedrich-Gauß-Ring 5, 69124 Heidelberg, Germany. hello@vornac.com, +49 6221 6479525. Security reports: https://www.vornac.com/en/security, contact details in https://www.vornac.com/.well-known/security.txt

@@ -82,6 +82,7 @@ module.exports = {
       legalLinks: {
         privacy: "Privacy Policy",
         imprint: "Imprint",
+        security: "Report a vulnerability",
         cookies: "Cookie settings"
       },
       socialsHeading: "Socials",
@@ -179,6 +180,7 @@ module.exports = {
       legalLinks: {
         privacy: "Datenschutz",
         imprint: "Impressum",
+        security: "Schwachstelle melden",
         cookies: "Cookie-Einstellungen"
       },
       socialsHeading: "Social Media",
