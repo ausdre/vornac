@@ -36,7 +36,6 @@ const SKIP_CLASSES = new Set([
   "v-announcement",     // top announcement bar
   "v-nav",              // floating nav island
   "site-footer",        // global footer wrapper (defensive; tag is already <footer>)
-  "comcenter",          // command-centre block
   "rs-tier-chip",       // tier chips
   "rs-phase-chip"       // phase chips
 ]);
@@ -283,10 +282,6 @@ module.exports = function (eleventyConfig) {
   // anime.js, self-hosted instead of fetched from jsdelivr — saves a TLS
   // hop on the critical path (was -336ms LCP).
   eleventyConfig.addPassthroughCopy("anime.min.js");
-
-  // Chart.js for /comcenter, self-hosted instead of fetched from jsdelivr
-  // so the page opens no third-party connection.
-  eleventyConfig.addPassthroughCopy("chart.umd.js");
 
   // Watch the page-specific CSS files so edits hot-reload during dev.
   eleventyConfig.addWatchTarget("./about.css");

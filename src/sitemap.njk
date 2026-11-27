@@ -36,7 +36,6 @@ priorities:
   press: "0.6"
   apply: "0.6"
   legal: "0.3"
-  comcenter: "0.5"
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -45,7 +44,7 @@ priorities:
     build date. A registry entry without dates falls back to the newest
     research date so the value still points at a real edit. -#}
 {%- for entry in pages -%}
-  {#- noindex entries (comcenter) are disallowed in robots.txt and carry meta noindex; a sitemap must not list them. -#}
+  {#- noindex entries (the giveaway terms) carry meta noindex; a sitemap must not list them. -#}
   {%- if not entry.noindex -%}
   {%- set priority = priorities[entry.key] or "0.5" -%}
   {%- set entryDates = dates.byKey[entry.key] -%}

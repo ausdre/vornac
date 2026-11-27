@@ -23,7 +23,7 @@
 {# Markdown twin for AI agents (scripts/markdown-twins.js writes it for every
    sitemap URL): `markdownTwin` from src.11tydata.js is the page URL plus
    ".md" (the root: /index.md), null for pages outside the registry (404,
-   thank-you) and for noindex pages (comcenter). #}
+   thank-you) and for noindex pages (the giveaway terms). #}
 {% if markdownTwin %}<link rel="alternate" type="text/markdown" href="{{ markdownTwin | absoluteUrl(site.domain) }}">{% endif %}
 
 {# Agentic Resource Discovery: manifest of the agent resources on this domain

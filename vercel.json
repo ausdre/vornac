@@ -12,7 +12,7 @@
       "permanent": false
     },
     {
-      "source": "/:path((?!de$|de/|en/comcenter$|thank-you$|en/thank-you$|gewinnspiel2026/teilnahmebedingungen$)[^.]+)",
+      "source": "/:path((?!de$|de/|thank-you$|en/thank-you$|gewinnspiel2026/teilnahmebedingungen$)[^.]+)",
       "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],
       "destination": "/:path.md",
       "permanent": false
@@ -137,9 +137,6 @@
     { "source": "/industries-insurance_de.html",              "destination": "/industries-insurance",              "permanent": true },
     { "source": "/industries-insurance_de",                   "destination": "/industries-insurance",              "permanent": true },
 
-    { "source": "/comcenter.html",    "destination": "/en/comcenter", "permanent": true },
-    { "source": "/comcenter",         "destination": "/en/comcenter", "permanent": true },
-
     { "source": "/preventive.html",        "destination": "/en", "permanent": true },
     { "source": "/preventive",             "destination": "/en", "permanent": true },
     { "source": "/preventive_de.html",     "destination": "/",   "permanent": true },
@@ -157,7 +154,7 @@
       ]
     },
     {
-      "source": "/:path((?!en/comcenter$|thank-you$|en/thank-you$|gewinnspiel2026/teilnahmebedingungen$)[^.]+)",
+      "source": "/:path((?!thank-you$|en/thank-you$|gewinnspiel2026/teilnahmebedingungen$)[^.]+)",
       "headers": [
         { "key": "Vary", "value": "Accept" },
         { "key": "Link", "value": "<https://www.vornac.com/:path.md>; rel=\"alternate\"; type=\"text/markdown\"" }
